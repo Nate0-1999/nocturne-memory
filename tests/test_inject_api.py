@@ -315,7 +315,7 @@ async def test_prepare_commit_replays_gate_and_prepare_updates_only_injected(
     request = _prepare_body(prompt=prompt)
 
     payload = _assert_json(await memory_client.post("/v1/inject/prepare", json=request), 200)
-    assert learner_worker.notifications == 1
+    assert learner_worker.notifications == 0  # D.2 153: compaction owns the trigger.
 
     assert set(payload) == {
         "injection_id",
@@ -485,7 +485,7 @@ async def test_prepare_commit_replays_gate_and_prepare_updates_only_injected(
     )
     assert near["body"] in commit["final_block"]
     assert injected["body"] not in commit["final_block"]
-    assert learner_worker.notifications == 2
+    assert learner_worker.notifications == 0
 
     missing = await memory_client.post(
         "/v1/inject/commit",
@@ -496,7 +496,7 @@ async def test_prepare_commit_replays_gate_and_prepare_updates_only_injected(
         },
     )
     assert missing.status_code == 422
-    assert learner_worker.notifications == 2
+    assert learner_worker.notifications == 0
 
     async with memory_session_factory() as session:
         replayed = (
@@ -931,7 +931,7 @@ async def test_autonomous_prepare_preserves_locks_and_logs_entry_keep_exit(
     )
     first_ids = [UUID(card["memory_id"]) for card in first["injected"]]
     assert first_ids == [confirmed_id, autonomous_id]
-    assert learner_worker.notifications == 1
+    assert learner_worker.notifications == 0
 
     second = _assert_json(
         await memory_client.post(
@@ -975,7 +975,7 @@ async def test_autonomous_prepare_preserves_locks_and_logs_entry_keep_exit(
         entered_id: "auto_entered",
     }
     assert {row.actor_class for row in rows} == {"passive"}
-    assert learner_worker.notifications == 2
+    assert learner_worker.notifications == 0
 
     assert _assert_json(
         await memory_client.post(
@@ -988,7 +988,7 @@ async def test_autonomous_prepare_preserves_locks_and_logs_entry_keep_exit(
         ),
         200,
     ) == {"ok": True}
-    assert learner_worker.notifications == 3
+    assert learner_worker.notifications == 0
 
     missing = await memory_client.post(
         "/v1/feedback",
@@ -999,7 +999,7 @@ async def test_autonomous_prepare_preserves_locks_and_logs_entry_keep_exit(
         },
     )
     assert missing.status_code == 404
-    assert learner_worker.notifications == 3
+    assert learner_worker.notifications == 0
     async with memory_session_factory() as session:
         entered_event = (
             await session.scalars(
