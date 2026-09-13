@@ -578,17 +578,17 @@ async def test_background_retrain_crosses_authentic_floor_and_never_activates(
 
 
 @pytest.mark.asyncio
-async def test_real_worker_startup_and_work_wake_persists_background_inactive_winner(
+async def test_real_compaction_worker_persists_background_inactive_winner(
     memory_session_factory: async_sessionmaker[AsyncSession],
 ) -> None:
-    """A-031/A-051 prove an actual worker due check can persist a winning proposal safely."""
+    """D.2 144/153: a real compaction event can propose but never activate a winner."""
 
     await _reset_proposals(memory_session_factory)
     completed: asyncio.Queue[None] = asyncio.Queue()
 
     class ObservedLearnerService(LearnerService):
-        async def retrain_if_due(self) -> RetrainResponse | None:
-            result = await super().retrain_if_due()
+        async def compact(self, trigger) -> RetrainResponse:
+            result = await super().compact(trigger)
             await completed.put(None)
             return result
 
@@ -601,10 +601,10 @@ async def test_real_worker_startup_and_work_wake_persists_background_inactive_wi
     worker = LearnerWorker(service)
     worker.start()
     try:
-        await asyncio.wait_for(completed.get(), timeout=2)
+        assert completed.empty()
         await _insert_gate(memory_session_factory, gate=33)
         await _insert_gate(memory_session_factory, gate=34)
-        worker.notify()
+        worker.notify(OptimizationTrigger(event_uid="compaction-event", thread_id=UUID(int=33)))
         await asyncio.wait_for(completed.get(), timeout=2)
     finally:
         await worker.stop()

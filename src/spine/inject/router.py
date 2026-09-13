@@ -181,9 +181,6 @@ async def prepare(
                 excluded_memory_ids=tuple(body.excluded_memory_ids),
             )
         )
-        _learner_worker(request).notify(
-            OptimizationTrigger(event_uid=mint_ulid(), thread_id=body.thread_id)
-        )
         return result
     except ThreadAlreadyPreparedError:
         return _conflict(
@@ -232,7 +229,6 @@ async def commit(
                 added_back=tuple(body.added_back),
             )
         )
-        _learner_worker(request).notify(OptimizationTrigger(event_uid=mint_ulid()))
         return result
     except InjectionNotFoundError as error:
         return _decision_problem(request, 404, "Not Found", str(error))
@@ -259,7 +255,6 @@ async def feedback(
                 signal=body.signal,
             )
         )
-        _learner_worker(request).notify(OptimizationTrigger(event_uid=mint_ulid()))
         return result
     except InjectionNotFoundError as error:
         return _decision_problem(request, 404, "Not Found", str(error))

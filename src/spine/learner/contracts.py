@@ -1,8 +1,14 @@
 """Wire contracts for the authenticated M2F retrain trigger."""
 
 from typing import Literal
+from uuid import UUID
 
 from pydantic import BaseModel
+
+
+class CompactionTrigger(BaseModel):
+    event_uid: str
+    thread_id: UUID
 
 
 class ReplayScoreView(BaseModel):

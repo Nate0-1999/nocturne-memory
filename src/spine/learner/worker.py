@@ -24,7 +24,6 @@ class LearnerWorker:
         if self._task is not None:
             raise RuntimeError("learner worker is already running")
         self._stop.clear()
-        self._wake.set()
         self._task = asyncio.create_task(self._run(), name="chrysopoeia-learner")
 
     def notify(self, trigger: OptimizationTrigger | None = None) -> None:
@@ -52,10 +51,8 @@ class LearnerWorker:
             try:
                 trigger = self._pending_trigger
                 self._pending_trigger = None
-                if trigger is None:
-                    await self._service.retrain_if_due()
-                else:
-                    await self._service.retrain_if_due(optimization_trigger=trigger)
+                if trigger is not None:
+                    await self._service.compact(trigger)
             except Exception:
                 logger.exception("Background Chrysopoeia retrain failed")
 
