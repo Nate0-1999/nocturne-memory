@@ -20,7 +20,7 @@ jobs:
           repository: Nate0-1999/nocturne-garden
           path: garden
           fetch-depth: 0
-          token: ${{ secrets.GARDEN_READ_TOKEN }}
+          ssh-key: ${{ secrets.GARDEN_READ_KEY }}
           persist-credentials: false
       - uses: actions/checkout@v4
         with:
