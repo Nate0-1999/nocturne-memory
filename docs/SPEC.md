@@ -342,6 +342,8 @@ solution). Features that cannot name their problem do not get built.
 
 ### ADR-001 — Framework substrate & language policy
 
+**Problem Tree:** P4.
+
 **Status: ACCEPTED (2026-07-07)** — polyglot policy amended in same day, folded in.
 
 **Decision:** Build on **Pydantic AI v2** (stable 2026-06). Use **Code Puppy as
@@ -397,6 +399,8 @@ point of the project).
 
 ### ADR-010 — Agent placement: workspace-anchored fleet
 
+**Problem Tree:** P3.
+
 **Status: ACCEPTED (2026-07-07)**
 
 **Law:** the agent loop runs adjacent to its workspace (filesystem), always.
@@ -442,6 +446,8 @@ Postgres). Machine provisioner: M4 (Part B).
 
 ### ADR-002 — Service boundary (memory ↔ any harness)
 
+**Problem Tree:** P1.1.
+
 **Status: ACCEPTED for M1 scope (normalized 2026-07-31; D.2 071, judge
 verdict PASS)** — HTTP service boundary, typed SpineClient, MemoryCapability
 prepare–gate–commit flow, system-adjacent final block all built and judged.
@@ -475,6 +481,8 @@ uniformity); MCP-only interface (fine as an *additional* adapter later, but
 the gate UX needs richer semantics than tool calls).
 
 ### ADR-003 — Storage, cloud & offline
+
+**Problem Tree:** P1.
 
 **Status: ACCEPTED (2026-07-07)**
 
@@ -526,6 +534,8 @@ Motivation section is why your packet exists.
 
 ### ADR-004 — Memory unit model & concurrency
 
+**Problem Tree:** P1.3.
+
 **Status: ACCEPTED (normalized 2026-07-31; D.2 071, judge verdict PASS)** —
 the shipped M1 unit/CAS/revision/tombstone/quarantine/pin law is built and
 verified end to end (unit shape refined ACCEPTED in review: atomic ≤128
@@ -566,6 +576,8 @@ other; every curator write obeys the same CAS, lineage, and tombstone rules
 above.
 
 ### ADR-005 — Injection scoring, gate & the learning loop
+
+**Problem Tree:** P1.2.
 
 **Status: PARTIALLY ACCEPTED** (annotated 2026-07-31; D.2 071: M1 scorer v0,
 full gate logging, removal/add-back/never incl. the A-022 near-miss veto,
@@ -809,6 +821,8 @@ M1; per-prompt re-scoring is OPEN (OQ-15, M2 decision).
 
 ### ADR-011 — Divergence & reconciliation ("the sailing example") — HORIZON
 
+**Problem Tree:** P1.3.1.
+
 **Status: ACCEPTED (2026-07-07)** as end-state design + M1 schema footprint.
 Building the machinery is FORBIDDEN before M5 (Part B).
 
@@ -850,6 +864,8 @@ automatic text merging for facts a human must trust); syncing learned weights.
 
 ### ADR-007 — Harness feature parity (now an index)
 
+**Problem Tree:** P4.
+
 **Status: ACCEPTED as index (2026-07-20; D.2 041)** — the 2026-07-19/20
 gate sessions designed what this draft only named. Parity items and their
 owning law:
@@ -870,6 +886,8 @@ durable execution (arrives with loops/subagents in M3; M1 sessions are
 plain DB rows).
 
 ### ADR-008 — Interface layer & control plane
+
+**Problem Tree:** P3.
 
 **Status: ACCEPTED; M1 stack details ACCEPTED (normalized 2026-07-31; D.2
 071)** — React/TypeScript/Vite command center over the browser→local-daemon
@@ -933,6 +951,8 @@ human, if at all, through their top-level agent's card.
 
 ### ADR-012 — The work protocol: spec → loop → judge (default grammar of work)
 
+**Problem Tree:** P4.
+
 **Status: ACCEPTED (2026-07-19; D.2 032).** CONTRACT from the milestone the
 multi-agent harness ships (M3); M1/M2's single-thread chat is its degenerate
 predecessor. This is the Garden relay methodology that built this very
@@ -977,14 +997,12 @@ parallel attempts (reopens human attention mid-protocol; the judge exists
 precisely so that attention is spent once, at the end).
 
 **The mode scale (amended 2026-07-20; D.2 041).** One protocol, a movable
-JUDGE SEAT, four rungs — scalar so new rungs slot in without machinery:
+JUDGE SEAT, three rungs (D.2 130) — scalar so new rungs slot in without machinery:
 - **Solo** (pp): one agent, headless one-shot; the output is the verdict.
 - **Duet** (mp): turn-based pair — THE HUMAN HOLDS THE JUDGE SEAT, every
   turn. Attention flows continuously by the human's choice, which is an
   Invariant-14-legal spend: the architecture's decision is that the human
   elected it. For trust-building and craft.
-- **Ensemble** (mf): a few parallel agents; gallery watching; interjection
-  on solo runs only. The seat is shared.
 - **Symphony** (ff): full ADR-017 search; judges conduct; attention
   arrives as the premiere card.
 Roles in the music: the human is the COMPOSER (writes the score — spec,
@@ -999,6 +1017,8 @@ by driving a seat transfer both directions and observing that attention
 pulls (cards) occur only per the active rung's law.
 
 ### ADR-013 — Framework seam: own the interface, adapt the implementation
+
+**Problem Tree:** P4.
 
 **Status: ACCEPTED (2026-07-19; D.2 034).** CONTRACT for all harness-side
 feature construction from H3 onward. Motivation: pydantic-ai v2 +
@@ -1044,6 +1064,8 @@ batteries ourselves when upstream's are adoptable through the seam.
 
 ### ADR-014 — The prime loop: turn lifecycle, interruption & budgets
 
+**Problem Tree:** P4.
+
 **Status: ACCEPTED (2026-07-19; D.2 037).** M1 implements the subset wired
 by C.7 v1.12 (cancel, queue, snapshot, usage); the full law is CONTRACT for
 the M3 harness buildout. This designs what ADR-007's draft list only named.
@@ -1080,6 +1102,8 @@ terminal status (stop_reason:"budget_exceeded"), rendered differently from
 error. Enforcement seat: pydantic-ai UsageLimits through the ADR-013 seam.
 
 ### ADR-015 — Walls and boundaries: the permission model
+
+**Problem Tree:** P4.2.
 
 **Status: ACCEPTED (2026-07-20; D.2 041).** CONTRACT from the milestone
 agents hold fs/shell tools (M3). Codifies the human-gate discussion that
@@ -1120,6 +1144,8 @@ appears) and a boundary crossing (card appears, judge-triaged); attempt
 capability escalation from repo config (refused).
 
 ### ADR-016 — Two ledgers, one tree: sessions, checkpoints, rewind
+
+**Problem Tree:** P1.
 
 **Status: ACCEPTED (2026-07-20; D.2 041).** CONTRACT for M2/M3 session
 machinery; ONE M1 seed already landing with H4 (see below).
@@ -1178,6 +1204,8 @@ open; history is unrecoverable and fails closed. Fail open on anything
 reconcilable; fail closed on anything unrecoverable.
 
 ### ADR-017 — Symphony search: the work protocol at scale
+
+**Problem Tree:** P1.6.
 
 **Status: ACCEPTED (2026-07-20; D.2 041).** CONTRACT for the M3+ Symphony
 rung of ADR-012. Generalizes the one-round swarm ADR-012 already defines.
@@ -1327,6 +1355,8 @@ clause:
    against the R22 caps; "exactly one card at convergence" stands.
 
 ### ADR-018 — The Cube and the plugin rack
+
+**Problem Tree:** P2.5.
 
 **Status: ACCEPTED (2026-07-20; D.2 041).** CONTRACT for the M2/M3 viz
 buildout; supersedes nothing — it UNIFIES ADR-009/decision-016's committed
@@ -1503,6 +1533,8 @@ item 10: the 3D stage). Clause by clause:
    double-render determinism diff and the palette validation stand.
 
 ### ADR-019 — Onboarding: the two-secrets rule and packaging
+
+**Problem Tree:** P4.
 
 **Status: ACCEPTED (2026-07-20; D.2 046).** CONTRACT for the packaging
 wave (packet D3, opens after the M1 judge); the principle binds all
@@ -1808,6 +1840,8 @@ deploy prints a complete, correct plan without mutating anything.
 
 ### ADR-020 — Shared Palaces: combining memory across people
 
+**Problem Tree:** P1.1.
+
 **Status: ACCEPTED as HORIZON (2026-07-20; D.2 047)** — end-state design
 accepted now, like ADR-011; BUILDING IS FORBIDDEN before real
 multi-tenant identity exists (M4 headline; ADR-011's M5 multi-principal
@@ -1860,6 +1894,8 @@ without touching the original; two overlapping contributions → dedup
 band fires; gate cards show contributor provenance.
 
 ### ADR-021 — Memory write law & the attention budget
+
+**Problem Tree:** P1.5.
 
 **Status: ACCEPTED (2026-07-22; D.2 053)** — governs how memories are BORN
 when agents (not humans) write them, and what memory management may cost a
@@ -2076,6 +2112,8 @@ excess lands staged+flagged, not dropped.
 
 ### ADR-022 — The Curators
 
+**Problem Tree:** P1.4.
+
 **Status: ACCEPTED** (doctrine + architecture owner-declared 2026-07-22,
 D.2 050–052; operational details PROPOSED until the M3 build). Consolidated
 here from ADR-004's accretions in the v2.12 editor pass — content-preserving;
@@ -2214,6 +2252,8 @@ lineage and tombstoned sources; contradict never auto-resolves; a
 promotion/demotion pass logs its blended score inputs.
 
 ### ADR-023 — The Plugin System
+
+**Problem Tree:** P2.5.
 
 **Status: ACCEPTED** (extracted from ADR-018 in the v2.23 editor pass,
 content-preserving: the rack is v2.0 law, D.2 041; composition, controls,
@@ -2598,6 +2638,8 @@ shipped dashboard lane traces to a canonical view over spend_event; a
 sample row reads aloud as a sentence in the shipped glossary's terms.
 
 ### ADR-006 — Presence
+
+**Problem Tree:** P2.1.
 
 **Status: PROPOSED**
 
