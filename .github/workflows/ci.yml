@@ -5,6 +5,47 @@ on:
   push:
 
 jobs:
+  impact:
+    name: Feature impact and handoff evidence
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: spine
+          fetch-depth: 0
+      - name: Read canonical Garden ledger
+        uses: actions/checkout@v4
+        with:
+          repository: Nate0-1999/nocturne-garden
+          path: garden
+          fetch-depth: 0
+          token: ${{ secrets.GARDEN_READ_TOKEN }}
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: Nate0-1999/nocturne-harness
+          path: harness
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compute impact and verify DONE handoffs
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          base="$BEFORE"
+          if [ "$base" = 0000000000000000000000000000000000000000 ]; then
+            base=$(git -C spine merge-base origin/main HEAD)
+          fi
+          python garden/bin/ledger ci --repo spine "$base..HEAD"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: feature-impact
+          path: spine/verification/*/impacted.json
+
   lint-and-test:
     runs-on: ubuntu-latest
     steps:
