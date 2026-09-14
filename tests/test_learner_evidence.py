@@ -48,6 +48,7 @@ def _row(
 
 
 def test_room_pressure_projects_valuable_cuts_marginal_waste_and_pin_overflow() -> None:
+    """A-061 projects all three room-pressure signals without changing injection truth."""
     config = ScorerConfig.from_mappings(
         version="m3ms",
         weights={

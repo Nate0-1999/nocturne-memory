@@ -23,7 +23,6 @@ WEIGHTS = ScorerWeights(sem=0.42, kw=0.16, time=0.11, proj=0.16, freq=0.08, hist
 def _config(**changes: Any) -> ScorerConfig:
     values: dict[str, Any] = {
         "tau": 0.55,
-        "top_k": 8,
         "near_miss_k": 3,
         "memory_context_share": 0.05,
         "legacy_budget_tokens": 3000,
@@ -268,21 +267,35 @@ def test_golden_selection_preserves_pin_score_order_ranks_and_greedy_skips() -> 
         pinned_candidates=pins,
         regular_candidates=regular,
         model_context_tokens=160,
-        config=_config(top_k=2, budget_tokens=8, candidate_pool=5),
+        config=_config(budget_tokens=8, candidate_pool=5),
     )
 
     # floor(.05*160)=8 remains wholly available to regular memories. Pins are
-    # forced beside that ceiling, so ranks 3 and 4 both fit and consume top-k.
+    # forced beside that ceiling; ranks 3, 4 and 5 fill the eight-token share.
     assert result.pin_token_cost == 3
     assert result.regular_budget == 8
-    assert result.regular_token_cost == 6
-    assert result.total_token_cost == 9
-    assert result.pinned_overflow_tokens == 1
-    assert [item.candidate.memory_id.int for item in result.injected] == [1, 2, 10, 11]
-    assert [item.rank for item in result.injected] == [1, 2, 3, 4]
-    assert [item.candidate.memory_id.int for item in result.near_misses] == [12, 13, 14]
-    assert [item.rank for item in result.near_misses] == [5, 6, 7]
-    assert result.budget_cuts == ()
+    assert result.regular_token_cost == 8
+    assert result.total_token_cost == 11
+    assert result.pinned_overflow_tokens == 3
+    assert [item.candidate.memory_id.int for item in result.injected] == [1, 2, 10, 11, 12]
+    assert [item.rank for item in result.injected] == [1, 2, 3, 4, 5]
+    assert [item.candidate.memory_id.int for item in result.near_misses] == [13, 14]
+    assert [item.rank for item in result.near_misses] == [6, 7]
+    assert [item.candidate.memory_id.int for item in result.budget_cuts] == [13]
+
+
+def test_threshold_and_share_inject_more_than_eight_without_a_count_cap() -> None:
+    """SPEC ADR-005 / rules-ledger r3-3: every passing memory fits until room is spent."""
+    result = score_and_select(
+        prompt="the", query_embedding=(1.0, 0.0), snapshot_ts=SNAPSHOT,
+        thread_project_key=None, pinned_candidates=(),
+        regular_candidates=tuple(_candidate(i) for i in range(1, 21)),
+        model_context_tokens=300, config=_config(),
+    )
+    assert [item.candidate.memory_id.int for item in result.injected] == list(range(1, 16))
+    assert result.regular_token_cost == 15
+    assert len(result.budget_cuts) == 5
+    assert not hasattr(_config().params, "top_k")
 
 
 def test_golden_pins_can_exceed_budget_and_bypass_a_below_tau_score() -> None:
@@ -325,8 +338,8 @@ def test_golden_pins_can_exceed_budget_and_bypass_a_below_tau_score() -> None:
     assert result.near_misses == ()
 
 
-def test_confirmed_lock_bypasses_threshold_top_k_inside_regular_share() -> None:
-    """A confirmed thread lock is forced but remains regular memory accounting."""
+def test_confirmed_lock_bypasses_threshold_inside_regular_share() -> None:
+    """SPEC D.2 101 keeps confirmed locks forced within regular memory accounting."""
     locked = _candidate(2, body="one two three", embedding=(-1.0, 0.0))
     ordinary = _candidate(1, body="one")
 
@@ -339,7 +352,7 @@ def test_confirmed_lock_bypasses_threshold_top_k_inside_regular_share() -> None:
         regular_candidates=(ordinary, locked),
         locked_memory_ids=frozenset({locked.memory_id}),
         model_context_tokens=80,
-        config=_config(top_k=1, budget_tokens=4),
+        config=_config(budget_tokens=4),
     )
 
     assert [item.candidate.memory_id for item in result.injected] == [
@@ -369,7 +382,7 @@ def test_confirmed_pin_is_already_forced_and_does_not_require_regular_membership
         regular_candidates=(),
         locked_memory_ids=frozenset({pinned_and_confirmed.memory_id}),
         model_context_tokens=80,
-        config=_config(top_k=1, budget_tokens=4),
+        config=_config(budget_tokens=4),
     )
 
     assert [item.candidate.memory_id for item in result.injected] == [

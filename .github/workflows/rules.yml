@@ -1,0 +1,21 @@
+name: Rules
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen axioms and SPEC
+        run: python scripts/check_rules.py --freeze-only
+      - name: Decision citations and product vocabulary
+        run: python scripts/check_rules.py
+      - name: Test motivations
+        run: python scripts/check_test_motivations.py

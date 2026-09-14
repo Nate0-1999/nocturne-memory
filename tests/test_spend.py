@@ -113,7 +113,7 @@ async def test_spend_contract_rejects_zero_lines_bad_enums_and_duplicate_ids(
 async def test_spend_table_groups_threads_models_token_lanes_and_non_thread_purposes(
     memory_client: AsyncClient,
 ) -> None:
-    """M3SP reads one exact global projection and one repeated-thread ATTUNED slice."""
+    """ADR-024 reads one exact global projection and one repeated-thread ATTUNED slice."""
 
     now = datetime.now(UTC)
     current = now.isoformat()

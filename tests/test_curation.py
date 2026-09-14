@@ -180,6 +180,7 @@ async def test_health_report_is_byte_stable_for_one_snapshot(
     embedding_provider: ScriptedEmbeddingProvider,
     memory_session_factory: async_sessionmaker[AsyncSession],
 ) -> None:
+    """P1.4 makes one observed corpus produce the same deterministic health report."""
     await _seed_mess(memory_client, embedding_provider, memory_session_factory)
     builder = HealthReportBuilder(memory_session_factory, duplicate_floor=0.89)
     observed_at = datetime(2026, 8, 31, 12, tzinfo=UTC)
@@ -204,6 +205,7 @@ async def test_removal_pressure_wakes_the_same_durable_curator_path(
     embedding_provider: ScriptedEmbeddingProvider,
     memory_session_factory: async_sessionmaker[AsyncSession],
 ) -> None:
+    """P1.4 routes removal pressure through the same durable curator receipt."""
     await _seed_mess(memory_client, embedding_provider, memory_session_factory)
     service = CuratorService(
         memory_session_factory,
@@ -231,6 +233,7 @@ async def test_messy_palace_runs_queues_and_tidies_only_after_explicit_consent(
     embedding_provider: ScriptedEmbeddingProvider,
     memory_session_factory: async_sessionmaker[AsyncSession],
 ) -> None:
+    """ADR-021 permits curator repair only through explicit owner consent."""
     source_ids = await _seed_mess(memory_client, embedding_provider, memory_session_factory)
     service = _install_fixture_curator(memory_app, memory_session_factory)
 
@@ -312,6 +315,7 @@ async def test_rejected_unchanged_verdict_is_not_queued_again(
     embedding_provider: ScriptedEmbeddingProvider,
     memory_session_factory: async_sessionmaker[AsyncSession],
 ) -> None:
+    """ADR-021 preserves a refusal while the evidence behind a proposal is unchanged."""
     await _seed_mess(memory_client, embedding_provider, memory_session_factory)
     service = _install_fixture_curator(memory_app, memory_session_factory)
     first = await service.run("fixture-owner", machine_id="fixture-mac")
@@ -350,6 +354,7 @@ async def test_split_tool_preserves_lineage_and_public_maintenance_bypass_is_ref
     embedding_provider: ScriptedEmbeddingProvider,
     memory_session_factory: async_sessionmaker[AsyncSession],
 ) -> None:
+    """ADR-021 and ADR-022 preserve lineage and refuse unconsented maintenance writes."""
     source_body = "Alpha guidance. Beta guidance."
     embedding_provider.set(source_body, basis_vector(0))
     embedding_provider.set("Alpha guidance.", basis_vector(1))
@@ -448,7 +453,7 @@ async def test_full_messy_fixture_runs_trigger_report_verdict_queue_and_every_to
     embedding_provider: ScriptedEmbeddingProvider,
     memory_session_factory: async_sessionmaker[AsyncSession],
 ) -> None:
-    """M3CU exit: one owned fixture measurably tidies every reported rot family."""
+    """P1.4: one owned fixture measurably tidies every reported rot family."""
 
     bodies = {
         "duplicate_a": "The archive closes at nine.",
@@ -651,6 +656,7 @@ async def test_curator_history_tables_are_append_only(
     embedding_provider: ScriptedEmbeddingProvider,
     memory_session_factory: async_sessionmaker[AsyncSession],
 ) -> None:
+    """ADR-004 preserves curator receipts against database updates and deletion."""
     await _seed_mess(memory_client, embedding_provider, memory_session_factory)
     service = _install_fixture_curator(memory_app, memory_session_factory)
     receipt = await service.run("fixture-owner", machine_id="fixture-mac")

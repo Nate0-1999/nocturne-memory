@@ -132,7 +132,7 @@ def _state_problem(request: Request, error: M2KStateError) -> ProblemJSONRespons
     return problem_response(
         status=409,
         title="Conflict",
-        detail=f"M2K operation refused: {error.reason}.",
+        detail=f"Scorer operation refused: {error.reason}.",
         instance=request.url.path,
         endpoint=f"{request.method} {request.url.path}",
     )

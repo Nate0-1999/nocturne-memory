@@ -66,7 +66,6 @@ class ScorerParams:
     """Selection and decay parameters for one immutable scorer version."""
 
     tau: float
-    top_k: int
     near_miss_k: int
     memory_context_share: float
     half_life_time_days: float
@@ -81,8 +80,6 @@ class ScorerParams:
     def __post_init__(self) -> None:
         if not 0.0 <= self.tau <= 1.0:
             raise ValueError("tau must be between zero and one")
-        if not 0 < self.top_k <= 8:
-            raise ValueError("top_k must be between one and eight")
         if self.near_miss_k < 0:
             raise ValueError("near_miss_k must not be negative")
         if not MIN_MEMORY_CONTEXT_SHARE <= self.memory_context_share <= MAX_MEMORY_CONTEXT_SHARE:
@@ -164,7 +161,6 @@ class ScorerConfig:
             ),
             params=ScorerParams(
                 tau=_number(params, "tau"),
-                top_k=_integer(params, "top_k"),
                 near_miss_k=_integer(params, "near_miss_k"),
                 memory_context_share=(
                     _number(params, "memory_context_share")
@@ -377,13 +373,11 @@ def score_and_select(
 
     for scored in ranked_regular:
         cut_by_budget = (
-            len(selected_regular) < config.params.top_k
-            and scored.score >= config.params.tau
+            scored.score >= config.params.tau
             and scored.token_cost > remaining_budget
         )
         selectable = (
-            len(selected_regular) < config.params.top_k
-            and scored.score >= config.params.tau
+            scored.score >= config.params.tau
             and scored.token_cost <= remaining_budget
         )
         if selectable:

@@ -96,13 +96,6 @@ SCORER_DESCRIPTORS = (
         default=0.55,
     ),
     ScorerDescriptor(
-        id="scorer.top_k",
-        label="Display limit",
-        type="integer",
-        range=ParameterRange(minimum=1, maximum=8, step=1),
-        default=8,
-    ),
-    ScorerDescriptor(
         id="scorer.memory_context_share",
         label="Memory context share",
         type="number",
@@ -1457,16 +1450,10 @@ async def _instant(
     ordered = [*pins, *regular]
     preview_selected = {item["row"].memory_id for item in pins}
     remaining = max(0, int(preview_values.memory_context_share * context_tokens))
-    selected_regular = 0
     for item in regular:
-        if (
-            selected_regular < preview_values.top_k
-            and item["score"] >= preview_values.tau
-            and item["token_cost"] <= remaining
-        ):
+        if item["score"] >= preview_values.tau and item["token_cost"] <= remaining:
             preview_selected.add(item["row"].memory_id)
             remaining -= item["token_cost"]
-            selected_regular += 1
     comparisons: list[ScorerComparisonRow] = []
     for rank, item in enumerate(ordered, start=1):
         row = item["row"]

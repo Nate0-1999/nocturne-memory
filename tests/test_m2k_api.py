@@ -309,7 +309,8 @@ async def test_console_contributions_sum_exactly_and_control_inserts_a_version(
     point = payload["candidates"][0]["points"][0]
     total = sum(Decimal(value) for value in point["contributions"].values() if value is not None)
     assert total == Decimal(point["score"])
-    assert len(payload["descriptors"]) == 11
+    assert len(payload["descriptors"]) == 10
+    assert "scorer.top_k" not in {item["id"] for item in payload["descriptors"]}
 
     values = payload["configurations"][0]["values"]
     values["tau"] = 0.6
@@ -342,7 +343,7 @@ async def test_console_contributions_sum_exactly_and_control_inserts_a_version(
         json={**request, "simulation_digest": "0" * 64},
     )
     assert stale.status_code == 409
-    assert stale.json()["detail"] == "M2K operation refused: simulation_stale."
+    assert stale.json()["detail"] == "Scorer operation refused: simulation_stale."
     observed_isolation.clear()
     created = await memory_client.post("/v1/scorer-configs", json=request)
     assert observed_isolation == ["repeatable read"]
@@ -435,7 +436,7 @@ async def test_competing_force_values_take_a_fresh_snapshot_after_the_control_lo
     assert sorted(response.status_code for response in responses) == [200, 409]
     stale = next(response for response in responses if response.status_code == 409)
     created = next(response for response in responses if response.status_code == 200)
-    assert stale.json()["detail"] == "M2K operation refused: stale_base."
+    assert stale.json()["detail"] == "Scorer operation refused: stale_base."
     async with memory_session_factory() as session:
         configs = (
             (

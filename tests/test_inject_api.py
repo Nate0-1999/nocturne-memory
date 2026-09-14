@@ -156,6 +156,52 @@ async def _insert_memory(
     return root_uid
 
 
+async def test_prepare_and_console_preview_agree_above_the_retired_count_cap(
+    memory_client: AsyncClient,
+    embedding_provider: ScriptedEmbeddingProvider,
+    memory_session_factory: async_sessionmaker[AsyncSession],
+) -> None:
+    """P1.2 / A-061 uses threshold and token share in both live and simulated selection."""
+    for number in range(10):
+        await _insert_memory(
+            memory_session_factory,
+            memory_id=UUID(int=8000 + number),
+            label=f"Rule {number}",
+            body="alpha",
+            embedding=basis_vector(0),
+            keywords=["alpha"],
+        )
+    embedding_provider.set("alpha", basis_vector(0))
+    prepared = _assert_json(
+        await memory_client.post("/v1/inject/prepare", json=_prepare_body(prompt="alpha")), 200
+    )
+    assert len(prepared["injected"]) == 10
+    console = _assert_json(
+        await memory_client.post(
+            "/v1/scorer-console/query",
+            json={"principal_id": "owner", "thread_id": None, "as_of": "now"},
+        ),
+        200,
+    )
+    values = console["configurations"][0]["values"]
+    values["top_k"] = 1  # Historical wire field cannot silently restore the count cap.
+    simulation = _assert_json(
+        await memory_client.post(
+            "/v1/scorer-simulations",
+            json={
+                "principal_id": "owner",
+                "injection_id": prepared["injection_id"],
+                "base_version": ACTIVE_SCORER_VERSION,
+                "values": values,
+                "slice_parameter_id": "scorer.tau",
+            },
+        ),
+        200,
+    )
+    assert len(simulation["instant"]["candidates"]) == 10
+    assert all(row["preview_selected"] for row in simulation["instant"]["candidates"])
+
+
 async def test_prepare_commit_replays_gate_and_prepare_updates_only_injected(
     memory_app,
     memory_client: AsyncClient,

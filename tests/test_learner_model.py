@@ -245,7 +245,7 @@ def test_fit_learns_where_locality_from_human_pairwise_evidence() -> None:
 
 
 def test_share_and_line_stay_fixed_until_the_authentic_feedback_floor() -> None:
-    """D.2 133 keeps the new controls fixed, then joins them to the one learner."""
+    """SPEC D.2 133 keeps the new controls fixed, then joins them to the one learner."""
 
     examples = (
         _example(
@@ -294,6 +294,7 @@ def test_share_and_line_stay_fixed_until_the_authentic_feedback_floor() -> None:
 
 
 def test_share_replay_counts_room_up_and_room_down_triggers() -> None:
+    """A-061 counts both insufficient room and wasted room in the same replay."""
     boundaries = (
         ShareBoundary(
             event_uid="up",
@@ -403,7 +404,7 @@ def test_replay_winner_requires_margin_except_for_exact_cheaper_tie() -> None:
 
 
 def test_replay_tie_prefers_smaller_share_then_higher_tau() -> None:
-    """D.2 133 makes room and line part of the replay's cheaper-at-tie law."""
+    """SPEC D.2 133 makes room and line part of the replay's cheaper-at-tie law."""
 
     score = ReplayScore(
         disagreements=1,

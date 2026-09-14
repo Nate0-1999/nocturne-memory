@@ -1220,3 +1220,20 @@ weight than thread birthplace keeps conversation affinity primary.
 project-relative replay. Treating missing location as unrelated invents negative
 evidence for old rows. A fixed coefficient or second learner would violate the ruled
 single adaptive scorer.
+
+## 046 — Threshold and token share decide injection without a count cap [P1.2, P2.2, M3RC]
+
+PRECEDENT: SPEC D.2 101/133, A-061, PLAN M3RC; ancestor M3MS.
+Remove `ScorerParams.top_k` and both count comparisons from live and preview
+selection. Eligible memories fill the regular token share in score order; pinned
+memories still bypass it. Remove the count descriptor and console control.
+Keep the old field in persisted versions and request/response models so historical
+versions and older clients remain readable; it has no selection effect. A database
+test sets the legacy field to one and proves live and simulated selection both
+include ten memories. The budget-bound unit test independently selects fifteen.
+
+The exported law checker and fingerprints run without Garden credentials in this
+public repository; Garden verifies their canonical source and frozen-law bytes.
+Role-policy, shared-Palace and single-cost-store rules remain named skipped tests
+because those features are unbuilt. Historical test motivations gain citations;
+their assertions and production behavior are unchanged.

@@ -308,7 +308,7 @@ async def test_real_retrain_records_complete_optimization_run_and_later_owner_ta
     memory_client: AsyncClient,
     memory_session_factory: async_sessionmaker[AsyncSession],
 ) -> None:
-    """M3OL proves a real Postgres retrain is fully attributable without rewriting history."""
+    """P1.2.2 proves a real Postgres retrain is fully attributable without rewriting history."""
 
     await _reset_proposals(memory_session_factory)
     await _insert_gate(memory_session_factory, gate=81)
@@ -373,7 +373,7 @@ async def test_real_retrain_records_complete_optimization_run_and_later_owner_ta
 async def test_optimization_corpus_is_capped_and_balanced_by_whole_thread_gates(
     memory_session_factory: async_sessionmaker[AsyncSession],
 ) -> None:
-    """M3OL prevents one long thread from consuming a bounded replay corpus."""
+    """P1.2.2 prevents one long thread from consuming a bounded replay corpus."""
 
     await _reset_proposals(memory_session_factory)
     dominant_thread = UUID(int=9001)
@@ -415,7 +415,7 @@ async def test_live_prepare_uses_incumbent_while_optimization_is_fitting(
     memory_session_factory: async_sessionmaker[AsyncSession],
     embedding_provider: ScriptedEmbeddingProvider,
 ) -> None:
-    """M3OL keeps the owner path live and on the incumbent during an optimization fit."""
+    """P1.2.2 keeps the owner path live and on the incumbent during an optimization fit."""
 
     entered_fit = asyncio.Event()
     release_fit = asyncio.Event()
