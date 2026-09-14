@@ -27,13 +27,13 @@ D2_FILES = {
 def main() -> None:
     """Prove metadata, migrations, and both packaged deployment contexts."""
 
-    assert version("nocturne-spine") == __version__ == "0.1.9"
+    assert version("nocturne-spine") == __version__
 
     scripts = ScriptDirectory.from_config(
         make_alembic_config("postgresql+asyncpg://unused:unused@localhost/unused")
     )
     assert scripts.get_base() == "0001"
-    assert scripts.get_heads() == ["0020"]
+    assert scripts.get_heads() == ["0021"]
 
     with TemporaryDirectory(prefix="nocturne-spine-wheel-") as temporary_directory:
         root = Path(temporary_directory)
