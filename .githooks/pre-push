@@ -1,10 +1,9 @@
 #!/bin/sh
 # M3IB: every push rings; only the CI handoff verifier may block it.
 root=$(git rev-parse --show-toplevel)
-garden=${GARDEN_ROOT:-$root/../garden}
 while read -r local_ref local_sha remote_ref remote_sha; do
     case "$local_sha" in 0000000000000000000000000000000000000000) continue ;; esac
-    python3 "$garden/bin/ledger" push --repo spine "origin/main..$local_sha" ||
-        printf '%s\n' 'Impact bell could not run; restore the sibling Garden checkout before handoff.' >&2
+    python3 "$root/bin/ledger" push --repo spine "origin/main..$local_sha" ||
+        printf '%s\n' 'Impact bell could not run; restore the frozen ledger and tool before handoff.' >&2
 done
 exit 0

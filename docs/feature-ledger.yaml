@@ -1,0 +1,3908 @@
+{
+  "version": 1,
+  "format": "JSON-compatible YAML; read and write with the Python standard library.",
+  "introduction": "The standing checklist. One row per feature: your words where we aligned (quoted), my label, status today, and the walk a scout runs. The scout runs every row whose status is built or partial; not-built rows wait for their packet; horizon rows wait for a shape; dropped rows are kept for the record. A feature packet is not done until its row here has a walk and the scout can run it. Statuses: built · partial · not built · horizon · dropped · unverified.",
+  "rows": [
+    {
+      "id": "FL-001",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "founding",
+      "label": "The Palace is a transactional database in the cloud on GCP that agents on many machines reach, behaving the same for every agent and sub-agent wherever it runs.",
+      "status": "unverified",
+      "walk": "M3WF second identity proves same-host isolation only. Needs hardware: start the verification Harness on a second physical machine against the same disposable GCP Palace and compare memories.",
+      "owner": "owner — \"The memory system will act as a the heart of my agent that I am bringing online as such should be access-able from many different machines, in the cloud. It should behave the same across many instances of sub agents on different machines etc.\" (first thread turn 1)",
+      "surfaces": [
+        "spine/src/spine/main.py",
+        "spine/src/spine/auth.py",
+        "harness/src/harness/spine_client.py",
+        "harness/src/harness/onboarding.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-001.jpg"
+      }
+    },
+    {
+      "id": "FL-002",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "founding",
+      "label": "Memory units have a length cap; a memory over the cap is shortened to fit as one memory, and it is split only when it holds more than one distinct fact, with the split logged.",
+      "status": "partial",
+      "walk": "/remember a 300-token paragraph holding one fact; one memory lands, shortened to the cap; a paragraph holding two facts lands as two.",
+      "owner": "owner — \"Like we shorten the length cap then they are too long\" (chat 2026-09-12); \"this was one memory that was split agentically logged\" (chat 2026-07-26)",
+      "surfaces": [
+        "harness/src/harness/agent.py",
+        "spine/src/spine/memory/service.py",
+        "spine/src/spine/tokens.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F080",
+        "screenshot": "FL-002.jpg"
+      }
+    },
+    {
+      "id": "FL-003",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "founding",
+      "label": "Constitution: Every edit is a compare-and-swap revision, deletions are tombstones, and a write conflict is a first-class event (founding ADRs).",
+      "status": "partial",
+      "walk": "Edit a memory body; the memory shows a new revision and the old revision is still retrievable.",
+      "owner": "constitution",
+      "surfaces": [
+        "spine/src/spine/memory/service.py",
+        "spine/src/spine/db/memory.py",
+        "spine/src/spine/memory/router.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F081",
+        "screenshot": "FL-003.jpg"
+      }
+    },
+    {
+      "id": "FL-004",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "founding",
+      "label": "Update history is one of the memory's indexes.",
+      "status": "built",
+      "walk": "Open a memory's score breakdown in the Injection Console; an update-history row is among the features.",
+      "owner": "owner — \"The memory system is kind of a weighted decision matrix across the different features that that I have listed in the excel as memory indexes (let's add one more as update history).\" (first thread turn 1)",
+      "surfaces": [
+        "spine/src/spine/inject/scorer.py",
+        "spine/src/spine/inject/service.py",
+        "harness/web/src/ContributionBars.tsx",
+        "harness/web/src/InjectionConsole.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-004.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-005",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "Jul 17",
+      "label": "Duplicate detection at creation, and outright removal of deprecated memories so they never collide with new ones.",
+      "status": "built",
+      "walk": "`/remember` the same fact twice; the second is caught as a duplicate rather than stored again.",
+      "owner": "owner — \"1. If a memory is depreciated do we not delete it then there would be no chance of collision. We could also check upon creation of a memory that there is no duplication. Hopefully these would be swept up in a the memory alignement sweeps though by the memory currator in the worst case....\" (chat 2026-07-17 19:28:57; chat 2026-07-23 16:07:44)",
+      "surfaces": [
+        "spine/src/spine/memory/service.py",
+        "spine/src/spine/db/memory.py",
+        "spine/src/spine/memory/router.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-005.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-006",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "Jul 19",
+      "label": "Every memory carries a location column and a project column.",
+      "status": "built",
+      "walk": "Open a memory card; project and location are shown.",
+      "owner": "owner — \"ok write in the amendment. It's important to the thesis of progressive prompting that every memory have a location. remember the agents are all going to be cding themselves around the projects which will change the equation of what memories get added.\" (chat 2026-07-20 00:01:41; chat 2026-07-19 23:51:20)",
+      "surfaces": [
+        "spine/src/spine/contracts.py",
+        "harness/src/harness/memory_capability.py",
+        "harness/src/harness/agent.py",
+        "harness/web/src/MemoryPanel.tsx",
+        "spine/src/spine/db/migrations/versions/0021_origin_location.py",
+        "harness/src/harness/toolset_runtime.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F081",
+        "screenshot": "FL-006.jpg"
+      }
+    },
+    {
+      "id": "FL-007",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "Jul 22",
+      "label": "Every memory links to the full conversation it came from, so an agent can reach more than just the memory when needed.",
+      "status": "built",
+      "walk": "Open a memory card; it names the conversation it came from, and following that link opens the conversation.",
+      "owner": "owner — \"2. I love this idea. I'm reading this as a way to link memories to the longer conversations that they are sourced from? That would be a phenomenal piece of meta data to source with them. the lineage and file the whole conversation is from so agents can refrence more than just the memory if necessary. That way our short memories act as indexes.\" (chat 2026-08-03 20:02:16)",
+      "surfaces": [
+        "spine/src/spine/contracts.py",
+        "harness/src/harness/memory_capability.py",
+        "harness/src/harness/agent.py",
+        "harness/web/src/MemoryPanel.tsx",
+        "spine/src/spine/transcripts/service.py",
+        "harness/src/harness/transcript.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F081",
+        "screenshot": "FL-007.jpg"
+      }
+    },
+    {
+      "id": "FL-008",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "Jul 22",
+      "label": "Complete logs of every conversation are kept for good, until it becomes too expensive, and every session sits in one table with a session id so anything can be audited.",
+      "status": "built",
+      "walk": "Look up an old conversation in the sessions table; its row and its full log are there.",
+      "owner": "owner — \"I think that all sessions should be in a table. We can have a session id (alpha numeric for the converstation and timestamp for the native converstaion.... not sure how this works with a bunch of sub agents but ill let you riff on that sense your the most familiar with what we already got set up.\" (chat 2026-07-22 15:22:24; chat 2026-07-22 15:14:41)",
+      "surfaces": [
+        "spine/src/spine/transcripts/service.py",
+        "harness/src/harness/transcript.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-008.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-009",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "Aug 13",
+      "label": "Record files (history, transcripts) live apart from code so code can be deleted and re-downloaded without losing history.",
+      "status": "built",
+      "walk": "Delete the code folder, reinstall, `nocturne up`; every thread is still there.",
+      "owner": "owner — \"Thinking on that a little bit more we should split out our record files from our code so we can remove the code and refresh it if something happens without breaking our history. The history file should also allow us to reconnect our cloud instance easily.\" (chat 2026-08-13 19:29:04)",
+      "surfaces": [
+        "harness/src/harness/transcript.py",
+        "harness/src/harness/onboarding.py",
+        "harness/pyproject.toml"
+      ],
+      "last_walk": {
+        "packet": "M3NM",
+        "date": "2026-09-15",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-009.png"
+      }
+    },
+    {
+      "id": "FL-010",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "Aug 21",
+      "label": "Every thread has a thread id, and every memory records the thread it was born in.",
+      "status": "built",
+      "walk": "Open a memory card; the thread it was born in is named.",
+      "owner": "owner — \"if an memory doesn't have a thread id now that is ok because of our principle of robustness. If there isn't an index value then we exclude that from the relevance calcuation, but going forward everyt thread should get a thread id.\" (chat 2026-08-21 19:32:46)",
+      "surfaces": [
+        "spine/src/spine/contracts.py",
+        "harness/src/harness/memory_capability.py",
+        "harness/src/harness/agent.py",
+        "harness/web/src/MemoryPanel.tsx",
+        "harness/src/harness/memory_bridge.py",
+        "spine/src/spine/symphony/service.py",
+        "spine/src/spine/db/migrations/versions/0016_thread_index.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F081",
+        "screenshot": "FL-010.jpg"
+      }
+    },
+    {
+      "id": "FL-011",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "Aug 21",
+      "label": "Memories promoted out of a sub-agent carry the originating thread id.",
+      "status": "partial",
+      "walk": "After a symphony run, open a promoted memory; its thread id is the symphony thread it came from.",
+      "owner": "owner — \"Sub agents shouldn't be creating memories unless they are getting promoted out after in which case they can carry the thread id.\" (chat 2026-08-21 19:32:46)",
+      "surfaces": [
+        "harness/src/harness/memory_bridge.py",
+        "spine/src/spine/symphony/service.py",
+        "spine/src/spine/db/migrations/versions/0016_thread_index.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F085",
+        "screenshot": "FL-011.jpg"
+      }
+    },
+    {
+      "id": "FL-012",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "Aug 31",
+      "label": "No memory exists without a score.",
+      "status": "built",
+      "walk": "Open the memory panel on any thread; every memory shows a score and none say 'not scored'.",
+      "owner": "owner — \"Also, memories shouldn't exist without a score right? why don't some have them now?\" (chat 2026-08-31 18:57:31)",
+      "surfaces": [
+        "spine/src/spine/inject/scorer.py",
+        "spine/src/spine/inject/service.py",
+        "harness/web/src/ContributionBars.tsx",
+        "harness/web/src/InjectionConsole.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F081",
+        "screenshot": "FL-012.jpg"
+      }
+    },
+    {
+      "id": "FL-013",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "Aug 31",
+      "label": "Delete a memory from the palace, with an are-you-sure popup.",
+      "status": "not built",
+      "walk": "Click delete on a memory; an are-you-sure popup appears; confirm; the memory is gone from the Palace.",
+      "owner": "owner — \"I think that the user should be able to delete a memory from the palace. This can be a new training loop that helps with memory creation tuning.\" (chat 2026-08-31 18:59:34; chat 2026-08-31 18:56:36)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-014",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "Sep 2",
+      "label": "Every memory records the folder the agent stood in when it was made.",
+      "status": "built",
+      "walk": "`/remember` while the agent stands in a folder; the card shows that folder as WHERE.",
+      "owner": "owner — \"So it's more about tracking where the agent is in the daemon so we can append them to memories when their created at compaction>\" (chat 2026-09-02 16:38:05; chat 2026-07-22 18:28:43)",
+      "surfaces": [
+        "spine/src/spine/contracts.py",
+        "harness/src/harness/memory_capability.py",
+        "harness/src/harness/agent.py",
+        "harness/web/src/MemoryPanel.tsx",
+        "spine/src/spine/db/migrations/versions/0021_origin_location.py",
+        "harness/src/harness/toolset_runtime.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-014.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-015",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "Sep 2",
+      "label": "Constitution: Typed edges between memories (merged from, supersedes, contradicts, and richer kinds at creation and curation) with a depth-limited traversal for the graph and the scorer (SD-057).",
+      "status": "partial",
+      "walk": "Open the Memory Graph on a curated memory; typed edges (merged from, supersedes, contradicts) are drawn to its relatives.",
+      "owner": "constitution",
+      "surfaces": [
+        "spine/src/spine/db/memory.py",
+        "spine/src/spine/memory/service.py",
+        "harness/web/src/MemoryGraph.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-015.jpg"
+      }
+    },
+    {
+      "id": "FL-016",
+      "section": "1. Memory palace — storage, units, lineage",
+      "era": "Sep 2",
+      "label": "All conversation history is kept the way Codex and Claude Code keep it; a conversation without history is not supported.",
+      "status": "built",
+      "walk": "Send three prompts, quit, `nocturne up`, select the thread; the three exchanges are there.",
+      "owner": "owner — \"I'm not sure, but however codex or claude code do this keeping all the history make sense. We maybe should have a prompt whenever the memory associated with this applicatoin goes over some threshold of the local systems memory. I'm actually ok not letting the user proceed without write access of some sort. We need to store the transaction logs so... does that make sense? We can't support everything. Doesn't make sense to me to support converstations without history.\" (chat 2026-08-03 15:17:58)",
+      "surfaces": [
+        "harness/src/harness/transcript.py",
+        "harness/src/harness/onboarding.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-016.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-017",
+      "section": "2. Injection and the gate",
+      "era": "founding",
+      "label": "Every prompt is intercepted and relevant memories are added to the context before the model runs.",
+      "status": "built",
+      "walk": "Send a prompt in a thread with memories; the Injection Console shows the memories added before the model ran.",
+      "owner": "owner — \"Whenever a prompt is submitted to the model the memory system intercepts runs and adds things to the context.\" (first thread turn 1)",
+      "surfaces": [
+        "harness/src/harness/memory_gate.py",
+        "harness/src/harness/run_loop.py",
+        "harness/web/src/MemoryGate.tsx",
+        "harness/web/src/frontDoor.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-017.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-018",
+      "section": "2. Injection and the gate",
+      "era": "founding",
+      "label": "A hard pause on a thread's first prompt where the user scans and removes injected memories before the model starts; afterwards removal is ad hoc with no pause.",
+      "status": "built",
+      "walk": "New thread, first prompt; the gate opens with the memories and waits; the second prompt does not pause.",
+      "owner": "owner — \"2. this should be happening with human confirmation on the first message and then autonomously for every message after that, but the human can see and modify if they want...\" (chat 2026-08-01 19:11:08; first thread turn 1)",
+      "surfaces": [
+        "harness/src/harness/memory_gate.py",
+        "harness/src/harness/run_loop.py",
+        "harness/web/src/MemoryGate.tsx",
+        "harness/web/src/frontDoor.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-018.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-019",
+      "section": "2. Injection and the gate",
+      "era": "founding",
+      "label": "One-tap removal of an injected memory, with near-miss memories just below the cutoff shown so they can be added back.",
+      "status": "built",
+      "walk": "At the gate, tap × on one memory and add one near-miss back; the count line updates.",
+      "owner": "owner — \"Nice I saved a memory; it popped up in the near misses then I had added it to the memory anyway and the agent obviously responded. That looks like it worked great to me.\" (chat 2026-07-22 14:49:11; chat 2026-07-20 17:15:32)",
+      "surfaces": [
+        "harness/web/src/MemoryGate.tsx",
+        "harness/src/harness/memory_gate.py",
+        "spine/src/spine/inject/decisions.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-019.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-020",
+      "section": "2. Injection and the gate",
+      "era": "founding",
+      "label": "A one-tap removal at the gate means 'not relevant' by default.",
+      "status": "built",
+      "walk": "Tap × on a gate row; the removal is recorded as 'not relevant'.",
+      "owner": "owner — \"Q: One-tap memory removal should default to which meaning? A: It's not relevant.\" (first thread turn 2)",
+      "surfaces": [
+        "harness/web/src/MemoryGate.tsx",
+        "harness/src/harness/memory_gate.py",
+        "spine/src/spine/inject/decisions.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-020.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-021",
+      "section": "2. Injection and the gate",
+      "era": "founding",
+      "label": "The memory visualizer shows the hyperparameters and lets the user go in and tweak memories.",
+      "status": "partial",
+      "walk": "Open the memory visualizer; the hyperparameters are displayed and a memory can be edited from there.",
+      "owner": "owner — \"The memory visualizer can have hyper parameters displayed and allows users to go in an tweak memories.\" (first thread turn 8)",
+      "surfaces": [
+        "harness/web/src/MemoryPanel.tsx",
+        "harness/src/harness/memory_panel.py",
+        "spine/src/spine/inject/service.py",
+        "harness/web/src/InjectionConsole.tsx",
+        "spine/src/spine/learner/service.py",
+        "spine/src/spine/m2k/service.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-021.jpg"
+      }
+    },
+    {
+      "id": "FL-022",
+      "section": "2. Injection and the gate",
+      "era": "founding",
+      "label": "After the first prompt the user can still see and remove injected memories mid-thread, ad hoc, without being prompted.",
+      "status": "built",
+      "walk": "Mid-thread, remove a memory from the panel; the next turn omits it.",
+      "owner": "owner — \"2. this should be happening with human confirmation on the first message and then autonomously for every message after that, but the human can see and modify if they want...\" (chat 2026-08-01 19:11:08; first thread turn 1)",
+      "surfaces": [
+        "harness/web/src/MemoryPanel.tsx",
+        "harness/src/harness/memory_panel.py",
+        "spine/src/spine/inject/service.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-022.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-023",
+      "section": "2. Injection and the gate",
+      "era": "Jul 22",
+      "label": "One view of every axis feeding the injection algorithm for an active memory.",
+      "status": "built",
+      "walk": "Open an active memory's breakdown; every axis feeding the injection algorithm is listed in one view.",
+      "owner": "owner — \"I'd like to be able to see all the axis that go into the injection algo for the active memories in one view can you help me with a quick script to see this? I'd like to see all the information we have for that first manual memory i created for example\" (chat 2026-07-22 15:44:23)",
+      "surfaces": [
+        "spine/src/spine/inject/scorer.py",
+        "spine/src/spine/inject/service.py",
+        "harness/web/src/ContributionBars.tsx",
+        "harness/web/src/InjectionConsole.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-023.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-024",
+      "section": "2. Injection and the gate",
+      "era": "Aug 1",
+      "label": "Threshold injection: everything above the score line goes in, most relevant first, up to the allotment; no fixed top-N.",
+      "status": "built",
+      "walk": "The Injection Console shows the line; a memory just above it is in, one just below is a near-miss.",
+      "owner": "owner — \"The n% of the context window should be the up to limit. Right now we have scoring that says wether something should be injected or not if memories less than the n% of the context windows are injected then that's fine, but there are more then we insert them by highest scoring. Is that how you implmented that?\" (chat 2026-08-09 18:56:35; chat 2026-08-01 19:11:08)",
+      "surfaces": [
+        "spine/src/spine/inject/scorer.py",
+        "spine/src/spine/inject/service.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-024.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-025",
+      "section": "2. Injection and the gate",
+      "era": "Aug 1",
+      "label": "A live boost within the session for a memory the human added earlier in that session.",
+      "status": "unverified",
+      "walk": "Add a near-miss back; on the next prompt in the same session it scores higher than before.",
+      "owner": "owner — \"Should we have live thread parameters too? Like this has been added to the session by a human previously threfore it's scores increased?\" (chat 2026-08-01 19:44:13)",
+      "surfaces": [
+        "spine/src/spine/inject/scorer.py",
+        "spine/src/spine/inject/service.py"
+      ]
+    },
+    {
+      "id": "FL-026",
+      "section": "2. Injection and the gate",
+      "era": "Aug 3",
+      "label": "The keyword, project key and origin path columns on a memory are filled in and factored into scoring.",
+      "status": "built",
+      "walk": "Open a memory card; keyword, project and origin path are filled, and the score breakdown shows them counting.",
+      "owner": "owner — \"The columns like keyword, project key, origin path, etc being empty might make sense because we aren't fully implemented but I want to make sure they are factored when we get there...\" (chat 2026-07-22 18:28:43)",
+      "surfaces": [
+        "spine/src/spine/inject/scorer.py",
+        "spine/src/spine/inject/service.py",
+        "harness/src/harness/progressive_prompt.py",
+        "spine/src/spine/memory/service.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F081",
+        "screenshot": "FL-026.jpg"
+      }
+    },
+    {
+      "id": "FL-027",
+      "section": "2. Injection and the gate",
+      "era": "Aug 9",
+      "label": "Every scoring axis (such as time since creation and directory distance from where the memory was made) is turned into a number and normalized into the memory score, and there is a thread similarity axis.",
+      "status": "built",
+      "walk": "Open a gate row's score breakdown; each axis, including thread similarity, shows as a number.",
+      "owner": "owner — \"Ok on the scoring aspect in general. How are different hyper parameters scores calcualted differently and then normalized into the memory objective function. For example. temporal - how long ago was it was how is that turned into a number, the distance from the creation of the memory to the location of the current agent in the directory/file hierarchy how is that turned into a number etc. Let's review all of this for all hyper parameters.\" (chat 2026-08-09 19:08:16; chat 2026-08-21 19:21:35)",
+      "surfaces": [
+        "spine/src/spine/inject/scorer.py",
+        "spine/src/spine/inject/service.py",
+        "harness/web/src/ContributionBars.tsx",
+        "harness/web/src/InjectionConsole.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-027.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-028",
+      "section": "2. Injection and the gate",
+      "era": "Aug 9",
+      "label": "A memory share of the context window, shown and editable, with unused allotment returned to chat history.",
+      "status": "partial",
+      "walk": "Open Context Bars; the memory share is shown and editable, and the unused portion is given back to chat history.",
+      "owner": "owner — \"How I'm assuming the context window dynamically gives up the extra memory assingned window to the chat history if there is not memories exceeding the requisite score right?\" (chat 2026-08-24 20:20:55; chat 2026-08-09 18:49:53)",
+      "surfaces": [
+        "harness/web/src/ContextBars.tsx",
+        "harness/web/src/InjectionConsole.tsx",
+        "spine/src/spine/inject/service.py",
+        "harness/src/harness/context_window.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-028.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-029",
+      "section": "2. Injection and the gate",
+      "era": "Aug 24",
+      "label": "Pinned memories go into the context window even beyond the memory share.",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Pin a memory when the share is full; it is still in the next prompt's context and Context Bars shows it over the share.",
+      "owner": "owner — \"Is there the ability to pin memories into the context window in excess of the allocated memory window? that seems like it would be the process to increase context window. The score needed to incorperate the memory should increase if we manually removing lower scored memories etc.\" (chat 2026-08-24 20:24:41)",
+      "surfaces": [
+        "harness/web/src/ContextBars.tsx",
+        "harness/web/src/InjectionConsole.tsx",
+        "spine/src/spine/inject/service.py",
+        "harness/src/harness/context_window.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-029.jpg"
+      }
+    },
+    {
+      "id": "FL-030",
+      "section": "2. Injection and the gate",
+      "era": "Aug 24",
+      "label": "Force controls for the line, the share and pins, all in the same module as the hyperparameters, each with the algorithm resuming afterward.",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): In the Injection Console, force the share; the next retrain moves it again.",
+      "owner": "owner — \"Let's just make sure those force or manual set functions all have the same pattern the user can set them but then the algorithm begins automating them agian. Let's make sure these inputs and vizualizatoins are in the same module as the existing hyper parameters.\" (chat 2026-08-24 20:50:21; chat 2026-08-24 20:24:41)",
+      "surfaces": [
+        "harness/web/src/InjectionConsole.tsx",
+        "spine/src/spine/learner/service.py",
+        "harness/web/src/MemoryPanel.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-030.jpg"
+      }
+    },
+    {
+      "id": "FL-031",
+      "section": "2. Injection and the gate",
+      "era": "Aug 3",
+      "label": "The gate as a visualization-plus-input module showing each memory's injection score.",
+      "status": "built",
+      "walk": "The gate overlay shows each memory's injection score and takes removals.",
+      "owner": "owner — \"The ghost gate can just be changed to a visualization and input module maybe that allows us to show memory injection score or something? Let's spend some more time on this because I thought that we had spec'd this out pretty well and this is super important.\" (chat 2026-08-03 20:12:46)",
+      "surfaces": [
+        "harness/web/src/MemoryGate.tsx",
+        "harness/src/harness/memory_gate.py",
+        "spine/src/spine/inject/decisions.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-031.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-032",
+      "section": "2. Injection and the gate",
+      "era": "Aug 3",
+      "label": "The Injection Console: see the weights, simulate a change to them and test the result, and force a new set of values.",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Open the Injection Console; change a weight in simulate; a result score appears, and force is available.",
+      "owner": "owner — \"I like this I'm imagine a module with the historical performance of the visulizer as a line graph every manual adjust ment should lower the score then whenever the retrain happens the score goes back up. There should be every features hyperparameters labeled and normalized to a decimal that can be viewed. There can be a what if, id call it simulate, feature where the user can modify different hyper parameters and test their results. they should be able to force a new hyper parameter value set if they want.\" (chat 2026-08-03 20:32:37)",
+      "surfaces": [
+        "harness/web/src/InjectionConsole.tsx",
+        "spine/src/spine/learner/service.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-032.jpg"
+      }
+    },
+    {
+      "id": "FL-033",
+      "section": "2. Injection and the gate",
+      "era": "Aug 21",
+      "label": "Constitution: A near-miss 'never show this' veto (Aug 21 leak-fix packet).",
+      "status": "partial",
+      "walk": "Press and hold × on a near-miss; it never reappears in that thread's near-misses.",
+      "owner": "constitution",
+      "surfaces": [
+        "harness/web/src/MemoryGate.tsx",
+        "harness/src/harness/memory_gate.py",
+        "spine/src/spine/inject/decisions.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-033.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-034",
+      "section": "3. Curators and the memory lifecycle",
+      "era": "Jul 23",
+      "label": "The curators deconflict, dedupe and remove slop, triggered by every n memory writes rather than by the clock, and run at the Palace's own location.",
+      "status": "built",
+      "walk": "On a fixture Palace, cross n memory writes; a curator pass runs and Palace State shows it.",
+      "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc. They will be triggered by n number of memories being added and run in the memory palaces location. They must be surgeons: minimally invasive, targeting the root problem, and allowing the system to then sort out the symptoms. They are also responsible for removing slop.\" (chat 2026-07-23 16:07:44; chat 2026-08-03 20:02:16)",
+      "surfaces": [
+        "spine/src/spine/curation/",
+        "harness/web/src/PalaceStateModule.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-034.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-035",
+      "section": "3. Curators and the memory lifecycle",
+      "era": "Jul 23",
+      "label": "Constitution: A scripted pre-pass that writes a versioned Palace Health Report the curator must read before acting (v2.8–2.9 curator law).",
+      "status": "built",
+      "walk": "Run a curator pass; its record shows the Palace Health Report it read first.",
+      "owner": "constitution",
+      "surfaces": [
+        "spine/src/spine/curation/",
+        "harness/web/src/PalaceStateModule.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-035.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-036",
+      "section": "3. Curators and the memory lifecycle",
+      "era": "Jul 23",
+      "label": "The curators have the right tools and standard procedures for their work, and act as surgeons: minimally invasive, targeting the root problem and letting the system sort out the symptoms.",
+      "status": "built",
+      "walk": "Run a curator pass on a Palace with one duplicate pair; the pass touches only that pair and nothing else.",
+      "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc.\" (chat 2026-07-23 16:07:44)",
+      "surfaces": [
+        "spine/src/spine/curation/",
+        "harness/web/src/PalaceStateModule.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-036.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-037",
+      "section": "3. Curators and the memory lifecycle",
+      "era": "Jul 23",
+      "label": "Constitution: Typed consolidation decisions: merge, new, contradict, supersede (curator spec).",
+      "status": "built",
+      "walk": "Open a curator proposal card; it names one of merge, new, contradict or supersede.",
+      "owner": "constitution",
+      "surfaces": [
+        "spine/src/spine/curation/",
+        "harness/web/src/PalaceStateModule.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-037.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-038",
+      "section": "3. Curators and the memory lifecycle",
+      "era": "Jul 23",
+      "label": "A cheap 80/20 duplicate check at memory creation, keeping the agent's memory work under 10% of build run time.",
+      "status": "built",
+      "walk": "Save a fact already in the Palace; the save comes back as a duplicate at once, without the agent reading other memories.",
+      "owner": "owner — \"I'm wondering if at that point we try and squash them together or reject them or if we put them in and let the curators at them later. I don't want to spend more than 10% of build run time for the agent managing memeory so I don't want it reading a whole but of memories itself...\" (chat 2026-07-23 19:32:05; chat 2026-07-23 16:07:44)",
+      "surfaces": [
+        "spine/src/spine/memory/service.py",
+        "spine/src/spine/queue/service.py",
+        "harness/src/harness/agent.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-038.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-039",
+      "section": "3. Curators and the memory lifecycle",
+      "era": "Jul 23",
+      "label": "Agents make no memories until compaction; the explicit /remember command is the other way.",
+      "status": "built",
+      "walk": "Run an agent thread through a turn; no memory is created mid-turn, only at compaction or by /remember.",
+      "owner": "owner — \"This is a more clean rule let's implement that. No agent memories until compaction. we need to be careful what sub agents come back to not overwhelm the main agent and force compaction on subagent stuff....\" (seed SD-060 (owner ruling 2026-09-09); chat 2026-08-09 18:49:53)",
+      "surfaces": [
+        "harness/src/harness/extraction.py",
+        "harness/src/harness/run_loop.py",
+        "harness/src/harness/memory_capability.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-039.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-040",
+      "section": "3. Curators and the memory lifecycle",
+      "era": "Sep 9",
+      "label": "The working agent saves memories mid-turn (superseded Sep 9: no agent memories until compaction).",
+      "status": "dropped",
+      "walk": "No walk; superseded.",
+      "owner": "owner — \"we need to be careful what sub agents come back to not overwhelm the main agent and force compaction on subagent stuff....\" (seed SD-060 (owner ruling 2026-09-09))",
+      "surfaces": []
+    },
+    {
+      "id": "FL-041",
+      "section": "3. Curators and the memory lifecycle",
+      "era": "gate-day",
+      "label": "Constitution: Curator autonomy earned per verdict class from your own approval record, with contradiction never graduating (gate-day).",
+      "status": "partial",
+      "walk": "Open Palace State; each verdict class shows whether it has graduated to auto-execute, and contradiction never does.",
+      "owner": "constitution",
+      "surfaces": [
+        "spine/src/spine/curation/",
+        "harness/web/src/PalaceStateModule.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-041.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-042",
+      "section": "3. Curators and the memory lifecycle",
+      "era": "gate-day",
+      "label": "Constitution: 'Already known — reinforced' on re-saves; rejected candidates remembered and never re-proposed without material change (gate-day).",
+      "status": "partial",
+      "walk": "Re-save a known fact; the reply says 'already known — reinforced'; reject a candidate and re-save it unchanged; it is not proposed again.",
+      "owner": "constitution",
+      "surfaces": [
+        "spine/src/spine/memory/service.py",
+        "spine/src/spine/queue/service.py",
+        "harness/src/harness/agent.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F089",
+        "screenshot": "FL-042.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-043",
+      "section": "3. Curators and the memory lifecycle",
+      "era": "gate-day",
+      "label": "Constitution: A marker on a memory superseded after injection instead of yanking it mid-thread (gate-day).",
+      "status": "unverified",
+      "walk": "Supersede an injected memory mid-thread; the panel shows a superseded marker on it, not a removal.",
+      "owner": "constitution",
+      "surfaces": [
+        "harness/web/src/MemoryPanel.tsx",
+        "harness/src/harness/memory_panel.py"
+      ]
+    },
+    {
+      "id": "FL-044",
+      "section": "3. Curators and the memory lifecycle",
+      "era": "Aug 9",
+      "label": "At compaction the summarizing agent turns anything important but not needed for the next few build steps into a memory through the normal memory creation path, and compaction waits for those memories to land before dropping the rest.",
+      "status": "not built",
+      "walk": "Cross a compaction on a main thread; memory candidates from the summary land on the Deck before the old context is dropped.",
+      "owner": "owner — \"To extend this compaction comes should be another chance for agents memories to be created... if somehting is important, but maybe not relavant to the next couple build steps the agent that is summarizing the recent history should make a memory out of it. this should be integrated with our current memory creation schema pretty seemlessly because agent created memories are the norm.\" (chat 2026-08-09 18:49:53; seed SD-061 (owner riff 2026-09-10))",
+      "surfaces": [
+        "harness/src/harness/extraction.py",
+        "harness/src/harness/run_loop.py",
+        "harness/src/harness/memory_capability.py"
+      ]
+    },
+    {
+      "id": "FL-045",
+      "section": "3. Curators and the memory lifecycle",
+      "era": "Aug 31",
+      "label": "Same-memory detection by encoding and retrieving, not exact wording.",
+      "status": "built",
+      "walk": "Save a rephrased known fact; it is recognized as the same memory instead of duplicating.",
+      "owner": "owner — \"2. We need a prove a way that we can distinguish the memories that come out are the same or different besides exact wording, even though they should be similar. Maybe we encode them and rag them or something?\" (chat 2026-08-31 21:00:39)",
+      "surfaces": [
+        "spine/src/spine/memory/service.py",
+        "spine/src/spine/db/memory.py",
+        "spine/src/spine/memory/router.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-045.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-046",
+      "section": "3. Curators and the memory lifecycle",
+      "era": "Aug 14",
+      "label": "A curation animation of its own, blended into the 3D palace.",
+      "status": "partial",
+      "walk": "Trigger a curator pass; the 3D Palace view animates the curation as it happens.",
+      "owner": "owner — \"This is a idea i had, but mixed with the original 3d memory palace for what happens when curatatoin is happening to the memory palace.\" (chat 2026-08-14 20:26:45; chat 2026-07-20 17:30:44)",
+      "surfaces": [
+        "harness/web/src/PalaceNebula.tsx",
+        "harness/web/src/curation.ts",
+        "harness/web/src/nebulaBindings.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-046.jpg"
+      }
+    },
+    {
+      "id": "FL-047",
+      "section": "4. Learning and training loops",
+      "era": "founding",
+      "label": "User edits to injected memories recorded as tuning signals.",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Remove a memory at the gate; Palace State's authentic feedback count rises by one.",
+      "owner": "owner — \"Anytime that we don't inject a memory because of a human overide or inject a memory because of a human overide that needs to be stored in a tracible way and then we can tune the injection hyper parameters to do better in our next optimization pass.\" (chat 2026-08-01 19:41:27; first thread turn 1)",
+      "surfaces": [
+        "spine/src/spine/inject/decisions.py",
+        "spine/src/spine/inject/service.py",
+        "spine/src/spine/learner/evidence.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-047.jpg"
+      }
+    },
+    {
+      "id": "FL-048",
+      "section": "4. Learning and training loops",
+      "era": "Jul 22",
+      "label": "A permanent back-test table of every human add and removal of a memory, as the training data for the injection algorithm.",
+      "status": "built",
+      "walk": "Remove a memory at the gate; a new row for it appears in the back-test table.",
+      "owner": "owner — \"2. we should be keeping track of all our training data: human adding or removing memories in a permenant back test table so we can can get fancier on our memory injection algorithm over time.\" (chat 2026-07-22 15:05:49; chat 2026-08-01 19:41:27)",
+      "surfaces": [
+        "spine/src/spine/inject/decisions.py",
+        "spine/src/spine/inject/service.py",
+        "spine/src/spine/learner/evidence.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-048.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-049",
+      "section": "4. Learning and training loops",
+      "era": "Jul 22",
+      "label": "Scoring parameters that can be added and removed easily; curators can add and retire axes over time.",
+      "status": "partial",
+      "walk": "Add or remove a scoring axis in config; the score breakdown gains or loses that row.",
+      "owner": "owner — \"is it possible that the memory palace axises themselves could be agnatically added and relegated overtime by the curators as they strive to have the best memory injection score. Something to consider as we likely wouldn't be able to create the new axis for old memories without fake data...\" (chat 2026-07-22 15:14:41; chat 2026-07-22 15:05:49)",
+      "surfaces": [
+        "spine/src/spine/learner/"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-049.jpg"
+      }
+    },
+    {
+      "id": "FL-050",
+      "section": "4. Learning and training loops",
+      "era": "Jul 27",
+      "label": "Weight refits run offline while the previous weights keep serving; the method (gradient descent, linear programming or a solver) was his guess, and it must not slow things down massively.",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Force retrain; the incumbent weights keep serving during the refit and a proposal appears afterward.",
+      "owner": "owner — \"I'd imagine that we might not want them all to be linear forever if we add more features etc to the equation, also i thought we already had more than 6 features, let's build something a little more robust but doesn't slow down massively. remember this can be done offline the previous memory weights can run while we the hyper parameter updates.\" (chat 2026-07-27 23:48:21; chat 2026-07-27 23:42:39)",
+      "surfaces": [
+        "spine/src/spine/learner/"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-050.jpg"
+      }
+    },
+    {
+      "id": "FL-051",
+      "section": "4. Learning and training loops",
+      "era": "Aug 3",
+      "label": "A performance score for the memory system, back-tested on the history of manual adds and removes plus successful injections; a new set of weights is accepted only if it scores better than the previous generation.",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Force retrain; the scoreboard shows the new weights' back-test score beside the previous generation's, and the update lands only if it is higher.",
+      "owner": "owner — \"I like the idea that there is a performance of memory system. Imagine over time that there is a score that the hyper parameters modification can will improve or the hyper parameter update will not happen does that make sense? All the manual adds or removes for the history of the harness plus the a good amount of the successful ones that did not need manual intervention. We should be able to do a back test and be like our new set of hyper parameters map to  98% correct injection across the backtest while the previous generation did 97% does that make sense.\" (chat 2026-08-03 20:11:30)",
+      "surfaces": [
+        "spine/src/spine/learner/",
+        "harness/web/src/LearningTelemetry.tsx",
+        "harness/web/src/learning.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-051.jpg"
+      }
+    },
+    {
+      "id": "FL-052",
+      "section": "4. Learning and training loops",
+      "era": "Aug 1",
+      "label": "The scoreboard counts right and wrong injection decisions, injected or not, with no arbitrary scoring.",
+      "status": "built",
+      "walk": "Open the scoreboard; it shows separate integer counts of right and wrong decisions (the weighted-disagreement figures are the tuner's trigger, not a score on a memory).",
+      "owner": "owner — \"I don't want to have an arbitrary scoring system. A memory should be injected or not.\" (chat 2026-08-01 19:41:27)",
+      "surfaces": [
+        "spine/src/spine/learner/",
+        "harness/web/src/LearningTelemetry.tsx",
+        "harness/web/src/learning.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-052.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-053",
+      "section": "4. Learning and training loops",
+      "era": "Aug 3",
+      "label": "Every feature's weight labeled and shown normalized to a decimal.",
+      "status": "built",
+      "walk": "Open the Injection Console; each feature's weight is labeled and shown as a decimal.",
+      "owner": "owner — \"There should be every features hyperparameters labeled and normalized to a decimal that can be viewed.\" (chat 2026-08-03 20:32:37)",
+      "surfaces": [
+        "harness/web/src/InjectionConsole.tsx",
+        "spine/src/spine/learner/service.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-053.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-054",
+      "section": "4. Learning and training loops",
+      "era": "Aug 3",
+      "label": "Simulate: change weights and back-test the result before forcing them.",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Simulate in the Injection Console; a back-test score appears before force is enabled.",
+      "owner": "owner — \"Ideally the force weights the user can only do after simulating the backtest and getting the score so they are aware. Does that make sense?\" (chat 2026-08-03 21:37:16; chat 2026-08-03 20:32:37)",
+      "surfaces": [
+        "harness/web/src/InjectionConsole.tsx",
+        "spine/src/spine/learner/service.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-054.jpg"
+      }
+    },
+    {
+      "id": "FL-055",
+      "section": "4. Learning and training loops",
+      "era": "Aug 9",
+      "label": "Background retraining on work-based triggers, with one \"force retrain\" button as the only manual lever.",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Look for retrain controls; one 'force retrain' button exists, and retrain also fires on its own after work.",
+      "owner": "owner — \"I thought that the retrain was triggered based on amount of work completed. We have a force button that functinos as retrain right? The user can use that. Maybe call it label it force retrain. Make sure this is true in the spec and is aligned. The reason for this is i don't want duplicate buttons doing the same thing and the default 99/100 time the retrain should happen in the background wihtout a force.\" (chat 2026-08-09 18:26:26)",
+      "surfaces": [
+        "spine/src/spine/learner/"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-055.jpg"
+      }
+    },
+    {
+      "id": "FL-056",
+      "section": "4. Learning and training loops",
+      "era": "Aug 24",
+      "label": "Automatic training of the memory line and the share from human feedback, switching on by itself after 100 pieces of authentic feedback.",
+      "status": "built",
+      "walk": "Below 100 pieces of feedback the ledger says the memory line and share are fixed; the 100 floor is shown.",
+      "owner": "owner — \"Right the memory line and context window allocation to memories to be dynamically trained based off human feedback can be built, but we do not have enough human feedback yet for it to be turned on. leave it fixed for now. have it auto turn on after 100 feedbacks are added.\" (chat 2026-08-24 20:09:38)",
+      "surfaces": [
+        "spine/src/spine/learner/"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-056.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-057",
+      "section": "4. Learning and training loops",
+      "era": "Aug 31",
+      "label": "Deleting a memory from the Palace feeds a training loop that tunes memory creation.",
+      "status": "not built",
+      "walk": "Delete a memory; the memory-creation loop's ledger records the deletion.",
+      "owner": "owner — \"I think that the user should be able to delete a memory from the palace. This can be a new training loop that helps with memory creation tuning.\" (chat 2026-08-31 18:59:34)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-058",
+      "section": "4. Learning and training loops",
+      "era": "Aug 31",
+      "label": "A standing registry of every trainable parameter; all training loops triggered from one place in the code where their documentation lives.",
+      "status": "partial",
+      "walk": "Open the trainable-parameter registry; every trainable parameter is listed, and the training trigger point is one place in code with its documentation beside it.",
+      "owner": "owner — \"I mean our infrastructure that trains should all be triggered in the same set of code right? so that can be where the documentation can live. Can you identify this area of the code and it's trigger please. I want a loose psuedo code with real function names.\" (chat 2026-08-31 19:06:04; chat 2026-08-31 18:59:34)",
+      "surfaces": [
+        "spine/src/spine/learner/",
+        "garden/notes/trainable-parameters.md"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-058.jpg"
+      }
+    },
+    {
+      "id": "FL-059",
+      "section": "4. Learning and training loops",
+      "era": "Aug 31",
+      "label": "Optimization at every compaction of a main thread, one at a time under a lock, with mixed and capped back-test material.",
+      "status": "partial",
+      "walk": "Cross a compaction on a main thread; one optimization runs under a lock on a capped, mixed back-test.",
+      "owner": "owner — \"I would argue we lock and only allow one optimization to happen at once. We should also probably create the backtest material so one threads history doesn't overpower it. There is a a mix across our history etc. There should be a max size in the back test for all optimizations as well.\" (chat 2026-08-31 21:00:39)",
+      "surfaces": [
+        "spine/src/spine/learner/",
+        "spine/src/spine/db/migrations/versions/0020_optimization_runs.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-059.jpg"
+      }
+    },
+    {
+      "id": "FL-060",
+      "section": "4. Learning and training loops",
+      "era": "Aug 31",
+      "label": "An optimization ledger: state and scores across runs in a proper history schema.",
+      "status": "built",
+      "walk": "Force retrain; a row appears in the optimization ledger with its state and score.",
+      "owner": "owner — \"lastely we need to define a good schema for storing state and scoring across optimization runs like we did for financials to make sure we have good history let's think about that.\" (chat 2026-08-31 21:00:39)",
+      "surfaces": [
+        "spine/src/spine/learner/",
+        "spine/src/spine/db/migrations/versions/0020_optimization_runs.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-060.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-061",
+      "section": "4. Learning and training loops",
+      "era": "Aug 31",
+      "label": "Compaction instructions tuned by back-test; memory size as a tunable beside the threshold and allotments.",
+      "status": "not built",
+      "walk": "Open the tunables; memory size is listed beside threshold and allotments, and the ledger shows a compaction-instruction generation with its back-test.",
+      "owner": "owner — \"The compaction instruction tuning is what can be tuned by having it back test new compaction instructions on memories based on how much they are used or if they have been removed. only update the instructions to a new set of instructions if the memory generation performance is improved by the back test it doesn't generate memories that are deleted.)\" (seed SD-053 (owner riff 2026-08-31); seed SD-054)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-062",
+      "section": "4. Learning and training loops",
+      "era": "gate-day",
+      "label": "Constitution: The audition: a proposed scorer runs as a visible shadow beside the incumbent before acceptance (gate-day).",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Open a proposal; its shadow results show beside the incumbent's on the live gate.",
+      "owner": "constitution",
+      "surfaces": [
+        "harness/web/src/InjectionConsole.tsx",
+        "spine/src/spine/learner/service.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-062.jpg"
+      }
+    },
+    {
+      "id": "FL-063",
+      "section": "4. Learning and training loops",
+      "era": "gate-day",
+      "label": "The scorer need not stay linear forever, and black-box changes from optimization are fine as long as the features being weighted stay understandable.",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Open the score breakdown after a retrain; each feature is still named and understandable even if the weights came from a black box.",
+      "owner": "owner — \"1.  We can have black box score changes as an outcome of an optimiziation loop as long as the features we are optimizing the scalars for are understandable\" (chat 2026-08-24 17:34:25; chat 2026-07-27 23:48:21)",
+      "surfaces": [
+        "spine/src/spine/inject/scorer.py",
+        "spine/src/spine/inject/service.py",
+        "spine/src/spine/learner/"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-063.jpg"
+      }
+    },
+    {
+      "id": "FL-064",
+      "section": "4. Learning and training loops",
+      "era": "gate-day",
+      "label": "Constitution: Per-project weight offsets starting at zero, after global weights (founding ADR-005 / SD-041).",
+      "status": "not built",
+      "walk": "Train on two projects; each project's effective weights differ from the global ones by its own offset.",
+      "owner": "constitution",
+      "surfaces": []
+    },
+    {
+      "id": "FL-065",
+      "section": "4. Learning and training loops",
+      "era": "Aug 12",
+      "label": "Continuous fine-tuning on your own memories and chats, seeded as a discussion to explore.",
+      "status": "horizon",
+      "walk": "No walk until a packet gives it a shape.",
+      "owner": "owner — \"Aside - test time training, or continuous model training on the specific user set, continuous finetuning... kind of the next big thing in models I think. We can probably use our harness to help set something like this up because of the way memories and chats are stored. Let's seed another discussion on this.\" (chat 2026-08-12 16:52:55)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-066",
+      "section": "4. Learning and training loops",
+      "era": "Aug 14",
+      "label": "A repeatable build benchmark: build the same thing in rounds against one accumulating palace and measure time, lines and cost falling.",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Run the same build in three rounds against one Palace; the report shows build time, line count and cost falling.",
+      "owner": "owner — \"#2 what are the test metrics we will test on this? This will be part of our tag line: \"building something a second time reduces build time, line count, cost by x%s. maybe some other ones too?\" (chat 2026-08-17 15:30:48; chat 2026-08-14 23:19:48)",
+      "surfaces": [
+        "harness/verification/m3b3/",
+        "harness/verification/m3b2/"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-066.jpg"
+      }
+    },
+    {
+      "id": "FL-067",
+      "section": "5. Agent hands and location",
+      "era": "founding",
+      "label": "Agents move through the file structure of the machine they live in, and the interface shows where every agent is.",
+      "status": "built",
+      "walk": "Ask the agent to move to another folder; the interface shows its new location.",
+      "owner": "owner — \"1. The agent(s) is able and supposed to move in the file structure of the machine that it lives in, the harness interface must have a visualization of where different agents are.\" (first thread turn 1; chat 2026-08-17 14:53:22)",
+      "surfaces": [
+        "harness/src/harness/toolset_runtime.py",
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/progressive_prompt.py",
+        "harness/src/harness/daemon.py",
+        "harness/web/src/ProjectSelector.tsx",
+        "harness/web/src/projectPath.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-067.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-068",
+      "section": "5. Agent hands and location",
+      "era": "Jul 20",
+      "label": "Injected memories refreshed on every move.",
+      "status": "unverified",
+      "walk": "Move to a folder with its own memories; the next turn's injection is refreshed with them.",
+      "owner": "owner — \"The memories procedurally added should be refreshed every move. To work on a file the agent must move to that directory.\" (chat 2026-07-20 00:01:41; chat 2026-08-17 14:53:22)",
+      "surfaces": [
+        "harness/src/harness/toolset_runtime.py",
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/progressive_prompt.py"
+      ]
+    },
+    {
+      "id": "FL-069",
+      "section": "5. Agent hands and location",
+      "era": "Jul 28",
+      "label": "The core tools every modern harness has: files, terminal, Chrome, skills, changing models, compaction (our own take), and interactions with common apps, taken from the most modular standard source.",
+      "status": "partial",
+      "walk": "Ask the agent to read a file, run a terminal command, open a page in the browser and use a skill; each works.",
+      "owner": "owner — \"there should be a core of tools that are consistent across al of them that we should fine: using skills, progressive prompting, changing models, compaction strategies (we will have our own take), interactions with common apps, etc, etc. we need to go out and find those common standard ones pick the one we like the best that is the most modular and keep it.\" (chat 2026-08-16 19:37:48; chat 2026-07-28 16:27:32)",
+      "surfaces": [
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/toolset.py",
+        "harness/src/harness/toolset_runtime.py",
+        "harness/pyproject.toml",
+        "harness/uv.lock",
+        "harness/src/harness/browser_toolset.py",
+        "harness/src/harness/browser_runtime.py"
+      ],
+      "last_walk": {
+        "packet": "M3NM",
+        "date": "2026-09-15",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-069.png"
+      }
+    },
+    {
+      "id": "FL-070",
+      "section": "5. Agent hands and location",
+      "era": "Aug 2",
+      "label": "Image input: paste an image and the agent reviews it.",
+      "status": "built",
+      "walk": "Paste an image; the agent reviews it.",
+      "owner": "owner — \"3. Ok multimodality should be something that we must support long term. I must be able to copy in images and have my agents review them. Similarly to browser use and comand line use and all the other basic tooling every modern harness has.\" (chat 2026-08-03 01:00:05)",
+      "surfaces": [
+        "harness/web/src/imageInput.ts",
+        "harness/web/src/App.tsx",
+        "harness/src/harness/agent_runtime.py",
+        "harness/src/harness/transcript.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-070.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-071",
+      "section": "5. Agent hands and location",
+      "era": "Aug 9",
+      "label": "The location fence: an agent can edit only files in the exact directory it stands in, and its shell is kept to that subtree, enforced deterministically.",
+      "status": "built",
+      "walk": "Ask for an edit outside the agent's folder without moving; the edit is refused.",
+      "owner": "owner — \"have we made every agent have a location yet deterministically enforced. An agent in our harness cannot modify a file that it is not in the exact directory of.\" (chat 2026-08-28 14:17:00; chat 2026-08-28 14:23:22)",
+      "surfaces": [
+        "harness/src/harness/toolset_runtime.py",
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/progressive_prompt.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-071.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-072",
+      "section": "5. Agent hands and location",
+      "era": "Aug 17",
+      "label": "The progressive prompting protocol is dynamic to the agent's moves: a move re-prompts the agent for its new location.",
+      "status": "partial",
+      "walk": "Move the agent; the next turn's system prompt shows the new location.",
+      "owner": "owner — \"We are going to have adapters as our agents need to have locations all the time and cd around before they can manipulate a file. We also need to make sure our progressive prompting protocol is dynamic to these moves.\" (chat 2026-08-17 14:53:22; chat 2026-07-20 00:01:41)",
+      "surfaces": [
+        "harness/src/harness/toolset_runtime.py",
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/progressive_prompt.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F081",
+        "screenshot": "FL-072.jpg"
+      }
+    },
+    {
+      "id": "FL-073",
+      "section": "5. Agent hands and location",
+      "era": "Aug 28",
+      "label": "The location rule written into Nocturne's own system prompt.",
+      "status": "partial",
+      "walk": "Read the transcript's system line for Nocturne; the location rule is stated there.",
+      "owner": "owner — \"This is something we need to consider in noctures own system prompt as well...\" (chat 2026-08-28 14:17:00)",
+      "surfaces": [
+        "harness/src/harness/toolset_runtime.py",
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/progressive_prompt.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F081",
+        "screenshot": "FL-073.jpg"
+      }
+    },
+    {
+      "id": "FL-074",
+      "section": "5. Agent hands and location",
+      "era": "Sep 2",
+      "label": "A new thread starts in a project folder with the location rule in effect; how a thread's project is specified was his open question (maybe configuration).",
+      "status": "built",
+      "walk": "Start a new thread in a folder; the thread shows that folder as its project and the location rule applies.",
+      "owner": "owner — \"I think it should start a new thread, project folder and give it a prompt to build something in and start using plan mode? make sure all the different modules activate across tabs. make sure that the physical location rule is in affect. how are we specifying what project a thread is working on is that something that should be a configuration?\" (chat 2026-09-02 14:39:14)",
+      "surfaces": [
+        "harness/src/harness/toolset_runtime.py",
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/progressive_prompt.py",
+        "harness/src/harness/daemon.py",
+        "harness/web/src/ProjectSelector.tsx",
+        "harness/web/src/projectPath.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-074.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-075",
+      "section": "5. Agent hands and location",
+      "era": "gate-day",
+      "label": "Queuing prompts and interjecting or steering a running agent, like the modern harnesses do.",
+      "status": "partial",
+      "walk": "Queue a prompt during a run and interject once; the queued prompt runs after and the interjection steers the run.",
+      "owner": "owner — \"The harness will largely be the same as what you are seeing with the modern harness but with better visualization and everything: queuing, interjecting, loops, skills, etc etc.\" (first thread turn 1; chat 2026-08-17 15:49:32)",
+      "surfaces": [
+        "harness/web/src/App.tsx",
+        "harness/web/src/store.ts",
+        "harness/src/harness/run_loop.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-075.jpg"
+      }
+    },
+    {
+      "id": "FL-076",
+      "section": "5. Agent hands and location",
+      "era": "Jul 20",
+      "label": "Commit every turn; one-click rewind of chat and code together to any earlier turn.",
+      "status": "not built",
+      "walk": "Rewind to turn 2; chat and files both revert.",
+      "owner": "owner — \"That's why it's important to commit every turn change. Cursor had this back in the day where you could just revert the code base and chat to a previous state with a single button click.\" (chat 2026-07-20 16:16:55; chat 2026-07-28 22:41:16)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-077",
+      "section": "5. Agent hands and location",
+      "era": "founding",
+      "label": "The Harness can live in the cloud and be reached from client machines, or run locally, or both, possibly in a VM beside the Palace, with an agent's file system moving between cloud and local easily.",
+      "status": "not built",
+      "walk": "Reach a cloud-run Harness from a client machine; the same threads and Palace are there.",
+      "owner": "owner — \"I envision a world where an agent has its own file system in the cloud and down to a local machine very easily.\" (first thread turn 14; first thread turn 13)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-078",
+      "section": "5. Agent hands and location",
+      "era": "founding",
+      "label": "The Codex browser-use extension as the agent's browser hands, adopted whole and pinned to upstream because OpenAI maintains it.",
+      "status": "not built",
+      "walk": "The agent opens a page through the Codex extension and reads it back; the extension version is pinned in the repo.",
+      "owner": "owner — \"I would lik to have a codex browser use extension because it thikn it is really good and the open ai devs will definitely spend a bunch of time maintaining it and making it better\" (chat 2026-09-12)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-079",
+      "section": "6. Context window, history and compaction",
+      "era": "founding",
+      "label": "Full conversation history kept, the way Codex and Claude Code do.",
+      "status": "built",
+      "walk": "Restart the Harness and scroll a long thread; every earlier turn is still there.",
+      "owner": "owner — \"I'm not sure, but however codex or claude code do this keeping all the history make sense. We maybe should have a prompt whenever the memory associated with this applicatoin goes over some threshold of the local systems memory. I'm actually ok not letting the user proceed without write access of some sort. We need to store the transaction logs so... does that make sense? We can't support everything. Doesn't make sense to me to support converstations without history.\" (chat 2026-08-03 15:17:58)",
+      "surfaces": [
+        "harness/src/harness/transcript.py",
+        "harness/src/harness/onboarding.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-079.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-080",
+      "section": "6. Context window, history and compaction",
+      "era": "Aug 15",
+      "label": "Compaction triggered by fill percentage against the model's best working range and max, which vary by model.",
+      "status": "not built",
+      "walk": "Fill a thread past its model's fill line; compaction runs and the fill percentage drops.",
+      "owner": "owner — \"6. It should be fill percentage.. based we need to figure out a good source for standard model meta data: best ranges to work in max. I feel like the open source harness must have opinions on these.\" (chat 2026-08-15 19:37:48 (+ seed SD-061, owner 2026-09-10))",
+      "surfaces": []
+    },
+    {
+      "id": "FL-081",
+      "section": "6. Context window, history and compaction",
+      "era": "Sep 10",
+      "label": "A suite of compaction strategies: truncation; summarization; make the compaction memories first, wait for them to land, then drop everything else; keep only the human's messages and each agent turn's final answer.",
+      "status": "not built",
+      "walk": "Pick a compaction strategy and cross the fill line; what is left in the thread matches the strategy picked.",
+      "owner": "owner — \"I am thinking that there will be a suite of compaction strategies that we can employ: truncation, summarization, apply memories made at compaction (wait for this to happen) and drop everything else, keep just the agent turn final response and human messages.\" (seed SD-061 (owner 2026-09-10))",
+      "surfaces": []
+    },
+    {
+      "id": "FL-082",
+      "section": "6. Context window, history and compaction",
+      "era": "Sep 10",
+      "label": "A compaction policy that decides when to compact by optimal performance or by cost management.",
+      "status": "not built",
+      "walk": "Switch the policy between optimal performance and cost management; the point at which compaction fires moves.",
+      "owner": "owner — \"There are also parameters of when we compact based on optimal performance or cost managment and context window size which are variable by model.\" (seed SD-061 (owner 2026-09-10))",
+      "surfaces": []
+    },
+    {
+      "id": "FL-083",
+      "section": "6. Context window, history and compaction",
+      "era": "Sep 10",
+      "label": "The current token count of the context window comes from OpenRouter sending us that information.",
+      "status": "built",
+      "walk": "Send one turn and compare Context Bars to the usage OpenRouter returned for it; the counts match.",
+      "owner": "owner — \"Then there is a question of how do you calculate how many tokens are in the context window now. I think we should be able to tell open router to send us this informatio.\" (seed SD-061 (owner 2026-09-10))",
+      "surfaces": [
+        "harness/src/harness/context_window.py",
+        "harness/src/harness/openrouter_runtime.py",
+        "harness/web/src/ContextBars.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-083.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-084",
+      "section": "6. Context window, history and compaction",
+      "era": "founding",
+      "label": "Constitution: Plan-mode compaction: the summarizer asks the user one to four questions before compacting (parked). (seed SD-040)",
+      "status": "not built",
+      "walk": "Cross the fill line in plan mode; the summarizer asks one to four questions before compacting.",
+      "owner": "constitution",
+      "surfaces": []
+    },
+    {
+      "id": "FL-085",
+      "section": "7. Symphony, judges and search",
+      "era": "Jul 20",
+      "label": "The work loop: spec alignment with the user, then the agent loop (optionally several agents in worktrees attempting the same thing), then the judge checks the work against the spec and either calls it done or sends another agent to continue or fix, and the human is only brought back in when the judge says done.",
+      "status": "partial",
+      "walk": "Run a symphony; attempts run in worktrees, the judge's verdict against the spec appears, and the card returns to the human only after the judge says done.",
+      "owner": "owner — \"The project and agent work for this should be by default spec alignment with user, then agent loop (optional spin up multiple agents in work trees to attempt the same thing), and the judge evaluates compared to spec to see if it is complete or to send another agent out to continue the work or fix something. The user should only interject or get a response when the judge says that they are done and to go back to the human.\" (chat 2026-07-20 00:34:53)",
+      "surfaces": [
+        "harness/src/harness/conductor.py",
+        "harness/src/harness/judge_panel.py",
+        "harness/src/harness/rounds.py",
+        "garden/garden_adapter/",
+        "harness/src/harness/symphony_runtime.py",
+        "harness/src/harness/symphony_worker.py",
+        "harness/src/harness/supervisor.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F085",
+        "screenshot": "FL-085.jpg"
+      }
+    },
+    {
+      "id": "FL-086",
+      "section": "7. Symphony, judges and search",
+      "era": "Jul 20",
+      "label": "Both modes supported: a hands-off default with loops, judges and parallel agents, and a traditional chat mode of agent turn then human turn.",
+      "status": "partial",
+      "walk": "Run one piece of work as a plain turn-by-turn chat and another as a symphony; both work.",
+      "owner": "owner — \"How does symphony also support simpler just chatting mode after a symphony run. Does the user have to switch it etc.\" (chat 2026-08-17 17:02:48 (+ chat 2026-07-20 16:16:55))",
+      "surfaces": [
+        "harness/src/harness/conductor.py",
+        "harness/src/harness/judge_panel.py",
+        "harness/src/harness/rounds.py",
+        "harness/src/harness/config.py",
+        "harness/src/harness/run_protocol.py",
+        "harness/src/harness/symphony_experience.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F085",
+        "screenshot": "FL-086.jpg"
+      }
+    },
+    {
+      "id": "FL-087",
+      "section": "7. Symphony, judges and search",
+      "era": "Jul 20",
+      "label": "Modes on a music-themed scale: pair mode is Duet and conductor mode is Symphony, with room for more in between.",
+      "status": "partial",
+      "walk": "Open the mode selector; Duet and Symphony are listed.",
+      "owner": "owner — \"3. Don't remember ensamble keep symphony\" (chat 2026-08-24 17:34:25 (+ chat 2026-07-20 16:29:14))",
+      "surfaces": [
+        "harness/src/harness/config.py",
+        "harness/src/harness/run_protocol.py",
+        "harness/src/harness/symphony_experience.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-087.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-088",
+      "section": "7. Symphony, judges and search",
+      "era": "Jul 20",
+      "label": "Symphony search starts from a variety of stratagems and works forward in parallel, combining breadth and depth, auto-research style but multi-agent and coordinated.",
+      "status": "partial",
+      "walk": "Start a symphony with more than one stratagem; separate attempts run from each at once.",
+      "owner": "owner — \"Great work Monte Carlo tree search - this should be a new visualizer. I am seeing that we are able rotate our ant farm like a cube and see from a new prospective the tree roots like in first figure branching out from the same problems parallel agents/worktrees are working on does that make sense?\" (chat 2026-07-20 16:49:44 (+ 16:16:55))",
+      "surfaces": [
+        "harness/src/harness/conductor.py",
+        "harness/src/harness/judge_panel.py",
+        "harness/src/harness/rounds.py",
+        "garden/garden_adapter/",
+        "harness/src/harness/supervisor.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F085",
+        "screenshot": "FL-088.jpg"
+      }
+    },
+    {
+      "id": "FL-089",
+      "section": "7. Symphony, judges and search",
+      "era": "Jul 31",
+      "label": "A configuration per orchestration level.",
+      "status": "partial",
+      "walk": "Open the config for Duet and for Symphony; each level has its own config.",
+      "owner": "owner — \"One check for you did we build in such a way that the different orchestration levels, duet, ensemble, orchestra, all got their config or such that it's easy to build on that way?\" (chat 2026-07-31 16:45:53)",
+      "surfaces": [
+        "harness/src/harness/config.py",
+        "harness/src/harness/run_protocol.py",
+        "harness/src/harness/symphony_experience.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-089.jpg"
+      }
+    },
+    {
+      "id": "FL-090",
+      "section": "7. Symphony, judges and search",
+      "era": "Aug 6",
+      "label": "Planning outputs two or more judges: a problem-and-motivation judge that holds all of the motivation deeply, an implementation judge, and any more the user specifies.",
+      "status": "built",
+      "walk": "Finish deliberation; the plan lists a motivation judge, an implementation judge, and any judge the user added.",
+      "owner": "owner — \"me and planning agent are going along discussing the output artifacts are 2 or more judges: initial problem and motivation judge and the implementation judge and user can specify more judges if they want. The sub agetns are aware of their specs which should have some piece of the motiviation that we are solving for, but the motivation judge has all of it and it goes really deep.\" (chat 2026-08-06 16:27:54 (+ chat 2026-08-17 17:02:48))",
+      "surfaces": [
+        "harness/src/harness/conductor.py",
+        "harness/src/harness/judge_panel.py",
+        "harness/src/harness/rounds.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F085",
+        "screenshot": "FL-090.jpg"
+      }
+    },
+    {
+      "id": "FL-091",
+      "section": "7. Symphony, judges and search",
+      "era": "Aug 6",
+      "label": "When a judge fails a swarm, its feedback is saved as new packets and a new swarm is sent out, looping until every judge is satisfied.",
+      "status": "partial",
+      "walk": "Let a judge fail a round; new packets appear from the feedback and a fresh swarm runs, and the loop ends only when all judges pass.",
+      "owner": "owner — \"Also want to make sure for symphony mode this loops untill all the judges are satisfied.\" (chat 2026-08-06 17:59:05 (+ 16:27:54))",
+      "surfaces": [
+        "harness/src/harness/conductor.py",
+        "harness/src/harness/judge_panel.py",
+        "harness/src/harness/rounds.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F085",
+        "screenshot": "FL-091.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-092",
+      "section": "7. Symphony, judges and search",
+      "era": "Aug 9",
+      "label": "Parallel firing of many agents; expired claims released automatically.",
+      "status": "partial",
+      "walk": "Fire two agents at once and let one claim expire; both run together and the expired claim frees itself without a hand.",
+      "owner": "owner — \"that agent didn't unclaim that packet after it expired. This is a good learning for swarms I'm sure that beads has an idea of how to solve this... but can you manually unclaim it? At least we proved even in parrallel this works!\" (chat 2026-08-09 20:50:51 (+ 19:34:13))",
+      "surfaces": [
+        "garden/garden_adapter/",
+        "harness/src/harness/supervisor.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F085",
+        "screenshot": "FL-092.jpg"
+      }
+    },
+    {
+      "id": "FL-093",
+      "section": "7. Symphony, judges and search",
+      "era": "Aug 15",
+      "label": "The recipe card: a recipe-style implementation plan whose parts build in parallel or in sequence, parallel wherever it keeps build quality and sequential where there is doubt.",
+      "status": "built",
+      "walk": "Open the recipe card of a symphony; some parts are set to run in parallel and others in sequence.",
+      "owner": "owner — \"1. It must have the recipe style implementation plan that allows different parts to be build in parallel,  or sequence.\" (chat 2026-08-17 15:35:13 (+ chat 2026-08-15 19:37:48))",
+      "surfaces": [
+        "harness/src/harness/conductor.py",
+        "harness/src/harness/judge_panel.py",
+        "harness/src/harness/rounds.py",
+        "harness/src/harness/recipe_graph.py",
+        "harness/web/src/RecipeModule.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F085",
+        "screenshot": "FL-093.jpg"
+      }
+    },
+    {
+      "id": "FL-094",
+      "section": "7. Symphony, judges and search",
+      "era": "Aug 17",
+      "label": "Three phases: deliberation with the agent outlining the spec and recipe with judges and metrics, then auto mode, then adversarial review by the judges that loops to go again.",
+      "status": "partial",
+      "walk": "Run a symphony; deliberation in chat, then the unattended run, then a judge review round that can send it round again.",
+      "owner": "owner — \"Ok I think we need to make sure that we are aligning to the previous symphony: 1. Deliberation with the agent outlining the spec/recipe, judges fine tune/metrics 2. auto mode 3. \"adversarial\" review from the judges. Loops to go again.\" (chat 2026-08-17 17:02:48)",
+      "surfaces": [
+        "harness/src/harness/conductor.py",
+        "harness/src/harness/judge_panel.py",
+        "harness/src/harness/rounds.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F085",
+        "screenshot": "FL-094.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-095",
+      "section": "7. Symphony, judges and search",
+      "era": "Aug 17",
+      "label": "Hard steps marked at spec time can trigger a search swarm that evolves auto-research style, with pruning so it is not overly expensive or long-running.",
+      "status": "partial",
+      "walk": "Mark a step as hard at deliberation; a search swarm runs on that step and prunes weak branches.",
+      "owner": "owner — \"I was thinking that during the spec we can identify nodes where we will allow our internal search ideas (based on auto research) combined with some RLM methodologies loose to optimize and create the best solutions. These would be very hard parts. We need to make sure that we are leveraging the pruning parts of RLM efficiently as well. I don't want things to be overly expensive or long running.\" (chat 2026-08-17 17:40:31 (+ 15:35:13))",
+      "surfaces": [
+        "harness/src/harness/conductor.py",
+        "harness/src/harness/judge_panel.py",
+        "harness/src/harness/rounds.py",
+        "garden/garden_adapter/",
+        "harness/src/harness/supervisor.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F085",
+        "screenshot": "FL-095.jpg"
+      }
+    },
+    {
+      "id": "FL-096",
+      "section": "7. Symphony, judges and search",
+      "era": "Aug 17",
+      "label": "Symphony memory works with the Palace and its injection and extraction policies.",
+      "status": "partial",
+      "walk": "Run a symphony; its agents get injected memories and the run's extracted memories reach the Palace.",
+      "owner": "owner — \"Lastly all of this needs to work with our context injection and memory extraction policies.\" (chat 2026-08-17 17:40:31 (+ 15:35:13))",
+      "surfaces": [
+        "harness/src/harness/memory_bridge.py",
+        "spine/src/spine/symphony/"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F085",
+        "screenshot": "FL-096.jpg"
+      }
+    },
+    {
+      "id": "FL-097",
+      "section": "7. Symphony, judges and search",
+      "era": "Aug 17",
+      "label": "A component registry grown from the motivation tree that feeds build history and agent start-up.",
+      "status": "partial",
+      "walk": "Start an implementation agent; its start-up context carries the component registry, which stems from the motivation tree.",
+      "owner": "owner — \"the component registry might be able to be more elegantly integrated into our existing build history and implementation agent start up procedure by stemming from the motivation tree. Again we don't want to overwhelm the implementation agents,  but we need to give them appropriate context, motivation...\" (chat 2026-08-17 17:59:04)",
+      "surfaces": [
+        "garden/notes/component-registry.md",
+        "harness/src/harness/WORKER_BRIEF.md"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F085",
+        "screenshot": "FL-097.jpg"
+      }
+    },
+    {
+      "id": "FL-098",
+      "section": "7. Symphony, judges and search",
+      "era": "Aug 17",
+      "label": "The symphony lifecycle shows its human touchpoints, the human prompt and any interjection or steering, so they can be seen.",
+      "status": "built",
+      "walk": "Steer a symphony mid-run; the human prompt and the steering both show on the run's trace.",
+      "owner": "owner — \"Can you improve this trace with some visualizations and touchstones on the symphony lifecycle: human promt, interjection/steering, etc so I can see it.\" (chat 2026-08-17 15:49:32)",
+      "surfaces": [
+        "harness/src/harness/symphony_experience.py",
+        "harness/web/src/SymphonyCards.tsx",
+        "harness/web/src/SymphonyDeck.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-098.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-099",
+      "section": "7. Symphony, judges and search",
+      "era": "Aug 17",
+      "label": "Constitution: Rounds as deltas: passed work stands, only judge feedback forms the next round. (chat 2026-08-17 17:02:48)",
+      "status": "partial",
+      "walk": "Let a judge fail one packet; round two re-runs only that packet while the passed work stands.",
+      "owner": "constitution",
+      "surfaces": [
+        "harness/src/harness/conductor.py",
+        "harness/src/harness/judge_panel.py",
+        "harness/src/harness/rounds.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F085",
+        "screenshot": "FL-099.jpg"
+      }
+    },
+    {
+      "id": "FL-100",
+      "section": "7. Symphony, judges and search",
+      "era": "Aug 27",
+      "label": "Constitution: \"Take this to a symphony\" from chat, returning as a card. (chat 2026-08-17 17:02:48)",
+      "status": "built",
+      "walk": "Type \"take this to a symphony\" in chat; the run starts and returns as a card on the Deck.",
+      "owner": "constitution",
+      "surfaces": [
+        "harness/src/harness/symphony_experience.py",
+        "harness/web/src/SymphonyCards.tsx",
+        "harness/web/src/SymphonyDeck.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-100.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-101",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "founding",
+      "label": "A Chromium browser-based interface, with a mobile front end wanted long term.",
+      "status": "unverified",
+      "walk": "M3WF fixture in desktop Chromium; needs hardware for the phone half: open the isolated fixture on a physical phone and confirm the interface loads.",
+      "owner": "owner — \"Chromium also let's us have a front end in mobile easily which is something that I would want long term.\" (first thread turn 8 (+ turn 3))",
+      "surfaces": [
+        "harness/src/harness/packaged.py",
+        "harness/web/src/assets/rack.css",
+        "harness/web/src/App.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-101.jpg"
+      }
+    },
+    {
+      "id": "FL-102",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Jul 20",
+      "label": "The Deck: a flashcard stack of terminals, cards colored to match their agents, only one card on top at a time (that project's agent's last response) to interact with, the next card popping up once you respond, ordered purely by which finished first.",
+      "status": "built",
+      "walk": "Answer the top card; it pops and the next card, the earliest to finish, comes up in its agent's color.",
+      "owner": "owner — \"I mean it kind of is a flashcard stack of terminals no?\" (seed SD-056 addendum (owner 2026-09-09) (+ chat 2026-07-20 00:01:41))",
+      "surfaces": [
+        "harness/web/src/SymphonyDeck.tsx",
+        "harness/web/src/App.tsx",
+        "harness/web/src/store.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-102.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-103",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Jul 20",
+      "label": "Click an agent to open its context visualizer and its injected memories with pop-off and add-back suggestions.",
+      "status": "partial",
+      "walk": "Click one agent; a panel opens with its context visualizer, its injected memories each with a pop-off, and suggestions of more memories to add.",
+      "owner": "owner — \"I've clicked on a single agent. The right pops up with the context window visualizer, Injected memories with the ability to pop them off and suggestions for more memories to add.\" (chat 2026-07-20 17:15:32)",
+      "surfaces": [
+        "harness/web/src/spatialSelection.ts",
+        "harness/web/src/graphOverlaySelection.ts",
+        "harness/web/src/MemoryPanel.tsx",
+        "harness/web/src/ContextBars.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-103.jpg"
+      }
+    },
+    {
+      "id": "FL-104",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Jul 20",
+      "label": "A draft response to the final synthesis that you tweak and fire, after which the stack switches to the agent that has waited longest for your attention.",
+      "status": "built",
+      "walk": "Tweak the draft on the top card and fire it; the stack moves to the agent that has waited longest.",
+      "owner": "owner — \"I am able to see a draft response to the final systhesis I tweak it and fire it off. The stack automatically switches to the next agent by length of waiting for my attention.\" (chat 2026-07-20 17:15:32)",
+      "surfaces": [
+        "harness/web/src/SymphonyDeck.tsx",
+        "harness/web/src/App.tsx",
+        "harness/web/src/store.ts",
+        "harness/web/src/rackBridge.tsx",
+        "harness/web/src/socket.ts",
+        "harness/web/src/frontDoor.ts",
+        "harness/src/harness/proposed_response.py",
+        "harness/src/harness/agent_runtime.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-104.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-105",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Jul 20",
+      "label": "An Ableton-like rack: the shipped layout is only version one of the default opinion, and people can easily roll and add their own plugins and visualizers to the views from the ground up.",
+      "status": "built",
+      "walk": "Add a self-authored plugin to the rack; it appears among the modules and works.",
+      "owner": "owner — \"The mock up we have for what this harness is only version on of what the default opinion of the visualization should be, remember that i want it to be Ableton like. people can roll their on functional plug ins, visualizers, etc and it should be very easy to do this. The interface should be able to be manipulated in this way from ground up!\" (chat 2026-07-28 16:31:54 (+ chat 2026-07-20 17:19:24))",
+      "surfaces": [
+        "harness/web/src/rackBridge.tsx",
+        "harness/web/src/rack.tsx",
+        "harness/web/src/rackModuleTemplate.ts",
+        "harness/src/harness/toolset_runtime.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-105.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-106",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Jul 22",
+      "label": "Switching the model on command in a thread; markdown rendering in chat.",
+      "status": "built",
+      "walk": "Switch the model by command mid-thread and send a message with a table; the reply comes from the new model and the table renders.",
+      "owner": "owner — \"Hm don't we have a config for switching model if we have the conversation set to duet and pinned model in config in that situation we should be able to switch models on command.\" (chat 2026-07-31 15:18:09 (+ chat 2026-07-22 15:22:24))",
+      "surfaces": [
+        "harness/web/src/ModelDevice.tsx",
+        "harness/web/src/AssistantMarkdown.tsx",
+        "harness/src/harness/commands.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-106.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-107",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Jul 28",
+      "label": "A plugin to change common model parameters such as top p and temperature, as an Ableton-style visualizer and input block.",
+      "status": "not built",
+      "walk": "Change temperature in the model-parameters plugin; the next turn's request carries the new value.",
+      "owner": "owner — \"Also, we should have another plug in that allows people to change common model parameters: top p, temperature, etc. That would be a cool abletonesk visualizer and input block as well.\" (chat 2026-07-28 16:31:54)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-108",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Jul 28",
+      "label": "Resizable modules and a plugin-contributor skill shipped with the repo.",
+      "status": "built",
+      "walk": "Drag a module edge to resize it; it resizes, and the nocturne-plugin-contributor skill file is in the repo.",
+      "owner": "owner — \"These modules should be changable in size in the visualizer probably. The intuition is ableton. Everyone is making music but they have different ways they want to see and modify things while making that. This brings up a great point. We should have a nocturn plug in contributor skill for agents that's with the repo.\" (chat 2026-07-28 17:15:50)",
+      "surfaces": [
+        "harness/web/src/rackBridge.tsx",
+        "harness/web/src/rack.tsx",
+        "harness/web/src/rackModuleTemplate.ts",
+        "harness/src/harness/toolset_runtime.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-108.jpg"
+      }
+    },
+    {
+      "id": "FL-109",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Jul 28",
+      "label": "Memory candidates appear under the agent's post on the Deck after a compaction or a thread close; scrolling past without denying approves them; corpus-born proposals live in Memory Ingest.",
+      "status": "partial",
+      "walk": "After a compaction, candidates appear under the post; scroll past; they are approved and land.",
+      "owner": "owner — \"the flashcard looks like final post from the agent(s) needing response up top and then a list of memory approve denies underneath. the user doesn't have to approve or deny them but if they pass visible ones without denying they are approved. Then the curators will have to handle them. This also raises a question of do curators get to inject into this list of questions? Maybe we want a seperate module for this rather than having them in the flashcards.\" (chat 2026-07-28 19:44:22)",
+      "surfaces": [
+        "harness/web/src/approvalQueue.ts",
+        "harness/web/src/SymphonyDeck.tsx",
+        "harness/src/harness/seed.py",
+        "harness/src/harness/extraction.py",
+        "spine/src/spine/queue/"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-109.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-110",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Aug 3",
+      "label": "Global or current on every module; current modules switch together with the work.",
+      "status": "built",
+      "walk": "Set two modules to current and select a different project; both switch together while a global one stays.",
+      "owner": "owner — \"There's kind of two modes in a visualizer setting it can be set global or current: cost example could be global across all active agents and project or it could be set to the current project. If something is set to current then whenever one of the other visuals switches to a new project they all swtich. if something is set to global it stays.\" (chat 2026-08-03 18:57:46)",
+      "surfaces": [
+        "harness/web/src/rackBridge.tsx",
+        "harness/web/src/rack.tsx",
+        "harness/web/src/attunement.ts",
+        "harness/web/src/spatialSelection.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-110.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-111",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Aug 11",
+      "label": "One standard module template that can be dragged and grown or shrunk as much as you want, with a dialogue box for its internal settings, on a very large canvas you can pan and zoom while modules stay the same size.",
+      "status": "built",
+      "walk": "Grow a module far past its starting size, open its settings dialogue, then zoom the canvas out; the module grew without a cap and keeps its size as the canvas zooms.",
+      "owner": "owner — \"The modules are still not uniform. Spend and context bar are still in that older weird format. They should all have \"dialogue box launches for internal settings\" and be a standard format that can grow or shrink as much as the user wants. Right now they seem to be limited in how much I can grow or shrink them.\" (chat 2026-08-13 22:51:23 (+ chat 2026-08-11 15:44:45))",
+      "surfaces": [
+        "harness/web/src/stageLayout.ts",
+        "harness/web/src/rackLayout.ts",
+        "harness/web/src/rack.tsx",
+        "harness/web/src/assets/rack.css"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-111.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-112",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Aug 12",
+      "label": "Tabs as layers of the same stage; Injection and Graph as ordinary modules; a gear beside the title for rarely changed options.",
+      "status": "built",
+      "walk": "Add a tab, place the Injection module on it, and open the gear beside the title; the tab is a layer of the same stage and the gear holds the rarely changed options.",
+      "owner": "owner — \"Somehting we'd been discussing recently is that each pain should be standard and very large in size i can pan around left and right zoom in and out and the modules etc. stay the same size and I can have off screen modules. The tabs can be layers of this same view.\n4. Injection and graph tabs should just be be modules in the #3's schema not fixed tabs.\" (chat 2026-08-12 18:27:18)",
+      "surfaces": [
+        "harness/web/src/stageLayout.ts",
+        "harness/web/src/rackLayout.ts",
+        "harness/web/src/rack.tsx",
+        "harness/web/src/assets/rack.css"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-112.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-113",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Aug 13",
+      "label": "A finer, near-continuous background grid, more descriptive well-formatted hover tips, an easy way to create tabs, a much smaller archive button, a model device that is obviously clickable.",
+      "status": "built",
+      "walk": "Hover a control on the stage; a well-formatted descriptive tip appears, the grid behind is near-continuous, a tab can be created easily, the archive button is small, and the model device looks clickable.",
+      "owner": "owner — \"4. The bacground grid should be finer grain maybe close to continuous. look at how comfy ui does it. It also should be much bigger the user should have to really try to find the boundaries. \n5. There should be more hover tips. Make sure the hover tips are descriptive and format well.\" (chat 2026-08-13 22:51:23)",
+      "surfaces": [
+        "harness/web/src/stageLayout.ts",
+        "harness/web/src/rackLayout.ts",
+        "harness/web/src/rack.tsx",
+        "harness/web/src/assets/rack.css",
+        "harness/web/src/ControlTooltip.tsx",
+        "harness/web/src/ModelDevice.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-113.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-114",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Aug 13",
+      "label": "Memory Ingest as its own module: put in current AGENTS.md or CLAUDE.md files to jump-start the Palace.",
+      "status": "built",
+      "walk": "Put an AGENTS.md into the Memory Ingest module; its contents show up as memory candidates.",
+      "owner": "owner — \"3. The palace queue is a good feature but it shouldn't be in the middle of the top bar, in fact I would argue that it should be it's own module. Also, it should be more descriptive. Memory ingest might be a better name. Put current agents/claude mds to jump start your memory palace.\" (chat 2026-08-13 22:51:23)",
+      "surfaces": [
+        "harness/web/src/approvalQueue.ts",
+        "harness/web/src/SymphonyDeck.tsx",
+        "harness/src/harness/seed.py",
+        "harness/src/harness/extraction.py",
+        "spine/src/spine/queue/"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-114.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-115",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Aug 14",
+      "label": "Attunement to a specific stack beyond global and current.",
+      "status": "built",
+      "walk": "Set a module to a specific stack; it shows it is aligned to that stack, not global or current.",
+      "owner": "owner — \"Oh one more thing we need to consider with the introduction of tabs and everything being truly modular is there something more elegant than global vs current. I think for examlple perhaps if we have multiple stacks we need the option for visulizations to be aligned to a specific stack or something.\" (chat 2026-08-14 23:22:34)",
+      "surfaces": [
+        "harness/web/src/rackBridge.tsx",
+        "harness/web/src/rack.tsx",
+        "harness/web/src/attunement.ts",
+        "harness/web/src/spatialSelection.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-115.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-116",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Aug 27",
+      "label": "A module not set to global attunes by proximity, measured across tabs (a tab counting one unit) and grid position, ties picked at random, and it shows which thread or stack it is attuned to.",
+      "status": "partial",
+      "walk": "Drag a non-global module next to a different thread; its label changes to that thread's name.",
+      "owner": "owner — \"I feel like the law is if set to global then is it works across all tabs and modules within tabs. If not global then it's proximity. The proximity across tabs can be calcluated by pythagorian theorum with tabs being +1 unit distance depending on their sequence in the menu bar then coordinates in the grid being further. If there is a tie pick a random one. if not global the module should show which thread name it is currently attuned to. If attunded to a stack it should show which stack.\" (chat 2026-08-27 20:27:41)",
+      "surfaces": [
+        "harness/web/src/rackBridge.tsx",
+        "harness/web/src/rack.tsx",
+        "harness/web/src/attunement.ts",
+        "harness/web/src/spatialSelection.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-116.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-117",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Aug 27",
+      "label": "A proposed reply prefilled and editable; queued prompts advance on Enter with a scrollable queue.",
+      "status": "built",
+      "walk": "Press Enter in the prefilled proposed reply; the next queued prompt comes up and the queue scrolls.",
+      "owner": "owner — \"Hm - i don't know but claude code does it an sometimes its nice... It might be part of the LLMs response in general. like a proposed user repsonse? Not sure. See how they do it. yes advance upon enter but we should be able to scrol through the queue.\" (chat 2026-08-27 21:22:28)",
+      "surfaces": [
+        "harness/web/src/SymphonyDeck.tsx",
+        "harness/web/src/App.tsx",
+        "harness/web/src/store.ts",
+        "harness/web/src/rackBridge.tsx",
+        "harness/web/src/socket.ts",
+        "harness/web/src/frontDoor.ts",
+        "harness/src/harness/proposed_response.py",
+        "harness/src/harness/agent_runtime.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-117.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-118",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Aug 24",
+      "label": "Out Loud mode: responses are read aloud and listen-triggered dictation is a primary way in, equal to typing, not an add-on.",
+      "status": "not built",
+      "walk": "Toggle Out Loud; the answer is spoken; dictation fills the composer and sends on the trigger word.",
+      "owner": "owner — \"I think the out loud is a primary optoin just like typing\" (chat 2026-09-12); \"Let's call this out loud mode.\" (chat 2026-08-24)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-119",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Aug 28",
+      "label": "A Palace State module holding the general state stats.",
+      "status": "built",
+      "walk": "Open the Palace State module; the general state stats are there, not in the Spend table.",
+      "owner": "owner — \"The spend table has a bit of a confusing first row. Those all look like general state stats, not to do with spend... we can move this into a state module or break them into other modules where they make more sense.\" (chat 2026-08-28 19:57:10)",
+      "surfaces": [
+        "harness/web/src/PalaceStateModule.tsx",
+        "harness/src/harness/daemon.py",
+        "spine/src/spine/vitals/"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-119.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-120",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Aug 31",
+      "label": "One conversation module with stack and focused modes.",
+      "status": "built",
+      "walk": "Toggle the conversation module between stack and focused; the one module shows the stack or a single thread.",
+      "owner": "owner — \"I mean it kind of is a flashcard stack of terminals no?\" (seed SD-056 addendum (owner 2026-09-09) (+ chat 2026-08-31 21:28:31))",
+      "surfaces": [
+        "harness/web/src/SymphonyDeck.tsx",
+        "harness/web/src/App.tsx",
+        "harness/web/src/store.ts",
+        "harness/web/src/rackBridge.tsx",
+        "harness/web/src/socket.ts",
+        "harness/web/src/frontDoor.ts",
+        "harness/web/src/stageLayout.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-120.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-121",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Aug 31",
+      "label": "In the memory module, the edit-body and pin buttons become icons and a delete-memory button is added with an are-you-sure pop-up.",
+      "status": "not built",
+      "walk": "Press delete on a memory in the memory module; an are-you-sure pop-up appears, and edit and pin are icons.",
+      "owner": "owner — \"1 we can make the edit body, pin buttons in the memory module icons and we should also add a delete memory button, but it should have a pop up are you sure. This will serve a couple functions I want to have more memories displayed at once so less space taken up by buttons will help that and it will look cleaner.\" (chat 2026-08-31 18:56:36)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-122",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Aug 17",
+      "label": "A recipe module showing the plan graph with completed parts dimmed.",
+      "status": "built",
+      "walk": "Run a symphony with the recipe module open; completed parts dim.",
+      "owner": "owner — \"I want the plan completion view to look like this: just matching our livery and some dyamics that indicate at what point we are at maybe just dimming the competed parts.\" (chat 2026-08-17 21:05:47 (+ 17:44:55))",
+      "surfaces": [
+        "harness/web/src/RecipeModule.tsx",
+        "harness/web/src/recipeGraph.ts",
+        "harness/src/harness/recipe_graph.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-122.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-123",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Aug 15",
+      "label": "Each main cube view as its own module with its own 3D asset.",
+      "status": "partial",
+      "walk": "Open the module library; each main cube view is its own module with its own 3D asset.",
+      "owner": "owner — \"honestly I am thinking that we could at this point consider moving each of the main cube views into it's own module and make them their own 3d Assets.... Im not sure. Let's do 3d actually. I want it so be super liquid and smooth looking. We'll need to consider peoples hardware though.\" (chat 2026-08-15 19:37:48)",
+      "surfaces": [
+        "harness/web/src/PalaceNebula.tsx",
+        "harness/web/src/nebulaBindings.ts",
+        "harness/web/src/MemoryGraph.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-123.jpg"
+      }
+    },
+    {
+      "id": "FL-124",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Aug 11",
+      "label": "Threads removable or archivable; a back-to-the-stage control on every view.",
+      "status": "partial",
+      "walk": "Archive a thread, then open the memory graph and press the back control; the thread is gone from the list and the stage returns.",
+      "owner": "owner — \"2. All of the threads, which at best is an alternative module to the stack of flashcards that I wanted are glitched in their text looks cut off, see first attached image. Also, the threads are not remove/archivable. Again I don't want to spend toomuch time on this one but it's worth saying.\" (chat 2026-08-11 15:44:45)",
+      "surfaces": [
+        "harness/web/src/stageLayout.ts",
+        "harness/web/src/rackLayout.ts",
+        "harness/web/src/rack.tsx",
+        "harness/web/src/assets/rack.css"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-124.jpg"
+      }
+    },
+    {
+      "id": "FL-125",
+      "section": "9. Visualization",
+      "era": "founding",
+      "label": "Each agent's context window is visualized, with the memory share (n% of the window) shown as a parameter the user can see and edit.",
+      "status": "partial",
+      "walk": "Select a thread; Context Bars shows the memory share block and the share value can be edited.",
+      "owner": "owner — \"This is n% of the context window. The rest should be normal the most recent messages between the agents, tool calls, etc however py or pydantic do it. The reason for this is the recent history of the chat is supremely important, but so is the long term memories we need to find a balance. This is another parameter the user should have displayed and should be able to edit\" (chat 2026-08-09 18:49:53 (+ first thread turn 1))",
+      "surfaces": [
+        "harness/src/harness/context_window.py",
+        "harness/src/harness/openrouter_runtime.py",
+        "harness/web/src/ContextBars.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-125.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-126",
+      "section": "9. Visualization",
+      "era": "founding",
+      "label": "The ant farm: the whole directory tree as chambered burrows with files as cells, zoomable, floating on black with a faint grid, showing worktrees.",
+      "status": "not built",
+      "walk": "Open the ant farm; the whole directory's folders appear as chambers with files as cells, floating on black with a faint grid, and worktrees are visible.",
+      "owner": "owner — \"I imagine that the anfarm is much more ant farm looking truly scoped to the whole directory that there are agents in.... there are empty chambers (files) etc. . we can scroll in and out to get close, it's floating in space like a solidworks object almost but the background is a black with faint white line grid.\" (chat 2026-07-20 17:30:44 (+ 16:49:44))",
+      "surfaces": []
+    },
+    {
+      "id": "FL-127",
+      "section": "9. Visualization",
+      "era": "founding",
+      "label": "Memories visualized in a cool tesseract-graph style.",
+      "status": "built",
+      "walk": "Open the Memory Graph; memories render as a graph.",
+      "owner": "owner — \"What is this memory graph thing it is building I don't remember specing it...\" (chat 2026-08-09 03:49:24 (+ first thread turn 8))",
+      "surfaces": [
+        "harness/web/src/PalaceNebula.tsx",
+        "harness/web/src/nebulaBindings.ts",
+        "harness/web/src/MemoryGraph.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-127.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-128",
+      "section": "9. Visualization",
+      "era": "Jul 20",
+      "label": "The cube: the visualization rendered as a cube with six views you can go around, a primary way to navigate the work and select threads.",
+      "status": "dropped",
+      "walk": "Rotate the cube; six views come around and a thread can be selected from it.",
+      "owner": "owner — \"It would be great if this visualization is rendered like a cube with six views we can go around. It should also could be a primary way of navigating the work so we need to be able to select threads.\" (chat 2026-07-20 16:49:44)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-129",
+      "section": "9. Visualization",
+      "era": "Jul 20",
+      "label": "Roots: every parallel agent across projects gets a root-like, naturally meandering flow growing horizontally from roughly its agent's location, with dead roots for active loops, tips seen end-on as grids of starts in the next rotation, clustered by project on the view opposite the ant farm.",
+      "status": "not built",
+      "walk": "Run agents in parallel and open the roots view; meandering roots grow sideways from each agent's location and rotating to the end-on view shows their tips as per-project grids.",
+      "owner": "owner — \"The roots should grow out from the proper agent location, roughly i konw that the agents will move around so maybe just that region. So the roots should be growing horizontally.\" (chat 2026-07-20 17:42:24 (+ 17:30:44))",
+      "surfaces": []
+    },
+    {
+      "id": "FL-130",
+      "section": "9. Visualization",
+      "era": "Jul 20",
+      "label": "A tree-search view reached by rotating the farm.",
+      "status": "not built",
+      "walk": "Rotate the ant farm; the tree-search (roots) view appears.",
+      "owner": "owner — \"2. I rotate right and the ant farm rotates quickly to the mcts/roots view I see the different sub agents working fanned out for that agent standing out in the same colors and I see the other sub agents for different colors at low opacity around in the roots view as well.\" (chat 2026-07-20 17:15:32 (+ 16:49:44))",
+      "surfaces": []
+    },
+    {
+      "id": "FL-131",
+      "section": "9. Visualization",
+      "era": "Jul 20",
+      "label": "Memory trace from any selection in the ant farm: the injected memories, which can be popped off, and near-miss suggestions to add.",
+      "status": "partial",
+      "walk": "Select any part of the ant farm; its injected memories appear with a pop-off and near-miss suggestions to add.",
+      "owner": "owner — \"I've clicked on a single agent. The right pops up with the context window visualizer, Injected memories with the ability to pop them off and suggestions for more memories to add.\" (chat 2026-07-20 17:15:32 (+ 16:49:44))",
+      "surfaces": [
+        "harness/web/src/spatialSelection.ts",
+        "harness/web/src/graphOverlaySelection.ts",
+        "harness/web/src/MemoryPanel.tsx",
+        "harness/web/src/ContextBars.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-131.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-132",
+      "section": "9. Visualization",
+      "era": "Jul 20",
+      "label": "A time-order control that highlights new roots and moves the panels to the longest-waiting response.",
+      "status": "not built",
+      "walk": "Click the time-order control; new roots highlight and the side panels move to the longest-waiting response.",
+      "owner": "owner — \"3. I click the left hand side to time order and the visulization highlights new roots and the left hand and right hand side visualizatoins adjust to the longest waiting response for a different project.\" (chat 2026-07-20 17:15:32)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-133",
+      "section": "9. Visualization",
+      "era": "Jul 20",
+      "label": "A corner palace view with curators as ghosts moving through the database.",
+      "status": "not built",
+      "walk": "Look at the bottom-right corner during a curator pass; ghost-like curators move through the palace database.",
+      "owner": "owner — \"The curator agents are manipulating it and updating it in real time. Combining memories, separating them, it should be tied to live feeds. The curators should look like ghosts from destiny.\" (chat 2026-07-20 17:30:44 (+ 17:15:32))",
+      "surfaces": []
+    },
+    {
+      "id": "FL-134",
+      "section": "9. Visualization",
+      "era": "Jul 20",
+      "label": "A way to see things being added or removed over time, as SolidWorks does, the project growing like an organic object.",
+      "status": "not built",
+      "walk": "Drag the rollback bar back; the visuals show what had been added or removed by that moment.",
+      "owner": "owner — \"I think like solid works we can see things being added or removed with time right. The projects that the computer is workin on is an organic object that's almost alive...\" (chat 2026-07-20 17:34:14)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-135",
+      "section": "9. Visualization",
+      "era": "Jul 20",
+      "label": "A car-console-style dashboard at the bottom with dials: tokens spent per minute, number of agents, spend in the past hour.",
+      "status": "dropped",
+      "walk": "Look at the bottom strip; dials show tokens per minute, agent counts and past-hour spend.",
+      "owner": "owner — \"It would be interesting to throw onto the bottom a car console style dashboard. Tokens spent per minute dial. Total number of main agents. Total number of agents general. total spend past hour. things like that but in dials....\" (chat 2026-07-20 17:30:44)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-136",
+      "section": "9. Visualization",
+      "era": "Aug 2",
+      "label": "A better skill visualizer, alongside the context window visualizer.",
+      "status": "horizon",
+      "walk": "No walk until a packet gives it a shape.",
+      "owner": "owner — \"Also, a new visualization occurred to me. We already have the context window visualizer, but it might be nice to have a better skill visualizers.\" (chat 2026-08-03 15:21:18)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-137",
+      "section": "9. Visualization",
+      "era": "Aug 3",
+      "label": "A line graph of the injection system's historical performance; a 3D terrain of the score surface across parameters; the optimization shown while it runs (the landscape module is this terrain, placed beside the curators).",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Open the module during a retrain; a line graph of the score's history, a 3D terrain of the score across parameters, and the running optimization are all shown.",
+      "owner": "owner — \"I like this I'm imagine a module with the historical performance of the visulizer as a line graph every manual adjust ment should lower the score then whenever the retrain happens the score goes back up.\" (chat 2026-08-03 20:32:37)",
+      "surfaces": [
+        "harness/web/src/LearningTelemetry.tsx",
+        "harness/web/src/InjectionConsole.tsx",
+        "spine/src/spine/learner/service.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-137.jpg"
+      }
+    },
+    {
+      "id": "FL-138",
+      "section": "9. Visualization",
+      "era": "Aug 14",
+      "label": "The palace nebula (the memory palace visualization module) looks super liquid and smooth, with the upper end amazing and lesser hardware considered, and its colors and shapes change quickly when the user changes the axis connecting the memories.",
+      "status": "built",
+      "walk": "Open the nebula on a palace with memories and change the axis; the colors and shapes change quickly.",
+      "owner": "owner — \"I want it so be super liquid and smooth looking. We'll need to consider peoples hardware though. Gaming buildnig libraries should hav egood built insolutoins for those, but I want the the upper end to look amazing.\" (chat 2026-08-15 19:37:48 (+ chat 2026-08-14 20:21:33))",
+      "surfaces": [
+        "harness/web/src/PalaceNebula.tsx",
+        "harness/web/src/nebulaBindings.ts",
+        "harness/web/src/MemoryGraph.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-138.jpg"
+      }
+    },
+    {
+      "id": "FL-139",
+      "section": "9. Visualization",
+      "era": "Aug 14",
+      "label": "The 3D memory palace shows curation as it happens: curators combining and separating memories in real time, tied to live feeds.",
+      "status": "partial",
+      "walk": "Trigger a curator pass with the nebula open; memories visibly combine or separate as it runs.",
+      "owner": "owner — \"This is a idea i had, but mixed with the original 3d memory palace for what happens when curatatoin is happening to the memory palace.\" (chat 2026-08-14 20:26:45 (+ chat 2026-07-20 17:30:44))",
+      "surfaces": [
+        "harness/web/src/PalaceNebula.tsx",
+        "harness/web/src/curation.ts",
+        "harness/web/src/nebulaBindings.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-139.jpg"
+      }
+    },
+    {
+      "id": "FL-140",
+      "section": "9. Visualization",
+      "era": "Aug 16",
+      "label": "The cauldron: a pixel-art potion-brewing visualization for the alchemist theme with some real functionality worked in.",
+      "status": "horizon",
+      "walk": "No walk until a packet gives it a shape.",
+      "owner": "owner — \"Sure. let's have some fun with the alchemist theme as well. Maybe we have a pixel art potion brewing visualizatoin somehow that we work some real funcationality into somehow.\" (chat 2026-08-17 18:08:47)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-141",
+      "section": "9. Visualization",
+      "era": "Sep 1",
+      "label": "The visualization looks cool but is functional: it changes only when the underlying data or actual running processes change.",
+      "status": "built",
+      "walk": "Leave the visualization open with the system idle; nothing moves until a real process such as a curator pass runs.",
+      "owner": "owner — \"let's make sure that we have a good framework for the agent the build on the motivation is that we have something that looks cool but is also functional. There shouldn't be changes made to the visualization if there aren't in the underlying data or actual processes running.\" (chat 2026-08-31 22:12:48)",
+      "surfaces": [
+        "harness/web/src/PalaceNebula.tsx",
+        "harness/web/src/nebulaBindings.ts",
+        "harness/web/src/MemoryGraph.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-141.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-142",
+      "section": "9. Visualization",
+      "era": "Aug 31",
+      "label": "Constitution: A sheet mode: an annotated layout of the same views. (chat 2026-08-31 21:38:35)",
+      "status": "built",
+      "walk": "Switch to sheet mode; the same views appear laid out with annotations.",
+      "owner": "constitution",
+      "surfaces": [
+        "harness/web/src/PalaceNebula.tsx",
+        "harness/web/src/nebulaBindings.ts",
+        "harness/web/src/MemoryGraph.tsx",
+        "harness/web/src/assets/recipe.css"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-142.jpg"
+      }
+    },
+    {
+      "id": "FL-143",
+      "section": "10. Themes and brand",
+      "era": "Jul 20",
+      "label": "Neo-noir as the default style, with other configurations easily uploadable.",
+      "status": "partial",
+      "walk": "Open a fresh install; NEO-NOIR is the style, and another configuration can be uploaded and selected.",
+      "owner": "owner — \"This is what I want as well. As you can see the aesthetic is very important to me. Please one last update. This should be the default style, but we should be able to easily upload other configurations. (im not saying this is a configuration file for the harness just that these phrases etc are useful when describing)\" (chat 2026-07-20 19:18:17)",
+      "surfaces": [
+        "harness/web/src/themes/",
+        "harness/web/src/themes.ts",
+        "harness/web/src/platePress.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-143.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-144",
+      "section": "10. Themes and brand",
+      "era": "Jul 21",
+      "label": "The name Nocturne and the mark: an ouroboros around the moon.",
+      "status": "partial",
+      "walk": "Look at the header; the Nocturne mark shows an ouroboros around the moon.",
+      "owner": "owner — \"Ok fair enough let's stick with nocturne and add the ouroboros around the moon to the icon.\" (chat 2026-08-03 22:39:46 (+ chat 2026-07-21 17:03:25))",
+      "surfaces": [
+        "harness/web/public/",
+        "harness/README.md"
+      ],
+      "last_walk": {
+        "packet": "M3NM",
+        "date": "2026-09-15",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-144.png"
+      }
+    },
+    {
+      "id": "FL-145",
+      "section": "10. Themes and brand",
+      "era": "Aug 11",
+      "label": "Two alternate themes derived from your reference picture (Seraph Dressed, Gold Lines) added beside the current color scheme.",
+      "status": "built",
+      "walk": "Switch to Gold Lines; the interface takes on the picture's colors and the original scheme remains selectable.",
+      "owner": "owner — \"Ok let's leave the current color scheme in place and add these two as alternatives please in the packet...\" (chat 2026-08-11 21:09:42 (+ 16:34:04))",
+      "surfaces": [
+        "harness/web/src/themes/",
+        "harness/web/src/themes.ts",
+        "harness/web/src/platePress.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-145.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-146",
+      "section": "10. Themes and brand",
+      "era": "Aug 11",
+      "label": "The reference picture's exact colors are pulled out and applied to the Harness algorithmically in the picture's proportions, possibly by assigning colors to parts of the module templates.",
+      "status": "partial",
+      "walk": "Put a themed screen beside the reference picture; the same exact colors appear in the picture's proportions.",
+      "owner": "owner — \"I want to figure out how to to alogrithmically apply these colors in these colors to the harness in the right proportions, maybe assigning colors to parts of module templates.\" (chat 2026-08-11 19:02:25 (+ 16:34:04))",
+      "surfaces": [
+        "harness/web/src/themes/",
+        "harness/web/src/themes.ts",
+        "harness/web/src/platePress.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-146.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-147",
+      "section": "10. Themes and brand",
+      "era": "Aug 17",
+      "label": "Wizard Mode and Technomancer themes with our own glyph scripts, runes appearing and disappearing.",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Switch to Wizard Mode; runes in our own script appear and fade, and Technomancer does the same in neon.",
+      "owner": "owner — \"Can we not copy them and just change them enough to not impinge on and create our own scripts? That way we have something cool on our own?\" (chat 2026-08-17 21:22:02 (+ 18:12:32))",
+      "surfaces": [
+        "harness/web/src/themes/",
+        "harness/web/src/themes.ts",
+        "harness/web/src/platePress.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-147.jpg"
+      }
+    },
+    {
+      "id": "FL-148",
+      "section": "10. Themes and brand",
+      "era": "Aug 11",
+      "label": "Liquid, shiny, white chrome on borders, not on buttons.",
+      "status": "partial",
+      "walk": "Switch to Seraph Dressed; borders show liquid white chrome and buttons do not.",
+      "owner": "owner — \"I am thining that kind of chrome for the borders not buttons... that isn't asethetic at all.....\" (chat 2026-08-11 19:22:25 (+ 19:15:43))",
+      "surfaces": [
+        "harness/web/src/themes/",
+        "harness/web/src/themes.ts",
+        "harness/web/src/platePress.ts"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-148.jpg"
+      }
+    },
+    {
+      "id": "FL-149",
+      "section": "11. Spend, money and model routing",
+      "era": "Jul 20",
+      "label": "Our own GCP project with its own monthly cost circuit breaker at $100 a month.",
+      "status": "partial",
+      "walk": "Run doctor; the readout names our own GCP project and its $100/month cost circuit breaker.",
+      "owner": "owner — \"I really don't want to run up a huge bill in gcp. I thought that they were making it easier to put cost circuit breakers in to GCP can you check again using the internet?\" (chat 2026-07-20 02:48:52; chat 2026-07-20 02:35:44)",
+      "surfaces": [
+        "harness/src/harness/deploy.py",
+        "spine/src/spine/deploy_resources.py"
+      ],
+      "last_walk": {
+        "packet": "M3NM",
+        "date": "2026-09-15",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-149.png"
+      }
+    },
+    {
+      "id": "FL-150",
+      "section": "11. Spend, money and model routing",
+      "era": "Jul 20",
+      "label": "OpenRouter as the third-party token broker, with the router optimization working for other routers too.",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Switch the router setting to another broker and send one message; the spend ledger row names that broker's model instead of OpenRouter's.",
+      "owner": "owner — \"the open router optimization should work for other routers 2. it should be able to be turned off and used with a single token credit\" (chat 2026-08-14 23:19:48; chat 2026-07-20 19:48:50)",
+      "surfaces": [
+        "harness/src/harness/model_policy.py",
+        "harness/src/harness/model_router.py",
+        "harness/src/harness/openrouter_runtime.py",
+        "harness/src/harness/config.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-150.jpg"
+      }
+    },
+    {
+      "id": "FL-151",
+      "section": "11. Spend, money and model routing",
+      "era": "Jul 24",
+      "label": "KV-cache optimization, usage accounting, and sticky sessions on one provider for cache benefits.",
+      "status": "built",
+      "walk": "Send several messages in one thread; the spend module's KV cache column fills in after the first message and the provider stays the same across the thread.",
+      "owner": "owner — \"usage accounting flag? Surely someone at open router has thought of this...\" (chat 2026-07-27 20:38:31; chat 2026-07-26 18:52:57)",
+      "surfaces": [
+        "harness/src/harness/model_policy.py",
+        "harness/src/harness/model_router.py",
+        "harness/src/harness/openrouter_runtime.py",
+        "harness/src/harness/config.py",
+        "harness/src/harness/spend.py",
+        "harness/src/harness/receipt_queue.py",
+        "spine/src/spine/spend/"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-151.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-152",
+      "section": "11. Spend, money and model routing",
+      "era": "Jul 27",
+      "label": "Cost routing: lowest cost above an intelligence threshold, or a spend rate per hour buying the most intelligence that burn allows.",
+      "status": "not built",
+      "walk": "Set an intelligence threshold in the token-cost policy; a new thread's chosen model is the cheapest one at or above that threshold.",
+      "owner": "owner — \"another way would  set spend per hour and then have the highest intelligence given the token burn...\" (chat 2026-07-28 00:26:44; chat 2026-07-27 23:45:55)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-153",
+      "section": "11. Spend, money and model routing",
+      "era": "Jul 28",
+      "label": "The elbow: a standard point on the cost-to-intelligence Pareto curve.",
+      "status": "not built",
+      "walk": "Choose the elbow policy for a thread; the policy readout names which frontier model is the elbow.",
+      "owner": "owner — \"I don't think that we ever quantified how we would actually calculate the elbow: it's on the pareto frontier, its not the most expensive nor the least but where is it? just below a a dense pocket of models at derivative of pareto >.5? something like that?\" (chat 2026-07-28 16:22:57; chat 2026-07-28 00:26:44)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-154",
+      "section": "11. Spend, money and model routing",
+      "era": "Jul 28",
+      "label": "A model configuration and token cost policy per agent type: pinned, max, elbow or floor.",
+      "status": "partial",
+      "walk": "Open the agent-type config; each type (agent, sub-agent, curator) has its own token-cost policy set to one of pinned, max, elbow or floor.",
+      "owner": "owner — \"I think this is right we have a config for each type of agent that let's us assign a token cost policy: pinned, max, elbow, floor.\" (chat 2026-07-28 00:40:48; chat 2026-07-28 00:26:44)",
+      "surfaces": [
+        "harness/src/harness/model_policy.py",
+        "harness/src/harness/model_router.py",
+        "harness/src/harness/openrouter_runtime.py",
+        "harness/src/harness/config.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-154.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-155",
+      "section": "11. Spend, money and model routing",
+      "era": "Jul 28",
+      "label": "An append-only spend ledger with fine-grain cost history, its smallest grain a uuid spend unit, and the spend views derived from it.",
+      "status": "partial",
+      "walk": "Send one message, then open the spend ledger; new rows with their own uuid spend unit ids appear beneath the unchanged older rows, and the spend module's totals add up from them.",
+      "owner": "owner — \"I think this is the right of it. I'm aligned to this schema: append only. I do want to make sure we have the views that i described earlier figured out how to be derived\" (chat 2026-07-28 00:39:29; chat 2026-07-28 00:21:30)",
+      "surfaces": [
+        "harness/src/harness/spend.py",
+        "harness/src/harness/receipt_queue.py",
+        "spine/src/spine/spend/"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-155.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-156",
+      "section": "11. Spend, money and model routing",
+      "era": "Jul 28",
+      "label": "Constitution: daily reconciliation of the spend ledger against the cloud invoice with drift alerts, and a memory id on the ledger for cost-versus-earned (cost-attribution packet).",
+      "status": "not built",
+      "walk": "Open the spend module's reconciliation row after a day's run; it shows the ledger total beside the invoice total and the drift between them.",
+      "owner": "constitution",
+      "surfaces": []
+    },
+    {
+      "id": "FL-157",
+      "section": "11. Spend, money and model routing",
+      "era": "Jul 28",
+      "label": "Constitution: spend walls, soft budgets per run or day that pause the work at the wall for the judge (symphony budget law).",
+      "status": "partial",
+      "walk": "Start a symphony with a small budget; when spend reaches the wall the run pauses and a boundary card appears on the Deck for the judge.",
+      "owner": "constitution",
+      "surfaces": [
+        "harness/src/harness/conductor.py",
+        "harness/src/harness/run_loop.py",
+        "harness/src/harness/config.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F085",
+        "screenshot": "FL-157.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-158",
+      "section": "11. Spend, money and model routing",
+      "era": "Jul 31",
+      "label": "Switch models on command through the same path automatic routing uses; an off-switch to run on a single token or credit.",
+      "status": "built",
+      "walk": "With routing switched off on a single key, type /model with a new model in a thread; the next reply's spend row names the new model on that one key.",
+      "owner": "owner — \"it should be able to be turned off and used with a single token credit\" (chat 2026-08-14 23:19:48; chat 2026-07-31 15:18:09)",
+      "surfaces": [
+        "harness/src/harness/model_policy.py",
+        "harness/src/harness/model_router.py",
+        "harness/src/harness/openrouter_runtime.py",
+        "harness/src/harness/config.py",
+        "harness/web/src/ModelDevice.tsx",
+        "harness/src/harness/commands.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-158.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-159",
+      "section": "11. Spend, money and model routing",
+      "era": "Aug 28",
+      "label": "The spend module: a row per thread expanding to models, columns input / KV cache / reasoning / output / total / spend per hour, other costs as their own rows, scopable to a thread or stack.",
+      "status": "built",
+      "walk": "Press the plus on one thread row in the spend module; it opens to that thread's models with the columns input, KV cache, reasoning, output, total and spend per hour, with an everything-else row beneath.",
+      "owner": "owner — \"Ok let's break out reasoning too then. good catch. There probably should be a row for everything else as well... the embeddings, curators, etc. that could be broken into a couple rows or left at one general row.\" (chat 2026-08-28 20:19:35; chat 2026-08-28 19:57:10)",
+      "surfaces": [
+        "harness/web/src/VitalsModule.tsx",
+        "harness/web/src/spendTable.ts",
+        "spine/src/spine/spend/views.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-159.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-160",
+      "section": "11. Spend, money and model routing",
+      "era": "Jul 28",
+      "label": "Ableton-style line graphs at the bottom showing spend per unit of time for agents, sub-agents, model, memory curation and total.",
+      "status": "not built",
+      "walk": "Open the bottom strip; line graphs show spend per unit of time with one line each for agents, sub-agents, model, memory curation and total.",
+      "owner": "owner — \"I'm thinking at the bottom, remember looking like and functioning a bit like ableton we should have a coupel of line graphs that show spend per unit of time for agents, sub agents, model, memory curation, total etc. It would be a cool dashboard and usable!\" (chat 2026-07-28 00:14:39)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-161",
+      "section": "11. Spend, money and model routing",
+      "era": "gate-day",
+      "label": "Constitution: a cache-efficiency view showing that cache-sticky routing pays off (gate-day).",
+      "status": "not built",
+      "walk": "Open the cache-efficiency view for a thread; it shows cached tokens against fresh tokens across the thread's messages.",
+      "owner": "constitution",
+      "surfaces": []
+    },
+    {
+      "id": "FL-162",
+      "section": "12. Onboarding, lifecycle and palace operations",
+      "era": "Jul 21",
+      "label": "Easy onboarding from a single splash repo, needing only two secrets: a GCP credential and an OpenRouter key.",
+      "status": "partial",
+      "walk": "On a fresh machine, follow the splash repo's install steps; you are asked for a GCP credential and an OpenRouter key and nothing else before the app comes up.",
+      "owner": "owner — \"Sure we can name things nocture- as long as there is a single splash repo for new users I'm good.\" (chat 2026-07-21 17:21:05; chat 2026-07-21 17:04:14)",
+      "surfaces": [
+        "harness/src/harness/onboarding.py",
+        "harness/src/harness/lifecycle.py",
+        "harness/src/harness/cli.py",
+        "harness/src/harness/deploy.py",
+        "spine/src/spine/api_contract.py"
+      ],
+      "last_walk": {
+        "packet": "M3NM",
+        "date": "2026-09-15",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-162.png"
+      }
+    },
+    {
+      "id": "FL-163",
+      "section": "12. Onboarding, lifecycle and palace operations",
+      "era": "Jul 21",
+      "label": "Seed ingestion at startup: upload markdown files (or the machine's CLAUDE.md and AGENTS.md) and the curators break them into individual memories.",
+      "status": "unverified",
+      "walk": "M3WF fixture: focus Memory Ingest’s drop/paste control and paste a two-fact fictional Markdown document; review the individual split memories. A native file chooser is optional.",
+      "owner": "owner — \"Memory ingest might be a better name. Put current agents/claude mds to jump start your memory palace.\" (chat 2026-08-13 22:51:23; chat 2026-07-21 17:21:05)",
+      "surfaces": [
+        "harness/src/harness/seed.py",
+        "harness/src/harness/seed_jump_start.py",
+        "harness/src/harness/seed_identity.py",
+        "spine/src/spine/queue/service.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-163.jpg"
+      }
+    },
+    {
+      "id": "FL-164",
+      "section": "12. Onboarding, lifecycle and palace operations",
+      "era": "Aug 2",
+      "label": "Local mode with no internet, cloud mode, and a way to mirror our cloud setup into your own provider.",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Start the Harness with the network off and send one message; the reply arrives and the memory lands in the local palace.",
+      "owner": "owner — \"I despise this multiple version thing already; there should be one version that has various levels of capability. I get and agree we aren't supporting people remote memory palaces, but they should have an easy way to mirror our set up, it's designed to be universally supported, into their cloud compute supplier...\" (chat 2026-08-02 13:05:45)",
+      "surfaces": [
+        "harness/src/harness/onboarding.py",
+        "harness/src/harness/lifecycle.py",
+        "harness/src/harness/cli.py",
+        "harness/src/harness/deploy.py",
+        "spine/src/spine/api_contract.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-164.jpg"
+      }
+    },
+    {
+      "id": "FL-165",
+      "section": "12. Onboarding, lifecycle and palace operations",
+      "era": "founding",
+      "label": "Blue-water mode: work offline on a local copy of the Palace, then on reconnect push the working directory and the agent's memory to the cloud and reconcile the two.",
+      "status": "not built",
+      "walk": "Save a memory with the network off, then reconnect and push; the cloud Palace shows that memory alongside what was saved there meanwhile.",
+      "owner": "owner — \"I have a local model that I am running on a locally on my machines hardware, I don't have internet because I am sailing: cached version of the memory object on my local hardware is looking as my long term memory. The sailboat and computer is rented. When I reach port I connect to the internet. I want to push the entire working directory and the agents memory into the cloud. How does this reconcile.\" (first thread turn 14)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-166",
+      "section": "12. Onboarding, lifecycle and palace operations",
+      "era": "Aug 3",
+      "label": "A prompt when the app's memory use passes a threshold of the local system's memory, memory-leak guards, and no proceeding without write access at startup.",
+      "status": "partial",
+      "walk": "Start the daemon in a folder with no write access; it refuses to proceed, and doctor shows the app's memory use against its threshold.",
+      "owner": "owner — \"We maybe should have a prompt whenever the memory associated with this applicatoin goes over some threshold of the local systems memory. I'm actually ok not letting the user proceed without write access of some sort. We need to store the transaction logs so... does that make sense?\" (chat 2026-08-03 15:17:58; chat 2026-08-03 15:12:10)",
+      "surfaces": [
+        "harness/src/harness/onboarding.py",
+        "harness/src/harness/lifecycle.py",
+        "harness/src/harness/cli.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-166.jpg"
+      }
+    },
+    {
+      "id": "FL-167",
+      "section": "12. Onboarding, lifecycle and palace operations",
+      "era": "Aug 5",
+      "label": "One obvious start command with an update prompt; update, deploy, launch and doctor as one or two commands.",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Run the one start command when a newer release exists; it offers the update, then launches.",
+      "owner": "owner — \"It should be only one or two commands and menus to update and deploy going forward for all future enhancents. to make it easy for users and I going forward when there are new releases. Review all we've built trying to get this up and running in the easier, standard update deploy launch doctor etc.\" (chat 2026-08-07 04:58:44; chat 2026-08-05 23:57:35)",
+      "surfaces": [
+        "harness/src/harness/onboarding.py",
+        "harness/src/harness/lifecycle.py",
+        "harness/src/harness/cli.py",
+        "harness/src/harness/deploy.py",
+        "spine/src/spine/api_contract.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-167.jpg"
+      }
+    },
+    {
+      "id": "FL-168",
+      "section": "12. Onboarding, lifecycle and palace operations",
+      "era": "Aug 5",
+      "label": "A restore popup that asks whether to roll back these memories and lists them.",
+      "status": "partial",
+      "walk": "Press restore; a popup asks whether to roll back and lists the memories that would come back.",
+      "owner": "owner — \"Could we have a pop up for restore that says do you want to roll back these memories and then gives a list?\" (chat 2026-08-05 01:34:28)",
+      "surfaces": [
+        "harness/src/harness/transcript_sync.py",
+        "harness/src/harness/onboarding.py",
+        "harness/web/src/rack.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F084",
+        "screenshot": "FL-168.jpg"
+      }
+    },
+    {
+      "id": "FL-169",
+      "section": "12. Onboarding, lifecycle and palace operations",
+      "era": "Aug 10",
+      "label": "Client and cloud versions stay sync-locked or backward compatible, following industry practice, so version differences feel seamless.",
+      "status": "built",
+      "walk": "Start a client whose version differs from the cloud Palace's; it either keeps working or refuses with a plain version message.",
+      "owner": "owner — \"I assumed that the client machine was running a different version the cloud version would have to be sync locked or be backward compatible. This all seems kinda fragile. Are we following the industry best practices on how to run that sync? Again we need to find a way to make this all more seemless.\" (chat 2026-08-10 14:49:26)",
+      "surfaces": [
+        "harness/src/harness/onboarding.py",
+        "harness/src/harness/lifecycle.py",
+        "harness/src/harness/cli.py",
+        "harness/src/harness/deploy.py",
+        "spine/src/spine/api_contract.py"
+      ],
+      "last_walk": {
+        "packet": "M3NM",
+        "date": "2026-09-15",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-169.png"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-170",
+      "section": "12. Onboarding, lifecycle and palace operations",
+      "era": "Aug 13",
+      "label": "A fresh reinstall that reconnects to existing files and auto-finds the cloud palace.",
+      "status": "built",
+      "walk": "Reinstall on the same machine and run the start command; it finds the existing cloud Palace and the old threads without being told where they are.",
+      "owner": "owner — \"The history file should also allow us to reconnect our cloud instance easily. Maybe when we run the one liner it will be able to find a gcp instance of spine and connect to it automatically? Basically the motivatino is for us to be able to reinstall and connect to our old files and set up as easily as installing the first time....\" (chat 2026-08-13 19:29:04)",
+      "surfaces": [
+        "harness/src/harness/onboarding.py",
+        "harness/src/harness/lifecycle.py",
+        "harness/src/harness/cli.py",
+        "harness/pyproject.toml"
+      ],
+      "last_walk": {
+        "packet": "M3NM",
+        "date": "2026-09-15",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-170.png"
+      }
+    },
+    {
+      "id": "FL-171",
+      "section": "12. Onboarding, lifecycle and palace operations",
+      "era": "Aug 13",
+      "label": "A startup and settings option: \"Back up conversation transcripts to cloud?\"",
+      "status": "built",
+      "walk": "Toggle \"Back up conversation transcripts to cloud?\" in the settings menu; the backup line changes, and the same question is asked at first startup.",
+      "owner": "owner — \"I think that should be a config in our setting menu. Back up conversation transcripts to cloud? We can ask them chose at start up.\" (chat 2026-08-13 19:32:24)",
+      "surfaces": [
+        "harness/src/harness/transcript_sync.py",
+        "harness/src/harness/onboarding.py",
+        "harness/web/src/rack.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-171.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-172",
+      "section": "12. Onboarding, lifecycle and palace operations",
+      "era": "gate-day",
+      "label": "Constitution: Palace export and portability (gate-day).",
+      "status": "not built",
+      "walk": "Press export on the Palace; a file containing every memory is produced.",
+      "owner": "constitution",
+      "surfaces": []
+    },
+    {
+      "id": "FL-173",
+      "section": "12. Onboarding, lifecycle and palace operations",
+      "era": "gate-day",
+      "label": "Constitution: a warming retry when the Palace is asleep, a \"busy, retrying\" banner on rate limits, and the banner clears on recovery (gate-day).",
+      "status": "built",
+      "walk": "Start the Harness against a sleeping Palace; a warming line shows, then clears when the Palace answers.",
+      "owner": "constitution",
+      "surfaces": [
+        "harness/src/harness/daemon.py",
+        "harness/src/harness/onboarding.py",
+        "harness/web/src/rack.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-173.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-174",
+      "section": "12. Onboarding, lifecycle and palace operations",
+      "era": "Sep 8",
+      "label": "Constitution: a doctor readout naming which identity the running daemon is (gate verification-identity work).",
+      "status": "built",
+      "walk": "Run doctor; the readout names the daemon's identity and its home.",
+      "owner": "constitution",
+      "surfaces": [
+        "harness/src/harness/onboarding.py",
+        "harness/src/harness/lifecycle.py",
+        "harness/src/harness/cli.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-174.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-175",
+      "section": "13. Identity, safety and sharing",
+      "era": "founding",
+      "label": "Constitution: a sandbox whose boundary crossings are surfaced as cards on the Deck (Invariant 14).",
+      "status": "built",
+      "walk": "Have an agent try to write outside its fence; the work pauses and a boundary card appears on the Deck.",
+      "owner": "constitution",
+      "surfaces": [
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/browser_toolset.py",
+        "harness/src/harness/conductor.py",
+        "harness/web/src/SymphonyCards.tsx"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F083",
+        "screenshot": "FL-175.jpg"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-176",
+      "section": "13. Identity, safety and sharing",
+      "era": "Jul 21",
+      "label": "Combining people's Palaces: each user chooses which memories go into a new combined Palace for a shared project.",
+      "status": "not built",
+      "walk": "As one of two users, choose memories to combine into a new shared Palace; that Palace shows the chosen memories from both users.",
+      "owner": "owner — \"I also want there to be native functionality to combine peoples memory palaces. Different users can chose what memories to combine into a new memory palace so that different people working on the same project can have a combined memory palace as part of this.\" (chat 2026-07-21 17:07:36)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-177",
+      "section": "13. Identity, safety and sharing",
+      "era": "founding",
+      "label": "Several people using the same agent's memory system, not needed in the first sprint but the foundation must not block it.",
+      "status": "horizon",
+      "walk": "No walk until a packet gives it a shape.",
+      "owner": "owner — \"What if there are several people on the mainland using the same agents memory system.... so it's diverged even farther than just what I am doing. Let's consider these while also keeping the context of we don't need this in the first sprint but we want our foundation to not hamper our build for this.\" (first thread turn 14)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-178",
+      "section": "13. Identity, safety and sharing",
+      "era": "Sep 8",
+      "label": "Constitution: a verification identity with its own account and home for tests and scouts (gate verification-identity work).",
+      "status": "built",
+      "walk": "Start the daemon as the verification identity; its Palace shows none of the owner's memories.",
+      "owner": "constitution",
+      "surfaces": [
+        "harness/src/harness/config.py",
+        "harness/src/harness/onboarding.py",
+        "harness/src/harness/daemon.py",
+        "spine/src/spine/auth.py",
+        "spine/src/spine/queue/service.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-178.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-179",
+      "section": "13. Identity, safety and sharing",
+      "era": "Sep 8",
+      "label": "Constitution: a plain ownership refusal when one identity tries to decide another identity's approval queue item (gate verification-identity work).",
+      "status": "built",
+      "walk": "As the verification identity, decide a card in the owner's approval queue; a plain refusal appears.",
+      "owner": "constitution",
+      "surfaces": [
+        "harness/src/harness/config.py",
+        "harness/src/harness/onboarding.py",
+        "harness/src/harness/daemon.py",
+        "spine/src/spine/auth.py",
+        "spine/src/spine/queue/service.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-179.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-180",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "founding",
+      "label": "Managed agents: the harness in the cloud accessed from clients, or local, or both; an agent's file system moving between cloud and local easily.",
+      "status": "not built",
+      "walk": "Pull an agent's file system from the cloud down to a local machine; the agent continues its work there with the same files.",
+      "owner": "owner — \"The idea of \"managed agents\" are you familiar. Does it make sense for the entire harness to live in the cloud and we just access it from client machines or do you think that the local harness pattern makes sense. I would image that we might want both if local models become stronger.\" (first thread turn 13; first thread turn 14)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-181",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "gate-day",
+      "label": "Constitution: scheduled runs and background long-running shells in the agent's tool set (gate-day).",
+      "status": "not built",
+      "walk": "Start a background shell from a thread; it keeps running across later turns.",
+      "owner": "constitution",
+      "surfaces": []
+    },
+    {
+      "id": "FL-182",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "Sep 9",
+      "label": "Agent workflows that are programmable, so making agents do work is extremely easy.",
+      "status": "not built",
+      "walk": "Save an agent workflow and run it twice; both runs do the same work without a person steering.",
+      "owner": "owner — \"I want it to be extremely easy to make agents do work. Like we need this harness to have a native design that essentially allows agent workflows to be programmable and set up on cron jobs for example.\" (chat 2026-09-10 00:49:18)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-183",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "Sep 9",
+      "label": "Agent workflows can be set up on cron jobs.",
+      "status": "not built",
+      "walk": "Put a workflow on a cron schedule; it fires at the scheduled time.",
+      "owner": "owner — \"allows agent workflows to be programmable and set up on cron jobs for example.\" (chat 2026-09-10 00:49:18)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-184",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "Sep 9",
+      "label": "A distinct module for scheduled jobs that makes them easy to monitor; the best visualization is still to be worked out.",
+      "status": "not built",
+      "walk": "Open the scheduled-jobs module; every scheduled job is listed with its current state.",
+      "owner": "owner — \"There should be a distinct module for scheduled jobs that makes it easy to monitor them. We'll need think about what the best visualization for jobs like this are.\" (chat 2026-09-10 00:49:18)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-185",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "Sep 9",
+      "label": "Managed agents, local or in the cloud, with the best way to do this still to be thought through.",
+      "status": "horizon",
+      "walk": "No walk until a packet gives it a shape.",
+      "owner": "owner — \"Think managed agents local or in the cloud etc. What the best way to do this is.\" (chat 2026-09-10 00:49:18)",
+      "surfaces": []
+    },
+    {
+      "id": "FL-186",
+      "section": "15. Platform and integrations",
+      "era": "founding",
+      "label": "Build on Pydantic AI in a way that lets us modify and extend without waiting on them, passing features back and forth with their library.",
+      "status": "partial",
+      "walk": "Upgrade the Pydantic AI dependency; the Harness's own additions keep working and the new upstream features are usable.",
+      "owner": "owner — \"Can we build this in such a way that we can take advantage of the pydantic libraries stuff while still giving ourselves that ability to modify and build onto without having to wait for them. I'm thinking a two modules that can pass features back and forth seamlessly so we don't have to slow down for them but can take advantage of their institutional implementation in the future.\" (chat 2026-07-20 03:10:58; first thread turn 2)",
+      "surfaces": [
+        "harness/src/harness/pydantic_ai_adapter.py",
+        "harness/src/harness/agent_runtime.py",
+        "harness/src/harness/capability.py",
+        "harness/src/harness/toolset.py",
+        "harness/pyproject.toml"
+      ],
+      "last_walk": {
+        "packet": "M3NM",
+        "date": "2026-09-15",
+        "verdict": "FAIL",
+        "flag": "F095",
+        "screenshot": "FL-186.png"
+      }
+    },
+    {
+      "id": "FL-187",
+      "section": "15. Platform and integrations",
+      "era": "founding",
+      "label": "Two repos, the spine (memory) and the Harness, not a mono repo.",
+      "status": "built",
+      "walk": "List the repositories; the spine and the Harness are two separate git repos.",
+      "owner": "owner — \"Two repos (memory/spine vs harness)\" (first thread turn 5; first thread turn 12)",
+      "surfaces": [
+        "harness/pyproject.toml",
+        "spine/pyproject.toml"
+      ],
+      "last_walk": {
+        "packet": "M3NM",
+        "date": "2026-09-15",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-187.png"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-188",
+      "section": "15. Platform and integrations",
+      "era": "founding",
+      "label": "Running a local model on the machine's own hardware.",
+      "status": "unverified",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Point the Harness at a local model and send one message with the network off; the reply arrives from the local model.",
+      "owner": "owner — \"I have a local model that I am running on a locally on my machines hardware, I don't have internet because I am sailing\" (first thread turn 14; first thread turn 13)",
+      "surfaces": [
+        "harness/src/harness/model_policy.py",
+        "harness/src/harness/model_router.py",
+        "harness/src/harness/openrouter_runtime.py",
+        "harness/src/harness/config.py"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-188.jpg"
+      }
+    },
+    {
+      "id": "FL-189",
+      "section": "15. Platform and integrations",
+      "era": "founding",
+      "label": "Constitution: durable execution through DBOS on the same Postgres (founding thread, assistant proposal).",
+      "status": "dropped",
+      "walk": "Kill the daemon mid-run and restart; the run resumes where it stopped.",
+      "owner": "constitution",
+      "surfaces": []
+    },
+    {
+      "id": "FL-190",
+      "section": "15. Platform and integrations",
+      "era": "Jul 22",
+      "label": "The Harness can use skills and has the best and most common tools available, compiled from a list.",
+      "status": "partial",
+      "walk": "Ask the agent to use a skill in a thread; it loads the skill and follows it.",
+      "owner": "owner — \"Generally, we need to make sure that we can use skills and have the best tools available in the harness: I think codex browser use with the chrome extension (we can probably just port theirs I think it's open source). We should compile a list of the best and most common skills and tools and other things and make sure that we have those.\" (chat 2026-07-22 14:49:11; chat 2026-07-22 15:05:49)",
+      "surfaces": [
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/toolset.py",
+        "harness/src/harness/toolset_runtime.py",
+        "harness/pyproject.toml",
+        "harness/uv.lock"
+      ],
+      "last_walk": {
+        "packet": "M3NM",
+        "date": "2026-09-15",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-190.png"
+      }
+    },
+    {
+      "id": "FL-191",
+      "section": "15. Platform and integrations",
+      "era": "Aug 3",
+      "label": "The tools and skills Claude Code and Codex use on this machine, pinned to versioned open-source sources.",
+      "status": "partial",
+      "walk": "Open the tool inventory; each tool or skill lists the versioned open-source source it is pinned to.",
+      "owner": "owner — \"I want to take a look at the logs from claude code and codex on this computer and see what skills, mcps, tools etc that are being used and make sure that we have all of them handy ideally set up to point at something static but with versioning to some open source version...\" (chat 2026-08-03 22:55:52; chat 2026-08-03 23:38:57)",
+      "surfaces": [
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/toolset.py",
+        "harness/src/harness/toolset_runtime.py",
+        "harness/pyproject.toml",
+        "harness/uv.lock",
+        "harness/src/harness/browser_toolset.py",
+        "harness/src/harness/browser_runtime.py"
+      ],
+      "last_walk": {
+        "packet": "M3NM",
+        "date": "2026-09-15",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-191.png"
+      },
+      "protected": true,
+      "protected_reason": "owner-iterated in manual sessions"
+    },
+    {
+      "id": "FL-192",
+      "section": "15. Platform and integrations",
+      "era": "Aug 14",
+      "label": "Swappable seams: router, model policy with an off-switch, toolset as a unit, memory system.",
+      "status": "partial",
+      "walk": "Change the toolset in config to a different one as a unit; the next thread's agent has that toolset's tools.",
+      "owner": "owner — \"I want all of our functions to be moduler and swap able as possible for example: 1. the open router optimization should work for other routers 2. it should be able to be turned off and used with a single token credit 3. We should be able to use all the pi tools for the terminal agent or all the open code tools We should be able to take this as principle.\" (chat 2026-08-14 23:19:48; first thread turn 1)",
+      "surfaces": [
+        "harness/src/harness/model_policy.py",
+        "harness/src/harness/model_router.py",
+        "harness/src/harness/openrouter_runtime.py",
+        "harness/src/harness/config.py",
+        "harness/src/harness/pydantic_ai_adapter.py",
+        "harness/src/harness/agent_runtime.py",
+        "harness/src/harness/capability.py",
+        "harness/src/harness/toolset.py",
+        "harness/pyproject.toml"
+      ],
+      "last_walk": {
+        "packet": "M3NM",
+        "date": "2026-09-15",
+        "verdict": "FAIL",
+        "flag": "F086",
+        "screenshot": "FL-192.png"
+      }
+    },
+    {
+      "id": "FL-193",
+      "section": "15. Platform and integrations",
+      "era": "Aug 15",
+      "label": "The common core of terminal-agent tools (skills, progressive prompting, model switching, compaction, app interactions) in one piece that pulls upstream updates.",
+      "status": "partial",
+      "walk": "Update the shared core-tools piece to its newest upstream version; skills, model switching and the rest keep working in the Harness.",
+      "owner": "owner — \"there should be a core of tools that are consistent across al of them that we should fine: using skills, progressive prompting, changing models, compaction strategies (we will have our own take), interactions with common apps, etc, etc. we need to go out and find those common standard ones pick the one we like the best that is the most modular and keep it.\" (chat 2026-08-15 19:37:48; chat 2026-08-14 23:19:48)",
+      "surfaces": [
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/toolset.py",
+        "harness/src/harness/toolset_runtime.py",
+        "harness/pyproject.toml",
+        "harness/uv.lock"
+      ],
+      "last_walk": {
+        "packet": "M3NM",
+        "date": "2026-09-15",
+        "verdict": "FAIL",
+        "flag": "F095",
+        "screenshot": "FL-193.png"
+      }
+    },
+    {
+      "id": "FL-194",
+      "section": "15. Platform and integrations",
+      "era": "Aug 24",
+      "label": "The Pydantic toolset and skills as the tool layer.",
+      "status": "built",
+      "walk": "Open the agent's tool list in a thread; the tools come from the Pydantic toolset plus skills, not from pi.",
+      "owner": "owner — \"A OK. Good riff I am fine if you've got all those deails kicking that one off with the pydantic toolset, skills, etc use instead of pi\" (chat 2026-08-24 20:53:32)",
+      "surfaces": [
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/toolset.py",
+        "harness/src/harness/toolset_runtime.py",
+        "harness/pyproject.toml",
+        "harness/uv.lock"
+      ],
+      "last_walk": {
+        "packet": "M3NM",
+        "date": "2026-09-15",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-194.png"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-195",
+      "section": "16. Verification tooling",
+      "era": "Sep 13",
+      "label": "The feature ledger generates coverage reports and requires evidence for the rows affected by a build.",
+      "status": "built",
+      "walk": "Compute the composer fix's impact with --paths and see attunement rows; push a branch touching socket.ts and observe the hook print rows and write impacted.json; observe a DONE handoff without screenshots fail CI, then verify complete evidence passes.",
+      "owner": "owner — \"How are we mechanically, not at the discretion of the scout agent, making sure as sure as we can be that we are checking all of these. And all those that might be impacted during the build?\" (PLAN M3LM; 2026-09-12)",
+      "surfaces": [
+        "garden/bin/ledger",
+        "harness/bin/ledger",
+        "harness/docs/feature-ledger.yaml",
+        "spine/bin/ledger",
+        "spine/docs/feature-ledger.yaml",
+        "garden/tests/test_ledger.py",
+        "garden/notes/feature-ledger.yaml",
+        "garden/.github/workflows/ledger.yml",
+        "harness/scripts/run_ui_canon.py",
+        "harness/tests/test_ledger_canon.py",
+        "harness/.github/workflows/ci.yml",
+        "harness/.githooks/pre-push",
+        "spine/.githooks/pre-push",
+        "spine/.github/workflows/ci.yml"
+      ],
+      "last_walk": {
+        "packet": "M3NM",
+        "date": "2026-09-15",
+        "verdict": "FAIL",
+        "flag": "F091",
+        "screenshot": "FL-195.png"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    },
+    {
+      "id": "FL-196",
+      "section": "16. Verification tooling",
+      "era": "Sep 13",
+      "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
+      "status": "built",
+      "walk": "Remove a guard citation on a disposable branch and observe CI fail; change a frozen axiom and observe the freeze step fail; restore both and observe Rules pass. The master ADR check remains red until the owner applies the citation patch.",
+      "owner": "owner — \"every check named in notes/rules-ledger.md, the guard-citation lint, the freeze check, the term bans, the DECISIONS citation lint\" (M3RC fire, 2026-09-13)",
+      "surfaces": [
+        "garden/bin/check_rules",
+        "garden/bin/check_product_rules.py",
+        "garden/tests/test_rules.py",
+        "garden/.github/workflows/rules.yml",
+        "harness/scripts/check_rules.py",
+        "harness/scripts/check_guard_citations.py",
+        "harness/scripts/check_guard_citations.mjs",
+        "harness/scripts/check_product_terms.mjs",
+        "harness/.github/workflows/rules.yml",
+        "spine/scripts/check_rules.py",
+        "spine/.github/workflows/rules.yml"
+      ],
+      "last_walk": {
+        "packet": "M3RW",
+        "date": "2026-09-13",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-196.jpg"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-13"
+    }
+  ]
+}

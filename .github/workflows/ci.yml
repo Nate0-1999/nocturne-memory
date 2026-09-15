@@ -12,22 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          path: spine
           fetch-depth: 0
-      - name: Read canonical Garden ledger
-        uses: actions/checkout@v4
-        with:
-          repository: Nate0-1999/nocturne-garden
-          path: garden
-          fetch-depth: 0
-          ssh-key: ${{ secrets.GARDEN_READ_KEY }}
-          persist-credentials: false
-      - uses: actions/checkout@v4
-        with:
-          repository: Nate0-1999/nocturne-harness
-          path: harness
-          fetch-depth: 0
-          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -37,14 +22,15 @@ jobs:
         run: |
           base="$BEFORE"
           if [ "$base" = 0000000000000000000000000000000000000000 ]; then
-            base=$(git -C spine merge-base origin/main HEAD)
+            base=$(git merge-base origin/main HEAD)
           fi
-          python garden/bin/ledger ci --repo spine "$base..HEAD"
+          python scripts/check_rules.py --freeze-only
+          python bin/ledger ci --repo spine "$base..HEAD"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: feature-impact
-          path: spine/verification/*/impacted.json
+          path: verification/*/impacted.json
 
   lint-and-test:
     runs-on: ubuntu-latest

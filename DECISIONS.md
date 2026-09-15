@@ -1237,3 +1237,11 @@ public repository; Garden verifies their canonical source and frozen-law bytes.
 Role-policy, shared-Palace and single-cost-store rules remain named skipped tests
 because those features are unbuilt. Historical test motivations gain citations;
 their assertions and production behavior are unchanged.
+
+## 047 — Hosted coverage reads the frozen ledger [P2, P4, M3IB]
+
+PRECEDENT: PLAN M3IB resume; F091/F092; owner 2026-09-15.
+The existing freeze exporter publishes the ledger and tool with fingerprints
+and flag IDs. Hooks resolve inside their own checkout; CI verifies repository
+evidence without private Garden or credentials. Garden retains combined packet
+evidence. Packet history includes its own prior commits, not intervening work.
