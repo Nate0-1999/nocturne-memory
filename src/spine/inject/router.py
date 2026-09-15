@@ -15,7 +15,6 @@ from spine.contracts import (
     PrepareResponse,
 )
 from spine.embeddings import EmbeddingProviderError
-from spine.ids import mint_ulid
 from spine.inject.annotations import (
     AnnotationConflictError,
     AnnotationFingerprintMismatchError,
@@ -39,7 +38,6 @@ from spine.inject.service import (
     ThreadAlreadyPreparedError,
     ThreadIdentityConflictError,
 )
-from spine.learner.service import OptimizationTrigger
 from spine.learner.worker import LearnerWorker
 from spine.problems import (
     ProblemJSONResponse,
