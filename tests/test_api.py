@@ -24,6 +24,7 @@ INJECTION_ID = "00000000-0000-0000-0000-000000000002"
 
 SPINE_ROUTES = {
     ("GET", "/v1/identity"),
+    ("POST", "/v1/compactions"),
     ("POST", "/v1/inject/prepare"),
     ("POST", "/v1/inject/commit"),
     ("POST", "/v1/feedback"),
