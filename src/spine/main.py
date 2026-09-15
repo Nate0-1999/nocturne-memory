@@ -225,6 +225,7 @@ def create_app(
                 await reconciliation_client.aclose()
             if owned_engine is not None:
                 await owned_engine.dispose()
+
     bearer_contract = HTTPBearer(auto_error=False, scheme_name="StaticBearer")
     app = FastAPI(
         title="N8 Spine",

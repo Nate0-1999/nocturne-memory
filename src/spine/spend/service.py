@@ -170,9 +170,7 @@ class SpendService:
         if instant.tzinfo is None or instant.utcoffset() is None:
             raise ValueError("spend table as_of must include a UTC offset")
         if thread_ids is not None and not thread_ids:
-            return SpendTableSnapshot(
-                as_of=instant, window_minutes=60, threads=[], purposes=[]
-            )
+            return SpendTableSnapshot(as_of=instant, window_minutes=60, threads=[], purposes=[])
 
         scoped = thread_ids is not None
         parameters: dict[str, Any] = {"window_start": instant - timedelta(minutes=60)}
@@ -182,10 +180,14 @@ class SpendService:
             parameters["thread_ids"] = list(dict.fromkeys(thread_ids or ()))
         async with self._session_factory() as session:
             rows = (
-                await session.execute(
-                    text(_table_query(scoped, principal_id is not None)), parameters
+                (
+                    await session.execute(
+                        text(_table_query(scoped, principal_id is not None)), parameters
+                    )
                 )
-            ).mappings().all()
+                .mappings()
+                .all()
+            )
 
         models: dict[UUID, list[ModelSpendRow]] = {}
         threads: list[ThreadSpendRow] = []

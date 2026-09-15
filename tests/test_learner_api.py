@@ -717,7 +717,8 @@ async def test_force_values_basin_yields_visible_measured_inactive_learner_propo
 
     refreshed = await memory_client.post(
         "/v1/scorer-console/query",
-        json={"principal_id": "owner", "thread_id": None, "as_of": "now"},
+        params={"scope": "palace"},
+        json={"principal_id": "local", "thread_id": None, "as_of": "now"},
     )
     assert refreshed.status_code == 200
     snapshot = refreshed.json()

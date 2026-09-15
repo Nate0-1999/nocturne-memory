@@ -27,14 +27,13 @@ async def test_metrics_keep_principal_rows_and_require_owner_for_palace(
     foreign = _event("01K1M2A0000000000000000002", ts=now.isoformat(), cost_usd="9.00")
     unowned = _event("01K1M2A0000000000000000003", ts=now.isoformat(), cost_usd="5.00")
     unowned["principal_id"] = None
-    assert (await memory_client.post(
-        "/v1/spend/events", json={"events": [own, foreign, unowned]}
-    )).status_code == 200
+    assert (
+        await memory_client.post("/v1/spend/events", json={"events": [own, foreign, unowned]})
+    ).status_code == 200
     await _insert_memory_heads(memory_session_factory, anchor=now)
     async with memory_session_factory() as session, session.begin():
         await session.execute(
-            update(MemoryUnit).where(MemoryUnit.id == UUID(int=8101))
-            .values(principal_id=principal)
+            update(MemoryUnit).where(MemoryUnit.id == UUID(int=8101)).values(principal_id=principal)
         )
     await SpendViewRefresher(memory_session_factory).refresh_once()
 

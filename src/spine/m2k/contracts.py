@@ -281,6 +281,7 @@ class CandidateScoreHistory(M2KContract):
 
 class ScorerConsoleSnapshot(M2KContract):
     as_of: AwareDatetime
+    metrics_scope: Literal["principal", "palace"] = "palace"
     scope: Literal["GLOBAL", "CURRENT"]
     thread_id: UUID | None
     descriptors: list[ScorerDescriptor]

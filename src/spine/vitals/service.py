@@ -138,18 +138,31 @@ class VitalsService:
                     select(func.count())
                     .select_from(ApprovalQueueItem)
                     .where(ApprovalQueueItem.state == "pending")
-                    .where(*(
-                        [ApprovalQueueItem.principal_id == principal_id]
-                        if principal_id is not None else []
-                    ))
+                    .where(
+                        *(
+                            [ApprovalQueueItem.principal_id == principal_id]
+                            if principal_id is not None
+                            else []
+                        )
+                    )
                 )
-                reconciliation = None if principal_id is not None else await session.scalar(
-                    select(SpendReconciliation)
-                    .order_by(SpendReconciliation.ts.desc(), SpendReconciliation.event_uid.desc())
-                    .limit(1)
+                reconciliation = (
+                    None
+                    if principal_id is not None
+                    else await session.scalar(
+                        select(SpendReconciliation)
+                        .order_by(
+                            SpendReconciliation.ts.desc(), SpendReconciliation.event_uid.desc()
+                        )
+                        .limit(1)
+                    )
                 )
-                database_bytes = None if principal_id is not None else await session.scalar(
-                    select(func.pg_database_size(func.current_database()))
+                database_bytes = (
+                    None
+                    if principal_id is not None
+                    else await session.scalar(
+                        select(func.pg_database_size(func.current_database()))
+                    )
                 )
 
         return VitalsSnapshot(
@@ -158,7 +171,8 @@ class VitalsService:
             spend=_spend_snapshot(
                 spend_rows,
                 source=(
-                    "spend_event" if thread_id is not None or principal_id is not None
+                    "spend_event"
+                    if thread_id is not None or principal_id is not None
                     else "v_spend_rate"
                 ),
             ),
@@ -173,7 +187,8 @@ class VitalsService:
                 disk_free_bytes=None,
                 disk_total_bytes=None,
                 database_bytes=(
-                    None if database_bytes is None
+                    None
+                    if database_bytes is None
                     else _nonnegative_count(database_bytes, "database_bytes")
                 ),
                 journal_bytes=None,

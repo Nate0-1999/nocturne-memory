@@ -375,7 +375,8 @@ async def test_console_contributions_sum_exactly_and_control_inserts_a_version(
     }
     refreshed = await memory_client.post(
         "/v1/scorer-console/query",
-        json={"principal_id": "owner", "thread_id": str(thread_id), "as_of": "now"},
+        params={"scope": "palace"},
+        json={"principal_id": "local", "thread_id": str(thread_id), "as_of": "now"},
     )
     assert refreshed.status_code == 200
     assert [item["kind"] for item in refreshed.json()["learning"]["annotations"]] == [
@@ -581,8 +582,10 @@ async def test_console_learning_view_is_one_exact_server_authored_scoreboard(
             ]
         )
 
+    memory_app.state.settings.owner_principal_id = "owner"
     response = await memory_client.post(
         "/v1/scorer-console/query",
+        params={"scope": "palace"},
         json={"principal_id": "owner", "thread_id": None, "as_of": "now"},
     )
 
@@ -649,6 +652,30 @@ async def test_console_learning_view_is_one_exact_server_authored_scoreboard(
             "result": "not_better",
         }
     ]
+
+    # PLAN M3SC / F100: a principal gets only its signals, never global training history.
+    for principal, expected_signals in [("owner", 3), ("nocturne-verification-unrelated", 0)]:
+        scoped = await memory_client.post(
+            "/v1/scorer-console/query",
+            json={"principal_id": principal, "thread_id": None},
+        )
+        assert scoped.status_code == 200
+        payload = scoped.json()
+        assert payload["metrics_scope"] == "principal"
+        assert payload["learning"]["eligible_dispositions"] == expected_signals
+        assert payload["learning"]["retrain_runs"] == []
+        assert payload["learning"]["annotations"] == []
+        assert payload["accuracy"] == payload["activations"] == payload["proposed_versions"] == []
+        assert all(config["replay"] is None for config in payload["configurations"])
+        if expected_signals == 0:
+            assert payload["learning"]["live_agreement"] == payload["candidates"] == []
+    refused = await memory_client.post(
+        "/v1/scorer-console/query",
+        params={"scope": "palace"},
+        json={"principal_id": "nocturne-verification-unrelated", "thread_id": None},
+    )
+    assert refused.status_code == 403
+    assert refused.json()["detail"] == "Only the Palace owner can view the whole Palace."
 
 
 @pytest.mark.asyncio
@@ -760,6 +787,7 @@ async def test_f033_production_legacy_aliases_render_the_honest_owner_scoreboard
 
     before = await memory_client.post(
         "/v1/scorer-console/query",
+        params={"scope": "palace"},
         json={"principal_id": "local", "thread_id": None, "as_of": "now"},
     )
     assert before.status_code == 200
@@ -771,6 +799,7 @@ async def test_f033_production_legacy_aliases_render_the_honest_owner_scoreboard
 
     response = await memory_client.post(
         "/v1/scorer-console/query",
+        params={"scope": "palace"},
         json={"principal_id": "local", "thread_id": None, "as_of": "now"},
     )
 
@@ -995,7 +1024,8 @@ async def test_only_learner_proposals_can_be_activated_and_accuracy_is_measured(
 
     before = await memory_client.post(
         "/v1/scorer-console/query",
-        json={"principal_id": "owner", "thread_id": None, "as_of": "now"},
+        params={"scope": "palace"},
+        json={"principal_id": "local", "thread_id": None, "as_of": "now"},
     )
     assert before.status_code == 200
     accuracy = {item["version"]: item for item in before.json()["accuracy"]}

@@ -1256,3 +1256,7 @@ Filter receipts, memory counts, edges and queue depth in SQL. Principal views
 omit whole-database size and broker reconciliation. This preserves the existing
 shared-token trust model; it is not authenticated tenant isolation. Older clients
 must upgrade because metrics calls without a principal are refused.
+
+F100's granted extension applies the same check to scorer-console status.
+Principal views retain their own learning signals and the current scoring policy;
+shared replay metrics, training history and activation metadata are owner-only.

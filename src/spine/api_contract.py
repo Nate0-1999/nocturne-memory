@@ -7,7 +7,7 @@ from copy import deepcopy
 from hashlib import sha256
 from typing import Any
 
-API_CONTRACT_VERSION = "0.1.12"
+API_CONTRACT_VERSION = "0.1.13"
 
 
 class ApiContractDriftError(RuntimeError):

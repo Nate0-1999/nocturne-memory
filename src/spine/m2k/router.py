@@ -1,5 +1,7 @@
 """Bearer-protected M2K visualization and scorer-control routes."""
 
+from typing import Literal
+
 from fastapi import APIRouter, Request
 
 from spine.m2k.contracts import (
@@ -16,6 +18,7 @@ from spine.m2k.contracts import (
     ScorerSimulationResponse,
 )
 from spine.m2k.service import M2KService, M2KStateError
+from spine.metrics_scope import metrics_principal
 from spine.problems import ProblemJSONResponse, problem_openapi, problem_response
 
 router = APIRouter(tags=["m2k"])
@@ -43,14 +46,16 @@ async def memory_graph(
 @router.post(
     "/v1/scorer-console/query",
     response_model=ScorerConsoleSnapshot,
-    responses=_RESPONSES,
+    responses={**_RESPONSES, 403: problem_openapi("Whole-Palace status requires the owner")},
 )
 async def scorer_console(
     body: ScorerConsoleQuery,
     request: Request,
+    scope: Literal["principal", "palace"] = "principal",
 ) -> ScorerConsoleSnapshot | ProblemJSONResponse:
+    principal = metrics_principal(request, body.principal_id, scope)
     try:
-        return await _service(request).scorer_console(body)
+        return await _service(request).scorer_console(body, palace_scope=principal is None)
     except M2KStateError as error:
         return _state_problem(request, error)
 

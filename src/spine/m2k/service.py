@@ -277,7 +277,9 @@ class M2KService:
         )
         return edges
 
-    async def scorer_console(self, query: ScorerConsoleQuery) -> ScorerConsoleSnapshot:
+    async def scorer_console(
+        self, query: ScorerConsoleQuery, *, palace_scope: bool = False
+    ) -> ScorerConsoleSnapshot:
         if query.as_of != "now":
             raise M2KStateError("historical_unavailable")
         async with self._session_factory() as session:
@@ -301,30 +303,46 @@ class M2KService:
                 if len(active) != 1:
                     raise M2KStateError("invalid_active_scorer")
                 activations = (
-                    (
-                        await session.execute(
-                            select(ScorerActivationRow).order_by(
-                                ScorerActivationRow.ts,
-                                ScorerActivationRow.event_uid,
+                    []
+                    if not palace_scope
+                    else (
+                        (
+                            await session.execute(
+                                select(ScorerActivationRow).order_by(
+                                    ScorerActivationRow.ts,
+                                    ScorerActivationRow.event_uid,
+                                )
                             )
                         )
+                        .scalars()
+                        .all()
                     )
-                    .scalars()
-                    .all()
                 )
                 retrain_runs = (
-                    (
-                        await session.execute(
-                            select(LearnerRun).order_by(LearnerRun.ts, LearnerRun.run_uid)
+                    []
+                    if not palace_scope
+                    else (
+                        (
+                            await session.execute(
+                                select(LearnerRun).order_by(LearnerRun.ts, LearnerRun.run_uid)
+                            )
                         )
+                        .scalars()
+                        .all()
                     )
-                    .scalars()
-                    .all()
                 )
                 learning_events = (
                     (
                         await session.execute(
-                            select(InjectionEvent).order_by(
+                            select(InjectionEvent)
+                            .where(
+                                *(
+                                    []
+                                    if palace_scope
+                                    else [InjectionEvent.principal_id == query.principal_id]
+                                )
+                            )
+                            .order_by(
                                 InjectionEvent.ts,
                                 InjectionEvent.injection_id,
                                 InjectionEvent.event_uid,
@@ -335,7 +353,22 @@ class M2KService:
                     .all()
                 )
                 learning_annotations = (
-                    (await session.execute(select(InjectionEventAnnotation))).scalars().all()
+                    (
+                        await session.execute(
+                            select(InjectionEventAnnotation).where(
+                                *(
+                                    []
+                                    if palace_scope
+                                    else [
+                                        InjectionEventAnnotation.target_principal_id
+                                        == query.principal_id
+                                    ]
+                                )
+                            )
+                        )
+                    )
+                    .scalars()
+                    .all()
                 )
                 event_statement = select(InjectionEvent).where(
                     InjectionEvent.principal_id == query.principal_id
@@ -355,6 +388,13 @@ class M2KService:
                 )
 
         config_views = [_config_view(row) for row in configs]
+        if not palace_scope:
+            # F100: expose the current scoring policy, never other principals' replay metrics.
+            config_views = [
+                view.model_copy(update={"replay": None})
+                for view in config_views
+                if view.status == "active"
+            ]
         config_by_version = {row.version: row for row in configs}
         candidates = _candidate_histories(events, config_by_version)
         proposals = [view for view in config_views if view.status == "proposed"]
@@ -369,6 +409,7 @@ class M2KService:
             raise M2KStateError(f"invalid_learning_evidence:{error}") from error
         return ScorerConsoleSnapshot(
             as_of=as_of,
+            metrics_scope="palace" if palace_scope else "principal",
             scope="CURRENT" if query.thread_id is not None else "GLOBAL",
             thread_id=query.thread_id,
             descriptors=list(SCORER_DESCRIPTORS),
@@ -376,7 +417,7 @@ class M2KService:
             configurations=config_views,
             activations=[_activation_view(row) for row in activations],
             proposed_versions=proposals,
-            accuracy=[_accuracy_point(row) for row in configs],
+            accuracy=[_accuracy_point(row) for row in configs] if palace_scope else [],
             learning=_learning_view(
                 evidence_examples=evidence.examples,
                 hygiene_excluded=evidence.hygiene_excluded_dispositions,
