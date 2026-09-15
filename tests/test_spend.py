@@ -154,7 +154,7 @@ async def test_spend_table_groups_threads_models_token_lanes_and_non_thread_purp
     written = await memory_client.post("/v1/spend/events", json={"events": events})
     assert written.status_code == 200
 
-    response = await memory_client.get("/v1/spend/table")
+    response = await memory_client.get("/v1/spend/table?principal_id=local&scope=palace")
     assert response.status_code == 200
     snapshot = SpendTableSnapshot.model_validate(response.json())
     by_thread = {str(row.thread_id): row for row in snapshot.threads}
@@ -180,13 +180,13 @@ async def test_spend_table_groups_threads_models_token_lanes_and_non_thread_purp
 
     scoped_response = await memory_client.get(
         "/v1/spend/table",
-        params=[("thread_id", _THREAD_ID)],
+        params=[("thread_id", _THREAD_ID), ("principal_id", "local"), ("scope", "palace")],
     )
     scoped = SpendTableSnapshot.model_validate(scoped_response.json())
     assert [str(row.thread_id) for row in scoped.threads] == [_THREAD_ID]
     assert scoped.purposes == []
 
-    empty_response = await memory_client.get("/v1/spend/table?scope=threads")
+    empty_response = await memory_client.get("/v1/spend/table?principal_id=owner&scope=threads")
     empty = SpendTableSnapshot.model_validate(empty_response.json())
     assert empty.threads == []
     assert empty.purposes == []

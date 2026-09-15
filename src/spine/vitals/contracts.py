@@ -176,7 +176,7 @@ class ResourceSnapshot(VitalsContract):
     daemon_uptime_seconds: NonNegativeInt | None
     disk_free_bytes: NonNegativeInt | None
     disk_total_bytes: NonNegativeInt | None
-    database_bytes: NonNegativeInt
+    database_bytes: NonNegativeInt | None
     journal_bytes: NonNegativeInt | None
     backup_bytes: NonNegativeInt | None
     warning: Literal["low_disk"] | None

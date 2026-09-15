@@ -1245,3 +1245,14 @@ The existing freeze exporter publishes the ledger and tool with fingerprints
 and flag IDs. Hooks resolve inside their own checkout; CI verifies repository
 evidence without private Garden or credentials. Garden retains combined packet
 evidence. Packet history includes its own prior commits, not intervening work.
+
+## 048 — Scope metrics before aggregation [P2, M3SC]
+
+PRECEDENT: PLAN M3SC, F094, ADR-001's shared bearer; ancestors M3VI, M3SP.
+Require a declared principal on spend/Vitals reads. Only the configured
+`SPINE_OWNER_PRINCIPAL_ID` (default `local`, matching init) may request
+`scope=palace`; `/v1/identity` tells the client which view it may request.
+Filter receipts, memory counts, edges and queue depth in SQL. Principal views
+omit whole-database size and broker reconciliation. This preserves the existing
+shared-token trust model; it is not authenticated tenant isolation. Older clients
+must upgrade because metrics calls without a principal are refused.

@@ -18,6 +18,7 @@ class Settings(BaseSettings):
 
     database_url: str
     token: SecretStr
+    owner_principal_id: str = Field(default="local", min_length=1)
     openai_api_key: SecretStr | None = None
 
     tau: float = Field(default=0.55, ge=0.0, le=1.0)

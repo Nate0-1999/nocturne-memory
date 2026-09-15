@@ -1,9 +1,11 @@
 """Bearer-protected live read boundary for A-028 Palace Vitals."""
 
+from typing import Annotated, Literal
 from uuid import UUID
 
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Query, Request
 
+from spine.metrics_scope import metrics_principal
 from spine.problems import ProblemJSONResponse, problem_openapi, problem_response
 from spine.vitals.contracts import VitalsSnapshot
 from spine.vitals.service import VitalsService
@@ -16,20 +18,27 @@ router = APIRouter(tags=["vitals"])
     response_model=VitalsSnapshot,
     responses={
         401: problem_openapi("Bearer token missing or invalid"),
-        422: problem_openapi("Query parameters are not accepted"),
+        403: problem_openapi("Only the Palace owner can view the whole Palace"),
+        422: problem_openapi("Request does not match the endpoint contract"),
         500: problem_openapi("Unexpected service failure"),
     },
 )
-async def get_vitals(request: Request) -> VitalsSnapshot | ProblemJSONResponse:
-    if request.query_params:
+async def get_vitals(
+    request: Request,
+    principal_id: Annotated[str, Query(min_length=1)],
+    scope: Literal["principal", "palace"] = "principal",
+) -> VitalsSnapshot | ProblemJSONResponse:
+    if set(request.query_params) - {"principal_id", "scope"}:
         return problem_response(
             status=422,
             title="Unprocessable Content",
-            detail="GET /v1/vitals does not accept query parameters.",
+            detail="Palace Vitals accepts only principal_id and scope.",
             instance=request.url.path,
             endpoint=f"{request.method} {request.url.path}",
         )
-    return await _service(request).snapshot()
+    return await _service(request).snapshot(
+        principal_id=metrics_principal(request, principal_id, scope)
+    )
 
 
 @router.get(
@@ -37,23 +46,28 @@ async def get_vitals(request: Request) -> VitalsSnapshot | ProblemJSONResponse:
     response_model=VitalsSnapshot,
     responses={
         401: problem_openapi("Bearer token missing or invalid"),
-        422: problem_openapi("Query parameters are not accepted"),
+        403: problem_openapi("Only the Palace owner can view the whole Palace"),
+        422: problem_openapi("Request does not match the endpoint contract"),
         500: problem_openapi("Unexpected service failure"),
     },
 )
 async def get_thread_vitals(
     thread_id: UUID,
     request: Request,
+    principal_id: Annotated[str, Query(min_length=1)],
+    scope: Literal["principal", "palace"] = "principal",
 ) -> VitalsSnapshot | ProblemJSONResponse:
-    if request.query_params:
+    if set(request.query_params) - {"principal_id", "scope"}:
         return problem_response(
             status=422,
             title="Unprocessable Content",
-            detail="Thread Vitals does not accept query parameters.",
+            detail="Thread Vitals accepts only principal_id and scope.",
             instance=request.url.path,
             endpoint=f"{request.method} {request.url.path}",
         )
-    return await _service(request).snapshot(thread_id=thread_id)
+    return await _service(request).snapshot(
+        thread_id=thread_id, principal_id=metrics_principal(request, principal_id, scope)
+    )
 
 
 def _service(request: Request) -> VitalsService:

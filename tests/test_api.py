@@ -23,6 +23,7 @@ MEMORY_ID = "00000000-0000-0000-0000-000000000001"
 INJECTION_ID = "00000000-0000-0000-0000-000000000002"
 
 SPINE_ROUTES = {
+    ("GET", "/v1/identity"),
     ("POST", "/v1/inject/prepare"),
     ("POST", "/v1/inject/commit"),
     ("POST", "/v1/feedback"),
@@ -90,7 +91,7 @@ async def test_health_endpoints_and_auth_are_live(app: FastAPI) -> None:
     assert healthy_healthz.json() == {
         "ok": True,
         "version": __version__,
-        "api_contract_version": "0.1.11",
+        "api_contract_version": "0.1.12",
         "schema_version": "0021",
     }
     assert healthy_healthz.json()["api_contract_version"] == API_CONTRACT_VERSION
@@ -352,7 +353,7 @@ def test_committed_openapi_is_current(app: FastAPI) -> None:
         spend_event["required"]
     )
     vitals_operation = committed["paths"]["/v1/vitals"]["get"]
-    assert "parameters" not in vitals_operation
+    assert {item["name"] for item in vitals_operation["parameters"]} == {"principal_id", "scope"}
     assert {"200", "401", "422", "500"} <= set(vitals_operation["responses"])
     vitals_schema = committed["components"]["schemas"]["VitalsSnapshot"]
     assert set(vitals_schema["required"]) == {
