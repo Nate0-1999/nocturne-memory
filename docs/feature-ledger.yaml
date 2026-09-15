@@ -545,7 +545,7 @@
       "era": "Aug 1",
       "label": "A live boost within the session for a memory the human added earlier in that session.",
       "status": "unverified",
-      "walk": "Add a near-miss back; on the next prompt in the same session it scores higher than before.",
+      "walk": "Add a near-miss back; on the next prompt in the same session it is included by the thread lock (ADR-005), not re-scored — the owner's question ('its scores increased?') was settled by the no-arbitrary-boost rule.",
       "owner": "owner — \"Should we have live thread parameters too? Like this has been added to the session by a human previously threfore it's scores increased?\" (chat 2026-08-01 19:44:13)",
       "surfaces": [
         "spine/src/spine/inject/scorer.py",
