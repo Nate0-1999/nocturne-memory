@@ -93,6 +93,36 @@ class RemovedMemory(ContractRequest):
     reason: Literal["not_relevant", "wrong", "never"]
 
 
+class MemoryScoresRequest(PrepareRequest):
+    memory_ids: list[UUID]
+
+
+@router.post("/v1/memories/scores", response_model=dict[str, float], responses=PREPARE_RESPONSES)
+async def memory_scores(
+    body: MemoryScoresRequest,
+    request: Request,
+) -> dict[str, float] | ProblemJSONResponse:
+    """M3MP: current-context scores are observations, never gate dispositions."""
+    try:
+        return await _prepare_service(request).preview_scores(
+            PrepareCommand(
+                **{
+                    **body.model_dump(exclude={"memory_ids"}),
+                    "agent_kind": body.agent_kind or "general",
+                }
+            ),
+            body.memory_ids,
+        )
+    except EmbeddingProviderError:
+        return problem_response(
+            status=503,
+            title="Service Unavailable",
+            detail="Memory scoring unavailable",
+            instance=request.url.path,
+            endpoint="POST /v1/memories/scores",
+        )
+
+
 class CommitRequest(ContractRequest):
     injection_id: UUID
     removed: list[RemovedMemory]

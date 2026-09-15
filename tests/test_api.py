@@ -28,6 +28,7 @@ SPINE_ROUTES = {
     ("POST", "/v1/feedback"),
     ("POST", "/v1/injection-event-annotations"),
     ("POST", "/v1/memories"),
+    ("POST", "/v1/memories/scores"),
     ("POST", "/v1/memory-splits"),
     ("PATCH", "/v1/memories/{id}"),
     ("GET", "/v1/memories"),
@@ -89,7 +90,7 @@ async def test_health_endpoints_and_auth_are_live(app: FastAPI) -> None:
     assert healthy_healthz.json() == {
         "ok": True,
         "version": __version__,
-        "api_contract_version": "0.1.10",
+        "api_contract_version": "0.1.11",
         "schema_version": "0021",
     }
     assert healthy_healthz.json()["api_contract_version"] == API_CONTRACT_VERSION
@@ -132,7 +133,7 @@ def test_contract_fingerprint_rejects_unversioned_openapi_drift(app: FastAPI) ->
         require_known_contract_fingerprint(contract_drift, fingerprints)
 
     with pytest.raises(ApiContractDriftError, match="has no recorded OpenAPI fingerprint"):
-        require_known_contract_fingerprint(openapi, fingerprints, version="0.1.11")
+        require_known_contract_fingerprint(openapi, fingerprints, version="999.0.0")
 
 
 async def test_retrain_is_bearer_protected_before_any_training_work(app: FastAPI) -> None:

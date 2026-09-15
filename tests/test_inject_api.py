@@ -18,7 +18,15 @@ from spine.embeddings import EmbeddingTransportError
 from spine.ids import mint_ulid
 
 FEATURE_NAMES = {
-    "sem", "kw", "time", "proj", "freq", "hist", "loc", "thread", "where",
+    "sem",
+    "kw",
+    "time",
+    "proj",
+    "freq",
+    "hist",
+    "loc",
+    "thread",
+    "where",
 }
 DEFAULT_STATS = {
     "injections": 0,
@@ -154,6 +162,42 @@ async def _insert_memory(
                 )
             )
     return root_uid
+
+
+async def test_memory_scores_include_fresh_owned_cards_without_injection_events(
+    memory_client: AsyncClient,
+    embedding_provider: ScriptedEmbeddingProvider,
+    memory_session_factory: async_sessionmaker[AsyncSession],
+) -> None:
+    """M3MP / F081: a fresh card has a real score without fabricating a gate."""
+    own, other = UUID(int=9101), UUID(int=9102)
+    for memory_id, principal in ((own, "owner"), (other, "other")):
+        await _insert_memory(
+            memory_session_factory,
+            memory_id=memory_id,
+            principal_id=principal,
+            label="Alpha",
+            body="alpha",
+            embedding=basis_vector(0),
+        )
+    embedding_provider.set("alpha", basis_vector(0))
+    body = _prepare_body(prompt="alpha")
+    scored = await memory_client.post(
+        "/v1/memories/scores",
+        json={**body, "memory_ids": [str(own), str(other)]},
+    )
+    assert scored.status_code == 200, scored.text
+    assert set(scored.json()) == {str(own)}
+    async with memory_session_factory() as session:
+        assert await session.scalar(select(func.count()).select_from(InjectionEvent)) == 0
+        assert await session.scalar(select(func.count()).select_from(Thread)) == 0
+        memory = await session.get(MemoryUnit, own)
+        assert memory.revision == 1 and memory.stats["injections"] == 0
+    prepared = await memory_client.post("/v1/inject/prepare", json=body)
+    assert prepared.status_code == 200, prepared.text
+    assert prepared.json()["injected"][0]["score"] == pytest.approx(
+        scored.json()[str(own)], abs=1e-5
+    )
 
 
 async def test_prepare_and_console_preview_agree_above_the_retired_count_cap(

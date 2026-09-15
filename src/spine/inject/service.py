@@ -136,6 +136,69 @@ class PrepareService:
         self._session_factory = session_factory
         self._embedding_provider = embedding_provider
 
+    async def preview_scores(
+        self, command: PrepareCommand, memory_ids: Sequence[UUID]
+    ) -> dict[str, float]:
+        """M3MP: score visible owned memories without injection or learning events."""
+        embedding = await embed_one(
+            self._embedding_provider,
+            command.prompt,
+            expected_dimensions=_EMBEDDING_DIMENSIONS,
+            receipt_context=EmbeddingReceiptContext(
+                principal_id=command.principal_id,
+                machine_id=command.machine_id,
+                origin_agent=command.agent_id,
+                thread_id=command.thread_id,
+            ),
+        )
+        unit, revision = MemoryUnit.__table__, MemoryRevision.__table__
+        edits = (
+            select(revision.c.memory_id, func.max(revision.c.ts).label("last_human_edit_at"))
+            .where(revision.c.editor == "user")
+            .group_by(revision.c.memory_id)
+            .subquery()
+        )
+        async with self._session_factory() as session:
+            async with session.begin():
+                await session.execute(
+                    text("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY")
+                )
+                now = await session.scalar(select(func.clock_timestamp()))
+                config = await _active_scorer_config(session)
+                rows = (
+                    (
+                        await session.execute(
+                            select(*unit.c, edits.c.last_human_edit_at)
+                            .select_from(unit.outerjoin(edits, edits.c.memory_id == unit.c.id))
+                            .where(
+                                unit.c.principal_id == command.principal_id,
+                                unit.c.id.in_(memory_ids),
+                                unit.c.status == "active",
+                            )
+                        )
+                    )
+                    .mappings()
+                    .all()
+                )
+        candidates = [_candidate_from_row(row, pool_sources=("panel",)) for row in rows]
+        selection = score_and_select(
+            prompt=command.prompt,
+            query_embedding=embedding,
+            snapshot_ts=now,
+            thread_project_key=command.project_key,
+            thread_id=command.thread_id,
+            location_path=command.location_path,
+            current_location=command.current_location,
+            pinned_candidates=[item for item in candidates if item.pin],
+            regular_candidates=[item for item in candidates if not item.pin],
+            model_context_tokens=command.model_context_tokens,
+            config=config,
+        )
+        return {
+            str(item.candidate.memory_id): item.score
+            for item in (*selection.injected, *selection.unselected)
+        }
+
     async def prepare(self, command: PrepareCommand) -> PrepareResponse:
         """Embed a prompt, freeze one thread snapshot, score, and log atomically."""
 
