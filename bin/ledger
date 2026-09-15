@@ -274,7 +274,9 @@ def verify(data, directory, check_diffs=()):
     expected = report(data, directory.name, resolved if mode == "builder" else [])
     if check_diffs:
         # M3IB: CI computes the pushed changes independently of the author's report.
-        expected["rows"].update(report(data, directory.name, check_diffs)["rows"])
+        checked = report(data, directory.name, check_diffs)
+        expected["rows"].update(checked["rows"])
+        expected["unmapped"].update(checked["unmapped"])
     if evidence.get("packet", "").lower() != directory.name.lower():
         errors.append("report packet must match its evidence folder")
     if evidence.get("ledger_sha256") != digest(SOURCE):
