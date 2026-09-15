@@ -1,0 +1,73 @@
+.......FL-001: missing screenshot FL-001.png
+Handoff REFUSED: 2 required rows checked
+..............generated markdown is stale: run bin/ledger render
+.........
+----------------------------------------------------------------------
+Ran 30 tests in 7.189s
+
+OK
+Ledger coverage PASS: 2 required rows; verdicts, screenshots and hashes verified
+Impact bell: M3TEST -> /var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpx9i_e2tq/harness/verification/m3test/impacted.json
+  FL-001: Feature 1
+  FL-002: Feature 2
+  Unmapped: harness/src/renamed.py (add a row or declare no feature impact)
+  Unmapped: harness/unknown.txt (add a row or declare no feature impact)
+missing or invalid ledger-report.json: [Errno 2] No such file or directory: '/private/var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpx9i_e2tq/harness/verification/m3test/ledger-report.json'
+report packet must match its evidence folder
+ledger changed: regenerate the report and review required rows
+report header must name the remaining reviewer discretion
+harness/src/renamed.py: add a row or declare no feature impact
+harness/unknown.txt: add a row or declare no feature impact
+missing or malformed SHA256SUMS
+FL-001: needs PASS, FAIL or UNCHANGED; missing screenshot FL-001.png
+FL-002: needs PASS, FAIL or UNCHANGED; missing screenshot FL-002.png
+Impact bell: M3TEST -> /var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpan8biqcu/harness/verification/m3test/impacted.json
+  FL-001: Feature 1
+  FL-002: Feature 2
+  Unmapped: harness/src/renamed.py (add a row or declare no feature impact)
+  Unmapped: harness/unknown.txt (add a row or declare no feature impact)
+missing or invalid ledger-report.json: [Errno 2] No such file or directory: '/private/var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpan8biqcu/harness/verification/m3test/ledger-report.json'
+report packet must match its evidence folder
+ledger changed: regenerate the report and review required rows
+report header must name the remaining reviewer discretion
+harness/src/renamed.py: add a row or declare no feature impact
+harness/unknown.txt: add a row or declare no feature impact
+missing or malformed SHA256SUMS
+FL-001: needs PASS, FAIL or UNCHANGED; missing screenshot FL-001.png
+FL-002: needs PASS, FAIL or UNCHANGED; missing screenshot FL-002.png
+Work in progress: evidence is required at the DONE handoff.
+Impact bell: M3TEST -> /var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpan8biqcu/harness/verification/m3test/impacted.json
+  FL-001: Feature 1
+  FL-002: Feature 2
+  Unmapped: harness/src/renamed.py (add a row or declare no feature impact)
+  Unmapped: harness/unknown.txt (add a row or declare no feature impact)
+missing or invalid ledger-report.json: [Errno 2] No such file or directory: '/private/var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpan8biqcu/harness/verification/m3test/ledger-report.json'
+report packet must match its evidence folder
+ledger changed: regenerate the report and review required rows
+report header must name the remaining reviewer discretion
+harness/src/renamed.py: add a row or declare no feature impact
+harness/unknown.txt: add a row or declare no feature impact
+missing or malformed SHA256SUMS
+FL-001: needs PASS, FAIL or UNCHANGED; missing screenshot FL-001.png
+FL-002: needs PASS, FAIL or UNCHANGED; missing screenshot FL-002.png
+Impact bell: M3TEST -> /var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpan8biqcu/harness/verification/m3test/impacted.json
+  FL-001: Feature 1
+  FL-002: Feature 2
+  Unmapped: harness/src/renamed.py (add a row or declare no feature impact)
+  Unmapped: harness/unknown.txt (add a row or declare no feature impact)
+Ledger coverage PASS: 2 required rows
+Impact bell: M3TEST -> /var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpdsjkfp5x/harness/verification/m3test/impacted.json
+  FL-001: Feature 1
+  FL-002: Feature 2
+  Unmapped: harness/src/renamed.py (add a row or declare no feature impact)
+  Unmapped: harness/unknown.txt (add a row or declare no feature impact)
+missing or invalid ledger-report.json: [Errno 2] No such file or directory: '/private/var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpdsjkfp5x/harness/verification/m3test/ledger-report.json'
+report packet must match its evidence folder
+ledger changed: regenerate the report and review required rows
+report header must name the remaining reviewer discretion
+harness/src/renamed.py: add a row or declare no feature impact
+harness/unknown.txt: add a row or declare no feature impact
+missing or malformed SHA256SUMS
+FL-001: needs PASS, FAIL or UNCHANGED; missing screenshot FL-001.png
+FL-002: needs PASS, FAIL or UNCHANGED; missing screenshot FL-002.png
+Work in progress: evidence is required at the DONE handoff.

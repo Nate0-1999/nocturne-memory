@@ -1,0 +1,12 @@
+Impact bell: M3IB -> /Users/nateoswalt/Developer/N8_Harness/spine/verification/m3ib/impacted.json
+  FL-195: The feature ledger generates coverage reports and requires evidence for the rows affected by a build. [PROTECTED: flagged corner only]
+  FL-196: The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents. [PROTECTED: flagged corner only]
+  Unmapped: spine/.gitignore (add a row or declare no feature impact)
+  Unmapped: spine/DECISIONS.md (add a row or declare no feature impact)
+  Unmapped: spine/verification/m3ib/FL-195.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m3ib/FL-196.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m3ib/SHA256SUMS (add a row or declare no feature impact)
+  Unmapped: spine/verification/m3ib/ledger-report.json (add a row or declare no feature impact)
+  Unmapped: spine/verification/m3ib/resume-ledger-tests.log (add a row or declare no feature impact)
+  Unmapped: spine/verification/m3ib/resume-standalone-spine.log (add a row or declare no feature impact)
+Ledger coverage PASS: 2 required rows

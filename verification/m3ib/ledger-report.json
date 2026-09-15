@@ -2,12 +2,12 @@
   "packet": "M3IB",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "eb3680c9959669e519b60823d08f5aee68c0b6fd94d4834f7617fa2dbff79b69",
+  "ledger_sha256": "b1d5c78c6f91b9fa829a9b21dd60d8088d89bf84fa619ae623485b3223219033",
   "diffs": [
     {
       "repo": "spine",
       "base": "5208267b63473e9f9cb72a6caabafd7719f383e4",
-      "head": "8a2a06f6c08d5afbbd5cf6af1eff0b1c88661383"
+      "head": "a054ead1e1d978a262d76fe3954a66947dbe20b3"
     }
   ],
   "unmapped": {
@@ -18,7 +18,9 @@
     "spine/verification/m3ib/ledger-report.json": "Regression fixture, historical import formatting/hash repair, or recorded verification evidence; no product behavior change.",
     "spine/verification/m3ib/resume-ledger-tests.log": "Regression fixture, historical import formatting/hash repair, or recorded verification evidence; no product behavior change.",
     "spine/verification/m3ib/resume-standalone-spine.log": "Regression fixture, historical import formatting/hash repair, or recorded verification evidence; no product behavior change.",
-    "spine/.gitignore": "Packet operational record, generated ledger view, ignore rule, or decision; tooling behavior covered by FL-195/196."
+    "spine/.gitignore": "Packet operational record, generated ledger view, ignore rule, or decision; tooling behavior covered by FL-195/196.",
+    "spine/verification/m3ib/resume-unchanged-tests.log": "Regression fixture, historical import formatting/hash repair, or recorded verification evidence; no product behavior change.",
+    "spine/verification/m3ib/resume-unchanged-coverage.log": "Regression fixture, historical import formatting/hash repair, or recorded verification evidence; no product behavior change."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -29,7 +31,7 @@
       "verdict": "PASS",
       "screenshot": "FL-195.png",
       "flag": "",
-      "observed": "PASS: both frozen standalone tools and hooks ran without Garden; absent screenshots refused empty DONE commits. 27 isolated regression tests include complete-evidence acceptance, resumed packet history, independent unmapped paths, and protected ordering. Hosted impact jobs run from the local frozen copies."
+      "observed": "PASS: both frozen standalone tools and hooks ran without Garden; absent screenshots refused empty DONE commits. 30 isolated regression tests include complete-evidence acceptance, resumed packet history, independent unmapped paths, and protected ordering. Hosted impact jobs run from the local frozen copies."
     },
     "FL-196": {
       "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
@@ -201,6 +203,7 @@
     "FL-157": "outside diff",
     "FL-158": "outside diff",
     "FL-159": "outside diff",
+    "FL-197": "outside diff",
     "FL-160": "not built",
     "FL-161": "not built",
     "FL-162": "outside diff",
