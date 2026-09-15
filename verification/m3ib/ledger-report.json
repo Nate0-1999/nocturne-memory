@@ -7,18 +7,18 @@
     {
       "repo": "spine",
       "base": "5208267b63473e9f9cb72a6caabafd7719f383e4",
-      "head": "2468d2366dfdae6acfa77351f130d50f45526276"
+      "head": "c07e178ecbb90b2b1479453b7dedb54c9a375d30"
     }
   ],
   "unmapped": {
     "spine/DECISIONS.md": "Packet operational record, generated ledger view, ignore rule, or decision; tooling behavior covered by FL-195/196.",
-    "spine/.gitignore": "Packet operational record, generated ledger view, ignore rule, or decision; tooling behavior covered by FL-195/196.",
-    "spine/verification/m3ib/ledger-report.json": "Regression fixture, historical import formatting/hash repair, or recorded verification evidence; no product behavior change.",
+    "spine/verification/m3ib/FL-195.png": "Regression fixture, historical import formatting/hash repair, or recorded verification evidence; no product behavior change.",
+    "spine/verification/m3ib/FL-196.png": "Regression fixture, historical import formatting/hash repair, or recorded verification evidence; no product behavior change.",
     "spine/verification/m3ib/SHA256SUMS": "Regression fixture, historical import formatting/hash repair, or recorded verification evidence; no product behavior change.",
+    "spine/verification/m3ib/ledger-report.json": "Regression fixture, historical import formatting/hash repair, or recorded verification evidence; no product behavior change.",
     "spine/verification/m3ib/resume-ledger-tests.log": "Regression fixture, historical import formatting/hash repair, or recorded verification evidence; no product behavior change.",
     "spine/verification/m3ib/resume-standalone-spine.log": "Regression fixture, historical import formatting/hash repair, or recorded verification evidence; no product behavior change.",
-    "spine/verification/m3ib/FL-196.png": "Regression fixture, historical import formatting/hash repair, or recorded verification evidence; no product behavior change.",
-    "spine/verification/m3ib/FL-195.png": "Regression fixture, historical import formatting/hash repair, or recorded verification evidence; no product behavior change."
+    "spine/.gitignore": "Packet operational record, generated ledger view, ignore rule, or decision; tooling behavior covered by FL-195/196."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
