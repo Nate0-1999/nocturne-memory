@@ -21,7 +21,7 @@ WORKDIR /app
 
 COPY --from=builder /wheels /wheels
 
-RUN pip install --no-cache-dir /wheels/nocturne_spine-*.whl && rm -rf /wheels
+RUN pip install --no-cache-dir /wheels/nocturne_memory-*.whl && rm -rf /wheels
 
 EXPOSE 8000
 

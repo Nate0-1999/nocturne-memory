@@ -3,9 +3,9 @@ requires = ["hatchling>=1.25"]
 build-backend = "hatchling.build"
 
 [project]
-name = "nocturne-spine"
+name = "nocturne-memory"
 dynamic = ["version"]
-description = "Nocturne memory spine"
+description = "NOCTURNE Memory Palace service"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
@@ -31,7 +31,7 @@ dev = [
 
 [project.urls]
 Homepage = "https://github.com/Nate0-1999/nocturne"
-Source = "https://github.com/Nate0-1999/nocturne-spine"
+Source = "https://github.com/Nate0-1999/nocturne-memory"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/spine"]

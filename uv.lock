@@ -265,7 +265,7 @@ wheels = [
 ]
 
 [[package]]
-name = "nocturne-spine"
+name = "nocturne-memory"
 source = { editable = "." }
 dependencies = [
     { name = "alembic" },

@@ -65,7 +65,7 @@ def _packaged_deploy_resources() -> Traversable:
     if all(path.exists() for path in required):
         return checkout
     raise RuntimeError(
-        "Spine deploy resources are unavailable; install a built nocturne-spine wheel"
+        "Spine deploy resources are unavailable; install a built nocturne-memory wheel"
     )
 
 

@@ -65,10 +65,10 @@ jobs:
         run: |
           python -m pip install build
           python -m build --sdist --wheel
-          python -m pip wheel --no-deps --wheel-dir /tmp/nocturne-spine-sdist-wheel dist/nocturne_spine-*.tar.gz
+          python -m pip wheel --no-deps --wheel-dir /tmp/nocturne-memory-sdist-wheel dist/nocturne_memory-*.tar.gz
       - name: Installed wheel smoke
         run: |
-          python -m venv /tmp/nocturne-spine-wheel-smoke
-          /tmp/nocturne-spine-wheel-smoke/bin/python -m pip install dist/nocturne_spine-*.whl
+          python -m venv /tmp/nocturne-memory-wheel-smoke
+          /tmp/nocturne-memory-wheel-smoke/bin/python -m pip install dist/nocturne_memory-*.whl
           cd /tmp
-          /tmp/nocturne-spine-wheel-smoke/bin/python "$GITHUB_WORKSPACE/scripts/verify_wheel.py"
+          /tmp/nocturne-memory-wheel-smoke/bin/python "$GITHUB_WORKSPACE/scripts/verify_wheel.py"

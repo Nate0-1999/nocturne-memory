@@ -1,4 +1,4 @@
-"""Verify an installed nocturne-spine wheel from outside its source checkout."""
+"""Verify an installed nocturne-memory wheel from outside its source checkout."""
 
 from __future__ import annotations
 
@@ -27,7 +27,7 @@ D2_FILES = {
 def main() -> None:
     """Prove metadata, migrations, and both packaged deployment contexts."""
 
-    assert version("nocturne-spine") == __version__
+    assert version("nocturne-memory") == __version__
 
     scripts = ScriptDirectory.from_config(
         make_alembic_config("postgresql+asyncpg://unused:unused@localhost/unused")
@@ -35,7 +35,7 @@ def main() -> None:
     assert scripts.get_base() == "0001"
     assert scripts.get_heads() == ["0021"]
 
-    with TemporaryDirectory(prefix="nocturne-spine-wheel-") as temporary_directory:
+    with TemporaryDirectory(prefix="nocturne-memory-wheel-") as temporary_directory:
         root = Path(temporary_directory)
         app_source = materialize_app_source(root / "app-source")
         d2_source = materialize_billing_breaker_source(root / "d2-source")
@@ -64,7 +64,7 @@ def main() -> None:
             check=True,
         )
 
-    print("nocturne-spine installed-wheel smoke passed")
+    print("nocturne-memory installed-wheel smoke passed")
 
 
 if __name__ == "__main__":
