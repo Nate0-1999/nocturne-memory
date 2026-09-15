@@ -138,7 +138,9 @@ class LearnerService:
     async def compact(self, trigger: OptimizationTrigger) -> RetrainResponse:
         """D.2 144/153: main-thread compaction replaces the interim signal stride."""
         return await self._retrain(
-            trigger="background", due_only=False, optimization_trigger=trigger,
+            trigger="background",
+            due_only=False,
+            optimization_trigger=trigger,
         )
 
     async def _retrain(
