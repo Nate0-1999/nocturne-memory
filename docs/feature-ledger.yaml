@@ -3206,13 +3206,20 @@
       "owner": "owner — \"Claim M3SC (garden/PLAN.md) and run it end to end.\" (M3SC fire, 2026-09-15); PLAN M3SC recipe 1-5, F094",
       "surfaces": [
         "spine/src/spine/metrics_scope.py",
+        "spine/src/spine/m2k/contracts.py",
+        "spine/src/spine/m2k/router.py",
+        "spine/src/spine/m2k/service.py",
         "spine/src/spine/main.py",
         "spine/src/spine/config.py",
         "spine/src/spine/spend/",
         "spine/src/spine/vitals/",
         "harness/src/harness/spine_client.py",
         "harness/src/harness/resources.py",
-        "harness/web/src/vitals.ts"
+        "harness/web/src/vitals.ts",
+        "harness/web/src/PalaceStateModule.tsx",
+        "harness/web/src/LearningTelemetry.tsx",
+        "harness/web/src/InjectionConsole.tsx",
+        "harness/web/src/learning.ts"
       ],
       "last_walk": null,
       "protected": false
