@@ -3885,6 +3885,8 @@
         "garden/bin/check_rules",
         "garden/bin/check_product_rules.py",
         "garden/tests/test_rules.py",
+        "harness/docs/frozen-law.json",
+        "spine/docs/frozen-law.json",
         "garden/.github/workflows/rules.yml",
         "harness/scripts/check_rules.py",
         "harness/scripts/check_guard_citations.py",
