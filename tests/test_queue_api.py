@@ -38,6 +38,66 @@ def extraction(thread_id, candidate, *, verdict="new", target_ids=None):
 
 
 @pytest.mark.asyncio
+async def test_rejected_seed_hash_survives_a_new_upload_identity(
+    memory_client: AsyncClient,
+    embedding_provider: ScriptedEmbeddingProvider,
+) -> None:
+    """M3MP / F089: unchanged rejected sources cannot acquire fresh queue cards."""
+    markdown = "The fixture review day is Saturday."
+    embedding_provider.set(markdown, basis_vector(0))
+    payload = {
+        "principal_id": "owner",
+        "batch_uid": str(uuid4()),
+        "source_name": "first.md",
+        "source_sha256": sha256(markdown.encode()).hexdigest(),
+        "markdown": markdown,
+        "machine_id": "mac",
+        "editor": "seed-splitter",
+        "candidates": [
+            {
+                "label": "Review day",
+                "body": markdown,
+                "kind": "fact",
+                "keywords": ["review", "day"],
+                "verdict": "new",
+                "target_ids": [],
+            }
+        ],
+    }
+    born = await memory_client.post("/v1/seeds", json=payload)
+    assert born.status_code == 200 and len(born.json()["cards"]) == 1
+    denied = await memory_client.post(
+        f"/v1/approval-queue/batches/{payload['batch_uid']}/decisions",
+        json={
+            "decision": "deny",
+            "approval_mode": "explicit",
+            "actor_class": "human",
+            "machine_id": "mac",
+        },
+    )
+    assert denied.status_code == 200
+    payload.update(batch_uid=str(uuid4()), source_name="renamed.md")
+    repeated = await memory_client.post("/v1/seeds", json=payload)
+    assert repeated.status_code == 200
+    assert repeated.json()["cards"] == []
+    assert repeated.json()["duplicate_count"] == 1
+    payload.update(principal_id="another-fixture", batch_uid=str(uuid4()))
+    other = await memory_client.post("/v1/seeds", json=payload)
+    assert other.status_code == 200 and len(other.json()["cards"]) == 1
+    changed = "The fixture review day is Sunday."
+    embedding_provider.set(changed, basis_vector(1))
+    payload.update(
+        principal_id="owner",
+        batch_uid=str(uuid4()),
+        markdown=changed,
+        source_sha256=sha256(changed.encode()).hexdigest(),
+    )
+    payload["candidates"][0].update(body=changed)
+    revised = await memory_client.post("/v1/seeds", json=payload)
+    assert revised.status_code == 200 and len(revised.json()["cards"]) == 1
+
+
+@pytest.mark.asyncio
 async def test_candidate_is_queue_only_and_denial_is_revisioned_signal(
     memory_client: AsyncClient,
     embedding_provider: ScriptedEmbeddingProvider,

@@ -685,6 +685,18 @@ class QueueService:
                 ):
                     raise QueueConflictError("seed batch UID already names a different document")
                 return [await self._card(session, row) for row in rows]
+            rejected_source = await session.scalar(
+                select(queue.c.item_uid)
+                .where(
+                    queue.c.principal_id == request.principal_id,
+                    queue.c.birthplace == "seed",
+                    queue.c.source_sha256 == request.source_sha256,
+                    queue.c.state == "rejected",
+                )
+                .limit(1)
+            )
+            if rejected_source is not None:
+                return []
             source = (
                 (
                     await session.execute(
