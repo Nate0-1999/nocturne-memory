@@ -2530,8 +2530,8 @@
       "era": "Aug 15",
       "label": "Each main cube view as its own module with its own 3D asset.",
       "status": "partial",
-      "walk": "Open the module library; each main cube view is its own module with its own 3D asset.",
-      "owner": "owner — \"honestly I am thinking that we could at this point consider moving each of the main cube views into it's own module and make them their own 3d Assets.... Im not sure. Let's do 3d actually. I want it so be super liquid and smooth looking. We'll need to consider peoples hardware though.\" (chat 2026-08-15 19:37:48)",
+      "walk": "Open the module library; the farm, the roots and the palace are three separate modules, each a three.js scene driven by real data, each looking the part (v2.119).",
+      "owner": "owner — \"honestly I am thinking that we could at this point consider moving each of the main cube views into it's own module and make them their own 3d Assets.... Im not sure. Let's do 3d actually. I want it so be super liquid and smooth looking. We'll need to consider peoples hardware though.\" (chat 2026-08-15 19:37:48) — ruled 2026-09-15: \"3 different modules that are rendered seperately like we last said... they NEED to look really cool and be based on function and rendered in three js\"",
       "surfaces": [
         "harness/web/src/PalaceNebula.tsx",
         "harness/web/src/nebulaBindings.ts",
@@ -2640,7 +2640,7 @@
       "label": "Roots: every parallel agent across projects gets a root-like, naturally meandering flow growing horizontally from roughly its agent's location, with dead roots for active loops, tips seen end-on as grids of starts in the next rotation, clustered by project on the view opposite the ant farm.",
       "status": "not built",
       "walk": "Run agents in parallel and open the roots view; meandering roots grow sideways from each agent's location and rotating to the end-on view shows their tips as per-project grids.",
-      "owner": "owner — \"The roots should grow out from the proper agent location, roughly i konw that the agents will move around so maybe just that region. So the roots should be growing horizontally.\" (chat 2026-07-20 17:42:24 (+ 17:30:44))",
+      "owner": "owner — \"The roots should grow out from the proper agent location, roughly i konw that the agents will move around so maybe just that region. So the roots should be growing horizontally.\" (chat 2026-07-20 17:42:24 (+ 17:30:44)) — on opacity, 2026-09-15: \"just make it look really sick\" (no value rule; v2.119)",
       "surfaces": []
     },
     {
