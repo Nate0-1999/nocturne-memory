@@ -46,10 +46,13 @@ count(*) FILTER (WHERE in_window AND cost_usd IS NULL)::bigint AS hourly_unprice
 """
 
 
-def _table_query(scoped: bool) -> str:
-    scope_clause = (
-        "WHERE thread_id = ANY(CAST(:thread_ids AS uuid[]))" if scoped else ""
-    )
+def _table_query(scoped: bool, principal_scoped: bool = False) -> str:
+    filters = []
+    if scoped:
+        filters.append("thread_id = ANY(CAST(:thread_ids AS uuid[]))")
+    if principal_scoped:
+        filters.append("principal_id = :principal_id")
+    scope_clause = "WHERE " + " AND ".join(filters) if filters else ""
     return f"""
 WITH base AS (
     SELECT
@@ -159,6 +162,7 @@ class SpendService:
         thread_ids: Sequence[UUID] | None = None,
         *,
         as_of: datetime | None = None,
+        principal_id: str | None = None,
     ) -> SpendTableSnapshot:
         """Project the authoritative ledger into M3SP's money-only table."""
 
@@ -172,11 +176,15 @@ class SpendService:
 
         scoped = thread_ids is not None
         parameters: dict[str, Any] = {"window_start": instant - timedelta(minutes=60)}
+        if principal_id is not None:
+            parameters["principal_id"] = principal_id
         if scoped:
             parameters["thread_ids"] = list(dict.fromkeys(thread_ids or ()))
         async with self._session_factory() as session:
             rows = (
-                await session.execute(text(_table_query(scoped)), parameters)
+                await session.execute(
+                    text(_table_query(scoped, principal_id is not None)), parameters
+                )
             ).mappings().all()
 
         models: dict[UUID, list[ModelSpendRow]] = {}

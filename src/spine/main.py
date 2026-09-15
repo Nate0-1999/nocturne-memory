@@ -4,9 +4,10 @@ import logging
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from http import HTTPStatus
+from typing import Annotated
 from urllib.parse import urlparse
 
-from fastapi import Depends, FastAPI, Request
+from fastapi import Depends, FastAPI, Query, Request
 from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
 from fastapi.security import HTTPBearer
@@ -69,6 +70,11 @@ class HealthResponse(BaseModel):
     version: str
     api_contract_version: str
     schema_version: str | None
+
+
+class IdentityResponse(BaseModel):
+    principal_id: str
+    is_owner: bool
 
 
 def create_app(
@@ -310,6 +316,13 @@ def create_app(
             version=__version__,
             api_contract_version=API_CONTRACT_VERSION,
             schema_version=packaged_head(),
+        )
+
+    @app.get("/v1/identity", response_model=IdentityResponse)
+    async def identity(principal_id: Annotated[str, Query(min_length=1)]) -> IdentityResponse:
+        return IdentityResponse(
+            principal_id=principal_id,
+            is_owner=principal_id == resolved.owner_principal_id,
         )
 
     app.include_router(inject_router)

@@ -51,7 +51,7 @@ async def test_vitals_measures_database_size_without_guessing_harness_resources(
     memory_client: AsyncClient,
 ) -> None:
     """A-044 keeps database observation in Spine and local process values unavailable."""
-    response = await memory_client.get("/v1/vitals")
+    response = await memory_client.get("/v1/vitals?principal_id=local&scope=palace")
 
     assert response.status_code == 200
     resources = response.json()["resources"]
@@ -224,7 +224,7 @@ async def test_vitals_snapshot_is_canonical_conserving_and_honest(
     await _insert_memory_heads(memory_session_factory, anchor=anchor)
     await SpendViewRefresher(memory_session_factory).refresh_once()
 
-    response = await memory_client.get("/v1/vitals")
+    response = await memory_client.get("/v1/vitals?principal_id=local&scope=palace")
 
     assert response.status_code == 200
     assert response.headers["content-type"].startswith("application/json")
@@ -359,7 +359,9 @@ async def test_thread_vitals_reads_only_authoritative_receipts_for_that_thread(
     )
     assert inserted.status_code == 200
 
-    response = await memory_client.get(f"/v1/vitals/threads/{selected}")
+    response = await memory_client.get(
+        f"/v1/vitals/threads/{selected}?principal_id=local&scope=palace"
+    )
 
     assert response.status_code == 200
     spend = response.json()["spend"]
@@ -376,8 +378,8 @@ async def test_vitals_has_an_empty_total_lane_and_rejects_query_parameters(
     parameters; this prevents drift in the honest canonical Vitals projection.
     """
     await SpendViewRefresher(memory_session_factory).refresh_once()
-    live = await memory_client.get("/v1/vitals")
-    rejected = await memory_client.get("/v1/vitals?window_minutes=30")
+    live = await memory_client.get("/v1/vitals?principal_id=local&scope=palace")
+    rejected = await memory_client.get("/v1/vitals?principal_id=local&window_minutes=30")
 
     assert live.status_code == 200
     assert live.json()["spend"] == {

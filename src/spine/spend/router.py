@@ -5,6 +5,7 @@ from uuid import UUID
 
 from fastapi import APIRouter, Query, Request
 
+from spine.metrics_scope import metrics_principal
 from spine.problems import ProblemJSONResponse, problem_openapi, problem_response
 from spine.spend.contracts import (
     SpendEventsRequest,
@@ -21,19 +22,24 @@ router = APIRouter(prefix="/v1/spend", tags=["spend"])
     response_model=SpendTableSnapshot,
     responses={
         401: problem_openapi("Bearer token missing or invalid"),
+        403: problem_openapi("Only the Palace owner can view the whole Palace"),
         422: problem_openapi("Request does not match the endpoint contract"),
         500: problem_openapi("Unexpected service failure"),
     },
 )
 async def read_spend_table(
     request: Request,
+    principal_id: Annotated[str, Query(min_length=1)],
     thread_id: Annotated[list[UUID] | None, Query()] = None,
-    scope: Literal["global", "threads"] = "global",
+    scope: Literal["principal", "palace", "global", "threads"] = "principal",
 ) -> SpendTableSnapshot:
-    """Return the global ledger projection or one explicit thread/stack slice."""
+    """Filter before aggregation; thread selectors never widen principal scope."""
 
     scoped_threads = thread_id if thread_id is not None else ([] if scope == "threads" else None)
-    return await _service(request).table(scoped_threads)
+    principal = metrics_principal(
+        request, principal_id, "palace" if scope == "palace" else "principal"
+    )
+    return await _service(request).table(scoped_threads, principal_id=principal)
 
 
 @router.post(

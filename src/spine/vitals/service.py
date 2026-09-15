@@ -72,7 +72,9 @@ class VitalsService:
         self._session_factory = session_factory
         self._reconciliation_configured = reconciliation_configured
 
-    async def snapshot(self, *, thread_id: UUID | None = None) -> VitalsSnapshot:
+    async def snapshot(
+        self, *, thread_id: UUID | None = None, principal_id: str | None = None
+    ) -> VitalsSnapshot:
         """Return one repeatable-read trailing-hour snapshot without refreshing views."""
 
         async with self._session_factory() as session:
@@ -89,11 +91,16 @@ class VitalsService:
                     window_start=window_start,
                     as_of=as_of,
                     thread_id=thread_id,
+                    principal_id=principal_id,
+                )
+                memory_scope = (
+                    [MemoryUnit.principal_id == principal_id] if principal_id is not None else []
                 )
                 created_per_hour = await session.scalar(
                     select(func.count())
                     .select_from(MemoryUnit)
                     .where(
+                        *memory_scope,
                         MemoryUnit.status != "staged",
                         MemoryUnit.created_at > window_start,
                         MemoryUnit.created_at <= as_of,
@@ -116,21 +123,32 @@ class VitalsService:
                             func.count()
                             .filter(MemoryUnit.status == "candidate")
                             .label("candidates_pending"),
-                        )
+                        ).where(*memory_scope)
                     )
                 ).one()
-                edge_count = await session.scalar(select(func.count()).select_from(MemoryEdge))
+                edges = select(func.count()).select_from(MemoryEdge)
+                if principal_id is not None:
+                    owned_ids = select(MemoryUnit.id).where(*memory_scope)
+                    edges = edges.where(
+                        MemoryEdge.from_memory_id.in_(owned_ids),
+                        MemoryEdge.to_memory_id.in_(owned_ids),
+                    )
+                edge_count = await session.scalar(edges)
                 queue_depth = await session.scalar(
                     select(func.count())
                     .select_from(ApprovalQueueItem)
                     .where(ApprovalQueueItem.state == "pending")
+                    .where(*(
+                        [ApprovalQueueItem.principal_id == principal_id]
+                        if principal_id is not None else []
+                    ))
                 )
-                reconciliation = await session.scalar(
+                reconciliation = None if principal_id is not None else await session.scalar(
                     select(SpendReconciliation)
                     .order_by(SpendReconciliation.ts.desc(), SpendReconciliation.event_uid.desc())
                     .limit(1)
                 )
-                database_bytes = await session.scalar(
+                database_bytes = None if principal_id is not None else await session.scalar(
                     select(func.pg_database_size(func.current_database()))
                 )
 
@@ -139,11 +157,14 @@ class VitalsService:
             window_minutes=_WINDOW_MINUTES,
             spend=_spend_snapshot(
                 spend_rows,
-                source="spend_event" if thread_id is not None else "v_spend_rate",
+                source=(
+                    "spend_event" if thread_id is not None or principal_id is not None
+                    else "v_spend_rate"
+                ),
             ),
             reconciliation=_reconciliation_snapshot(
                 reconciliation,
-                configured=self._reconciliation_configured,
+                configured=self._reconciliation_configured and principal_id is None,
             ),
             resources=ResourceSnapshot(
                 status="partial",
@@ -151,7 +172,10 @@ class VitalsService:
                 daemon_uptime_seconds=None,
                 disk_free_bytes=None,
                 disk_total_bytes=None,
-                database_bytes=_nonnegative_count(database_bytes, "database_bytes"),
+                database_bytes=(
+                    None if database_bytes is None
+                    else _nonnegative_count(database_bytes, "database_bytes")
+                ),
                 journal_bytes=None,
                 backup_bytes=None,
                 warning=None,
@@ -223,8 +247,9 @@ async def _spend_rows(
     window_start: datetime,
     as_of: datetime,
     thread_id: UUID | None,
+    principal_id: str | None = None,
 ) -> list[Any]:
-    if thread_id is None:
+    if thread_id is None and principal_id is None:
         statement = text(
             "SELECT minute, purpose, model, provider, receipt_lines, "
             "cost_usd, unpriced_lines FROM v_spend_rate "
@@ -234,21 +259,23 @@ async def _spend_rows(
         )
         parameters = {"window_start": window_start, "as_of": as_of}
     else:
+        filters = ["ts > :window_start", "ts <= :as_of"]
+        parameters = {"window_start": window_start, "as_of": as_of}
+        if thread_id is not None:
+            filters.append("thread_id = :thread_id")
+            parameters["thread_id"] = thread_id
+        if principal_id is not None:
+            filters.append("principal_id = :principal_id")
+            parameters["principal_id"] = principal_id
         statement = text(
             "SELECT date_trunc('minute', ts) AS minute, purpose, model, provider, "
             "count(*)::bigint AS receipt_lines, sum(cost_usd) AS cost_usd, "
             "count(*) FILTER (WHERE cost_usd IS NULL)::bigint AS unpriced_lines "
-            "FROM spend_event WHERE thread_id = :thread_id "
-            "AND ts > :window_start AND ts <= :as_of "
+            "FROM spend_event WHERE " + " AND ".join(filters) + " "
             "GROUP BY minute, purpose, model, provider "
             "ORDER BY minute ASC, purpose ASC, model ASC NULLS FIRST, "
             "provider ASC NULLS FIRST"
         )
-        parameters = {
-            "thread_id": thread_id,
-            "window_start": window_start,
-            "as_of": as_of,
-        }
     return (await session.execute(statement, parameters)).mappings().all()
 
 
