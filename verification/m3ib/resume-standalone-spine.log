@@ -1,0 +1,36 @@
+Standalone worktree: /tmp/m3ib-standalone-memory
+No /tmp/garden checkout exists: True
+PRE-PUSH exit=0
+Impact bell: M3IB -> /private/tmp/m3ib-standalone-memory/verification/m3ib/impacted.json
+  FL-195: The feature ledger generates coverage reports and requires evidence for the rows affected by a build. [PROTECTED: flagged corner only]
+  Unmapped: spine/docs/frozen-law.json (add a row or declare no feature impact)
+
+TAMPER docs/feature-ledger.yaml exit=1
+docs/feature-ledger.yaml: differs from the master fingerprint
+Product rules: FAIL
+
+TAMPER bin/ledger exit=1
+bin/ledger: differs from the master fingerprint
+Product rules: FAIL
+
+RESTORED exit=0
+Product rules: PASS
+
+MISSING EVIDENCE DONE exit=1
+M3IB handoff REFUSED: 2 required rows checked
+Impact bell: M3IB -> /private/tmp/m3ib-standalone-memory/verification/m3ib/impacted.json
+  FL-195: The feature ledger generates coverage reports and requires evidence for the rows affected by a build. [PROTECTED: flagged corner only]
+  FL-196: The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents. [PROTECTED: flagged corner only]
+  Unmapped: spine/.gitignore (add a row or declare no feature impact)
+  Unmapped: spine/DECISIONS.md (add a row or declare no feature impact)
+  Unmapped: spine/docs/frozen-law.json (add a row or declare no feature impact)
+missing or invalid ledger-report.json: [Errno 2] No such file or directory: '/private/tmp/m3ib-standalone-memory/verification/m3ib/ledger-report.json'
+report packet must match its evidence folder
+ledger changed: regenerate the report and review required rows
+report header must name the remaining reviewer discretion
+spine/.gitignore: add a row or declare no feature impact
+spine/DECISIONS.md: add a row or declare no feature impact
+spine/docs/frozen-law.json: add a row or declare no feature impact
+missing or malformed SHA256SUMS
+FL-195: needs PASS or FAIL; missing screenshot FL-195.png
+FL-196: needs PASS or FAIL; missing screenshot FL-196.png
