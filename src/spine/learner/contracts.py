@@ -1,13 +1,16 @@
 """Wire contracts for the authenticated M2F retrain trigger."""
 
-from typing import Literal
+from typing import Annotated, Literal
 from uuid import UUID
 
-from pydantic import BaseModel
+from pydantic import AfterValidator, BaseModel, ConfigDict
+
+from spine.ids import normalize_ulid
 
 
 class CompactionTrigger(BaseModel):
-    event_uid: str
+    model_config = ConfigDict(extra="forbid")
+    event_uid: Annotated[str, AfterValidator(normalize_ulid)]
     thread_id: UUID
 
 

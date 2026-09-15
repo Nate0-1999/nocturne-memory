@@ -8,8 +8,8 @@ from typing import Literal
 from uuid import UUID
 
 import pytest
-from conftest import ACTIVE_SCORER_VERSION, ScriptedEmbeddingProvider, basis_vector
-from httpx import AsyncClient
+from conftest import ACTIVE_SCORER_VERSION, TOKEN, ScriptedEmbeddingProvider, basis_vector
+from httpx import ASGITransport, AsyncClient
 from sqlalchemy import delete, select, text, update
 from sqlalchemy.exc import DBAPIError
 from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, async_sessionmaker
@@ -26,6 +26,30 @@ from spine.learner.contracts import RetrainResponse
 from spine.learner.locking import LEARNER_ADVISORY_LOCK_KEY
 from spine.learner.service import LearnerService, LearnerSettings, OptimizationTrigger
 from spine.learner.worker import LearnerWorker
+
+
+async def test_compaction_route_authenticates_validates_and_only_wakes_worker(app):
+    """SPEC D.2 144: a main-thread event queues optimization without blocking chat."""
+    from spine.ids import mint_ulid
+
+    calls = []
+
+    class Worker:
+        def notify(self, trigger):
+            calls.append(trigger)
+
+    app.state.learner_worker = Worker()
+    body = {"event_uid": mint_ulid(), "thread_id": str(UUID(int=7))}
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        assert (await client.post("/v1/compactions", json=body)).status_code == 401
+        headers = {"Authorization": f"Bearer {TOKEN}"}
+        assert (
+            await client.post("/v1/compactions", json={**body, "event_uid": "bad"}, headers=headers)
+        ).status_code == 422
+        assert not calls
+        response = await client.post("/v1/compactions", json=body, headers=headers)
+    assert response.status_code == 202
+    assert calls == [OptimizationTrigger(event_uid=body["event_uid"], thread_id=UUID(int=7))]
 
 
 def _settings(*, min_dispositions: int, win_margin: float) -> LearnerSettings:
