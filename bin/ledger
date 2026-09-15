@@ -252,6 +252,31 @@ def report(data, packet, diffs):
     }
 
 
+def same_syntax(repo, base, head, path):
+    """True when a Python file's syntax tree is unchanged (docstring whitespace ignored)."""
+
+    import ast
+
+    def normalized(rev):
+        tree = ast.parse(git(repo, "show", f"{rev}:{path}"))
+        for node in ast.walk(tree):
+            body = getattr(node, "body", None)
+            if (
+                isinstance(body, list)
+                and body
+                and isinstance(body[0], ast.Expr)
+                and isinstance(getattr(body[0], "value", None), ast.Constant)
+                and isinstance(body[0].value.value, str)
+            ):
+                body[0].value.value = " ".join(body[0].value.value.split())
+        return ast.dump(tree)
+
+    try:
+        return path.endswith(".py") and normalized(base) == normalized(head)
+    except (subprocess.CalledProcessError, SyntaxError, ValueError):
+        return False
+
+
 def verify(data, directory, check_diffs=()):
     directory = directory.resolve()
     errors = []
@@ -333,11 +358,40 @@ def verify(data, directory, check_diffs=()):
             p.read_text() for p in (GARDEN / "notes/archive").glob("*flags*.md")
         )
     )
+    syntax_checks = [
+        (diff, impact(data, [diff])["affected"])
+        for diff in [*resolved, *check_diffs]
+    ]
     for key in expected["rows"]:
         item = actual.get(key, {})
         problems = []
+        if item.get("verdict") == "UNCHANGED":
+            # F099 ruling: a formatting-only change proves itself by syntax-tree
+            # equality on every path that made the row required; no walk, no
+            # screenshot. Anything else under this verdict is refused here.
+            paths = [
+                (diff, path)
+                for diff, affected in syntax_checks
+                for path in affected.get(key, [])
+            ]
+            same = bool(paths) and all(
+                same_syntax(
+                    repository(diff["repo"]),
+                    diff["base"],
+                    diff["head"],
+                    path.removeprefix(diff["repo"] + "/"),
+                )
+                for diff, path in paths
+            )
+            if not same:
+                problems.append(
+                    "UNCHANGED needs syntax-tree equality on every affected Python path"
+                )
+            if problems:
+                errors.append(f"{key}: " + "; ".join(problems))
+            continue
         if item.get("verdict") not in {"PASS", "FAIL"}:
-            problems.append("needs PASS or FAIL")
+            problems.append("needs PASS, FAIL or UNCHANGED")
         if item.get("verdict") == "FAIL" and not (
             re.fullmatch(r"F\d{3,}", item.get("flag", ""))
             and re.search(r"\b" + re.escape(item["flag"]) + r"\b", flags)
