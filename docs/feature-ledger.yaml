@@ -3201,7 +3201,7 @@
       "section": "11. Spend, money and model routing",
       "era": "Sep 15",
       "label": "Spend and Palace state reads use the calling principal; only the configured owner can request the whole Palace.",
-      "status": "partial",
+      "status": "built",
       "walk": "In a verification daemon, open Spend and Palace State and see only that principal's receipts and counts. In a local fixture, compare the configured owner's whole-Palace view. Request scope=palace as the verification principal and see a plain 403. Keep owner-rack captures out of evidence.",
       "owner": "owner — \"Claim M3SC (garden/PLAN.md) and run it end to end.\" (M3SC fire, 2026-09-15); PLAN M3SC recipe 1-5, F094",
       "surfaces": [
@@ -3221,8 +3221,15 @@
         "harness/web/src/InjectionConsole.tsx",
         "harness/web/src/learning.ts"
       ],
-      "last_walk": null,
-      "protected": false
+      "last_walk": {
+        "packet": "M3SC",
+        "date": "2026-09-15",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-197.png"
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-15"
     },
     {
       "id": "FL-160",
