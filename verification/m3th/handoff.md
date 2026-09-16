@@ -84,6 +84,9 @@ check; the current M3VZ board claim explicitly excludes tool/rewind functions.
 The Garden worktree was fast-forwarded to `ff44a68` before handoff; both
 product worktrees include their released main. Updated ledger/frozen copies
 ship in the same evidence handoff.
+Memory's concurrent `bdd2b4a` metadata sync restored the older Garden
+snapshot; the evidence branch was rebased and its two frozen-file conflicts
+resolved by exporting this final canonical ledger. No runtime conflict.
 
 ## Cleanup
 
