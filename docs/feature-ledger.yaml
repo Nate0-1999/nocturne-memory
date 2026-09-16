@@ -1359,7 +1359,9 @@
       "owner": "owner — \"#2 what are the test metrics we will test on this? This will be part of our tag line: \"building something a second time reduces build time, line count, cost by x%s. maybe some other ones too?\" (chat 2026-08-17 15:30:48; chat 2026-08-14 23:19:48)",
       "surfaces": [
         "harness/verification/m3b3/",
-        "harness/verification/m3b2/"
+        "harness/verification/m3b2/",
+        "harness/verification/m3ll/run_benchmark.py",
+        "harness/verification/m3ll/benchmark_prompt.txt"
       ],
       "last_walk": {
         "packet": "M3RW",
