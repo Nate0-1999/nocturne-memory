@@ -1074,3 +1074,29 @@ class CreationOutcome(Base):
     outcome: Mapped[str] = mapped_column(Text, nullable=False)
     reason: Mapped[str] = mapped_column(Text, nullable=False)
     ts: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+
+
+class CuratorProgress(Base):
+    """A-068: committed observations exist before the completed run receipt."""
+
+    __tablename__ = "curator_progress"
+    __table_args__ = (
+        CheckConstraint(
+            "phase IN ('run.started','finding.started','finding.completed',"
+            "'run.completed','run.failed')", name="curator_progress_phase_check",
+        ),
+        Index("curator_progress_principal_event_idx", "principal_id", "event_id"),
+    )
+
+    event_id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+    principal_id: Mapped[str] = mapped_column(Text, nullable=False)
+    run_uid: Mapped[str] = mapped_column(Text, nullable=False)
+    phase: Mapped[str] = mapped_column(Text, nullable=False)
+    memory_ids: Mapped[list[UUID]] = mapped_column(
+        ARRAY(PGUUID(as_uuid=True)), nullable=False, server_default=text("'{}'::uuid[]"),
+    )
+    finding_uid: Mapped[str | None] = mapped_column(Text)
+    action: Mapped[str | None] = mapped_column(Text)
+    ts: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=text("clock_timestamp()"),
+    )

@@ -75,6 +75,26 @@ class CuratorRunRequest(ContractModel):
     machine_id: str = Field(min_length=1)
 
 
+ProgressPhase = Literal[
+    "run.started", "finding.started", "finding.completed", "run.completed", "run.failed"
+]
+
+
+class CuratorProgressEvent(ContractModel):
+    event_id: int
+    run_uid: str
+    phase: ProgressPhase
+    memory_ids: list[UUID]
+    finding_uid: str | None
+    action: str | None
+    ts: datetime
+
+
+class CuratorProgress(ContractModel):
+    events: list[CuratorProgressEvent]
+    cursor: int
+
+
 class CuratorRunReceipt(ContractModel):
     run_uid: str
     principal_id: str

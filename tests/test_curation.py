@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 from datetime import UTC, datetime
 from typing import Any
 from uuid import UUID
@@ -672,3 +673,58 @@ async def test_curator_history_tables_are_append_only(
     async with memory_session_factory() as session:
         count = await session.scalar(select(func.count()).select_from(CuratorFinding))
     assert count == 2
+
+
+@pytest.mark.asyncio
+async def test_progress_is_visible_during_provider_work_scoped_and_replayable(
+    memory_client: AsyncClient,
+    memory_app: FastAPI,
+    embedding_provider: ScriptedEmbeddingProvider,
+    memory_session_factory: async_sessionmaker[AsyncSession],
+) -> None:
+    """M3VZ / A-068: ghosts observe committed targets while a real pass is awaiting judgment."""
+    ids = await _seed_mess(memory_client, embedding_provider, memory_session_factory)
+    entered, release = asyncio.Event(), asyncio.Event()
+
+    class PausedProvider(FixtureCuratorProvider):
+        async def verdict(self, *args, **kwargs):
+            entered.set()
+            await release.wait()
+            return await super().verdict(*args, **kwargs)
+
+    memory_app.state.curator_service = CuratorService(
+        memory_session_factory, HealthReportBuilder(memory_session_factory, duplicate_floor=0.89),
+        PausedProvider(), memory_app.state.queue_service,
+    )
+    task = asyncio.create_task(memory_client.post("/v1/curation/runs", json={
+        "principal_id": "fixture-owner", "machine_id": "fixture-mac",
+    }))
+    try:
+        await asyncio.wait_for(entered.wait(), timeout=10)
+        response = await memory_client.get("/v1/curation/progress",
+                                           params={"principal_id": "fixture-owner"})
+        assert response.status_code == 200
+        during = response.json()
+        assert [event["phase"] for event in during["events"]] == [
+            "run.started", "finding.started",
+        ]
+        assert set(during["events"][-1]["memory_ids"]) <= {str(id_) for id_ in ids}
+        assert during["events"][-1]["memory_ids"]
+        foreign = await memory_client.get("/v1/curation/progress",
+                                          params={"principal_id": "other-principal"})
+        assert foreign.json() == {"events": [], "cursor": 0}
+    finally:
+        release.set()
+        completed = await task
+    assert completed.status_code == 200
+    # A replacement service reads the same database-backed stream, including the terminal event.
+    _install_fixture_curator(memory_app, memory_session_factory)
+    after = (await memory_client.get("/v1/curation/progress", params={
+        "principal_id": "fixture-owner", "after": during["cursor"],
+    })).json()
+    assert after["events"][0]["phase"] == "finding.completed"
+    assert after["events"][-1]["phase"] == "run.completed"
+    assert all(event["event_id"] > during["cursor"] for event in after["events"])
+    assert (await memory_client.get("/v1/curation/progress", params={
+        "principal_id": "fixture-owner", "after": after["cursor"],
+    })).json() == {"events": [], "cursor": after["cursor"]}
