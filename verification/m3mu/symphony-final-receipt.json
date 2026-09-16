@@ -1,0 +1,174 @@
+{
+  "packet_id": "01M2KSZ6HEVDCMFB977WZYTE1G",
+  "judges": [
+    {
+      "schema_version": 1,
+      "seat": "performance",
+      "judge_session_id": "01M2KSZYGTFY13HW66MQ8S9QBK",
+      "charter_sha256": "9bb7bb6a31189fb7b9cf8bc720cae5fa0e6e0483d12020cbbdcbc4a93d38e512",
+      "evidence_sha256": "2b69d95841aec2bb2f95dbe615799d00b9dc48d76c1ff97f831e693fad289b39",
+      "outcome": "pass",
+      "selected_attempt_id": "round-1-attempt-2",
+      "rationale": "The file result.txt contains exactly one line with the requested sentence 'The fictional brass dial is set to seventeen.' followed by a newline, meeting the charter requirements and passing the line count metric. calibration.txt contains the required fictional verification fact.",
+      "evidence_refs": [
+        "calibration.txt",
+        "result.txt"
+      ],
+      "feedback": [],
+      "metrics": [
+        {
+          "metric": "result.txt line count equals 1",
+          "observed": "1",
+          "passed": true,
+          "evidence_ref": "result.txt"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "seat": "motivation",
+      "judge_session_id": "01M2KSZYG2C0A1AV7WQP18E1Y6",
+      "charter_sha256": "898278fcbd46318332899d37083e27c11163003fcefc435135b259248cee1512",
+      "evidence_sha256": "ab60bbee151fff47d881aa164890441518cbd8700456405c0040ed32571357e7",
+      "outcome": "pass",
+      "selected_attempt_id": "round-1-attempt-2",
+      "rationale": "Both attempts read calibration.txt and wrote the requested sentence with a trailing newline to result.txt, serving the calibration verification objective. Content and format are correct as per the charter rubric and evidence requirements. The second attempt is chosen as the selected artifact, but either attempt passes.",
+      "evidence_refs": [
+        "/private/tmp/m3mu-resume/live-workspace/.nocturne-worktrees/01M2KSZ6HEVDCMFB977WZYTE1G/step-1-round-1/round-1-attempt-1/calibration.txt",
+        "/private/tmp/m3mu-resume/live-workspace/.nocturne-worktrees/01M2KSZ6HEVDCMFB977WZYTE1G/step-1-round-1/round-1-attempt-1/result.txt",
+        "/private/tmp/m3mu-resume/live-workspace/.nocturne-worktrees/01M2KSZ6HEVDCMFB977WZYTE1G/step-1-round-1/round-1-attempt-2/calibration.txt",
+        "/private/tmp/m3mu-resume/live-workspace/.nocturne-worktrees/01M2KSZ6HEVDCMFB977WZYTE1G/step-1-round-1/round-1-attempt-2/result.txt"
+      ],
+      "feedback": [],
+      "metrics": []
+    },
+    {
+      "schema_version": 1,
+      "seat": "implementation",
+      "judge_session_id": "01M2KSZYGEPNB33M5MG8EGRVG7",
+      "charter_sha256": "87e3d0bb16a5d7a5433886fcc05a443ebd787478080b0c70b3f055a2f746b585",
+      "evidence_sha256": "66a53fad3e6fbcf54b7b08fb59740963aa55d326217fb6f6aaecb5ea0deeecce",
+      "outcome": "pass",
+      "selected_attempt_id": "round-1-attempt-2",
+      "rationale": "The file result.txt in the selected attempt contains exactly the requested sentence 'The fictional brass dial is set to seventeen.' followed by a newline as required by the implementation charter. The calibration.txt file confirms the verification fact. All requirements from the charter and evidence were met.",
+      "evidence_refs": [
+        "/private/tmp/m3mu-resume/live-workspace/.nocturne-worktrees/01M2KSZ6HEVDCMFB977WZYTE1G/step-1-round-1/round-1-attempt-2/result.txt",
+        "/private/tmp/m3mu-resume/live-workspace/.nocturne-worktrees/01M2KSZ6HEVDCMFB977WZYTE1G/step-1-round-1/round-1-attempt-2/calibration.txt"
+      ],
+      "feedback": [],
+      "metrics": []
+    }
+  ],
+  "events": [
+    {
+      "schema_version": 1,
+      "event": "rounds_converged",
+      "packet_id": "01M2KSZ6HEVDCMFB977WZYTE1G",
+      "round_number": 1,
+      "winner_attempt_id": "round-1-attempt-2",
+      "early_exit": true
+    },
+    {
+      "event": "memory_resolution",
+      "resolution": {
+        "run_id": "01M2KSZ6K1R42GASD5JQTRNEWS",
+        "batch_uid": "ba284d8c-6edf-4256-9dc8-aeea2d5f790f",
+        "winner_origin_agent": "01M2KSZ6K1R42GASD5JQTRNEWS/root.2",
+        "queue_cards": [
+          {
+            "item_uid": "01M2KT0AP4RZ7VQKA50TK4F45H",
+            "candidate": {
+              "memory_id": "6ec283b6-f8cb-4d8e-bdca-a537b34b8dd4",
+              "principal_id": "nocturne-verification-3f361f9b-b37f-40d6-bf14-2615a4b2b3b6",
+              "label": "Fictional calibration fact",
+              "body": "The brass dial is set to seventeen as part of a fictional calibration scenario.",
+              "kind": "fact",
+              "keywords": [
+                "calibration",
+                "fictional",
+                "brass dial",
+                "seventeen"
+              ],
+              "project_key": "/private/tmp/m3mu-resume/live-workspace",
+              "thread_origin": null,
+              "origin_thread_id": "60f0aa8b-37a7-43b0-8a1f-f99b4d01b11f",
+              "origin_path": ".",
+              "origin_location": "/private/tmp/m3mu-resume/live-workspace",
+              "pin": false,
+              "status": "candidate",
+              "revision": 2,
+              "stats": {
+                "removals": 0,
+                "citations": 0,
+                "injections": 0,
+                "never_kills": 0,
+                "last_injected_at": null
+              },
+              "bias": 0.0,
+              "embedding_model": "openai/text-embedding-3-small",
+              "created_at": "2026-09-16T00:31:26.715682Z",
+              "updated_at": "2026-09-16T00:31:26.826896Z"
+            },
+            "birthplace": "symphony",
+            "birthplace_thread_id": null,
+            "batch_uid": "ba284d8c-6edf-4256-9dc8-aeea2d5f790f",
+            "source_name": null,
+            "source_sha256": null,
+            "birthplace_run_id": "01M2KSZ6K1R42GASD5JQTRNEWS",
+            "birthplace_origin_agent": "01M2KSZ6K1R42GASD5JQTRNEWS/root.2",
+            "judged_context": {
+              "summary": "result.txt contains The fictional brass dial is set to seventeen. and a trailing newline in a committed file.",
+              "verdict": "unanimous_pass",
+              "judge_ids": [
+                "01M2KSZYG2C0A1AV7WQP18E1Y6",
+                "01M2KSZYGEPNB33M5MG8EGRVG7",
+                "01M2KSZYGTFY13HW66MQ8S9QBK"
+              ],
+              "evidence_refs": [
+                "/private/tmp/m3mu-resume/live-home/symphonies/01M2KSZ6HEVDCMFB977WZYTE1G/step-1-round-1/judge-motivation/result.json",
+                "/private/tmp/m3mu-resume/live-home/symphonies/01M2KSZ6HEVDCMFB977WZYTE1G/step-1-round-1/judge-implementation/result.json",
+                "/private/tmp/m3mu-resume/live-home/symphonies/01M2KSZ6HEVDCMFB977WZYTE1G/step-1-round-1/judge-performance/result.json"
+              ]
+            },
+            "candidate_revision": null,
+            "curator_run_uid": null,
+            "curator_finding_uid": null,
+            "proposal_payload": null,
+            "verdict": "new",
+            "neighbors": [],
+            "target_ids": [],
+            "state": "pending",
+            "created_at": "2026-09-16T00:31:26.826896Z"
+          }
+        ],
+        "losers": [
+          {
+            "memory_id": "eb0f9e55-f0ae-4fcc-8c39-f79e6b8a130e",
+            "principal_id": "nocturne-verification-3f361f9b-b37f-40d6-bf14-2615a4b2b3b6",
+            "label": "Fictional calibration fact about brass dial",
+            "body": "The brass dial in a fictional calibration is set to seventeen, indicating a specific calibration setting for testing or verification.",
+            "kind": "fact",
+            "keywords": [
+              "fictional",
+              "calibration",
+              "brass dial",
+              "seventeen"
+            ],
+            "project_key": "/private/tmp/m3mu-resume/live-workspace",
+            "origin_thread_id": "60f0aa8b-37a7-43b0-8a1f-f99b4d01b11f",
+            "origin_path": ".",
+            "origin_location": "/private/tmp/m3mu-resume/live-workspace",
+            "pin": false,
+            "status": "tombstoned",
+            "revision": 2,
+            "run_id": "01M2KSZ6K1R42GASD5JQTRNEWS",
+            "origin_agent": "01M2KSZ6K1R42GASD5JQTRNEWS/root.1",
+            "staged": false,
+            "created_at": "2026-09-16T00:31:26.158444Z",
+            "updated_at": "2026-09-16T00:31:26.826896Z"
+          }
+        ]
+      }
+    }
+  ]
+}
