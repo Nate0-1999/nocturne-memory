@@ -12,7 +12,13 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from spine.db.memory import CasUpdate, MemoryUnitChanges, cas_update_memory_unit
-from spine.db.models import InjectionEvent, MemoryRevision, MemoryUnit, ScorerConfig
+from spine.db.models import (
+    CreationOutcome,
+    InjectionEvent,
+    MemoryRevision,
+    MemoryUnit,
+    ScorerConfig,
+)
 from spine.ids import mint_ulid
 from spine.inject import decisions as decisions_module
 from spine.inject.renderer import render_final_block
@@ -232,7 +238,7 @@ async def test_commit_mixed_gate_decisions_render_frozen_and_return_current_wron
     memory_client: AsyncClient,
     memory_session_factory: async_sessionmaker[AsyncSession],
 ) -> None:
-    """A-036 is defended by verifying that commit mixed gate decisions render frozen and return
+    """A-036 / A-067: commit projects creation outcomes while rendering frozen and returning
     current wrong; this prevents drift in the gate feedback and citation-frequency contract.
     """
     injection_id = UUID(int=9001)
@@ -365,6 +371,16 @@ async def test_commit_mixed_gate_decisions_render_frozen_and_return_current_wron
     assert wrong["stats"]["removals"] == 1
 
     async with memory_session_factory() as session:
+        creation = (
+            await session.scalars(
+                select(CreationOutcome).where(CreationOutcome.outcome.in_(["used", "never"]))
+            )
+        ).all()
+        assert {(row.memory_id, row.outcome, row.reason) for row in creation} == {
+            (memory_ids[1], "used", "added_back"),
+            (memory_ids[2], "used", "kept"),
+            (memory_ids[4], "never", "removed:never"),
+        }
         events = (
             await session.scalars(
                 select(InjectionEvent)

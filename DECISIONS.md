@@ -1303,3 +1303,6 @@ owner tap govern adoption. Near-zero coefficients across fitted generations may
 retire at an exact replay tie because serving skips the term. Missing fields and
 zero coefficients preserve the previous scorer. Simulation, serving and score
 explanations use the same scalar definitions; share errors are not wrong memories.
+The live gate walk found that injection decisions update prepared rows. Migration
+0023 therefore captures outcome transitions as distinct append-only facts and
+backfills missed final decisions without duplicating the original projection.
