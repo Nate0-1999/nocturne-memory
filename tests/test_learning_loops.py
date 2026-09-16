@@ -244,7 +244,7 @@ async def test_curator_axis_proposal_activation_and_zero_weight_replay(
     assert response.json()["status"] == "active"
     scoped = await memory_client.post(
         "/v1/scorer-console/query",
-        json={"principal_id": "outside-principal", "as_of": "now"},
+        json={"principal_id": "outside-principal", "thread_id": None, "as_of": "now"},
     )
     assert scoped.status_code == 200, scoped.text
     visible = scoped.json()["configurations"][0]
