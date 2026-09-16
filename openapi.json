@@ -251,6 +251,13 @@
       "CandidateScorePoint": {
         "additionalProperties": false,
         "properties": {
+          "axis_contributions": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/SignedDecimalString"
+            },
+            "title": "Axis Contributions",
+            "type": "object"
+          },
           "contributions": {
             "$ref": "#/components/schemas/ContributionBreakdown"
           },
@@ -433,6 +440,16 @@
           },
           "time": {
             "$ref": "#/components/schemas/SignedDecimalString"
+          },
+          "where": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SignedDecimalString"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [
@@ -1874,6 +1891,13 @@
       "MemoryFeatures": {
         "additionalProperties": false,
         "properties": {
+          "axes": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Axes",
+            "type": "object"
+          },
           "freq": {
             "title": "Freq",
             "type": "number"
@@ -4225,10 +4249,20 @@
       "ScorerConfigurationView": {
         "additionalProperties": false,
         "properties": {
+          "axes": {
+            "additionalProperties": true,
+            "title": "Axes",
+            "type": "object"
+          },
           "created_at": {
             "format": "date-time",
             "title": "Created At",
             "type": "string"
+          },
+          "project_offsets": {
+            "additionalProperties": true,
+            "title": "Project Offsets",
+            "type": "object"
           },
           "replay": {
             "anyOf": [
@@ -4347,6 +4381,11 @@
             "title": "Configurations",
             "type": "array"
           },
+          "creation": {
+            "additionalProperties": true,
+            "title": "Creation",
+            "type": "object"
+          },
           "descriptors": {
             "items": {
               "$ref": "#/components/schemas/ScorerDescriptor"
@@ -4392,6 +4431,14 @@
               }
             ],
             "title": "Thread Id"
+          },
+          "trainables": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Trainables",
+            "type": "array"
           }
         },
         "required": [
@@ -4577,6 +4624,16 @@
                 "type": "null"
               }
             ]
+          },
+          "terrain": {
+            "items": {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "type": "object"
+            },
+            "title": "Terrain",
+            "type": "array"
           },
           "values": {
             "$ref": "#/components/schemas/ScorerValues"
@@ -6143,7 +6200,7 @@
   },
   "info": {
     "title": "N8 Spine",
-    "version": "0.1.19"
+    "version": "0.1.20"
   },
   "openapi": "3.1.0",
   "paths": {

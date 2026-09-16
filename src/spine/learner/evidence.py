@@ -10,6 +10,7 @@ from decimal import Decimal
 from uuid import UUID
 
 from spine.db.models import InjectionEvent, InjectionEventAnnotation
+from spine.inject.axes import apply_axes
 from spine.inject.scorer import ScorerConfig as RuntimeScorerConfig
 from spine.learner.model import (
     EXPLICIT_POSITIVE_OUTCOMES,
@@ -87,7 +88,14 @@ def project_learning_evidence(
         where = _optional_feature(row, "where")
         pre_location = math.fsum(
             weight * feature
-            for weight, feature in zip(_weight_tuple(source), features, strict=True)
+            for weight, feature in zip(
+                (
+                    getattr(source.weights_for_project(getattr(row, "project_key", None)), name)
+                    for name in FEATURE_NAMES
+                ),
+                features,
+                strict=True,
+            )
         )
         localized = (
             pre_location
@@ -104,9 +112,9 @@ def project_learning_evidence(
         localized = (
             localized
             if where is None
-            else (1.0 - source.params.where_weight) * localized
-            + source.params.where_weight * where
+            else (1.0 - source.params.where_weight) * localized + source.params.where_weight * where
         )
+        localized = apply_axes(localized, row.features, source.axes)
         baseline_bias = float(row.score) - localized
         baseline_bias -= source.bias_offset(row.memory_id)
         body = _frozen_body(row)
@@ -129,6 +137,7 @@ def project_learning_evidence(
                 thread_id=getattr(row, "thread_id", None),
                 where_feature=where,
                 where_weight=source.params.where_weight,
+                project_key=getattr(row, "project_key", None),
             )
         )
     return LearningEvidence(

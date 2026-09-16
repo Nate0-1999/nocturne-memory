@@ -7,11 +7,14 @@ import json
 import math
 from collections import defaultdict
 from collections.abc import Iterable, Mapping, Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 from decimal import Decimal
 from typing import Literal
 from uuid import UUID
+
+from spine.inject.axes import AxisNomination, apply_axes
+from spine.inject.scorer import project_simplex as _project_simplex
 
 FEATURE_NAMES = ("sem", "kw", "time", "proj", "freq", "hist")
 EXPLICIT_POSITIVE_OUTCOMES = frozenset({"added_back", "cited", "mid_thread_added"})
@@ -41,6 +44,7 @@ class LearningExample:
     thread_id: UUID | None = None
     where_feature: float | None = None
     where_weight: float = 0.0
+    project_key: str | None = None
 
     @property
     def recorded_injected(self) -> bool:
@@ -77,6 +81,7 @@ class FitResult:
     pair_count: int
     iterations: int
     objective: float
+    project_offsets: Mapping[str, Mapping[str, float]] = field(default_factory=dict)
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)
@@ -245,6 +250,14 @@ def fit_pairwise(
         thread_weight=thread_weight,
         settings=settings,
     )
+    project_offsets = fit_project_offsets(
+        examples,
+        weights=weights,
+        biases=normalized_biases,
+        thread_weight=thread_weight,
+        where_weight=where_weight,
+        settings=settings,
+    )
     tau = incumbent_tau
     memory_context_share = incumbent_memory_context_share
     boundary_iterations = 0
@@ -273,7 +286,67 @@ def fit_pairwise(
         pair_count=len(pairs),
         iterations=iterations + thread_iterations + where_iterations + boundary_iterations,
         objective=objective,
+        project_offsets=project_offsets,
     )
+
+
+def fit_project_offsets(
+    examples: Sequence[LearningExample],
+    *,
+    weights: Sequence[float],
+    biases: Mapping[UUID, float],
+    thread_weight: float,
+    where_weight: float,
+    settings: FitSettings,
+) -> dict[str, dict[str, float]]:
+    """Fit project residuals AFTER globals, from zero, with L2 shrinkage to globals."""
+    result = {}
+    for project in sorted({row.project_key for row in examples if row.project_key is not None}):
+        pairs = _pairs([row for row in examples if row.project_key == project])
+        if not pairs:
+            continue
+        deltas = []
+        for positive, negative, actor_weight in pairs:
+            left, _ = _linearized(positive, thread_weight, where_weight)
+            right, _ = _linearized(negative, thread_weight, where_weight)
+            delta = tuple(a - b for a, b in zip(left, right, strict=True))
+            baseline = (
+                _example_score(positive, weights, thread_weight, where_weight)
+                - _example_score(negative, weights, thread_weight, where_weight)
+                + biases.get(positive.memory_id, 0)
+                - biases.get(negative.memory_id, 0)
+            )
+            deltas.append((delta, baseline, actor_weight))
+        offsets = [0.0] * len(FEATURE_NAMES)
+        step = 1 / max(
+            1,
+            2 * settings.bias_l2
+            + sum(2 * weight * math.fsum(x * x for x in delta) for delta, _, weight in deltas),
+        )
+        for _ in range(10000):
+            gradient = [2 * settings.bias_l2 * value for value in offsets]
+            for delta, baseline, actor_weight in deltas:
+                hinge = max(
+                    0,
+                    settings.pair_margin
+                    - baseline
+                    - math.fsum(a * b for a, b in zip(offsets, delta, strict=True)),
+                )
+                for index, value in enumerate(delta):
+                    gradient[index] -= 2 * actor_weight * hinge * value
+            effective = _project_simplex(
+                tuple(
+                    weight + offset - step * grad
+                    for weight, offset, grad in zip(weights, offsets, gradient, strict=True)
+                )
+            )
+            updated = [a - b for a, b in zip(effective, weights, strict=True)]
+            change = max(abs(a - b) for a, b in zip(updated, offsets, strict=True))
+            offsets = updated
+            if change < 1e-11:
+                break
+        result[project] = dict(zip(FEATURE_NAMES, offsets, strict=True))
+    return result
 
 
 def recorded_score(
@@ -301,18 +374,40 @@ def challenger_score(
     tau: float,
     share_boundaries: Iterable[ShareBoundary] = (),
     memory_context_share: float = 0.10,
+    project_offsets: Mapping[str, Mapping[str, float]] | None = None,
+    axes: Mapping[str, AxisNomination] | None = None,
 ) -> ReplayScore:
     """Score one fitted challenger against the held-out binary dispositions."""
 
     def predicted(example: LearningExample) -> bool:
         if example.shown_as == "pinned":
             return True
-        score = _example_score(example, weights, thread_weight, where_weight)
+        offsets = (project_offsets or {}).get(example.project_key, {})
+        effective = tuple(
+            value + offsets.get(name, 0.0)
+            for name, value in zip(FEATURE_NAMES, weights, strict=True)
+        )
+        if min(effective) < 0:
+            effective = _project_simplex(effective)
+        score = _example_score(example, effective, thread_weight, where_weight)
+        score = (
+            apply_axes(score - example.baseline_bias, example_features(example), axes or {})
+            + example.baseline_bias
+        )
         score += bias_offsets.get(example.memory_id, 0.0)
         return score >= tau
 
     score = _replay_score(examples, predicted=predicted)
     return _with_share_score(score, share_boundaries, memory_context_share)
+
+
+def example_features(example: LearningExample) -> dict[str, float | None]:
+    return {
+        **dict(zip(FEATURE_NAMES, example.features, strict=True)),
+        "loc": example.location_feature,
+        "thread": example.thread_feature,
+        "where": example.where_feature,
+    }
 
 
 def challenger_wins(
@@ -408,12 +503,8 @@ def _objective_and_gradient(
     }
     objective = settings.bias_l2 * math.fsum(value * value for value in biases.values())
     for positive, negative, actor_weight in pairs:
-        positive_features, positive_constant = _linearized(
-            positive, thread_weight, where_weight
-        )
-        negative_features, negative_constant = _linearized(
-            negative, thread_weight, where_weight
-        )
+        positive_features, positive_constant = _linearized(positive, thread_weight, where_weight)
+        negative_features, negative_constant = _linearized(negative, thread_weight, where_weight)
         feature_delta = tuple(
             left - right for left, right in zip(positive_features, negative_features, strict=True)
         )
@@ -619,9 +710,7 @@ def _fit_where_weight(
     for iteration in range(1, 10_001):
         iterations = iteration
         gradient = 0.0
-        for (positive, negative, actor_weight), derivative in zip(
-            pairs, derivatives, strict=True
-        ):
+        for (positive, negative, actor_weight), derivative in zip(pairs, derivatives, strict=True):
             difference = _example_score(positive, weights, thread_weight, where_weight)
             difference -= _example_score(negative, weights, thread_weight, where_weight)
             difference += biases[positive.memory_id] - biases[negative.memory_id]
@@ -662,9 +751,7 @@ def _where_derivative(
             1.0 - example.location_weight
         ) * pre_where + example.location_weight * example.location_feature
     if example.thread_feature is not None:
-        pre_where = (
-            1.0 - thread_weight
-        ) * pre_where + thread_weight * example.thread_feature
+        pre_where = (1.0 - thread_weight) * pre_where + thread_weight * example.thread_feature
     return example.where_feature - pre_where
 
 
@@ -761,26 +848,6 @@ def _with_share_score(
     )
 
 
-def _project_simplex(values: Sequence[float]) -> tuple[float, ...]:
-    """Euclidean projection onto non-negative values summing exactly to one."""
-
-    ordered = sorted((float(value) for value in values), reverse=True)
-    cumulative = 0.0
-    rho = 0
-    for index, value in enumerate(ordered, start=1):
-        cumulative += value
-        if value - (cumulative - 1.0) / index > 0.0:
-            rho = index
-    if rho == 0:
-        return tuple(1.0 / len(values) for _ in values)
-    theta = (math.fsum(ordered[:rho]) - 1.0) / rho
-    projected = [max(float(value) - theta, 0.0) for value in values]
-    total = math.fsum(projected)
-    normalized = [value / total for value in projected]
-    normalized[-1] += 1.0 - math.fsum(normalized)
-    return tuple(normalized)
-
-
 def _replay_score(
     examples: Iterable[LearningExample],
     *,
@@ -822,6 +889,7 @@ def _canonical_example(example: LearningExample) -> dict[str, object]:
         "memory_id": str(example.memory_id),
         "ts": example.ts.isoformat(),
         "features": list(example.features),
+        "project_key": example.project_key,
         "baseline_bias": example.baseline_bias,
         "target_injected": example.target_injected,
         "actor_weight": str(example.actor_weight),

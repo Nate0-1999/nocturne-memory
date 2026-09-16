@@ -1291,3 +1291,15 @@ Manual invoices use the existing ledger and configured-owner boundary. An invoic
 identity lock serializes retries; equal replays keep one receipt, changed amount
 or date refuses the append. The aggregate cloud-service line is explicitly marked
 as a manual invoice, without pretending its component allocation is known.
+
+## 052 — Replay one set of learning inputs [P1.2, P2.2, M3LL]
+
+PRECEDENT: PLAN M3LL/M3CT/M3TR/M3CX; A-031/A-035/A-067; D.2 130/144.
+Creation outcomes project authoritative revision and injection writes; the
+creation loop remains capture-only. Project residuals fit from zero after the
+global fit and shrink toward globals. A deterministic curator nominates named
+products of recorded features on training gates; held-out replay and the existing
+owner tap govern adoption. Near-zero coefficients across fitted generations may
+retire at an exact replay tie because serving skips the term. Missing fields and
+zero coefficients preserve the previous scorer. Simulation, serving and score
+explanations use the same scalar definitions; share errors are not wrong memories.

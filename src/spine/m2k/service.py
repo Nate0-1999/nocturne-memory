@@ -35,8 +35,10 @@ from spine.inject.scorer import (
     DEFAULT_MEMORY_CONTEXT_SHARE,
     MAX_MEMORY_CONTEXT_SHARE,
     MIN_MEMORY_CONTEXT_SHARE,
+    score_features,
 )
 from spine.inject.scorer import ScorerConfig as RuntimeScorerConfig
+from spine.learner.creation import creation_snapshot
 from spine.learner.evidence import LearnerDataError, project_learning_evidence
 from spine.learner.model import (
     FEATURE_NAMES,
@@ -44,6 +46,7 @@ from spine.learner.model import (
     challenger_score,
     split_gates,
 )
+from spine.learner.service import LearnerService
 from spine.m2k.contracts import (
     AccuracyPoint,
     AccuracySlice,
@@ -288,6 +291,9 @@ class M2KService:
                     text("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY")
                 )
                 as_of = await _transaction_time(session)
+                creation = await creation_snapshot(
+                    session, None if palace_scope else query.principal_id
+                )
                 configs = (
                     (
                         await session.execute(
@@ -390,8 +396,22 @@ class M2KService:
         config_views = [_config_view(row) for row in configs]
         if not palace_scope:
             # F100: expose the current scoring policy, never other principals' replay metrics.
+            visible_projects = {row.project_key for row in learning_events}
             config_views = [
-                view.model_copy(update={"replay": None})
+                view.model_copy(
+                    update={
+                        "replay": None,
+                        "axes": {
+                            name: {**axis, "provenance": {"visibility": "owner-only"}}
+                            for name, axis in view.axes.items()
+                        },
+                        "project_offsets": {
+                            project: offsets
+                            for project, offsets in view.project_offsets.items()
+                            if project in visible_projects
+                        },
+                    }
+                )
                 for view in config_views
                 if view.status == "active"
             ]
@@ -408,6 +428,12 @@ class M2KService:
         except LearnerDataError as error:
             raise M2KStateError(f"invalid_learning_evidence:{error}") from error
         return ScorerConsoleSnapshot(
+            creation=creation,
+            trainables=LearnerService.manifest(
+                len(evidence.examples),
+                self._learner_min_dispositions,
+                axes=_runtime(active[0]).axes,
+            ),
             as_of=as_of,
             metrics_scope="palace" if palace_scope else "principal",
             scope="CURRENT" if query.thread_id is not None else "GLOBAL",
@@ -529,7 +555,7 @@ class M2KService:
                 base = await session.get(ScorerConfigRow, body.base_version)
                 if base is None or not base.active:
                     raise M2KStateError("stale_base")
-                receipt = await self._deep_receipt(session, base, body.values)
+                receipt = await self._deep_receipt(session, base, body.values, include_terrain=True)
                 instant = await _instant(
                     session,
                     principal_id=body.principal_id,
@@ -579,6 +605,8 @@ class M2KService:
         session: AsyncSession,
         base: ScorerConfigRow,
         values: ScorerValues,
+        *,
+        include_terrain: bool = False,
     ) -> ScorerSimulationResponse:
         configs = (await session.execute(select(ScorerConfigRow))).scalars().all()
         config_map = {row.version: _runtime(row) for row in configs}
@@ -629,6 +657,8 @@ class M2KService:
                 _rescale_examples(holdout, rows, config_map, incumbent_values),
                 weights=_weight_tuple(incumbent_values),
                 bias_offsets=base_runtime.bias_offsets,
+                project_offsets=base_runtime.project_offsets,
+                axes=base_runtime.axes,
                 thread_weight=base_runtime.params.thread_weight,
                 where_weight=base_runtime.params.where_weight,
                 tau=incumbent_values.tau,
@@ -643,6 +673,8 @@ class M2KService:
                 holdout,
                 weights=_weight_tuple(values),
                 bias_offsets=base_runtime.bias_offsets,
+                project_offsets=base_runtime.project_offsets,
+                axes=base_runtime.axes,
                 thread_weight=base_runtime.params.thread_weight,
                 where_weight=base_runtime.params.where_weight,
                 tau=values.tau,
@@ -671,7 +703,33 @@ class M2KService:
         digest = hashlib.sha256(
             json.dumps(digest_payload, sort_keys=True, separators=(",", ":")).encode()
         ).hexdigest()
+        terrain = []
+        if include_terrain and holdout:
+            for tau_step in range(9):
+                for share_step in range(9):
+                    tau, share = tau_step / 8, 0.01 + share_step * 0.49 / 8
+                    result = challenger_score(
+                        holdout,
+                        weights=_weight_tuple(values),
+                        bias_offsets=base_runtime.bias_offsets,
+                        project_offsets=base_runtime.project_offsets,
+                        axes=base_runtime.axes,
+                        thread_weight=base_runtime.params.thread_weight,
+                        where_weight=base_runtime.params.where_weight,
+                        tau=tau,
+                        share_boundaries=holdout_boundaries,
+                        memory_context_share=share,
+                    )
+                    terrain.append(
+                        {
+                            "tau": tau,
+                            "share": share,
+                            "agreement": 100
+                            * (1 - result.disagreements / (len(holdout) + len(holdout_boundaries))),
+                        }
+                    )
         return ScorerSimulationResponse(
+            terrain=terrain,
             simulation_digest=digest,
             base_version=base.version,
             values=values,
@@ -870,6 +928,8 @@ def _config_view(row: ScorerConfigRow) -> ScorerConfigurationView:
         status=status,
         values=_values(row),
         replay=dict(replay) if isinstance(replay, Mapping) else None,
+        axes=row.params.get("axes", {}),
+        project_offsets=row.params.get("project_offsets", {}),
     )
 
 
@@ -903,6 +963,11 @@ def _accuracy_point(row: ScorerConfigRow) -> AccuracyPoint:
         weighted_wrong = (
             Decimal(weighted_wrong_raw) if isinstance(weighted_wrong_raw, str) else None
         )
+        if isinstance(challenger, Mapping):
+            if isinstance(disagreements, int):
+                disagreements -= int(challenger.get("share_disagreements", 0))
+            if weighted_wrong is not None:
+                weighted_wrong -= Decimal(challenger.get("weighted_share_disagreements", "0"))
     except Exception:
         holdout_weight = None
         weighted_wrong = None
@@ -1136,9 +1201,11 @@ def _candidate_histories(
             if features.loc is not None
             else 1.0
         )
+        runtime = _runtime(config)
+        project_weights = runtime.weights_for_project(event.project_key)
         contributions = {
             name: Decimal(str(getattr(features, name)))
-            * Decimal(str(config.weights[name]))
+            * Decimal(str(getattr(project_weights, name)))
             * Decimal(str(location_scale))
             for name in FEATURE_NAMES
         }
@@ -1167,7 +1234,24 @@ def _candidate_histories(
                 thread_contribution *= where_scale
             where_contribution = Decimal(str(features.where)) * where_weight
         stored_score = Decimal(str(event.score))
+        axis_contributions = {}
+        for name, axis in sorted(runtime.axes.items()):
+            value = axis.value(event.features)
+            if value is None or not axis.weight:
+                continue
+            scale = Decimal(1) - Decimal(str(axis.weight))
+            contributions = {key: amount * scale for key, amount in contributions.items()}
+            axis_contributions = {key: amount * scale for key, amount in axis_contributions.items()}
+            location_contribution = (
+                None if location_contribution is None else location_contribution * scale
+            )
+            thread_contribution = (
+                None if thread_contribution is None else thread_contribution * scale
+            )
+            where_contribution = None if where_contribution is None else where_contribution * scale
+            axis_contributions[name] = Decimal(str(value)) * Decimal(str(axis.weight))
         bias = stored_score - sum(contributions.values(), start=Decimal(0))
+        bias -= sum(axis_contributions.values(), start=Decimal(0))
         if location_contribution is not None:
             bias -= location_contribution
         if thread_contribution is not None:
@@ -1185,6 +1269,9 @@ def _candidate_histories(
                 shown_as=event.shown_as,  # type: ignore[arg-type]
                 outcome=event.outcome,
                 features=features,
+                axis_contributions={
+                    name: _decimal_string(value) for name, value in axis_contributions.items()
+                },
                 contributions=ContributionBreakdown(
                     **{
                         **{name: _decimal_string(value) for name, value in contributions.items()},
@@ -1198,6 +1285,9 @@ def _candidate_histories(
                             if thread_contribution is None
                             else _decimal_string(thread_contribution)
                         ),
+                        "where": None
+                        if where_contribution is None
+                        else _decimal_string(where_contribution),
                         "bias": _decimal_string(bias),
                     }
                 ),
@@ -1294,33 +1384,12 @@ def _example(
         if isinstance(raw_where, (int, float)) and not isinstance(raw_where, bool)
         else None
     )
-    source_score = math.fsum(
-        weight * feature
-        for weight, feature in zip(
-            (
-                source.weights.sem,
-                source.weights.kw,
-                source.weights.time,
-                source.weights.proj,
-                source.weights.freq,
-                source.weights.hist,
-            ),
-            original,
-            strict=True,
-        )
+    source_score = score_features(
+        row.features,
+        weights=source.weights_for_project(row.project_key),
+        params=source.params,
+        axes=source.axes,
     )
-    if location is not None:
-        source_score = (
-            1.0 - source.params.location_weight
-        ) * source_score + source.params.location_weight * location
-    if thread is not None:
-        source_score = (
-            1.0 - source.params.thread_weight
-        ) * source_score + source.params.thread_weight * thread
-    if where is not None:
-        source_score = (
-            1.0 - source.params.where_weight
-        ) * source_score + source.params.where_weight * where
     baseline_bias = float(row.score) - source_score
     baseline_bias -= source.bias_offset(row.memory_id)
     frozen = row.features.get("_memory")
@@ -1344,6 +1413,7 @@ def _example(
         thread_feature=thread,
         where_feature=where,
         where_weight=source.params.where_weight,
+        project_key=row.project_key,
     )
 
 
@@ -1386,7 +1456,9 @@ def _rescale_decay(value: float, source_half_life: float, target_half_life: floa
 def _accuracy(score: Any, count: int) -> Decimal | None:
     if score is None or count == 0:
         return None
-    return Decimal(100) * Decimal(count - score.disagreements) / Decimal(count)
+    # Share-boundary errors are separate decisions, not extra wrong memories.
+    memory_disagreements = score.disagreements - score.share_disagreements
+    return Decimal(100) * Decimal(count - memory_disagreements) / Decimal(count)
 
 
 def _optional_decimal(value: Decimal | None) -> str | None:
@@ -1431,7 +1503,10 @@ async def _instant(
         return InstantSimulation(status="not_replayable", injection_id=injection_id, candidates=[])
     config_rows = (await session.execute(select(ScorerConfigRow))).scalars().all()
     configs = {row.version: _runtime(row) for row in config_rows}
-    preview_runtime = _runtime(preview)
+    preview_params = {**preview.params, **preview_values.model_dump(exclude={"weights"})}
+    preview_runtime = RuntimeScorerConfig.from_mappings(
+        version=preview.version, weights=preview_values.weights, params=preview_params
+    )
     candidates: list[dict[str, Any]] = []
     for row in rows:
         source = configs.get(row.scorer_version)
@@ -1445,26 +1520,19 @@ async def _instant(
         adjusted[5] = _rescale_decay(
             original[5], source.params.half_life_hist_days, preview_values.half_life_hist_days
         )
-        baseline_bias = float(row.score) - math.fsum(
-            weight * feature
-            for weight, feature in zip(
-                (
-                    source.weights.sem,
-                    source.weights.kw,
-                    source.weights.time,
-                    source.weights.proj,
-                    source.weights.freq,
-                    source.weights.hist,
-                ),
-                original,
-                strict=True,
-            )
+        baseline_bias = float(row.score) - score_features(
+            row.features,
+            weights=source.weights_for_project(row.project_key),
+            params=source.params,
+            axes=source.axes,
         )
         baseline_bias -= source.bias_offset(row.memory_id)
         preview_score = (
-            math.fsum(
-                weight * feature
-                for weight, feature in zip(_weight_tuple(preview_values), adjusted, strict=True)
+            score_features(
+                {**row.features, **dict(zip(FEATURE_NAMES, adjusted, strict=True))},
+                weights=preview_runtime.weights_for_project(row.project_key),
+                params=preview_runtime.params,
+                axes=preview_runtime.axes,
             )
             + baseline_bias
             + preview_runtime.bias_offset(row.memory_id)
