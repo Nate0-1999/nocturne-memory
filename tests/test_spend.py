@@ -185,11 +185,44 @@ async def test_spend_table_groups_threads_models_token_lanes_and_non_thread_purp
     scoped = SpendTableSnapshot.model_validate(scoped_response.json())
     assert [str(row.thread_id) for row in scoped.threads] == [_THREAD_ID]
     assert scoped.purposes == []
+    assert scoped.rate_source == "spend_event"
+    total = next(lane for lane in scoped.rates if lane.dimension == "total")
+    assert sum(Decimal(point.cost_usd) for point in total.points) == Decimal("0.022")
+    assert len(scoped.messages) == 1
+    assert Decimal(scoped.messages[0].fresh_tokens) == Decimal("130")
+    assert Decimal(scoped.messages[0].cached_tokens) == Decimal("50")
+    assert Decimal(scoped.messages[0].cache_write_tokens) == Decimal("25")
 
     empty_response = await memory_client.get("/v1/spend/table?principal_id=owner&scope=threads")
     empty = SpendTableSnapshot.model_validate(empty_response.json())
     assert empty.threads == []
     assert empty.purposes == []
+    assert empty.rates == empty.messages == empty.days == []
+
+
+async def test_spend_history_filters_principal_and_keeps_unknown_prices(
+    memory_client: AsyncClient,
+) -> None:
+    """ADR-024 / M3SC / M3SR: charts and cache history cannot leak another principal."""
+    now = datetime.now(UTC).isoformat()
+    own = _event(ts=now)
+    own.update(principal_id="verification", origin_agent="run/root.1")
+    other = _event(_SECOND_UID, ts=now, model="private-model")
+    other.update(principal_id="other", cost_usd="100")
+    unknown = _event("01K1M2A0000000000000000005", ts=now, cost_usd=None)
+    unknown.update(principal_id="verification", purpose="curation", thread_id=None)
+    result = await memory_client.post("/v1/spend/events", json={"events": [own, other, unknown]})
+    assert result.status_code == 200
+    result = await memory_client.get("/v1/spend/table?principal_id=verification")
+    assert result.status_code == 200
+    assert "private-model" not in result.text
+    snapshot = SpendTableSnapshot.model_validate(result.json())
+    assert any(lane.dimension == "subagent" for lane in snapshot.rates)
+    curation = next(lane for lane in snapshot.rates if lane.dimension == "curation")
+    assert curation.points[0].cost_usd is None
+    assert snapshot.days[0].unpriced_lines == 1
+    assert Decimal(snapshot.days[0].total_usd) == Decimal("0.00025")
+    assert snapshot.messages[0].thread_id == UUID(_THREAD_ID)
 
 
 async def test_spend_event_database_is_append_only(

@@ -808,6 +808,60 @@
         "title": "CuratorRunRequest",
         "type": "object"
       },
+      "DailySpend": {
+        "additionalProperties": false,
+        "properties": {
+          "day": {
+            "format": "date-time",
+            "title": "Day",
+            "type": "string"
+          },
+          "infrastructure_usd": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DecimalString"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "model_usd": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DecimalString"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "total_usd": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DecimalString"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "unpriced_lines": {
+            "minimum": 0.0,
+            "title": "Unpriced Lines",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "day",
+          "model_usd",
+          "infrastructure_usd",
+          "total_usd",
+          "unpriced_lines"
+        ],
+        "title": "DailySpend",
+        "type": "object"
+      },
       "DecimalString": {
         "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
         "type": "string"
@@ -2341,6 +2395,51 @@
           "updated_at"
         ],
         "title": "MemoryUnit",
+        "type": "object"
+      },
+      "MessageCache": {
+        "additionalProperties": false,
+        "properties": {
+          "cache_write_tokens": {
+            "$ref": "#/components/schemas/DecimalString"
+          },
+          "cached_tokens": {
+            "$ref": "#/components/schemas/DecimalString"
+          },
+          "first_request_at": {
+            "format": "date-time",
+            "title": "First Request At",
+            "type": "string"
+          },
+          "fresh_tokens": {
+            "$ref": "#/components/schemas/DecimalString"
+          },
+          "prompt_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt Id"
+          },
+          "thread_id": {
+            "format": "uuid",
+            "title": "Thread Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "thread_id",
+          "prompt_id",
+          "first_request_at",
+          "fresh_tokens",
+          "cached_tokens",
+          "cache_write_tokens"
+        ],
+        "title": "MessageCache",
         "type": "object"
       },
       "ModelSpendRow": {
@@ -5067,6 +5166,51 @@
         ],
         "type": "string"
       },
+      "SpendRateLane": {
+        "additionalProperties": false,
+        "properties": {
+          "dimension": {
+            "enum": [
+              "total",
+              "agent",
+              "subagent",
+              "model",
+              "curation"
+            ],
+            "title": "Dimension",
+            "type": "string"
+          },
+          "key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Key"
+          },
+          "label": {
+            "$ref": "#/components/schemas/NonBlankString"
+          },
+          "points": {
+            "items": {
+              "$ref": "#/components/schemas/SpendPoint"
+            },
+            "title": "Points",
+            "type": "array"
+          }
+        },
+        "required": [
+          "dimension",
+          "key",
+          "label",
+          "points"
+        ],
+        "title": "SpendRateLane",
+        "type": "object"
+      },
       "SpendSnapshot": {
         "additionalProperties": false,
         "properties": {
@@ -5114,11 +5258,41 @@
             "title": "As Of",
             "type": "string"
           },
+          "days": {
+            "items": {
+              "$ref": "#/components/schemas/DailySpend"
+            },
+            "title": "Days",
+            "type": "array"
+          },
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/MessageCache"
+            },
+            "title": "Messages",
+            "type": "array"
+          },
           "purposes": {
             "items": {
               "$ref": "#/components/schemas/PurposeSpendRow"
             },
             "title": "Purposes",
+            "type": "array"
+          },
+          "rate_source": {
+            "default": "spend_event",
+            "enum": [
+              "v_spend_rate+spend_event",
+              "spend_event"
+            ],
+            "title": "Rate Source",
+            "type": "string"
+          },
+          "rates": {
+            "items": {
+              "$ref": "#/components/schemas/SpendRateLane"
+            },
+            "title": "Rates",
             "type": "array"
           },
           "threads": {
@@ -5910,7 +6084,7 @@
   },
   "info": {
     "title": "N8 Spine",
-    "version": "0.1.15"
+    "version": "0.1.16"
   },
   "openapi": "3.1.0",
   "paths": {
