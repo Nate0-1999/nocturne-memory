@@ -171,9 +171,19 @@ async def test_models_match_authoritative_c2_schema(
         "transcript_record",
         "creation_outcome",
         "curator_progress",
+        "workflow_job",
+        "workflow_run",
     )
 
     expected_columns = {
+        "workflow_job": (
+            "job_id", "principal_id", "machine_id", "definition", "revision",
+            "enabled", "next_run_at", "trigger_cursor", "created_at",
+        ),
+        "workflow_run": (
+            "run_id", "job_id", "thread_id", "trigger_key", "definition", "state",
+            "verdict", "started_at", "finished_at",
+        ),
         "curator_progress": (
             "event_id", "principal_id", "run_uid", "phase", "memory_ids",
             "finding_uid", "action", "ts",
@@ -470,6 +480,8 @@ async def test_models_match_authoritative_c2_schema(
         for name, table in Base.metadata.tables.items()
     }
     assert nullable == {
+        "workflow_job": {"next_run_at", "trigger_cursor"},
+        "workflow_run": {"verdict", "finished_at"},
         "curator_progress": {"finding_uid", "action"},
         "creation_outcome": set(),
         "memory_unit": {
@@ -541,6 +553,8 @@ async def test_models_match_authoritative_c2_schema(
         for name, table in Base.metadata.tables.items()
     }
     assert primary_keys == {
+        "workflow_job": ("job_id",),
+        "workflow_run": ("run_id",),
         "curator_progress": ("event_id",),
         "creation_outcome": ("event_key",),
         "memory_unit": ("id",),
@@ -574,6 +588,24 @@ async def test_models_match_authoritative_c2_schema(
         for column in table.c
     }
     assert types == {
+        "workflow_job.job_id": "TEXT",
+        "workflow_job.principal_id": "TEXT",
+        "workflow_job.machine_id": "TEXT",
+        "workflow_job.definition": "JSONB",
+        "workflow_job.revision": "INTEGER",
+        "workflow_job.enabled": "BOOLEAN",
+        "workflow_job.next_run_at": "TIMESTAMP WITH TIME ZONE",
+        "workflow_job.trigger_cursor": "TEXT",
+        "workflow_job.created_at": "TIMESTAMP WITH TIME ZONE",
+        "workflow_run.run_id": "TEXT",
+        "workflow_run.job_id": "TEXT",
+        "workflow_run.thread_id": "UUID",
+        "workflow_run.trigger_key": "TEXT",
+        "workflow_run.definition": "JSONB",
+        "workflow_run.state": "TEXT",
+        "workflow_run.verdict": "TEXT",
+        "workflow_run.started_at": "TIMESTAMP WITH TIME ZONE",
+        "workflow_run.finished_at": "TIMESTAMP WITH TIME ZONE",
         "curator_progress.event_id": "BIGINT",
         "curator_progress.principal_id": "TEXT",
         "curator_progress.run_uid": "TEXT",
@@ -837,6 +869,10 @@ async def test_models_match_authoritative_c2_schema(
         if column.server_default is not None
     }
     assert defaults == {
+        "workflow_job.revision": "1",
+        "workflow_job.enabled": "true",
+        "workflow_job.created_at": "now()",
+        "workflow_run.started_at": "now()",
         "curator_progress.memory_ids": "'{}'::uuid[]",
         "curator_progress.ts": "clock_timestamp()",
         "memory_unit.id": "gen_random_uuid()",
@@ -900,6 +936,12 @@ async def test_models_match_authoritative_c2_schema(
         for name, table in Base.metadata.tables.items()
     }
     assert checks == {
+        "workflow_job": {},
+        "workflow_run": {
+            "workflow_run_state_check": (
+                "state IN ('running','completed','failed','cancelled','interrupted')"
+            ),
+        },
         "curator_progress": {
             "curator_progress_phase_check": (
                 "phase IN ('run.started','finding.started','finding.completed',"
