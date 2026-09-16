@@ -20,6 +20,7 @@ from pydantic import (
 )
 
 from spine.ids import normalize_ulid
+from spine.vitals.contracts import DecimalString, SpendPoint
 
 
 def _nonblank(value: str) -> str:
@@ -162,11 +163,39 @@ class PurposeSpendRow(SpendTableMetrics):
     label: NonBlankString
 
 
+class SpendRateLane(SpendContract):
+    dimension: Literal["total", "agent", "subagent", "model", "curation"]
+    key: str | None
+    label: NonBlankString
+    points: list[SpendPoint]
+
+
+class MessageCache(SpendContract):
+    thread_id: UUID
+    prompt_id: str | None
+    first_request_at: datetime
+    fresh_tokens: DecimalString
+    cached_tokens: DecimalString
+    cache_write_tokens: DecimalString
+
+
+class DailySpend(SpendContract):
+    day: datetime
+    model_usd: DecimalString | None
+    infrastructure_usd: DecimalString | None
+    total_usd: DecimalString | None
+    unpriced_lines: int = Field(ge=0)
+
+
 class SpendTableSnapshot(SpendContract):
     as_of: datetime
     window_minutes: Literal[60]
     threads: list[ThreadSpendRow]
     purposes: list[PurposeSpendRow]
+    rates: list[SpendRateLane] = Field(default_factory=list)
+    rate_source: Literal["v_spend_rate+spend_event", "spend_event"] = "spend_event"
+    messages: list[MessageCache] = Field(default_factory=list)
+    days: list[DailySpend] = Field(default_factory=list)
 
     @field_validator("as_of")
     @classmethod

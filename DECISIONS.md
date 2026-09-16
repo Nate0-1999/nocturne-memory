@@ -1272,3 +1272,14 @@ within the principal lock and before embedding. Changed bodies and other
 principals remain eligible; an ordinary tombstone is not a rejection. Reusing
 the queue record avoids a second rejection store. The additive history contract
 advances the Palace API and lockstep release to 0.1.14.
+
+## 050 — Read cost histories without widening their scope [P2.4, M3SR]
+
+PRECEDENT: PLAN M3SR, ADR-024, A-037; ancestors M3SP, M3SC.
+The spend table adds minute lanes, UTC daily totals and per-prompt cache quantities
+in one read-only snapshot. Whole-Palace model/curation/total lanes use v_spend_rate;
+principal/thread lanes filter the ledger first, as in M3SC. Agent lineage is absent
+from that materialized view, so agent/sub-agent lanes read scoped receipts directly.
+Cache reads and writes stay distinct. Infrastructure totals use their ledger date
+and stay outside the existing model-only broker reconciliation. This read path
+does not create an invoice-ingestion authority.
