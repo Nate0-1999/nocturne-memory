@@ -1393,10 +1393,11 @@
       "section": "5. Agent hands and location",
       "era": "Jul 20",
       "label": "Injected memories refreshed on every move.",
-      "status": "unverified",
+      "status": "built",
       "walk": "Move to a folder with its own memories; the next turn's injection is refreshed with them.",
       "owner": "owner — \"The memories procedurally added should be refreshed every move. To work on a file the agent must move to that directory.\" (chat 2026-07-20 00:01:41; chat 2026-08-17 14:53:22)",
       "surfaces": [
+        "harness/src/harness/memory_gate.py",
         "harness/src/harness/toolset_runtime.py",
         "harness/src/harness/pydantic_harness_adapter.py",
         "harness/src/harness/progressive_prompt.py"
@@ -1568,10 +1569,15 @@
       "section": "5. Agent hands and location",
       "era": "Jul 20",
       "label": "Commit every turn; one-click rewind of chat and code together to any earlier turn.",
-      "status": "not built",
+      "status": "built",
       "walk": "Rewind to turn 2; chat and files both revert.",
       "owner": "owner — \"That's why it's important to commit every turn change. Cursor had this back in the day where you could just revert the code base and chat to a previous state with a single button click.\" (chat 2026-07-20 16:16:55; chat 2026-07-28 22:41:16)",
-      "surfaces": []
+      "surfaces": [
+        "harness/src/harness/checkpoints.py",
+        "harness/src/harness/run_loop.py",
+        "harness/src/harness/transcript.py",
+        "harness/web/src/RewindControl.tsx"
+      ]
     },
     {
       "id": "FL-077",
@@ -2189,10 +2195,14 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Jul 28",
       "label": "A plugin to change common model parameters such as top p and temperature, as an Ableton-style visualizer and input block.",
-      "status": "not built",
+      "status": "built",
       "walk": "Change temperature in the model-parameters plugin; the next turn's request carries the new value.",
       "owner": "owner — \"Also, we should have another plug in that allows people to change common model parameters: top p, temperature, etc. That would be a cool abletonesk visualizer and input block as well.\" (chat 2026-07-28 16:31:54)",
-      "surfaces": []
+      "surfaces": [
+        "harness/web/src/ModelDevice.tsx",
+        "harness/web/src/rack.tsx",
+        "harness/src/harness/parameter_registry.py"
+      ]
     },
     {
       "id": "FL-108",
@@ -3792,6 +3802,8 @@
       "walk": "Open the tool inventory; each tool or skill lists the versioned open-source source it is pinned to.",
       "owner": "owner — \"I want to take a look at the logs from claude code and codex on this computer and see what skills, mcps, tools etc that are being used and make sure that we have all of them handy ideally set up to point at something static but with versioning to some open source version...\" (chat 2026-08-03 22:55:52; chat 2026-08-03 23:38:57)",
       "surfaces": [
+        "harness/src/harness/tool_inventory.py",
+        "harness/web/src/ToolControls.tsx",
         "harness/src/harness/pydantic_harness_adapter.py",
         "harness/src/harness/toolset.py",
         "harness/src/harness/toolset_runtime.py",
@@ -3819,6 +3831,8 @@
       "walk": "Change the toolset in config to a different one as a unit; the next thread's agent has that toolset's tools.",
       "owner": "owner — \"I want all of our functions to be moduler and swap able as possible for example: 1. the open router optimization should work for other routers 2. it should be able to be turned off and used with a single token credit 3. We should be able to use all the pi tools for the terminal agent or all the open code tools We should be able to take this as principle.\" (chat 2026-08-14 23:19:48; first thread turn 1)",
       "surfaces": [
+        "harness/src/harness/tool_inventory.py",
+        "harness/web/src/ToolControls.tsx",
         "harness/src/harness/model_policy.py",
         "harness/src/harness/model_router.py",
         "harness/src/harness/openrouter_runtime.py",
@@ -3869,6 +3883,8 @@
       "walk": "Open the agent's tool list in a thread; the tools come from the Pydantic toolset plus skills, not from pi.",
       "owner": "owner — \"A OK. Good riff I am fine if you've got all those deails kicking that one off with the pydantic toolset, skills, etc use instead of pi\" (chat 2026-08-24 20:53:32)",
       "surfaces": [
+        "harness/src/harness/tool_inventory.py",
+        "harness/web/src/ToolControls.tsx",
         "harness/src/harness/pydantic_harness_adapter.py",
         "harness/src/harness/toolset.py",
         "harness/src/harness/toolset_runtime.py",
