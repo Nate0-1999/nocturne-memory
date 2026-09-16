@@ -1,0 +1,10 @@
+........................................................................ [ 23%]
+........................................................................ [ 46%]
+........................................................................ [ 69%]
+........................................................................ [ 92%]
+................sss......                                                [100%]
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_unbuilt_rules.py:6: r11-2: shared Palaces and revocable principal grants are horizon work
+SKIPPED [1] tests/test_unbuilt_rules.py:12: r9-9: worker/local cost stores have not converged into the spend ledger
+SKIPPED [1] tests/test_unbuilt_rules.py:18: r9-6: strongest curator model policy awaits SD-018
+310 passed, 3 skipped in 22.88s
