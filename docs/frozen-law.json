@@ -1,6 +1,6 @@
 {
   "axioms_sha256": "e37c518b3bb11cc8d60654030abcc92da686b1a8f47680addd0cf243b7399a6b",
-  "spec_sha256": "237d86ae48cbb266148610054a47bf41782a3c1390c9ca66911544bbfd6fb1ba",
+  "spec_sha256": "0204edd5f70ad5db780271c08f947fa1556b7c9067f8a2e17c060c6934db6d68",
   "repository": "spine",
   "ledger_sha256": "ca644cde96b44ac1be726749e696d489071bf57befabc38b76ed7d0d5fca3c4b",
   "ledger_tool_sha256": "a5c6a10014c6eba7d4aa6176d7ea0dfdf1fbdba433418f5744a2872275d7bb67",
@@ -115,6 +115,7 @@
     "F108",
     "F109",
     "F110",
-    "F111"
+    "F111",
+    "F112"
   ]
 }
