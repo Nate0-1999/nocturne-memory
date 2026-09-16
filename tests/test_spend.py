@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import json
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
@@ -15,6 +16,48 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from spine.spend.contracts import SpendTableSnapshot
 from spine.spend.views import CANONICAL_SPEND_VIEWS, SpendViewRefresher
+
+
+async def test_manual_invoice_is_owner_only_replay_safe_and_counted_on_its_day(
+    memory_client: AsyncClient,
+    memory_session_factory: async_sessionmaker[AsyncSession],
+    memory_app,
+) -> None:
+    """ADR-024 / M3SR: one owner-entered bill, no duplicate charge or broker cost."""
+    memory_app.state.settings.owner_principal_id = "invoice-owner"
+    invoice = {
+        "invoice_id": "GCP-test-2026-09",
+        "invoice_date": "2026-09-01",
+        "amount_usd": "25.15",
+    }
+    url = "/v1/spend/invoices?principal_id=invoice-owner"
+    denied = await memory_client.post("/v1/spend/invoices?principal_id=visitor", json=invoice)
+    assert denied.status_code == 403
+    replies = await asyncio.gather(*(memory_client.post(url, json=invoice) for _ in range(2)))
+    assert [response.status_code for response in replies] == [200, 200]
+    for changed in ({"amount_usd": "26"}, {"invoice_date": "2026-09-02"}):
+        assert (await memory_client.post(url, json={**invoice, **changed})).status_code == 409
+    assert (await memory_client.post(url, json={**invoice, "amount_usd": "-1"})).status_code == 422
+    async with memory_session_factory() as session:
+        rows = (
+            await session.execute(text("SELECT product_type, cost_usd, ts FROM spend_event"))
+        ).all()
+    assert len(rows) == 1
+    assert rows[0].product_type == "infra.run.serve"
+    assert rows[0].cost_usd == Decimal("25.15")
+    assert rows[0].ts.date().isoformat() == "2026-09-01"
+    table = (
+        await memory_client.get("/v1/spend/table?principal_id=invoice-owner&scope=palace")
+    ).json()
+    assert table["can_record_invoice"] is True
+    day = table["days"][0]
+    assert Decimal(day["infrastructure_usd"]) == Decimal("25.15")
+    assert Decimal(day["total_usd"]) == Decimal("25.15")
+    assert day["model_usd"] is None  # No model receipt is fabricated by entering a bill.
+    visitor = (await memory_client.get("/v1/spend/table?principal_id=visitor")).json()
+    assert visitor["can_record_invoice"] is False
+    assert visitor["days"] == []
+
 
 _EVENT_UID = "01K1M2A0000000000000000001"
 _SECOND_UID = "01K1M2A0000000000000000002"
@@ -200,13 +243,15 @@ async def test_spend_table_groups_threads_models_token_lanes_and_non_thread_purp
     assert empty.rates == empty.messages == empty.days == []
 
 
+@pytest.mark.parametrize("origin", ["run/root.1", "harness-agent/01M2M9GH426AH8972483N6CD0D"])
 async def test_spend_history_filters_principal_and_keeps_unknown_prices(
     memory_client: AsyncClient,
+    origin: str,
 ) -> None:
     """ADR-024 / M3SC / M3SR: charts and cache history cannot leak another principal."""
     now = datetime.now(UTC).isoformat()
     own = _event(ts=now)
-    own.update(principal_id="verification", origin_agent="run/root.1")
+    own.update(principal_id="verification", origin_agent=origin)
     other = _event(_SECOND_UID, ts=now, model="private-model")
     other.update(principal_id="other", cost_usd="100")
     unknown = _event("01K1M2A0000000000000000005", ts=now, cost_usd=None)
