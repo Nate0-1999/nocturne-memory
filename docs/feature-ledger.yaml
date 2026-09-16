@@ -1044,7 +1044,8 @@
       "walk": "Add or remove a scoring axis in config; the score breakdown gains or loses that row.",
       "owner": "owner — \"is it possible that the memory palace axises themselves could be agnatically added and relegated overtime by the curators as they strive to have the best memory injection score. Something to consider as we likely wouldn't be able to create the new axis for old memories without fake data...\" (chat 2026-07-22 15:14:41; chat 2026-07-22 15:05:49)",
       "surfaces": [
-        "spine/src/spine/learner/"
+        "spine/src/spine/learner/",
+        "spine/src/spine/inject/axes.py"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -1207,7 +1208,13 @@
       "status": "partial",
       "walk": "Delete a memory; the memory-creation loop's ledger records the deletion.",
       "owner": "owner — \"I think that the user should be able to delete a memory from the palace. This can be a new training loop that helps with memory creation tuning.\" (chat 2026-08-31 18:59:34)",
-      "surfaces": ["spine/src/spine/learner/creation.py", "spine/src/spine/db/migrations/versions/0022_creation_outcomes.py", "harness/src/harness/memory_panel.py", "harness/web/src/MemoryPanel.tsx"]
+      "surfaces": [
+        "spine/src/spine/learner/creation.py",
+        "spine/src/spine/db/migrations/versions/0022_creation_outcomes.py",
+        "harness/src/harness/memory_panel.py",
+        "harness/web/src/MemoryPanel.tsx",
+        "spine/src/spine/db/migrations/versions/0023_creation_decisions.py"
+      ]
     },
     {
       "id": "FL-058",
