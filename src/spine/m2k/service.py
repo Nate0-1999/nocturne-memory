@@ -396,8 +396,22 @@ class M2KService:
         config_views = [_config_view(row) for row in configs]
         if not palace_scope:
             # F100: expose the current scoring policy, never other principals' replay metrics.
+            visible_projects = {row.project_key for row in learning_events}
             config_views = [
-                view.model_copy(update={"replay": None})
+                view.model_copy(
+                    update={
+                        "replay": None,
+                        "axes": {
+                            name: {**axis, "provenance": {"visibility": "owner-only"}}
+                            for name, axis in view.axes.items()
+                        },
+                        "project_offsets": {
+                            project: offsets
+                            for project, offsets in view.project_offsets.items()
+                            if project in visible_projects
+                        },
+                    }
+                )
                 for view in config_views
                 if view.status == "active"
             ]
@@ -416,7 +430,9 @@ class M2KService:
         return ScorerConsoleSnapshot(
             creation=creation,
             trainables=LearnerService.manifest(
-                len(evidence.examples), self._learner_min_dispositions
+                len(evidence.examples),
+                self._learner_min_dispositions,
+                axes=_runtime(active[0]).axes,
             ),
             as_of=as_of,
             metrics_scope="palace" if palace_scope else "principal",

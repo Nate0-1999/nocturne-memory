@@ -14,6 +14,7 @@ from typing import Literal
 from uuid import UUID
 
 from spine.inject.axes import AxisNomination, apply_axes
+from spine.inject.scorer import project_simplex as _project_simplex
 
 FEATURE_NAMES = ("sem", "kw", "time", "proj", "freq", "hist")
 EXPLICIT_POSITIVE_OUTCOMES = frozenset({"added_back", "cited", "mid_thread_added"})
@@ -386,6 +387,8 @@ def challenger_score(
             value + offsets.get(name, 0.0)
             for name, value in zip(FEATURE_NAMES, weights, strict=True)
         )
+        if min(effective) < 0:
+            effective = _project_simplex(effective)
         score = _example_score(example, effective, thread_weight, where_weight)
         score = (
             apply_axes(score - example.baseline_bias, example_features(example), axes or {})
@@ -843,26 +846,6 @@ def _with_share_score(
         share_disagreements=share_disagreements,
         weighted_share_disagreements=weighted_share_disagreements,
     )
-
-
-def _project_simplex(values: Sequence[float]) -> tuple[float, ...]:
-    """Euclidean projection onto non-negative values summing exactly to one."""
-
-    ordered = sorted((float(value) for value in values), reverse=True)
-    cumulative = 0.0
-    rho = 0
-    for index, value in enumerate(ordered, start=1):
-        cumulative += value
-        if value - (cumulative - 1.0) / index > 0.0:
-            rho = index
-    if rho == 0:
-        return tuple(1.0 / len(values) for _ in values)
-    theta = (math.fsum(ordered[:rho]) - 1.0) / rho
-    projected = [max(float(value) - theta, 0.0) for value in values]
-    total = math.fsum(projected)
-    normalized = [value / total for value in projected]
-    normalized[-1] += 1.0 - math.fsum(normalized)
-    return tuple(normalized)
 
 
 def _replay_score(

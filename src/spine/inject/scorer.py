@@ -203,8 +203,10 @@ class ScorerConfig:
             name: getattr(self.weights, name) + _finite_number(offsets[name], name)
             for name in names
         }
-        if min(values.values()) < -1e-9 or abs(math.fsum(values.values()) - 1) > 1e-7:
-            raise ValueError("project weights must remain on the weight simplex")
+        if abs(math.fsum(values.values()) - 1) > 1e-7:
+            raise ValueError("project offsets must sum to zero")
+        if min(values.values()) < 0:
+            values = dict(zip(names, project_simplex(tuple(values.values())), strict=True))
         return ScorerWeights(**values)
 
     def bias_offset(self, memory_id: UUID) -> float:
@@ -515,6 +517,25 @@ def _score_candidate(
         score=_postgres_real(score),
         token_cost=cl100k_token_count(candidate.body),
     )
+
+
+def project_simplex(values: Sequence[float]) -> tuple[float, ...]:
+    """Euclidean projection onto non-negative values summing exactly to one."""
+    ordered = sorted((float(value) for value in values), reverse=True)
+    cumulative = 0.0
+    rho = 0
+    for index, value in enumerate(ordered, start=1):
+        cumulative += value
+        if value - (cumulative - 1.0) / index > 0.0:
+            rho = index
+    if rho == 0:
+        return tuple(1.0 / len(values) for _ in values)
+    theta = (math.fsum(ordered[:rho]) - 1.0) / rho
+    projected = [max(float(value) - theta, 0.0) for value in values]
+    total = math.fsum(projected)
+    normalized = [value / total for value in projected]
+    normalized[-1] += 1.0 - math.fsum(normalized)
+    return tuple(normalized)
 
 
 def score_features(features, *, weights, params, axes=None) -> float:

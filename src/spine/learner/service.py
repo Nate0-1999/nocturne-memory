@@ -16,6 +16,7 @@ into each proposed generation; a registry status is not evidence of a fit.
 
 from __future__ import annotations
 
+import asyncio
 import hashlib
 import json
 from collections import defaultdict, deque
@@ -106,7 +107,9 @@ class LearnerService:
     """Fit challengers from one database snapshot and persist winners inactive."""
 
     @staticmethod
-    def manifest(eligible_dispositions: int = 0, minimum: int = 25) -> list[dict[str, object]]:
+    def manifest(
+        eligible_dispositions: int = 0, minimum: int = 25, *, axes=None
+    ) -> list[dict[str, object]]:
         """Enumerate parameters, their owning loop, authentic floor and status."""
         rows = []
         for parameter, loop, floor, status in (
@@ -142,6 +145,17 @@ class LearnerService:
                     "status": "frozen"
                     if floor is not None and eligible_dispositions < floor
                     else status,
+                }
+            )
+        for name, axis in sorted((axes or {}).items()):
+            rows.append(
+                {
+                    "parameter": f"axes.{name}.weight",
+                    "loop": "scorer_structure",
+                    "floor": minimum,
+                    "status": "retired" if axis.action == "axis_retire" else "trainable",
+                    "definition": f"{axis.inputs[0]} × {axis.inputs[1]}",
+                    "label": axis.label,
                 }
             )
         return rows
@@ -392,7 +406,8 @@ class LearnerService:
         )
         tune_share_and_tau = len(examples) >= _SHARE_TUNING_MINIMUM
         try:
-            fit = fit_pairwise(
+            fit = await asyncio.to_thread(
+                fit_pairwise,
                 training,
                 incumbent_weights=_weight_tuple(incumbent.weights),
                 incumbent_thread_weight=incumbent.params.thread_weight,
@@ -419,7 +434,8 @@ class LearnerService:
             share_boundaries=training_boundaries,
             memory_context_share=incumbent.params.memory_context_share,
         )
-        axes = nominate_axes(
+        axes = await asyncio.to_thread(
+            nominate_axes,
             training,
             fit=fit,
             incumbent=incumbent,
@@ -539,7 +555,9 @@ class LearnerService:
         settings_manifest = {
             **self._settings.manifest(),
             "corpus_max_dispositions": self._corpus_max_dispositions,
-            "trainables": self.manifest(eligible_dispositions, self._settings.min_dispositions),
+            "trainables": self.manifest(
+                eligible_dispositions, self._settings.min_dispositions, axes=axes
+            ),
         }
         proposal_params = deepcopy(active_row.params)
         for key in ("project_offsets", "axes"):

@@ -14,6 +14,7 @@ from spine.db.models import InjectionEvent, MemoryRevision, ScorerConfig
 from spine.ids import mint_ulid
 from spine.inject.axes import AxisNomination, apply_axes
 from spine.inject.scorer import ScorerConfig as RuntimeConfig
+from spine.inject.scorer import ScorerParams, ScorerWeights
 from spine.learner.creation import creation_snapshot, sweep_unused
 from spine.learner.model import FEATURE_NAMES, FitSettings, LearningExample, fit_project_offsets
 from spine.learner.service import LearnerService, LearnerSettings
@@ -65,7 +66,7 @@ async def test_creation_stream_replays_reasons_and_excludes_verification(memory_
 
 
 def test_project_offsets_pool_toward_globals_and_unseen_projects_stay_zero():
-    """PLAN M3LL/FL-064: opposite project evidence produces shrunk residuals after globals."""
+    """A-067 / SPEC D.2 144: opposite project evidence produces shrunk residuals after globals."""
     examples = []
     for gate, project in enumerate(("orchard", "workshop"), 1):
         for index, target in enumerate((True, False)):
@@ -102,6 +103,25 @@ def test_project_offsets_pool_toward_globals_and_unseen_projects_stay_zero():
     assert abs(strong["orchard"]["sem"]) < abs(weak["orchard"]["sem"])
     assert "unseen" not in weak
     assert all(abs(sum(offset.values())) < 1e-10 for offset in weak.values())
+    forced = RuntimeConfig(
+        version="manual-global-change",
+        weights=ScorerWeights(sem=0, kw=1, time=0, proj=0, freq=0, hist=0),
+        params=ScorerParams(
+            tau=0.5,
+            near_miss_k=1,
+            memory_context_share=0.1,
+            half_life_time_days=30,
+            half_life_hist_days=30,
+            candidate_pool=100,
+        ),
+        project_offsets=weak,
+    )
+    assert forced.weights_for_project("unseen") is forced.weights
+    for project in weak:
+        effective = forced.weights_for_project(project)
+        values = [getattr(effective, name) for name in FEATURE_NAMES]
+        assert min(values) >= 0
+        assert sum(values) == pytest.approx(1)
 
 
 @pytest.mark.parametrize("retire", [False, True])
@@ -110,7 +130,7 @@ async def test_curator_axis_proposal_activation_and_zero_weight_replay(
     memory_client,
     retire,
 ):
-    """PLAN M3CX: fixture log → nomination → held-out proposal → tap; retirement is zero."""
+    """A-067 / SPEC D.2 130: fixture log → nomination → proposal → tap; retirement is zero."""
     async with memory_session_factory() as session, session.begin():
         active = await session.scalar(select(ScorerConfig).where(ScorerConfig.active))
         params = deepcopy(active.params)
@@ -222,3 +242,13 @@ async def test_curator_axis_proposal_activation_and_zero_weight_replay(
     )
     assert response.status_code == 200, response.text
     assert response.json()["status"] == "active"
+    scoped = await memory_client.post(
+        "/v1/scorer-console/query",
+        json={"principal_id": "outside-principal", "as_of": "now"},
+    )
+    assert scoped.status_code == 200, scoped.text
+    visible = scoped.json()["configurations"][0]
+    assert visible["project_offsets"] == {}
+    assert all(
+        axis["provenance"] == {"visibility": "owner-only"} for axis in visible["axes"].values()
+    )
