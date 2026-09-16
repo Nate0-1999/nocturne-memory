@@ -13,22 +13,19 @@ class _RecordingService:
     def __init__(self) -> None:
         self.calls: asyncio.Queue[OptimizationTrigger | None] = asyncio.Queue()
 
-    async def retrain_if_due(
-        self,
-        *,
-        optimization_trigger: OptimizationTrigger | None = None,
-    ) -> None:
-        await self.calls.put(optimization_trigger)
+    async def compact(self, trigger: OptimizationTrigger) -> None:
+        await self.calls.put(trigger)
 
 
-async def test_worker_checks_startup_work_and_subsequent_wakes_then_stops() -> None:
-    """A-051 is defended by proving crash catch-up and work wakes share one worker task."""
+async def test_worker_waits_for_real_compaction_instead_of_startup_or_stride() -> None:
+    """SPEC D.2 144/153: no optimization before a main-thread compaction event."""
 
     service = _RecordingService()
     worker = LearnerWorker(service)  # type: ignore[arg-type]
 
     worker.start()
-    assert await asyncio.wait_for(service.calls.get(), timeout=1.0) is None
+    await asyncio.sleep(0)
+    assert service.calls.empty()
     trigger = OptimizationTrigger(event_uid="work-event", thread_id=UUID(int=4))
     worker.notify(trigger)
     assert await asyncio.wait_for(service.calls.get(), timeout=1.0) == trigger
