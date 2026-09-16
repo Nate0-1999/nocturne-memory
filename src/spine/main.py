@@ -37,6 +37,8 @@ from spine.inject.annotations import InjectionEventAnnotationService
 from spine.inject.decisions import DecisionService
 from spine.inject.router import router as inject_router
 from spine.inject.service import PrepareService
+from spine.jobs import JobService
+from spine.jobs import router as jobs_router
 from spine.learner.router import router as learner_router
 from spine.learner.service import LearnerService, LearnerSettings
 from spine.learner.worker import LearnerWorker
@@ -251,6 +253,7 @@ def create_app(
     app.state.m2k_service = m2k_service
     app.state.learner_worker = learner_worker
     app.state.transcript_service = transcript_service
+    app.state.job_service = JobService(session_factory)
     app.add_middleware(
         StaticBearerAuthMiddleware,
         token=resolved.token.get_secret_value(),
@@ -335,5 +338,6 @@ def create_app(
     app.include_router(spend_router)
     app.include_router(symphony_router)
     app.include_router(transcripts_router)
+    app.include_router(jobs_router)
     app.include_router(vitals_router)
     return app

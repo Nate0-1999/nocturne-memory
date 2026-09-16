@@ -3725,40 +3725,66 @@
       "section": "14. Scheduling, automation and managed agents",
       "era": "gate-day",
       "label": "Constitution: scheduled runs and background long-running shells in the agent's tool set (gate-day).",
-      "status": "not built",
+      "status": "partial",
       "walk": "Start a background shell from a thread; it keeps running across later turns.",
       "owner": "constitution",
-      "surfaces": []
+      "surfaces": [
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/pydantic_ai_adapter.py",
+        "harness/src/harness/toolset.py"
+      ]
     },
     {
       "id": "FL-182",
       "section": "14. Scheduling, automation and managed agents",
       "era": "Sep 9",
       "label": "Agent workflows that are programmable, so making agents do work is extremely easy.",
-      "status": "not built",
+      "status": "partial",
       "walk": "Save an agent workflow and run it twice; both runs do the same work without a person steering.",
       "owner": "owner — \"I want it to be extremely easy to make agents do work. Like we need this harness to have a native design that essentially allows agent workflows to be programmable and set up on cron jobs for example.\" (chat 2026-09-10 00:49:18)",
-      "surfaces": []
+      "surfaces": [
+        "harness/src/harness/jobs.py",
+        "harness/src/harness/jobs_cli.py",
+        "harness/src/harness/cli.py",
+        "harness/src/harness/memory_gate.py",
+        "harness/src/harness/spend_walls.py",
+        "spine/src/spine/jobs.py",
+        "spine/src/spine/db/models.py",
+        "spine/src/spine/db/migrations/versions/0025_jobs.py"
+      ]
     },
     {
       "id": "FL-183",
       "section": "14. Scheduling, automation and managed agents",
       "era": "Sep 9",
       "label": "Agent workflows can be set up on cron jobs.",
-      "status": "not built",
+      "status": "partial",
       "walk": "Put a workflow on a cron schedule; it fires at the scheduled time.",
       "owner": "owner — \"allows agent workflows to be programmable and set up on cron jobs for example.\" (chat 2026-09-10 00:49:18)",
-      "surfaces": []
+      "surfaces": [
+        "harness/src/harness/jobs.py",
+        "harness/src/harness/daemon.py",
+        "harness/src/harness/spine_client.py",
+        "spine/src/spine/jobs.py",
+        "spine/src/spine/main.py"
+      ]
     },
     {
       "id": "FL-184",
       "section": "14. Scheduling, automation and managed agents",
       "era": "Sep 9",
       "label": "A distinct module for scheduled jobs that makes them easy to monitor; the best visualization is still to be worked out.",
-      "status": "not built",
+      "status": "partial",
       "walk": "Open the scheduled-jobs module; every scheduled job is listed with its current state.",
       "owner": "owner — \"There should be a distinct module for scheduled jobs that makes it easy to monitor them. We'll need think about what the best visualization for jobs like this are.\" (chat 2026-09-10 00:49:18)",
-      "surfaces": []
+      "surfaces": [
+        "harness/web/src/JobsModule.tsx",
+        "harness/web/src/assets/jobs.css",
+        "harness/web/src/rack.tsx",
+        "harness/web/src/stageLayout.ts",
+        "harness/web/src/App.tsx",
+        "harness/src/harness/jobs.py"
+      ]
     },
     {
       "id": "FL-185",

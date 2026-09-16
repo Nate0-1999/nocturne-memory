@@ -1100,3 +1100,47 @@ class CuratorProgress(Base):
     ts: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, server_default=text("clock_timestamp()"),
     )
+
+
+class WorkflowJob(Base):
+    """M3SJ: the saved recipe and its durable schedule cursor."""
+
+    __tablename__ = "workflow_job"
+    __table_args__ = (Index("workflow_job_owner", "principal_id", "machine_id"),)
+
+    job_id: Mapped[str] = mapped_column(Text, primary_key=True)
+    principal_id: Mapped[str] = mapped_column(Text)
+    machine_id: Mapped[str] = mapped_column(Text)
+    definition: Mapped[dict[str, Any]] = mapped_column(JSONB)
+    revision: Mapped[int] = mapped_column(Integer, server_default=text("1"))
+    enabled: Mapped[bool] = mapped_column(Boolean, server_default=text("true"))
+    next_run_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    trigger_cursor: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=text("now()")
+    )
+
+
+class WorkflowRun(Base):
+    """M3SJ: frozen recipe per occurrence, with spend derived from its thread receipts."""
+
+    __tablename__ = "workflow_run"
+    __table_args__ = (
+        UniqueConstraint("job_id", "trigger_key"),
+        CheckConstraint(
+            "state IN ('running','completed','failed','cancelled','interrupted')",
+            name="workflow_run_state_check",
+        ),
+    )
+
+    run_id: Mapped[str] = mapped_column(Text, primary_key=True)
+    job_id: Mapped[str] = mapped_column(Text, ForeignKey("workflow_job.job_id"))
+    thread_id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), unique=True)
+    trigger_key: Mapped[str] = mapped_column(Text)
+    definition: Mapped[dict[str, Any]] = mapped_column(JSONB)
+    state: Mapped[str] = mapped_column(Text)
+    verdict: Mapped[str | None] = mapped_column(Text)
+    started_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=text("now()")
+    )
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

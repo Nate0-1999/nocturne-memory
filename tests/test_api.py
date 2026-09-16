@@ -57,6 +57,10 @@ SPINE_ROUTES = {
     ("POST", "/v1/transcripts"),
     ("GET", "/v1/transcripts"),
     ("GET", "/v1/transcripts/status"),
+    ("GET", "/v1/jobs"),
+    ("PUT", "/v1/jobs/{job_id}"),
+    ("POST", "/v1/jobs/{job_id}/runs"),
+    ("POST", "/v1/job-runs/{run_id}/finish"),
     ("POST", "/v1/symphony/memories"),
     ("POST", "/v1/symphony/memories/query"),
     ("POST", "/v1/symphony/runs/{run_id}/resolve"),
@@ -94,8 +98,8 @@ async def test_health_endpoints_and_auth_are_live(app: FastAPI) -> None:
     assert healthy_healthz.json() == {
         "ok": True,
         "version": __version__,
-        "api_contract_version": "0.1.23",
-        "schema_version": "0024",
+        "api_contract_version": "0.1.25",
+        "schema_version": "0025",
     }
     assert healthy_healthz.json()["api_contract_version"] == API_CONTRACT_VERSION
     assert re.fullmatch(r"(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)", API_CONTRACT_VERSION)
