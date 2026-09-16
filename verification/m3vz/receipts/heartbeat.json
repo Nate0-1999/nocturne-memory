@@ -1,0 +1,14 @@
+{
+  "fixture": "M3FP REGRESSION",
+  "packaged_assets": true,
+  "first_prompt_prepare_calls": 1,
+  "first_prompt_commit_calls": 1,
+  "receipt_lines": 2,
+  "journal_has_prompt_and_answer": true,
+  "tool_turn_ends_clean_with_proposal_and_journal": true,
+  "consecutive_sends_without_reload": true,
+  "compaction_and_durable_history": true,
+  "failure_reason_survives_reload": true,
+  "external_rack_host_refused": true,
+  "reinstall_restores_journal_and_failure": true
+}

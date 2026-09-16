@@ -1,0 +1,660 @@
+{
+  "before": {
+    "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+    "admitted_writes": 4,
+    "last_run_writes": 0,
+    "pressure_events": 0,
+    "last_run_pressure": 0,
+    "trigger_every": 25,
+    "pressure_trigger_every": 3,
+    "writes_until_run": 21,
+    "pressure_until_run": 3,
+    "latest_run": null,
+    "pending_cards": 0
+  },
+  "created": [
+    {
+      "memory_id": "78cf934d-0946-4da0-8782-2b577caa1234",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ thermal shield",
+      "body": "Verification fixture: the thermal shield is made of tungsten.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "shield"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:46.690133Z",
+      "updated_at": "2026-09-16T19:57:46.690133Z"
+    },
+    {
+      "memory_id": "0aefa884-7563-4b52-bef6-e8d3e2fa9855",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ water sample",
+      "body": "Verification fixture: the water sample is sealed in a blue vial.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "sample"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:47.206392Z",
+      "updated_at": "2026-09-16T19:57:47.206392Z"
+    },
+    {
+      "memory_id": "b4adb114-e065-425b-8612-7cd192e7bd0e",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ airlock",
+      "body": "Verification fixture: rotate the airlock handle clockwise to close it.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "airlock"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:47.622929Z",
+      "updated_at": "2026-09-16T19:57:47.622929Z"
+    },
+    {
+      "memory_id": "f54af0d5-4a15-44c1-86ed-334be745239a",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ clock",
+      "body": "Verification fixture: the laboratory clock is set to UTC.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "clock"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:48.090852Z",
+      "updated_at": "2026-09-16T19:57:48.090852Z"
+    },
+    {
+      "memory_id": "ff2dec61-d166-4ba0-8ca4-479479348200",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ seed vault",
+      "body": "Verification fixture: dormant seeds are stored at minus eighteen Celsius.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "vault"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:48.518351Z",
+      "updated_at": "2026-09-16T19:57:48.518351Z"
+    },
+    {
+      "memory_id": "27c0f2ee-9d71-441f-8970-cfb462beab28",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ lens",
+      "body": "Verification fixture: clean the optical lens using a microfiber cloth.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "lens"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:49.068034Z",
+      "updated_at": "2026-09-16T19:57:49.068034Z"
+    },
+    {
+      "memory_id": "3d945854-512a-4c9f-8b50-b282d97d489b",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ radio",
+      "body": "Verification fixture: the rescue radio uses channel seven.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "radio"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:49.393102Z",
+      "updated_at": "2026-09-16T19:57:49.393102Z"
+    },
+    {
+      "memory_id": "e91b3c30-093c-4bff-bf85-48222a26d90c",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ bridge",
+      "body": "Verification fixture: the footbridge supports pedestrians only.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "bridge"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:49.733500Z",
+      "updated_at": "2026-09-16T19:57:49.733500Z"
+    },
+    {
+      "memory_id": "b609685e-b922-46d5-beab-0c4bbcad03c5",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ battery",
+      "body": "Verification fixture: the sensor battery requires twelve volts.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "battery"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:50.128069Z",
+      "updated_at": "2026-09-16T19:57:50.128069Z"
+    },
+    {
+      "memory_id": "fe0c0e5b-f023-4581-b1ba-527fca5afc2e",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ paint",
+      "body": "Verification fixture: the emergency exit door is painted orange.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "paint"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:50.522971Z",
+      "updated_at": "2026-09-16T19:57:50.522971Z"
+    },
+    {
+      "memory_id": "b6d3d1ff-92a2-48ad-b27e-cb0383a7446c",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ archive",
+      "body": "Verification fixture: archival photographs are packed in acid-free sleeves.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "archive"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:50.923067Z",
+      "updated_at": "2026-09-16T19:57:50.923067Z"
+    },
+    {
+      "memory_id": "c9554b72-8ab8-4630-8a97-5068a0e0e54d",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ kettle",
+      "body": "Verification fixture: the test kettle holds two liters.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "kettle"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:51.247555Z",
+      "updated_at": "2026-09-16T19:57:51.247555Z"
+    },
+    {
+      "memory_id": "246b8a84-ea6a-4feb-a242-99e10ff5aaa1",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ telescope",
+      "body": "Verification fixture: the telescope mount sits on the east platform.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "telescope"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:51.716509Z",
+      "updated_at": "2026-09-16T19:57:51.716509Z"
+    },
+    {
+      "memory_id": "9107782a-de0e-41dc-b255-3ff94ee2b237",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ speaker",
+      "body": "Verification fixture: audio calibration uses a four hundred hertz tone.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "speaker"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:52.081155Z",
+      "updated_at": "2026-09-16T19:57:52.081155Z"
+    },
+    {
+      "memory_id": "a5d4b0f2-b1c0-4aac-8841-1959e30da987",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ backup",
+      "body": "Verification fixture: the backup disk is disconnected after copying.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "backup"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:52.420026Z",
+      "updated_at": "2026-09-16T19:57:52.420026Z"
+    },
+    {
+      "memory_id": "c9cbfedf-2a14-42c7-b57c-39a7116163ed",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ balance",
+      "body": "Verification fixture: zero the analytical balance before weighing.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "balance"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:52.858458Z",
+      "updated_at": "2026-09-16T19:57:52.858458Z"
+    },
+    {
+      "memory_id": "f5adca50-b935-431a-86d6-4393fe4da2ad",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ ladder",
+      "body": "Verification fixture: the ladder is secured with a green strap.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "ladder"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:53.256511Z",
+      "updated_at": "2026-09-16T19:57:53.256511Z"
+    },
+    {
+      "memory_id": "e3cfc7cb-d1c9-4f86-a639-c0a6b24a063a",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ motor",
+      "body": "Verification fixture: the small motor spins counterclockwise.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "motor"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:53.623486Z",
+      "updated_at": "2026-09-16T19:57:53.623486Z"
+    },
+    {
+      "memory_id": "51c53547-d6db-4d08-9250-8411b3c30f67",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ timer",
+      "body": "Verification fixture: the incubation timer rings after fifteen minutes.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "timer"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:54.007116Z",
+      "updated_at": "2026-09-16T19:57:54.007116Z"
+    },
+    {
+      "memory_id": "1888fa42-5c3a-474e-86d9-2268ce36ec96",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ compass",
+      "body": "Verification fixture: the compass is kept away from magnets.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "compass"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:54.412406Z",
+      "updated_at": "2026-09-16T19:57:54.412406Z"
+    },
+    {
+      "memory_id": "295be442-4b45-4235-994e-ca1a0ed63595",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ gloves",
+      "body": "Verification fixture: handle the frozen tray with insulated gloves.",
+      "kind": "fact",
+      "keywords": [
+        "verification",
+        "gloves"
+      ],
+      "project_key": "/private/tmp/m3vz-live/work",
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/data",
+      "origin_location": "/private/tmp/m3vz-live/work/data",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T19:57:54.757618Z",
+      "updated_at": "2026-09-16T19:57:54.757618Z"
+    }
+  ],
+  "after": {
+    "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+    "admitted_writes": 25,
+    "last_run_writes": 0,
+    "pressure_events": 0,
+    "last_run_pressure": 0,
+    "trigger_every": 25,
+    "pressure_trigger_every": 3,
+    "writes_until_run": 0,
+    "pressure_until_run": 3,
+    "latest_run": null,
+    "pending_cards": 0
+  }
+}

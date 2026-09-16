@@ -1,0 +1,94 @@
+{
+  "source": {
+    "memory_id": "ec5e9920-ce9d-4b91-9d03-d296240079c9",
+    "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+    "label": "Split source",
+    "body": "Verification fixture: quartz resonates at 32768 Hz. The copper coil has forty turns.",
+    "kind": "fact",
+    "keywords": [
+      "split",
+      "source"
+    ],
+    "project_key": null,
+    "thread_origin": null,
+    "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+    "origin_path": "/private/tmp/m3vz-live/work/src",
+    "origin_location": "/private/tmp/m3vz-live/work/src",
+    "pin": false,
+    "status": "tombstoned",
+    "revision": 1,
+    "stats": {
+      "removals": 0,
+      "citations": 0,
+      "injections": 0,
+      "never_kills": 0,
+      "last_injected_at": null
+    },
+    "bias": 0.0,
+    "embedding_model": "openai/text-embedding-3-small",
+    "created_at": "2026-09-16T20:10:46.332027Z",
+    "updated_at": "2026-09-16T20:10:46.332027Z"
+  },
+  "created": [
+    {
+      "memory_id": "82fd85c7-ec57-4d93-9f36-8b8f96dd5d58",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ quartz frequency",
+      "body": "Verification fixture: the quartz reference resonates at 32768 Hz.",
+      "kind": "fact",
+      "keywords": [
+        "quartz",
+        "frequency"
+      ],
+      "project_key": null,
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/src",
+      "origin_location": "/private/tmp/m3vz-live/work/src",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T20:10:46.332027Z",
+      "updated_at": "2026-09-16T20:10:46.332027Z"
+    },
+    {
+      "memory_id": "06fcf7ac-79b2-4897-9255-b2464c29a36f",
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "label": "VZ copper winding",
+      "body": "Verification fixture: the copper coil has forty turns.",
+      "kind": "fact",
+      "keywords": [
+        "copper",
+        "winding"
+      ],
+      "project_key": null,
+      "thread_origin": null,
+      "origin_thread_id": "318fee45-bdca-4dc6-ac83-bb31a1faf05f",
+      "origin_path": "/private/tmp/m3vz-live/work/src",
+      "origin_location": "/private/tmp/m3vz-live/work/src",
+      "pin": false,
+      "status": "active",
+      "revision": 1,
+      "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+      },
+      "bias": 0.0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-09-16T20:10:46.332027Z",
+      "updated_at": "2026-09-16T20:10:46.332027Z"
+    }
+  ]
+}

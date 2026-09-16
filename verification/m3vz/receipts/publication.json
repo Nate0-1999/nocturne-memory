@@ -1,0 +1,43 @@
+{
+  "harness": {
+    "version": "0.1.23",
+    "files": [
+      {
+        "filename": "nocturne_harness-0.1.23-py3-none-any.whl",
+        "sha256": "ee4af743b3d94188be7e1664371d9795ec9af4d229b50cd27d306aefbc4fbda6",
+        "url": "https://files.pythonhosted.org/packages/08/f4/5830d66b6fe4b51ecfbc6e027a1f13681bc926dc73742dd92193a9354f73/nocturne_harness-0.1.23-py3-none-any.whl"
+      },
+      {
+        "filename": "nocturne_harness-0.1.23.tar.gz",
+        "sha256": "acc08318911839f0bc5be2be5595b0f7d9ff8a2417a06fee15335f5a7183a0d8",
+        "url": "https://files.pythonhosted.org/packages/7b/13/457b0f12055b3e0d37be2d78e0a4d9034fe59c7006291093fa3250952e8b/nocturne_harness-0.1.23.tar.gz"
+      }
+    ]
+  },
+  "memory": {
+    "version": "0.1.23",
+    "files": [
+      {
+        "filename": "nocturne_memory-0.1.23-py3-none-any.whl",
+        "sha256": "e786d8579f3211a13bcf24e56e5c5de89da8875a01a82c60dab3ad044332ab03",
+        "url": "https://files.pythonhosted.org/packages/65/44/47ec07a6c09a8d730a356f99c295e500573b26609f384938dd71ec54e1ee/nocturne_memory-0.1.23-py3-none-any.whl"
+      },
+      {
+        "filename": "nocturne_memory-0.1.23.tar.gz",
+        "sha256": "3631c24ee3d86185cddca6d506b8b8f5550f53b22bb80ce1a01c710add5e5fc2",
+        "url": "https://files.pythonhosted.org/packages/25/ce/5fa60a29c3ea575369005111d341a541b070f10055d5c0096eb9f752783a/nocturne_memory-0.1.23.tar.gz"
+      }
+    ]
+  },
+  "harness_pr": "https://github.com/Nate0-1999/nocturne-harness/pull/20",
+  "memory_pr": "https://github.com/Nate0-1999/nocturne-memory/pull/19",
+  "harness_release_run": 35145828401,
+  "memory_release_run": 35144472611,
+  "public_install": "/private/tmp/m3vz-public23",
+  "restored_threads": 3,
+  "deployed": {
+    "version": "0.1.23",
+    "api_contract_version": "0.1.23",
+    "schema": "0024"
+  }
+}

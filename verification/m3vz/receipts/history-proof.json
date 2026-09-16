@@ -1,0 +1,8 @@
+{
+  "before": "2026-09-16T18:05:50.500985+00:00",
+  "after": "2026-09-16T18:07:11.283242+00:00",
+  "before_entries": 123,
+  "after_entries": 120,
+  "historical_tree_and_agents_identical_after_deletion": true,
+  "snapshots": 60
+}
