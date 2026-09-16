@@ -19,7 +19,21 @@
     "spine/tests/test_inject_api.py": "Regression proof for the mapped compaction, memory and API behavior; no independent product surface.",
     "spine/tests/test_learner_api.py": "Regression proof for the mapped compaction, memory and API behavior; no independent product surface.",
     "spine/tests/test_learner_worker.py": "Regression proof for the mapped compaction, memory and API behavior; no independent product surface.",
-    "spine/tests/test_packaging.py": "Regression proof for the mapped compaction, memory and API behavior; no independent product surface."
+    "spine/tests/test_packaging.py": "Regression proof for the mapped compaction, memory and API behavior; no independent product surface.",
+    "spine/verification/m3cm/FL-021.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
+    "spine/verification/m3cm/FL-049.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
+    "spine/verification/m3cm/FL-052.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
+    "spine/verification/m3cm/FL-053.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
+    "spine/verification/m3cm/FL-056.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
+    "spine/verification/m3cm/FL-058.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
+    "spine/verification/m3cm/FL-059.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
+    "spine/verification/m3cm/FL-060.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
+    "spine/verification/m3cm/FL-162.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
+    "spine/verification/m3cm/FL-169.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
+    "spine/verification/m3cm/FL-195.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
+    "spine/verification/m3cm/FL-196.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
+    "spine/verification/m3cm/SHA256SUMS": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
+    "spine/verification/m3cm/ledger-report.json": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
