@@ -604,7 +604,7 @@
       "era": "Aug 9",
       "label": "A memory share of the context window, shown and editable, with unused allotment returned to chat history.",
       "status": "partial",
-      "walk": "Open Context Bars; the memory share is shown and editable, and the unused portion is given back to chat history.",
+      "walk": "Open Context Bars; the memory share of the window is shown with its unused allotment returning to chat; the share is edited in the Injection Console (v2.94: one console, no duplicate control).",
       "owner": "owner — \"How I'm assuming the context window dynamically gives up the extra memory assingned window to the chat history if there is not memories exceeding the requisite score right?\" (chat 2026-08-24 20:20:55; chat 2026-08-09 18:49:53)",
       "surfaces": [
         "harness/web/src/ContextBars.tsx",
@@ -1623,7 +1623,10 @@
       "status": "partial",
       "walk": "Fill a thread past its model's fill line; compaction runs and the fill percentage drops.",
       "owner": "owner — \"6. It should be fill percentage.. based we need to figure out a good source for standard model meta data: best ranges to work in max. I feel like the open source harness must have opinions on these.\" (chat 2026-08-15 19:37:48 (+ seed SD-061, owner 2026-09-10))",
-      "surfaces": ["harness/src/harness/pydantic_harness_adapter.py", "harness/src/harness/context_window.py"]
+      "surfaces": [
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/context_window.py"
+      ]
     },
     {
       "id": "FL-081",
@@ -1633,7 +1636,10 @@
       "status": "partial",
       "walk": "Pick a compaction strategy and cross the fill line; what is left in the thread matches the strategy picked.",
       "owner": "owner — \"I am thinking that there will be a suite of compaction strategies that we can employ: truncation, summarization, apply memories made at compaction (wait for this to happen) and drop everything else, keep just the agent turn final response and human messages.\" (seed SD-061 (owner 2026-09-10))",
-      "surfaces": ["harness/src/harness/pydantic_harness_adapter.py", "harness/src/harness/agent_runtime.py"]
+      "surfaces": [
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/agent_runtime.py"
+      ]
     },
     {
       "id": "FL-082",
@@ -1643,7 +1649,10 @@
       "status": "partial",
       "walk": "Switch the policy between optimal performance and cost management; the point at which compaction fires moves.",
       "owner": "owner — \"There are also parameters of when we compact based on optimal performance or cost managment and context window size which are variable by model.\" (seed SD-061 (owner 2026-09-10))",
-      "surfaces": ["harness/src/harness/agent_runtime.py", "harness/src/harness/pydantic_harness_adapter.py"]
+      "surfaces": [
+        "harness/src/harness/agent_runtime.py",
+        "harness/src/harness/pydantic_harness_adapter.py"
+      ]
     },
     {
       "id": "FL-083",
@@ -2573,7 +2582,7 @@
       "era": "founding",
       "label": "Each agent's context window is visualized, with the memory share (n% of the window) shown as a parameter the user can see and edit.",
       "status": "partial",
-      "walk": "Select a thread; Context Bars shows the memory share block and the share value can be edited.",
+      "walk": "Open Context Bars for an agent; its context window is visualized with the memory share as n% of the window; editing happens in the Injection Console (v2.94).",
       "owner": "owner — \"This is n% of the context window. The rest should be normal the most recent messages between the agents, tool calls, etc however py or pydantic do it. The reason for this is the recent history of the chat is supremely important, but so is the long term memories we need to find a balance. This is another parameter the user should have displayed and should be able to edit\" (chat 2026-08-09 18:49:53 (+ first thread turn 1))",
       "surfaces": [
         "harness/src/harness/context_window.py",
