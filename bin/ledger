@@ -426,6 +426,12 @@ def verify(data, directory, check_diffs=()):
                 problems.append(
                     "screenshot reuses pre-build evidence; run a fresh walk"
                 )
+        # v2.119 look law: a row with a plate needs the side-by-side capture too.
+        plate_row = next((r for r in data["rows"] if r["id"] == key and r.get("plate")), None)
+        if plate_row and item.get("verdict") == "PASS":
+            side = directory / f"{key}-plate.png"
+            if not side.is_file() or sums.get(side.name) != digest(side):
+                problems.append(f"PASS on a plate row needs {side.name} (module beside its plate) in SHA256SUMS")
         if problems:
             errors.append(f"{key}: " + "; ".join(problems))
     return errors, len(expected["rows"])
