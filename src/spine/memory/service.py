@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections.abc import Mapping, Sequence
 from copy import deepcopy
 from dataclasses import dataclass
+from hashlib import sha256
 from typing import Any, Final, Literal
 from uuid import UUID
 
@@ -34,7 +35,7 @@ from spine.db.memory import (
 from spine.db.memory import (
     MemoryUnitNotFoundError as DatabaseMemoryNotFoundError,
 )
-from spine.db.models import MemoryEdge, MemoryRevision, MemoryUnit
+from spine.db.models import ApprovalQueueItem, MemoryEdge, MemoryRevision, MemoryUnit
 from spine.embeddings import (
     EmbeddingConfigurationError,
     EmbeddingProvider,
@@ -514,26 +515,42 @@ class MemoryService:
         self,
         command: CreateMemoryCommand,
     ) -> CandidateCreated | None:
-        """Admit one queue-only head, deduping against corpus and pending queue."""
+        """Admit a queue-only head, remembering exact rejected bodies as well."""
 
         self._validate_label(command.label)
         self._validate_body(command.body)
-        embedding = await embed_one(
-            self._embedding_provider,
-            command.body,
-            expected_dimensions=_EMBEDDING_DIMENSIONS,
-            receipt_context=EmbeddingReceiptContext(
-                principal_id=command.principal_id,
-                machine_id=command.machine_id,
-                origin_agent=_agent_from_editor(command.editor),
-                thread_id=_optional_uuid(command.thread_origin),
-            ),
-        )
         async with self._session_factory() as session:
             async with session.begin():
                 await session.execute(
                     text("SELECT pg_advisory_xact_lock(hashtextextended(:principal_id, 0))"),
                     {"principal_id": command.principal_id},
+                )
+                rejected = await session.scalar(
+                    select(MemoryUnit.id)
+                    .join(ApprovalQueueItem, ApprovalQueueItem.candidate_memory_id == MemoryUnit.id)
+                    .where(
+                        MemoryUnit.principal_id == command.principal_id,
+                        ApprovalQueueItem.principal_id == command.principal_id,
+                        ApprovalQueueItem.state == "rejected",
+                        MemoryUnit.status == "tombstoned",
+                        func.sha256(func.convert_to(MemoryUnit.body, "UTF8"))
+                        == sha256(command.body.encode()).digest(),
+                        MemoryUnit.body == command.body,
+                    )
+                    .limit(1)
+                )
+                if rejected is not None:
+                    return None
+                embedding = await embed_one(
+                    self._embedding_provider,
+                    command.body,
+                    expected_dimensions=_EMBEDDING_DIMENSIONS,
+                    receipt_context=EmbeddingReceiptContext(
+                        principal_id=command.principal_id,
+                        machine_id=command.machine_id,
+                        origin_agent=_agent_from_editor(command.editor),
+                        thread_id=_optional_uuid(command.thread_origin),
+                    ),
                 )
                 matches = await self._dedup_matches(
                     session,

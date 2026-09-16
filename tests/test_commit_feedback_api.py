@@ -933,6 +933,55 @@ async def test_all_near_miss_empty_commit_is_repeatable_no_op(
     assert (head.stats, head.revision) == (DEFAULT_STATS, 1)
 
 
+@pytest.mark.parametrize(
+    "shown_as,outcome,accepted",
+    [
+        ("near_miss", None, True),
+        ("near_miss", "removed:never", False),
+        ("injected", None, False),
+        ("injected", "mid_thread_removed", True),
+    ],
+)
+async def test_post_gate_add_accepts_only_unused_near_miss_or_removed_member(
+    memory_client: AsyncClient,
+    memory_session_factory: async_sessionmaker[AsyncSession],
+    shown_as,
+    outcome,
+    accepted,
+) -> None:
+    """ADR-018 / F101: trace adds log actual suggestions, never resurrect a veto or rescore."""
+    injection_id, memory_id = uuid4(), uuid4()
+    await _insert_memory(
+        memory_session_factory, memory_id=memory_id, label="Trace", body="Trace body"
+    )
+    await _insert_event(
+        memory_session_factory,
+        injection_id=injection_id,
+        memory_id=memory_id,
+        rank=1,
+        shown_as=shown_as,
+        outcome=outcome,
+        event_seed=301,
+        label="Trace",
+        body="Trace body",
+    )
+    request = {
+        "injection_id": str(injection_id),
+        "memory_id": str(memory_id),
+        "signal": "mid_thread_added",
+    }
+    for _ in range(2):
+        response = await memory_client.post("/v1/feedback", json=request)
+        assert response.status_code == (200 if accepted else 409)
+    async with memory_session_factory() as session:
+        head = await session.get(MemoryUnit, memory_id)
+        assert head is not None and head.revision == 1 and head.stats == DEFAULT_STATS
+        event = await session.scalar(
+            select(InjectionEvent).where(InjectionEvent.injection_id == injection_id)
+        )
+        assert event.outcome == ("mid_thread_added" if accepted else outcome)
+
+
 async def test_feedback_is_exactly_once_and_cited_increments_frequency(
     memory_client: AsyncClient,
     memory_session_factory: async_sessionmaker[AsyncSession],

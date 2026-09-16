@@ -187,7 +187,10 @@ class DecisionService:
                 allowed = (
                     (
                         command.signal == "mid_thread_added"
-                        and current_outcome == "mid_thread_removed"
+                        and (
+                            current_outcome == "mid_thread_removed"
+                            or (current_outcome is None and event["shown_as"] == "near_miss")
+                        )
                     )
                     or (
                         command.signal == "mid_thread_removed"

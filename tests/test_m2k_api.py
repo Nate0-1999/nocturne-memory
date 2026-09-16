@@ -144,7 +144,7 @@ async def _insert_graph_fixture(
                     parent_uid=None,
                     memory_id=first_id,
                     revision=1,
-                    body="First graph memory",
+                    body="Original graph memory",
                     label="Graph one",
                     editor="user",
                     origin_machine_id="studio",
@@ -221,6 +221,11 @@ async def test_memory_graph_uses_exact_encodings_and_current_membership(
     assert first["memory"]["stats"]["injections"] == 9
     assert first["memory"]["pin"] is True
     assert [revision["revision"] for revision in first["revisions"]] == [1, 2]
+    assert [revision["body"] for revision in first["revisions"]] == [
+        "Original graph memory",
+        "First graph memory",
+    ]
+    assert all(revision["label"] == "Graph one" for revision in first["revisions"])
     assert {
         (edge["kind"], edge["edge_type"], edge["revision_count"]) for edge in graph["edges"]
     } >= {

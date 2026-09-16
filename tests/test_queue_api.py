@@ -98,6 +98,46 @@ async def test_rejected_seed_hash_survives_a_new_upload_identity(
 
 
 @pytest.mark.asyncio
+async def test_rejected_candidate_body_is_suppressed_across_threads_but_not_principals(
+    memory_client: AsyncClient,
+    embedding_provider: ScriptedEmbeddingProvider,
+) -> None:
+    """ADR-021 / F101: rejection survives a renamed re-offer, without hiding changed facts."""
+    body = "The fixture review day is Saturday."
+    embedding_provider.set(body, basis_vector(0))
+    payload = extraction(uuid4(), body)
+    born = await memory_client.post("/v1/extractions", json=payload)
+    card = born.json()["cards"][0]
+    denied = await memory_client.post(
+        f"/v1/approval-queue/{card['item_uid']}/decisions",
+        json={
+            "decision": "deny",
+            "approval_mode": "explicit",
+            "actor_class": "human",
+            "machine_id": "mac",
+        },
+    )
+    assert denied.status_code == 200
+    payload.update(thread_id=str(uuid4()))
+    payload["candidates"][0]["label"] = "Renamed fact"
+    calls_before = len(embedding_provider.calls)
+    repeated = await memory_client.post("/v1/extractions", json=payload)
+    assert repeated.status_code == 200
+    assert repeated.json()["cards"] == []
+    assert repeated.json()["duplicate_count"] == 1
+    assert len(embedding_provider.calls) == calls_before
+    payload["principal_id"] = "another-fixture"
+    other = await memory_client.post("/v1/extractions", json=payload)
+    assert other.status_code == 200 and len(other.json()["cards"]) == 1
+    changed = "The fixture review day is Sunday."
+    embedding_provider.set(changed, basis_vector(0))
+    payload["principal_id"] = "owner"
+    payload["candidates"][0]["body"] = changed
+    revised = await memory_client.post("/v1/extractions", json=payload)
+    assert revised.status_code == 200 and len(revised.json()["cards"]) == 1
+
+
+@pytest.mark.asyncio
 async def test_candidate_is_queue_only_and_denial_is_revisioned_signal(
     memory_client: AsyncClient,
     embedding_provider: ScriptedEmbeddingProvider,

@@ -1260,3 +1260,15 @@ must upgrade because metrics calls without a principal are refused.
 F100's granted extension applies the same check to scorer-console status.
 Principal views retain their own learning signals and the current scoring policy;
 shared replay metrics, training history and activation metadata are owner-only.
+
+## 049 — Preserve memory history and human trace choices [P1.2, P2, M3MU]
+
+PRECEDENT: PLAN M3MU WIDENED AGAIN, F101; ADR-004, ADR-018, ADR-021; F089.
+Graph revisions return their stored label and body. Mid-thread add accepts an
+unused near-miss event or a previously popped-off member; a veto remains refused.
+The existing feedback transaction records the choice without altering its score.
+Candidate creation checks rejected queue heads by exact body SHA256 and body,
+within the principal lock and before embedding. Changed bodies and other
+principals remain eligible; an ordinary tombstone is not a rejection. Reusing
+the queue record avoids a second rejection store. The additive history contract
+advances the Palace API and lockstep release to 0.1.14.

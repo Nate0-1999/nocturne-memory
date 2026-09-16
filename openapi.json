@@ -3797,6 +3797,14 @@
       "RevisionTrailItem": {
         "additionalProperties": false,
         "properties": {
+          "body": {
+            "title": "Body",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
           "parent_uid": {
             "anyOf": [
               {
@@ -3835,7 +3843,9 @@
           "parent_uid",
           "revision",
           "ts",
-          "reason"
+          "reason",
+          "label",
+          "body"
         ],
         "title": "RevisionTrailItem",
         "type": "object"
@@ -5900,7 +5910,7 @@
   },
   "info": {
     "title": "N8 Spine",
-    "version": "0.1.13"
+    "version": "0.1.14"
   },
   "openapi": "3.1.0",
   "paths": {

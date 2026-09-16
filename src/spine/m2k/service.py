@@ -809,6 +809,8 @@ async def _revision_map(
                 revision=row.revision,
                 ts=row.ts,
                 reason=row.reason,
+                label=row.label,
+                body=row.body,
             )
         )
     return dict(result)

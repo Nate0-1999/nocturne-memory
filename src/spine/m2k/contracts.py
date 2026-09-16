@@ -75,6 +75,8 @@ class RevisionTrailItem(M2KContract):
     revision: PositiveInt | None
     ts: AwareDatetime
     reason: str
+    label: str
+    body: str
 
 
 class MemoryGraphNode(M2KContract):
