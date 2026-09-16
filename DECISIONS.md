@@ -1283,3 +1283,11 @@ from that materialized view, so agent/sub-agent lanes read scoped receipts direc
 Cache reads and writes stay distinct. Infrastructure totals use their ledger date
 and stay outside the existing model-only broker reconciliation. This read path
 does not create an invoice-ingestion authority.
+
+## 051 — Record the owner's manual bill once [P4.1, M3SR]
+
+PRECEDENT: owner F103 ruling, PLAN M3SR, A-066, ADR-024.
+Manual invoices use the existing ledger and configured-owner boundary. An invoice
+identity lock serializes retries; equal replays keep one receipt, changed amount
+or date refuses the append. The aggregate cloud-service line is explicitly marked
+as a manual invoice, without pretending its component allocation is known.

@@ -3,11 +3,12 @@
 from typing import Annotated, Literal
 from uuid import UUID
 
-from fastapi import APIRouter, Query, Request
+from fastapi import APIRouter, HTTPException, Query, Request
 
 from spine.metrics_scope import metrics_principal
 from spine.problems import ProblemJSONResponse, problem_openapi, problem_response
 from spine.spend.contracts import (
+    InfrastructureInvoice,
     SpendEventsRequest,
     SpendEventsResponse,
     SpendTableSnapshot,
@@ -15,6 +16,39 @@ from spine.spend.contracts import (
 from spine.spend.service import SpendEventConflictError, SpendService
 
 router = APIRouter(prefix="/v1/spend", tags=["spend"])
+
+
+@router.post(
+    "/invoices",
+    response_model=SpendEventsResponse,
+    responses={
+        401: problem_openapi("Bearer token missing or invalid"),
+        403: problem_openapi("Only the Palace owner can record invoices"),
+        409: problem_openapi("Invoice ID conflicts with its append-only receipt"),
+        422: problem_openapi("Request does not match the endpoint contract"),
+    },
+)
+async def record_invoice(
+    body: InfrastructureInvoice,
+    request: Request,
+    principal_id: Annotated[str, Query(min_length=1)],
+) -> SpendEventsResponse | ProblemJSONResponse:
+    """M3SR owner ruling: one measured infra line per cloud invoice."""
+    if principal_id != request.app.state.settings.owner_principal_id:
+        raise HTTPException(403, "Only the Palace owner can record infrastructure invoices.")
+    try:
+        accepted = await _service(request).invoice(principal_id, body)
+    except SpendEventConflictError:
+        return problem_response(
+            status=409,
+            title="Conflict",
+            detail=(
+                "This invoice ID already has a different amount or date; the ledger is append-only."
+            ),
+            instance=request.url.path,
+            endpoint=f"{request.method} {request.url.path}",
+        )
+    return SpendEventsResponse(accepted=accepted)
 
 
 @router.get(
@@ -39,7 +73,12 @@ async def read_spend_table(
     principal = metrics_principal(
         request, principal_id, "palace" if scope == "palace" else "principal"
     )
-    return await _service(request).table(scoped_threads, principal_id=principal)
+    snapshot = await _service(request).table(scoped_threads, principal_id=principal)
+    return snapshot.model_copy(
+        update={
+            "can_record_invoice": (principal_id == request.app.state.settings.owner_principal_id)
+        }
+    )
 
 
 @router.post(

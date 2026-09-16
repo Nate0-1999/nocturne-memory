@@ -13,8 +13,11 @@ from sqlalchemy.dialects.postgresql import insert as postgresql_insert
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from spine.db.models import SpendEvent
+from spine.ids import mint_ulid
 from spine.spend.contracts import (
     DailySpend,
+    InfrastructureInvoice,
+    InvoiceReceipt,
     MessageCache,
     ModelSpendRow,
     PurposeSpendRow,
@@ -129,6 +132,43 @@ class SpendService:
     def __init__(self, session_factory: async_sessionmaker[AsyncSession]) -> None:
         self._session_factory = session_factory
 
+    async def invoice(self, principal_id: str, invoice: InfrastructureInvoice) -> int:
+        """Serialize invoice identity, reusing the append-only receipt on retries."""
+        ref = f"gcp-invoice:{invoice.invoice_id}"
+        async with self._session_factory() as session, session.begin():
+            await session.execute(
+                text("SELECT pg_advisory_xact_lock(hashtextextended(:identity, 0))"),
+                {"identity": f"{principal_id}:{ref}"},
+            )
+            existing = await session.scalar(
+                select(SpendEvent).where(
+                    SpendEvent.principal_id == principal_id,
+                    SpendEvent.ref == ref,
+                    SpendEvent.product_type == "infra.run.serve",
+                )
+            )
+            receipt = InvoiceReceipt(
+                event_uid=existing.event_uid if existing else mint_ulid(),
+                ts=datetime.combine(invoice.invoice_date, datetime.min.time(), tzinfo=UTC),
+                quantity_type="invoice",
+                unit_of_measure="invoice",
+                quantity=Decimal(1),
+                cost_usd=invoice.amount_usd,
+                basis="measured",
+                behavior="fixed",
+                purpose="building",
+                principal_id=principal_id,
+                provider="gcp",
+                ref=ref,
+                meta={"source": "manual_invoice", "invoice_id": invoice.invoice_id},
+            )
+            if existing:
+                if _row_values(existing) != event_values(receipt):
+                    raise SpendEventConflictError(existing.event_uid)
+            else:
+                session.add(SpendEvent(**event_values(receipt)))
+        return 1
+
     async def append(self, events: Sequence[SpendEventInput]) -> int:
         """Atomically insert or idempotently accept one nonempty receipt batch."""
 
@@ -177,7 +217,8 @@ class SpendService:
 
         scoped = thread_ids is not None
         parameters: dict[str, Any] = {
-            "window_start": instant - timedelta(minutes=60), "as_of": instant
+            "window_start": instant - timedelta(minutes=60),
+            "as_of": instant,
         }
         if principal_id is not None:
             parameters["principal_id"] = principal_id
@@ -258,7 +299,10 @@ async def _history(
         "count(*) FILTER (WHERE cost_usd IS NULL) AS unpriced_lines "
         "FROM base WHERE ts >= :window_start GROUP BY minute, purpose, model"
     )
-    rate_rows = (await session.execute(text(f"""
+    rate_rows = (
+        (
+            await session.execute(
+                text(f"""
         WITH base AS ({base}), minutes AS ({minute_rows}), lanes AS (
             SELECT minute, dimension, key, cost_usd, receipt_lines, unpriced_lines
             FROM minutes CROSS JOIN LATERAL (
@@ -268,7 +312,8 @@ async def _history(
             ) AS dimensions
             UNION ALL
             SELECT date_trunc('minute', ts),
-                CASE WHEN origin_agent ~ '/root\\.' THEN 'subagent' ELSE 'agent' END,
+                CASE WHEN origin_agent ~ '/root\\.|/[0-7][0-9A-HJKMNP-TV-Z]{{25}}$'
+                    THEN 'subagent' ELSE 'agent' END,
                 origin_agent, sum(cost_usd), count(*),
                 count(*) FILTER (WHERE cost_usd IS NULL)
             FROM base WHERE ts >= :window_start AND product_type = 'llm.request'
@@ -278,22 +323,39 @@ async def _history(
             sum(receipt_lines)::bigint AS receipt_lines,
             sum(unpriced_lines)::bigint AS unpriced_lines
         FROM lanes GROUP BY dimension, key, minute ORDER BY dimension, key, minute
-    """), parameters)).mappings().all()
+    """),
+                parameters,
+            )
+        )
+        .mappings()
+        .all()
+    )
     grouped: dict[tuple[str, str | None], list[dict[str, Any]]] = {}
     for row in rate_rows:
-        grouped.setdefault((row["dimension"], row["key"]), []).append({
-            name: row[name] for name in ("minute", "cost_usd", "receipt_lines", "unpriced_lines")
-        })
-    labels = {"total": "Total", "curation": "Memory curation", "agent": "Agent",
-              "subagent": "Sub-agent", "model": "Model"}
-    rates = [SpendRateLane(
-        dimension=dimension, key=key,
-        label=labels[dimension] + (
-            f" · {key or 'unreported'}" if dimension not in {"total", "curation"} else ""
-        ),
-        points=points,
-    ) for (dimension, key), points in grouped.items()]
-    cache_rows = (await session.execute(text(f"""
+        grouped.setdefault((row["dimension"], row["key"]), []).append(
+            {name: row[name] for name in ("minute", "cost_usd", "receipt_lines", "unpriced_lines")}
+        )
+    labels = {
+        "total": "Total",
+        "curation": "Memory curation",
+        "agent": "Agent",
+        "subagent": "Sub-agent",
+        "model": "Model",
+    }
+    rates = [
+        SpendRateLane(
+            dimension=dimension,
+            key=key,
+            label=labels[dimension]
+            + (f" · {key or 'unreported'}" if dimension not in {"total", "curation"} else ""),
+            points=points,
+        )
+        for (dimension, key), points in grouped.items()
+    ]
+    cache_rows = (
+        (
+            await session.execute(
+                text(f"""
         SELECT thread_id, prompt_id, min(ts) AS first_request_at,
             coalesce(sum(quantity) FILTER (WHERE quantity_type = 'input_fresh'), 0)::text
                 AS fresh_tokens,
@@ -304,17 +366,34 @@ async def _history(
         FROM ({base}) AS base WHERE product_type = 'llm.request'
             AND unit_of_measure = 'tokens' AND thread_id IS NOT NULL
         GROUP BY thread_id, prompt_id ORDER BY first_request_at, thread_id, prompt_id
-    """), parameters)).mappings().all()
-    day_rows = (await session.execute(text(f"""
+    """),
+                parameters,
+            )
+        )
+        .mappings()
+        .all()
+    )
+    day_rows = (
+        (
+            await session.execute(
+                text(f"""
         SELECT date_trunc('day', ts AT TIME ZONE 'UTC') AT TIME ZONE 'UTC' AS day,
             sum(cost_usd) FILTER (WHERE product_type LIKE 'llm.%')::text AS model_usd,
             sum(cost_usd) FILTER (WHERE product_type LIKE 'infra.%')::text AS infrastructure_usd,
             sum(cost_usd)::text AS total_usd,
             count(*) FILTER (WHERE cost_usd IS NULL)::int AS unpriced_lines
         FROM ({base}) AS base GROUP BY day ORDER BY day
-    """), parameters)).mappings().all()
+    """),
+                parameters,
+            )
+        )
+        .mappings()
+        .all()
+    )
     return (
-        rates, [MessageCache(**row) for row in cache_rows], [DailySpend(**row) for row in day_rows]
+        rates,
+        [MessageCache(**row) for row in cache_rows],
+        [DailySpend(**row) for row in day_rows],
     )
 
 

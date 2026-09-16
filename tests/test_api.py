@@ -36,6 +36,7 @@ SPINE_ROUTES = {
     ("GET", "/v1/memories"),
     ("POST", "/v1/search"),
     ("POST", "/v1/spend/events"),
+    ("POST", "/v1/spend/invoices"),
     ("GET", "/v1/spend/table"),
     ("GET", "/v1/vitals"),
     ("GET", "/v1/vitals/threads/{thread_id}"),

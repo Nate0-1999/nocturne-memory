@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from decimal import Decimal
 from typing import Annotated, Any, Literal
 from uuid import UUID
@@ -106,6 +106,20 @@ class SpendEventsResponse(SpendContract):
     accepted: int = Field(strict=True, ge=1)
 
 
+class InfrastructureInvoice(SpendContract):
+    """M3SR: the owner's manually entered monthly cloud invoice."""
+
+    amount_usd: Decimal = Field(gt=0, max_digits=20, decimal_places=12)
+    invoice_date: date
+    invoice_id: NonBlankString
+
+
+class InvoiceReceipt(SpendEventInput):
+    """Internal receipt shape; the general events endpoint stays model-only."""
+
+    product_type: Literal["infra.run.serve"] = "infra.run.serve"
+
+
 class SpendTableMetrics(SpendContract):
     """Exact token lanes plus honest known-cost state for one ledger grouping."""
 
@@ -116,9 +130,7 @@ class SpendTableMetrics(SpendContract):
     total_usd: Decimal | None = Field(default=None, ge=0, max_digits=20, decimal_places=12)
     total_receipt_lines: int = Field(strict=True, ge=0)
     total_unpriced_lines: int = Field(strict=True, ge=0)
-    spend_per_hour_usd: Decimal | None = Field(
-        default=None, ge=0, max_digits=20, decimal_places=12
-    )
+    spend_per_hour_usd: Decimal | None = Field(default=None, ge=0, max_digits=20, decimal_places=12)
     hourly_receipt_lines: int = Field(strict=True, ge=0)
     hourly_unpriced_lines: int = Field(strict=True, ge=0)
 
@@ -138,9 +150,7 @@ class SpendTableMetrics(SpendContract):
 
     @model_validator(mode="after")
     def require_honest_costs(self) -> SpendTableMetrics:
-        _require_honest_cost(
-            self.total_usd, self.total_receipt_lines, self.total_unpriced_lines
-        )
+        _require_honest_cost(self.total_usd, self.total_receipt_lines, self.total_unpriced_lines)
         _require_honest_cost(
             self.spend_per_hour_usd,
             self.hourly_receipt_lines,
@@ -188,6 +198,7 @@ class DailySpend(SpendContract):
 
 
 class SpendTableSnapshot(SpendContract):
+    can_record_invoice: bool = False
     as_of: datetime
     window_minutes: Literal[60]
     threads: list[ThreadSpendRow]
