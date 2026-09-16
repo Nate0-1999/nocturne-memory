@@ -98,7 +98,7 @@ async def test_health_endpoints_and_auth_are_live(app: FastAPI) -> None:
     assert healthy_healthz.json() == {
         "ok": True,
         "version": __version__,
-        "api_contract_version": "0.1.24",
+        "api_contract_version": "0.1.25",
         "schema_version": "0025",
     }
     assert healthy_healthz.json()["api_contract_version"] == API_CONTRACT_VERSION
