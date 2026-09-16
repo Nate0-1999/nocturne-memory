@@ -1,0 +1,35 @@
+[
+  {
+    "environment": "real",
+    "principal_id": "nocturne-verification-3f361f9b-b37f-40d6-bf14-2615a4b2b3b6",
+    "denied": [],
+    "tombstoned": [
+      "81a6454c-4691-4033-b31d-69baf3ba2e27",
+      "6ec283b6-f8cb-4d8e-bdca-a537b34b8dd4",
+      "b50c68dd-c5f4-497e-8b4d-32e757f4e20b",
+      "dda91e4d-9e31-434b-8770-942043846a48",
+      "b8c04f49-78dd-4980-a165-7c553230a9af"
+    ],
+    "unretired_after": 0,
+    "pending_after": 0,
+    "retained_history_nodes": 8
+  },
+  {
+    "environment": "fixture",
+    "principal_id": "nocturne-verification-fixture-m3wf",
+    "denied": [],
+    "tombstoned": [
+      "4432a50a-8d66-4865-9d50-605c5fad7d1f",
+      "b4601a80-f31b-4473-85a0-434ecf520fa5",
+      "5b55da59-32fd-459f-abbc-0fe51f83b35e",
+      "54776d5e-1a8e-4b3e-88c8-c3cd99cce0d6",
+      "065c4a1b-4f6a-4bad-86f6-e23d8cf4c9f2",
+      "9724cd38-318b-412d-b96d-f6231009fd98",
+      "9b673600-574c-4e92-a906-42d90b7bd9cd",
+      "fd581cd5-b5d9-4b73-917c-83ee48ab0f17"
+    ],
+    "unretired_after": 0,
+    "pending_after": 0,
+    "retained_history_nodes": 13
+  }
+]
