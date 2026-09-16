@@ -2,7 +2,12 @@
 
 from fastapi import APIRouter, Query, Request
 
-from spine.curation.contracts import CuratorActivity, CuratorRunReceipt, CuratorRunRequest
+from spine.curation.contracts import (
+    CuratorActivity,
+    CuratorProgress,
+    CuratorRunReceipt,
+    CuratorRunRequest,
+)
 from spine.problems import ProblemJSONResponse, problem_openapi, problem_response
 
 router = APIRouter(tags=["curation"])
@@ -18,6 +23,15 @@ async def activity(
     principal_id: str = Query(min_length=1),
 ) -> CuratorActivity:
     return await request.app.state.curator_service.activity(principal_id)
+
+
+@router.get("/v1/curation/progress", response_model=CuratorProgress, responses=ERRORS)
+async def progress(
+    request: Request,
+    principal_id: str = Query(min_length=1),
+    after: int = Query(default=0, ge=0),
+) -> CuratorProgress:
+    return await request.app.state.curator_service.progress(principal_id, after)
 
 
 @router.post(

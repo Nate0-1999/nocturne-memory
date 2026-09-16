@@ -17,6 +17,7 @@ from spine.curation.contracts import (
     PalaceHealthReport,
 )
 from spine.curation.diagnostics import HealthReportBuilder
+from spine.curation.progress import read_progress, record_progress
 from spine.curation.provider import CuratorProviderError, CuratorVerdictProvider
 from spine.db.models import (
     ApprovalQueueItem,
@@ -129,12 +130,22 @@ class CuratorService:
             )
             if not acquired:
                 return None
+            run_uid = mint_ulid()
             try:
-                return await self._run_locked(
+                await record_progress(self._session_factory, principal_id, run_uid, "run.started")
+                receipt = await self._run_locked(
                     principal_id,
+                    run_uid=run_uid,
                     machine_id=machine_id,
                     trigger=trigger,
                 )
+                await record_progress(self._session_factory, principal_id, run_uid,
+                                      "run.completed" if receipt.status == "completed"
+                                      else "run.failed")
+                return receipt
+            except BaseException:
+                await record_progress(self._session_factory, principal_id, run_uid, "run.failed")
+                raise
             finally:
                 await lock_session.scalar(
                     text(
@@ -143,6 +154,9 @@ class CuratorService:
                     ),
                     {"principal_id": principal_id},
                 )
+
+    async def progress(self, principal_id: str, after: int = 0):
+        return await read_progress(self._session_factory, principal_id, after)
 
     async def activity(self, principal_id: str) -> CuratorActivity:
         state = CuratorTriggerState.__table__
@@ -205,10 +219,10 @@ class CuratorService:
         self,
         principal_id: str,
         *,
+        run_uid: str,
         machine_id: str,
         trigger: Trigger,
     ) -> CuratorRunReceipt:
-        run_uid = mint_ulid()
         report = await self._report_builder.build(principal_id)
         admitted, pressure = await self._trigger_snapshot(principal_id)
         judged: list[_JudgedFinding] = []
@@ -216,6 +230,9 @@ class CuratorService:
             for finding in report.findings:
                 finding_uid = mint_ulid()
                 verdict_uid = mint_ulid()
+                await record_progress(self._session_factory, principal_id, run_uid,
+                                      "finding.started", memory_ids=finding.memory_ids,
+                                      finding_uid=finding_uid)
                 draft = await self._provider.verdict(
                     finding,
                     report,
@@ -223,6 +240,9 @@ class CuratorService:
                     machine_id=machine_id,
                 )
                 _require_allowed(finding, draft)
+                await record_progress(self._session_factory, principal_id, run_uid,
+                                      "finding.completed", memory_ids=finding.memory_ids,
+                                      finding_uid=finding_uid, action=draft.action)
                 suppressed = await self._was_seen_unchanged(finding, draft.action)
                 judged.append(
                     _JudgedFinding(

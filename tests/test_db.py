@@ -170,9 +170,14 @@ async def test_models_match_authoritative_c2_schema(
         "optimization_run_adoption",
         "transcript_record",
         "creation_outcome",
+        "curator_progress",
     )
 
     expected_columns = {
+        "curator_progress": (
+            "event_id", "principal_id", "run_uid", "phase", "memory_ids",
+            "finding_uid", "action", "ts",
+        ),
         "creation_outcome": (
             "event_key",
             "memory_id",
@@ -465,6 +470,7 @@ async def test_models_match_authoritative_c2_schema(
         for name, table in Base.metadata.tables.items()
     }
     assert nullable == {
+        "curator_progress": {"finding_uid", "action"},
         "creation_outcome": set(),
         "memory_unit": {
             "project_key",
@@ -535,6 +541,7 @@ async def test_models_match_authoritative_c2_schema(
         for name, table in Base.metadata.tables.items()
     }
     assert primary_keys == {
+        "curator_progress": ("event_id",),
         "creation_outcome": ("event_key",),
         "memory_unit": ("id",),
         "memory_revision": ("rev_uid",),
@@ -567,6 +574,14 @@ async def test_models_match_authoritative_c2_schema(
         for column in table.c
     }
     assert types == {
+        "curator_progress.event_id": "BIGINT",
+        "curator_progress.principal_id": "TEXT",
+        "curator_progress.run_uid": "TEXT",
+        "curator_progress.phase": "TEXT",
+        "curator_progress.memory_ids": "UUID[]",
+        "curator_progress.finding_uid": "TEXT",
+        "curator_progress.action": "TEXT",
+        "curator_progress.ts": "TIMESTAMP WITH TIME ZONE",
         "creation_outcome.event_key": "TEXT",
         "creation_outcome.memory_id": "UUID",
         "creation_outcome.principal_id": "TEXT",
@@ -822,6 +837,8 @@ async def test_models_match_authoritative_c2_schema(
         if column.server_default is not None
     }
     assert defaults == {
+        "curator_progress.memory_ids": "'{}'::uuid[]",
+        "curator_progress.ts": "clock_timestamp()",
         "memory_unit.id": "gen_random_uuid()",
         "memory_unit.keywords": "'{}'",
         "memory_unit.pin": "false",
@@ -883,6 +900,12 @@ async def test_models_match_authoritative_c2_schema(
         for name, table in Base.metadata.tables.items()
     }
     assert checks == {
+        "curator_progress": {
+            "curator_progress_phase_check": (
+                "phase IN ('run.started','finding.started','finding.completed',"
+                "'run.completed','run.failed')"
+            ),
+        },
         "creation_outcome": {},
         "memory_unit": {
             "memory_unit_kind_check": (

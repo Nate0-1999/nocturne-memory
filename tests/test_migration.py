@@ -23,7 +23,7 @@ def test_packaged_migration_tree_has_one_expected_head() -> None:
 
     assert config.attributes[DATABASE_URL_ATTRIBUTE] == database_url
     assert scripts.get_base() == "0001"
-    assert scripts.get_heads() == ["0023"]
+    assert scripts.get_heads() == ["0024"]
 
 
 def test_0004_backfills_legacy_rows_and_downgrades_cleanly(
@@ -159,7 +159,7 @@ async def test_c2_migration_and_v0_seed(migrated_database_url: str) -> None:
                 .one()
             )
 
-            assert revision == "0023"
+            assert revision == "0024"
         expected_tables = {
             "creation_outcome",
             "memory_unit",

@@ -1306,3 +1306,12 @@ explanations use the same scalar definitions; share errors are not wrong memorie
 The live gate walk found that injection decisions update prepared rows. Migration
 0023 therefore captures outcome transitions as distinct append-only facts and
 backfills missed final decisions without duplicating the original projection.
+
+## 053 — Observe curator progress before the receipt [P2.5, M3VZ]
+
+PRECEDENT: PLAN M3VZ GRANTS, A-068, ADR-018/022; ancestors M3CU/M3ES.
+A separate append-only progress table commits each real run/finding transition.
+It has no foreign key to the receipt because that receipt does not exist until
+the pass finishes. Principal filtering precedes the event cursor. A replacement
+API worker reads the same history; interrupted work retains its last observation
+without pretending it is a heartbeat. Model judgments and consent stay unchanged.
