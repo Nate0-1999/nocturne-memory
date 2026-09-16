@@ -938,7 +938,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Aug 9",
       "label": "At compaction the summarizing agent turns anything important but not needed for the next few build steps into a memory through the normal memory creation path, and compaction waits for those memories to land before dropping the rest.",
-      "status": "not built",
+      "status": "partial",
       "walk": "Cross a compaction on a main thread; memory candidates from the summary land on the Deck before the old context is dropped.",
       "owner": "owner — \"To extend this compaction comes should be another chance for agents memories to be created... if somehting is important, but maybe not relavant to the next couple build steps the agent that is summarizing the recent history should make a memory out of it. this should be integrated with our current memory creation schema pretty seemlessly because agent created memories are the norm.\" (chat 2026-08-09 18:49:53; seed SD-061 (owner riff 2026-09-10))",
       "surfaces": [
@@ -1620,30 +1620,30 @@
       "section": "6. Context window, history and compaction",
       "era": "Aug 15",
       "label": "Compaction triggered by fill percentage against the model's best working range and max, which vary by model.",
-      "status": "not built",
+      "status": "partial",
       "walk": "Fill a thread past its model's fill line; compaction runs and the fill percentage drops.",
       "owner": "owner — \"6. It should be fill percentage.. based we need to figure out a good source for standard model meta data: best ranges to work in max. I feel like the open source harness must have opinions on these.\" (chat 2026-08-15 19:37:48 (+ seed SD-061, owner 2026-09-10))",
-      "surfaces": []
+      "surfaces": ["harness/src/harness/pydantic_harness_adapter.py", "harness/src/harness/context_window.py"]
     },
     {
       "id": "FL-081",
       "section": "6. Context window, history and compaction",
       "era": "Sep 10",
       "label": "A suite of compaction strategies: truncation; summarization; make the compaction memories first, wait for them to land, then drop everything else; keep only the human's messages and each agent turn's final answer.",
-      "status": "not built",
+      "status": "partial",
       "walk": "Pick a compaction strategy and cross the fill line; what is left in the thread matches the strategy picked.",
       "owner": "owner — \"I am thinking that there will be a suite of compaction strategies that we can employ: truncation, summarization, apply memories made at compaction (wait for this to happen) and drop everything else, keep just the agent turn final response and human messages.\" (seed SD-061 (owner 2026-09-10))",
-      "surfaces": []
+      "surfaces": ["harness/src/harness/pydantic_harness_adapter.py", "harness/src/harness/agent_runtime.py"]
     },
     {
       "id": "FL-082",
       "section": "6. Context window, history and compaction",
       "era": "Sep 10",
       "label": "A compaction policy that decides when to compact by optimal performance or by cost management.",
-      "status": "not built",
+      "status": "partial",
       "walk": "Switch the policy between optimal performance and cost management; the point at which compaction fires moves.",
       "owner": "owner — \"There are also parameters of when we compact based on optimal performance or cost managment and context window size which are variable by model.\" (seed SD-061 (owner 2026-09-10))",
-      "surfaces": []
+      "surfaces": ["harness/src/harness/agent_runtime.py", "harness/src/harness/pydantic_harness_adapter.py"]
     },
     {
       "id": "FL-083",
