@@ -486,6 +486,14 @@ def bell(data, diff, ci=False):
             print(f"  {key}: {label}{mark}")
         for path in result["unmapped"]:
             print(f"  Unmapped: {path} (add a row or declare no feature impact)")
+        # v2.121: BLACK files need a word from the owner or the gate before they change.
+        black = re.compile(
+            r"(^|/)(docs/SPEC\.md|AXIOMS\.md|CLAUDE\.md|AGENTS\.md|\.github/workflows/[^/]+\.ya?ml)$"
+        )
+        changed = {p for paths in result["affected"].values() for p in paths} | set(result["unmapped"])
+        for path in sorted(changed):
+            if black.search(path):
+                print(f"  [BLACK: needs a word] {path}")
         if ci:
             evidence_dirs = [directory] if FROZEN else [
                 WORKSPACE / name / "verification" / packet
