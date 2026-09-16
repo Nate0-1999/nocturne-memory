@@ -1,0 +1,55 @@
+INFO:     Started server process [88487]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18968 (Press CTRL+C to quit)
+INFO:     127.0.0.1:51390 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51390 - "GET /assets/index-BcOVKftO.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51391 - "GET /assets/index-byHiwN9i.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51400 - "GET /?rack_module=memory&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18968&theme=neo-noir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51393 - "GET /?rack_module=header&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18968&theme=neo-noir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51397 - "GET /?rack_module=threads&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18968&theme=neo-noir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51399 - "GET /?rack_module=conversation&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18968&theme=neo-noir&conversation_mode=focused HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51402 - "GET /?rack_module=vitals&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18968&theme=neo-noir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51403 - "GET /?rack_module=context_bars&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18968&theme=neo-noir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51400 - "GET /?rack_module=palace_state&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18968&theme=neo-noir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51393 - "GET /?rack_module=palace_queue&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18968&theme=neo-noir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51393 - "GET /assets/index-BcOVKftO.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51400 - "GET /assets/index-byHiwN9i.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51390 - "GET /v1/transcripts/catalog HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51404 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:51390 - "GET /favicon.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51407 - "GET /v1/curation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51407 - "GET /v1/approval-queue HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51407 - "GET /v1/seeds/jump-start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51409 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51406 - "GET /v1/rack/query?resource=scorer_console&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51391 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51409 - "GET /v1/rack/query?resource=context_window&as_of=now&thread_id=e3480604-17d2-4842-ab14-0382ad2368b5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51390 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51407 - "GET /v1/rack/query?resource=scorer_console&as_of=now&thread_id=e3480604-17d2-4842-ab14-0382ad2368b5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51408 - "GET /v1/rack/query?resource=spend_table&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51425 - "GET /?rack_module=gate&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18968&theme=neo-noir HTTP/1.1" 200 OK
+                 pydantic-ai v2.43.0 • pydantic-ai-harness v0.31.0 • Python 3.12.9
+
+      / \        agent: harness-chat • model: openrouter:openai/gpt-4.1-mini • tools: 16
+     /   \         capabilities: 4
+   /___.___\
+  /    |    \    observability: off — see every model and tool call live, with cost
+/      |      \    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md
+`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel
+
+                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1
+INFO:     127.0.0.1:51531 - "GET /v1/curation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51526 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51530 - "GET /v1/rack/query?resource=scorer_console&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51528 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51532 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51529 - "GET /v1/rack/query?resource=spend_table&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51529 - "GET /v1/rack/query?resource=context_window&as_of=now&thread_id=e3480604-17d2-4842-ab14-0382ad2368b5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51608 - "GET /v1/curation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51603 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51605 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51609 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51607 - "GET /v1/rack/query?resource=scorer_console&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51606 - "GET /v1/rack/query?resource=spend_table&as_of=now HTTP/1.1" 200 OK

@@ -1,0 +1,13 @@
+{
+  "principal_id": "nocturne-verification-m3th-th16",
+  "thread_id": "951d4cbb-6919-44fd-b188-d196bf8c1a15",
+  "status": 409,
+  "body": {
+    "type": "about:blank",
+    "title": "Conflict",
+    "status": 409,
+    "detail": "This thread already has its single M1 memory injection.",
+    "instance": "/v1/inject/prepare",
+    "endpoint": "POST /v1/inject/prepare"
+  }
+}

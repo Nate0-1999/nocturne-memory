@@ -1,0 +1,1290 @@
+{
+  "packet": "M3TH",
+  "mode": "scout",
+  "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
+  "ledger_sha256": "77f66ab3518d8668f37d9db2945af7c23921fb05be336ea21fbaa07a5e20d18f",
+  "diffs": [],
+  "unmapped": {},
+  "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
+  "rows": {
+    "FL-004": {
+      "label": "Update history is one of the memory's indexes.",
+      "walk": "Open a memory's score breakdown in the Injection Console; an update-history row is among the features.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-004.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-005": {
+      "label": "Duplicate detection at creation, and outright removal of deprecated memories so they never collide with new ones.",
+      "walk": "`/remember` the same fact twice; the second is caught as a duplicate rather than stored again.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-005.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-008": {
+      "label": "Complete logs of every conversation are kept for good, until it becomes too expensive, and every session sits in one table with a session id so anything can be audited.",
+      "walk": "Look up an old conversation in the sessions table; its row and its full log are there.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-008.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-014": {
+      "label": "Every memory records the folder the agent stood in when it was made.",
+      "walk": "`/remember` while the agent stands in a folder; the card shows that folder as WHERE.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-014.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-016": {
+      "label": "All conversation history is kept the way Codex and Claude Code keep it; a conversation without history is not supported.",
+      "walk": "Send three prompts, quit, `nocturne up`, select the thread; the three exchanges are there.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-016.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-017": {
+      "label": "Every prompt is intercepted and relevant memories are added to the context before the model runs.",
+      "walk": "Send a prompt in a thread with memories; the Injection Console shows the memories added before the model ran.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-017.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-018": {
+      "label": "A hard pause on a thread's first prompt where the user scans and removes injected memories before the model starts; afterwards removal is ad hoc with no pause.",
+      "walk": "New thread, first prompt; the gate opens with the memories and waits; the second prompt does not pause.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-018.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-019": {
+      "label": "One-tap removal of an injected memory, with near-miss memories just below the cutoff shown so they can be added back.",
+      "walk": "At the gate, tap × on one memory and add one near-miss back; the count line updates.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-019.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-020": {
+      "label": "A one-tap removal at the gate means 'not relevant' by default.",
+      "walk": "Tap × on a gate row; the removal is recorded as 'not relevant'.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-020.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-022": {
+      "label": "After the first prompt the user can still see and remove injected memories mid-thread, ad hoc, without being prompted.",
+      "walk": "Mid-thread, remove a memory from the panel; the next turn omits it.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-022.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-023": {
+      "label": "One view of every axis feeding the injection algorithm for an active memory.",
+      "walk": "Open an active memory's breakdown; every axis feeding the injection algorithm is listed in one view.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-023.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-024": {
+      "label": "Threshold injection: everything above the score line goes in, most relevant first, up to the allotment; no fixed top-N.",
+      "walk": "The Injection Console shows the line; a memory just above it is in, one just below is a near-miss.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-024.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-027": {
+      "label": "Every scoring axis (such as time since creation and directory distance from where the memory was made) is turned into a number and normalized into the memory score, and there is a thread similarity axis.",
+      "walk": "Open a gate row's score breakdown; each axis, including thread similarity, shows as a number.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-027.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-028": {
+      "label": "A memory share of the context window, shown and editable, with unused allotment returned to chat history.",
+      "walk": "Open Context Bars; the memory share of the window is shown with its unused allotment returning to chat; the share is edited in the Injection Console (v2.94: one console, no duplicate control).",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-028.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-031": {
+      "label": "The gate as a visualization-plus-input module showing each memory's injection score.",
+      "walk": "The gate overlay shows each memory's injection score and takes removals.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-031.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-033": {
+      "label": "Constitution: A near-miss 'never show this' veto (Aug 21 leak-fix packet).",
+      "walk": "Press and hold × on a near-miss; it never reappears in that thread's near-misses.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-033.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-034": {
+      "label": "The curators deconflict, dedupe and remove slop, triggered by every n memory writes rather than by the clock, and run at the Palace's own location.",
+      "walk": "On a fixture Palace, cross n memory writes; a curator pass runs and Palace State shows it.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-034.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-035": {
+      "label": "Constitution: A scripted pre-pass that writes a versioned Palace Health Report the curator must read before acting (v2.8–2.9 curator law).",
+      "walk": "Run a curator pass; its record shows the Palace Health Report it read first.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-035.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-036": {
+      "label": "The curators have the right tools and standard procedures for their work, and act as surgeons: minimally invasive, targeting the root problem and letting the system sort out the symptoms.",
+      "walk": "Run a curator pass on a Palace with one duplicate pair; the pass touches only that pair and nothing else.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-036.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-037": {
+      "label": "Constitution: Typed consolidation decisions: merge, new, contradict, supersede (curator spec).",
+      "walk": "Open a curator proposal card; it names one of merge, new, contradict or supersede.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-037.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-038": {
+      "label": "A cheap 80/20 duplicate check at memory creation, keeping the agent's memory work under 10% of build run time.",
+      "walk": "Save a fact already in the Palace; the save comes back as a duplicate at once, without the agent reading other memories.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-038.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-039": {
+      "label": "Agents make no memories until compaction; the explicit /remember command is the other way.",
+      "walk": "Run an agent thread through a turn; no memory is created mid-turn, only at compaction or by /remember.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-039.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-041": {
+      "label": "Constitution: Curator autonomy earned per verdict class from your own approval record, with contradiction never graduating (gate-day).",
+      "walk": "Open Palace State; each verdict class shows whether it has graduated to auto-execute, and contradiction never does.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-041.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-042": {
+      "label": "Constitution: 'Already known — reinforced' on re-saves; rejected candidates remembered and never re-proposed without material change (gate-day).",
+      "walk": "Re-save a known fact; the reply says 'already known — reinforced'; reject a candidate and re-save it unchanged; it is not proposed again.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-042.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-045": {
+      "label": "Same-memory detection by encoding and retrieving, not exact wording.",
+      "walk": "Save a rephrased known fact; it is recognized as the same memory instead of duplicating.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-045.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-048": {
+      "label": "A permanent back-test table of every human add and removal of a memory, as the training data for the injection algorithm.",
+      "walk": "Remove a memory at the gate; a new row for it appears in the back-test table.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-048.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-052": {
+      "label": "The scoreboard counts right and wrong injection decisions, injected or not, with no arbitrary scoring.",
+      "walk": "Open the scoreboard; it shows separate integer counts of right and wrong decisions (the weighted-disagreement figures are the tuner's trigger, not a score on a memory).",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-052.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-053": {
+      "label": "Every feature's weight labeled and shown normalized to a decimal.",
+      "walk": "Open the Injection Console; each feature's weight is labeled and shown as a decimal.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-053.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-056": {
+      "label": "Automatic training of the memory line and the share from human feedback, switching on by itself after 100 pieces of authentic feedback.",
+      "walk": "Below 100 pieces of feedback the ledger says the memory line and share are fixed; the 100 floor is shown.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-056.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-060": {
+      "label": "An optimization ledger: state and scores across runs in a proper history schema.",
+      "walk": "Force retrain; a row appears in the optimization ledger with its state and score.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-060.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-067": {
+      "label": "Agents move through the file structure of the machine they live in, and the interface shows where every agent is.",
+      "walk": "Ask the agent to move to another folder; the interface shows its new location.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-067.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-070": {
+      "label": "Image input: paste an image and the agent reviews it.",
+      "walk": "Paste an image; the agent reviews it.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-070.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-071": {
+      "label": "The location fence: an agent can edit only files in the exact directory it stands in, and its shell is kept to that subtree, enforced deterministically.",
+      "walk": "Ask for an edit outside the agent's folder without moving; the edit is refused.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-071.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-074": {
+      "label": "A new thread starts in a project folder with the location rule in effect; how a thread's project is specified was his open question (maybe configuration).",
+      "walk": "Start a new thread in a folder; the thread shows that folder as its project and the location rule applies.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-074.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-079": {
+      "label": "Full conversation history kept, the way Codex and Claude Code do.",
+      "walk": "Restart the Harness and scroll a long thread; every earlier turn is still there.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-079.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-083": {
+      "label": "The current token count of the context window comes from OpenRouter sending us that information.",
+      "walk": "Send one turn and compare Context Bars to the usage OpenRouter returned for it; the counts match.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-083.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-087": {
+      "label": "Modes on a music-themed scale: pair mode is Duet and conductor mode is Symphony, with room for more in between.",
+      "walk": "Open the mode selector; Duet and Symphony are listed.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-087.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-091": {
+      "label": "When a judge fails a swarm, its feedback is saved as new packets and a new swarm is sent out, looping until every judge is satisfied.",
+      "walk": "Let a judge fail a round; new packets appear from the feedback and a fresh swarm runs, and the loop ends only when all judges pass.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-091.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-094": {
+      "label": "Three phases: deliberation with the agent outlining the spec and recipe with judges and metrics, then auto mode, then adversarial review by the judges that loops to go again.",
+      "walk": "Run a symphony; deliberation in chat, then the unattended run, then a judge review round that can send it round again.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-094.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-098": {
+      "label": "The symphony lifecycle shows its human touchpoints, the human prompt and any interjection or steering, so they can be seen.",
+      "walk": "Steer a symphony mid-run; the human prompt and the steering both show on the run's trace.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-098.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-100": {
+      "label": "Constitution: \"Take this to a symphony\" from chat, returning as a card. (chat 2026-08-17 17:02:48)",
+      "walk": "Type \"take this to a symphony\" in chat; the run starts and returns as a card on the Deck.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-100.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-102": {
+      "label": "The Deck: a flashcard stack of terminals, cards colored to match their agents, only one card on top at a time (that project's agent's last response) to interact with, the next card popping up once you respond, ordered purely by which finished first.",
+      "walk": "Answer the top card; it pops and the next card, the earliest to finish, comes up in its agent's color.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-102.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-104": {
+      "label": "A draft response to the final synthesis that you tweak and fire, after which the stack switches to the agent that has waited longest for your attention.",
+      "walk": "Tweak the draft on the top card and fire it; the stack moves to the agent that has waited longest.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-104.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-105": {
+      "label": "An Ableton-like rack: the shipped layout is only version one of the default opinion, and people can easily roll and add their own plugins and visualizers to the views from the ground up.",
+      "walk": "Add a self-authored plugin to the rack; it appears among the modules and works.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-105.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-106": {
+      "label": "Switching the model on command in a thread; markdown rendering in chat.",
+      "walk": "Switch the model by command mid-thread and send a message with a table; the reply comes from the new model and the table renders.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-106.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-109": {
+      "label": "Memory candidates appear under the agent's post on the Deck after a compaction or a thread close; scrolling past without denying approves them; corpus-born proposals live in Memory Ingest.",
+      "walk": "After a compaction, candidates appear under the post; scroll past; they are approved and land.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-109.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-110": {
+      "label": "Global or current on every module; current modules switch together with the work.",
+      "walk": "Set two modules to current and select a different project; both switch together while a global one stays.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-110.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-111": {
+      "label": "One standard module template that can be dragged and grown or shrunk as much as you want, with a dialogue box for its internal settings, on a very large canvas you can pan and zoom while modules stay the same size.",
+      "walk": "Grow a module far past its starting size, open its settings dialogue, then zoom the canvas out; the module grew without a cap and keeps its size as the canvas zooms.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-111.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-112": {
+      "label": "Tabs as layers of the same stage; Injection and Graph as ordinary modules; a gear beside the title for rarely changed options.",
+      "walk": "Add a tab, place the Injection module on it, and open the gear beside the title; the tab is a layer of the same stage and the gear holds the rarely changed options.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-112.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-113": {
+      "label": "A finer, near-continuous background grid, more descriptive well-formatted hover tips, an easy way to create tabs, a much smaller archive button, a model device that is obviously clickable.",
+      "walk": "Hover a control on the stage; a well-formatted descriptive tip appears, the grid behind is near-continuous, a tab can be created easily, the archive button is small, and the model device looks clickable.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-113.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-114": {
+      "label": "Memory Ingest as its own module: put in current AGENTS.md or CLAUDE.md files to jump-start the Palace.",
+      "walk": "Put an AGENTS.md into the Memory Ingest module; its contents show up as memory candidates.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-114.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-115": {
+      "label": "Attunement to a specific stack beyond global and current.",
+      "walk": "Set a module to a specific stack; it shows it is aligned to that stack, not global or current.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-115.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-116": {
+      "label": "A module not set to global attunes by proximity, measured across tabs (a tab counting one unit) and grid position, ties picked at random, and it shows which thread or stack it is attuned to.",
+      "walk": "Drag a non-global module next to a different thread; its label changes to that thread's name.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-116.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-117": {
+      "label": "A proposed reply prefilled and editable; queued prompts advance on Enter with a scrollable queue.",
+      "walk": "Press Enter in the prefilled proposed reply; the next queued prompt comes up and the queue scrolls.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-117.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-119": {
+      "label": "A Palace State module holding the general state stats.",
+      "walk": "Open the Palace State module; the general state stats are there, not in the Spend table.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-119.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-120": {
+      "label": "One conversation module with stack and focused modes.",
+      "walk": "Toggle the conversation module between stack and focused; the one module shows the stack or a single thread.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-120.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-122": {
+      "label": "A recipe module showing the plan graph with completed parts dimmed.",
+      "walk": "Run a symphony with the recipe module open; completed parts dim.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-122.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-125": {
+      "label": "Each agent's context window is visualized, with the memory share (n% of the window) shown as a parameter the user can see and edit.",
+      "walk": "Open Context Bars for an agent; its context window is visualized with the memory share as n% of the window; editing happens in the Injection Console (v2.94).",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-125.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-127": {
+      "label": "Memories visualized in a cool tesseract-graph style.",
+      "walk": "Open the Memory Graph; memories render as a graph.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-127.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-131": {
+      "label": "Memory trace from any selection in the ant farm: the injected memories, which can be popped off, and near-miss suggestions to add.",
+      "walk": "Select any part of the ant farm; its injected memories appear with a pop-off and near-miss suggestions to add.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-131.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-141": {
+      "label": "The visualization looks cool but is functional: it changes only when the underlying data or actual running processes change.",
+      "walk": "Leave the visualization open with the system idle; nothing moves until a real process such as a curator pass runs.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-141.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-143": {
+      "label": "Neo-noir as the default style, with other configurations easily uploadable.",
+      "walk": "Open a fresh install; NEO-NOIR is the style, and another configuration can be uploaded and selected.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-143.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-145": {
+      "label": "Two alternate themes derived from your reference picture (Seraph Dressed, Gold Lines) added beside the current color scheme.",
+      "walk": "Switch to Gold Lines; the interface takes on the picture's colors and the original scheme remains selectable.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-145.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-146": {
+      "label": "The reference picture's exact colors are pulled out and applied to the Harness algorithmically in the picture's proportions, possibly by assigning colors to parts of the module templates.",
+      "walk": "Put a themed screen beside the reference picture; the same exact colors appear in the picture's proportions.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-146.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-151": {
+      "label": "KV-cache optimization, usage accounting, and sticky sessions on one provider for cache benefits.",
+      "walk": "Send several messages in one thread; the spend module's KV cache column fills in after the first message and the provider stays the same across the thread.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-151.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-154": {
+      "label": "A model configuration and token cost policy per agent type: pinned, max, elbow or floor.",
+      "walk": "Open the agent-type config; each type (agent, sub-agent, curator) has its own token-cost policy set to one of pinned, max, elbow or floor.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-154.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-155": {
+      "label": "An append-only spend ledger with fine-grain cost history, its smallest grain a uuid spend unit, and the spend views derived from it.",
+      "walk": "Send one message, then open the spend ledger; new rows with their own uuid spend unit ids appear beneath the unchanged older rows, and the spend module's totals add up from them.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-155.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-157": {
+      "label": "Constitution: spend walls, soft budgets per run or day that pause the work at the wall for the judge (symphony budget law).",
+      "walk": "Start a symphony with a small budget; when spend reaches the wall the run pauses and a boundary card appears on the Deck for the judge.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-157.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-158": {
+      "label": "Switch models on command through the same path automatic routing uses; an off-switch to run on a single token or credit.",
+      "walk": "With routing switched off on a single key, type /model with a new model in a thread; the next reply's spend row names the new model on that one key.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-158.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-159": {
+      "label": "The spend module: a row per thread expanding to models, columns input / KV cache / reasoning / output / total / spend per hour, other costs as their own rows, scopable to a thread or stack.",
+      "walk": "Press the plus on one thread row in the spend module; it opens to that thread's models with the columns input, KV cache, reasoning, output, total and spend per hour, with an everything-else row beneath.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-159.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-197": {
+      "label": "Spend and Palace state reads use the calling principal; only the configured owner can request the whole Palace.",
+      "walk": "In a verification daemon, open Spend and Palace State and see only that principal's receipts and counts. In a local fixture, compare the configured owner's whole-Palace view. Request scope=palace as the verification principal and see a plain 403. Keep owner-rack captures out of evidence.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-197.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-169": {
+      "label": "Client and cloud versions stay sync-locked or backward compatible, following industry practice, so version differences feel seamless.",
+      "walk": "Start a client whose version differs from the cloud Palace's; it either keeps working or refuses with a plain version message.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-169.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-171": {
+      "label": "A startup and settings option: \"Back up conversation transcripts to cloud?\"",
+      "walk": "Toggle \"Back up conversation transcripts to cloud?\" in the settings menu; the backup line changes, and the same question is asked at first startup.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-171.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-173": {
+      "label": "Constitution: a warming retry when the Palace is asleep, a \"busy, retrying\" banner on rate limits, and the banner clears on recovery (gate-day).",
+      "walk": "Start the Harness against a sleeping Palace; a warming line shows, then clears when the Palace answers.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-173.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-174": {
+      "label": "Constitution: a doctor readout naming which identity the running daemon is (gate verification-identity work).",
+      "walk": "Run doctor; the readout names the daemon's identity and its home.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-174.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-175": {
+      "label": "Constitution: a sandbox whose boundary crossings are surfaced as cards on the Deck (Invariant 14).",
+      "walk": "Have an agent try to write outside its fence; the work pauses and a boundary card appears on the Deck.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-175.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-178": {
+      "label": "Constitution: a verification identity with its own account and home for tests and scouts (gate verification-identity work).",
+      "walk": "Start the daemon as the verification identity; its Palace shows none of the owner's memories.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-178.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-179": {
+      "label": "Constitution: a plain ownership refusal when one identity tries to decide another identity's approval queue item (gate verification-identity work).",
+      "walk": "As the verification identity, decide a card in the owner's approval queue; a plain refusal appears.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-179.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-187": {
+      "label": "Two repos, the spine (memory) and the Harness, not a mono repo.",
+      "walk": "List the repositories; the spine and the Harness are two separate git repos.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-187.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-191": {
+      "label": "The tools and skills Claude Code and Codex use on this machine, pinned to versioned open-source sources.",
+      "walk": "Open the tool inventory; each tool or skill lists the versioned open-source source it is pinned to.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-191.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-194": {
+      "label": "The Pydantic toolset and skills as the tool layer.",
+      "walk": "Open the agent's tool list in a thread; the tools come from the Pydantic toolset plus skills, not from pi.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-194.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-195": {
+      "label": "The feature ledger generates coverage reports and requires evidence for the rows affected by a build.",
+      "walk": "Compute the composer fix's impact with --paths and see attunement rows; push a branch touching socket.ts and observe the hook print rows and write impacted.json; observe a DONE handoff without screenshots fail CI, then verify complete evidence passes.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-195.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-196": {
+      "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
+      "walk": "Remove a guard citation on a disposable branch and observe CI fail; change a frozen axiom and observe the freeze step fail; restore both and observe Rules pass. The master ADR check remains red until the owner applies the citation patch.",
+      "protected": true,
+      "verdict": "",
+      "screenshot": "FL-196.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-002": {
+      "label": "Memory units have a length cap; a memory over the cap is shortened to fit as one memory, and it is split only when it holds more than one distinct fact, with the split logged.",
+      "walk": "/remember a 300-token paragraph holding one fact; one memory lands, shortened to the cap; a paragraph holding two facts lands as two.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-002.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-003": {
+      "label": "Constitution: Every edit is a compare-and-swap revision, deletions are tombstones, and a write conflict is a first-class event (founding ADRs).",
+      "walk": "Edit a memory body; the memory shows a new revision and the old revision is still retrievable.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-003.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-006": {
+      "label": "Every memory carries a location column and a project column.",
+      "walk": "Open a memory card; project and location are shown.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-006.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-007": {
+      "label": "Every memory links to the full conversation it came from, so an agent can reach more than just the memory when needed.",
+      "walk": "Open a memory card; it names the conversation it came from, and following that link opens the conversation.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-007.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-009": {
+      "label": "Record files (history, transcripts) live apart from code so code can be deleted and re-downloaded without losing history.",
+      "walk": "Delete the code folder, reinstall, `nocturne up`; every thread is still there.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-009.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-010": {
+      "label": "Every thread has a thread id, and every memory records the thread it was born in.",
+      "walk": "Open a memory card; the thread it was born in is named.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-010.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-011": {
+      "label": "Memories promoted out of a sub-agent carry the originating thread id.",
+      "walk": "After a symphony run, open a promoted memory; its thread id is the symphony thread it came from.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-011.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-012": {
+      "label": "No memory exists without a score.",
+      "walk": "Open the memory panel on any thread; every memory shows a score and none say 'not scored'.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-012.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-015": {
+      "label": "Constitution: Typed edges between memories (merged from, supersedes, contradicts, and richer kinds at creation and curation) with a depth-limited traversal for the graph and the scorer (SD-057).",
+      "walk": "Open the Memory Graph on a curated memory; typed edges (merged from, supersedes, contradicts) are drawn to its relatives.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-015.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-021": {
+      "label": "The memory visualizer shows the hyperparameters and lets the user go in and tweak memories.",
+      "walk": "Open the memory visualizer; the hyperparameters are displayed and a memory can be edited from there.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-021.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-026": {
+      "label": "The keyword, project key and origin path columns on a memory are filled in and factored into scoring.",
+      "walk": "Open a memory card; keyword, project and origin path are filled, and the score breakdown shows them counting.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-026.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-044": {
+      "label": "At compaction the summarizing agent turns anything important but not needed for the next few build steps into a memory through the normal memory creation path, and compaction waits for those memories to land before dropping the rest.",
+      "walk": "Cross a compaction on a main thread; memory candidates from the summary land on the Deck before the old context is dropped.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-044.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-046": {
+      "label": "A curation animation of its own, blended into the 3D palace.",
+      "walk": "Trigger a curator pass; the 3D Palace view animates the curation as it happens.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-046.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-049": {
+      "label": "Scoring parameters that can be added and removed easily; curators can add and retire axes over time.",
+      "walk": "Add or remove a scoring axis in config; the score breakdown gains or loses that row.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-049.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-058": {
+      "label": "A standing registry of every trainable parameter; all training loops triggered from one place in the code where their documentation lives.",
+      "walk": "Open the trainable-parameter registry; every trainable parameter is listed, and the training trigger point is one place in code with its documentation beside it.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-058.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-059": {
+      "label": "Optimization at every compaction of a main thread, one at a time under a lock, with mixed and capped back-test material.",
+      "walk": "Cross a compaction on a main thread; one optimization runs under a lock on a capped, mixed back-test.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-059.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-069": {
+      "label": "The core tools every modern harness has: files, terminal, Chrome, skills, changing models, compaction (our own take), and interactions with common apps, taken from the most modular standard source.",
+      "walk": "Ask the agent to read a file, run a terminal command, open a page in the browser and use a skill; each works.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-069.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-072": {
+      "label": "The progressive prompting protocol is dynamic to the agent's moves: a move re-prompts the agent for its new location.",
+      "walk": "Move the agent; the next turn's system prompt shows the new location.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-072.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-073": {
+      "label": "The location rule written into Nocturne's own system prompt.",
+      "walk": "Read the transcript's system line for Nocturne; the location rule is stated there.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-073.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-075": {
+      "label": "Queuing prompts and interjecting or steering a running agent, like the modern harnesses do.",
+      "walk": "Queue a prompt during a run and interject once; the queued prompt runs after and the interjection steers the run.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-075.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-080": {
+      "label": "Compaction triggered by fill percentage against the model's best working range and max, which vary by model.",
+      "walk": "Fill a thread past its model's fill line; compaction runs and the fill percentage drops.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-080.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-081": {
+      "label": "A suite of compaction strategies: truncation; summarization; make the compaction memories first, wait for them to land, then drop everything else; keep only the human's messages and each agent turn's final answer.",
+      "walk": "Pick a compaction strategy and cross the fill line; what is left in the thread matches the strategy picked.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-081.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-082": {
+      "label": "A compaction policy that decides when to compact by optimal performance or by cost management.",
+      "walk": "Switch the policy between optimal performance and cost management; the point at which compaction fires moves.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-082.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-085": {
+      "label": "The work loop: spec alignment with the user, then the agent loop (optionally several agents in worktrees attempting the same thing), then the judge checks the work against the spec and either calls it done or sends another agent to continue or fix, and the human is only brought back in when the judge says done.",
+      "walk": "Run a symphony; attempts run in worktrees, the judge's verdict against the spec appears, and the card returns to the human only after the judge says done.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-085.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-086": {
+      "label": "Both modes supported: a hands-off default with loops, judges and parallel agents, and a traditional chat mode of agent turn then human turn.",
+      "walk": "Run one piece of work as a plain turn-by-turn chat and another as a symphony; both work.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-086.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-088": {
+      "label": "Symphony search starts from a variety of stratagems and works forward in parallel, combining breadth and depth, auto-research style but multi-agent and coordinated.",
+      "walk": "Start a symphony with more than one stratagem; separate attempts run from each at once.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-088.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-089": {
+      "label": "A configuration per orchestration level.",
+      "walk": "Open the config for Duet and for Symphony; each level has its own config.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-089.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-090": {
+      "label": "Planning outputs two or more judges: a problem-and-motivation judge that holds all of the motivation deeply, an implementation judge, and any more the user specifies.",
+      "walk": "Finish deliberation; the plan lists a motivation judge, an implementation judge, and any judge the user added.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-090.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-092": {
+      "label": "Parallel firing of many agents; expired claims released automatically.",
+      "walk": "Fire two agents at once and let one claim expire; both run together and the expired claim frees itself without a hand.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-092.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-093": {
+      "label": "The recipe card: a recipe-style implementation plan whose parts build in parallel or in sequence, parallel wherever it keeps build quality and sequential where there is doubt.",
+      "walk": "Open the recipe card of a symphony; some parts are set to run in parallel and others in sequence.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-093.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-095": {
+      "label": "Hard steps marked at spec time can trigger a search swarm that evolves auto-research style, with pruning so it is not overly expensive or long-running.",
+      "walk": "Mark a step as hard at deliberation; a search swarm runs on that step and prunes weak branches.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-095.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-096": {
+      "label": "Symphony memory works with the Palace and its injection and extraction policies.",
+      "walk": "Run a symphony; its agents get injected memories and the run's extracted memories reach the Palace.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-096.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-097": {
+      "label": "A component registry grown from the motivation tree that feeds build history and agent start-up.",
+      "walk": "Start an implementation agent; its start-up context carries the component registry, which stems from the motivation tree.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-097.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-099": {
+      "label": "Constitution: Rounds as deltas: passed work stands, only judge feedback forms the next round. (chat 2026-08-17 17:02:48)",
+      "walk": "Let a judge fail one packet; round two re-runs only that packet while the passed work stands.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-099.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-103": {
+      "label": "Click an agent to open its context visualizer and its injected memories with pop-off and add-back suggestions.",
+      "walk": "Click one agent; a panel opens with its context visualizer, its injected memories each with a pop-off, and suggestions of more memories to add.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-103.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-108": {
+      "label": "Resizable modules and a plugin-contributor skill shipped with the repo.",
+      "walk": "Drag a module edge to resize it; it resizes, and the nocturne-plugin-contributor skill file is in the repo.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-108.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-123": {
+      "label": "Each main cube view as its own module with its own 3D asset.",
+      "walk": "Open the module library; the farm, the roots and the palace are three separate modules, each a three.js scene driven by real data, each looking the part (v2.119).",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-123.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-124": {
+      "label": "Threads removable or archivable; a back-to-the-stage control on every view.",
+      "walk": "Archive a thread, then open the memory graph and press the back control; the thread is gone from the list and the stage returns.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-124.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-138": {
+      "label": "The palace nebula (the memory palace visualization module) looks super liquid and smooth, with the upper end amazing and lesser hardware considered, and its colors and shapes change quickly when the user changes the axis connecting the memories.",
+      "walk": "Open the nebula on a palace with memories and change the axis; the colors and shapes change quickly.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-138.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-139": {
+      "label": "The 3D memory palace shows curation as it happens: curators combining and separating memories in real time, tied to live feeds.",
+      "walk": "Trigger a curator pass with the nebula open; memories visibly combine or separate as it runs.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-139.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-142": {
+      "label": "Constitution: A sheet mode: an annotated layout of the same views. (chat 2026-08-31 21:38:35)",
+      "walk": "Switch to sheet mode; the same views appear laid out with annotations.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-142.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-144": {
+      "label": "The name Nocturne and the mark: an ouroboros around the moon.",
+      "walk": "Look at the header; the Nocturne mark shows an ouroboros around the moon.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-144.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-148": {
+      "label": "Liquid, shiny, white chrome on borders, not on buttons.",
+      "walk": "Switch to Seraph Dressed; borders show liquid white chrome and buttons do not.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-148.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-149": {
+      "label": "Our own GCP project with its own monthly cost circuit breaker at $100 a month.",
+      "walk": "Run doctor; the readout names our own GCP project and its $100/month cost circuit breaker.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-149.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-162": {
+      "label": "Easy onboarding from a single splash repo, needing only two secrets: a GCP credential and an OpenRouter key.",
+      "walk": "On a fresh machine, follow the splash repo's install steps; you are asked for a GCP credential and an OpenRouter key and nothing else before the app comes up.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-162.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-166": {
+      "label": "A prompt when the app's memory use passes a threshold of the local system's memory, memory-leak guards, and no proceeding without write access at startup.",
+      "walk": "Start the daemon in a folder with no write access; it refuses to proceed, and doctor shows the app's memory use against its threshold.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-166.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-168": {
+      "label": "A restore popup that asks whether to roll back these memories and lists them.",
+      "walk": "Press restore; a popup asks whether to roll back and lists the memories that would come back.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-168.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-170": {
+      "label": "A fresh reinstall that reconnects to existing files and auto-finds the cloud palace.",
+      "walk": "Reinstall on the same machine and run the start command; it finds the existing cloud Palace and the old threads without being told where they are.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-170.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-186": {
+      "label": "Build on Pydantic AI in a way that lets us modify and extend without waiting on them, passing features back and forth with their library.",
+      "walk": "Upgrade the Pydantic AI dependency; the Harness's own additions keep working and the new upstream features are usable.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-186.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-190": {
+      "label": "The Harness can use skills and has the best and most common tools available, compiled from a list.",
+      "walk": "Ask the agent to use a skill in a thread; it loads the skill and follows it.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-190.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-192": {
+      "label": "Swappable seams: router, model policy with an off-switch, toolset as a unit, memory system.",
+      "walk": "Change the toolset in config to a different one as a unit; the next thread's agent has that toolset's tools.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-192.png",
+      "flag": "",
+      "observed": ""
+    },
+    "FL-193": {
+      "label": "The common core of terminal-agent tools (skills, progressive prompting, model switching, compaction, app interactions) in one piece that pulls upstream updates.",
+      "walk": "Update the shared core-tools piece to its newest upstream version; skills, model switching and the rest keep working in the Harness.",
+      "protected": false,
+      "verdict": "",
+      "screenshot": "FL-193.png",
+      "flag": "",
+      "observed": ""
+    }
+  },
+  "not_run": {
+    "FL-001": "unverified",
+    "FL-013": "not built",
+    "FL-025": "unverified",
+    "FL-029": "unverified",
+    "FL-030": "unverified",
+    "FL-032": "unverified",
+    "FL-040": "dropped",
+    "FL-043": "unverified",
+    "FL-047": "unverified",
+    "FL-050": "unverified",
+    "FL-051": "unverified",
+    "FL-054": "unverified",
+    "FL-055": "unverified",
+    "FL-057": "not built",
+    "FL-061": "not built",
+    "FL-062": "unverified",
+    "FL-063": "unverified",
+    "FL-064": "not built",
+    "FL-065": "horizon",
+    "FL-066": "unverified",
+    "FL-068": "unverified",
+    "FL-076": "not built",
+    "FL-077": "not built",
+    "FL-078": "not built",
+    "FL-084": "not built",
+    "FL-101": "unverified",
+    "FL-107": "not built",
+    "FL-118": "not built",
+    "FL-121": "not built",
+    "FL-126": "not built",
+    "FL-128": "dropped",
+    "FL-129": "not built",
+    "FL-130": "not built",
+    "FL-132": "not built",
+    "FL-133": "not built",
+    "FL-134": "not built",
+    "FL-135": "dropped",
+    "FL-136": "horizon",
+    "FL-137": "unverified",
+    "FL-140": "horizon",
+    "FL-147": "unverified",
+    "FL-150": "unverified",
+    "FL-152": "not built",
+    "FL-153": "not built",
+    "FL-156": "not built",
+    "FL-160": "not built",
+    "FL-161": "not built",
+    "FL-163": "unverified",
+    "FL-164": "unverified",
+    "FL-165": "not built",
+    "FL-167": "unverified",
+    "FL-172": "not built",
+    "FL-176": "not built",
+    "FL-177": "horizon",
+    "FL-180": "not built",
+    "FL-181": "not built",
+    "FL-182": "not built",
+    "FL-183": "not built",
+    "FL-184": "not built",
+    "FL-185": "horizon",
+    "FL-188": "unverified",
+    "FL-189": "dropped"
+  }
+}

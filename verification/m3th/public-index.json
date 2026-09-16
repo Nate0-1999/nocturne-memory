@@ -1,0 +1,32 @@
+{
+  "harness": {
+    "version": "0.1.19",
+    "files": [
+      {
+        "filename": "nocturne_harness-0.1.19-py3-none-any.whl",
+        "sha256": "4beb1fd1051e9b1cc92f259276cd0e21a670336b0ae019548d39b8468049ecba",
+        "url": "https://files.pythonhosted.org/packages/b2/91/e4195d43f0f64e40658da89850d62db11023b5a91337d430d3dea728c919/nocturne_harness-0.1.19-py3-none-any.whl"
+      },
+      {
+        "filename": "nocturne_harness-0.1.19.tar.gz",
+        "sha256": "1879927eb8017522373b58cdcc6cd44dde143948c5ab94e541c29d3e89224065",
+        "url": "https://files.pythonhosted.org/packages/ff/1f/2e60b54bbca36272c58ad2f7341b054fe3c3e791e1988f05a4de8470da2e/nocturne_harness-0.1.19.tar.gz"
+      }
+    ]
+  },
+  "memory": {
+    "version": "0.1.19",
+    "files": [
+      {
+        "filename": "nocturne_memory-0.1.19-py3-none-any.whl",
+        "sha256": "7270da497ee9f2b38f6856d97320e0c7f6bd043a2fd822b4b2f040507bb9ab63",
+        "url": "https://files.pythonhosted.org/packages/77/2f/cb1fbc0822b1e28df59da482b7e582e1557eb92d63d11a32e8235bed6828/nocturne_memory-0.1.19-py3-none-any.whl"
+      },
+      {
+        "filename": "nocturne_memory-0.1.19.tar.gz",
+        "sha256": "017affeee49d22470ded48487f1722676b8e9bf225fa28875866482d8cf86407",
+        "url": "https://files.pythonhosted.org/packages/bc/b5/388cc2160c187243407f5952c91c88879fc5119b030906497e7ac63f3dfd/nocturne_memory-0.1.19.tar.gz"
+      }
+    ]
+  }
+}

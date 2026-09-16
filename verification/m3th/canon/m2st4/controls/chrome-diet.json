@@ -1,0 +1,53 @@
+{
+  "fixture": "M2ST4 REGRESSION",
+  "observations": {
+    "app_settings": {
+      "theme": "seraph-dressed",
+      "layout_actions": [
+        "Press image",
+        "Save",
+        "Restore",
+        "Reset",
+        "Restore memories",
+        "Save agent policy",
+        "Save sub-agent policy",
+        "Save judge policy"
+      ]
+    },
+    "module_settings": {
+      "spend_scope": "ATTUNED",
+      "channel_stack_reason": "This module follows the nearest thread or stack."
+    },
+    "control_conformance": {
+      "rendered": 55,
+      "enabled": 54,
+      "disabled_contextually": 1,
+      "scopes": [
+        "conversation",
+        "memory",
+        "palace_queue",
+        "palace_state",
+        "shell",
+        "threads",
+        "vitals"
+      ]
+    },
+    "phone": {
+      "viewport": "390x844",
+      "gear_box": {
+        "x": 132.796875,
+        "y": 9.90625,
+        "width": 32,
+        "height": 32
+      },
+      "thread_button_box": {
+        "x": 341.59375,
+        "y": 3.5,
+        "width": 19.484375,
+        "height": 44
+      }
+    }
+  },
+  "console_problems": [],
+  "page_errors": []
+}

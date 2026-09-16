@@ -1,0 +1,10 @@
+{
+  "packages": {
+    "nocturne-harness": "0.1.19",
+    "nocturne-memory": "0.1.19",
+    "pydantic-ai": "2.43.0",
+    "pydantic-ai-harness": "0.31.0"
+  },
+  "harness_source": "/private/tmp/m3th-pypi/lib/python3.12/site-packages/harness/__init__.py",
+  "memory_source": "/private/tmp/m3th-pypi/lib/python3.12/site-packages/spine/__init__.py"
+}

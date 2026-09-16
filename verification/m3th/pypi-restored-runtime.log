@@ -1,0 +1,58 @@
+INFO:     Started server process [88350]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18966 (Press CTRL+C to quit)
+INFO:     127.0.0.1:51301 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:51302 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51346 - "GET /v1/curation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51345 - "GET /v1/rack/query?resource=scorer_console&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51344 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51343 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51342 - "GET /v1/rack/query?resource=spend_table&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51343 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51342 - "GET /assets/index-byHiwN9i.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51343 - "GET /assets/index-BcOVKftO.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51371 - "GET /?rack_module=threads&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18966&theme=neo-noir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51364 - "GET /?rack_module=conversation&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18966&theme=neo-noir&conversation_mode=focused HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51370 - "GET /?rack_module=header&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18966&theme=neo-noir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51372 - "GET /?rack_module=memory&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18966&theme=neo-noir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51374 - "GET /?rack_module=context_bars&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18966&theme=neo-noir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51373 - "GET /?rack_module=vitals&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18966&theme=neo-noir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51364 - "GET /?rack_module=palace_queue&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18966&theme=neo-noir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51371 - "GET /?rack_module=palace_state&module_version=1.0.0&rack_host=http%3A%2F%2F127.0.0.1%3A18966&theme=neo-noir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51371 - "GET /assets/index-BcOVKftO.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51343 - "GET /v1/transcripts/catalog HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51364 - "GET /assets/index-byHiwN9i.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51375 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:51343 - "GET /favicon.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51376 - "GET /v1/seeds/jump-start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51345 - "GET /v1/curation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51344 - "GET /v1/rack/query?resource=scorer_console&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51343 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51343 - "GET /v1/rack/query?resource=context_window&as_of=now&thread_id=2b7751fc-7d7b-4fd9-8ff8-effe9cf55b54 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51342 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51345 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51344 - "GET /v1/rack/query?resource=scorer_console&as_of=now&thread_id=2b7751fc-7d7b-4fd9-8ff8-effe9cf55b54 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51346 - "GET /v1/approval-queue HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51376 - "GET /v1/rack/query?resource=spend_table&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51511 - "GET /v1/curation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51513 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51509 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51507 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51512 - "GET /v1/rack/query?resource=spend_table&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51510 - "GET /v1/rack/query?resource=scorer_console&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51560 - "GET /v1/rack/query?resource=tools&thread_id=2b7751fc-7d7b-4fd9-8ff8-effe9cf55b54 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51585 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51586 - "GET /v1/rack/query?resource=scorer_console&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51583 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51587 - "GET /v1/curation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51593 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51592 - "GET /v1/rack/query?resource=spend_table&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /v1/curation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51716 - "GET /v1/rack/query?resource=scorer_console&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51713 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51715 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51721 - "GET /v1/rack/query?resource=vitals&as_of=now HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51720 - "GET /v1/rack/query?resource=spend_table&as_of=now HTTP/1.1" 200 OK

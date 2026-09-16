@@ -1,0 +1,12 @@
+{
+  "fixture": "M2ST4 REGRESSION",
+  "packet_id": "M2ST4",
+  "rendered": {
+    "text": "FIXTURE · M2ST4 REGRESSION · PACKET M2ST4 · NOT THE OWNER APP",
+    "fixture": "M2ST4 REGRESSION",
+    "packetId": "M2ST4",
+    "position": "fixed",
+    "pointerEvents": "none",
+    "zIndex": 2147483647
+  }
+}

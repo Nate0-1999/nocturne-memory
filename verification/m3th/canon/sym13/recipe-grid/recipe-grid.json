@@ -1,0 +1,49 @@
+{
+  "fixture": "SYM13 REGRESSION",
+  "headings": [
+    "Packet / input",
+    "Own prep",
+    "Stage 1",
+    "Stage 2",
+    "Stage 3",
+    "Stage 4",
+    "Stage 5",
+    "Stage 6",
+    "Stage 7",
+    "Stage 8",
+    "Stage 9",
+    "Stage 10",
+    "Stage 11",
+    "Milestone"
+  ],
+  "state": {
+    "doneOpacity": [
+      "0.52"
+    ],
+    "doneFilters": [
+      "saturate(0.35)"
+    ],
+    "currentText": [
+      "SYM13 · 1 packetMake completion legible from left to right.",
+      "Own workServe the recipe grid",
+      "8 streams joinServe the recipe gridAfter SYM1 + SYM4 + SYM5 + SYM7 + SYM8 + SYM9 + SYM12",
+      "ServedSYMPHONYThe plan is being cooked now."
+    ],
+    "currentShadows": [
+      "rgb(56, 215, 255) 0px 0px 0px 1px inset, color(srgb 0.219608 0.843137 1 / 0.34) 0px 0px 13.6px 0px"
+    ],
+    "milestoneHeight": 1164.5,
+    "gridHeight": 1196.3125
+  },
+  "inspector": "RUNNING\nServe the recipe grid\n\nMake completion legible from left to right.\n\nSYM13",
+  "console_problems": [
+    "Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+  ],
+  "page_errors": [],
+  "failed_responses": [
+    {
+      "status": 503,
+      "url": "http://127.0.0.1:64595/v1/rack/query?resource=scorer_console&as_of=now"
+    }
+  ]
+}

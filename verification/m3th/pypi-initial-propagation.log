@@ -1,0 +1,5 @@
+Using Python 3.12.9 environment at: m3th-pypi
+  × No solution found when resolving dependencies:
+  ╰─▶ Because there is no version of nocturne-harness==0.1.19 and you require
+      nocturne-harness==0.1.19, we can conclude that your requirements are
+      unsatisfiable.
