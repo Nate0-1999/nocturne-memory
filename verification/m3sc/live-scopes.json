@@ -1,0 +1,543 @@
+{
+  "principal_id": "nocturne-verification-5ff86fb4-e3b3-4de6-b808-9c21dde52e2d",
+  "source": "published 0.1.13; live Palace",
+  "health": {
+    "ok": true,
+    "version": "0.1.13",
+    "api_contract_version": "0.1.13",
+    "schema_version": "0021"
+  },
+  "identity": {
+    "principal_id": "nocturne-verification-5ff86fb4-e3b3-4de6-b808-9c21dde52e2d",
+    "is_owner": false
+  },
+  "spend": {
+    "as_of": "2026-09-15T23:55:25.814873Z",
+    "window_minutes": 60,
+    "threads": [
+      {
+        "input_tokens": "2946.000000000",
+        "kv_cache_tokens": "7680.000000000",
+        "reasoning_tokens": "366.000000000",
+        "output_tokens": "241.000000000",
+        "total_usd": "0.001906540000",
+        "total_receipt_lines": 18,
+        "total_unpriced_lines": 0,
+        "spend_per_hour_usd": "0.001906540000",
+        "hourly_receipt_lines": 18,
+        "hourly_unpriced_lines": 0,
+        "thread_id": "485c7959-6d65-4539-a276-552d9e3874cb",
+        "models": [
+          {
+            "input_tokens": "2884.000000000",
+            "kv_cache_tokens": "7680.000000000",
+            "reasoning_tokens": "366.000000000",
+            "output_tokens": "241.000000000",
+            "total_usd": "0.001905300000",
+            "total_receipt_lines": 14,
+            "total_unpriced_lines": 0,
+            "spend_per_hour_usd": "0.001905300000",
+            "hourly_receipt_lines": 14,
+            "hourly_unpriced_lines": 0,
+            "model": "minimax/minimax-m3"
+          },
+          {
+            "input_tokens": "62.000000000",
+            "kv_cache_tokens": "0",
+            "reasoning_tokens": "0",
+            "output_tokens": "0",
+            "total_usd": "0.000001240000",
+            "total_receipt_lines": 4,
+            "total_unpriced_lines": 0,
+            "spend_per_hour_usd": "0.000001240000",
+            "hourly_receipt_lines": 4,
+            "hourly_unpriced_lines": 0,
+            "model": "text-embedding-3-small"
+          }
+        ]
+      }
+    ],
+    "purposes": []
+  },
+  "vitals": {
+    "as_of": "2026-09-15T23:55:25.888877Z",
+    "window_minutes": 60,
+    "spend": {
+      "source_view": "spend_event",
+      "latest_minute": "2026-09-15T23:51:00Z",
+      "lanes": [
+        {
+          "dimension": "total",
+          "key": null,
+          "label": "All spend",
+          "points": [
+            {
+              "minute": "2026-09-15T23:47:00Z",
+              "cost_usd": "0.000000360000",
+              "receipt_lines": 1,
+              "unpriced_lines": 0
+            },
+            {
+              "minute": "2026-09-15T23:48:00Z",
+              "cost_usd": "0.001437372000",
+              "receipt_lines": 9,
+              "unpriced_lines": 0
+            },
+            {
+              "minute": "2026-09-15T23:50:00Z",
+              "cost_usd": "0.000000340000",
+              "receipt_lines": 1,
+              "unpriced_lines": 0
+            },
+            {
+              "minute": "2026-09-15T23:51:00Z",
+              "cost_usd": "0.000468468000",
+              "receipt_lines": 7,
+              "unpriced_lines": 0
+            }
+          ]
+        },
+        {
+          "dimension": "purpose",
+          "key": "building",
+          "label": "building",
+          "points": [
+            {
+              "minute": "2026-09-15T23:48:00Z",
+              "cost_usd": "0.001437052000",
+              "receipt_lines": 8,
+              "unpriced_lines": 0
+            },
+            {
+              "minute": "2026-09-15T23:51:00Z",
+              "cost_usd": "0.000468248000",
+              "receipt_lines": 6,
+              "unpriced_lines": 0
+            }
+          ]
+        },
+        {
+          "dimension": "purpose",
+          "key": "embedding",
+          "label": "embedding",
+          "points": [
+            {
+              "minute": "2026-09-15T23:47:00Z",
+              "cost_usd": "0.000000360000",
+              "receipt_lines": 1,
+              "unpriced_lines": 0
+            },
+            {
+              "minute": "2026-09-15T23:48:00Z",
+              "cost_usd": "0.000000320000",
+              "receipt_lines": 1,
+              "unpriced_lines": 0
+            },
+            {
+              "minute": "2026-09-15T23:50:00Z",
+              "cost_usd": "0.000000340000",
+              "receipt_lines": 1,
+              "unpriced_lines": 0
+            },
+            {
+              "minute": "2026-09-15T23:51:00Z",
+              "cost_usd": "0.000000220000",
+              "receipt_lines": 1,
+              "unpriced_lines": 0
+            }
+          ]
+        },
+        {
+          "dimension": "model",
+          "key": "minimax/minimax-m3",
+          "label": "minimax/minimax-m3",
+          "points": [
+            {
+              "minute": "2026-09-15T23:48:00Z",
+              "cost_usd": "0.001437052000",
+              "receipt_lines": 8,
+              "unpriced_lines": 0
+            },
+            {
+              "minute": "2026-09-15T23:51:00Z",
+              "cost_usd": "0.000468248000",
+              "receipt_lines": 6,
+              "unpriced_lines": 0
+            }
+          ]
+        },
+        {
+          "dimension": "model",
+          "key": "text-embedding-3-small",
+          "label": "text-embedding-3-small",
+          "points": [
+            {
+              "minute": "2026-09-15T23:47:00Z",
+              "cost_usd": "0.000000360000",
+              "receipt_lines": 1,
+              "unpriced_lines": 0
+            },
+            {
+              "minute": "2026-09-15T23:48:00Z",
+              "cost_usd": "0.000000320000",
+              "receipt_lines": 1,
+              "unpriced_lines": 0
+            },
+            {
+              "minute": "2026-09-15T23:50:00Z",
+              "cost_usd": "0.000000340000",
+              "receipt_lines": 1,
+              "unpriced_lines": 0
+            },
+            {
+              "minute": "2026-09-15T23:51:00Z",
+              "cost_usd": "0.000000220000",
+              "receipt_lines": 1,
+              "unpriced_lines": 0
+            }
+          ]
+        }
+      ]
+    },
+    "reconciliation": {
+      "status": "not_recorded",
+      "checked_at": null,
+      "broker_usage_usd": null,
+      "ledger_cost_usd": null,
+      "broker_since_baseline_usd": null,
+      "ledger_since_baseline_usd": null,
+      "drift_usd": null,
+      "tolerance_usd": null,
+      "unpriced_lines": 0,
+      "source": null,
+      "error_code": null
+    },
+    "resources": {
+      "status": "partial",
+      "daemon_rss_bytes": null,
+      "daemon_uptime_seconds": null,
+      "disk_free_bytes": null,
+      "disk_total_bytes": null,
+      "database_bytes": null,
+      "journal_bytes": null,
+      "backup_bytes": null,
+      "warning": null
+    },
+    "lifecycle_rates": [
+      {
+        "metric": "created",
+        "status": "measured",
+        "per_hour": 0,
+        "source": "memory_unit.created_at"
+      },
+      {
+        "metric": "reinforced",
+        "status": "not_recorded",
+        "per_hour": null,
+        "source": null
+      },
+      {
+        "metric": "superseded",
+        "status": "not_recorded",
+        "per_hour": null,
+        "source": null
+      },
+      {
+        "metric": "merged",
+        "status": "not_recorded",
+        "per_hour": null,
+        "source": null
+      },
+      {
+        "metric": "quarantined",
+        "status": "not_recorded",
+        "per_hour": null,
+        "source": null
+      },
+      {
+        "metric": "tombstoned",
+        "status": "not_recorded",
+        "per_hour": null,
+        "source": null
+      },
+      {
+        "metric": "add_backs",
+        "status": "not_recorded",
+        "per_hour": null,
+        "source": null
+      }
+    ],
+    "palace_counts": [
+      {
+        "metric": "active_units",
+        "status": "measured",
+        "count": 0,
+        "source": "memory_unit.status"
+      },
+      {
+        "metric": "pinned_units",
+        "status": "measured",
+        "count": 0,
+        "source": "memory_unit.status+pin"
+      },
+      {
+        "metric": "candidates_pending",
+        "status": "measured",
+        "count": 0,
+        "source": "memory_unit.status"
+      },
+      {
+        "metric": "edges",
+        "status": "measured",
+        "count": 0,
+        "source": "memory_edge"
+      },
+      {
+        "metric": "staged_units",
+        "status": "not_recorded",
+        "count": null,
+        "source": null
+      },
+      {
+        "metric": "queue_depth",
+        "status": "measured",
+        "count": 0,
+        "source": "approval_queue_item.state"
+      }
+    ]
+  },
+  "status": {
+    "as_of": "2026-09-15T23:55:25.974409Z",
+    "metrics_scope": "principal",
+    "scope": "GLOBAL",
+    "thread_id": null,
+    "descriptors": [
+      {
+        "id": "scorer.tau",
+        "label": "Injection threshold",
+        "type": "number",
+        "range": {
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "step": 0.01,
+          "exclusive_minimum": false
+        },
+        "default": 0.55,
+        "scope": "global",
+        "authority": "law-bound"
+      },
+      {
+        "id": "scorer.memory_context_share",
+        "label": "Memory context share",
+        "type": "number",
+        "range": {
+          "minimum": 0.01,
+          "maximum": 0.5,
+          "step": 0.01,
+          "exclusive_minimum": false
+        },
+        "default": 0.1,
+        "scope": "global",
+        "authority": "law-bound"
+      },
+      {
+        "id": "scorer.half_life_time_days",
+        "label": "Recency half-life (days)",
+        "type": "number",
+        "range": {
+          "minimum": 0.0,
+          "maximum": null,
+          "step": 0.5,
+          "exclusive_minimum": true
+        },
+        "default": 14,
+        "scope": "global",
+        "authority": "law-bound"
+      },
+      {
+        "id": "scorer.half_life_hist_days",
+        "label": "Edit-history half-life (days)",
+        "type": "number",
+        "range": {
+          "minimum": 0.0,
+          "maximum": null,
+          "step": 0.5,
+          "exclusive_minimum": true
+        },
+        "default": 7,
+        "scope": "global",
+        "authority": "law-bound"
+      },
+      {
+        "id": "scorer.weight.sem",
+        "label": "SEM weight",
+        "type": "number",
+        "range": {
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "step": 0.01,
+          "exclusive_minimum": false
+        },
+        "default": 0.42,
+        "scope": "global",
+        "authority": "law-bound"
+      },
+      {
+        "id": "scorer.weight.kw",
+        "label": "KW weight",
+        "type": "number",
+        "range": {
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "step": 0.01,
+          "exclusive_minimum": false
+        },
+        "default": 0.16,
+        "scope": "global",
+        "authority": "law-bound"
+      },
+      {
+        "id": "scorer.weight.time",
+        "label": "TIME weight",
+        "type": "number",
+        "range": {
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "step": 0.01,
+          "exclusive_minimum": false
+        },
+        "default": 0.11,
+        "scope": "global",
+        "authority": "law-bound"
+      },
+      {
+        "id": "scorer.weight.proj",
+        "label": "PROJ weight",
+        "type": "number",
+        "range": {
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "step": 0.01,
+          "exclusive_minimum": false
+        },
+        "default": 0.16,
+        "scope": "global",
+        "authority": "law-bound"
+      },
+      {
+        "id": "scorer.weight.freq",
+        "label": "FREQ weight",
+        "type": "number",
+        "range": {
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "step": 0.01,
+          "exclusive_minimum": false
+        },
+        "default": 0.08,
+        "scope": "global",
+        "authority": "law-bound"
+      },
+      {
+        "id": "scorer.weight.hist",
+        "label": "HIST weight",
+        "type": "number",
+        "range": {
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "step": 0.01,
+          "exclusive_minimum": false
+        },
+        "default": 0.07,
+        "scope": "global",
+        "authority": "law-bound"
+      }
+    ],
+    "active_version": "m3tl-where-v1",
+    "configurations": [
+      {
+        "version": "m3tl-where-v1",
+        "created_at": "2026-09-02T18:12:21.037612Z",
+        "status": "active",
+        "values": {
+          "tau": 0.55,
+          "top_k": 8,
+          "memory_context_share": 0.1,
+          "half_life_time_days": 14.0,
+          "half_life_hist_days": 7.0,
+          "weights": {
+            "sem": 0.42,
+            "kw": 0.16,
+            "time": 0.11,
+            "proj": 0.16,
+            "freq": 0.08,
+            "hist": 0.07
+          }
+        },
+        "replay": null
+      }
+    ],
+    "activations": [],
+    "proposed_versions": [],
+    "accuracy": [],
+    "learning": {
+      "eligible_dispositions": 0,
+      "hygiene_excluded_dispositions": 0,
+      "minimum_dispositions": 25,
+      "remaining_to_floor": 25,
+      "floor_met": false,
+      "share_tuning_minimum": 100,
+      "share_tuning_remaining": 100,
+      "share_tuning_active": false,
+      "retrain_signal_stride": 25,
+      "evaluated_through": null,
+      "signals_since_last_run": 0,
+      "signals_until_next_run": 25,
+      "active_scorer_version": "m3tl-where-v1",
+      "right": 0,
+      "wrong": 0,
+      "weighted_right": "0",
+      "weighted_wrong": "0",
+      "weighted_agreement_percent": null,
+      "live_agreement": [],
+      "retrain_runs": [],
+      "annotations": []
+    },
+    "candidates": []
+  },
+  "refusals": {
+    "/v1/spend/table": {
+      "status": 403,
+      "body": {
+        "type": "about:blank",
+        "title": "Forbidden",
+        "status": 403,
+        "detail": "Only the Palace owner can view the whole Palace.",
+        "instance": "/v1/spend/table",
+        "endpoint": "GET /v1/spend/table"
+      }
+    },
+    "/v1/vitals": {
+      "status": 403,
+      "body": {
+        "type": "about:blank",
+        "title": "Forbidden",
+        "status": 403,
+        "detail": "Only the Palace owner can view the whole Palace.",
+        "instance": "/v1/vitals",
+        "endpoint": "GET /v1/vitals"
+      }
+    },
+    "/v1/scorer-console/query": {
+      "status": 403,
+      "body": {
+        "type": "about:blank",
+        "title": "Forbidden",
+        "status": 403,
+        "detail": "Only the Palace owner can view the whole Palace.",
+        "instance": "/v1/scorer-console/query",
+        "endpoint": "POST /v1/scorer-console/query"
+      }
+    }
+  }
+}

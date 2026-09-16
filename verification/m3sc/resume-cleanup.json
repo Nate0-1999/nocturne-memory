@@ -1,0 +1,31 @@
+{
+  "principal_id": "nocturne-verification-5ff86fb4-e3b3-4de6-b808-9c21dde52e2d",
+  "server_side_principal_filter": true,
+  "active_project_memories": 0,
+  "pending_queue_cards": 0,
+  "transcript_backup": false,
+  "owner_data_accessed": false,
+  "append_only_receipts": "retained; no destructive ledger cleanup",
+  "deploy_verifier_memory": "tombstoned by successful deploy typed-roundtrip finally block",
+  "local_cleanup": {
+    "stopped_processes": [
+      7296,
+      31274,
+      31395,
+      28233,
+      29704
+    ],
+    "fixture_container_and_volume_removed": true,
+    "removed_homes": [
+      "/tmp/m3sc-verification/resume-home",
+      "/private/tmp/m3fx-step6-home",
+      "/private/tmp/m3fx-step6-second-home"
+    ],
+    "removed_package_environments": [
+      "/tmp/m3sc-registry/.venv",
+      "/tmp/m3sc-upstream/.venv",
+      "/tmp/m3sc-older/.venv"
+    ],
+    "original_credential_source_preserved": true
+  }
+}

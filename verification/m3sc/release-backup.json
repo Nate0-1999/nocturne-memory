@@ -1,0 +1,20 @@
+{
+  "backup_id": "1789515418885",
+  "created_at": "2026-09-15T23:38:36.918033+00:00",
+  "database": "spine",
+  "description": "nocturne-pre-migration-01m2kpwfmav79ty3a7sx53mt3s",
+  "end_time": "2026-09-15T23:38:30.158Z",
+  "enqueued_time": "2026-09-15T23:36:58.885Z",
+  "instance": "n8-memory-palace-db",
+  "location": "us-central1",
+  "operation_id": "0981eab9-7a7d-40d4-83cf-cd4c00000032",
+  "project": "n8-memory-palace",
+  "provider": "gcp_cloud_sql",
+  "reason": "pre_migration",
+  "receipt_id": "01M2KPWFMAV79TY3A7SX53MT3S",
+  "region": "us-central1",
+  "schema_version": 1,
+  "start_time": "2026-09-15T23:36:58.886Z",
+  "status": "SUCCESSFUL",
+  "type": "ON_DEMAND"
+}

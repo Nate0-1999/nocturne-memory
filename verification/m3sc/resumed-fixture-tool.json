@@ -1,0 +1,30 @@
+[
+  {
+    "part": {
+      "tool_name": "read",
+      "args": "{\"path\": \"proof.txt\"}",
+      "tool_call_id": "call_rgTZVOaLsxhbcobe9O0oB5BG",
+      "tool_kind": null,
+      "id": null,
+      "provider_name": null,
+      "provider_details": null,
+      "part_kind": "tool-call"
+    },
+    "args_valid": true,
+    "event_kind": "function_tool_call"
+  },
+  {
+    "part": {
+      "tool_name": "read",
+      "content": "[proof.txt | 1 lines | hash:c4aa6bfc5fd5]\n     1\tM3SC scoped fixture tool proof.\n",
+      "tool_call_id": "call_rgTZVOaLsxhbcobe9O0oB5BG",
+      "tool_kind": null,
+      "metadata": null,
+      "timestamp": "2026-09-15T23:42:41.321703Z",
+      "outcome": "success",
+      "part_kind": "tool-return"
+    },
+    "content": null,
+    "event_kind": "function_tool_result"
+  }
+]
