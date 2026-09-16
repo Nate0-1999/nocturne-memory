@@ -323,6 +323,60 @@
         "title": "CandidateScorePoint",
         "type": "object"
       },
+      "ClaimJob": {
+        "properties": {
+          "expected_revision": {
+            "title": "Expected Revision",
+            "type": "integer"
+          },
+          "machine_id": {
+            "title": "Machine Id",
+            "type": "string"
+          },
+          "manual": {
+            "default": false,
+            "title": "Manual",
+            "type": "boolean"
+          },
+          "principal_id": {
+            "title": "Principal Id",
+            "type": "string"
+          },
+          "run_id": {
+            "$ref": "#/components/schemas/ULID"
+          },
+          "thread_id": {
+            "format": "uuid",
+            "title": "Thread Id",
+            "type": "string"
+          },
+          "trigger_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trigger Cursor"
+          },
+          "trigger_key": {
+            "title": "Trigger Key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "principal_id",
+          "machine_id",
+          "run_id",
+          "thread_id",
+          "trigger_key",
+          "expected_revision"
+        ],
+        "title": "ClaimJob",
+        "type": "object"
+      },
       "CommitRequest": {
         "additionalProperties": false,
         "properties": {
@@ -1216,6 +1270,40 @@
           "ok"
         ],
         "title": "FeedbackResponse",
+        "type": "object"
+      },
+      "FinishJob": {
+        "properties": {
+          "machine_id": {
+            "title": "Machine Id",
+            "type": "string"
+          },
+          "principal_id": {
+            "title": "Principal Id",
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "completed",
+              "failed",
+              "cancelled",
+              "interrupted"
+            ],
+            "title": "State",
+            "type": "string"
+          },
+          "verdict": {
+            "title": "Verdict",
+            "type": "string"
+          }
+        },
+        "required": [
+          "principal_id",
+          "machine_id",
+          "state",
+          "verdict"
+        ],
+        "title": "FinishJob",
         "type": "object"
       },
       "GaugeStatus": {
@@ -4119,6 +4207,50 @@
         "title": "RevisionTrailItem",
         "type": "object"
       },
+      "SaveJob": {
+        "properties": {
+          "definition": {
+            "$ref": "#/components/schemas/WorkflowDefinition"
+          },
+          "enabled": {
+            "default": true,
+            "title": "Enabled",
+            "type": "boolean"
+          },
+          "expected_revision": {
+            "minimum": 0.0,
+            "title": "Expected Revision",
+            "type": "integer"
+          },
+          "machine_id": {
+            "title": "Machine Id",
+            "type": "string"
+          },
+          "principal_id": {
+            "title": "Principal Id",
+            "type": "string"
+          },
+          "trigger_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trigger Cursor"
+          }
+        },
+        "required": [
+          "principal_id",
+          "machine_id",
+          "definition",
+          "expected_revision"
+        ],
+        "title": "SaveJob",
+        "type": "object"
+      },
       "ScoredMemoryCard": {
         "additionalProperties": false,
         "description": "Inject/prepare card, where C.4 requires scoring details.",
@@ -6280,6 +6412,115 @@
           "palace_counts"
         ],
         "title": "VitalsSnapshot",
+        "type": "object"
+      },
+      "WorkflowDefinition": {
+        "additionalProperties": false,
+        "properties": {
+          "budget_usd": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0.0,
+                "type": "number"
+              },
+              {
+                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                "type": "string"
+              }
+            ],
+            "title": "Budget Usd"
+          },
+          "cron": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cron"
+          },
+          "exit_condition": {
+            "minLength": 1,
+            "title": "Exit Condition",
+            "type": "string"
+          },
+          "folder": {
+            "minLength": 1,
+            "title": "Folder",
+            "type": "string"
+          },
+          "memory_scope": {
+            "default": "workspace",
+            "enum": [
+              "workspace",
+              "none"
+            ],
+            "title": "Memory Scope",
+            "type": "string"
+          },
+          "model_policy": {
+            "minLength": 1,
+            "title": "Model Policy",
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "prompt": {
+            "minLength": 1,
+            "title": "Prompt",
+            "type": "string"
+          },
+          "tools": {
+            "default": "pydantic",
+            "enum": [
+              "pydantic",
+              "none"
+            ],
+            "title": "Tools",
+            "type": "string"
+          },
+          "trigger": {
+            "anyOf": [
+              {
+                "enum": [
+                  "file",
+                  "queue",
+                  "palace"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trigger"
+          },
+          "trigger_path": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trigger Path"
+          }
+        },
+        "required": [
+          "name",
+          "prompt",
+          "folder",
+          "model_policy",
+          "budget_usd",
+          "exit_condition"
+        ],
+        "title": "WorkflowDefinition",
         "type": "object"
       }
     },
@@ -9105,6 +9346,225 @@
         "summary": "Annotate Injection Events",
         "tags": [
           "injection"
+        ]
+      }
+    },
+    "/v1/job-runs/{run_id}/finish": {
+      "post": {
+        "operationId": "finish_job_v1_job_runs__run_id__finish_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "title": "Run Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FinishJob"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "StaticBearer": []
+          }
+        ],
+        "summary": "Finish Job",
+        "tags": [
+          "jobs"
+        ]
+      }
+    },
+    "/v1/jobs": {
+      "get": {
+        "operationId": "list_jobs_v1_jobs_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "principal_id",
+            "required": true,
+            "schema": {
+              "title": "Principal Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "machine_id",
+            "required": true,
+            "schema": {
+              "title": "Machine Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "StaticBearer": []
+          }
+        ],
+        "summary": "List Jobs",
+        "tags": [
+          "jobs"
+        ]
+      }
+    },
+    "/v1/jobs/{job_id}": {
+      "put": {
+        "operationId": "save_job_v1_jobs__job_id__put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "job_id",
+            "required": true,
+            "schema": {
+              "title": "Job Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveJob"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "StaticBearer": []
+          }
+        ],
+        "summary": "Save Job",
+        "tags": [
+          "jobs"
+        ]
+      }
+    },
+    "/v1/jobs/{job_id}/runs": {
+      "post": {
+        "operationId": "claim_job_v1_jobs__job_id__runs_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "job_id",
+            "required": true,
+            "schema": {
+              "title": "Job Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClaimJob"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "StaticBearer": []
+          }
+        ],
+        "summary": "Claim Job",
+        "tags": [
+          "jobs"
         ]
       }
     },

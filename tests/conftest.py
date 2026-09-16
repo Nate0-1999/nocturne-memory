@@ -116,8 +116,8 @@ async def memory_session_factory(
     engine = create_async_engine(migrated_database_url)
     session_factory = make_session_factory(engine)
     truncate = text(
-        "TRUNCATE curator_progress, creation_outcome, curator_action, curator_verdict, "
-        "curator_finding, curator_run, "
+        "TRUNCATE workflow_run, workflow_job, curator_progress, creation_outcome, "
+        "curator_action, curator_verdict, curator_finding, curator_run, "
         "curator_trigger_state, transcript_record, optimization_run_adoption, "
         "optimization_run, learner_run, scorer_activation, "
         "approval_decision, "

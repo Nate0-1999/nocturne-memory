@@ -1315,3 +1315,13 @@ It has no foreign key to the receipt because that receipt does not exist until
 the pass finishes. Principal filtering precedes the event cursor. A replacement
 API worker reads the same history; interrupted work retains its last observation
 without pretending it is a heartbeat. Model judgments and consent stay unchanged.
+
+## M3SJ candidate — Persist recipes and occurrences, reuse spend [P2, P4.1]
+
+PRECEDENT: PLAN M3SJ/SD-059, curator run_due, ADR-024's one ledger.
+Additive workflow_job/workflow_run tables store owner/machine scope, revision,
+schedule cursor and frozen execution definition. A locked job row plus a unique
+occurrence key prevents duplicate starts. Each run has its own thread; monitoring
+derives cost and unpriced lines from spend_event. No second money ledger is added.
+The draft OpenAPI contract is 0.1.24, not a reserved release number. Reconcile the
+final version and enact the contract completion before release after F114 clears.
