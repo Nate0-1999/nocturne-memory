@@ -1,0 +1,12 @@
+{
+  "fixture": "SYM13 REGRESSION",
+  "packet_id": "SYM13",
+  "rendered": {
+    "text": "FIXTURE · SYM13 REGRESSION · PACKET SYM13 · NOT THE OWNER APP",
+    "fixture": "SYM13 REGRESSION",
+    "packetId": "SYM13",
+    "position": "fixed",
+    "pointerEvents": "none",
+    "zIndex": 2147483647
+  }
+}

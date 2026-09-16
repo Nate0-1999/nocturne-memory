@@ -1,0 +1,14 @@
+{
+  "harness": {
+    "root": "/private/tmp/m3th-workspace/harness",
+    "gitdir": "/Users/nateoswalt/Developer/N8_Harness/harness/.git/worktrees/harness5",
+    "remote": "https://github.com/Nate0-1999/nocturne-harness.git",
+    "head": "9a13c4287ba7740983172eff7f7f453ff3b0b95e"
+  },
+  "spine": {
+    "root": "/private/tmp/m3th-workspace/spine",
+    "gitdir": "/Users/nateoswalt/Developer/N8_Harness/spine/.git/worktrees/spine5",
+    "remote": "https://github.com/Nate0-1999/nocturne-memory.git",
+    "head": "427d0f4c2ce86ec12e10204b3a008bf37e5ed4cc"
+  }
+}

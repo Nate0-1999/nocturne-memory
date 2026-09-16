@@ -1,0 +1,43 @@
+{
+  "principals": [
+    {
+      "principal_id": "nocturne-verification-m3th-th16",
+      "before_heads": 0,
+      "changed": [],
+      "active_after": 0,
+      "pending_after": 0,
+      "retained_tombstones": []
+    },
+    {
+      "principal_id": "nocturne-verification-m3th-upstream",
+      "before_heads": 1,
+      "changed": [
+        {
+          "id": "6d219aa1-cb99-4b33-b23d-22053b928cb4",
+          "status": "tombstoned",
+          "revision": 15
+        }
+      ],
+      "active_after": 0,
+      "pending_after": 0,
+      "retained_tombstones": [
+        "6d219aa1-cb99-4b33-b23d-22053b928cb4"
+      ]
+    },
+    {
+      "principal_id": "nocturne-verification-m3th-release",
+      "before_heads": 0,
+      "changed": [],
+      "active_after": 0,
+      "pending_after": 0,
+      "retained_tombstones": []
+    }
+  ],
+  "task_daemons_stopped": [
+    77272,
+    88350,
+    88487
+  ],
+  "credential_copies_removed": true,
+  "original_verification_credentials_untouched": true
+}

@@ -1,0 +1,15 @@
+{
+  "memory": {
+    "version": "0.1.19",
+    "commit": "427d0f4c2ce86ec12e10204b3a008bf37e5ed4cc",
+    "workflow": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/35127777623"
+  },
+  "harness": {
+    "version": "0.1.19",
+    "commit": "9a13c4287ba7740983172eff7f7f453ff3b0b95e",
+    "workflow": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/35129401664"
+  },
+  "palace_api_contract": "0.1.18",
+  "registry_only_install": true,
+  "fresh_home_real_model": true
+}

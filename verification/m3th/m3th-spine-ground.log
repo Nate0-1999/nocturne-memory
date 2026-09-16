@@ -1,0 +1,25 @@
+Using CPython 3.12.9
+Creating virtual environment at: .venv
+   Building nocturne-memory @ file:///private/tmp/m3th-workspace/spine
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (1.9MiB)
+Downloading sqlalchemy (2.1MiB)
+Downloading uvloop (1.3MiB)
+Downloading ruff (10.0MiB)
+ Downloaded pygments
+ Downloaded uvloop
+ Downloaded pydantic-core
+ Downloaded sqlalchemy
+      Built nocturne-memory @ file:///private/tmp/m3th-workspace/spine
+ Downloaded ruff
+Installed 46 packages in 70ms
+........................................................................ [ 22%]
+........................................................................ [ 45%]
+........................................................................ [ 68%]
+........................................................................ [ 91%]
+...................sss......                                             [100%]
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_unbuilt_rules.py:6: r11-2: shared Palaces and revocable principal grants are horizon work
+SKIPPED [1] tests/test_unbuilt_rules.py:12: r9-9: worker/local cost stores have not converged into the spend ledger
+SKIPPED [1] tests/test_unbuilt_rules.py:18: r9-6: strongest curator model policy awaits SD-018
+313 passed, 3 skipped in 25.52s
