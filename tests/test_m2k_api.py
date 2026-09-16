@@ -257,11 +257,15 @@ async def test_console_contributions_sum_exactly_and_control_inserts_a_version(
         session: AsyncSession,
         base: ScorerConfigRow,
         values: ScorerValues,
+        *,
+        include_terrain: bool = False,
     ) -> ScorerSimulationResponse:
         isolation = await session.scalar(text("SHOW transaction_isolation"))
         assert isinstance(isolation, str)
         observed_isolation.append(isolation)
-        return await original_deep_receipt(service, session, base, values)
+        return await original_deep_receipt(
+            service, session, base, values, include_terrain=include_terrain
+        )
 
     monkeypatch.setattr(M2KService, "_deep_receipt", observe_deep_receipt)
     thread_id = UUID(int=9201)

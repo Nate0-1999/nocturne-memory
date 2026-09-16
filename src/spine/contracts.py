@@ -52,6 +52,7 @@ class MemoryFeatures(ContractModel):
     loc: float | None = None
     thread: float | None = None
     where: float | None = None
+    axes: dict[str, float] = Field(default_factory=dict, exclude_if=lambda value: not value)
 
 
 class MemoryCard(ContractModel):

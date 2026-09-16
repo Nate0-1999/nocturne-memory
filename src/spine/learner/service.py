@@ -1,4 +1,18 @@
-"""Database boundary for reproducible M2F scorer proposals."""
+"""The trainable registry and database boundary for reproducible proposals.
+
+Loop 1, injection_scoring: six global weights, thread/WHERE coefficients,
+per-memory bias and per-project offsets; tau and memory share wait for 100
+authentic dispositions. Location/decay and corpus size are configured; session
+affinity is replay-only. Loop 2, creation: append-only outcomes and survival
+scoreboard, with compaction instructions and memory size not yet learned and
+dedup bands configured. Loop 3, scorer_structure: curator-nominated transparent
+scalar axes, replay-tested and proposed for an owner's activation. Loop 4,
+beyond: optimizer/model training is gated; role policies remain configured.
+
+New loops register here. Fences, floors, consent, journals and receipts are
+never trainable. ``LearnerService.manifest`` is the executable registry copied
+into each proposed generation; a registry status is not evidence of a fit.
+"""
 
 from __future__ import annotations
 
@@ -16,6 +30,7 @@ from uuid import UUID
 from sqlalchemy import func, select, text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
+from spine.curation.axes import nominate_axes
 from spine.db.locking import session_advisory_lock
 from spine.db.models import (
     InjectionEvent,
@@ -28,6 +43,7 @@ from spine.ids import mint_ulid
 from spine.inject.scorer import ScorerConfig as RuntimeScorerConfig
 from spine.inject.scorer import ScorerWeights
 from spine.learner.contracts import ReplayScoreView, RetrainResponse
+from spine.learner.creation import sweep_unused
 from spine.learner.evidence import LearnerDataError, LearningEvidence, project_learning_evidence
 from spine.learner.locking import LEARNER_ADVISORY_LOCK_KEY
 from spine.learner.model import (
@@ -44,7 +60,7 @@ from spine.learner.model import (
     split_gates,
 )
 
-_ALGORITHM_ID = "m3ms-unified-share-tau-pairwise-v3"
+_ALGORITHM_ID = "m3ll-project-offsets-transparent-axes-v4"
 _SHARE_TUNING_MINIMUM = 100
 
 
@@ -88,6 +104,47 @@ class _OptimizationOutcome:
 
 class LearnerService:
     """Fit challengers from one database snapshot and persist winners inactive."""
+
+    @staticmethod
+    def manifest(eligible_dispositions: int = 0, minimum: int = 25) -> list[dict[str, object]]:
+        """Enumerate parameters, their owning loop, authentic floor and status."""
+        rows = []
+        for parameter, loop, floor, status in (
+            *(
+                (f"weight.{name}", "injection_scoring", minimum, "trained")
+                for name in FEATURE_NAMES
+            ),
+            ("thread_weight", "injection_scoring", minimum, "trained"),
+            ("where_weight", "injection_scoring", minimum, "trained"),
+            ("bias_offsets", "injection_scoring", minimum, "trained"),
+            ("project_offsets", "injection_scoring", minimum, "trained"),
+            ("tau", "injection_scoring", 100, "trained"),
+            ("memory_context_share", "injection_scoring", 100, "trained"),
+            ("location_weight", "injection_scoring", None, "configured"),
+            ("half_life_time_days", "injection_scoring", None, "configured"),
+            ("half_life_hist_days", "injection_scoring", None, "configured"),
+            ("half_life_location_hops", "injection_scoring", None, "configured"),
+            ("corpus_max_dispositions", "injection_scoring", None, "configured"),
+            ("f_sess", "injection_scoring", None, "replay_only"),
+            ("compaction_instructions", "creation", None, "signals_only"),
+            ("memory_size_cap", "creation", None, "unbuilt"),
+            ("dedup_bands", "creation", None, "configured"),
+            ("axes", "scorer_structure", minimum, "proposed_then_owner_activation"),
+            ("optimizer", "beyond", None, "gated"),
+            ("model_weights", "beyond", None, "gated"),
+            ("role_model_policies", "beyond", None, "configured"),
+        ):
+            rows.append(
+                {
+                    "parameter": parameter,
+                    "loop": loop,
+                    "floor": floor,
+                    "status": "frozen"
+                    if floor is not None and eligible_dispositions < floor
+                    else status,
+                }
+            )
+        return rows
 
     def __init__(
         self,
@@ -176,6 +233,7 @@ class LearnerService:
         optimization_trigger: OptimizationTrigger,
         started_at: datetime,
     ) -> RetrainResponse | None:
+        await sweep_unused(session)
         configs = (await session.execute(select(ScorerConfigRow))).scalars().all()
         active_rows = [row for row in configs if row.active]
         if len(active_rows) != 1:
@@ -361,8 +419,17 @@ class LearnerService:
             share_boundaries=training_boundaries,
             memory_context_share=incumbent.params.memory_context_share,
         )
+        axes = nominate_axes(
+            training,
+            fit=fit,
+            incumbent=incumbent,
+            settings=self._settings,
+            corpus_fingerprint=corpus.fingerprint,
+        )
         fitted_training_score = challenger_score(
             training,
+            project_offsets=fit.project_offsets,
+            axes=axes,
             weights=fit.weights,
             bias_offsets=fit.bias_offsets,
             thread_weight=fit.thread_weight,
@@ -378,6 +445,8 @@ class LearnerService:
         )
         fitted_score = challenger_score(
             holdout,
+            project_offsets=fit.project_offsets,
+            axes=axes,
             weights=fit.weights,
             bias_offsets=fit.bias_offsets,
             thread_weight=fit.thread_weight,
@@ -395,10 +464,24 @@ class LearnerService:
             incumbent_tau=incumbent.params.tau,
             challenger_tau=fit.tau,
         )
+        # A retired near-zero term saves serving work at an exact replay tie.
+        retires_term = any(
+            axis.action == "axis_retire"
+            and incumbent.axes.get(name) is not None
+            and incumbent.axes[name].weight > 0
+            for name, axis in axes.items()
+        )
+        wins = wins or (retires_term and fitted_score == incumbent_score)
         proposal_weights = dict(zip(FEATURE_NAMES, fit.weights, strict=True))
         evaluated_params = deepcopy(active_row.params)
         evaluated_params.pop("_control", None)
         evaluated_params.pop("_learner", None)
+        if fit.project_offsets or "project_offsets" in evaluated_params:
+            evaluated_params["project_offsets"] = dict(fit.project_offsets)
+        if axes or "axes" in evaluated_params:
+            evaluated_params["axes"] = {
+                name: axis.model_dump(mode="json") for name, axis in axes.items()
+            }
         if "thread_weight" in evaluated_params or fit.thread_weight != 0.0:
             evaluated_params["thread_weight"] = fit.thread_weight
         if "where_weight" in evaluated_params or fit.where_weight != 0.0:
@@ -456,8 +539,12 @@ class LearnerService:
         settings_manifest = {
             **self._settings.manifest(),
             "corpus_max_dispositions": self._corpus_max_dispositions,
+            "trainables": self.manifest(eligible_dispositions, self._settings.min_dispositions),
         }
         proposal_params = deepcopy(active_row.params)
+        for key in ("project_offsets", "axes"):
+            if key in evaluated_params:
+                proposal_params[key] = evaluated_params[key]
         inherited_control = "_control" in proposal_params
         proposal_params.pop("_control", None)
         digest_manifest = {

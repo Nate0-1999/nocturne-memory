@@ -33,7 +33,7 @@ def main() -> None:
         make_alembic_config("postgresql+asyncpg://unused:unused@localhost/unused")
     )
     assert scripts.get_base() == "0001"
-    assert scripts.get_heads() == ["0021"]
+    assert scripts.get_heads() == ["0022"]
 
     with TemporaryDirectory(prefix="nocturne-memory-wheel-") as temporary_directory:
         root = Path(temporary_directory)

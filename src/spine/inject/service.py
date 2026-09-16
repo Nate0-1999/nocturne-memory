@@ -701,6 +701,8 @@ def _event_values(
 ) -> dict[str, Any]:
     candidate = item.candidate
     features: dict[str, Any] = asdict(item.features)
+    if not features["axes"]:
+        del features["axes"]
     features["_memory"] = {
         "label": candidate.label,
         "body": candidate.body,

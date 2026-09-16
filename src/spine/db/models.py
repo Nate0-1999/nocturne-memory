@@ -364,8 +364,7 @@ class CuratorRun(Base):
             name="curator_run_counts_check",
         ),
         CheckConstraint(
-            "(status = 'completed' AND error IS NULL) OR "
-            "(status = 'failed' AND error IS NOT NULL)",
+            "(status = 'completed' AND error IS NULL) OR (status = 'failed' AND error IS NOT NULL)",
             name="curator_run_error_shape_check",
         ),
         Index(
@@ -406,9 +405,7 @@ class CuratorFinding(Base):
             "kind IN ('duplicate','contradiction','stale','slop','keyword')",
             name="curator_finding_kind_check",
         ),
-        CheckConstraint(
-            "fingerprint ~ '^[0-9a-f]{64}$'", name="curator_finding_fingerprint_check"
-        ),
+        CheckConstraint("fingerprint ~ '^[0-9a-f]{64}$'", name="curator_finding_fingerprint_check"),
         UniqueConstraint("run_uid", "ordinal"),
     )
 
@@ -1061,3 +1058,19 @@ class TranscriptRecord(Base):
     received_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, server_default=text("now()")
     )
+
+
+class CreationOutcome(Base):
+    """Append-only projection; historical injection IDs may outlive memory heads."""
+
+    __tablename__ = "creation_outcome"
+    __table_args__ = (Index("creation_outcome_principal_ts", "principal_id", "ts"),)
+
+    event_key: Mapped[str] = mapped_column(Text, primary_key=True)
+    memory_id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), nullable=False)
+    principal_id: Mapped[str] = mapped_column(Text, nullable=False)
+    machine_id: Mapped[str] = mapped_column(Text, nullable=False)
+    source: Mapped[str] = mapped_column(Text, nullable=False)
+    outcome: Mapped[str] = mapped_column(Text, nullable=False)
+    reason: Mapped[str] = mapped_column(Text, nullable=False)
+    ts: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)

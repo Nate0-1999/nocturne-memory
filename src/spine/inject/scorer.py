@@ -12,6 +12,7 @@ from pathlib import PurePosixPath
 from typing import Any
 from uuid import UUID
 
+from spine.inject.axes import AxisNomination, apply_axes
 from spine.tokens import cl100k_token_count
 
 _SECONDS_PER_DAY = 86_400
@@ -108,6 +109,8 @@ class ScorerConfig:
     weights: ScorerWeights
     params: ScorerParams
     bias_offsets: Mapping[UUID, float] = field(default_factory=dict)
+    project_offsets: Mapping[str, Mapping[str, float]] = field(default_factory=dict)
+    axes: Mapping[str, AxisNomination] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         if not self.version.strip():
@@ -124,6 +127,8 @@ class ScorerConfig:
             raise ValueError("scorer weights must be finite")
         if any(not math.isfinite(value) for value in self.bias_offsets.values()):
             raise ValueError("scorer bias offsets must be finite")
+        for project in self.project_offsets:
+            self.weights_for_project(project)
 
     @classmethod
     def from_mappings(
@@ -179,7 +184,28 @@ class ScorerConfig:
                 ),
             ),
             bias_offsets=bias_offsets,
+            project_offsets=params.get("project_offsets", {}),
+            axes={
+                name: AxisNomination.model_validate(axis)
+                for name, axis in params.get("axes", {}).items()
+            },
         )
+
+    def weights_for_project(self, project: str | None) -> ScorerWeights:
+        """Unseen projects use global weights; learned offsets are partially pooled."""
+        offsets = self.project_offsets.get(project, {}) if project is not None else {}
+        if not offsets:
+            return self.weights
+        names = ("sem", "kw", "time", "proj", "freq", "hist")
+        if set(offsets) != set(names):
+            raise ValueError("project offsets require the six named weights")
+        values = {
+            name: getattr(self.weights, name) + _finite_number(offsets[name], name)
+            for name in names
+        }
+        if min(values.values()) < -1e-9 or abs(math.fsum(values.values()) - 1) > 1e-7:
+            raise ValueError("project weights must remain on the weight simplex")
+        return ScorerWeights(**values)
 
     def bias_offset(self, memory_id: UUID) -> float:
         """Return this immutable version's learned per-memory score offset."""
@@ -223,8 +249,9 @@ class ScoreFeatures:
     loc: float | None = None
     thread: float | None = None
     where: float | None = None
+    axes: dict[str, float] = field(default_factory=dict)
 
-    def as_dict(self) -> dict[str, float | None]:
+    def as_dict(self) -> dict[str, Any]:
         """Return the exact public feature object without scorer internals."""
 
         values: dict[str, float | None] = {
@@ -244,6 +271,8 @@ class ScoreFeatures:
             del values["thread"]
         if self.where is None:
             del values["where"]
+        if self.axes:
+            values["axes"] = self.axes
         return values
 
 
@@ -309,9 +338,10 @@ def score_and_select(
             thread_id=thread_id,
             location_path=location_path,
             current_location=current_location,
-            weights=config.weights,
+            weights=config.weights_for_project(thread_project_key),
             params=config.params,
             learned_bias=config.bias_offset(candidate.memory_id),
+            axes=config.axes,
         )
         for candidate in pins
     ]
@@ -329,9 +359,10 @@ def score_and_select(
             thread_id=thread_id,
             location_path=location_path,
             current_location=current_location,
-            weights=config.weights,
+            weights=config.weights_for_project(thread_project_key),
             params=config.params,
             learned_bias=config.bias_offset(candidate.memory_id),
+            axes=config.axes,
         )
         for candidate in regular
     ]
@@ -372,14 +403,8 @@ def score_and_select(
     budget_cuts: list[ScoredCandidate] = []
 
     for scored in ranked_regular:
-        cut_by_budget = (
-            scored.score >= config.params.tau
-            and scored.token_cost > remaining_budget
-        )
-        selectable = (
-            scored.score >= config.params.tau
-            and scored.token_cost <= remaining_budget
-        )
+        cut_by_budget = scored.score >= config.params.tau and scored.token_cost > remaining_budget
+        selectable = scored.score >= config.params.tau and scored.token_cost <= remaining_budget
         if selectable:
             selected_regular.append(scored)
             remaining_budget -= scored.token_cost
@@ -428,6 +453,7 @@ def _score_candidate(
     weights: ScorerWeights,
     params: ScorerParams,
     learned_bias: float = 0.0,
+    axes: Mapping[str, AxisNomination] | None = None,
 ) -> _UnrankedCandidate:
     memory_keywords = set(_tokens(candidate.label))
     for keyword in candidate.keywords:
@@ -474,31 +500,12 @@ def _score_candidate(
             origin_location=candidate.origin_location,
         ),
     )
-    base_score = math.fsum(
-        (
-            weights.sem * features.sem,
-            weights.kw * features.kw,
-            weights.time * features.time,
-            weights.proj * features.proj,
-            weights.freq * features.freq,
-            weights.hist * features.hist,
-        )
-    )
-    location_score = (
-        base_score
-        if features.loc is None
-        else (1.0 - params.location_weight) * base_score + params.location_weight * features.loc
-    )
-    score = (
-        location_score
-        if features.thread is None
-        else (1.0 - params.thread_weight) * location_score + params.thread_weight * features.thread
-    )
-    score = (
-        score
-        if features.where is None
-        else (1.0 - params.where_weight) * score + params.where_weight * features.where
-    )
+    scalar_features = features.as_dict()
+    for name, axis in (axes or {}).items():
+        value = axis.value(scalar_features)
+        if value is not None:
+            features.axes[name] = value
+    score = score_features(scalar_features, weights=weights, params=params, axes=axes)
     score += candidate.bias + learned_bias
     if not math.isfinite(score):
         raise ValueError(f"score for {candidate.memory_id} is not finite")
@@ -508,6 +515,24 @@ def _score_candidate(
         score=_postgres_real(score),
         token_cost=cl100k_token_count(candidate.body),
     )
+
+
+def score_features(features, *, weights, params, axes=None) -> float:
+    """One scalar computation for serving, frozen-gate previews and backtests."""
+    score = math.fsum(
+        getattr(weights, name) * features[name]
+        for name in ("sem", "kw", "time", "proj", "freq", "hist")
+    )
+    for feature, parameter in (
+        ("loc", "location_weight"),
+        ("thread", "thread_weight"),
+        ("where", "where_weight"),
+    ):
+        value = features.get(feature)
+        if value is not None:
+            weight = getattr(params, parameter)
+            score = (1 - weight) * score + weight * value
+    return apply_axes(score, features, axes or {})
 
 
 def _with_rank(scored: _UnrankedCandidate, *, rank: int) -> ScoredCandidate:

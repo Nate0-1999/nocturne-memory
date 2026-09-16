@@ -169,9 +169,20 @@ async def test_models_match_authoritative_c2_schema(
         "scorer_activation",
         "optimization_run_adoption",
         "transcript_record",
+        "creation_outcome",
     )
 
     expected_columns = {
+        "creation_outcome": (
+            "event_key",
+            "memory_id",
+            "principal_id",
+            "machine_id",
+            "source",
+            "outcome",
+            "reason",
+            "ts",
+        ),
         "memory_unit": (
             "id",
             "principal_id",
@@ -454,6 +465,7 @@ async def test_models_match_authoritative_c2_schema(
         for name, table in Base.metadata.tables.items()
     }
     assert nullable == {
+        "creation_outcome": set(),
         "memory_unit": {
             "project_key",
             "thread_origin",
@@ -523,6 +535,7 @@ async def test_models_match_authoritative_c2_schema(
         for name, table in Base.metadata.tables.items()
     }
     assert primary_keys == {
+        "creation_outcome": ("event_key",),
         "memory_unit": ("id",),
         "memory_revision": ("rev_uid",),
         "memory_edge": ("edge_uid",),
@@ -554,6 +567,14 @@ async def test_models_match_authoritative_c2_schema(
         for column in table.c
     }
     assert types == {
+        "creation_outcome.event_key": "TEXT",
+        "creation_outcome.memory_id": "UUID",
+        "creation_outcome.principal_id": "TEXT",
+        "creation_outcome.machine_id": "TEXT",
+        "creation_outcome.source": "TEXT",
+        "creation_outcome.outcome": "TEXT",
+        "creation_outcome.reason": "TEXT",
+        "creation_outcome.ts": "TIMESTAMP WITH TIME ZONE",
         "memory_unit.id": "UUID",
         "memory_unit.principal_id": "TEXT",
         "memory_unit.label": "TEXT",
@@ -862,6 +883,7 @@ async def test_models_match_authoritative_c2_schema(
         for name, table in Base.metadata.tables.items()
     }
     assert checks == {
+        "creation_outcome": {},
         "memory_unit": {
             "memory_unit_kind_check": (
                 "kind IN ('fact','preference','procedure','project_note','persona','pinned')"

@@ -165,6 +165,8 @@ class ScorerConfigurationView(M2KContract):
     status: Literal["active", "proposed", "inactive"]
     values: ScorerValues
     replay: dict[str, Any] | None
+    axes: dict[str, Any] = Field(default_factory=dict)
+    project_offsets: dict[str, Any] = Field(default_factory=dict)
 
 
 class ScorerActivationView(M2KContract):
@@ -258,6 +260,7 @@ class ContributionBreakdown(M2KContract):
     hist: SignedDecimalString
     loc: SignedDecimalString | None = None
     thread: SignedDecimalString | None = None
+    where: SignedDecimalString | None = None
     bias: SignedDecimalString
 
 
@@ -272,6 +275,7 @@ class CandidateScorePoint(M2KContract):
     outcome: str | None
     features: MemoryFeatures
     contributions: ContributionBreakdown
+    axis_contributions: dict[str, SignedDecimalString] = Field(default_factory=dict)
 
 
 class CandidateScoreHistory(M2KContract):
@@ -282,6 +286,8 @@ class CandidateScoreHistory(M2KContract):
 
 
 class ScorerConsoleSnapshot(M2KContract):
+    trainables: list[dict[str, Any]] = Field(default_factory=list)
+    creation: dict[str, Any] = Field(default_factory=dict)
     as_of: AwareDatetime
     metrics_scope: Literal["principal", "palace"] = "palace"
     scope: Literal["GLOBAL", "CURRENT"]
@@ -350,6 +356,7 @@ class AccuracySlice(M2KContract):
 
 
 class ScorerSimulationResponse(M2KContract):
+    terrain: list[dict[str, float]] = Field(default_factory=list)
     simulation_digest: Annotated[StrictStr, Field(pattern=r"^[0-9a-f]{64}$")]
     base_version: NonBlankString
     values: ScorerValues
