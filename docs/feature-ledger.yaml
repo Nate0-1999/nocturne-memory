@@ -1359,9 +1359,7 @@
       "owner": "owner — \"#2 what are the test metrics we will test on this? This will be part of our tag line: \"building something a second time reduces build time, line count, cost by x%s. maybe some other ones too?\" (chat 2026-08-17 15:30:48; chat 2026-08-14 23:19:48)",
       "surfaces": [
         "harness/verification/m3b3/",
-        "harness/verification/m3b2/",
-        "harness/verification/m3ll/run_benchmark.py",
-        "harness/verification/m3ll/benchmark_prompt.txt"
+        "harness/verification/m3b2/"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -2584,7 +2582,13 @@
       "surfaces": [
         "harness/web/src/PalaceNebula.tsx",
         "harness/web/src/nebulaBindings.ts",
-        "harness/web/src/MemoryGraph.tsx"
+        "harness/web/src/Farm.tsx",
+        "harness/web/src/Roots.tsx",
+        "harness/web/src/VisualizationScene.tsx",
+        "harness/web/src/rack.tsx",
+        "harness/web/src/stageLayout.ts",
+        "harness/web/src/rackLayout.ts",
+        "harness/web/src/rackModuleTemplate.ts"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -2644,10 +2648,18 @@
       "section": "9. Visualization",
       "era": "founding",
       "label": "The ant farm: the whole directory tree as chambered burrows with files as cells, zoomable, floating on black with a faint grid, showing worktrees.",
-      "status": "not built",
+      "status": "partial",
       "walk": "Open the ant farm; the whole directory's folders appear as chambers with files as cells, floating on black with a faint grid, and worktrees are visible.",
       "owner": "owner — \"I imagine that the anfarm is much more ant farm looking truly scoped to the whole directory that there are agents in.... there are empty chambers (files) etc. . we can scroll in and out to get close, it's floating in space like a solidworks object almost but the background is a black with faint white line grid.\" (chat 2026-07-20 17:30:44 (+ 16:49:44))",
-      "surfaces": []
+      "surfaces": [
+        "harness/web/src/Farm.tsx",
+        "harness/web/src/WorkVisualization.tsx",
+        "harness/web/src/VisualizationScene.tsx",
+        "harness/web/src/visualization.ts",
+        "harness/web/src/assets/work-visualization.css",
+        "harness/src/harness/visualization.py",
+        "harness/src/harness/symphony_worker.py"
+      ]
     },
     {
       "id": "FL-127",
@@ -2687,20 +2699,30 @@
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "Roots: every parallel agent across projects gets a root-like, naturally meandering flow growing horizontally from roughly its agent's location, with dead roots for active loops, tips seen end-on as grids of starts in the next rotation, clustered by project on the view opposite the ant farm.",
-      "status": "not built",
-      "walk": "Run agents in parallel and open the roots view; meandering roots grow sideways from each agent's location and rotating to the end-on view shows their tips as per-project grids.",
+      "status": "partial",
+      "walk": "Run agents in parallel and open Roots; each has a meandering branch, width follows measured spend, depth follows time, forks join and stopped roots dry. Projects group together. The cube rotation was retired by v2.119.",
       "owner": "owner — \"The roots should grow out from the proper agent location, roughly i konw that the agents will move around so maybe just that region. So the roots should be growing horizontally.\" (chat 2026-07-20 17:42:24 (+ 17:30:44)) — on opacity, 2026-09-15: \"just make it look really sick\" (no value rule; v2.119)",
-      "surfaces": []
+      "surfaces": [
+        "harness/web/src/Roots.tsx",
+        "harness/web/src/WorkVisualization.tsx",
+        "harness/web/src/VisualizationScene.tsx",
+        "harness/web/src/visualization.ts",
+        "harness/src/harness/visualization.py",
+        "harness/src/harness/symphony_worker.py"
+      ]
     },
     {
       "id": "FL-130",
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "A tree-search view reached by rotating the farm.",
-      "status": "not built",
-      "walk": "Rotate the ant farm; the tree-search (roots) view appears.",
+      "status": "partial",
+      "walk": "Select an agent in Farm and switch to Roots; the same selection survives. The switch replaces cube rotation under v2.119.",
       "owner": "owner — \"2. I rotate right and the ant farm rotates quickly to the mcts/roots view I see the different sub agents working fanned out for that agent standing out in the same colors and I see the other sub agents for different colors at low opacity around in the roots view as well.\" (chat 2026-07-20 17:15:32 (+ 16:49:44))",
-      "surfaces": []
+      "surfaces": [
+        "harness/web/src/WorkVisualization.tsx",
+        "harness/web/src/rack.tsx"
+      ]
     },
     {
       "id": "FL-131",
@@ -2731,30 +2753,49 @@
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "A time-order control that highlights new roots and moves the panels to the longest-waiting response.",
-      "status": "not built",
+      "status": "partial",
       "walk": "Click the time-order control; new roots highlight and the side panels move to the longest-waiting response.",
       "owner": "owner — \"3. I click the left hand side to time order and the visulization highlights new roots and the left hand and right hand side visualizatoins adjust to the longest waiting response for a different project.\" (chat 2026-07-20 17:15:32)",
-      "surfaces": []
+      "surfaces": [
+        "harness/web/src/WorkVisualization.tsx",
+        "harness/web/src/Roots.tsx",
+        "harness/web/src/rack.tsx",
+        "harness/src/harness/visualization.py"
+      ]
     },
     {
       "id": "FL-133",
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "A corner palace view with curators as ghosts moving through the database.",
-      "status": "not built",
-      "walk": "Look at the bottom-right corner during a curator pass; ghost-like curators move through the palace database.",
+      "status": "partial",
+      "walk": "Open the separate Palace module during a real curator pass; ghost-like curators move between the feed's actual finding targets before the pass finishes.",
       "owner": "owner — \"The curator agents are manipulating it and updating it in real time. Combining memories, separating them, it should be tied to live feeds. The curators should look like ghosts from destiny.\" (chat 2026-07-20 17:30:44 (+ 17:15:32))",
-      "surfaces": []
+      "surfaces": [
+        "harness/web/src/PalaceNebula.tsx",
+        "harness/web/src/assets/palace-nebula.css",
+        "harness/src/harness/visualization.py",
+        "spine/src/spine/curation/progress.py",
+        "spine/src/spine/curation/contracts.py",
+        "spine/src/spine/curation/service.py",
+        "spine/src/spine/curation/router.py",
+        "spine/src/spine/db/migrations/versions/0024_curator_progress.py"
+      ]
     },
     {
       "id": "FL-134",
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "A way to see things being added or removed over time, as SolidWorks does, the project growing like an organic object.",
-      "status": "not built",
+      "status": "partial",
       "walk": "Drag the rollback bar back; the visuals show what had been added or removed by that moment.",
       "owner": "owner — \"I think like solid works we can see things being added or removed with time right. The projects that the computer is workin on is an organic object that's almost alive...\" (chat 2026-07-20 17:34:14)",
-      "surfaces": []
+      "surfaces": [
+        "harness/web/src/WorkVisualization.tsx",
+        "harness/web/src/PalaceNebula.tsx",
+        "harness/web/src/visualization.ts",
+        "harness/src/harness/visualization.py"
+      ]
     },
     {
       "id": "FL-135",
