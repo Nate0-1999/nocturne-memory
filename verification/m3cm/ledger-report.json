@@ -7,10 +7,11 @@
     {
       "repo": "spine",
       "base": "78e772a3155004ffcf372cc619c5410b1057a535",
-      "head": "892b876e0c9f46a7998a7a8b885359098b249cf4"
+      "head": "86b4cf13feae096bd5588c43334ff080432094c6"
     }
   ],
   "unmapped": {
+    "spine/DECISIONS.md": "Peer rebase metadata, release notes or test changes; no additional M3CM feature edit. Integrated suites and generated required rows cover the rebased product.",
     "spine/api_contract_fingerprints.json": "Generated/versioned public schema for FL-059 compaction notification; preserves the peer 0.1.16 spend contract.",
     "spine/openapi.json": "Generated/versioned public schema for FL-059 compaction notification; preserves the peer 0.1.16 spend contract.",
     "spine/src/spine/__init__.py": "Companion release metadata 0.1.17; version compatibility is covered by FL-169.",
@@ -20,20 +21,26 @@
     "spine/tests/test_learner_api.py": "Regression proof for the mapped compaction, memory and API behavior; no independent product surface.",
     "spine/tests/test_learner_worker.py": "Regression proof for the mapped compaction, memory and API behavior; no independent product surface.",
     "spine/tests/test_packaging.py": "Regression proof for the mapped compaction, memory and API behavior; no independent product surface.",
-    "spine/verification/m3cm/FL-021.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
-    "spine/verification/m3cm/FL-049.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
-    "spine/verification/m3cm/FL-052.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
-    "spine/verification/m3cm/FL-053.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
-    "spine/verification/m3cm/FL-056.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
-    "spine/verification/m3cm/FL-058.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
-    "spine/verification/m3cm/FL-059.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
-    "spine/verification/m3cm/FL-060.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
-    "spine/verification/m3cm/FL-162.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
-    "spine/verification/m3cm/FL-169.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
-    "spine/verification/m3cm/FL-195.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
-    "spine/verification/m3cm/FL-196.png": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
-    "spine/verification/m3cm/SHA256SUMS": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior.",
-    "spine/verification/m3cm/ledger-report.json": "No feature impact: immutable M3CM verification screenshot, checklist or checksum artifact; no executable product behavior."
+    "spine/tests/test_spend.py": "Peer M3SR changes included by required rebase; model policy/spend observations are FL-151, FL-154, FL-155, FL-158 and FL-159. No M3CM behavior edit here.",
+    "spine/verification/m3cm/FL-021.png": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/FL-049.png": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/FL-052.png": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/FL-053.png": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/FL-056.png": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/FL-058.png": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/FL-059.png": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/FL-060.png": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/FL-162.png": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/FL-169.png": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/FL-195.png": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/FL-196.png": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/SHA256SUMS": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/ledger-report.json": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/impacted.json": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/FL-159.png": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/FL-197.png": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/FL-155.png": "Verification evidence only; no product feature impact.",
+    "spine/verification/m3cm/FL-151.png": "Verification evidence only; no product feature impact."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -72,6 +79,42 @@
       "screenshot": "FL-060.png",
       "flag": "",
       "observed": "Clicked Force Retrain in the isolated recorded-history fixture. A new m2f-5562d65fb381a1dc proposal and Retrain proposed timeline entry appeared with 77.8% held-out agreement. Existing incumbent remains active."
+    },
+    "FL-151": {
+      "label": "KV-cache optimization, usage accounting, and sticky sessions on one provider for cache benefits.",
+      "walk": "Send several messages in one thread; the spend module's KV cache column fills in after the first message and the provider stays the same across the thread.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-151.png",
+      "flag": "F086",
+      "observed": "Fresh post-rebase walk on Harness f6d27eb with the disposable principal. Expanded real Copper Orchard cache history; six messages displayed fresh/cached tokens and reuse percentages, including 96.6 percent. The UI did not establish sticky underlying provider identity; that part remains unproven."
+    },
+    "FL-155": {
+      "label": "An append-only spend ledger with fine-grain cost history, its smallest grain a uuid spend unit, and the spend views derived from it.",
+      "walk": "Send one message, then open the spend ledger; new rows with their own uuid spend unit ids appear beneath the unchanged older rows, and the spend module's totals add up from them.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-155.png",
+      "flag": "F086",
+      "observed": "Fresh post-rebase walk on Harness f6d27eb with the disposable principal. Real spend totals and per-model rows were visible. The aggregate UI did not prove append-only per-request UUID spend units; that storage property was not freshly inspected."
+    },
+    "FL-159": {
+      "label": "The spend module: a row per thread expanding to models, columns input / KV cache / reasoning / output / total / spend per hour, other costs as their own rows, scopable to a thread or stack.",
+      "walk": "Press the plus on one thread row in the spend module; it opens to that thread's models with the columns input, KV cache, reasoning, output, total and spend per hour, with an everything-else row beneath.",
+      "protected": true,
+      "verdict": "PASS",
+      "screenshot": "FL-159.png",
+      "flag": "",
+      "observed": "Fresh post-rebase walk on Harness f6d27eb with the disposable principal. Expanded Copper Orchard in Spend and observed separate MiniMax M3 and embedding model rows with input, KV cache, reasoning, output and total columns. Historical spend-per-hour cells honestly showed Awaiting price."
+    },
+    "FL-197": {
+      "label": "Spend and Palace state reads use the calling principal; only the configured owner can request the whole Palace.",
+      "walk": "In a verification daemon, open Spend and Palace State and see only that principal's receipts and counts. In a local fixture, compare the configured owner's whole-Palace view. Request scope=palace as the verification principal and see a plain 403. Keep owner-rack captures out of evidence.",
+      "protected": true,
+      "verdict": "PASS",
+      "screenshot": "FL-197.png",
+      "flag": "",
+      "observed": "Real disposable daemon shows only zero own receipts/counts (FL-178, FL-119). Local fixture owner shows its recorded 142-signal training history and 12 active memories (FL-197). Real disposable principal requesting scope=palace received a plain 403; receipt saved. No real owner-rack captures."
     },
     "FL-169": {
       "label": "Client and cloud versions stay sync-locked or backward compatible, following industry practice, so version differences feel seamless.",
@@ -133,8 +176,8 @@
       "protected": false,
       "verdict": "FAIL",
       "screenshot": "FL-059.png",
-      "flag": "F110",
-      "observed": "Real Palace 0.1.17 received compaction 01M2M7V5CRTJECCSJ6QT3RRAQ3 after real MiniMax thread 90F576BC crossed its configured fill line (3953 to 1769 tokens). Exactly one optimizer run 01M2M7V6MHQB6N4GMTMCEECCZZ used the capped thread-round-robin/newest-oldest corpus: 3 eligible dispositions, maximum 1000, across two threads. It returned insufficient_data (3/25), not PROPOSED. Active m3tl-where-v1 and activation count 4 are unchanged. Actual screenshot and before/after SQL metadata receipts retained; no corpus bodies read by the verifier. Final check after three compactions: 4 total optimizer runs versus baseline 1; latest matching run again insufficient_data 3/25; active generation and activation count remain unchanged."
+      "flag": "F086",
+      "observed": "Real Palace 0.1.17 received compaction 01M2M7V5CRTJECCSJ6QT3RRAQ3 after real MiniMax thread 90F576BC crossed its configured fill line (3953 to 1769 tokens). Exactly one optimizer run 01M2M7V6MHQB6N4GMTMCEECCZZ used the capped thread-round-robin/newest-oldest corpus: 3 eligible dispositions, maximum 1000, across two threads. It returned insufficient_data (3/25), not PROPOSED. Active m3tl-where-v1 and activation count 4 are unchanged. Actual screenshot and before/after SQL metadata receipts retained; no corpus bodies read by the verifier. Final check after three compactions: 4 total optimizer runs versus baseline 1; latest matching run again insufficient_data 3/25; active generation and activation count remain unchanged. OWNER EXIT RULING 2026-09-16 (PLAN M3CM): the compaction-triggered retrain firing and corpus-floor refusal satisfy the live check. The missing real-corpus PROPOSED generation remains unproven under F086 for the fourth walk; the minimum remains 25 and no activation occurred."
     },
     "FL-162": {
       "label": "Easy onboarding from a single splash repo, needing only two secrets: a GCP credential and an OpenRouter key.",
@@ -289,16 +332,12 @@
     "FL-148": "outside diff",
     "FL-149": "outside diff",
     "FL-150": "unverified",
-    "FL-151": "outside diff",
     "FL-152": "not built",
     "FL-153": "not built",
     "FL-154": "outside diff",
-    "FL-155": "outside diff",
     "FL-156": "not built",
     "FL-157": "outside diff",
     "FL-158": "outside diff",
-    "FL-159": "outside diff",
-    "FL-197": "outside diff",
     "FL-160": "not built",
     "FL-161": "not built",
     "FL-163": "unverified",
