@@ -1,4 +1,4 @@
-"""M3SJ / SD-059: named recipes and durable execution cursors; one spend ledger."""
+"""M3SJ / A-069: named recipes and durable execution cursors; one spend ledger."""
 
 from datetime import UTC, datetime
 from decimal import Decimal
