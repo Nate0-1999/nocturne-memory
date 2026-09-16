@@ -17,6 +17,7 @@ from spine.spend.reconciliation import (
     ReconciliationScheduler,
     ReconciliationService,
 )
+from spine.spend.service import SpendService
 from spine.vitals.service import VitalsService
 
 
@@ -35,6 +36,7 @@ async def _receipt(
     sessions: async_sessionmaker[AsyncSession],
     uid: str,
     cost: str | None,
+    product_type: str = "llm.request",
 ) -> None:
     async with sessions.begin() as session:
         await session.execute(
@@ -42,10 +44,10 @@ async def _receipt(
                 "INSERT INTO spend_event "
                 "(event_uid, ts, product_type, quantity_type, unit_of_measure, quantity, "
                 "cost_usd, basis, behavior, purpose, ref) VALUES "
-                "(:uid, now(), 'llm.request', 'output', 'tokens', 1, :cost, "
+                "(:uid, now(), :product_type, 'output', 'tokens', 1, :cost, "
                 "'measured', 'variable', 'building', :uid)"
             ),
-            {"uid": uid, "cost": cost},
+            {"uid": uid, "cost": cost, "product_type": product_type},
         )
 
 
@@ -65,6 +67,8 @@ async def test_baseline_balanced_drift_and_vitals_projection(
 
     baseline = await service.reconcile_once()
     await _receipt(memory_session_factory, "01K1M2M0000000000000000002", "0.250000")
+    # M3SR / ADR-024: a bill-day spike must not become broker reconciliation drift.
+    await _receipt(memory_session_factory, "01K1M2M0000000000000000004", "25", "infra.db.instance")
     balanced = await service.reconcile_once()
     await _receipt(memory_session_factory, "01K1M2M0000000000000000003", "0.100000")
     drift = await service.reconcile_once()
@@ -75,6 +79,13 @@ async def test_baseline_balanced_drift_and_vitals_projection(
     assert drift.broker_since_baseline_usd == Decimal("0.300000000000")
     assert drift.ledger_since_baseline_usd == Decimal("0.350000000000")
     assert drift.drift_usd == Decimal("0.050000000000")
+    async with memory_session_factory() as session:
+        receipt_time = (await session.execute(text("SELECT max(ts) FROM spend_event"))).scalar_one()
+    daily = (await SpendService(memory_session_factory).table(as_of=receipt_time)).days
+    assert len(daily) == 1
+    assert Decimal(daily[0].model_usd) == Decimal("1.35")
+    assert Decimal(daily[0].infrastructure_usd) == Decimal("25")
+    assert Decimal(daily[0].total_usd) == Decimal("26.35")
 
     snapshot = await VitalsService(
         memory_session_factory,
