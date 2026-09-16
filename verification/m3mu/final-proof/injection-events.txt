@@ -1,0 +1,13 @@
+              thread_id               |             injection_id             |              memory_id               | shown_as  |    outcome    
+--------------------------------------+--------------------------------------+--------------------------------------+-----------+---------------
+ 2e87136f-0e7a-45b5-b9d0-5e949739d29d | dba12020-35b2-486a-8758-165cfe13b51c | e8831168-fa14-4ce7-af2e-5746a96a9288 | near_miss | 
+ 2e87136f-0e7a-45b5-b9d0-5e949739d29d | dba12020-35b2-486a-8758-165cfe13b51c | 2c2801a0-065f-42fc-9f1c-96315b2a1b69 | near_miss | 
+ 2e87136f-0e7a-45b5-b9d0-5e949739d29d | dba12020-35b2-486a-8758-165cfe13b51c | 153f2983-3464-4df2-8832-3745b9acf932 | near_miss | 
+ becf249f-07d6-4823-bbd4-aad8b7284c58 | d016b976-e0b3-4bf0-9ccc-6d3434040fca | 2c2801a0-065f-42fc-9f1c-96315b2a1b69 | near_miss | 
+ becf249f-07d6-4823-bbd4-aad8b7284c58 | d016b976-e0b3-4bf0-9ccc-6d3434040fca | 153f2983-3464-4df2-8832-3745b9acf932 | near_miss | 
+ becf249f-07d6-4823-bbd4-aad8b7284c58 | d016b976-e0b3-4bf0-9ccc-6d3434040fca | e8831168-fa14-4ce7-af2e-5746a96a9288 | near_miss | removed:never
+ becf249f-07d6-4823-bbd4-aad8b7284c58 | f64fd0d7-1cb2-40c3-8c95-a1fc33ee2305 | 2c2801a0-065f-42fc-9f1c-96315b2a1b69 | near_miss | 
+ becf249f-07d6-4823-bbd4-aad8b7284c58 | f64fd0d7-1cb2-40c3-8c95-a1fc33ee2305 | a5c87b2e-a26c-41b4-adcb-0cf94cb2a3f3 | near_miss | 
+ becf249f-07d6-4823-bbd4-aad8b7284c58 | f64fd0d7-1cb2-40c3-8c95-a1fc33ee2305 | 153f2983-3464-4df2-8832-3745b9acf932 | near_miss | 
+(9 rows)
+

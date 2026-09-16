@@ -1,0 +1,19 @@
+{
+  "tool": "Playwright browser input",
+  "pointer": "page.mouse.down(); wait 900ms; check menu before page.mouse.up()",
+  "held_ms": 911,
+  "menu_visible_before_release": true,
+  "menu_text": "Never show this / Cancel",
+  "selection": "pointer click Never show this",
+  "thread_id": "becf249f-07d6-4823-bbd4-aad8b7284c58",
+  "first_injection_id": "d016b976-e0b3-4bf0-9ccc-6d3434040fca",
+  "next_injection_id": "f64fd0d7-1cb2-40c3-8c95-a1fc33ee2305",
+  "vetoed_memory_id": "e8831168-fa14-4ce7-af2e-5746a96a9288",
+  "recorded_outcome": "removed:never",
+  "absent_from_next_near_misses": true,
+  "fixture": "nocturne-verification-m3mu-final-01a0a746",
+  "backend": "published nocturne-memory 0.1.15; local SQL with lexical fixture embeddings",
+  "frontend_commit": "e36fe0e3f44d3bbc8be210e5538e5e894a1de2e7",
+  "model": "real OpenRouter openai/gpt-4.1-mini",
+  "note": "Initial hold already opened the menu, but missing positioning context placed it beneath another card. One CSS declaration repaired pointer access."
+}

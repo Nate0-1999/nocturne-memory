@@ -1,0 +1,17 @@
+{
+  "principal_id": "nocturne-verification-m3mu-final-01a0a746",
+  "tombstoned": [
+    "153f2983-3464-4df2-8832-3745b9acf932",
+    "a5c87b2e-a26c-41b4-adcb-0cf94cb2a3f3",
+    "e8831168-fa14-4ce7-af2e-5746a96a9288",
+    "2c2801a0-065f-42fc-9f1c-96315b2a1b69",
+    "d5dd8bcb-b850-4f78-bea4-0469fe891841",
+    "10da6a20-7d8b-4503-9c46-883eb6ff0990",
+    "203e2d1b-6e97-47eb-8b0b-5076e56554b8",
+    "a9b9220f-328a-44f6-b35d-548a0dd8d8dc",
+    "b0f019f6-752e-4e83-946f-0d5b040dc080"
+  ],
+  "denied": [],
+  "unretired_after": 0,
+  "pending_after": 0
+}

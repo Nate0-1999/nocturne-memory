@@ -1,0 +1,430 @@
+{
+  "as_of": "2026-09-16T03:28:33.707186Z",
+  "graph_edge_sim": 0.75,
+  "nodes": [
+    {
+      "memory": {
+        "memory_id": "153f2983-3464-4df2-8832-3745b9acf932",
+        "principal_id": "nocturne-verification-m3mu-final-01a0a746",
+        "label": "Orchard delivery day",
+        "body": "The fixture orchard delivers apples on Monday.",
+        "kind": "fact",
+        "keywords": [
+          "orchard",
+          "apples"
+        ],
+        "project_key": "/private/tmp/m3mu-final-home/workspace",
+        "thread_origin": null,
+        "origin_thread_id": null,
+        "origin_path": null,
+        "origin_location": "/private/tmp/m3mu-final-home/workspace",
+        "pin": false,
+        "status": "active",
+        "revision": 1,
+        "stats": {
+          "removals": 0,
+          "citations": 0,
+          "injections": 0,
+          "never_kills": 0,
+          "last_injected_at": null
+        },
+        "bias": 0.0,
+        "embedding_model": "m3wf-lexical-fixture",
+        "created_at": "2026-09-16T03:15:53.929529Z",
+        "updated_at": "2026-09-16T03:15:53.929529Z"
+      },
+      "in_current_context": false,
+      "revisions": [
+        {
+          "rev_uid": "01M2M3DEE9AT1Q1Q6VJBEAN9KD",
+          "parent_uid": null,
+          "revision": 1,
+          "ts": "2026-09-16T03:15:53.929529Z",
+          "reason": "",
+          "label": "Orchard delivery day",
+          "body": "The fixture orchard delivers apples on Monday."
+        }
+      ]
+    },
+    {
+      "memory": {
+        "memory_id": "a5c87b2e-a26c-41b4-adcb-0cf94cb2a3f3",
+        "principal_id": "nocturne-verification-m3mu-final-01a0a746",
+        "label": "Orchard delivery box",
+        "body": "The fixture orchard packs apples in blue boxes.",
+        "kind": "fact",
+        "keywords": [
+          "orchard",
+          "apples"
+        ],
+        "project_key": "/private/tmp/m3mu-final-home/workspace",
+        "thread_origin": null,
+        "origin_thread_id": null,
+        "origin_path": null,
+        "origin_location": "/private/tmp/m3mu-final-home/workspace",
+        "pin": false,
+        "status": "active",
+        "revision": 1,
+        "stats": {
+          "removals": 0,
+          "citations": 0,
+          "injections": 0,
+          "never_kills": 0,
+          "last_injected_at": null
+        },
+        "bias": 0.0,
+        "embedding_model": "m3wf-lexical-fixture",
+        "created_at": "2026-09-16T03:15:54.033461Z",
+        "updated_at": "2026-09-16T03:15:54.033461Z"
+      },
+      "in_current_context": false,
+      "revisions": [
+        {
+          "rev_uid": "01M2M3DEF1XG6Y1V522PKE66S6",
+          "parent_uid": null,
+          "revision": 1,
+          "ts": "2026-09-16T03:15:54.033461Z",
+          "reason": "",
+          "label": "Orchard delivery box",
+          "body": "The fixture orchard packs apples in blue boxes."
+        }
+      ]
+    },
+    {
+      "memory": {
+        "memory_id": "e8831168-fa14-4ce7-af2e-5746a96a9288",
+        "principal_id": "nocturne-verification-m3mu-final-01a0a746",
+        "label": "Orchard delivery gate",
+        "body": "The fixture orchard delivery enters the north gate.",
+        "kind": "fact",
+        "keywords": [
+          "orchard",
+          "delivery"
+        ],
+        "project_key": "/private/tmp/m3mu-final-home/workspace",
+        "thread_origin": null,
+        "origin_thread_id": null,
+        "origin_path": null,
+        "origin_location": "/private/tmp/m3mu-final-home/workspace",
+        "pin": false,
+        "status": "active",
+        "revision": 2,
+        "stats": {
+          "removals": 1,
+          "citations": 0,
+          "injections": 0,
+          "never_kills": 1,
+          "last_injected_at": null
+        },
+        "bias": -0.15000000596046448,
+        "embedding_model": "m3wf-lexical-fixture",
+        "created_at": "2026-09-16T03:15:54.053812Z",
+        "updated_at": "2026-09-16T03:25:24.163180Z"
+      },
+      "in_current_context": false,
+      "revisions": [
+        {
+          "rev_uid": "01M2M3DEFSERH19TD9HMT9JT03",
+          "parent_uid": null,
+          "revision": 1,
+          "ts": "2026-09-16T03:15:54.053812Z",
+          "reason": "",
+          "label": "Orchard delivery gate",
+          "body": "The fixture orchard delivery enters the north gate."
+        },
+        {
+          "rev_uid": "01M2M3YV7THHMNRAKXCVE859Z9",
+          "parent_uid": "01M2M3DEFSERH19TD9HMT9JT03",
+          "revision": 2,
+          "ts": "2026-09-16T03:25:24.163180Z",
+          "reason": "inject/commit:removed:never",
+          "label": "Orchard delivery gate",
+          "body": "The fixture orchard delivery enters the north gate."
+        }
+      ]
+    },
+    {
+      "memory": {
+        "memory_id": "2c2801a0-065f-42fc-9f1c-96315b2a1b69",
+        "principal_id": "nocturne-verification-m3mu-final-01a0a746",
+        "label": "Orchard delivery driver",
+        "body": "The fixture orchard delivery driver is named Mina.",
+        "kind": "fact",
+        "keywords": [
+          "orchard",
+          "delivery"
+        ],
+        "project_key": "/private/tmp/m3mu-final-home/workspace",
+        "thread_origin": null,
+        "origin_thread_id": null,
+        "origin_path": null,
+        "origin_location": "/private/tmp/m3mu-final-home/workspace",
+        "pin": false,
+        "status": "active",
+        "revision": 1,
+        "stats": {
+          "removals": 0,
+          "citations": 0,
+          "injections": 0,
+          "never_kills": 0,
+          "last_injected_at": null
+        },
+        "bias": 0.0,
+        "embedding_model": "m3wf-lexical-fixture",
+        "created_at": "2026-09-16T03:15:54.083908Z",
+        "updated_at": "2026-09-16T03:15:54.083908Z"
+      },
+      "in_current_context": false,
+      "revisions": [
+        {
+          "rev_uid": "01M2M3DEGP2AN9Q0QDHZK85G0J",
+          "parent_uid": null,
+          "revision": 1,
+          "ts": "2026-09-16T03:15:54.083908Z",
+          "reason": "",
+          "label": "Orchard delivery driver",
+          "body": "The fixture orchard delivery driver is named Mina."
+        }
+      ]
+    },
+    {
+      "memory": {
+        "memory_id": "d5dd8bcb-b850-4f78-bea4-0469fe891841",
+        "principal_id": "nocturne-verification-m3mu-final-01a0a746",
+        "label": "Telescope lens",
+        "body": "The fixture observatory telescope uses a glass lens.",
+        "kind": "fact",
+        "keywords": [
+          "observatory",
+          "telescope"
+        ],
+        "project_key": "/private/tmp/m3mu-final-home/workspace",
+        "thread_origin": null,
+        "origin_thread_id": null,
+        "origin_path": null,
+        "origin_location": "/private/tmp/m3mu-final-home/workspace",
+        "pin": false,
+        "status": "active",
+        "revision": 1,
+        "stats": {
+          "removals": 0,
+          "citations": 0,
+          "injections": 0,
+          "never_kills": 0,
+          "last_injected_at": null
+        },
+        "bias": 0.0,
+        "embedding_model": "m3wf-lexical-fixture",
+        "created_at": "2026-09-16T03:15:54.106189Z",
+        "updated_at": "2026-09-16T03:15:54.106189Z"
+      },
+      "in_current_context": false,
+      "revisions": [
+        {
+          "rev_uid": "01M2M3DEH990CTSCNHRDEDDY22",
+          "parent_uid": null,
+          "revision": 1,
+          "ts": "2026-09-16T03:15:54.106189Z",
+          "reason": "",
+          "label": "Telescope lens",
+          "body": "The fixture observatory telescope uses a glass lens."
+        }
+      ]
+    },
+    {
+      "memory": {
+        "memory_id": "10da6a20-7d8b-4503-9c46-883eb6ff0990",
+        "principal_id": "nocturne-verification-m3mu-final-01a0a746",
+        "label": "Telescope schedule",
+        "body": "The fixture observatory opens its telescope on Friday.",
+        "kind": "fact",
+        "keywords": [
+          "observatory",
+          "telescope"
+        ],
+        "project_key": "/private/tmp/m3mu-final-home/workspace",
+        "thread_origin": null,
+        "origin_thread_id": null,
+        "origin_path": null,
+        "origin_location": "/private/tmp/m3mu-final-home/workspace",
+        "pin": false,
+        "status": "active",
+        "revision": 1,
+        "stats": {
+          "removals": 0,
+          "citations": 0,
+          "injections": 0,
+          "never_kills": 0,
+          "last_injected_at": null
+        },
+        "bias": 0.0,
+        "embedding_model": "m3wf-lexical-fixture",
+        "created_at": "2026-09-16T03:15:54.122723Z",
+        "updated_at": "2026-09-16T03:15:54.122723Z"
+      },
+      "in_current_context": false,
+      "revisions": [
+        {
+          "rev_uid": "01M2M3DEHTK7ZMT3SP4PM2JP7X",
+          "parent_uid": null,
+          "revision": 1,
+          "ts": "2026-09-16T03:15:54.122723Z",
+          "reason": "",
+          "label": "Telescope schedule",
+          "body": "The fixture observatory opens its telescope on Friday."
+        }
+      ]
+    },
+    {
+      "memory": {
+        "memory_id": "203e2d1b-6e97-47eb-8b0b-5076e56554b8",
+        "principal_id": "nocturne-verification-m3mu-final-01a0a746",
+        "label": "Telescope notebook",
+        "body": "The fixture observatory records stars in a red notebook.",
+        "kind": "fact",
+        "keywords": [
+          "observatory",
+          "stars"
+        ],
+        "project_key": "/private/tmp/m3mu-final-home/workspace",
+        "thread_origin": null,
+        "origin_thread_id": null,
+        "origin_path": null,
+        "origin_location": "/private/tmp/m3mu-final-home/workspace",
+        "pin": false,
+        "status": "active",
+        "revision": 1,
+        "stats": {
+          "removals": 0,
+          "citations": 0,
+          "injections": 0,
+          "never_kills": 0,
+          "last_injected_at": null
+        },
+        "bias": 0.0,
+        "embedding_model": "m3wf-lexical-fixture",
+        "created_at": "2026-09-16T03:15:54.139485Z",
+        "updated_at": "2026-09-16T03:15:54.139485Z"
+      },
+      "in_current_context": false,
+      "revisions": [
+        {
+          "rev_uid": "01M2M3DEJA65N4XD8VSV3TH99W",
+          "parent_uid": null,
+          "revision": 1,
+          "ts": "2026-09-16T03:15:54.139485Z",
+          "reason": "",
+          "label": "Telescope notebook",
+          "body": "The fixture observatory records stars in a red notebook."
+        }
+      ]
+    },
+    {
+      "memory": {
+        "memory_id": "a9b9220f-328a-44f6-b35d-548a0dd8d8dc",
+        "principal_id": "nocturne-verification-m3mu-final-01a0a746",
+        "label": "Telescope guide",
+        "body": "The fixture observatory guide is named Omar.",
+        "kind": "fact",
+        "keywords": [
+          "observatory",
+          "guide"
+        ],
+        "project_key": "/private/tmp/m3mu-final-home/workspace",
+        "thread_origin": null,
+        "origin_thread_id": null,
+        "origin_path": null,
+        "origin_location": "/private/tmp/m3mu-final-home/workspace",
+        "pin": false,
+        "status": "active",
+        "revision": 1,
+        "stats": {
+          "removals": 0,
+          "citations": 0,
+          "injections": 0,
+          "never_kills": 0,
+          "last_injected_at": null
+        },
+        "bias": 0.0,
+        "embedding_model": "m3wf-lexical-fixture",
+        "created_at": "2026-09-16T03:15:54.156342Z",
+        "updated_at": "2026-09-16T03:15:54.156342Z"
+      },
+      "in_current_context": false,
+      "revisions": [
+        {
+          "rev_uid": "01M2M3DEJVS8QCHCSE6NAS6YDW",
+          "parent_uid": null,
+          "revision": 1,
+          "ts": "2026-09-16T03:15:54.156342Z",
+          "reason": "",
+          "label": "Telescope guide",
+          "body": "The fixture observatory guide is named Omar."
+        }
+      ]
+    },
+    {
+      "memory": {
+        "memory_id": "b0f019f6-752e-4e83-946f-0d5b040dc080",
+        "principal_id": "nocturne-verification-m3mu-final-01a0a746",
+        "label": "Telescope closure",
+        "body": "The fixture observatory is closed on Friday.",
+        "kind": "fact",
+        "keywords": [
+          "observatory",
+          "telescope"
+        ],
+        "project_key": "/private/tmp/m3mu-final-home/workspace",
+        "thread_origin": null,
+        "origin_thread_id": null,
+        "origin_path": null,
+        "origin_location": "/private/tmp/m3mu-final-home/workspace",
+        "pin": false,
+        "status": "active",
+        "revision": 1,
+        "stats": {
+          "removals": 0,
+          "citations": 0,
+          "injections": 0,
+          "never_kills": 0,
+          "last_injected_at": null
+        },
+        "bias": 0.0,
+        "embedding_model": "m3wf-lexical-fixture",
+        "created_at": "2026-09-16T03:15:54.173598Z",
+        "updated_at": "2026-09-16T03:15:54.173598Z"
+      },
+      "in_current_context": false,
+      "revisions": [
+        {
+          "rev_uid": "01M2M3DEKDKCX64AW110JJ4XYM",
+          "parent_uid": null,
+          "revision": 1,
+          "ts": "2026-09-16T03:15:54.173598Z",
+          "reason": "",
+          "label": "Telescope closure",
+          "body": "The fixture observatory is closed on Friday."
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "kind": "lineage",
+      "from_memory_id": "10da6a20-7d8b-4503-9c46-883eb6ff0990",
+      "to_memory_id": "b0f019f6-752e-4e83-946f-0d5b040dc080",
+      "similarity": null,
+      "edge_type": "contradicts",
+      "revision_count": null
+    },
+    {
+      "kind": "edit_trail",
+      "from_memory_id": "e8831168-fa14-4ce7-af2e-5746a96a9288",
+      "to_memory_id": "e8831168-fa14-4ce7-af2e-5746a96a9288",
+      "similarity": null,
+      "edge_type": null,
+      "revision_count": 2
+    }
+  ],
+  "omitted_memory_ids": []
+}
