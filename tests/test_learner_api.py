@@ -605,7 +605,7 @@ async def test_background_retrain_crosses_authentic_floor_and_never_activates(
 async def test_real_compaction_worker_persists_background_inactive_winner(
     memory_session_factory: async_sessionmaker[AsyncSession],
 ) -> None:
-    """D.2 144/153: a real compaction event can propose but never activate a winner."""
+    """SPEC D.2 144/153: a compaction event can propose but never activate a winner."""
 
     await _reset_proposals(memory_session_factory)
     completed: asyncio.Queue[None] = asyncio.Queue()
