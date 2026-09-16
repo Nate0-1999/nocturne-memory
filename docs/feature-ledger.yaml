@@ -1578,9 +1578,9 @@
       "section": "5. Agent hands and location",
       "era": "founding",
       "label": "The Harness can live in the cloud and be reached from client machines, or run locally, or both, possibly in a VM beside the Palace, with an agent's file system moving between cloud and local easily.",
-      "status": "not built",
+      "status": "horizon",
       "walk": "Reach a cloud-run Harness from a client machine; the same threads and Palace are there.",
-      "owner": "owner — \"I envision a world where an agent has its own file system in the cloud and down to a local machine very easily.\" (first thread turn 14; first thread turn 13)",
+      "owner": "owner — \"I envision a world where an agent has its own file system in the cloud and down to a local machine very easily.\" (first thread turn 14; first thread turn 13) — HORIZON per B.4 (M4 fleet expansion / M5 blue-water), gate 2026-09-16",
       "surfaces": []
     },
     {
@@ -3333,9 +3333,9 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "founding",
       "label": "Blue-water mode: work offline on a local copy of the Palace, then on reconnect push the working directory and the agent's memory to the cloud and reconcile the two.",
-      "status": "not built",
+      "status": "horizon",
       "walk": "Save a memory with the network off, then reconnect and push; the cloud Palace shows that memory alongside what was saved there meanwhile.",
-      "owner": "owner — \"I have a local model that I am running on a locally on my machines hardware, I don't have internet because I am sailing: cached version of the memory object on my local hardware is looking as my long term memory. The sailboat and computer is rented. When I reach port I connect to the internet. I want to push the entire working directory and the agents memory into the cloud. How does this reconcile.\" (first thread turn 14)",
+      "owner": "owner — \"I have a local model that I am running on a locally on my machines hardware, I don't have internet because I am sailing: cached version of the memory object on my local hardware is looking as my long term memory. The sailboat and computer is rented. When I reach port I connect to the internet. I want to push the entire working directory and the agents memory into the cloud. How does this reconcile.\" (first thread turn 14) — HORIZON per B.4 (M4 fleet expansion / M5 blue-water), gate 2026-09-16",
       "surfaces": []
     },
     {
@@ -3558,9 +3558,9 @@
       "section": "13. Identity, safety and sharing",
       "era": "Jul 21",
       "label": "Combining people's Palaces: each user chooses which memories go into a new combined Palace for a shared project.",
-      "status": "not built",
+      "status": "horizon",
       "walk": "As one of two users, choose memories to combine into a new shared Palace; that Palace shows the chosen memories from both users.",
-      "owner": "owner — \"I also want there to be native functionality to combine peoples memory palaces. Different users can chose what memories to combine into a new memory palace so that different people working on the same project can have a combined memory palace as part of this.\" (chat 2026-07-21 17:07:36)",
+      "owner": "owner — \"I also want there to be native functionality to combine peoples memory palaces. Different users can chose what memories to combine into a new memory palace so that different people working on the same project can have a combined memory palace as part of this.\" (chat 2026-07-21 17:07:36) — HORIZON per B.4 (M4 fleet expansion / M5 blue-water), gate 2026-09-16",
       "surfaces": []
     },
     {
@@ -3628,9 +3628,9 @@
       "section": "14. Scheduling, automation and managed agents",
       "era": "founding",
       "label": "Managed agents: the harness in the cloud accessed from clients, or local, or both; an agent's file system moving between cloud and local easily.",
-      "status": "not built",
+      "status": "horizon",
       "walk": "Pull an agent's file system from the cloud down to a local machine; the agent continues its work there with the same files.",
-      "owner": "owner — \"The idea of \"managed agents\" are you familiar. Does it make sense for the entire harness to live in the cloud and we just access it from client machines or do you think that the local harness pattern makes sense. I would image that we might want both if local models become stronger.\" (first thread turn 13; first thread turn 14)",
+      "owner": "owner — \"The idea of \"managed agents\" are you familiar. Does it make sense for the entire harness to live in the cloud and we just access it from client machines or do you think that the local harness pattern makes sense. I would image that we might want both if local models become stronger.\" (first thread turn 13; first thread turn 14) — HORIZON per B.4 (M4 fleet expansion / M5 blue-water), gate 2026-09-16",
       "surfaces": []
     },
     {
