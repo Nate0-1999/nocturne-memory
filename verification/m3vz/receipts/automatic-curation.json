@@ -1,0 +1,167 @@
+{
+  "ts": "2026-09-16T19:58:16.528831+00:00",
+  "curation": {
+    "admitted_writes": 25,
+    "last_run_pressure": 0,
+    "last_run_writes": 25,
+    "latest_run": {
+      "admitted_writes_snapshot": 25,
+      "completed_at": "2026-09-16T19:58:13.670299Z",
+      "error": null,
+      "executed_count": 0,
+      "pressure_snapshot": 0,
+      "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+      "queued_count": 2,
+      "report": {
+        "active_units": 25,
+        "as_of": "2026-09-16T19:57:57.884160Z",
+        "clusters": [
+          [
+            "27de5f5a-d082-454b-bb63-2ec739045129",
+            "96da2b7a-30f0-4216-97a0-70ea00a32e98"
+          ],
+          [
+            "cf844805-50fa-4db3-bb8b-bce6320b77ec",
+            "f3d20e38-7d2e-4791-937c-9cefa6dfda94"
+          ]
+        ],
+        "corpus_revision": "07fdc8ab5e533a23cee6b5064d77c267994f06c15ce95c19fe8df89e424faa7d",
+        "findings": [
+          {
+            "evidence": {
+              "cosine": "0.847282767",
+              "memories": [
+                {
+                  "body": "Morning opening time for the verification greenhouse is 09:00.",
+                  "created_at": "2026-09-16T19:48:04.580755+00:00",
+                  "keywords": [
+                    "verification",
+                    "docs"
+                  ],
+                  "kind": "fact",
+                  "label": "Morning access",
+                  "memory_id": "27de5f5a-d082-454b-bb63-2ec739045129",
+                  "pin": false,
+                  "revision": 1,
+                  "stats": {
+                    "citations": 0,
+                    "injections": 0,
+                    "last_injected_at": null,
+                    "never_kills": 0,
+                    "removals": 0
+                  },
+                  "updated_at": "2026-09-16T19:48:04.580755+00:00"
+                },
+                {
+                  "body": "The verification greenhouse opens at nine each morning.",
+                  "created_at": "2026-09-16T19:48:04.097886+00:00",
+                  "keywords": [
+                    "verification",
+                    "docs"
+                  ],
+                  "kind": "fact",
+                  "label": "Greenhouse hours",
+                  "memory_id": "96da2b7a-30f0-4216-97a0-70ea00a32e98",
+                  "pin": false,
+                  "revision": 1,
+                  "stats": {
+                    "citations": 0,
+                    "injections": 0,
+                    "last_injected_at": null,
+                    "never_kills": 0,
+                    "removals": 0
+                  },
+                  "updated_at": "2026-09-16T19:48:04.097886+00:00"
+                }
+              ]
+            },
+            "fingerprint": "c9bc77ddcb90363ca8f560714d41fde5bcc38d68a9cda7b03523ef4cf9caf61f",
+            "kind": "duplicate",
+            "memory_ids": [
+              "27de5f5a-d082-454b-bb63-2ec739045129",
+              "96da2b7a-30f0-4216-97a0-70ea00a32e98"
+            ],
+            "ordinal": 0
+          },
+          {
+            "evidence": {
+              "cosine": "0.853111468",
+              "memories": [
+                {
+                  "body": "For calibration, retrieve the golden marker from the cabinet on the north wall.",
+                  "created_at": "2026-09-16T19:48:05.678585+00:00",
+                  "keywords": [
+                    "verification",
+                    "src"
+                  ],
+                  "kind": "fact",
+                  "label": "Marker retrieval",
+                  "memory_id": "cf844805-50fa-4db3-bb8b-bce6320b77ec",
+                  "pin": false,
+                  "revision": 1,
+                  "stats": {
+                    "citations": 0,
+                    "injections": 0,
+                    "last_injected_at": null,
+                    "never_kills": 0,
+                    "removals": 0
+                  },
+                  "updated_at": "2026-09-16T19:48:05.678585+00:00"
+                },
+                {
+                  "body": "The golden calibration marker is stored in the north cabinet.",
+                  "created_at": "2026-09-16T19:48:05.098493+00:00",
+                  "keywords": [
+                    "verification",
+                    "src"
+                  ],
+                  "kind": "fact",
+                  "label": "Calibration storage",
+                  "memory_id": "f3d20e38-7d2e-4791-937c-9cefa6dfda94",
+                  "pin": false,
+                  "revision": 1,
+                  "stats": {
+                    "citations": 0,
+                    "injections": 0,
+                    "last_injected_at": null,
+                    "never_kills": 0,
+                    "removals": 0
+                  },
+                  "updated_at": "2026-09-16T19:48:05.098493+00:00"
+                }
+              ]
+            },
+            "fingerprint": "4ca2cc192633e0a382b1036ddfc0d20adf92b17d5d1b8b58be1653458ed04a1d",
+            "kind": "duplicate",
+            "memory_ids": [
+              "cf844805-50fa-4db3-bb8b-bce6320b77ec",
+              "f3d20e38-7d2e-4791-937c-9cefa6dfda94"
+            ],
+            "ordinal": 1
+          }
+        ],
+        "format": "nocturne.palace-health",
+        "keyword_coverage_percent": "100.000",
+        "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+        "stats_delta": {
+          "merges": 0,
+          "reinforcements": 0,
+          "retirements": 0,
+          "revisions": 25
+        },
+        "version": "1"
+      },
+      "run_uid": "01M2NWR97WSEQFG6Q69ZRFSQ97",
+      "status": "completed",
+      "trigger": "writes",
+      "verdict_count": 2
+    },
+    "pending_cards": 2,
+    "pressure_events": 0,
+    "pressure_trigger_every": 3,
+    "pressure_until_run": 3,
+    "principal_id": "nocturne-deploy-verify-m3vz-cbd2f9c720",
+    "trigger_every": 25,
+    "writes_until_run": 25
+  }
+}

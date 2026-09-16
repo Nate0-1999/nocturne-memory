@@ -1337,7 +1337,11 @@
       "status": "partial",
       "walk": "Train on two projects; each project's effective weights differ from the global ones by its own offset.",
       "owner": "constitution",
-      "surfaces": ["spine/src/spine/learner/model.py", "spine/src/spine/learner/service.py", "spine/src/spine/inject/scorer.py"]
+      "surfaces": [
+        "spine/src/spine/learner/model.py",
+        "spine/src/spine/learner/service.py",
+        "spine/src/spine/inject/scorer.py"
+      ]
     },
     {
       "id": "FL-065",
@@ -2578,7 +2582,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Aug 15",
       "label": "Each main cube view as its own module with its own 3D asset.",
-      "status": "partial",
+      "status": "built",
       "walk": "Open the module library; the farm, the roots and the palace are three separate modules, each a three.js scene driven by real data, each looking the part (v2.119).",
       "owner": "owner — \"honestly I am thinking that we could at this point consider moving each of the main cube views into it's own module and make them their own 3d Assets.... Im not sure. Let's do 3d actually. I want it so be super liquid and smooth looking. We'll need to consider peoples hardware though.\" (chat 2026-08-15 19:37:48) — ruled 2026-09-15: \"3 different modules that are rendered seperately like we last said... they NEED to look really cool and be based on function and rendered in three js\"",
       "surfaces": [
@@ -2650,7 +2654,7 @@
       "section": "9. Visualization",
       "era": "founding",
       "label": "The ant farm: the whole directory tree as chambered burrows with files as cells, zoomable, floating on black with a faint grid, showing worktrees.",
-      "status": "partial",
+      "status": "built",
       "walk": "Open the ant farm; the whole directory's folders appear as chambers with files as cells, floating on black with a faint grid, and worktrees are visible.",
       "owner": "owner — \"I imagine that the anfarm is much more ant farm looking truly scoped to the whole directory that there are agents in.... there are empty chambers (files) etc. . we can scroll in and out to get close, it's floating in space like a solidworks object almost but the background is a black with faint white line grid.\" (chat 2026-07-20 17:30:44 (+ 16:49:44))",
       "surfaces": [
@@ -2701,7 +2705,7 @@
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "Roots: every parallel agent across projects gets a root-like, naturally meandering flow growing horizontally from roughly its agent's location, with dead roots for active loops, tips seen end-on as grids of starts in the next rotation, clustered by project on the view opposite the ant farm.",
-      "status": "partial",
+      "status": "built",
       "walk": "Run agents in parallel and open Roots; each has a meandering branch, width follows measured spend, depth follows time, forks join and stopped roots dry. Projects group together. The cube rotation was retired by v2.119.",
       "owner": "owner — \"The roots should grow out from the proper agent location, roughly i konw that the agents will move around so maybe just that region. So the roots should be growing horizontally.\" (chat 2026-07-20 17:42:24 (+ 17:30:44)) — on opacity, 2026-09-15: \"just make it look really sick\" (no value rule; v2.119)",
       "surfaces": [
@@ -2718,7 +2722,7 @@
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "A tree-search view reached by rotating the farm.",
-      "status": "partial",
+      "status": "built",
       "walk": "Select an agent in Farm and switch to Roots; the same selection survives. The switch replaces cube rotation under v2.119.",
       "owner": "owner — \"2. I rotate right and the ant farm rotates quickly to the mcts/roots view I see the different sub agents working fanned out for that agent standing out in the same colors and I see the other sub agents for different colors at low opacity around in the roots view as well.\" (chat 2026-07-20 17:15:32 (+ 16:49:44))",
       "surfaces": [
@@ -2755,7 +2759,7 @@
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "A time-order control that highlights new roots and moves the panels to the longest-waiting response.",
-      "status": "partial",
+      "status": "built",
       "walk": "Click the time-order control; new roots highlight and the side panels move to the longest-waiting response.",
       "owner": "owner — \"3. I click the left hand side to time order and the visulization highlights new roots and the left hand and right hand side visualizatoins adjust to the longest waiting response for a different project.\" (chat 2026-07-20 17:15:32)",
       "surfaces": [
@@ -2770,7 +2774,7 @@
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "A corner palace view with curators as ghosts moving through the database.",
-      "status": "partial",
+      "status": "built",
       "walk": "Open the separate Palace module during a real curator pass; ghost-like curators move between the feed's actual finding targets before the pass finishes.",
       "owner": "owner — \"The curator agents are manipulating it and updating it in real time. Combining memories, separating them, it should be tied to live feeds. The curators should look like ghosts from destiny.\" (chat 2026-07-20 17:30:44 (+ 17:15:32))",
       "surfaces": [
@@ -2789,7 +2793,7 @@
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "A way to see things being added or removed over time, as SolidWorks does, the project growing like an organic object.",
-      "status": "partial",
+      "status": "built",
       "walk": "Drag the rollback bar back; the visuals show what had been added or removed by that moment.",
       "owner": "owner — \"I think like solid works we can see things being added or removed with time right. The projects that the computer is workin on is an organic object that's almost alive...\" (chat 2026-07-20 17:34:14)",
       "surfaces": [

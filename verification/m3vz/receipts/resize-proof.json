@@ -1,0 +1,12 @@
+{
+  "before": {
+    "width": 24,
+    "height": 20
+  },
+  "after": {
+    "height": "81",
+    "width": "98"
+  },
+  "fixture": "M2ST4 REGRESSION",
+  "zoomed": true
+}
