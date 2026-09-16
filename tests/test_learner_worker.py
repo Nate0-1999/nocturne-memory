@@ -18,7 +18,7 @@ class _RecordingService:
 
 
 async def test_worker_waits_for_real_compaction_instead_of_startup_or_stride() -> None:
-    """D.2 144/153: no optimization before a main-thread compaction event."""
+    """SPEC D.2 144/153: no optimization before a main-thread compaction event."""
 
     service = _RecordingService()
     worker = LearnerWorker(service)  # type: ignore[arg-type]
