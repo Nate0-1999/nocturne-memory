@@ -370,6 +370,26 @@
         "title": "CommitResponse",
         "type": "object"
       },
+      "CompactionTrigger": {
+        "additionalProperties": false,
+        "properties": {
+          "event_uid": {
+            "title": "Event Uid",
+            "type": "string"
+          },
+          "thread_id": {
+            "format": "uuid",
+            "title": "Thread Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "event_uid",
+          "thread_id"
+        ],
+        "title": "CompactionTrigger",
+        "type": "object"
+      },
       "ContributionBreakdown": {
         "additionalProperties": false,
         "properties": {
@@ -6990,6 +7010,51 @@
         "summary": "Decide",
         "tags": [
           "approval-queue"
+        ]
+      }
+    },
+    "/v1/compactions": {
+      "post": {
+        "description": "Queue a main-thread entropy event without awaiting the optimizer.",
+        "operationId": "compaction_v1_compactions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompactionTrigger"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "StaticBearer": []
+          }
+        ],
+        "summary": "Compaction",
+        "tags": [
+          "learner"
         ]
       }
     },
