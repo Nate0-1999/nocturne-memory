@@ -2501,10 +2501,17 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Aug 24",
       "label": "Out Loud mode: responses are read aloud and listen-triggered dictation is a primary way in, equal to typing, not an add-on.",
-      "status": "not built",
+      "status": "built",
       "walk": "Toggle Out Loud; the answer is spoken; dictation fills the composer and sends on the trigger word.",
       "owner": "owner — \"I think the out loud is a primary optoin just like typing\" (chat 2026-09-12); \"Let's call this out loud mode.\" (chat 2026-08-24)",
-      "surfaces": []
+      "surfaces": [
+        "harness/web/src/OutLoud.tsx",
+        "harness/web/src/assets/out-loud.css",
+        "harness/web/src/App.tsx",
+        "harness/web/src/SymphonyDeck.tsx",
+        "harness/web/src/rack.tsx",
+        "harness/web/src/rackBridge.tsx"
+      ]
     },
     {
       "id": "FL-119",
