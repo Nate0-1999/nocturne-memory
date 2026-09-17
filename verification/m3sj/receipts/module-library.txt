@@ -1,0 +1,43 @@
+STAGE LIBRARY
+×
+
+Put any instrument back on this layer.
+
+ADD YOUR PLUGIN
+Plugin JSON file
+Or paste plugin JSON
+IMPORT PLUGIN
+
+Choose or paste a plugin JSON bundle.
+
+Channel Stack
+ON STAGE
+Conversation
+ADD ANOTHER
+Memory Palace
+ON STAGE
+Spend
+ADD ANOTHER
+Context Bars
+ADD ANOTHER
+Palace State
+ON STAGE
+Memory Graph
+ADD
+Palace
+ADD
+Farm
+ADD
+Roots
+ADD
+Injection Console
+ADD
+Memory Ingest
+ON STAGE
+Recipe
+ADD
+Jobs
+ADD
+REMOVED INSTRUMENTS
+Jobs
+RESTORE

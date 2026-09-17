@@ -1,0 +1,16 @@
+FILE_TRIGGER_PASS
+QUEUE_TRIGGER_PASS
+Traceback (most recent call last):
+  File "/private/tmp/m3sj-resume-verification/trigger_walk.py", line 24, in <module>
+    job=save('palace');queue=call('GET','/v1/approval-queue');assert queue['cards'];card=queue['cards'][0];assert card['candidate']['principal_id']=='nocturne-verification-d8b95a6b-7e55-412c-8cbf-7c779c00fc0a'
+        ^^^^^^^^^^^^^^
+  File "/private/tmp/m3sj-resume-verification/trigger_walk.py", line 10, in save
+    return call('POST','/v1/jobs',json={'definition':definition})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/m3sj-resume-verification/trigger_walk.py", line 7, in call
+    x=c.request(method,path,**kw);x.raise_for_status();return x.json()
+                                  ^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/m3sj-workspace/harness/.venv/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '409 Conflict' for url 'http://127.0.0.1:18976/v1/jobs'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/409

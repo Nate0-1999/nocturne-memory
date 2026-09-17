@@ -1,0 +1,21 @@
+NOCTURNE deploy plan: project=n8-memory-palace region=us-central1 sql=n8-memory-palace-db
+01. [NOOP] project: project n8-memory-palace is ACTIVE
+02. [NOOP] billing: the project billing link is enabled
+03. [NOOP] sql_foundation: Cloud SQL n8-memory-palace-db is the exact PostgreSQL 16 foundation
+04. [NOOP] sql_protection: backups, PITR, retention, and deletion protection is exact
+05. [NOOP] database: database spine is exact
+06. [NOOP] database_user: database user spine is exact
+07. [UPDATE] migrations: packaged Alembic migration head needs an allowed forward-only update
+08. [NOOP] database_url_secret: regional secret spine-database-url is exact
+09. [NOOP] spine_token_secret: regional secret spine-token is exact
+10. [NOOP] openrouter_secret: regional secret spine-openrouter-api-key is exact
+11. [NOOP] runtime_identity: dedicated service account spine-runtime is exact
+12. [NOOP] runtime_cloudsql_iam: service-scoped runtime Cloud SQL Client grant is exact
+13. [NOOP] runtime_database_secret_iam: runtime accessor grant on spine-database-url only is exact
+14. [NOOP] runtime_token_secret_iam: runtime accessor grant on spine-token only is exact
+15. [NOOP] runtime_openrouter_secret_iam: runtime accessor grant on spine-openrouter-api-key only is exact
+16. [NOOP] artifact_repository: regional immutable Docker repository spine is exact
+17. [CREATE] spine_image: immutable packaged Spine linux/amd64 image is absent
+18. [UPDATE] cloud_run_service: single Cloud Run service n8-memory-palace-spine needs an allowed forward-only update
+19. [UPDATE] remote_verification: authenticated /health and isolated typed round trip needs an allowed forward-only update
+20. [NOOP] billing_breaker: the complete D2 topology is armed and exact

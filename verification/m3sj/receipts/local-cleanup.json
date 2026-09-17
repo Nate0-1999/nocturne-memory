@@ -1,0 +1,11 @@
+{
+  "removed_sensitive_files": [
+    "/private/tmp/m3sj-resume-verification/home/env",
+    "/private/tmp/m3sj-resume-verification/home/cloud-credential-custody.json"
+  ],
+  "candidate_daemon_pid": 10152,
+  "public_daemon_pid": 41193,
+  "daemon_shutdown_requested": true,
+  "source_credentials_untouched": true,
+  "owner_home_untouched": true
+}

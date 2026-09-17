@@ -1,0 +1,237 @@
+{
+  "before": {
+    "jobs": [
+      {
+        "job_id": "01M2P2XWE12X3TT35K3WJ50Q1P",
+        "principal_id": "nocturne-verification-d8b95a6b-7e55-412c-8cbf-7c779c00fc0a",
+        "machine_id": "nocturne-75c25857-3175-47c4-b297-b0d307491888",
+        "definition": {
+          "cron": "* * * * *",
+          "name": "Folder readiness check",
+          "tools": "pydantic",
+          "folder": "/private/tmp/m3sj-resume-verification/workspace",
+          "prompt": "Use bash to write exactly M3SJ_READY followed by a newline to job-output.txt in this folder. Do not ask questions. Finish with a one-sentence result.",
+          "trigger": null,
+          "budget_usd": "0.03",
+          "memory_scope": "none",
+          "model_policy": "pinned:openrouter:openai/gpt-4.1-mini",
+          "trigger_path": null,
+          "exit_condition": "test \"$(cat job-output.txt)\" = M3SJ_READY"
+        },
+        "revision": 3,
+        "enabled": false,
+        "next_run_at": null,
+        "trigger_cursor": null,
+        "created_at": "2026-09-16T21:45:52.946299+00:00"
+      }
+    ],
+    "runs": [
+      {
+        "run_id": "01M2P2XWW2ZJWHPW073F0A80J5",
+        "job_id": "01M2P2XWE12X3TT35K3WJ50Q1P",
+        "thread_id": "b81c0e3f-977b-40dd-a5a6-cc6bf8f12419",
+        "trigger_key": "01M2P2XWW2ZJWHPW073F0A80J5",
+        "definition": {
+          "cron": null,
+          "name": "Folder readiness check",
+          "tools": "pydantic",
+          "folder": "/private/tmp/m3sj-resume-verification/workspace",
+          "prompt": "Use bash to write exactly M3SJ_READY followed by a newline to job-output.txt in this folder. Do not ask questions. Finish with a one-sentence result.",
+          "trigger": null,
+          "budget_usd": "0.03",
+          "memory_scope": "none",
+          "model_policy": "pinned:openrouter:openai/gpt-4.1-mini",
+          "trigger_path": null,
+          "exit_condition": "test \"$(cat job-output.txt)\" = M3SJ_READY"
+        },
+        "state": "completed",
+        "verdict": "Exit check passed.",
+        "started_at": "2026-09-16T21:45:53.393804+00:00",
+        "finished_at": "2026-09-16T21:46:03.222554+00:00",
+        "spend_usd": "0.001170000000",
+        "unpriced_lines": 0
+      },
+      {
+        "run_id": "01M2P2Y9WFFY5QV4P1Z9K3VB6Z",
+        "job_id": "01M2P2XWE12X3TT35K3WJ50Q1P",
+        "thread_id": "ba10ba13-6a92-410a-9d61-a8c8862b5580",
+        "trigger_key": "01M2P2Y9WFFY5QV4P1Z9K3VB6Z",
+        "definition": {
+          "cron": null,
+          "name": "Folder readiness check",
+          "tools": "pydantic",
+          "folder": "/private/tmp/m3sj-resume-verification/workspace",
+          "prompt": "Use bash to write exactly M3SJ_READY followed by a newline to job-output.txt in this folder. Do not ask questions. Finish with a one-sentence result.",
+          "trigger": null,
+          "budget_usd": "0.03",
+          "memory_scope": "none",
+          "model_policy": "pinned:openrouter:openai/gpt-4.1-mini",
+          "trigger_path": null,
+          "exit_condition": "test \"$(cat job-output.txt)\" = M3SJ_READY"
+        },
+        "state": "completed",
+        "verdict": "Exit check passed.",
+        "started_at": "2026-09-16T21:46:06.733020+00:00",
+        "finished_at": "2026-09-16T21:46:15.381826+00:00",
+        "spend_usd": "0.001068400000",
+        "unpriced_lines": 0
+      },
+      {
+        "run_id": "01M2P302CY647K73CRHXK1HMX1",
+        "job_id": "01M2P2XWE12X3TT35K3WJ50Q1P",
+        "thread_id": "3deee04d-45bf-4bc0-b76b-21c300b4c4f8",
+        "trigger_key": "2026-09-16T21:47:00+00:00",
+        "definition": {
+          "cron": "* * * * *",
+          "name": "Folder readiness check",
+          "tools": "pydantic",
+          "folder": "/private/tmp/m3sj-resume-verification/workspace",
+          "prompt": "Use bash to write exactly M3SJ_READY followed by a newline to job-output.txt in this folder. Do not ask questions. Finish with a one-sentence result.",
+          "trigger": null,
+          "budget_usd": "0.03",
+          "memory_scope": "none",
+          "model_policy": "pinned:openrouter:openai/gpt-4.1-mini",
+          "trigger_path": null,
+          "exit_condition": "test \"$(cat job-output.txt)\" = M3SJ_READY"
+        },
+        "state": "completed",
+        "verdict": "Exit check passed.",
+        "started_at": "2026-09-16T21:47:04.589887+00:00",
+        "finished_at": "2026-09-16T21:47:14.270005+00:00",
+        "spend_usd": "0.000723600000",
+        "unpriced_lines": 0
+      }
+    ],
+    "scheduler_error": null
+  },
+  "after": {
+    "jobs": [
+      {
+        "job_id": "01M2P2XWE12X3TT35K3WJ50Q1P",
+        "principal_id": "nocturne-verification-d8b95a6b-7e55-412c-8cbf-7c779c00fc0a",
+        "machine_id": "nocturne-75c25857-3175-47c4-b297-b0d307491888",
+        "definition": {
+          "cron": "* * * * *",
+          "name": "Folder readiness check",
+          "tools": "pydantic",
+          "folder": "/private/tmp/m3sj-resume-verification/workspace",
+          "prompt": "Use bash to write exactly M3SJ_READY followed by a newline to job-output.txt in this folder. Do not ask questions. Finish with a one-sentence result.",
+          "trigger": null,
+          "budget_usd": "0.03",
+          "memory_scope": "none",
+          "model_policy": "pinned:openrouter:openai/gpt-4.1-mini",
+          "trigger_path": null,
+          "exit_condition": "test \"$(cat job-output.txt)\" = M3SJ_READY"
+        },
+        "revision": 5,
+        "enabled": false,
+        "next_run_at": null,
+        "trigger_cursor": null,
+        "created_at": "2026-09-16T21:45:52.946299+00:00"
+      }
+    ],
+    "runs": [
+      {
+        "run_id": "01M2P2XWW2ZJWHPW073F0A80J5",
+        "job_id": "01M2P2XWE12X3TT35K3WJ50Q1P",
+        "thread_id": "b81c0e3f-977b-40dd-a5a6-cc6bf8f12419",
+        "trigger_key": "01M2P2XWW2ZJWHPW073F0A80J5",
+        "definition": {
+          "cron": null,
+          "name": "Folder readiness check",
+          "tools": "pydantic",
+          "folder": "/private/tmp/m3sj-resume-verification/workspace",
+          "prompt": "Use bash to write exactly M3SJ_READY followed by a newline to job-output.txt in this folder. Do not ask questions. Finish with a one-sentence result.",
+          "trigger": null,
+          "budget_usd": "0.03",
+          "memory_scope": "none",
+          "model_policy": "pinned:openrouter:openai/gpt-4.1-mini",
+          "trigger_path": null,
+          "exit_condition": "test \"$(cat job-output.txt)\" = M3SJ_READY"
+        },
+        "state": "completed",
+        "verdict": "Exit check passed.",
+        "started_at": "2026-09-16T21:45:53.393804+00:00",
+        "finished_at": "2026-09-16T21:46:03.222554+00:00",
+        "spend_usd": "0.001170000000",
+        "unpriced_lines": 0
+      },
+      {
+        "run_id": "01M2P2Y9WFFY5QV4P1Z9K3VB6Z",
+        "job_id": "01M2P2XWE12X3TT35K3WJ50Q1P",
+        "thread_id": "ba10ba13-6a92-410a-9d61-a8c8862b5580",
+        "trigger_key": "01M2P2Y9WFFY5QV4P1Z9K3VB6Z",
+        "definition": {
+          "cron": null,
+          "name": "Folder readiness check",
+          "tools": "pydantic",
+          "folder": "/private/tmp/m3sj-resume-verification/workspace",
+          "prompt": "Use bash to write exactly M3SJ_READY followed by a newline to job-output.txt in this folder. Do not ask questions. Finish with a one-sentence result.",
+          "trigger": null,
+          "budget_usd": "0.03",
+          "memory_scope": "none",
+          "model_policy": "pinned:openrouter:openai/gpt-4.1-mini",
+          "trigger_path": null,
+          "exit_condition": "test \"$(cat job-output.txt)\" = M3SJ_READY"
+        },
+        "state": "completed",
+        "verdict": "Exit check passed.",
+        "started_at": "2026-09-16T21:46:06.733020+00:00",
+        "finished_at": "2026-09-16T21:46:15.381826+00:00",
+        "spend_usd": "0.001068400000",
+        "unpriced_lines": 0
+      },
+      {
+        "run_id": "01M2P302CY647K73CRHXK1HMX1",
+        "job_id": "01M2P2XWE12X3TT35K3WJ50Q1P",
+        "thread_id": "3deee04d-45bf-4bc0-b76b-21c300b4c4f8",
+        "trigger_key": "2026-09-16T21:47:00+00:00",
+        "definition": {
+          "cron": "* * * * *",
+          "name": "Folder readiness check",
+          "tools": "pydantic",
+          "folder": "/private/tmp/m3sj-resume-verification/workspace",
+          "prompt": "Use bash to write exactly M3SJ_READY followed by a newline to job-output.txt in this folder. Do not ask questions. Finish with a one-sentence result.",
+          "trigger": null,
+          "budget_usd": "0.03",
+          "memory_scope": "none",
+          "model_policy": "pinned:openrouter:openai/gpt-4.1-mini",
+          "trigger_path": null,
+          "exit_condition": "test \"$(cat job-output.txt)\" = M3SJ_READY"
+        },
+        "state": "completed",
+        "verdict": "Exit check passed.",
+        "started_at": "2026-09-16T21:47:04.589887+00:00",
+        "finished_at": "2026-09-16T21:47:14.270005+00:00",
+        "spend_usd": "0.000723600000",
+        "unpriced_lines": 0
+      },
+      {
+        "run_id": "01M2P33KABN39STGF3Y68REMES",
+        "job_id": "01M2P2XWE12X3TT35K3WJ50Q1P",
+        "thread_id": "03069488-1b82-418f-8401-90d9421466af",
+        "trigger_key": "2026-09-16T21:49:00+00:00",
+        "definition": {
+          "cron": "* * * * *",
+          "name": "Folder readiness check",
+          "tools": "pydantic",
+          "folder": "/private/tmp/m3sj-resume-verification/workspace",
+          "prompt": "Use bash to write exactly M3SJ_READY followed by a newline to job-output.txt in this folder. Do not ask questions. Finish with a one-sentence result.",
+          "trigger": null,
+          "budget_usd": "0.03",
+          "memory_scope": "none",
+          "model_policy": "pinned:openrouter:openai/gpt-4.1-mini",
+          "trigger_path": null,
+          "exit_condition": "test \"$(cat job-output.txt)\" = M3SJ_READY"
+        },
+        "state": "completed",
+        "verdict": "Exit check passed.",
+        "started_at": "2026-09-16T21:49:00.214864+00:00",
+        "finished_at": "2026-09-16T21:49:07.292567+00:00",
+        "spend_usd": "0.000850000000",
+        "unpriced_lines": 0
+      }
+    ],
+    "scheduler_error": null
+  }
+}
