@@ -1,0 +1,80 @@
+{
+  "principal_id": "nocturne-verification-249be37a-3f3c-4211-bdec-5562569f181d",
+  "model": "openrouter:openai/gpt-4.1-mini",
+  "response": "M3TM live theme verification.",
+  "events": [
+    {
+      "agent_id": "nocturne",
+      "id": "01M2PACDNMJ5ADTYTWPS7MMBJY",
+      "machine_id": "nocturne-57756432-1257-4b7b-84d7-ea9d8d3ecbf1",
+      "payload": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "requests": 0,
+        "run_id": "01M2PAC6J6ZH9N91P6X7QFE1TB"
+      },
+      "thread_id": "d89262af-cfb5-4a3e-983c-d0c8ddf7d20c",
+      "ts": "2026-09-16T23:56:09.268161Z",
+      "type": "run.usage",
+      "v": 1
+    },
+    {
+      "agent_id": "nocturne",
+      "id": "01M2PACDNRZP0DPR25X3STCPRP",
+      "machine_id": "nocturne-57756432-1257-4b7b-84d7-ea9d8d3ecbf1",
+      "payload": {
+        "partial": false,
+        "run_id": "01M2PAC6J6ZH9N91P6X7QFE1TB",
+        "stop_reason": "end_turn"
+      },
+      "thread_id": "d89262af-cfb5-4a3e-983c-d0c8ddf7d20c",
+      "ts": "2026-09-16T23:56:09.272621Z",
+      "type": "run.done",
+      "v": 1
+    },
+    {
+      "agent_id": "nocturne",
+      "id": "01M2PAJNHSMRJFTBP6D54X9AKR",
+      "machine_id": "nocturne-57756432-1257-4b7b-84d7-ea9d8d3ecbf1",
+      "payload": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "requests": 1,
+        "run_id": "01M2PACD2E673324F90XMDERSD"
+      },
+      "thread_id": "d89262af-cfb5-4a3e-983c-d0c8ddf7d20c",
+      "ts": "2026-09-16T23:59:33.945273Z",
+      "type": "run.usage",
+      "v": 1
+    },
+    {
+      "agent_id": "nocturne",
+      "id": "01M2PAJP624NVHJ6JHTKCRQGX3",
+      "machine_id": "nocturne-57756432-1257-4b7b-84d7-ea9d8d3ecbf1",
+      "payload": {
+        "input_tokens": 2473,
+        "output_tokens": 41,
+        "requests": 1,
+        "run_id": "01M2PACD2E673324F90XMDERSD"
+      },
+      "thread_id": "d89262af-cfb5-4a3e-983c-d0c8ddf7d20c",
+      "ts": "2026-09-16T23:59:34.594432Z",
+      "type": "run.usage",
+      "v": 1
+    },
+    {
+      "agent_id": "nocturne",
+      "id": "01M2PAJP9A57H1CWSVVSD51YV5",
+      "machine_id": "nocturne-57756432-1257-4b7b-84d7-ea9d8d3ecbf1",
+      "payload": {
+        "partial": false,
+        "run_id": "01M2PACD2E673324F90XMDERSD",
+        "stop_reason": "end_turn"
+      },
+      "thread_id": "d89262af-cfb5-4a3e-983c-d0c8ddf7d20c",
+      "ts": "2026-09-16T23:59:34.698787Z",
+      "type": "run.done",
+      "v": 1
+    }
+  ]
+}
