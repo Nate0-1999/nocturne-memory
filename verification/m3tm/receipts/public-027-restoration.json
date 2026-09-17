@@ -1,0 +1,61 @@
+{
+  "versions": {
+    "nocturne-harness": "0.1.27",
+    "nocturne-memory": "0.1.27"
+  },
+  "installed_code": "/private/tmp/m3tm-public-after/lib/python3.12/site-packages/harness/__init__.py",
+  "prior_install_removed": true,
+  "same_principal": "nocturne-verification-f7b6456e-411c-4c69-91df-40d9c43f5a7f",
+  "same_machine": "nocturne-affae894-f9be-4e57-ae00-c94b09935ed8",
+  "thread_id": "3fb03367-bfb9-43d9-8a53-0afdf88db627",
+  "expected_response_present": true,
+  "run_events": [
+    {
+      "agent_id": "nocturne",
+      "id": "01M2PFGFKC3AZ9WTDW2X212592",
+      "machine_id": "nocturne-affae894-f9be-4e57-ae00-c94b09935ed8",
+      "payload": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "requests": 1,
+        "run_id": "01M2PFFJDB86WNGVECHFANYGZB"
+      },
+      "thread_id": "3fb03367-bfb9-43d9-8a53-0afdf88db627",
+      "ts": "2026-09-17T01:25:45.196206Z",
+      "type": "run.usage",
+      "v": 1
+    },
+    {
+      "agent_id": "nocturne",
+      "id": "01M2PFGG3K5NQEZ43PH7BYK1KY",
+      "machine_id": "nocturne-affae894-f9be-4e57-ae00-c94b09935ed8",
+      "payload": {
+        "input_tokens": 1144,
+        "output_tokens": 42,
+        "requests": 1,
+        "run_id": "01M2PFFJDB86WNGVECHFANYGZB"
+      },
+      "thread_id": "3fb03367-bfb9-43d9-8a53-0afdf88db627",
+      "ts": "2026-09-17T01:25:45.715811Z",
+      "type": "run.usage",
+      "v": 1
+    },
+    {
+      "agent_id": "nocturne",
+      "id": "01M2PFGG8FQ5EV6VVF891TM9V5",
+      "machine_id": "nocturne-affae894-f9be-4e57-ae00-c94b09935ed8",
+      "payload": {
+        "partial": false,
+        "run_id": "01M2PFFJDB86WNGVECHFANYGZB",
+        "stop_reason": "end_turn"
+      },
+      "thread_id": "3fb03367-bfb9-43d9-8a53-0afdf88db627",
+      "ts": "2026-09-17T01:25:45.872001Z",
+      "type": "run.done",
+      "v": 1
+    }
+  ],
+  "runtime": "public packaged factory on isolated port 8916 after standard command on port 8765 admitted an unrelated empty browser context",
+  "active_memories": 0,
+  "pending_cards": 0
+}

@@ -1,0 +1,9 @@
+{
+  "versions": {
+    "nocturne-harness": "0.1.27",
+    "nocturne-memory": "0.1.27"
+  },
+  "public_icon_sha256": "38fc064a9bb6fd9df3b54a31cc513b7180fb43d2d37e4c21f9feaab0922ba02d",
+  "repaired_icon_sha256": "7a15e27b8b7fbad3822fcf60f14736ba455e3058eda1c9b3e1f57b556bfc7e27",
+  "public_icon_is_repaired": false
+}
