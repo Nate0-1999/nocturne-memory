@@ -1,0 +1,11 @@
+{
+  "principal_id": "nocturne-verification-d8b95a6b-7e55-412c-8cbf-7c779c00fc0a",
+  "denied": [],
+  "tombstoned": [
+    "8c8b48d4-7fb0-47a9-a9ee-bf9c828dff87"
+  ],
+  "active_memories": 0,
+  "pending_cards": 0,
+  "paused_jobs": 5,
+  "terminal_runs": 7
+}

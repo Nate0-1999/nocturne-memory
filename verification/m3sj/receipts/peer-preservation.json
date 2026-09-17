@@ -1,0 +1,22 @@
+{
+  "web/src/Farm.tsx": {
+    "unchanged_from": "33eef0a",
+    "sha256": "fa204287b4916025e88f90bba273ad4940dbadce7698126f360317fe1b867aac"
+  },
+  "web/src/Roots.tsx": {
+    "unchanged_from": "33eef0a",
+    "sha256": "70c9d74c06a288d7bf32fb5b9c2fbbd4cb5b5cbe89c2fa2790aca14fd562c40a"
+  },
+  "web/src/WorkVisualization.tsx": {
+    "unchanged_from": "33eef0a",
+    "sha256": "5fd3291d3768a62bdd594586d57d5104500b0c62f6c1eeb87e1789977689aa1f"
+  },
+  "web/src/visualization.ts": {
+    "unchanged_from": "33eef0a",
+    "sha256": "4ad2511b6b86906d741911f4f6e7ff02461327295dff18d9484c26894c5b4699"
+  },
+  "src/harness/visualization.py": {
+    "unchanged_from": "33eef0a",
+    "sha256": "425b3ab5371f83f402f15d41b4c0bcb4e0af94274444962d39c22d18e9776a67"
+  }
+}

@@ -1,0 +1,1739 @@
+﻿2026-09-16T21:47:13.2601620Z Current runner version: '2.337.0'
+2026-09-16T21:47:13.2634138Z ##[group]Runner Image Provisioner
+2026-09-16T21:47:13.2635400Z Hosted Compute Agent
+2026-09-16T21:47:13.2636549Z Version: 20260828.587
+2026-09-16T21:47:13.2637614Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-09-16T21:47:13.2639277Z Build Date: 2026-08-28T16:44:25Z
+2026-09-16T21:47:13.2640483Z Worker ID: {aa284931-963d-4cf9-b3bd-c7f2817cc655}
+2026-09-16T21:47:13.2641650Z Azure Region: eastus
+2026-09-16T21:47:13.2642627Z ##[endgroup]
+2026-09-16T21:47:13.2645056Z ##[group]Operating System
+2026-09-16T21:47:13.2646116Z Ubuntu
+2026-09-16T21:47:13.2646950Z 24.04.5
+2026-09-16T21:47:13.2647875Z LTS
+2026-09-16T21:47:13.2649093Z ##[endgroup]
+2026-09-16T21:47:13.2649949Z ##[group]Runner Image
+2026-09-16T21:47:13.2651108Z Image: ubuntu-24.04
+2026-09-16T21:47:13.2652043Z Version: 20260907.300.1
+2026-09-16T21:47:13.2654182Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260907.300/images/ubuntu/Ubuntu2404-Readme.md
+2026-09-16T21:47:13.2656905Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260907.300
+2026-09-16T21:47:13.2658953Z ##[endgroup]
+2026-09-16T21:47:13.2660730Z ##[group]GITHUB_TOKEN Permissions
+2026-09-16T21:47:13.2663663Z Contents: read
+2026-09-16T21:47:13.2664765Z Metadata: read
+2026-09-16T21:47:13.2665742Z ##[endgroup]
+2026-09-16T21:47:13.2668882Z Secret source: Actions
+2026-09-16T21:47:13.2670436Z Cache mode: write
+2026-09-16T21:47:13.2671525Z Prepare workflow directory
+2026-09-16T21:47:13.3131142Z Prepare all required actions
+2026-09-16T21:47:13.3200714Z Getting action download info
+2026-09-16T21:47:13.5396350Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-09-16T21:47:13.6477591Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-09-16T21:47:13.8335223Z Complete job name: Python lint and tests
+2026-09-16T21:47:13.9100047Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-16T21:47:13.9108747Z ##[group]Run actions/checkout@v4
+2026-09-16T21:47:13.9109553Z with:
+2026-09-16T21:47:13.9110008Z   repository: Nate0-1999/nocturne-harness
+2026-09-16T21:47:13.9113756Z   token: ***
+2026-09-16T21:47:13.9114178Z   ssh-strict: true
+2026-09-16T21:47:13.9114608Z   ssh-user: git
+2026-09-16T21:47:13.9115047Z   persist-credentials: true
+2026-09-16T21:47:13.9115534Z   clean: true
+2026-09-16T21:47:13.9115971Z   sparse-checkout-cone-mode: true
+2026-09-16T21:47:13.9116489Z   fetch-depth: 1
+2026-09-16T21:47:13.9116913Z   fetch-tags: false
+2026-09-16T21:47:13.9117346Z   show-progress: true
+2026-09-16T21:47:13.9117776Z   lfs: false
+2026-09-16T21:47:13.9118217Z   submodules: false
+2026-09-16T21:47:13.9118824Z   set-safe-directory: true
+2026-09-16T21:47:13.9119326Z   allow-unsafe-pr-checkout: false
+2026-09-16T21:47:13.9120080Z ##[endgroup]
+2026-09-16T21:47:14.0085359Z Syncing repository: Nate0-1999/nocturne-harness
+2026-09-16T21:47:14.0087112Z ##[group]Getting Git version info
+2026-09-16T21:47:14.0088093Z Working directory is '/home/runner/work/nocturne-harness/nocturne-harness'
+2026-09-16T21:47:14.0089382Z [command]/usr/bin/git version
+2026-09-16T21:47:14.0178587Z git version 2.55.0
+2026-09-16T21:47:14.0199376Z ##[endgroup]
+2026-09-16T21:47:14.0213006Z Temporarily overriding HOME='/home/runner/work/_temp/57c9a801-1ade-4258-bd6b-f0d56e31a8c8' before making global git config changes
+2026-09-16T21:47:14.0215299Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-16T21:47:14.0218224Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/nocturne-harness/nocturne-harness
+2026-09-16T21:47:14.0269097Z Deleting the contents of '/home/runner/work/nocturne-harness/nocturne-harness'
+2026-09-16T21:47:14.0273686Z ##[group]Initializing the repository
+2026-09-16T21:47:14.0277320Z [command]/usr/bin/git init /home/runner/work/nocturne-harness/nocturne-harness
+2026-09-16T21:47:14.0399685Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-09-16T21:47:14.0401412Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-09-16T21:47:14.0402649Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-09-16T21:47:14.0403399Z hint: call:
+2026-09-16T21:47:14.0403794Z hint:
+2026-09-16T21:47:14.0404305Z hint: 	git config --global init.defaultBranch <name>
+2026-09-16T21:47:14.0404918Z hint:
+2026-09-16T21:47:14.0405497Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-09-16T21:47:14.0406413Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-09-16T21:47:14.0407144Z hint:
+2026-09-16T21:47:14.0407580Z hint: 	git branch -m <name>
+2026-09-16T21:47:14.0408052Z hint:
+2026-09-16T21:47:14.0409028Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-09-16T21:47:14.0414146Z Initialized empty Git repository in /home/runner/work/nocturne-harness/nocturne-harness/.git/
+2026-09-16T21:47:14.0423069Z [command]/usr/bin/git remote add origin https://github.com/Nate0-1999/nocturne-harness
+2026-09-16T21:47:14.0500906Z ##[endgroup]
+2026-09-16T21:47:14.0501756Z ##[group]Disabling automatic garbage collection
+2026-09-16T21:47:14.0504487Z [command]/usr/bin/git config --local gc.auto 0
+2026-09-16T21:47:14.0531726Z ##[endgroup]
+2026-09-16T21:47:14.0532867Z ##[group]Setting up auth
+2026-09-16T21:47:14.0537392Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-16T21:47:14.0567073Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-16T21:47:14.0929397Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-16T21:47:14.0958737Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-16T21:47:14.1173023Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-16T21:47:14.1203501Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-16T21:47:14.1416491Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-09-16T21:47:14.1448307Z ##[endgroup]
+2026-09-16T21:47:14.1450034Z ##[group]Fetching the repository
+2026-09-16T21:47:14.1457043Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +8809c084c38d5cd90e940ce2fd5abdb400ff46b0:refs/remotes/pull/24/merge
+2026-09-16T21:47:19.3413733Z From https://github.com/Nate0-1999/nocturne-harness
+2026-09-16T21:47:19.3415253Z  * [new ref]         8809c084c38d5cd90e940ce2fd5abdb400ff46b0 -> pull/24/merge
+2026-09-16T21:47:19.3418901Z ##[endgroup]
+2026-09-16T21:47:19.3420305Z ##[group]Determining the checkout info
+2026-09-16T21:47:19.3421697Z ##[endgroup]
+2026-09-16T21:47:19.3426572Z [command]/usr/bin/git sparse-checkout disable
+2026-09-16T21:47:19.3476691Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-09-16T21:47:19.3505672Z ##[group]Checking out the ref
+2026-09-16T21:47:19.3510719Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/24/merge
+2026-09-16T21:47:20.1483824Z Note: switching to 'refs/remotes/pull/24/merge'.
+2026-09-16T21:47:20.1485125Z 
+2026-09-16T21:47:20.1485655Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-09-16T21:47:20.1486724Z changes and commit them, and you can discard any commits you make in this
+2026-09-16T21:47:20.1487934Z state without impacting any branches by switching back to a branch.
+2026-09-16T21:47:20.1488913Z 
+2026-09-16T21:47:20.1489324Z If you want to create a new branch to retain commits you create, you may
+2026-09-16T21:47:20.1490231Z do so (now or later) by using -c with the switch command. Example:
+2026-09-16T21:47:20.1490706Z 
+2026-09-16T21:47:20.1490932Z   git switch -c <new-branch-name>
+2026-09-16T21:47:20.1491265Z 
+2026-09-16T21:47:20.1491498Z Or undo this operation with:
+2026-09-16T21:47:20.1491803Z 
+2026-09-16T21:47:20.1491997Z   git switch -
+2026-09-16T21:47:20.1492312Z 
+2026-09-16T21:47:20.1492768Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-09-16T21:47:20.1493330Z 
+2026-09-16T21:47:20.1493987Z HEAD is now at 8809c08 Merge fbd66f511fba9e873c748d4f15729f0c27f04fc8 into 33eef0af46a055585422b6d66a1e6e4cbf867918
+2026-09-16T21:47:20.1557925Z ##[endgroup]
+2026-09-16T21:47:20.1561544Z [command]/usr/bin/git log -1 --format=%H
+2026-09-16T21:47:20.1583679Z 8809c084c38d5cd90e940ce2fd5abdb400ff46b0
+2026-09-16T21:47:20.1930627Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-16T21:47:20.1932397Z ##[group]Run actions/checkout@v4
+2026-09-16T21:47:20.1932704Z with:
+2026-09-16T21:47:20.1932969Z   repository: Nate0-1999/nocturne-memory
+2026-09-16T21:47:20.1933316Z   ref: 9c3f19d6f21a96e4fdbf64c536543fc9e37d134e
+2026-09-16T21:47:20.1933656Z   path: _d3/spine
+2026-09-16T21:47:20.1933922Z   persist-credentials: false
+2026-09-16T21:47:20.1936477Z   token: ***
+2026-09-16T21:47:20.1936730Z   ssh-strict: true
+2026-09-16T21:47:20.1936979Z   ssh-user: git
+2026-09-16T21:47:20.1937217Z   clean: true
+2026-09-16T21:47:20.1937528Z   sparse-checkout-cone-mode: true
+2026-09-16T21:47:20.1937841Z   fetch-depth: 1
+2026-09-16T21:47:20.1938136Z   fetch-tags: false
+2026-09-16T21:47:20.1938396Z   show-progress: true
+2026-09-16T21:47:20.1938948Z   lfs: false
+2026-09-16T21:47:20.1939188Z   submodules: false
+2026-09-16T21:47:20.1939447Z   set-safe-directory: true
+2026-09-16T21:47:20.1939744Z   allow-unsafe-pr-checkout: false
+2026-09-16T21:47:20.1940051Z ##[endgroup]
+2026-09-16T21:47:20.2743026Z Syncing repository: Nate0-1999/nocturne-memory
+2026-09-16T21:47:20.2750743Z ##[group]Getting Git version info
+2026-09-16T21:47:20.2751349Z Working directory is '/home/runner/work/nocturne-harness/nocturne-harness/_d3/spine'
+2026-09-16T21:47:20.2786999Z [command]/usr/bin/git version
+2026-09-16T21:47:20.2821475Z git version 2.55.0
+2026-09-16T21:47:20.2842111Z ##[endgroup]
+2026-09-16T21:47:20.2853986Z Temporarily overriding HOME='/home/runner/work/_temp/8c18fba7-7932-435d-84df-50be717b0f0b' before making global git config changes
+2026-09-16T21:47:20.2854881Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-16T21:47:20.2860342Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/nocturne-harness/nocturne-harness/_d3/spine
+2026-09-16T21:47:20.2890411Z ##[group]Initializing the repository
+2026-09-16T21:47:20.2895014Z [command]/usr/bin/git init /home/runner/work/nocturne-harness/nocturne-harness/_d3/spine
+2026-09-16T21:47:20.2932562Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-09-16T21:47:20.2933810Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-09-16T21:47:20.2934935Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-09-16T21:47:20.2935745Z hint: call:
+2026-09-16T21:47:20.2936342Z hint:
+2026-09-16T21:47:20.2936915Z hint: 	git config --global init.defaultBranch <name>
+2026-09-16T21:47:20.2937359Z hint:
+2026-09-16T21:47:20.2937931Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-09-16T21:47:20.2939240Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-09-16T21:47:20.2940167Z hint:
+2026-09-16T21:47:20.2940479Z hint: 	git branch -m <name>
+2026-09-16T21:47:20.2940775Z hint:
+2026-09-16T21:47:20.2941190Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-09-16T21:47:20.2942009Z Initialized empty Git repository in /home/runner/work/nocturne-harness/nocturne-harness/_d3/spine/.git/
+2026-09-16T21:47:20.2945212Z [command]/usr/bin/git remote add origin https://github.com/Nate0-1999/nocturne-memory
+2026-09-16T21:47:20.2973831Z ##[endgroup]
+2026-09-16T21:47:20.2974352Z ##[group]Disabling automatic garbage collection
+2026-09-16T21:47:20.2979459Z [command]/usr/bin/git config --local gc.auto 0
+2026-09-16T21:47:20.3007647Z ##[endgroup]
+2026-09-16T21:47:20.3008748Z ##[group]Setting up auth
+2026-09-16T21:47:20.3014772Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-16T21:47:20.3044481Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-16T21:47:20.3262971Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-16T21:47:20.3295969Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-16T21:47:20.3511567Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-16T21:47:20.3540677Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-16T21:47:20.3754495Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-09-16T21:47:20.3786470Z ##[endgroup]
+2026-09-16T21:47:20.3787106Z ##[group]Fetching the repository
+2026-09-16T21:47:20.3796401Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 9c3f19d6f21a96e4fdbf64c536543fc9e37d134e
+2026-09-16T21:47:21.4806287Z From https://github.com/Nate0-1999/nocturne-memory
+2026-09-16T21:47:21.4807518Z  * branch            9c3f19d6f21a96e4fdbf64c536543fc9e37d134e -> FETCH_HEAD
+2026-09-16T21:47:21.4815375Z ##[endgroup]
+2026-09-16T21:47:21.4816411Z ##[group]Determining the checkout info
+2026-09-16T21:47:21.4817439Z ##[endgroup]
+2026-09-16T21:47:21.4821564Z [command]/usr/bin/git sparse-checkout disable
+2026-09-16T21:47:21.4860701Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-09-16T21:47:21.4892415Z ##[group]Checking out the ref
+2026-09-16T21:47:21.4892900Z [command]/usr/bin/git checkout --progress --force 9c3f19d6f21a96e4fdbf64c536543fc9e37d134e
+2026-09-16T21:47:21.6373326Z Note: switching to '9c3f19d6f21a96e4fdbf64c536543fc9e37d134e'.
+2026-09-16T21:47:21.6373677Z 
+2026-09-16T21:47:21.6373958Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-09-16T21:47:21.6374495Z changes and commit them, and you can discard any commits you make in this
+2026-09-16T21:47:21.6375003Z state without impacting any branches by switching back to a branch.
+2026-09-16T21:47:21.6375318Z 
+2026-09-16T21:47:21.6375559Z If you want to create a new branch to retain commits you create, you may
+2026-09-16T21:47:21.6376022Z do so (now or later) by using -c with the switch command. Example:
+2026-09-16T21:47:21.6376295Z 
+2026-09-16T21:47:21.6376408Z   git switch -c <new-branch-name>
+2026-09-16T21:47:21.6376594Z 
+2026-09-16T21:47:21.6376699Z Or undo this operation with:
+2026-09-16T21:47:21.6376870Z 
+2026-09-16T21:47:21.6376961Z   git switch -
+2026-09-16T21:47:21.6377115Z 
+2026-09-16T21:47:21.6378070Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-09-16T21:47:21.6379017Z 
+2026-09-16T21:47:21.6379269Z HEAD is now at 9c3f19d M3SJ: advance installed distribution assertion to 0.1.25
+2026-09-16T21:47:21.6386618Z ##[endgroup]
+2026-09-16T21:47:21.6425465Z [command]/usr/bin/git log -1 --format=%H
+2026-09-16T21:47:21.6447149Z 9c3f19d6f21a96e4fdbf64c536543fc9e37d134e
+2026-09-16T21:47:21.6456656Z ##[group]Removing auth
+2026-09-16T21:47:21.6460500Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-16T21:47:21.6489207Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-16T21:47:21.6702090Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-16T21:47:21.6725999Z http.https://github.com/.extraheader
+2026-09-16T21:47:21.6732952Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-09-16T21:47:21.6762595Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-16T21:47:21.6972274Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-16T21:47:21.6998918Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-16T21:47:21.7206458Z ##[endgroup]
+2026-09-16T21:47:21.7389800Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-16T21:47:21.7391095Z ##[group]Run actions/setup-python@v5
+2026-09-16T21:47:21.7391359Z with:
+2026-09-16T21:47:21.7391567Z   python-version: 3.12
+2026-09-16T21:47:21.7391789Z   cache: pip
+2026-09-16T21:47:21.7391990Z   check-latest: false
+2026-09-16T21:47:21.7394417Z   token: ***
+2026-09-16T21:47:21.7394653Z   update-environment: true
+2026-09-16T21:47:21.7394899Z   allow-prereleases: false
+2026-09-16T21:47:21.7395134Z   freethreaded: false
+2026-09-16T21:47:21.7395354Z ##[endgroup]
+2026-09-16T21:47:21.8689762Z ##[group]Installed versions
+2026-09-16T21:47:21.8789588Z (node:2455) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-09-16T21:47:21.8790484Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-16T21:47:21.8791504Z Successfully set up CPython (3.12.14)
+2026-09-16T21:47:21.8792400Z ##[endgroup]
+2026-09-16T21:47:22.1833241Z [command]/opt/hostedtoolcache/Python/3.12.14/x64/bin/pip cache dir
+2026-09-16T21:47:22.5160302Z /home/runner/.cache/pip
+2026-09-16T21:47:22.6036039Z Cache hit for: setup-python-Linux-x64-24.04-Ubuntu-python-3.12.14-pip-1a22dba8494a310ae5bc7389de28e96fb3c5cf99ce25b21c9f3b14bcc5750902
+2026-09-16T21:47:22.6137273Z (node:2455) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-09-16T21:47:23.0528319Z Received 61333967 of 61333967 (100.0%), 147.0 MBs/sec
+2026-09-16T21:47:23.0530067Z Cache Size: ~58 MB (61333967 B)
+2026-09-16T21:47:23.0566454Z [command]/usr/bin/tar -xf /home/runner/work/_temp/d02e2988-ee55-44be-b9ab-f651c6f5fd93/cache.tzst -P -C /home/runner/work/nocturne-harness/nocturne-harness --use-compress-program unzstd
+2026-09-16T21:47:23.2030926Z Cache restored successfully
+2026-09-16T21:47:23.2064219Z Cache restored from key: setup-python-Linux-x64-24.04-Ubuntu-python-3.12.14-pip-1a22dba8494a310ae5bc7389de28e96fb3c5cf99ce25b21c9f3b14bcc5750902
+2026-09-16T21:47:23.2239248Z ##[group]Run python -m pip install --upgrade pip uv
+2026-09-16T21:47:23.2239729Z [36;1mpython -m pip install --upgrade pip uv[0m
+2026-09-16T21:47:23.2240423Z [36;1muv export --frozen --extra dev --no-emit-project --no-emit-package nocturne-memory --no-hashes -o /tmp/harness-ci-constraints.txt[0m
+2026-09-16T21:47:23.2241412Z [36;1mpython -m pip install -c /tmp/harness-ci-constraints.txt ./_d3/spine -e ".[dev]"[0m
+2026-09-16T21:47:23.2283799Z shell: /usr/bin/bash -e {0}
+2026-09-16T21:47:23.2284071Z env:
+2026-09-16T21:47:23.2284349Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:23.2284820Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-09-16T21:47:23.2285273Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:23.2285668Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:23.2286054Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:23.2286476Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-09-16T21:47:23.2286808Z ##[endgroup]
+2026-09-16T21:47:23.7695517Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages (26.2.1)
+2026-09-16T21:47:24.1294073Z Collecting uv
+2026-09-16T21:47:24.1960167Z   Downloading uv-0.12.15-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+2026-09-16T21:47:24.2074405Z Downloading uv-0.12.15-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (20.1 MB)
+2026-09-16T21:47:24.3285465Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.1/20.1 MB 203.0 MB/s  0:00:00
+2026-09-16T21:47:24.3857895Z Installing collected packages: uv
+2026-09-16T21:47:24.5906010Z Successfully installed uv-0.12.15
+2026-09-16T21:47:24.6424678Z # This file was autogenerated by uv via the following command:
+2026-09-16T21:47:24.6425832Z #    uv export --frozen --extra dev --no-emit-project --no-emit-package nocturne-memory --no-hashes -o /tmp/harness-ci-constraints.txt
+2026-09-16T21:47:24.6426761Z aiofile==3.11.1
+2026-09-16T21:47:24.6427108Z     # via py-key-value-aio
+2026-09-16T21:47:24.6427469Z alembic==1.18.5
+2026-09-16T21:47:24.6427863Z     # via nocturne-memory
+2026-09-16T21:47:24.6428262Z annotated-doc==0.0.4
+2026-09-16T21:47:24.6428901Z     # via fastapi
+2026-09-16T21:47:24.6429126Z annotated-types==0.7.0
+2026-09-16T21:47:24.6429363Z     # via pydantic
+2026-09-16T21:47:24.6429577Z anthropic==1.6.0
+2026-09-16T21:47:24.6429796Z     # via pydantic-ai-slim
+2026-09-16T21:47:24.6430026Z anyio==4.14.2
+2026-09-16T21:47:24.6430222Z     # via
+2026-09-16T21:47:24.6430409Z     #   anthropic
+2026-09-16T21:47:24.6430617Z     #   google-genai
+2026-09-16T21:47:24.6430821Z     #   httpx
+2026-09-16T21:47:24.6431007Z     #   httpx2
+2026-09-16T21:47:24.6431203Z     #   mcp
+2026-09-16T21:47:24.6431416Z     #   openai
+2026-09-16T21:47:24.6431685Z     #   py-key-value-aio
+2026-09-16T21:47:24.6432320Z     #   pydantic-ai-slim
+2026-09-16T21:47:24.6432728Z     #   pydantic-evals
+2026-09-16T21:47:24.6433081Z     #   pydantic-graph
+2026-09-16T21:47:24.6433394Z     #   sse-starlette
+2026-09-16T21:47:24.6433771Z     #   starlette
+2026-09-16T21:47:24.6434121Z     #   watchfiles
+2026-09-16T21:47:24.6434472Z argcomplete==3.7.0
+2026-09-16T21:47:24.6434837Z     # via pydantic-ai-slim
+2026-09-16T21:47:24.6435237Z asyncpg==0.31.0
+2026-09-16T21:47:24.6435596Z     # via nocturne-memory
+2026-09-16T21:47:24.6435984Z attrs==26.1.0
+2026-09-16T21:47:24.6436305Z     # via
+2026-09-16T21:47:24.6436752Z     #   jsonschema
+2026-09-16T21:47:24.6437099Z     #   referencing
+2026-09-16T21:47:24.6437451Z authlib==1.7.2
+2026-09-16T21:47:24.6437789Z     # via fastmcp-slim
+2026-09-16T21:47:24.6438157Z beartype==0.22.9
+2026-09-16T21:47:24.6438694Z     # via py-key-value-aio
+2026-09-16T21:47:24.6439116Z cachetools==7.1.4
+2026-09-16T21:47:24.6439480Z     # via py-key-value-aio
+2026-09-16T21:47:24.6439779Z caio==0.9.25
+2026-09-16T21:47:24.6439968Z     # via aiofile
+2026-09-16T21:47:24.6440161Z certifi==2026.6.17
+2026-09-16T21:47:24.6440606Z     # via
+2026-09-16T21:47:24.6440795Z     #   httpcore
+2026-09-16T21:47:24.6440985Z     #   httpx
+2026-09-16T21:47:24.6441168Z     #   requests
+2026-09-16T21:47:24.6441437Z cffi==2.1.0 ; platform_python_implementation != 'PyPy'
+2026-09-16T21:47:24.6441898Z     # via cryptography
+2026-09-16T21:47:24.6442123Z charset-normalizer==3.4.9
+2026-09-16T21:47:24.6442348Z     # via requests
+2026-09-16T21:47:24.6442542Z click==8.4.2
+2026-09-16T21:47:24.6442734Z     # via uvicorn
+2026-09-16T21:47:24.6442948Z colorama==0.4.6 ; sys_platform == 'win32'
+2026-09-16T21:47:24.6462033Z     # via
+2026-09-16T21:47:24.6462265Z     #   click
+2026-09-16T21:47:24.6462481Z     #   pytest
+2026-09-16T21:47:24.6462699Z croniter==6.2.4
+2026-09-16T21:47:24.6462928Z     # via nocturne-memory
+2026-09-16T21:47:24.6463190Z cryptography==49.0.0
+2026-09-16T21:47:24.6463420Z     # via
+2026-09-16T21:47:24.6463609Z     #   authlib
+2026-09-16T21:47:24.6463807Z     #   google-auth
+2026-09-16T21:47:24.6464019Z     #   joserfc
+2026-09-16T21:47:24.6464306Z     #   pyjwt
+2026-09-16T21:47:24.6464508Z     #   secretstorage
+2026-09-16T21:47:24.6464716Z distro==1.9.0
+2026-09-16T21:47:24.6464913Z     # via google-genai
+2026-09-16T21:47:24.6465127Z dnspython==2.8.0
+2026-09-16T21:47:24.6465345Z     # via email-validator
+2026-09-16T21:47:24.6465607Z docstring-parser==0.18.0
+2026-09-16T21:47:24.6465841Z     # via anthropic
+2026-09-16T21:47:24.6466052Z email-validator==2.3.0
+2026-09-16T21:47:24.6466270Z     # via pydantic
+2026-09-16T21:47:24.6466481Z exceptiongroup==1.3.1
+2026-09-16T21:47:24.6466697Z     # via fastmcp-slim
+2026-09-16T21:47:24.6466908Z executing==2.2.1
+2026-09-16T21:47:24.6467113Z     # via logfire
+2026-09-16T21:47:24.6467321Z fastapi==0.139.2
+2026-09-16T21:47:24.6467514Z     # via
+2026-09-16T21:47:24.6467703Z     #   nocturne-harness
+2026-09-16T21:47:24.6467924Z     #   nocturne-memory
+2026-09-16T21:47:24.6468149Z fastmcp-slim==3.4.4
+2026-09-16T21:47:24.6468364Z     # via pydantic-ai-slim
+2026-09-16T21:47:24.6468922Z genai-prices==0.1.7
+2026-09-16T21:47:24.6469134Z     # via
+2026-09-16T21:47:24.6469338Z     #   pydantic-ai-harness
+2026-09-16T21:47:24.6469576Z     #   pydantic-ai-slim
+2026-09-16T21:47:24.6469798Z google-auth==2.58.0
+2026-09-16T21:47:24.6470002Z     # via google-genai
+2026-09-16T21:47:24.6470220Z google-genai==2.23.0
+2026-09-16T21:47:24.6470442Z     # via pydantic-ai-slim
+2026-09-16T21:47:24.6470688Z googleapis-common-protos==1.75.0
+2026-09-16T21:47:24.6470989Z     # via opentelemetry-exporter-otlp-proto-http
+2026-09-16T21:47:24.6471295Z greenlet==3.5.4
+2026-09-16T21:47:24.6471494Z     # via
+2026-09-16T21:47:24.6471677Z     #   playwright
+2026-09-16T21:47:24.6471877Z     #   sqlalchemy
+2026-09-16T21:47:24.6472076Z griffelib==2.1.0
+2026-09-16T21:47:24.6472287Z     # via pydantic-ai-slim
+2026-09-16T21:47:24.6472508Z h11==0.16.0
+2026-09-16T21:47:24.6472690Z     # via
+2026-09-16T21:47:24.6472871Z     #   httpcore
+2026-09-16T21:47:24.6473062Z     #   httpcore2
+2026-09-16T21:47:24.6473263Z     #   uvicorn
+2026-09-16T21:47:24.6473457Z httpcore==1.0.9
+2026-09-16T21:47:24.6473648Z     # via httpx
+2026-09-16T21:47:24.6473838Z httpcore2==2.7.0
+2026-09-16T21:47:24.6474029Z     # via httpx2
+2026-09-16T21:47:24.6474219Z httptools==0.8.0
+2026-09-16T21:47:24.6474408Z     # via uvicorn
+2026-09-16T21:47:24.6474602Z httpx==0.28.1
+2026-09-16T21:47:24.6474788Z     # via
+2026-09-16T21:47:24.6474976Z     #   fastmcp-slim
+2026-09-16T21:47:24.6475185Z     #   google-genai
+2026-09-16T21:47:24.6475380Z     #   mcp
+2026-09-16T21:47:24.6475573Z     #   nocturne-harness
+2026-09-16T21:47:24.6475801Z     #   nocturne-memory
+2026-09-16T21:47:24.6476029Z     #   pydantic-ai-harness
+2026-09-16T21:47:24.6476256Z httpx-sse==0.4.3
+2026-09-16T21:47:24.6476446Z     # via mcp
+2026-09-16T21:47:24.6476642Z httpx2==2.7.0
+2026-09-16T21:47:24.6476825Z     # via
+2026-09-16T21:47:24.6477004Z     #   anthropic
+2026-09-16T21:47:24.6477200Z     #   genai-prices
+2026-09-16T21:47:24.6477397Z     #   openai
+2026-09-16T21:47:24.6477595Z     #   pydantic-ai-slim
+2026-09-16T21:47:24.6477987Z idna==3.18
+2026-09-16T21:47:24.6478176Z     # via
+2026-09-16T21:47:24.6478354Z     #   anyio
+2026-09-16T21:47:24.6478789Z     #   email-validator
+2026-09-16T21:47:24.6479012Z     #   httpx
+2026-09-16T21:47:24.6479201Z     #   httpx2
+2026-09-16T21:47:24.6479385Z     #   requests
+2026-09-16T21:47:24.6479710Z iniconfig==2.3.0
+2026-09-16T21:47:24.6479905Z     # via pytest
+2026-09-16T21:47:24.6480106Z jaraco-classes==3.4.0
+2026-09-16T21:47:24.6480325Z     # via keyring
+2026-09-16T21:47:24.6480527Z jaraco-context==6.1.2
+2026-09-16T21:47:24.6480731Z     # via keyring
+2026-09-16T21:47:24.6480931Z jaraco-functools==4.6.0
+2026-09-16T21:47:24.6481150Z     # via keyring
+2026-09-16T21:47:24.6481363Z jeepney==0.9.0 ; sys_platform == 'linux'
+2026-09-16T21:47:24.6481623Z     # via
+2026-09-16T21:47:24.6481804Z     #   keyring
+2026-09-16T21:47:24.6482006Z     #   secretstorage
+2026-09-16T21:47:24.6482208Z jiter==0.16.0
+2026-09-16T21:47:24.6482391Z     # via
+2026-09-16T21:47:24.6482568Z     #   anthropic
+2026-09-16T21:47:24.6482762Z     #   openai
+2026-09-16T21:47:24.6482956Z joserfc==1.7.3
+2026-09-16T21:47:24.6483143Z     # via authlib
+2026-09-16T21:47:24.6483337Z jsonschema==4.26.0
+2026-09-16T21:47:24.6483533Z     # via mcp
+2026-09-16T21:47:24.6483749Z jsonschema-specifications==2025.9.1
+2026-09-16T21:47:24.6484015Z     # via jsonschema
+2026-09-16T21:47:24.6484219Z keyring==25.7.0
+2026-09-16T21:47:24.6484425Z     # via py-key-value-aio
+2026-09-16T21:47:24.6484648Z logfire==5.1.0
+2026-09-16T21:47:24.6484852Z     # via pydantic-ai-slim
+2026-09-16T21:47:24.6485079Z logfire-api==4.37.0
+2026-09-16T21:47:24.6485279Z     # via
+2026-09-16T21:47:24.6485464Z     #   pydantic-evals
+2026-09-16T21:47:24.6485683Z     #   pydantic-graph
+2026-09-16T21:47:24.6485892Z mako==1.3.12
+2026-09-16T21:47:24.6486077Z     # via alembic
+2026-09-16T21:47:24.6486278Z markdown-it-py==4.2.0
+2026-09-16T21:47:24.6486489Z     # via rich
+2026-09-16T21:47:24.6486676Z markupsafe==3.0.3
+2026-09-16T21:47:24.6486869Z     # via mako
+2026-09-16T21:47:24.6487056Z mcp==1.28.1
+2026-09-16T21:47:24.6487245Z     # via fastmcp-slim
+2026-09-16T21:47:24.6487452Z mdurl==0.1.2
+2026-09-16T21:47:24.6487646Z     # via markdown-it-py
+2026-09-16T21:47:24.6487873Z more-itertools==11.1.0
+2026-09-16T21:47:24.6488075Z     # via
+2026-09-16T21:47:24.6488265Z     #   jaraco-classes
+2026-09-16T21:47:24.6488758Z     #   jaraco-functools
+2026-09-16T21:47:24.6489031Z openai==3.14.1
+2026-09-16T21:47:24.6489238Z     # via pydantic-ai-slim
+2026-09-16T21:47:24.6489479Z opentelemetry-api==1.44.0
+2026-09-16T21:47:24.6489704Z     # via
+2026-09-16T21:47:24.6489887Z     #   fastmcp-slim
+2026-09-16T21:47:24.6490149Z     #   opentelemetry-exporter-otlp-proto-http
+2026-09-16T21:47:24.6490476Z     #   opentelemetry-instrumentation
+2026-09-16T21:47:24.6490781Z     #   opentelemetry-instrumentation-httpx
+2026-09-16T21:47:24.6491073Z     #   opentelemetry-sdk
+2026-09-16T21:47:24.6491327Z     #   opentelemetry-semantic-conventions
+2026-09-16T21:47:24.6491609Z     #   pydantic-ai-slim
+2026-09-16T21:47:24.6491902Z opentelemetry-exporter-otlp-proto-common==1.44.0
+2026-09-16T21:47:24.6492259Z     # via opentelemetry-exporter-otlp-proto-http
+2026-09-16T21:47:24.6492620Z opentelemetry-exporter-otlp-proto-http==1.44.0
+2026-09-16T21:47:24.6492920Z     # via logfire
+2026-09-16T21:47:24.6493154Z opentelemetry-instrumentation==0.65b0
+2026-09-16T21:47:24.6493415Z     # via
+2026-09-16T21:47:24.6493602Z     #   logfire
+2026-09-16T21:47:24.6493829Z     #   opentelemetry-instrumentation-httpx
+2026-09-16T21:47:24.6494149Z opentelemetry-instrumentation-httpx==0.65b0
+2026-09-16T21:47:24.6494424Z     # via
+2026-09-16T21:47:24.6494608Z     #   logfire
+2026-09-16T21:47:24.6494805Z     #   pydantic-ai-slim
+2026-09-16T21:47:24.6495044Z opentelemetry-proto==1.44.0
+2026-09-16T21:47:24.6495276Z     # via
+2026-09-16T21:47:24.6495504Z     #   opentelemetry-exporter-otlp-proto-common
+2026-09-16T21:47:24.6495851Z     #   opentelemetry-exporter-otlp-proto-http
+2026-09-16T21:47:24.6496155Z opentelemetry-sdk==1.44.0
+2026-09-16T21:47:24.6496507Z     # via
+2026-09-16T21:47:24.6496690Z     #   logfire
+2026-09-16T21:47:24.6496926Z     #   opentelemetry-exporter-otlp-proto-http
+2026-09-16T21:47:24.6497245Z opentelemetry-semantic-conventions==0.65b0
+2026-09-16T21:47:24.6497520Z     # via
+2026-09-16T21:47:24.6497722Z     #   opentelemetry-instrumentation
+2026-09-16T21:47:24.6498132Z     #   opentelemetry-instrumentation-httpx
+2026-09-16T21:47:24.6498610Z     #   opentelemetry-sdk
+2026-09-16T21:47:24.6499017Z opentelemetry-util-http==0.65b0
+2026-09-16T21:47:24.6499315Z     # via opentelemetry-instrumentation-httpx
+2026-09-16T21:47:24.6499604Z packaging==26.2
+2026-09-16T21:47:24.6499804Z     # via
+2026-09-16T21:47:24.6500009Z     #   opentelemetry-instrumentation
+2026-09-16T21:47:24.6500269Z     #   pytest
+2026-09-16T21:47:24.6500463Z pgvector==0.5.0
+2026-09-16T21:47:24.6500673Z     # via nocturne-memory
+2026-09-16T21:47:24.6500905Z platformdirs==4.10.0
+2026-09-16T21:47:24.6501123Z     # via fastmcp-slim
+2026-09-16T21:47:24.6501337Z playwright==1.62.0
+2026-09-16T21:47:24.6501562Z     # via nocturne-harness
+2026-09-16T21:47:24.6501785Z pluggy==1.6.0
+2026-09-16T21:47:24.6501982Z     # via pytest
+2026-09-16T21:47:24.6502192Z prompt-toolkit==3.0.52
+2026-09-16T21:47:24.6502415Z     # via pydantic-ai-slim
+2026-09-16T21:47:24.6502649Z protobuf==6.33.6
+2026-09-16T21:47:24.6502839Z     # via
+2026-09-16T21:47:24.6503042Z     #   googleapis-common-protos
+2026-09-16T21:47:24.6503290Z     #   logfire
+2026-09-16T21:47:24.6503499Z     #   opentelemetry-proto
+2026-09-16T21:47:24.6503741Z py-key-value-aio==0.4.5
+2026-09-16T21:47:24.6503965Z     # via fastmcp-slim
+2026-09-16T21:47:24.6504173Z pyasn1==0.6.4
+2026-09-16T21:47:24.6504378Z     # via pyasn1-modules
+2026-09-16T21:47:24.6504604Z pyasn1-modules==0.4.2
+2026-09-16T21:47:24.6504817Z     # via google-auth
+2026-09-16T21:47:24.6505203Z pycparser==3.0 ; implementation_name != 'PyPy' and platform_python_implementation != 'PyPy'
+2026-09-16T21:47:24.6505633Z     # via cffi
+2026-09-16T21:47:24.6505835Z pydantic==2.13.4
+2026-09-16T21:47:24.6506034Z     # via
+2026-09-16T21:47:24.6506218Z     #   anthropic
+2026-09-16T21:47:24.6506409Z     #   fastapi
+2026-09-16T21:47:24.6506607Z     #   fastmcp-slim
+2026-09-16T21:47:24.6506815Z     #   genai-prices
+2026-09-16T21:47:24.6507017Z     #   google-genai
+2026-09-16T21:47:24.6507217Z     #   mcp
+2026-09-16T21:47:24.6507415Z     #   nocturne-harness
+2026-09-16T21:47:24.6507641Z     #   nocturne-memory
+2026-09-16T21:47:24.6507847Z     #   openai
+2026-09-16T21:47:24.6508044Z     #   pydantic-ai-slim
+2026-09-16T21:47:24.6508263Z     #   pydantic-evals
+2026-09-16T21:47:24.6508725Z     #   pydantic-graph
+2026-09-16T21:47:24.6508960Z     #   pydantic-settings
+2026-09-16T21:47:24.6509192Z pydantic-ai==2.43.0
+2026-09-16T21:47:24.6509407Z     # via nocturne-harness
+2026-09-16T21:47:24.6509651Z pydantic-ai-harness==0.31.0
+2026-09-16T21:47:24.6509888Z     # via nocturne-harness
+2026-09-16T21:47:24.6510119Z pydantic-ai-slim==2.43.0
+2026-09-16T21:47:24.6510335Z     # via
+2026-09-16T21:47:24.6510524Z     #   pydantic-ai
+2026-09-16T21:47:24.6510742Z     #   pydantic-ai-harness
+2026-09-16T21:47:24.6510970Z     #   pydantic-evals
+2026-09-16T21:47:24.6511184Z pydantic-core==2.46.4
+2026-09-16T21:47:24.6511393Z     # via pydantic
+2026-09-16T21:47:24.6511603Z pydantic-evals==2.43.0
+2026-09-16T21:47:24.6511826Z     # via pydantic-ai-slim
+2026-09-16T21:47:24.6512054Z pydantic-graph==2.43.0
+2026-09-16T21:47:24.6512272Z     # via pydantic-ai-slim
+2026-09-16T21:47:24.6512508Z pydantic-settings==2.14.2
+2026-09-16T21:47:24.6512723Z     # via
+2026-09-16T21:47:24.6512905Z     #   fastmcp-slim
+2026-09-16T21:47:24.6513105Z     #   mcp
+2026-09-16T21:47:24.6513297Z     #   nocturne-harness
+2026-09-16T21:47:24.6513531Z     #   nocturne-memory
+2026-09-16T21:47:24.6513744Z pyee==13.0.1
+2026-09-16T21:47:24.6513939Z     # via playwright
+2026-09-16T21:47:24.6514146Z pygments==2.20.0
+2026-09-16T21:47:24.6514344Z     # via
+2026-09-16T21:47:24.6514519Z     #   pytest
+2026-09-16T21:47:24.6514702Z     #   rich
+2026-09-16T21:47:24.6515017Z pyjwt==2.13.0
+2026-09-16T21:47:24.6515212Z     # via mcp
+2026-09-16T21:47:24.6515402Z pyperclip==1.11.0
+2026-09-16T21:47:24.6515615Z     # via pydantic-ai-slim
+2026-09-16T21:47:24.6515845Z pytest==9.1.1
+2026-09-16T21:47:24.6516033Z     # via
+2026-09-16T21:47:24.6516228Z     #   nocturne-harness
+2026-09-16T21:47:24.6516564Z     #   pytest-asyncio
+2026-09-16T21:47:24.6516786Z pytest-asyncio==1.4.0
+2026-09-16T21:47:24.6517009Z     # via nocturne-harness
+2026-09-16T21:47:24.6517253Z python-dateutil==2.9.0.post0
+2026-09-16T21:47:24.6517524Z     # via croniter
+2026-09-16T21:47:24.6517730Z python-dotenv==1.2.2
+2026-09-16T21:47:24.6517932Z     # via
+2026-09-16T21:47:24.6518114Z     #   fastmcp-slim
+2026-09-16T21:47:24.6518340Z     #   pydantic-settings
+2026-09-16T21:47:24.6518700Z     #   uvicorn
+2026-09-16T21:47:24.6519080Z python-multipart==0.0.32
+2026-09-16T21:47:24.6519307Z     # via mcp
+2026-09-16T21:47:24.6519520Z pywin32==312 ; sys_platform == 'win32'
+2026-09-16T21:47:24.6519774Z     # via mcp
+2026-09-16T21:47:24.6520009Z pywin32-ctypes==0.2.3 ; sys_platform == 'win32'
+2026-09-16T21:47:24.6520298Z     # via keyring
+2026-09-16T21:47:24.6520496Z pyyaml==6.0.3
+2026-09-16T21:47:24.6520677Z     # via
+2026-09-16T21:47:24.6520865Z     #   pydantic-ai-harness
+2026-09-16T21:47:24.6521100Z     #   pydantic-ai-slim
+2026-09-16T21:47:24.6521326Z     #   pydantic-evals
+2026-09-16T21:47:24.6521534Z     #   uvicorn
+2026-09-16T21:47:24.6521721Z referencing==0.37.0
+2026-09-16T21:47:24.6521914Z     # via
+2026-09-16T21:47:24.6522088Z     #   jsonschema
+2026-09-16T21:47:24.6522304Z     #   jsonschema-specifications
+2026-09-16T21:47:24.6522549Z regex==2026.7.10
+2026-09-16T21:47:24.6522740Z     # via tiktoken
+2026-09-16T21:47:24.6522933Z requests==2.34.2
+2026-09-16T21:47:24.6523115Z     # via
+2026-09-16T21:47:24.6523294Z     #   google-auth
+2026-09-16T21:47:24.6523493Z     #   google-genai
+2026-09-16T21:47:24.6523754Z     #   opentelemetry-exporter-otlp-proto-http
+2026-09-16T21:47:24.6524040Z     #   tiktoken
+2026-09-16T21:47:24.6524232Z rich==15.0.0
+2026-09-16T21:47:24.6524412Z     # via
+2026-09-16T21:47:24.6524589Z     #   fastmcp-slim
+2026-09-16T21:47:24.6524789Z     #   logfire
+2026-09-16T21:47:24.6524989Z     #   pydantic-ai-slim
+2026-09-16T21:47:24.6525210Z     #   pydantic-evals
+2026-09-16T21:47:24.6525423Z rpds-py==2026.6.3
+2026-09-16T21:47:24.6525614Z     # via
+2026-09-16T21:47:24.6525791Z     #   jsonschema
+2026-09-16T21:47:24.6525986Z     #   referencing
+2026-09-16T21:47:24.6526180Z ruff==0.15.22
+2026-09-16T21:47:24.6526374Z     # via nocturne-harness
+2026-09-16T21:47:24.6526628Z secretstorage==3.5.0 ; sys_platform == 'linux'
+2026-09-16T21:47:24.6526908Z     # via keyring
+2026-09-16T21:47:24.6527096Z six==1.17.0
+2026-09-16T21:47:24.6527289Z     # via python-dateutil
+2026-09-16T21:47:24.6527505Z sniffio==1.3.1
+2026-09-16T21:47:24.6527693Z     # via
+2026-09-16T21:47:24.6527866Z     #   anthropic
+2026-09-16T21:47:24.6528057Z     #   google-genai
+2026-09-16T21:47:24.6528248Z     #   openai
+2026-09-16T21:47:24.6528646Z sqlalchemy==2.0.51
+2026-09-16T21:47:24.6528897Z     # via
+2026-09-16T21:47:24.6529072Z     #   alembic
+2026-09-16T21:47:24.6529273Z     #   nocturne-memory
+2026-09-16T21:47:24.6529493Z sse-starlette==3.4.5
+2026-09-16T21:47:24.6529699Z     # via mcp
+2026-09-16T21:47:24.6529882Z starlette==1.3.1
+2026-09-16T21:47:24.6530070Z     # via
+2026-09-16T21:47:24.6530241Z     #   fastapi
+2026-09-16T21:47:24.6530425Z     #   fastmcp-slim
+2026-09-16T21:47:24.6530625Z     #   mcp
+2026-09-16T21:47:24.6530814Z     #   pydantic-ai-slim
+2026-09-16T21:47:24.6531036Z     #   sse-starlette
+2026-09-16T21:47:24.6531252Z tenacity==9.1.4
+2026-09-16T21:47:24.6531450Z     # via google-genai
+2026-09-16T21:47:24.6531658Z tiktoken==0.13.0
+2026-09-16T21:47:24.6531847Z     # via
+2026-09-16T21:47:24.6532041Z     #   nocturne-memory
+2026-09-16T21:47:24.6532259Z     #   pydantic-ai-slim
+2026-09-16T21:47:24.6532479Z truststore==0.10.4
+2026-09-16T21:47:24.6532675Z     # via
+2026-09-16T21:47:24.6532856Z     #   httpcore2
+2026-09-16T21:47:24.6533045Z     #   httpx2
+2026-09-16T21:47:24.6533386Z typing-extensions==4.16.0
+2026-09-16T21:47:24.6533608Z     # via
+2026-09-16T21:47:24.6533782Z     #   alembic
+2026-09-16T21:47:24.6533971Z     #   anthropic
+2026-09-16T21:47:24.6534157Z     #   anyio
+2026-09-16T21:47:24.6534346Z     #   exceptiongroup
+2026-09-16T21:47:24.6534653Z     #   fastapi
+2026-09-16T21:47:24.6534846Z     #   fastmcp-slim
+2026-09-16T21:47:24.6535051Z     #   google-genai
+2026-09-16T21:47:24.6535246Z     #   httpx2
+2026-09-16T21:47:24.6535429Z     #   logfire
+2026-09-16T21:47:24.6535609Z     #   mcp
+2026-09-16T21:47:24.6535791Z     #   openai
+2026-09-16T21:47:24.6535988Z     #   opentelemetry-api
+2026-09-16T21:47:24.6536256Z     #   opentelemetry-exporter-otlp-proto-http
+2026-09-16T21:47:24.6536557Z     #   opentelemetry-sdk
+2026-09-16T21:47:24.6536813Z     #   opentelemetry-semantic-conventions
+2026-09-16T21:47:24.6537094Z     #   py-key-value-aio
+2026-09-16T21:47:24.6537309Z     #   pydantic
+2026-09-16T21:47:24.6537509Z     #   pydantic-core
+2026-09-16T21:47:24.6537720Z     #   pyee
+2026-09-16T21:47:24.6537910Z     #   pytest-asyncio
+2026-09-16T21:47:24.6538117Z     #   referencing
+2026-09-16T21:47:24.6538309Z     #   sqlalchemy
+2026-09-16T21:47:24.6538651Z     #   starlette
+2026-09-16T21:47:24.6538867Z     #   typing-inspection
+2026-09-16T21:47:24.6539105Z typing-inspection==0.4.2
+2026-09-16T21:47:24.6539320Z     # via
+2026-09-16T21:47:24.6539493Z     #   fastapi
+2026-09-16T21:47:24.6539683Z     #   mcp
+2026-09-16T21:47:24.6539860Z     #   pydantic
+2026-09-16T21:47:24.6540057Z     #   pydantic-ai-slim
+2026-09-16T21:47:24.6540278Z     #   pydantic-graph
+2026-09-16T21:47:24.6540501Z     #   pydantic-settings
+2026-09-16T21:47:24.6540719Z urllib3==2.7.0
+2026-09-16T21:47:24.6540911Z     # via requests
+2026-09-16T21:47:24.6541105Z uvicorn==0.51.0
+2026-09-16T21:47:24.6541291Z     # via
+2026-09-16T21:47:24.6541477Z     #   mcp
+2026-09-16T21:47:24.6541664Z     #   nocturne-harness
+2026-09-16T21:47:24.6541882Z     #   nocturne-memory
+2026-09-16T21:47:24.6542103Z     #   pydantic-ai-slim
+2026-09-16T21:47:24.6542569Z uvloop==0.22.1 ; platform_python_implementation != 'PyPy' and sys_platform != 'cygwin' and sys_platform != 'win32'
+2026-09-16T21:47:24.6543058Z     # via uvicorn
+2026-09-16T21:47:24.6543256Z watchfiles==1.2.0
+2026-09-16T21:47:24.6543452Z     # via uvicorn
+2026-09-16T21:47:24.6543645Z wcwidth==0.8.2
+2026-09-16T21:47:24.6543845Z     # via prompt-toolkit
+2026-09-16T21:47:24.6544063Z websockets==16.1
+2026-09-16T21:47:24.6544251Z     # via
+2026-09-16T21:47:24.6544432Z     #   google-genai
+2026-09-16T21:47:24.6544645Z     #   nocturne-harness
+2026-09-16T21:47:24.6544854Z     #   uvicorn
+2026-09-16T21:47:24.6545041Z wrapt==2.2.2
+2026-09-16T21:47:24.6545222Z     # via
+2026-09-16T21:47:24.6545432Z     #   opentelemetry-instrumentation
+2026-09-16T21:47:24.6545730Z     #   opentelemetry-instrumentation-httpx
+2026-09-16T21:47:24.9977754Z Processing ./_d3/spine
+2026-09-16T21:47:24.9999958Z   Installing build dependencies: started
+2026-09-16T21:47:25.5821918Z   Installing build dependencies: finished with status 'done'
+2026-09-16T21:47:25.5828159Z   Getting requirements to build wheel: started
+2026-09-16T21:47:25.7301358Z   Getting requirements to build wheel: finished with status 'done'
+2026-09-16T21:47:25.7309653Z   Preparing metadata (pyproject.toml): started
+2026-09-16T21:47:25.9502418Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-09-16T21:47:25.9526170Z Obtaining file:///home/runner/work/nocturne-harness/nocturne-harness
+2026-09-16T21:47:25.9543186Z   Installing build dependencies: started
+2026-09-16T21:47:26.4499615Z   Installing build dependencies: finished with status 'done'
+2026-09-16T21:47:26.4504442Z   Checking if build backend supports build_editable: started
+2026-09-16T21:47:26.4890900Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-09-16T21:47:26.4897699Z   Getting requirements to build editable: started
+2026-09-16T21:47:26.6345725Z   Getting requirements to build editable: finished with status 'done'
+2026-09-16T21:47:26.6358624Z   Installing backend dependencies: started
+2026-09-16T21:47:27.0571927Z   Installing backend dependencies: finished with status 'done'
+2026-09-16T21:47:27.0578019Z   Preparing editable metadata (pyproject.toml): started
+2026-09-16T21:47:27.2985615Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-09-16T21:47:27.3714013Z Collecting alembic<2,>=1.13 (from nocturne-memory==0.1.25)
+2026-09-16T21:47:27.4162407Z   Downloading alembic-1.18.5-py3-none-any.whl.metadata (7.2 kB)
+2026-09-16T21:47:27.4628132Z Collecting asyncpg<1,>=0.29 (from nocturne-memory==0.1.25)
+2026-09-16T21:47:27.4640231Z   Using cached asyncpg-0.31.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (4.4 kB)
+2026-09-16T21:47:27.4792987Z Collecting croniter<7,>=6.2.2 (from nocturne-memory==0.1.25)
+2026-09-16T21:47:27.4822760Z   Downloading croniter-6.2.4-py3-none-any.whl.metadata (23 kB)
+2026-09-16T21:47:27.5223928Z Collecting fastapi<1,>=0.115 (from nocturne-memory==0.1.25)
+2026-09-16T21:47:27.5258735Z   Downloading fastapi-0.139.2-py3-none-any.whl.metadata (26 kB)
+2026-09-16T21:47:27.5476058Z Collecting httpx<1,>=0.27 (from nocturne-memory==0.1.25)
+2026-09-16T21:47:27.5488843Z   Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+2026-09-16T21:47:27.5588932Z Collecting pgvector<1,>=0.3 (from nocturne-memory==0.1.25)
+2026-09-16T21:47:27.5601377Z   Using cached pgvector-0.5.0-py3-none-any.whl.metadata (19 kB)
+2026-09-16T21:47:27.5724032Z Collecting pydantic-settings<3,>=2 (from nocturne-memory==0.1.25)
+2026-09-16T21:47:27.5755267Z   Downloading pydantic_settings-2.14.2-py3-none-any.whl.metadata (3.4 kB)
+2026-09-16T21:47:27.6719820Z Collecting pydantic<3,>=2 (from nocturne-memory==0.1.25)
+2026-09-16T21:47:27.6731660Z   Using cached pydantic-2.13.4-py3-none-any.whl.metadata (109 kB)
+2026-09-16T21:47:27.9242852Z Collecting sqlalchemy<3,>=2 (from sqlalchemy[asyncio]<3,>=2->nocturne-memory==0.1.25)
+2026-09-16T21:47:27.9288154Z   Downloading sqlalchemy-2.0.51-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.5 kB)
+2026-09-16T21:47:27.9704510Z Collecting tiktoken<1,>=0.9 (from nocturne-memory==0.1.25)
+2026-09-16T21:47:27.9791379Z   Downloading tiktoken-0.13.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (6.7 kB)
+2026-09-16T21:47:28.0031664Z Collecting uvicorn<1,>=0.30 (from uvicorn[standard]<1,>=0.30->nocturne-memory==0.1.25)
+2026-09-16T21:47:28.0087552Z   Downloading uvicorn-0.51.0-py3-none-any.whl.metadata (6.6 kB)
+2026-09-16T21:47:28.0426427Z Collecting playwright==1.62.0 (from nocturne-harness==0.1.25)
+2026-09-16T21:47:28.0460203Z   Downloading playwright-1.62.0-py3-none-manylinux1_x86_64.whl.metadata (3.3 kB)
+2026-09-16T21:47:28.0594322Z Collecting pydantic-ai-harness==0.31.0 (from pydantic-ai-harness[skills]==0.31.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:28.0644377Z   Downloading pydantic_ai_harness-0.31.0-py3-none-any.whl.metadata (29 kB)
+2026-09-16T21:47:28.1056943Z Collecting pydantic-ai==2.43.0 (from nocturne-harness==0.1.25)
+2026-09-16T21:47:28.1115717Z   Downloading pydantic_ai-2.43.0-py3-none-any.whl.metadata (25 kB)
+2026-09-16T21:47:28.2292992Z Collecting websockets<17,>=14 (from nocturne-harness==0.1.25)
+2026-09-16T21:47:28.2355262Z   Downloading websockets-16.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.8 kB)
+2026-09-16T21:47:28.2575342Z Collecting pytest-asyncio<2,>=0.25 (from nocturne-harness==0.1.25)
+2026-09-16T21:47:28.2587522Z   Using cached pytest_asyncio-1.4.0-py3-none-any.whl.metadata (4.1 kB)
+2026-09-16T21:47:28.2804793Z Collecting pytest<10,>=8.3 (from nocturne-harness==0.1.25)
+2026-09-16T21:47:28.2816696Z   Using cached pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+2026-09-16T21:47:28.5789029Z Collecting ruff<1,>=0.9 (from nocturne-harness==0.1.25)
+2026-09-16T21:47:28.5823654Z   Downloading ruff-0.15.22-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (26 kB)
+2026-09-16T21:47:28.5987743Z Collecting pyee<14,>=13 (from playwright==1.62.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:28.6019662Z   Downloading pyee-13.0.1-py3-none-any.whl.metadata (3.0 kB)
+2026-09-16T21:47:28.7334602Z Collecting greenlet<4.0.0,>=3.1.1 (from playwright==1.62.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:28.7383090Z   Downloading greenlet-3.5.4-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+2026-09-16T21:47:28.7745138Z Collecting pydantic-ai-slim==2.43.0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:28.7782692Z   Downloading pydantic_ai_slim-2.43.0-py3-none-any.whl.metadata (7.3 kB)
+2026-09-16T21:47:28.8054866Z Collecting genai-prices>=0.0.71 (from pydantic-ai-harness==0.31.0->pydantic-ai-harness[skills]==0.31.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:28.8098375Z   Downloading genai_prices-0.1.7-py3-none-any.whl.metadata (10 kB)
+2026-09-16T21:47:28.8649717Z Collecting pyyaml>=6.0.2 (from pydantic-ai-harness[skills]==0.31.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:28.8661861Z   Using cached pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2026-09-16T21:47:28.8815563Z Collecting anyio>=4.7.0 (from pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:28.8827306Z   Using cached anyio-4.14.2-py3-none-any.whl.metadata (4.6 kB)
+2026-09-16T21:47:28.8927021Z Collecting griffelib>=2.0 (from pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:28.8973416Z   Downloading griffelib-2.1.0-py3-none-any.whl.metadata (1.3 kB)
+2026-09-16T21:47:28.9098158Z Collecting httpx2>=2.7 (from pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:28.9130138Z   Downloading httpx2-2.7.0-py3-none-any.whl.metadata (8.4 kB)
+2026-09-16T21:47:28.9307265Z Collecting opentelemetry-api>=1.28.0 (from pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:28.9318845Z   Using cached opentelemetry_api-1.44.0-py3-none-any.whl.metadata (1.4 kB)
+2026-09-16T21:47:28.9637676Z Collecting pydantic-graph==2.43.0 (from pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:28.9677403Z   Downloading pydantic_graph-2.43.0-py3-none-any.whl.metadata (4.2 kB)
+2026-09-16T21:47:28.9798096Z Collecting typing-inspection>=0.4.0 (from pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:28.9827340Z   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+2026-09-16T21:47:29.0130225Z Collecting anthropic>=1.3.0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.0165411Z   Downloading anthropic-1.6.0-py3-none-any.whl.metadata (3.3 kB)
+2026-09-16T21:47:29.0348439Z Collecting argcomplete>=3.5.0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.0380713Z   Downloading argcomplete-3.7.0-py3-none-any.whl.metadata (16 kB)
+2026-09-16T21:47:29.0605179Z Collecting prompt-toolkit>=3 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.0644667Z   Downloading prompt_toolkit-3.0.52-py3-none-any.whl.metadata (6.4 kB)
+2026-09-16T21:47:29.0777639Z Collecting pyperclip>=1.9.0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.0789609Z   Using cached pyperclip-1.11.0-py3-none-any.whl.metadata (2.4 kB)
+2026-09-16T21:47:29.1033528Z Collecting rich>=13 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.1045258Z   Using cached rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+2026-09-16T21:47:29.1355010Z Collecting pydantic-evals==2.43.0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.1416765Z   Downloading pydantic_evals-2.43.0-py3-none-any.whl.metadata (8.0 kB)
+2026-09-16T21:47:29.1620944Z Collecting google-genai>=2.18.0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.1653788Z   Downloading google_genai-2.23.0-py3-none-any.whl.metadata (56 kB)
+2026-09-16T21:47:29.1960300Z Collecting logfire>=4.39.0 (from logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.2027900Z   Downloading logfire-5.1.0-py3-none-any.whl.metadata (11 kB)
+2026-09-16T21:47:29.2248157Z Collecting opentelemetry-instrumentation-httpx>=0.65b0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.2260221Z   Using cached opentelemetry_instrumentation_httpx-0.65b0-py3-none-any.whl.metadata (9.0 kB)
+2026-09-16T21:47:29.2379009Z Collecting fastmcp-slim<5,>=3.3.0 (from fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.2468709Z   Downloading fastmcp_slim-3.4.4-py3-none-any.whl.metadata (10 kB)
+2026-09-16T21:47:29.2937450Z Collecting openai>=3.8.0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.2971731Z   Downloading openai-3.14.1-py3-none-any.whl.metadata (43 kB)
+2026-09-16T21:47:29.3220956Z Collecting starlette>=1.3.1 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.3252077Z   Downloading starlette-1.3.1-py3-none-any.whl.metadata (6.4 kB)
+2026-09-16T21:47:29.3489734Z Collecting logfire-api>=3.14.1 (from pydantic-evals==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.3542318Z   Downloading logfire_api-4.37.0-py3-none-any.whl.metadata (973 bytes)
+2026-09-16T21:47:29.3711926Z Collecting Mako (from alembic<2,>=1.13->nocturne-memory==0.1.25)
+2026-09-16T21:47:29.3742032Z   Downloading mako-1.3.12-py3-none-any.whl.metadata (2.9 kB)
+2026-09-16T21:47:29.3878249Z Collecting typing-extensions>=4.12 (from alembic<2,>=1.13->nocturne-memory==0.1.25)
+2026-09-16T21:47:29.3890224Z   Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-09-16T21:47:29.4005091Z Collecting python-dateutil (from croniter<7,>=6.2.2->nocturne-memory==0.1.25)
+2026-09-16T21:47:29.4038582Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+2026-09-16T21:47:29.4172194Z Collecting annotated-doc>=0.0.2 (from fastapi<1,>=0.115->nocturne-memory==0.1.25)
+2026-09-16T21:47:29.4203396Z   Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+2026-09-16T21:47:29.4396035Z Collecting platformdirs>=4.0.0 (from fastmcp-slim<5,>=3.3.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.4429947Z   Downloading platformdirs-4.10.0-py3-none-any.whl.metadata (5.5 kB)
+2026-09-16T21:47:29.4581767Z Collecting python-dotenv>=1.1.0 (from fastmcp-slim<5,>=3.3.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.4612880Z   Downloading python_dotenv-1.2.2-py3-none-any.whl.metadata (27 kB)
+2026-09-16T21:47:29.4807855Z Collecting authlib>=1.6.11 (from fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.4818843Z   Using cached authlib-1.7.2-py2.py3-none-any.whl.metadata (10 kB)
+2026-09-16T21:47:29.4945925Z Collecting exceptiongroup>=1.2.2 (from fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.4962158Z   Using cached exceptiongroup-1.3.1-py3-none-any.whl.metadata (6.7 kB)
+2026-09-16T21:47:29.5121647Z Collecting mcp<2.0,>=1.24.0 (from fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.5192228Z   Downloading mcp-1.28.1-py3-none-any.whl.metadata (9.4 kB)
+2026-09-16T21:47:29.5322508Z Collecting py-key-value-aio<0.5.0,>=0.4.4 (from py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.5332983Z   Using cached py_key_value_aio-0.4.5-py3-none-any.whl.metadata (16 kB)
+2026-09-16T21:47:29.5554530Z Collecting certifi (from httpx<1,>=0.27->nocturne-memory==0.1.25)
+2026-09-16T21:47:29.5584326Z   Downloading certifi-2026.6.17-py3-none-any.whl.metadata (2.5 kB)
+2026-09-16T21:47:29.5718731Z Collecting httpcore==1.* (from httpx<1,>=0.27->nocturne-memory==0.1.25)
+2026-09-16T21:47:29.5730733Z   Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+2026-09-16T21:47:29.5845035Z Collecting idna (from httpx<1,>=0.27->nocturne-memory==0.1.25)
+2026-09-16T21:47:29.5876019Z   Downloading idna-3.18-py3-none-any.whl.metadata (6.1 kB)
+2026-09-16T21:47:29.5988465Z Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.27->nocturne-memory==0.1.25)
+2026-09-16T21:47:29.6000623Z   Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2026-09-16T21:47:29.6099341Z Collecting httpx-sse>=0.4 (from mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.6110950Z   Using cached httpx_sse-0.4.3-py3-none-any.whl.metadata (9.7 kB)
+2026-09-16T21:47:29.6284500Z Collecting jsonschema>=4.20.0 (from mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.6295676Z   Using cached jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+2026-09-16T21:47:29.6478412Z Collecting pyjwt>=2.10.1 (from pyjwt[crypto]>=2.10.1->mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.6490471Z   Using cached pyjwt-2.13.0-py3-none-any.whl.metadata (3.4 kB)
+2026-09-16T21:47:29.6599166Z Collecting python-multipart>=0.0.9 (from mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.6611168Z   Using cached python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+2026-09-16T21:47:29.6753892Z Collecting sse-starlette>=1.6.1 (from mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.6803414Z   Downloading sse_starlette-3.4.5-py3-none-any.whl.metadata (15 kB)
+2026-09-16T21:47:29.7021996Z Collecting beartype>=0.20.0 (from py-key-value-aio<0.5.0,>=0.4.4->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.7033620Z   Using cached beartype-0.22.9-py3-none-any.whl.metadata (37 kB)
+2026-09-16T21:47:29.7338355Z Collecting aiofile>=3.5.0 (from py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.7376973Z   Downloading aiofile-3.11.1-py3-none-any.whl.metadata (14 kB)
+2026-09-16T21:47:29.7624104Z Collecting keyring>=25.6.0 (from py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.7635503Z   Using cached keyring-25.7.0-py3-none-any.whl.metadata (21 kB)
+2026-09-16T21:47:29.7898930Z Collecting cachetools>=5.0.0 (from py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:29.7943855Z   Downloading cachetools-7.1.4-py3-none-any.whl.metadata (5.5 kB)
+2026-09-16T21:47:29.8059463Z Collecting annotated-types>=0.6.0 (from pydantic<3,>=2->nocturne-memory==0.1.25)
+2026-09-16T21:47:29.8106274Z   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+2026-09-16T21:47:30.4403307Z Collecting pydantic-core==2.46.4 (from pydantic<3,>=2->nocturne-memory==0.1.25)
+2026-09-16T21:47:30.4417551Z   Using cached pydantic_core-2.46.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+2026-09-16T21:47:30.4576688Z Collecting iniconfig>=1.0.1 (from pytest<10,>=8.3->nocturne-harness==0.1.25)
+2026-09-16T21:47:30.4588790Z   Using cached iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+2026-09-16T21:47:30.4663929Z Collecting packaging>=22 (from pytest<10,>=8.3->nocturne-harness==0.1.25)
+2026-09-16T21:47:30.4698714Z   Downloading packaging-26.2-py3-none-any.whl.metadata (3.5 kB)
+2026-09-16T21:47:30.4772577Z Collecting pluggy<2,>=1.5 (from pytest<10,>=8.3->nocturne-harness==0.1.25)
+2026-09-16T21:47:30.4784463Z   Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+2026-09-16T21:47:30.4926193Z Collecting pygments>=2.7.2 (from pytest<10,>=8.3->nocturne-harness==0.1.25)
+2026-09-16T21:47:30.4958377Z   Downloading pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+2026-09-16T21:47:30.8800887Z Collecting regex (from tiktoken<1,>=0.9->nocturne-memory==0.1.25)
+2026-09-16T21:47:30.8889521Z   Downloading regex-2026.7.10-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+2026-09-16T21:47:30.9091948Z Collecting requests (from tiktoken<1,>=0.9->nocturne-memory==0.1.25)
+2026-09-16T21:47:30.9104009Z   Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+2026-09-16T21:47:30.9248692Z Collecting click>=7.0 (from uvicorn<1,>=0.30->uvicorn[standard]<1,>=0.30->nocturne-memory==0.1.25)
+2026-09-16T21:47:30.9261120Z   Using cached click-8.4.2-py3-none-any.whl.metadata (2.6 kB)
+2026-09-16T21:47:30.9528053Z Collecting httptools>=0.8.0 (from uvicorn[standard]<1,>=0.30->nocturne-memory==0.1.25)
+2026-09-16T21:47:30.9539313Z   Using cached httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+2026-09-16T21:47:30.9855163Z Collecting uvloop>=0.15.1 (from uvicorn[standard]<1,>=0.30->nocturne-memory==0.1.25)
+2026-09-16T21:47:30.9867618Z   Using cached uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (4.9 kB)
+2026-09-16T21:47:31.0503869Z Collecting watchfiles>=0.20 (from uvicorn[standard]<1,>=0.30->nocturne-memory==0.1.25)
+2026-09-16T21:47:31.0515776Z   Using cached watchfiles-1.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+2026-09-16T21:47:31.0910490Z Collecting caio~=0.9.0 (from aiofile>=3.5.0->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.0962284Z   Downloading caio-0.9.25-cp312-cp312-manylinux_2_34_x86_64.whl.metadata (3.3 kB)
+2026-09-16T21:47:31.1114029Z Collecting docstring-parser<1,>=0.15 (from anthropic>=1.3.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.1124767Z   Using cached docstring_parser-0.18.0-py3-none-any.whl.metadata (3.5 kB)
+2026-09-16T21:47:31.1917275Z Collecting jiter<1,>=0.4.0 (from anthropic>=1.3.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.1928567Z   Using cached jiter-0.16.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+2026-09-16T21:47:31.2026504Z Collecting sniffio<2,>=1 (from anthropic>=1.3.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.2037247Z   Using cached sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+2026-09-16T21:47:31.2213545Z Collecting httpcore2==2.7.0 (from httpx2>=2.7->pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.2252141Z   Downloading httpcore2-2.7.0-py3-none-any.whl.metadata (24 kB)
+2026-09-16T21:47:31.2375012Z Collecting truststore>=0.10 (from httpx2>=2.7->pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.2385459Z   Using cached truststore-0.10.4-py3-none-any.whl.metadata (4.4 kB)
+2026-09-16T21:47:31.4465702Z Collecting cryptography (from authlib>=1.6.11->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.4507920Z   Downloading cryptography-49.0.0-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.3 kB)
+2026-09-16T21:47:31.4655454Z Collecting joserfc>=1.6.0 (from authlib>=1.6.11->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.4704637Z   Downloading joserfc-1.7.3-py3-none-any.whl.metadata (3.1 kB)
+2026-09-16T21:47:31.5070337Z Collecting google-auth<3.0.0,>=2.56.0 (from google-auth[requests]<3.0.0,>=2.56.0->google-genai>=2.18.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.5132824Z   Downloading google_auth-2.58.0-py3-none-any.whl.metadata (6.0 kB)
+2026-09-16T21:47:31.5359367Z Collecting tenacity<9.2.0,>=8.2.3 (from google-genai>=2.18.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.5370300Z   Using cached tenacity-9.1.4-py3-none-any.whl.metadata (1.2 kB)
+2026-09-16T21:47:31.5463758Z Collecting distro<2,>=1.7.0 (from google-genai>=2.18.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.5474332Z   Using cached distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+2026-09-16T21:47:31.5664331Z Collecting pyasn1-modules>=0.2.1 (from google-auth<3.0.0,>=2.56.0->google-auth[requests]<3.0.0,>=2.56.0->google-genai>=2.18.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.5676240Z   Using cached pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+2026-09-16T21:47:31.6726112Z Collecting charset_normalizer<4,>=2 (from requests->tiktoken<1,>=0.9->nocturne-memory==0.1.25)
+2026-09-16T21:47:31.6766554Z   Downloading charset_normalizer-3.4.9-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (41 kB)
+2026-09-16T21:47:31.7014362Z Collecting urllib3<3,>=1.26 (from requests->tiktoken<1,>=0.9->nocturne-memory==0.1.25)
+2026-09-16T21:47:31.7025654Z   Using cached urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+2026-09-16T21:47:31.7981465Z Collecting cffi>=2.0.0 (from cryptography->authlib>=1.6.11->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.8029574Z   Downloading cffi-2.1.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+2026-09-16T21:47:31.8142616Z Collecting pycparser (from cffi>=2.0.0->cryptography->authlib>=1.6.11->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.8153172Z   Using cached pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+2026-09-16T21:47:31.8343104Z Collecting attrs>=22.2.0 (from jsonschema>=4.20.0->mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.8353329Z   Using cached attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+2026-09-16T21:47:31.8451213Z Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.20.0->mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.8461924Z   Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+2026-09-16T21:47:31.8634041Z Collecting referencing>=0.28.4 (from jsonschema>=4.20.0->mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:31.8644568Z   Using cached referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+2026-09-16T21:47:32.1434618Z Collecting rpds-py>=0.25.0 (from jsonschema>=4.20.0->mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.1446989Z   Using cached rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+2026-09-16T21:47:32.1583162Z Collecting SecretStorage>=3.2 (from keyring>=25.6.0->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.1593168Z   Using cached secretstorage-3.5.0-py3-none-any.whl.metadata (4.0 kB)
+2026-09-16T21:47:32.1683348Z Collecting jeepney>=0.4.2 (from keyring>=25.6.0->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.1693375Z   Using cached jeepney-0.9.0-py3-none-any.whl.metadata (1.2 kB)
+2026-09-16T21:47:32.1789604Z Collecting jaraco.classes (from keyring>=25.6.0->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.1798984Z   Using cached jaraco.classes-3.4.0-py3-none-any.whl.metadata (2.6 kB)
+2026-09-16T21:47:32.1919670Z Collecting jaraco.functools (from keyring>=25.6.0->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.1930868Z   Using cached jaraco_functools-4.6.0-py3-none-any.whl.metadata (2.9 kB)
+2026-09-16T21:47:32.2042488Z Collecting jaraco.context (from keyring>=25.6.0->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.2053894Z   Using cached jaraco_context-6.1.2-py3-none-any.whl.metadata (4.2 kB)
+2026-09-16T21:47:32.2178284Z Collecting executing>=2.0.1 (from logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.2189259Z   Using cached executing-2.2.1-py2.py3-none-any.whl.metadata (8.9 kB)
+2026-09-16T21:47:32.2322470Z Collecting opentelemetry-exporter-otlp-proto-http<1.45.0,>=1.39.0 (from logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.2333462Z   Using cached opentelemetry_exporter_otlp_proto_http-1.44.0-py3-none-any.whl.metadata (2.4 kB)
+2026-09-16T21:47:32.2482632Z Collecting opentelemetry-instrumentation>=0.41b0 (from logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.2494239Z   Using cached opentelemetry_instrumentation-0.65b0-py3-none-any.whl.metadata (7.2 kB)
+2026-09-16T21:47:32.2640956Z Collecting opentelemetry-sdk<1.45.0,>=1.39.0 (from logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.2651888Z   Using cached opentelemetry_sdk-1.44.0-py3-none-any.whl.metadata (1.6 kB)
+2026-09-16T21:47:32.3941028Z Collecting protobuf>=4.23.4 (from logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.3976920Z   Downloading protobuf-6.33.6-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+2026-09-16T21:47:32.4168215Z Collecting googleapis-common-protos~=1.52 (from opentelemetry-exporter-otlp-proto-http<1.45.0,>=1.39.0->logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.4200122Z   Downloading googleapis_common_protos-1.75.0-py3-none-any.whl.metadata (8.6 kB)
+2026-09-16T21:47:32.4336455Z Collecting opentelemetry-exporter-otlp-proto-common==1.44.0 (from opentelemetry-exporter-otlp-proto-http<1.45.0,>=1.39.0->logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.4348053Z   Using cached opentelemetry_exporter_otlp_proto_common-1.44.0-py3-none-any.whl.metadata (1.8 kB)
+2026-09-16T21:47:32.4487940Z Collecting opentelemetry-proto==1.44.0 (from opentelemetry-exporter-otlp-proto-http<1.45.0,>=1.39.0->logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.4499345Z   Using cached opentelemetry_proto-1.44.0-py3-none-any.whl.metadata (2.3 kB)
+2026-09-16T21:47:32.4748853Z Collecting opentelemetry-semantic-conventions==0.65b0 (from opentelemetry-sdk<1.45.0,>=1.39.0->logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.4761320Z   Using cached opentelemetry_semantic_conventions-0.65b0-py3-none-any.whl.metadata (2.4 kB)
+2026-09-16T21:47:32.7720554Z Collecting wrapt<3.0.0,>=1.0.0 (from opentelemetry-instrumentation>=0.41b0->logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.7785435Z   Downloading wrapt-2.2.2-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (7.4 kB)
+2026-09-16T21:47:32.7998984Z Collecting opentelemetry-util-http==0.65b0 (from opentelemetry-instrumentation-httpx>=0.65b0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.8010540Z   Using cached opentelemetry_util_http-0.65b0-py3-none-any.whl.metadata (2.6 kB)
+2026-09-16T21:47:32.8172073Z Collecting wcwidth (from prompt-toolkit>=3->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.8183224Z   Using cached wcwidth-0.8.2-py3-none-any.whl.metadata (43 kB)
+2026-09-16T21:47:32.8389551Z Collecting pyasn1<0.7.0,>=0.6.1 (from pyasn1-modules>=0.2.1->google-auth<3.0.0,>=2.56.0->google-auth[requests]<3.0.0,>=2.56.0->google-genai>=2.18.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.8400290Z   Using cached pyasn1-0.6.4-py3-none-any.whl.metadata (8.4 kB)
+2026-09-16T21:47:32.8534352Z Collecting email-validator>=2.0.0 (from pydantic[email]>=2.11.7->fastmcp-slim<5,>=3.3.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.8545601Z   Using cached email_validator-2.3.0-py3-none-any.whl.metadata (26 kB)
+2026-09-16T21:47:32.8672985Z Collecting dnspython>=2.0.0 (from email-validator>=2.0.0->pydantic[email]>=2.11.7->fastmcp-slim<5,>=3.3.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.8684409Z   Using cached dnspython-2.8.0-py3-none-any.whl.metadata (5.7 kB)
+2026-09-16T21:47:32.9016311Z Collecting markdown-it-py>=2.2.0 (from rich>=13->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.9027318Z   Using cached markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+2026-09-16T21:47:32.9744559Z Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=13->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:32.9755822Z   Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+2026-09-16T21:47:33.0055392Z Collecting more-itertools (from jaraco.classes->keyring>=25.6.0->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:47:33.0066101Z   Using cached more_itertools-11.1.0-py3-none-any.whl.metadata (41 kB)
+2026-09-16T21:47:33.0528548Z Collecting MarkupSafe>=0.9.2 (from Mako->alembic<2,>=1.13->nocturne-memory==0.1.25)
+2026-09-16T21:47:33.0541089Z   Using cached markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+2026-09-16T21:47:33.0682914Z Collecting six>=1.5 (from python-dateutil->croniter<7,>=6.2.2->nocturne-memory==0.1.25)
+2026-09-16T21:47:33.0714002Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2026-09-16T21:47:33.0834627Z Downloading playwright-1.62.0-py3-none-manylinux1_x86_64.whl (47.7 MB)
+2026-09-16T21:47:33.2111809Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.7/47.7 MB 387.4 MB/s  0:00:00
+2026-09-16T21:47:33.2162015Z Downloading pydantic_ai-2.43.0-py3-none-any.whl (9.3 kB)
+2026-09-16T21:47:33.2281181Z Downloading pydantic_ai_harness-0.31.0-py3-none-any.whl (823 kB)
+2026-09-16T21:47:33.2335746Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 823.3/823.3 kB 172.0 MB/s  0:00:00
+2026-09-16T21:47:33.2371394Z Downloading pydantic_ai_slim-2.43.0-py3-none-any.whl (1.7 MB)
+2026-09-16T21:47:33.2464196Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 218.7 MB/s  0:00:00
+2026-09-16T21:47:33.2506793Z Downloading pydantic_evals-2.43.0-py3-none-any.whl (103 kB)
+2026-09-16T21:47:33.2561804Z Downloading pydantic_graph-2.43.0-py3-none-any.whl (52 kB)
+2026-09-16T21:47:33.2613250Z Downloading alembic-1.18.5-py3-none-any.whl (264 kB)
+2026-09-16T21:47:33.2649912Z Using cached asyncpg-0.31.0-cp312-cp312-manylinux_2_28_x86_64.whl (3.5 MB)
+2026-09-16T21:47:33.2692995Z Downloading croniter-6.2.4-py3-none-any.whl (46 kB)
+2026-09-16T21:47:33.2745345Z Downloading fastapi-0.139.2-py3-none-any.whl (130 kB)
+2026-09-16T21:47:33.2799069Z Downloading fastmcp_slim-3.4.4-py3-none-any.whl (765 kB)
+2026-09-16T21:47:33.2851695Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 765.2/765.2 kB 157.5 MB/s  0:00:00
+2026-09-16T21:47:33.2886692Z Downloading greenlet-3.5.4-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (621 kB)
+2026-09-16T21:47:33.2933470Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 621.5/621.5 kB 133.4 MB/s  0:00:00
+2026-09-16T21:47:33.2945010Z Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+2026-09-16T21:47:33.2956773Z Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+2026-09-16T21:47:33.2993448Z Downloading mcp-1.28.1-py3-none-any.whl (222 kB)
+2026-09-16T21:47:33.3028186Z Using cached pgvector-0.5.0-py3-none-any.whl (30 kB)
+2026-09-16T21:47:33.3040469Z Using cached py_key_value_aio-0.4.5-py3-none-any.whl (170 kB)
+2026-09-16T21:47:33.3052518Z Using cached pydantic-2.13.4-py3-none-any.whl (472 kB)
+2026-09-16T21:47:33.3065961Z Using cached pydantic_core-2.46.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+2026-09-16T21:47:33.3105250Z Downloading pydantic_settings-2.14.2-py3-none-any.whl (61 kB)
+2026-09-16T21:47:33.3155924Z Downloading pyee-13.0.1-py3-none-any.whl (15 kB)
+2026-09-16T21:47:33.3185001Z Using cached pytest-9.1.1-py3-none-any.whl (386 kB)
+2026-09-16T21:47:33.3197820Z Using cached pluggy-1.6.0-py3-none-any.whl (20 kB)
+2026-09-16T21:47:33.3209392Z Using cached pytest_asyncio-1.4.0-py3-none-any.whl (16 kB)
+2026-09-16T21:47:33.3244714Z Downloading ruff-0.15.22-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.4 MB)
+2026-09-16T21:47:33.3585944Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.4/11.4 MB 349.8 MB/s  0:00:00
+2026-09-16T21:47:33.3619737Z Downloading sqlalchemy-2.0.51-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.4 MB)
+2026-09-16T21:47:33.3738023Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 321.5 MB/s  0:00:00
+2026-09-16T21:47:33.3772135Z Downloading tiktoken-0.13.0-cp312-cp312-manylinux_2_28_x86_64.whl (1.1 MB)
+2026-09-16T21:47:33.3832286Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 229.9 MB/s  0:00:00
+2026-09-16T21:47:33.3867768Z Downloading uvicorn-0.51.0-py3-none-any.whl (73 kB)
+2026-09-16T21:47:33.3920364Z Downloading websockets-16.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (187 kB)
+2026-09-16T21:47:33.3974214Z Downloading aiofile-3.11.1-py3-none-any.whl (20 kB)
+2026-09-16T21:47:33.4025757Z Downloading caio-0.9.25-cp312-cp312-manylinux_2_34_x86_64.whl (80 kB)
+2026-09-16T21:47:33.4076112Z Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+2026-09-16T21:47:33.4146961Z Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+2026-09-16T21:47:33.4199355Z Downloading anthropic-1.6.0-py3-none-any.whl (1.2 MB)
+2026-09-16T21:47:33.4259197Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 242.3 MB/s  0:00:00
+2026-09-16T21:47:33.4271542Z Using cached anyio-4.14.2-py3-none-any.whl (125 kB)
+2026-09-16T21:47:33.4283715Z Using cached docstring_parser-0.18.0-py3-none-any.whl (22 kB)
+2026-09-16T21:47:33.4314260Z Downloading httpx2-2.7.0-py3-none-any.whl (90 kB)
+2026-09-16T21:47:33.4366559Z Downloading httpcore2-2.7.0-py3-none-any.whl (81 kB)
+2026-09-16T21:47:33.4401347Z Using cached jiter-0.16.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (343 kB)
+2026-09-16T21:47:33.4414094Z Using cached sniffio-1.3.1-py3-none-any.whl (10 kB)
+2026-09-16T21:47:33.4425761Z Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-09-16T21:47:33.4459492Z Downloading argcomplete-3.7.0-py3-none-any.whl (42 kB)
+2026-09-16T21:47:33.4490742Z Using cached authlib-1.7.2-py2.py3-none-any.whl (259 kB)
+2026-09-16T21:47:33.4503269Z Using cached beartype-0.22.9-py3-none-any.whl (1.3 MB)
+2026-09-16T21:47:33.4538845Z Downloading cachetools-7.1.4-py3-none-any.whl (16 kB)
+2026-09-16T21:47:33.4568940Z Using cached click-8.4.2-py3-none-any.whl (119 kB)
+2026-09-16T21:47:33.4581268Z Using cached exceptiongroup-1.3.1-py3-none-any.whl (16 kB)
+2026-09-16T21:47:33.4614657Z Downloading genai_prices-0.1.7-py3-none-any.whl (121 kB)
+2026-09-16T21:47:33.4676400Z Downloading google_genai-2.23.0-py3-none-any.whl (1.1 MB)
+2026-09-16T21:47:33.4737522Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 203.1 MB/s  0:00:00
+2026-09-16T21:47:33.4748309Z Using cached distro-1.9.0-py3-none-any.whl (20 kB)
+2026-09-16T21:47:33.4779613Z Downloading google_auth-2.58.0-py3-none-any.whl (262 kB)
+2026-09-16T21:47:33.4817339Z Using cached requests-2.34.2-py3-none-any.whl (73 kB)
+2026-09-16T21:47:33.4853543Z Downloading charset_normalizer-3.4.9-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (224 kB)
+2026-09-16T21:47:33.4907523Z Downloading idna-3.18-py3-none-any.whl (65 kB)
+2026-09-16T21:47:33.4938390Z Using cached tenacity-9.1.4-py3-none-any.whl (28 kB)
+2026-09-16T21:47:33.4950234Z Using cached urllib3-2.7.0-py3-none-any.whl (131 kB)
+2026-09-16T21:47:33.4987205Z Downloading certifi-2026.6.17-py3-none-any.whl (133 kB)
+2026-09-16T21:47:33.5059249Z Downloading cryptography-49.0.0-cp311-abi3-manylinux_2_34_x86_64.whl (4.7 MB)
+2026-09-16T21:47:33.5293548Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 213.4 MB/s  0:00:00
+2026-09-16T21:47:33.5328494Z Downloading cffi-2.1.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+2026-09-16T21:47:33.5386076Z Downloading griffelib-2.1.0-py3-none-any.whl (142 kB)
+2026-09-16T21:47:33.5418155Z Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+2026-09-16T21:47:33.5430362Z Using cached httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (523 kB)
+2026-09-16T21:47:33.5442956Z Using cached httpx_sse-0.4.3-py3-none-any.whl (9.0 kB)
+2026-09-16T21:47:33.5454419Z Using cached iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+2026-09-16T21:47:33.5485229Z Downloading joserfc-1.7.3-py3-none-any.whl (70 kB)
+2026-09-16T21:47:33.5516823Z Using cached jsonschema-4.26.0-py3-none-any.whl (90 kB)
+2026-09-16T21:47:33.5528438Z Using cached attrs-26.1.0-py3-none-any.whl (67 kB)
+2026-09-16T21:47:33.5540290Z Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+2026-09-16T21:47:33.5551465Z Using cached keyring-25.7.0-py3-none-any.whl (39 kB)
+2026-09-16T21:47:33.5563216Z Using cached jeepney-0.9.0-py3-none-any.whl (49 kB)
+2026-09-16T21:47:33.5651009Z Downloading logfire-5.1.0-py3-none-any.whl (474 kB)
+2026-09-16T21:47:33.5697299Z Using cached opentelemetry_exporter_otlp_proto_http-1.44.0-py3-none-any.whl (21 kB)
+2026-09-16T21:47:33.5709185Z Using cached opentelemetry_exporter_otlp_proto_common-1.44.0-py3-none-any.whl (17 kB)
+2026-09-16T21:47:33.5722218Z Using cached opentelemetry_proto-1.44.0-py3-none-any.whl (72 kB)
+2026-09-16T21:47:33.5755620Z Downloading googleapis_common_protos-1.75.0-py3-none-any.whl (300 kB)
+2026-09-16T21:47:33.5792774Z Using cached opentelemetry_api-1.44.0-py3-none-any.whl (60 kB)
+2026-09-16T21:47:33.5804722Z Using cached opentelemetry_sdk-1.44.0-py3-none-any.whl (137 kB)
+2026-09-16T21:47:33.5816429Z Using cached opentelemetry_semantic_conventions-0.65b0-py3-none-any.whl (204 kB)
+2026-09-16T21:47:33.5848001Z Downloading protobuf-6.33.6-cp39-abi3-manylinux2014_x86_64.whl (323 kB)
+2026-09-16T21:47:33.5884156Z Using cached executing-2.2.1-py2.py3-none-any.whl (28 kB)
+2026-09-16T21:47:33.5918725Z Downloading logfire_api-4.37.0-py3-none-any.whl (138 kB)
+2026-09-16T21:47:33.5972840Z Downloading openai-3.14.1-py3-none-any.whl (2.0 MB)
+2026-09-16T21:47:33.6061059Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 261.6 MB/s  0:00:00
+2026-09-16T21:47:33.6072269Z Using cached opentelemetry_instrumentation-0.65b0-py3-none-any.whl (36 kB)
+2026-09-16T21:47:33.6103887Z Downloading wrapt-2.2.2-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (169 kB)
+2026-09-16T21:47:33.6136455Z Using cached opentelemetry_instrumentation_httpx-0.65b0-py3-none-any.whl (17 kB)
+2026-09-16T21:47:33.6147485Z Using cached opentelemetry_util_http-0.65b0-py3-none-any.whl (8.2 kB)
+2026-09-16T21:47:33.6185094Z Downloading packaging-26.2-py3-none-any.whl (100 kB)
+2026-09-16T21:47:33.6242978Z Downloading platformdirs-4.10.0-py3-none-any.whl (22 kB)
+2026-09-16T21:47:33.6301292Z Downloading prompt_toolkit-3.0.52-py3-none-any.whl (391 kB)
+2026-09-16T21:47:33.6338607Z Using cached pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+2026-09-16T21:47:33.6350617Z Using cached pyasn1-0.6.4-py3-none-any.whl (84 kB)
+2026-09-16T21:47:33.6362271Z Using cached email_validator-2.3.0-py3-none-any.whl (35 kB)
+2026-09-16T21:47:33.6373438Z Using cached dnspython-2.8.0-py3-none-any.whl (331 kB)
+2026-09-16T21:47:33.6406128Z Downloading pygments-2.20.0-py3-none-any.whl (1.2 MB)
+2026-09-16T21:47:33.6468888Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 234.2 MB/s  0:00:00
+2026-09-16T21:47:33.6479952Z Using cached pyjwt-2.13.0-py3-none-any.whl (31 kB)
+2026-09-16T21:47:33.6491244Z Using cached pyperclip-1.11.0-py3-none-any.whl (11 kB)
+2026-09-16T21:47:33.6522355Z Downloading python_dotenv-1.2.2-py3-none-any.whl (22 kB)
+2026-09-16T21:47:33.6552997Z Using cached python_multipart-0.0.32-py3-none-any.whl (30 kB)
+2026-09-16T21:47:33.6564890Z Using cached pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+2026-09-16T21:47:33.6578293Z Using cached referencing-0.37.0-py3-none-any.whl (26 kB)
+2026-09-16T21:47:33.6589602Z Using cached rich-15.0.0-py3-none-any.whl (310 kB)
+2026-09-16T21:47:33.6601970Z Using cached markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+2026-09-16T21:47:33.6613490Z Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+2026-09-16T21:47:33.6624714Z Using cached rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (366 kB)
+2026-09-16T21:47:33.6637058Z Using cached secretstorage-3.5.0-py3-none-any.whl (15 kB)
+2026-09-16T21:47:33.6670222Z Downloading sse_starlette-3.4.5-py3-none-any.whl (16 kB)
+2026-09-16T21:47:33.6740517Z Downloading starlette-1.3.1-py3-none-any.whl (73 kB)
+2026-09-16T21:47:33.6771918Z Using cached truststore-0.10.4-py3-none-any.whl (18 kB)
+2026-09-16T21:47:33.6827742Z Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+2026-09-16T21:47:33.6860810Z Using cached uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.4 MB)
+2026-09-16T21:47:33.6889067Z Using cached watchfiles-1.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (456 kB)
+2026-09-16T21:47:33.6901856Z Using cached jaraco.classes-3.4.0-py3-none-any.whl (6.8 kB)
+2026-09-16T21:47:33.6913200Z Using cached jaraco_context-6.1.2-py3-none-any.whl (7.9 kB)
+2026-09-16T21:47:33.6924468Z Using cached jaraco_functools-4.6.0-py3-none-any.whl (11 kB)
+2026-09-16T21:47:33.6956889Z Downloading mako-1.3.12-py3-none-any.whl (78 kB)
+2026-09-16T21:47:33.6990392Z Using cached markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+2026-09-16T21:47:33.7001197Z Using cached more_itertools-11.1.0-py3-none-any.whl (72 kB)
+2026-09-16T21:47:33.7012632Z Using cached pycparser-3.0-py3-none-any.whl (48 kB)
+2026-09-16T21:47:33.7044691Z Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2026-09-16T21:47:33.7103246Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+2026-09-16T21:47:33.7154945Z Downloading regex-2026.7.10-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (801 kB)
+2026-09-16T21:47:33.7208994Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 801.3/801.3 kB 170.5 MB/s  0:00:00
+2026-09-16T21:47:33.7221519Z Using cached wcwidth-0.8.2-py3-none-any.whl (323 kB)
+2026-09-16T21:47:34.1005592Z Building wheels for collected packages: nocturne-memory, nocturne-harness
+2026-09-16T21:47:34.1014272Z   Building wheel for nocturne-memory (pyproject.toml): started
+2026-09-16T21:47:34.1326909Z   Building wheel for nocturne-memory (pyproject.toml): finished with status 'done'
+2026-09-16T21:47:34.1334605Z   Created wheel for nocturne-memory: filename=nocturne_memory-0.1.25-py3-none-any.whl size=228081 sha256=2d0d1d374292072c640bd7bdffc433a6738e9bad1e2767f245fb55920297b5d3
+2026-09-16T21:47:34.1336386Z   Stored in directory: /tmp/pip-ephem-wheel-cache-tafvlhnb/wheels/4d/98/3f/881e679c05c8c03d2a92330a1ce6c8cc5ee1675a76f6df6ad2
+2026-09-16T21:47:34.1360097Z   Building editable for nocturne-harness (pyproject.toml): started
+2026-09-16T21:47:34.1705916Z   Building editable for nocturne-harness (pyproject.toml): finished with status 'done'
+2026-09-16T21:47:34.1715242Z   Created wheel for nocturne-harness: filename=nocturne_harness-0.1.25-py3-none-any.whl size=659553 sha256=14dc6deb1bdcf52114bdd5f1a00021925562b89c8d0b9bc0bcc3b485b1593eac
+2026-09-16T21:47:34.1716953Z   Stored in directory: /tmp/pip-ephem-wheel-cache-tafvlhnb/wheels/31/f2/a1/a1b230ed25808bb343a3bce8b7d1f4bcfa9517634be5272a3c
+2026-09-16T21:47:34.1733335Z Successfully built nocturne-memory nocturne-harness
+2026-09-16T21:47:34.3941693Z Installing collected packages: pyperclip, wrapt, websockets, wcwidth, uvloop, urllib3, typing-extensions, truststore, tenacity, sniffio, six, ruff, rpds-py, regex, pyyaml, python-multipart, python-dotenv, pyjwt, pygments, pycparser, pyasn1, protobuf, pluggy, platformdirs, pgvector, packaging, opentelemetry-util-http, more-itertools, mdurl, MarkupSafe, logfire-api, jiter, jeepney, jaraco.context, iniconfig, idna, httpx-sse, httptools, h11, griffelib, greenlet, executing, docstring-parser, dnspython, distro, click, charset_normalizer, certifi, caio, cachetools, beartype, attrs, asyncpg, argcomplete, annotated-types, annotated-doc, uvicorn, typing-inspection, sqlalchemy, requests, referencing, python-dateutil, pytest, pyee, pydantic-core, pyasn1-modules, py-key-value-aio, prompt-toolkit, opentelemetry-proto, opentelemetry-api, markdown-it-py, Mako, jaraco.functools, jaraco.classes, httpcore2, httpcore, googleapis-common-protos, exceptiongroup, email-validator, cffi, anyio, aiofile, watchfiles, tiktoken, starlette, rich, pytest-asyncio, pydantic, playwright, opentelemetry-semantic-conventions, opentelemetry-exporter-otlp-proto-common, jsonschema-specifications, httpx2, httpx, cryptography, croniter, alembic, sse-starlette, SecretStorage, pydantic-settings, pydantic-graph, opentelemetry-sdk, opentelemetry-instrumentation, openai, jsonschema, joserfc, google-auth, genai-prices, fastapi, anthropic, pydantic-ai-slim, opentelemetry-instrumentation-httpx, opentelemetry-exporter-otlp-proto-http, nocturne-memory, mcp, keyring, fastmcp-slim, authlib, pydantic-evals, pydantic-ai-harness, logfire, google-genai, pydantic-ai, nocturne-harness
+2026-09-16T21:47:48.9001926Z 
+2026-09-16T21:47:48.9094942Z Successfully installed Mako-1.3.12 MarkupSafe-3.0.3 SecretStorage-3.5.0 aiofile-3.11.1 alembic-1.18.5 annotated-doc-0.0.4 annotated-types-0.7.0 anthropic-1.6.0 anyio-4.14.2 argcomplete-3.7.0 asyncpg-0.31.0 attrs-26.1.0 authlib-1.7.2 beartype-0.22.9 cachetools-7.1.4 caio-0.9.25 certifi-2026.6.17 cffi-2.1.0 charset_normalizer-3.4.9 click-8.4.2 croniter-6.2.4 cryptography-49.0.0 distro-1.9.0 dnspython-2.8.0 docstring-parser-0.18.0 email-validator-2.3.0 exceptiongroup-1.3.1 executing-2.2.1 fastapi-0.139.2 fastmcp-slim-3.4.4 genai-prices-0.1.7 google-auth-2.58.0 google-genai-2.23.0 googleapis-common-protos-1.75.0 greenlet-3.5.4 griffelib-2.1.0 h11-0.16.0 httpcore-1.0.9 httpcore2-2.7.0 httptools-0.8.0 httpx-0.28.1 httpx-sse-0.4.3 httpx2-2.7.0 idna-3.18 iniconfig-2.3.0 jaraco.classes-3.4.0 jaraco.context-6.1.2 jaraco.functools-4.6.0 jeepney-0.9.0 jiter-0.16.0 joserfc-1.7.3 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 keyring-25.7.0 logfire-5.1.0 logfire-api-4.37.0 markdown-it-py-4.2.0 mcp-1.28.1 mdurl-0.1.2 more-itertools-11.1.0 nocturne-harness-0.1.25 nocturne-memory-0.1.25 openai-3.14.1 opentelemetry-api-1.44.0 opentelemetry-exporter-otlp-proto-common-1.44.0 opentelemetry-exporter-otlp-proto-http-1.44.0 opentelemetry-instrumentation-0.65b0 opentelemetry-instrumentation-httpx-0.65b0 opentelemetry-proto-1.44.0 opentelemetry-sdk-1.44.0 opentelemetry-semantic-conventions-0.65b0 opentelemetry-util-http-0.65b0 packaging-26.2 pgvector-0.5.0 platformdirs-4.10.0 playwright-1.62.0 pluggy-1.6.0 prompt-toolkit-3.0.52 protobuf-6.33.6 py-key-value-aio-0.4.5 pyasn1-0.6.4 pyasn1-modules-0.4.2 pycparser-3.0 pydantic-2.13.4 pydantic-ai-2.43.0 pydantic-ai-harness-0.31.0 pydantic-ai-slim-2.43.0 pydantic-core-2.46.4 pydantic-evals-2.43.0 pydantic-graph-2.43.0 pydantic-settings-2.14.2 pyee-13.0.1 pygments-2.20.0 pyjwt-2.13.0 pyperclip-1.11.0 pytest-9.1.1 pytest-asyncio-1.4.0 python-dateutil-2.9.0.post0 python-dotenv-1.2.2 python-multipart-0.0.32 pyyaml-6.0.3 referencing-0.37.0 regex-2026.7.10 requests-2.34.2 rich-15.0.0 rpds-py-2026.6.3 ruff-0.15.22 six-1.17.0 sniffio-1.3.1 sqlalchemy-2.0.51 sse-starlette-3.4.5 starlette-1.3.1 tenacity-9.1.4 tiktoken-0.13.0 truststore-0.10.4 typing-extensions-4.16.0 typing-inspection-0.4.2 urllib3-2.7.0 uvicorn-0.51.0 uvloop-0.22.1 watchfiles-1.2.0 wcwidth-0.8.2 websockets-16.1 wrapt-2.2.2
+2026-09-16T21:47:49.2157356Z ##[group]Run ruff check . && ruff format --check src tests
+2026-09-16T21:47:49.2157800Z [36;1mruff check . && ruff format --check src tests[0m
+2026-09-16T21:47:49.2194648Z shell: /usr/bin/bash -e {0}
+2026-09-16T21:47:49.2194902Z env:
+2026-09-16T21:47:49.2195180Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:49.2195622Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-09-16T21:47:49.2196053Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:49.2196429Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:49.2196814Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:49.2197207Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-09-16T21:47:49.2197530Z ##[endgroup]
+2026-09-16T21:47:49.3158241Z All checks passed!
+2026-09-16T21:47:49.3650057Z 130 files already formatted
+2026-09-16T21:47:49.3681540Z ##[group]Run python scripts/check_test_motivations.py
+2026-09-16T21:47:49.3681956Z [36;1mpython scripts/check_test_motivations.py[0m
+2026-09-16T21:47:49.3718129Z shell: /usr/bin/bash -e {0}
+2026-09-16T21:47:49.3718390Z env:
+2026-09-16T21:47:49.3718892Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:49.3719358Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-09-16T21:47:49.3719807Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:49.3720189Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:49.3720570Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:49.3720968Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-09-16T21:47:49.3721297Z ##[endgroup]
+2026-09-16T21:47:49.7295821Z test motivation check passed: 804 tests, 0 grandfathered
+2026-09-16T21:47:49.7402685Z ##[group]Run pytest -q tests/test_lifecycle_matrix.py
+2026-09-16T21:47:49.7403108Z [36;1mpytest -q tests/test_lifecycle_matrix.py[0m
+2026-09-16T21:47:49.7438645Z shell: /usr/bin/bash -e {0}
+2026-09-16T21:47:49.7438907Z env:
+2026-09-16T21:47:49.7439175Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:49.7439617Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-09-16T21:47:49.7440055Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:49.7440440Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:49.7440824Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:49.7441212Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-09-16T21:47:49.7441533Z ##[endgroup]
+2026-09-16T21:47:51.4531870Z ........................................................................ [  9%]
+2026-09-16T21:47:51.5565908Z ........................................................................ [ 18%]
+2026-09-16T21:47:51.6679157Z ........................................................................ [ 28%]
+2026-09-16T21:47:51.7852235Z ........................................................................ [ 37%]
+2026-09-16T21:47:51.9087861Z ........................................................................ [ 46%]
+2026-09-16T21:47:51.9889379Z ........................................................................ [ 56%]
+2026-09-16T21:47:52.0448836Z ........................................................................ [ 65%]
+2026-09-16T21:47:52.1001333Z ........................................................................ [ 74%]
+2026-09-16T21:47:52.1531173Z ........................................................................ [ 84%]
+2026-09-16T21:47:52.2079374Z ........................................................................ [ 93%]
+2026-09-16T21:47:52.2940916Z .................................................                        [100%]
+2026-09-16T21:47:52.2941705Z 769 passed in 1.33s
+2026-09-16T21:47:52.3890638Z ##[group]Run pytest -m "not contract"
+2026-09-16T21:47:52.3891243Z [36;1mpytest -m "not contract"[0m
+2026-09-16T21:47:52.3943659Z shell: /usr/bin/bash -e {0}
+2026-09-16T21:47:52.3944114Z env:
+2026-09-16T21:47:52.3944597Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:52.3945390Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-09-16T21:47:52.3946184Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:52.3946916Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:52.3947642Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:47:52.3948360Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-09-16T21:47:52.3949229Z ##[endgroup]
+2026-09-16T21:47:59.8775101Z ============================= test session starts ==============================
+2026-09-16T21:47:59.8775885Z platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0
+2026-09-16T21:47:59.8776788Z rootdir: /home/runner/work/nocturne-harness/nocturne-harness
+2026-09-16T21:47:59.8777750Z configfile: pyproject.toml
+2026-09-16T21:47:59.8778200Z testpaths: tests
+2026-09-16T21:47:59.8779016Z plugins: anyio-4.14.2, logfire-5.1.0, asyncio-1.4.0
+2026-09-16T21:47:59.8780113Z asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+2026-09-16T21:47:59.8781167Z collected 1789 items / 3 deselected / 1786 selected
+2026-09-16T21:47:59.8781548Z 
+2026-09-16T21:47:59.9062471Z tests/golden/test_golden_seams.py .....                                  [  0%]
+2026-09-16T21:47:59.9587052Z tests/golden/test_workspace_tool_outputs.py ..                           [  0%]
+2026-09-16T21:48:04.5486427Z tests/test_agent.py .................................................... [  3%]
+2026-09-16T21:48:06.7263426Z .......................                                                  [  4%]
+2026-09-16T21:48:12.6256999Z tests/test_agent_runtime.py ............................................ [  7%]
+2026-09-16T21:48:13.0041631Z ..                                                                       [  7%]
+2026-09-16T21:48:13.0797926Z tests/test_browser_consent.py .                                          [  7%]
+2026-09-16T21:48:13.0841725Z tests/test_browser_runtime.py ..                                         [  7%]
+2026-09-16T21:48:13.0952863Z tests/test_browser_toolset.py ........                                   [  7%]
+2026-09-16T21:48:13.0962142Z tests/test_citation.py ..                                                [  7%]
+2026-09-16T21:48:13.1342098Z tests/test_cli.py ..............                                         [  8%]
+2026-09-16T21:48:13.1403845Z tests/test_commands.py ......                                            [  9%]
+2026-09-16T21:48:14.7643081Z tests/test_compaction.py ..........                                      [  9%]
+2026-09-16T21:48:15.2078265Z tests/test_conductor.py ...........                                      [ 10%]
+2026-09-16T21:48:15.2534089Z tests/test_config.py .....................                               [ 11%]
+2026-09-16T21:48:15.2603502Z tests/test_context_window.py .....                                       [ 11%]
+2026-09-16T21:48:15.2883454Z tests/test_context_window_api.py ..                                      [ 11%]
+2026-09-16T21:48:20.8679757Z tests/test_daemon.py ................................................... [ 14%]
+2026-09-16T21:48:20.9294927Z ....                                                                     [ 14%]
+2026-09-16T21:48:20.9910670Z tests/test_deploy.py ................................................... [ 17%]
+2026-09-16T21:48:21.1357859Z ........................................................................ [ 21%]
+2026-09-16T21:48:21.2655046Z ..................................                                       [ 23%]
+2026-09-16T21:48:21.3251693Z tests/test_envelope.py ................................................. [ 26%]
+2026-09-16T21:48:21.3644234Z ............................................                             [ 28%]
+2026-09-16T21:48:21.3891162Z tests/test_extraction.py .....                                           [ 29%]
+2026-09-16T21:48:21.4726292Z tests/test_fixture_isolation.py .........                                [ 29%]
+2026-09-16T21:48:21.4760390Z tests/test_job_runtime.py .                                              [ 29%]
+2026-09-16T21:48:21.4783920Z tests/test_jobs_shell.py .                                               [ 29%]
+2026-09-16T21:48:21.9098133Z tests/test_judge_panel.py ..                                             [ 29%]
+2026-09-16T21:48:21.9486617Z tests/test_ledger_canon.py ..                                            [ 29%]
+2026-09-16T21:48:22.0135012Z tests/test_lifecycle_matrix.py ......................................... [ 32%]
+2026-09-16T21:48:22.1325955Z ........................................................................ [ 36%]
+2026-09-16T21:48:22.2568390Z ........................................................................ [ 40%]
+2026-09-16T21:48:22.3892748Z ........................................................................ [ 44%]
+2026-09-16T21:48:22.5255222Z ........................................................................ [ 48%]
+2026-09-16T21:48:22.6483772Z ........................................................................ [ 52%]
+2026-09-16T21:48:22.7062390Z ........................................................................ [ 56%]
+2026-09-16T21:48:22.7661042Z ........................................................................ [ 60%]
+2026-09-16T21:48:22.8251360Z ........................................................................ [ 64%]
+2026-09-16T21:48:22.8825100Z ........................................................................ [ 68%]
+2026-09-16T21:48:22.9400589Z ........................................................................ [ 72%]
+2026-09-16T21:48:22.9473120Z ........                                                                 [ 73%]
+2026-09-16T21:48:22.9861115Z tests/test_m2n_backup.py ..........                                      [ 73%]
+2026-09-16T21:48:23.0147431Z tests/test_m2n_lifecycle.py .......                                      [ 73%]
+2026-09-16T21:48:23.0223198Z tests/test_m2n_resources.py ....                                         [ 74%]
+2026-09-16T21:50:07.5212153Z tests/test_m2ux4_themes.py ....                                          [ 74%]
+2026-09-16T21:50:15.9362341Z tests/test_m2ux5_plate_press.py ...                                      [ 74%]
+2026-09-16T21:50:16.0397090Z tests/test_m2ux6_grimoire_themes.py ....                                 [ 74%]
+2026-09-16T21:50:16.0415435Z tests/test_memory_bridge.py .                                            [ 74%]
+2026-09-16T21:50:16.3945042Z tests/test_memory_capability.py .......                                  [ 75%]
+2026-09-16T21:50:16.4224250Z tests/test_memory_gate.py ...............                                [ 76%]
+2026-09-16T21:50:16.4595049Z tests/test_memory_panel.py ........................                      [ 77%]
+2026-09-16T21:50:16.5062594Z tests/test_model_policy.py ........................................      [ 79%]
+2026-09-16T21:50:16.5163498Z tests/test_model_router.py ....                                          [ 79%]
+2026-09-16T21:50:24.6069156Z tests/test_onboarding.py ............................................... [ 82%]
+2026-09-16T21:50:24.6101176Z ..                                                                       [ 82%]
+2026-09-16T21:50:24.6126045Z tests/test_openrouter_runtime.py .                                       [ 82%]
+2026-09-16T21:50:24.6248745Z tests/test_packaging.py .......                                          [ 83%]
+2026-09-16T21:50:24.6308232Z tests/test_parameter_registry.py ....                                    [ 83%]
+2026-09-16T21:50:24.7536441Z tests/test_pydantic_harness_toolset.py ......s........                   [ 84%]
+2026-09-16T21:50:26.5860626Z tests/test_queue_provenance.py .....                                     [ 84%]
+2026-09-16T21:50:26.5924885Z tests/test_receipt_queue.py ..                                           [ 84%]
+2026-09-16T21:50:26.6105961Z tests/test_recipe_graph.py .....                                         [ 84%]
+2026-09-16T21:50:26.6180342Z tests/test_rounds.py ..                                                  [ 84%]
+2026-09-16T21:50:26.9497506Z tests/test_run_loop.py ................................................  [ 87%]
+2026-09-16T21:50:26.9656593Z tests/test_seed.py ..........                                            [ 88%]
+2026-09-16T21:50:26.9710836Z tests/test_seed_jump_start.py ..                                         [ 88%]
+2026-09-16T21:50:26.9734188Z tests/test_spend.py ..                                                   [ 88%]
+2026-09-16T21:50:26.9855627Z tests/test_spend_walls.py ...                                            [ 88%]
+2026-09-16T21:50:26.9992079Z tests/test_spine_client.py ...............                               [ 89%]
+2026-09-16T21:50:27.0803077Z tests/test_spine_transport.py .......................................... [ 91%]
+2026-09-16T21:50:27.0887747Z ........                                                                 [ 92%]
+2026-09-16T21:50:27.2496841Z tests/test_supervisor.py .....                                           [ 92%]
+2026-09-16T21:50:27.2717510Z tests/test_symphony_experience.py ...........                            [ 93%]
+2026-09-16T21:50:27.4009209Z tests/test_symphony_worker.py .                                          [ 93%]
+2026-09-16T21:50:27.9578820Z tests/test_test_motivations.py .....                                     [ 93%]
+2026-09-16T21:50:27.9973525Z tests/test_tools_memory.py .............................                 [ 95%]
+2026-09-16T21:50:28.0004036Z tests/test_toolset_runtime.py .                                          [ 95%]
+2026-09-16T21:50:28.2772706Z tests/test_transcript.py ............................................... [ 97%]
+2026-09-16T21:50:28.3489777Z ................                                                         [ 98%]
+2026-09-16T21:50:28.3594824Z tests/test_transcript_sync.py ..                                         [ 98%]
+2026-09-16T21:50:28.3624038Z tests/test_unbuilt_rules.py ssss                                         [ 98%]
+2026-09-16T21:50:30.1824759Z tests/test_verification_identity.py ........                             [ 99%]
+2026-09-16T21:50:30.1971668Z tests/test_visualization.py ....                                         [ 99%]
+2026-09-16T21:50:30.2046666Z tests/test_workflow_budget.py ..                                         [ 99%]
+2026-09-16T21:50:30.7271313Z tests/test_workflow_memory.py ....                                       [100%]
+2026-09-16T21:50:30.7271998Z 
+2026-09-16T21:50:30.7272320Z =============================== warnings summary ===============================
+2026-09-16T21:50:30.7273345Z tests/test_agent_runtime.py::test_sd023_openrouter_usage_only_chunks_price_every_build_request
+2026-09-16T21:50:30.7275469Z   /home/runner/work/nocturne-harness/nocturne-harness/tests/test_agent_runtime.py:617: PydanticAIDeprecationWarning: `httpx.AsyncClient` support for OpenAI-compatible providers is deprecated and will be removed in v3; use `httpx2.AsyncClient` instead.
+2026-09-16T21:50:30.7277404Z     provider=OpenRouterProvider(api_key="test", http_client=http_client),
+2026-09-16T21:50:30.7277725Z 
+2026-09-16T21:50:30.7277966Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2026-09-16T21:50:30.7278791Z =========================== short test summary info ============================
+2026-09-16T21:50:30.7279396Z SKIPPED [1] tests/test_pydantic_harness_toolset.py:237: the standing hard shell fence is macOS sandbox-exec
+2026-09-16T21:50:30.7280070Z SKIPPED [1] tests/test_unbuilt_rules.py:6: r7-16: edge-on terminal stack mode is unbuilt
+2026-09-16T21:50:30.7280721Z SKIPPED [1] tests/test_unbuilt_rules.py:12: r9-6: per-role strongest/leaf model policies await SD-018
+2026-09-16T21:50:30.7281710Z SKIPPED [1] tests/test_unbuilt_rules.py:18: r8-3: R10 superseded the Cube; flat focus camera awaits owner ruling
+2026-09-16T21:50:30.7282483Z SKIPPED [1] tests/test_unbuilt_rules.py:24: r8-7: hue-band validator is unbuilt; owner has not defined numeric bands
+2026-09-16T21:50:30.7283128Z ===== 1781 passed, 5 skipped, 3 deselected, 1 warning in 157.42s (0:02:37) =====
+2026-09-16T21:50:31.4889925Z ##[group]Run python -m pip install build
+2026-09-16T21:50:31.4890299Z [36;1mpython -m pip install build[0m
+2026-09-16T21:50:31.4890601Z [36;1mpython -m build --sdist --wheel[0m
+2026-09-16T21:50:31.4890989Z [36;1mpython scripts/verify_sdist.py dist/nocturne_harness-*.tar.gz[0m
+2026-09-16T21:50:31.4891643Z [36;1mpython -m pip wheel --no-deps --wheel-dir /tmp/nocturne-harness-sdist-wheel dist/nocturne_harness-*.tar.gz[0m
+2026-09-16T21:50:31.4892374Z [36;1mcmp dist/nocturne_harness-*.whl /tmp/nocturne-harness-sdist-wheel/nocturne_harness-*.whl[0m
+2026-09-16T21:50:31.4927707Z shell: /usr/bin/bash -e {0}
+2026-09-16T21:50:31.4927958Z env:
+2026-09-16T21:50:31.4928229Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:50:31.4929154Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-09-16T21:50:31.4929589Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:50:31.4930009Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:50:31.4930396Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:50:31.4930791Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-09-16T21:50:31.4931127Z ##[endgroup]
+2026-09-16T21:50:31.8850019Z Collecting build
+2026-09-16T21:50:31.9365540Z   Downloading build-1.6.1-py3-none-any.whl.metadata (5.6 kB)
+2026-09-16T21:50:31.9418186Z Requirement already satisfied: packaging>=24.0 in /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages (from build) (26.2)
+2026-09-16T21:50:31.9496624Z Collecting pyproject_hooks (from build)
+2026-09-16T21:50:31.9539427Z   Downloading pyproject_hooks-1.3.3-py3-none-any.whl.metadata (1.3 kB)
+2026-09-16T21:50:31.9621567Z Downloading build-1.6.1-py3-none-any.whl (31 kB)
+2026-09-16T21:50:31.9736308Z Downloading pyproject_hooks-1.3.3-py3-none-any.whl (10 kB)
+2026-09-16T21:50:32.1130507Z Installing collected packages: pyproject_hooks, build
+2026-09-16T21:50:32.1493956Z 
+2026-09-16T21:50:32.1576032Z Successfully installed build-1.6.1 pyproject_hooks-1.3.3
+2026-09-16T21:50:32.3461403Z * Creating isolated environment: venv+pip...
+2026-09-16T21:50:32.3581355Z * Installing packages in isolated environment:
+2026-09-16T21:50:32.3581977Z   - hatchling>=1.27
+2026-09-16T21:50:33.0345486Z * Getting build dependencies for sdist...
+2026-09-16T21:50:33.1751012Z * Installed build dependency versions:
+2026-09-16T21:50:33.1751551Z   - hatchling==1.32.0
+2026-09-16T21:50:33.1751895Z * Building sdist...
+2026-09-16T21:50:33.6315641Z * Creating isolated environment: venv+pip...
+2026-09-16T21:50:33.6335492Z * Installing packages in isolated environment:
+2026-09-16T21:50:33.6336020Z   - hatchling>=1.27
+2026-09-16T21:50:34.3055827Z * Getting build dependencies for wheel...
+2026-09-16T21:50:34.4532092Z * Installed build dependency versions:
+2026-09-16T21:50:34.4532622Z   - hatchling==1.32.0
+2026-09-16T21:50:34.4533004Z * Building wheel...
+2026-09-16T21:50:34.7278246Z Successfully built nocturne_harness-0.1.25.tar.gz and nocturne_harness-0.1.25-py3-none-any.whl
+2026-09-16T21:50:34.7858962Z nocturne-harness sdist scope passed (72 entries)
+2026-09-16T21:50:35.1108725Z Processing ./dist/nocturne_harness-0.1.25.tar.gz
+2026-09-16T21:50:35.1579313Z   Installing build dependencies: started
+2026-09-16T21:50:35.7888350Z   Installing build dependencies: finished with status 'done'
+2026-09-16T21:50:35.7894434Z   Getting requirements to build wheel: started
+2026-09-16T21:50:35.9361293Z   Getting requirements to build wheel: finished with status 'done'
+2026-09-16T21:50:35.9369812Z   Preparing metadata (pyproject.toml): started
+2026-09-16T21:50:36.2027096Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-09-16T21:50:36.2054998Z Building wheels for collected packages: nocturne-harness
+2026-09-16T21:50:36.2062700Z   Building wheel for nocturne-harness (pyproject.toml): started
+2026-09-16T21:50:36.2384428Z   Building wheel for nocturne-harness (pyproject.toml): finished with status 'done'
+2026-09-16T21:50:36.2399265Z   Created wheel for nocturne-harness: filename=nocturne_harness-0.1.25-py3-none-any.whl size=937056 sha256=e9587e5aab2806368e096123fabf375992ae406f0eee29b13b263d7fb1b4fa8f
+2026-09-16T21:50:36.2400740Z   Stored in directory: /home/runner/.cache/pip/wheels/5d/bc/04/8737273db34db9b386d00018591ef4faa9f4fedc6e8759cda6
+2026-09-16T21:50:36.2425286Z Successfully built nocturne-harness
+2026-09-16T21:50:36.2943122Z ##[group]Run python -m venv /tmp/nocturne-wheel
+2026-09-16T21:50:36.2943769Z [36;1mpython -m venv /tmp/nocturne-wheel[0m
+2026-09-16T21:50:36.2944941Z [36;1m/tmp/nocturne-wheel/bin/python -m pip install -c /tmp/harness-ci-constraints.txt /tmp/nocturne-harness-sdist-wheel/nocturne_harness-*.whl[0m
+2026-09-16T21:50:36.2946076Z [36;1mcd /tmp[0m
+2026-09-16T21:50:36.2946715Z [36;1m/tmp/nocturne-wheel/bin/python "$GITHUB_WORKSPACE/scripts/verify_wheel.py"[0m
+2026-09-16T21:50:36.2987454Z shell: /usr/bin/bash -e {0}
+2026-09-16T21:50:36.2987725Z env:
+2026-09-16T21:50:36.2988006Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:50:36.2988727Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-09-16T21:50:36.2989197Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:50:36.2989590Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:50:36.2990014Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-09-16T21:50:36.2990412Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-09-16T21:50:36.2990742Z ##[endgroup]
+2026-09-16T21:50:39.0708111Z Processing /tmp/nocturne-harness-sdist-wheel/nocturne_harness-0.1.25-py3-none-any.whl
+2026-09-16T21:50:39.1766541Z Collecting fastapi<1,>=0.115 (from nocturne-harness==0.1.25)
+2026-09-16T21:50:39.1778946Z   Using cached fastapi-0.139.2-py3-none-any.whl.metadata (26 kB)
+2026-09-16T21:50:39.2015546Z Collecting httpx<1,>=0.27 (from nocturne-harness==0.1.25)
+2026-09-16T21:50:39.2026442Z   Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+2026-09-16T21:50:39.2173518Z Collecting nocturne-memory==0.1.25 (from nocturne-harness==0.1.25)
+2026-09-16T21:50:39.2476649Z   Downloading nocturne_memory-0.1.25-py3-none-any.whl.metadata (2.1 kB)
+2026-09-16T21:50:39.2808951Z Collecting playwright==1.62.0 (from nocturne-harness==0.1.25)
+2026-09-16T21:50:39.2820181Z   Using cached playwright-1.62.0-py3-none-manylinux1_x86_64.whl.metadata (3.3 kB)
+2026-09-16T21:50:39.2944489Z Collecting pydantic-ai-harness==0.31.0 (from pydantic-ai-harness[skills]==0.31.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:39.2955184Z   Using cached pydantic_ai_harness-0.31.0-py3-none-any.whl.metadata (29 kB)
+2026-09-16T21:50:39.3537026Z Collecting pydantic-ai==2.43.0 (from nocturne-harness==0.1.25)
+2026-09-16T21:50:39.3547726Z   Using cached pydantic_ai-2.43.0-py3-none-any.whl.metadata (25 kB)
+2026-09-16T21:50:39.3777615Z Collecting pydantic-settings<3,>=2.7 (from nocturne-harness==0.1.25)
+2026-09-16T21:50:39.3788449Z   Using cached pydantic_settings-2.14.2-py3-none-any.whl.metadata (3.4 kB)
+2026-09-16T21:50:39.4777307Z Collecting pydantic<3,>=2.10 (from nocturne-harness==0.1.25)
+2026-09-16T21:50:39.4788692Z   Using cached pydantic-2.13.4-py3-none-any.whl.metadata (109 kB)
+2026-09-16T21:50:39.5096528Z Collecting uvicorn<1,>=0.34 (from uvicorn[standard]<1,>=0.34->nocturne-harness==0.1.25)
+2026-09-16T21:50:39.5107565Z   Using cached uvicorn-0.51.0-py3-none-any.whl.metadata (6.6 kB)
+2026-09-16T21:50:39.5997840Z Collecting websockets<17,>=14 (from nocturne-harness==0.1.25)
+2026-09-16T21:50:39.6009621Z   Using cached websockets-16.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.8 kB)
+2026-09-16T21:50:39.6262506Z Collecting alembic<2,>=1.13 (from nocturne-memory==0.1.25->nocturne-harness==0.1.25)
+2026-09-16T21:50:39.6273377Z   Using cached alembic-1.18.5-py3-none-any.whl.metadata (7.2 kB)
+2026-09-16T21:50:39.6595931Z Collecting asyncpg<1,>=0.29 (from nocturne-memory==0.1.25->nocturne-harness==0.1.25)
+2026-09-16T21:50:39.6606802Z   Using cached asyncpg-0.31.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (4.4 kB)
+2026-09-16T21:50:39.6799463Z Collecting croniter<7,>=6.2.2 (from nocturne-memory==0.1.25->nocturne-harness==0.1.25)
+2026-09-16T21:50:39.6810303Z   Using cached croniter-6.2.4-py3-none-any.whl.metadata (23 kB)
+2026-09-16T21:50:39.6924651Z Collecting pgvector<1,>=0.3 (from nocturne-memory==0.1.25->nocturne-harness==0.1.25)
+2026-09-16T21:50:39.6935769Z   Using cached pgvector-0.5.0-py3-none-any.whl.metadata (19 kB)
+2026-09-16T21:50:39.9611882Z Collecting sqlalchemy<3,>=2 (from sqlalchemy[asyncio]<3,>=2->nocturne-memory==0.1.25->nocturne-harness==0.1.25)
+2026-09-16T21:50:39.9623865Z   Using cached sqlalchemy-2.0.51-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.5 kB)
+2026-09-16T21:50:40.0029261Z Collecting tiktoken<1,>=0.9 (from nocturne-memory==0.1.25->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.0040746Z   Using cached tiktoken-0.13.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (6.7 kB)
+2026-09-16T21:50:40.0293039Z Collecting pyee<14,>=13 (from playwright==1.62.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.0304249Z   Using cached pyee-13.0.1-py3-none-any.whl.metadata (3.0 kB)
+2026-09-16T21:50:40.1491424Z Collecting greenlet<4.0.0,>=3.1.1 (from playwright==1.62.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.1502943Z   Using cached greenlet-3.5.4-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+2026-09-16T21:50:40.1994006Z Collecting pydantic-ai-slim==2.43.0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.2003943Z   Using cached pydantic_ai_slim-2.43.0-py3-none-any.whl.metadata (7.3 kB)
+2026-09-16T21:50:40.2371129Z Collecting genai-prices>=0.0.71 (from pydantic-ai-harness==0.31.0->pydantic-ai-harness[skills]==0.31.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.2381608Z   Using cached genai_prices-0.1.7-py3-none-any.whl.metadata (10 kB)
+2026-09-16T21:50:40.2879028Z Collecting pyyaml>=6.0.2 (from pydantic-ai-harness[skills]==0.31.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.2890187Z   Using cached pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2026-09-16T21:50:40.3085499Z Collecting anyio>=4.7.0 (from pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.3095397Z   Using cached anyio-4.14.2-py3-none-any.whl.metadata (4.6 kB)
+2026-09-16T21:50:40.3246746Z Collecting griffelib>=2.0 (from pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.3256608Z   Using cached griffelib-2.1.0-py3-none-any.whl.metadata (1.3 kB)
+2026-09-16T21:50:40.3448326Z Collecting httpx2>=2.7 (from pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.3458059Z   Using cached httpx2-2.7.0-py3-none-any.whl.metadata (8.4 kB)
+2026-09-16T21:50:40.3653934Z Collecting opentelemetry-api>=1.28.0 (from pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.3664032Z   Using cached opentelemetry_api-1.44.0-py3-none-any.whl.metadata (1.4 kB)
+2026-09-16T21:50:40.4132429Z Collecting pydantic-graph==2.43.0 (from pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.4142409Z   Using cached pydantic_graph-2.43.0-py3-none-any.whl.metadata (4.2 kB)
+2026-09-16T21:50:40.4381566Z Collecting typing-inspection>=0.4.0 (from pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.4391460Z   Using cached typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+2026-09-16T21:50:40.4826132Z Collecting anthropic>=1.3.0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.4836562Z   Using cached anthropic-1.6.0-py3-none-any.whl.metadata (3.3 kB)
+2026-09-16T21:50:40.5076219Z Collecting argcomplete>=3.5.0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.5086203Z   Using cached argcomplete-3.7.0-py3-none-any.whl.metadata (16 kB)
+2026-09-16T21:50:40.5358839Z Collecting prompt-toolkit>=3 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.5368959Z   Using cached prompt_toolkit-3.0.52-py3-none-any.whl.metadata (6.4 kB)
+2026-09-16T21:50:40.5475032Z Collecting pyperclip>=1.9.0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.5485183Z   Using cached pyperclip-1.11.0-py3-none-any.whl.metadata (2.4 kB)
+2026-09-16T21:50:40.5817266Z Collecting rich>=13 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.5827668Z   Using cached rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+2026-09-16T21:50:40.6258723Z Collecting pydantic-evals==2.43.0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.6268860Z   Using cached pydantic_evals-2.43.0-py3-none-any.whl.metadata (8.0 kB)
+2026-09-16T21:50:40.6501174Z Collecting google-genai>=2.18.0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.6511468Z   Using cached google_genai-2.23.0-py3-none-any.whl.metadata (56 kB)
+2026-09-16T21:50:40.6890289Z Collecting logfire>=4.39.0 (from logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.6900287Z   Using cached logfire-5.1.0-py3-none-any.whl.metadata (11 kB)
+2026-09-16T21:50:40.7375796Z Collecting opentelemetry-instrumentation-httpx>=0.65b0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.7385656Z   Using cached opentelemetry_instrumentation_httpx-0.65b0-py3-none-any.whl.metadata (9.0 kB)
+2026-09-16T21:50:40.7523271Z Collecting fastmcp-slim<5,>=3.3.0 (from fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.7532971Z   Using cached fastmcp_slim-3.4.4-py3-none-any.whl.metadata (10 kB)
+2026-09-16T21:50:40.8183943Z Collecting openai>=3.8.0 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.8194425Z   Using cached openai-3.14.1-py3-none-any.whl.metadata (43 kB)
+2026-09-16T21:50:40.8516291Z Collecting starlette>=1.3.1 (from pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.8526507Z   Using cached starlette-1.3.1-py3-none-any.whl.metadata (6.4 kB)
+2026-09-16T21:50:40.8889856Z Collecting logfire-api>=3.14.1 (from pydantic-evals==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.8900251Z   Using cached logfire_api-4.37.0-py3-none-any.whl.metadata (973 bytes)
+2026-09-16T21:50:40.9421864Z Collecting typing-extensions>=4.8.0 (from fastapi<1,>=0.115->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.9432800Z   Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-09-16T21:50:40.9522798Z Collecting annotated-doc>=0.0.2 (from fastapi<1,>=0.115->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.9533852Z   Using cached annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+2026-09-16T21:50:40.9706708Z Collecting certifi (from httpx<1,>=0.27->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.9717695Z   Using cached certifi-2026.6.17-py3-none-any.whl.metadata (2.5 kB)
+2026-09-16T21:50:40.9863783Z Collecting httpcore==1.* (from httpx<1,>=0.27->nocturne-harness==0.1.25)
+2026-09-16T21:50:40.9874702Z   Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+2026-09-16T21:50:41.0005359Z Collecting idna (from httpx<1,>=0.27->nocturne-harness==0.1.25)
+2026-09-16T21:50:41.0016129Z   Using cached idna-3.18-py3-none-any.whl.metadata (6.1 kB)
+2026-09-16T21:50:41.0123902Z Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.27->nocturne-harness==0.1.25)
+2026-09-16T21:50:41.0134974Z   Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2026-09-16T21:50:41.0238394Z Collecting annotated-types>=0.6.0 (from pydantic<3,>=2.10->nocturne-harness==0.1.25)
+2026-09-16T21:50:41.0248992Z   Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+2026-09-16T21:50:41.6002622Z Collecting pydantic-core==2.46.4 (from pydantic<3,>=2.10->nocturne-harness==0.1.25)
+2026-09-16T21:50:41.6015299Z   Using cached pydantic_core-2.46.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+2026-09-16T21:50:41.6385406Z Collecting python-dotenv>=0.21.0 (from pydantic-settings<3,>=2.7->nocturne-harness==0.1.25)
+2026-09-16T21:50:41.6396150Z   Using cached python_dotenv-1.2.2-py3-none-any.whl.metadata (27 kB)
+2026-09-16T21:50:41.6595636Z Collecting click>=7.0 (from uvicorn<1,>=0.34->uvicorn[standard]<1,>=0.34->nocturne-harness==0.1.25)
+2026-09-16T21:50:41.6606581Z   Using cached click-8.4.2-py3-none-any.whl.metadata (2.6 kB)
+2026-09-16T21:50:41.6942251Z Collecting httptools>=0.8.0 (from uvicorn[standard]<1,>=0.34->nocturne-harness==0.1.25)
+2026-09-16T21:50:41.6953796Z   Using cached httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+2026-09-16T21:50:41.7313305Z Collecting uvloop>=0.15.1 (from uvicorn[standard]<1,>=0.34->nocturne-harness==0.1.25)
+2026-09-16T21:50:41.7324610Z   Using cached uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (4.9 kB)
+2026-09-16T21:50:41.7919839Z Collecting watchfiles>=0.20 (from uvicorn[standard]<1,>=0.34->nocturne-harness==0.1.25)
+2026-09-16T21:50:41.7931577Z   Using cached watchfiles-1.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+2026-09-16T21:50:41.8315593Z Collecting Mako (from alembic<2,>=1.13->nocturne-memory==0.1.25->nocturne-harness==0.1.25)
+2026-09-16T21:50:41.8326331Z   Using cached mako-1.3.12-py3-none-any.whl.metadata (2.9 kB)
+2026-09-16T21:50:41.8607215Z Collecting python-dateutil (from croniter<7,>=6.2.2->nocturne-memory==0.1.25->nocturne-harness==0.1.25)
+2026-09-16T21:50:41.8617828Z   Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+2026-09-16T21:50:42.2381136Z Collecting regex (from tiktoken<1,>=0.9->nocturne-memory==0.1.25->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.2393867Z   Using cached regex-2026.7.10-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+2026-09-16T21:50:42.2641777Z Collecting requests (from tiktoken<1,>=0.9->nocturne-memory==0.1.25->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.2652553Z   Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+2026-09-16T21:50:42.2937777Z Collecting docstring-parser<1,>=0.15 (from anthropic>=1.3.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.2948006Z   Using cached docstring_parser-0.18.0-py3-none-any.whl.metadata (3.5 kB)
+2026-09-16T21:50:42.3693181Z Collecting jiter<1,>=0.4.0 (from anthropic>=1.3.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.3703845Z   Using cached jiter-0.16.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+2026-09-16T21:50:42.3962159Z Collecting sniffio<2,>=1 (from anthropic>=1.3.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.3972291Z   Using cached sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+2026-09-16T21:50:42.4236264Z Collecting platformdirs>=4.0.0 (from fastmcp-slim<5,>=3.3.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.4246073Z   Using cached platformdirs-4.10.0-py3-none-any.whl.metadata (5.5 kB)
+2026-09-16T21:50:42.4697078Z Collecting authlib>=1.6.11 (from fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.4707012Z   Using cached authlib-1.7.2-py2.py3-none-any.whl.metadata (10 kB)
+2026-09-16T21:50:42.4813703Z Collecting exceptiongroup>=1.2.2 (from fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.4823677Z   Using cached exceptiongroup-1.3.1-py3-none-any.whl.metadata (6.7 kB)
+2026-09-16T21:50:42.4992533Z Collecting mcp<2.0,>=1.24.0 (from fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.5002481Z   Using cached mcp-1.28.1-py3-none-any.whl.metadata (9.4 kB)
+2026-09-16T21:50:42.5178849Z Collecting py-key-value-aio<0.5.0,>=0.4.4 (from py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.5188130Z   Using cached py_key_value_aio-0.4.5-py3-none-any.whl.metadata (16 kB)
+2026-09-16T21:50:42.5835662Z Collecting google-auth<3.0.0,>=2.56.0 (from google-auth[requests]<3.0.0,>=2.56.0->google-genai>=2.18.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.5845913Z   Using cached google_auth-2.58.0-py3-none-any.whl.metadata (6.0 kB)
+2026-09-16T21:50:42.6383523Z Collecting tenacity<9.2.0,>=8.2.3 (from google-genai>=2.18.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.6393753Z   Using cached tenacity-9.1.4-py3-none-any.whl.metadata (1.2 kB)
+2026-09-16T21:50:42.6499337Z Collecting distro<2,>=1.7.0 (from google-genai>=2.18.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.6508912Z   Using cached distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+2026-09-16T21:50:42.6686827Z Collecting httpcore2==2.7.0 (from httpx2>=2.7->pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.6696804Z   Using cached httpcore2-2.7.0-py3-none-any.whl.metadata (24 kB)
+2026-09-16T21:50:42.6836183Z Collecting truststore>=0.10 (from httpx2>=2.7->pydantic-ai-slim==2.43.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.6846196Z   Using cached truststore-0.10.4-py3-none-any.whl.metadata (4.4 kB)
+2026-09-16T21:50:42.7006746Z Collecting executing>=2.0.1 (from logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.7016689Z   Using cached executing-2.2.1-py2.py3-none-any.whl.metadata (8.9 kB)
+2026-09-16T21:50:42.7180593Z Collecting opentelemetry-exporter-otlp-proto-http<1.45.0,>=1.39.0 (from logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.7190596Z   Using cached opentelemetry_exporter_otlp_proto_http-1.44.0-py3-none-any.whl.metadata (2.4 kB)
+2026-09-16T21:50:42.7359882Z Collecting opentelemetry-instrumentation>=0.41b0 (from logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.7370264Z   Using cached opentelemetry_instrumentation-0.65b0-py3-none-any.whl.metadata (7.2 kB)
+2026-09-16T21:50:42.7573811Z Collecting opentelemetry-sdk<1.45.0,>=1.39.0 (from logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.7583491Z   Using cached opentelemetry_sdk-1.44.0-py3-none-any.whl.metadata (1.6 kB)
+2026-09-16T21:50:42.8783024Z Collecting protobuf>=4.23.4 (from logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.8793697Z   Using cached protobuf-6.33.6-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+2026-09-16T21:50:42.9725130Z Collecting opentelemetry-semantic-conventions==0.65b0 (from opentelemetry-instrumentation-httpx>=0.65b0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.9735253Z   Using cached opentelemetry_semantic_conventions-0.65b0-py3-none-any.whl.metadata (2.4 kB)
+2026-09-16T21:50:42.9894456Z Collecting opentelemetry-util-http==0.65b0 (from opentelemetry-instrumentation-httpx>=0.65b0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:42.9904748Z   Using cached opentelemetry_util_http-0.65b0-py3-none-any.whl.metadata (2.6 kB)
+2026-09-16T21:50:43.2696977Z Collecting wrapt<3.0.0,>=1.0.0 (from opentelemetry-instrumentation-httpx>=0.65b0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.2709154Z   Using cached wrapt-2.2.2-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (7.4 kB)
+2026-09-16T21:50:43.2990468Z Collecting packaging>=18.0 (from opentelemetry-instrumentation>=0.41b0->logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.3000403Z   Using cached packaging-26.2-py3-none-any.whl.metadata (3.5 kB)
+2026-09-16T21:50:43.3198206Z Collecting wcwidth (from prompt-toolkit>=3->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.3208988Z   Using cached wcwidth-0.8.2-py3-none-any.whl.metadata (43 kB)
+2026-09-16T21:50:43.4189860Z Collecting charset_normalizer<4,>=2 (from requests->tiktoken<1,>=0.9->nocturne-memory==0.1.25->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.4201437Z   Using cached charset_normalizer-3.4.9-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (41 kB)
+2026-09-16T21:50:43.4466968Z Collecting urllib3<3,>=1.26 (from requests->tiktoken<1,>=0.9->nocturne-memory==0.1.25->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.4479752Z   Using cached urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+2026-09-16T21:50:43.4685540Z Collecting markdown-it-py>=2.2.0 (from rich>=13->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.4695756Z   Using cached markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+2026-09-16T21:50:43.4923158Z Collecting pygments<3.0.0,>=2.13.0 (from rich>=13->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.4933234Z   Using cached pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+2026-09-16T21:50:43.5353967Z Collecting MarkupSafe>=0.9.2 (from Mako->alembic<2,>=1.13->nocturne-memory==0.1.25->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.5365327Z   Using cached markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+2026-09-16T21:50:43.5501873Z Collecting six>=1.5 (from python-dateutil->croniter<7,>=6.2.2->nocturne-memory==0.1.25->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.5512415Z   Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2026-09-16T21:50:43.7034680Z Collecting cryptography (from authlib>=1.6.11->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.7046847Z   Using cached cryptography-49.0.0-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.3 kB)
+2026-09-16T21:50:43.7210759Z Collecting joserfc>=1.6.0 (from authlib>=1.6.11->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.7221626Z   Using cached joserfc-1.7.3-py3-none-any.whl.metadata (3.1 kB)
+2026-09-16T21:50:43.7562249Z Collecting pyasn1-modules>=0.2.1 (from google-auth<3.0.0,>=2.56.0->google-auth[requests]<3.0.0,>=2.56.0->google-genai>=2.18.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.7572849Z   Using cached pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+2026-09-16T21:50:43.8004807Z Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=13->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.8015688Z   Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+2026-09-16T21:50:43.8226588Z Collecting httpx-sse>=0.4 (from mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.8237058Z   Using cached httpx_sse-0.4.3-py3-none-any.whl.metadata (9.7 kB)
+2026-09-16T21:50:43.8629526Z Collecting jsonschema>=4.20.0 (from mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.8640335Z   Using cached jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+2026-09-16T21:50:43.9251220Z Collecting pyjwt>=2.10.1 (from pyjwt[crypto]>=2.10.1->mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.9262122Z   Using cached pyjwt-2.13.0-py3-none-any.whl.metadata (3.4 kB)
+2026-09-16T21:50:43.9378877Z Collecting python-multipart>=0.0.9 (from mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.9389549Z   Using cached python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+2026-09-16T21:50:43.9566034Z Collecting sse-starlette>=1.6.1 (from mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:43.9577009Z   Using cached sse_starlette-3.4.5-py3-none-any.whl.metadata (15 kB)
+2026-09-16T21:50:44.0460177Z Collecting googleapis-common-protos~=1.52 (from opentelemetry-exporter-otlp-proto-http<1.45.0,>=1.39.0->logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.0471191Z   Using cached googleapis_common_protos-1.75.0-py3-none-any.whl.metadata (8.6 kB)
+2026-09-16T21:50:44.0694291Z Collecting opentelemetry-exporter-otlp-proto-common==1.44.0 (from opentelemetry-exporter-otlp-proto-http<1.45.0,>=1.39.0->logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.0705246Z   Using cached opentelemetry_exporter_otlp_proto_common-1.44.0-py3-none-any.whl.metadata (1.8 kB)
+2026-09-16T21:50:44.0882780Z Collecting opentelemetry-proto==1.44.0 (from opentelemetry-exporter-otlp-proto-http<1.45.0,>=1.39.0->logfire>=4.39.0->logfire[httpx]>=4.39.0; extra == "logfire"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.0894085Z   Using cached opentelemetry_proto-1.44.0-py3-none-any.whl.metadata (2.3 kB)
+2026-09-16T21:50:44.1483849Z Collecting beartype>=0.20.0 (from py-key-value-aio<0.5.0,>=0.4.4->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.1494659Z   Using cached beartype-0.22.9-py3-none-any.whl.metadata (37 kB)
+2026-09-16T21:50:44.1951399Z Collecting aiofile>=3.5.0 (from py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.1961970Z   Using cached aiofile-3.11.1-py3-none-any.whl.metadata (14 kB)
+2026-09-16T21:50:44.2341826Z Collecting keyring>=25.6.0 (from py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.2352611Z   Using cached keyring-25.7.0-py3-none-any.whl.metadata (21 kB)
+2026-09-16T21:50:44.2566559Z Collecting cachetools>=5.0.0 (from py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.2577491Z   Using cached cachetools-7.1.4-py3-none-any.whl.metadata (5.5 kB)
+2026-09-16T21:50:44.2723043Z Collecting email-validator>=2.0.0 (from pydantic[email]>=2.11.7->fastmcp-slim<5,>=3.3.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.2733843Z   Using cached email_validator-2.3.0-py3-none-any.whl.metadata (26 kB)
+2026-09-16T21:50:44.3332624Z Collecting caio~=0.9.0 (from aiofile>=3.5.0->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.3343694Z   Using cached caio-0.9.25-cp312-cp312-manylinux_2_34_x86_64.whl.metadata (3.3 kB)
+2026-09-16T21:50:44.4275446Z Collecting cffi>=2.0.0 (from cryptography->authlib>=1.6.11->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.4286861Z   Using cached cffi-2.1.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+2026-09-16T21:50:44.4449562Z Collecting dnspython>=2.0.0 (from email-validator>=2.0.0->pydantic[email]>=2.11.7->fastmcp-slim<5,>=3.3.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.4460340Z   Using cached dnspython-2.8.0-py3-none-any.whl.metadata (5.7 kB)
+2026-09-16T21:50:44.5125469Z Collecting attrs>=22.2.0 (from jsonschema>=4.20.0->mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.5136362Z   Using cached attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+2026-09-16T21:50:44.5255275Z Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.20.0->mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.5266272Z   Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+2026-09-16T21:50:44.5484090Z Collecting referencing>=0.28.4 (from jsonschema>=4.20.0->mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.5494948Z   Using cached referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+2026-09-16T21:50:44.7520985Z Collecting rpds-py>=0.25.0 (from jsonschema>=4.20.0->mcp<2.0,>=1.24.0->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.7533556Z   Using cached rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+2026-09-16T21:50:44.7688793Z Collecting SecretStorage>=3.2 (from keyring>=25.6.0->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.7699385Z   Using cached secretstorage-3.5.0-py3-none-any.whl.metadata (4.0 kB)
+2026-09-16T21:50:44.7787733Z Collecting jeepney>=0.4.2 (from keyring>=25.6.0->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.7798497Z   Using cached jeepney-0.9.0-py3-none-any.whl.metadata (1.2 kB)
+2026-09-16T21:50:44.7910210Z Collecting jaraco.classes (from keyring>=25.6.0->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.7921086Z   Using cached jaraco.classes-3.4.0-py3-none-any.whl.metadata (2.6 kB)
+2026-09-16T21:50:44.8159109Z Collecting jaraco.functools (from keyring>=25.6.0->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.8170025Z   Using cached jaraco_functools-4.6.0-py3-none-any.whl.metadata (2.9 kB)
+2026-09-16T21:50:44.8472530Z Collecting jaraco.context (from keyring>=25.6.0->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.8483362Z   Using cached jaraco_context-6.1.2-py3-none-any.whl.metadata (4.2 kB)
+2026-09-16T21:50:44.8763418Z Collecting pyasn1<0.7.0,>=0.6.1 (from pyasn1-modules>=0.2.1->google-auth<3.0.0,>=2.56.0->google-auth[requests]<3.0.0,>=2.56.0->google-genai>=2.18.0->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.8774047Z   Using cached pyasn1-0.6.4-py3-none-any.whl.metadata (8.4 kB)
+2026-09-16T21:50:44.9313153Z Collecting pycparser (from cffi>=2.0.0->cryptography->authlib>=1.6.11->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:44.9323950Z   Using cached pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+2026-09-16T21:50:45.0168739Z Collecting more-itertools (from jaraco.classes->keyring>=25.6.0->py-key-value-aio[filetree,keyring,memory]<0.5.0,>=0.4.4; extra == "client"->fastmcp-slim[client]<5,>=3.3.0; extra == "mcp"->pydantic-ai-slim[anthropic,cli,evals,google,logfire,mcp,openai,web]==2.43.0->pydantic-ai==2.43.0->nocturne-harness==0.1.25)
+2026-09-16T21:50:45.0179430Z   Using cached more_itertools-11.1.0-py3-none-any.whl.metadata (41 kB)
+2026-09-16T21:50:45.0449044Z Downloading nocturne_memory-0.1.25-py3-none-any.whl (228 kB)
+2026-09-16T21:50:45.0602044Z Using cached playwright-1.62.0-py3-none-manylinux1_x86_64.whl (47.7 MB)
+2026-09-16T21:50:45.0784192Z Using cached pydantic_ai-2.43.0-py3-none-any.whl (9.3 kB)
+2026-09-16T21:50:45.0795532Z Using cached pydantic_ai_harness-0.31.0-py3-none-any.whl (823 kB)
+2026-09-16T21:50:45.0809722Z Using cached pydantic_ai_slim-2.43.0-py3-none-any.whl (1.7 MB)
+2026-09-16T21:50:45.0826347Z Using cached pydantic_evals-2.43.0-py3-none-any.whl (103 kB)
+2026-09-16T21:50:45.0837686Z Using cached pydantic_graph-2.43.0-py3-none-any.whl (52 kB)
+2026-09-16T21:50:45.0848974Z Using cached fastapi-0.139.2-py3-none-any.whl (130 kB)
+2026-09-16T21:50:45.0860808Z Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+2026-09-16T21:50:45.0872193Z Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+2026-09-16T21:50:45.0883840Z Using cached pydantic-2.13.4-py3-none-any.whl (472 kB)
+2026-09-16T21:50:45.0896882Z Using cached pydantic_core-2.46.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+2026-09-16T21:50:45.0915030Z Using cached pydantic_settings-2.14.2-py3-none-any.whl (61 kB)
+2026-09-16T21:50:45.0926440Z Using cached uvicorn-0.51.0-py3-none-any.whl (73 kB)
+2026-09-16T21:50:45.0938256Z Using cached websockets-16.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (187 kB)
+2026-09-16T21:50:45.0950054Z Using cached alembic-1.18.5-py3-none-any.whl (264 kB)
+2026-09-16T21:50:45.0962049Z Using cached annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+2026-09-16T21:50:45.0973211Z Using cached annotated_types-0.7.0-py3-none-any.whl (13 kB)
+2026-09-16T21:50:45.0984249Z Using cached anyio-4.14.2-py3-none-any.whl (125 kB)
+2026-09-16T21:50:45.0995879Z Using cached asyncpg-0.31.0-cp312-cp312-manylinux_2_28_x86_64.whl (3.5 MB)
+2026-09-16T21:50:45.1019016Z Using cached click-8.4.2-py3-none-any.whl (119 kB)
+2026-09-16T21:50:45.1030411Z Using cached croniter-6.2.4-py3-none-any.whl (46 kB)
+2026-09-16T21:50:45.1041213Z Using cached genai_prices-0.1.7-py3-none-any.whl (121 kB)
+2026-09-16T21:50:45.1053156Z Using cached greenlet-3.5.4-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (621 kB)
+2026-09-16T21:50:45.1065854Z Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+2026-09-16T21:50:45.1077020Z Using cached httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (523 kB)
+2026-09-16T21:50:45.1089776Z Using cached idna-3.18-py3-none-any.whl (65 kB)
+2026-09-16T21:50:45.1100723Z Using cached pgvector-0.5.0-py3-none-any.whl (30 kB)
+2026-09-16T21:50:45.1111497Z Using cached pyee-13.0.1-py3-none-any.whl (15 kB)
+2026-09-16T21:50:45.1122361Z Using cached python_dotenv-1.2.2-py3-none-any.whl (22 kB)
+2026-09-16T21:50:45.1133570Z Using cached pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+2026-09-16T21:50:45.1147604Z Using cached sqlalchemy-2.0.51-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.4 MB)
+2026-09-16T21:50:45.1170006Z Using cached starlette-1.3.1-py3-none-any.whl (73 kB)
+2026-09-16T21:50:45.1180854Z Using cached tiktoken-0.13.0-cp312-cp312-manylinux_2_28_x86_64.whl (1.1 MB)
+2026-09-16T21:50:45.1195449Z Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-09-16T21:50:45.1206398Z Using cached typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+2026-09-16T21:50:45.1217632Z Using cached uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.4 MB)
+2026-09-16T21:50:45.1244350Z Using cached watchfiles-1.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (456 kB)
+2026-09-16T21:50:45.1256570Z Using cached certifi-2026.6.17-py3-none-any.whl (133 kB)
+2026-09-16T21:50:45.1267666Z Using cached anthropic-1.6.0-py3-none-any.whl (1.2 MB)
+2026-09-16T21:50:45.1283100Z Using cached argcomplete-3.7.0-py3-none-any.whl (42 kB)
+2026-09-16T21:50:45.1294203Z Using cached fastmcp_slim-3.4.4-py3-none-any.whl (765 kB)
+2026-09-16T21:50:45.1307479Z Using cached google_genai-2.23.0-py3-none-any.whl (1.1 MB)
+2026-09-16T21:50:45.1322236Z Using cached griffelib-2.1.0-py3-none-any.whl (142 kB)
+2026-09-16T21:50:45.1333459Z Using cached httpx2-2.7.0-py3-none-any.whl (90 kB)
+2026-09-16T21:50:45.1344494Z Using cached httpcore2-2.7.0-py3-none-any.whl (81 kB)
+2026-09-16T21:50:45.1355557Z Using cached logfire-5.1.0-py3-none-any.whl (474 kB)
+2026-09-16T21:50:45.1367839Z Using cached openai-3.14.1-py3-none-any.whl (2.0 MB)
+2026-09-16T21:50:45.1385861Z Using cached opentelemetry_api-1.44.0-py3-none-any.whl (60 kB)
+2026-09-16T21:50:45.1396759Z Using cached opentelemetry_instrumentation_httpx-0.65b0-py3-none-any.whl (17 kB)
+2026-09-16T21:50:45.1407480Z Using cached opentelemetry_instrumentation-0.65b0-py3-none-any.whl (36 kB)
+2026-09-16T21:50:45.1418420Z Using cached opentelemetry_semantic_conventions-0.65b0-py3-none-any.whl (204 kB)
+2026-09-16T21:50:45.1430108Z Using cached opentelemetry_util_http-0.65b0-py3-none-any.whl (8.2 kB)
+2026-09-16T21:50:45.1440753Z Using cached prompt_toolkit-3.0.52-py3-none-any.whl (391 kB)
+2026-09-16T21:50:45.1452658Z Using cached pyperclip-1.11.0-py3-none-any.whl (11 kB)
+2026-09-16T21:50:45.1463796Z Using cached requests-2.34.2-py3-none-any.whl (73 kB)
+2026-09-16T21:50:45.1474978Z Using cached rich-15.0.0-py3-none-any.whl (310 kB)
+2026-09-16T21:50:45.1487193Z Using cached mako-1.3.12-py3-none-any.whl (78 kB)
+2026-09-16T21:50:45.1498733Z Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2026-09-16T21:50:45.1511301Z Using cached regex-2026.7.10-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (801 kB)
+2026-09-16T21:50:45.1524875Z Using cached authlib-1.7.2-py2.py3-none-any.whl (259 kB)
+2026-09-16T21:50:45.1537548Z Using cached charset_normalizer-3.4.9-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (224 kB)
+2026-09-16T21:50:45.1549107Z Using cached distro-1.9.0-py3-none-any.whl (20 kB)
+2026-09-16T21:50:45.1560485Z Using cached docstring_parser-0.18.0-py3-none-any.whl (22 kB)
+2026-09-16T21:50:45.1571660Z Using cached exceptiongroup-1.3.1-py3-none-any.whl (16 kB)
+2026-09-16T21:50:45.1582734Z Using cached executing-2.2.1-py2.py3-none-any.whl (28 kB)
+2026-09-16T21:50:45.1594099Z Using cached google_auth-2.58.0-py3-none-any.whl (262 kB)
+2026-09-16T21:50:45.1606373Z Using cached jiter-0.16.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (343 kB)
+2026-09-16T21:50:45.1618521Z Using cached logfire_api-4.37.0-py3-none-any.whl (138 kB)
+2026-09-16T21:50:45.1630522Z Using cached markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+2026-09-16T21:50:45.1642572Z Using cached markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+2026-09-16T21:50:45.1653780Z Using cached mcp-1.28.1-py3-none-any.whl (222 kB)
+2026-09-16T21:50:45.1665768Z Using cached opentelemetry_exporter_otlp_proto_http-1.44.0-py3-none-any.whl (21 kB)
+2026-09-16T21:50:45.1677259Z Using cached opentelemetry_exporter_otlp_proto_common-1.44.0-py3-none-any.whl (17 kB)
+2026-09-16T21:50:45.1688035Z Using cached opentelemetry_proto-1.44.0-py3-none-any.whl (72 kB)
+2026-09-16T21:50:45.1700030Z Using cached opentelemetry_sdk-1.44.0-py3-none-any.whl (137 kB)
+2026-09-16T21:50:45.1711314Z Using cached platformdirs-4.10.0-py3-none-any.whl (22 kB)
+2026-09-16T21:50:45.1722329Z Using cached protobuf-6.33.6-cp39-abi3-manylinux2014_x86_64.whl (323 kB)
+2026-09-16T21:50:45.1734272Z Using cached py_key_value_aio-0.4.5-py3-none-any.whl (170 kB)
+2026-09-16T21:50:45.1745557Z Using cached pygments-2.20.0-py3-none-any.whl (1.2 MB)
+2026-09-16T21:50:45.1760966Z Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+2026-09-16T21:50:45.1771675Z Using cached sniffio-1.3.1-py3-none-any.whl (10 kB)
+2026-09-16T21:50:45.1782359Z Using cached tenacity-9.1.4-py3-none-any.whl (28 kB)
+2026-09-16T21:50:45.1793144Z Using cached truststore-0.10.4-py3-none-any.whl (18 kB)
+2026-09-16T21:50:45.1803838Z Using cached urllib3-2.7.0-py3-none-any.whl (131 kB)
+2026-09-16T21:50:45.1815282Z Using cached wrapt-2.2.2-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (169 kB)
+2026-09-16T21:50:45.1826348Z Using cached wcwidth-0.8.2-py3-none-any.whl (323 kB)
+2026-09-16T21:50:45.1838192Z Using cached aiofile-3.11.1-py3-none-any.whl (20 kB)
+2026-09-16T21:50:45.1848985Z Using cached beartype-0.22.9-py3-none-any.whl (1.3 MB)
+2026-09-16T21:50:45.1864585Z Using cached cachetools-7.1.4-py3-none-any.whl (16 kB)
+2026-09-16T21:50:45.1875828Z Using cached cryptography-49.0.0-cp311-abi3-manylinux_2_34_x86_64.whl (4.7 MB)
+2026-09-16T21:50:45.1902967Z Using cached email_validator-2.3.0-py3-none-any.whl (35 kB)
+2026-09-16T21:50:45.1913814Z Using cached googleapis_common_protos-1.75.0-py3-none-any.whl (300 kB)
+2026-09-16T21:50:45.1925391Z Using cached httpx_sse-0.4.3-py3-none-any.whl (9.0 kB)
+2026-09-16T21:50:45.1936501Z Using cached joserfc-1.7.3-py3-none-any.whl (70 kB)
+2026-09-16T21:50:45.1947722Z Using cached jsonschema-4.26.0-py3-none-any.whl (90 kB)
+2026-09-16T21:50:45.1959026Z Using cached keyring-25.7.0-py3-none-any.whl (39 kB)
+2026-09-16T21:50:45.1970617Z Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+2026-09-16T21:50:45.1981714Z Using cached packaging-26.2-py3-none-any.whl (100 kB)
+2026-09-16T21:50:45.1993147Z Using cached pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+2026-09-16T21:50:45.2004459Z Using cached pyjwt-2.13.0-py3-none-any.whl (31 kB)
+2026-09-16T21:50:45.2017115Z Using cached python_multipart-0.0.32-py3-none-any.whl (30 kB)
+2026-09-16T21:50:45.2028574Z Using cached sse_starlette-3.4.5-py3-none-any.whl (16 kB)
+2026-09-16T21:50:45.2039960Z Using cached attrs-26.1.0-py3-none-any.whl (67 kB)
+2026-09-16T21:50:45.2051292Z Using cached caio-0.9.25-cp312-cp312-manylinux_2_34_x86_64.whl (80 kB)
+2026-09-16T21:50:45.2062944Z Using cached cffi-2.1.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+2026-09-16T21:50:45.2074554Z Using cached dnspython-2.8.0-py3-none-any.whl (331 kB)
+2026-09-16T21:50:45.2086729Z Using cached jeepney-0.9.0-py3-none-any.whl (49 kB)
+2026-09-16T21:50:45.2098108Z Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+2026-09-16T21:50:45.2109201Z Using cached pyasn1-0.6.4-py3-none-any.whl (84 kB)
+2026-09-16T21:50:45.2120649Z Using cached referencing-0.37.0-py3-none-any.whl (26 kB)
+2026-09-16T21:50:45.2132023Z Using cached rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (366 kB)
+2026-09-16T21:50:45.2144344Z Using cached secretstorage-3.5.0-py3-none-any.whl (15 kB)
+2026-09-16T21:50:45.2155443Z Using cached jaraco.classes-3.4.0-py3-none-any.whl (6.8 kB)
+2026-09-16T21:50:45.2166808Z Using cached jaraco_context-6.1.2-py3-none-any.whl (7.9 kB)
+2026-09-16T21:50:45.2177837Z Using cached jaraco_functools-4.6.0-py3-none-any.whl (11 kB)
+2026-09-16T21:50:45.2188999Z Using cached more_itertools-11.1.0-py3-none-any.whl (72 kB)
+2026-09-16T21:50:45.2200694Z Using cached pycparser-3.0-py3-none-any.whl (48 kB)
+2026-09-16T21:50:45.6096697Z Installing collected packages: pyperclip, wrapt, websockets, wcwidth, uvloop, urllib3, typing-extensions, truststore, tenacity, sniffio, six, rpds-py, regex, pyyaml, python-multipart, python-dotenv, pyjwt, pygments, pycparser, pyasn1, protobuf, platformdirs, pgvector, packaging, opentelemetry-util-http, more-itertools, mdurl, MarkupSafe, logfire-api, jiter, jeepney, jaraco.context, idna, httpx-sse, httptools, h11, griffelib, greenlet, executing, docstring-parser, dnspython, distro, click, charset_normalizer, certifi, caio, cachetools, beartype, attrs, asyncpg, argcomplete, annotated-types, annotated-doc, uvicorn, typing-inspection, sqlalchemy, requests, referencing, python-dateutil, pyee, pydantic-core, pyasn1-modules, py-key-value-aio, prompt-toolkit, opentelemetry-proto, opentelemetry-api, markdown-it-py, Mako, jaraco.functools, jaraco.classes, httpcore2, httpcore, googleapis-common-protos, exceptiongroup, email-validator, cffi, anyio, aiofile, watchfiles, tiktoken, starlette, rich, pydantic, playwright, opentelemetry-semantic-conventions, opentelemetry-exporter-otlp-proto-common, jsonschema-specifications, httpx2, httpx, cryptography, croniter, alembic, sse-starlette, SecretStorage, pydantic-settings, pydantic-graph, opentelemetry-sdk, opentelemetry-instrumentation, openai, jsonschema, joserfc, google-auth, genai-prices, fastapi, anthropic, pydantic-ai-slim, opentelemetry-instrumentation-httpx, opentelemetry-exporter-otlp-proto-http, nocturne-memory, mcp, keyring, fastmcp-slim, authlib, pydantic-evals, pydantic-ai-harness, logfire, google-genai, pydantic-ai, nocturne-harness
+2026-09-16T21:50:59.7502681Z Successfully installed Mako-1.3.12 MarkupSafe-3.0.3 SecretStorage-3.5.0 aiofile-3.11.1 alembic-1.18.5 annotated-doc-0.0.4 annotated-types-0.7.0 anthropic-1.6.0 anyio-4.14.2 argcomplete-3.7.0 asyncpg-0.31.0 attrs-26.1.0 authlib-1.7.2 beartype-0.22.9 cachetools-7.1.4 caio-0.9.25 certifi-2026.6.17 cffi-2.1.0 charset_normalizer-3.4.9 click-8.4.2 croniter-6.2.4 cryptography-49.0.0 distro-1.9.0 dnspython-2.8.0 docstring-parser-0.18.0 email-validator-2.3.0 exceptiongroup-1.3.1 executing-2.2.1 fastapi-0.139.2 fastmcp-slim-3.4.4 genai-prices-0.1.7 google-auth-2.58.0 google-genai-2.23.0 googleapis-common-protos-1.75.0 greenlet-3.5.4 griffelib-2.1.0 h11-0.16.0 httpcore-1.0.9 httpcore2-2.7.0 httptools-0.8.0 httpx-0.28.1 httpx-sse-0.4.3 httpx2-2.7.0 idna-3.18 jaraco.classes-3.4.0 jaraco.context-6.1.2 jaraco.functools-4.6.0 jeepney-0.9.0 jiter-0.16.0 joserfc-1.7.3 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 keyring-25.7.0 logfire-5.1.0 logfire-api-4.37.0 markdown-it-py-4.2.0 mcp-1.28.1 mdurl-0.1.2 more-itertools-11.1.0 nocturne-harness-0.1.25 nocturne-memory-0.1.25 openai-3.14.1 opentelemetry-api-1.44.0 opentelemetry-exporter-otlp-proto-common-1.44.0 opentelemetry-exporter-otlp-proto-http-1.44.0 opentelemetry-instrumentation-0.65b0 opentelemetry-instrumentation-httpx-0.65b0 opentelemetry-proto-1.44.0 opentelemetry-sdk-1.44.0 opentelemetry-semantic-conventions-0.65b0 opentelemetry-util-http-0.65b0 packaging-26.2 pgvector-0.5.0 platformdirs-4.10.0 playwright-1.62.0 prompt-toolkit-3.0.52 protobuf-6.33.6 py-key-value-aio-0.4.5 pyasn1-0.6.4 pyasn1-modules-0.4.2 pycparser-3.0 pydantic-2.13.4 pydantic-ai-2.43.0 pydantic-ai-harness-0.31.0 pydantic-ai-slim-2.43.0 pydantic-core-2.46.4 pydantic-evals-2.43.0 pydantic-graph-2.43.0 pydantic-settings-2.14.2 pyee-13.0.1 pygments-2.20.0 pyjwt-2.13.0 pyperclip-1.11.0 python-dateutil-2.9.0.post0 python-dotenv-1.2.2 python-multipart-0.0.32 pyyaml-6.0.3 referencing-0.37.0 regex-2026.7.10 requests-2.34.2 rich-15.0.0 rpds-py-2026.6.3 six-1.17.0 sniffio-1.3.1 sqlalchemy-2.0.51 sse-starlette-3.4.5 starlette-1.3.1 tenacity-9.1.4 tiktoken-0.13.0 truststore-0.10.4 typing-extensions-4.16.0 typing-inspection-0.4.2 urllib3-2.7.0 uvicorn-0.51.0 uvloop-0.22.1 watchfiles-1.2.0 wcwidth-0.8.2 websockets-16.1 wrapt-2.2.2
+2026-09-16T21:50:59.8346115Z 
+2026-09-16T21:50:59.8346529Z [notice] A new release of pip is available: 25.0.1 -> 26.2.1
+2026-09-16T21:50:59.8347430Z [notice] To update, run: python -m pip install --upgrade pip
+2026-09-16T21:51:03.7646403Z nocturne-harness installed-wheel smoke passed
+2026-09-16T21:51:04.2043076Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-16T21:51:04.2044503Z Post job cleanup.
+2026-09-16T21:51:04.3207642Z Cache hit occurred on the primary key setup-python-Linux-x64-24.04-Ubuntu-python-3.12.14-pip-1a22dba8494a310ae5bc7389de28e96fb3c5cf99ce25b21c9f3b14bcc5750902, not saving cache.
+2026-09-16T21:51:04.3209494Z (node:3284) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-09-16T21:51:04.3210494Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-16T21:51:04.3327702Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-16T21:51:04.3329266Z Post job cleanup.
+2026-09-16T21:51:04.4142666Z [command]/usr/bin/git version
+2026-09-16T21:51:04.4178351Z git version 2.55.0
+2026-09-16T21:51:04.4214938Z Temporarily overriding HOME='/home/runner/work/_temp/1cac2eff-9d97-4285-a0d1-4cde48f10aa5' before making global git config changes
+2026-09-16T21:51:04.4215874Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-16T21:51:04.4219696Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/nocturne-harness/nocturne-harness/_d3/spine
+2026-09-16T21:51:04.4255906Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-16T21:51:04.4288159Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-16T21:51:04.4506476Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-16T21:51:04.4537917Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-16T21:51:04.4756855Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-16T21:51:04.4786995Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-16T21:51:04.5157833Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-16T21:51:04.5159420Z Post job cleanup.
+2026-09-16T21:51:04.6028184Z [command]/usr/bin/git version
+2026-09-16T21:51:04.6064269Z git version 2.55.0
+2026-09-16T21:51:04.6102480Z Temporarily overriding HOME='/home/runner/work/_temp/50528faf-e049-4d8c-bf30-a852968e1b14' before making global git config changes
+2026-09-16T21:51:04.6103521Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-16T21:51:04.6108148Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/nocturne-harness/nocturne-harness
+2026-09-16T21:51:04.6144962Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-16T21:51:04.6180151Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-16T21:51:04.6403030Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-16T21:51:04.6423809Z http.https://github.com/.extraheader
+2026-09-16T21:51:04.6434362Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-09-16T21:51:04.6463839Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-16T21:51:04.6682446Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-16T21:51:04.6712267Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-16T21:51:04.7071840Z Cleaning up orphan processes
+2026-09-16T21:51:04.7349769Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

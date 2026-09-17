@@ -1,0 +1,8 @@
+{
+  "status": 409,
+  "endpoint": "POST /v1/jobs",
+  "trigger": "palace",
+  "observed": "MemoryGraphQuery validation: memory_ids field required",
+  "fix": "Pass memory_ids=None; the principal-scoped graph query and real Palace trigger now succeed.",
+  "corrected_release": "0.1.26"
+}

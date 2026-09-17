@@ -1,0 +1,52 @@
+Using Python 3.12.9 environment at: m3sj-public25
+Resolved 40 packages in 667ms
+Downloading pip (1.7MiB)
+Downloading pydantic-core (1.8MiB)
+Downloading sqlalchemy (2.1MiB)
+Downloading uvloop (1.3MiB)
+ Downloaded uvloop
+ Downloaded pydantic-core
+ Downloaded pip
+ Downloaded sqlalchemy
+Prepared 40 packages in 311ms
+Installed 40 packages in 67ms
+ + alembic==1.20.0
+ + annotated-doc==0.0.5
+ + annotated-types==0.8.0
+ + anyio==4.15.1
+ + asyncpg==0.31.0
+ + certifi==2026.7.22
+ + charset-normalizer==3.5.1
+ + click==8.5.0
+ + croniter==6.2.4
+ + fastapi==0.141.1
+ + greenlet==3.5.6
+ + h11==0.16.0
+ + httpcore==1.0.9
+ + httptools==0.8.0
+ + httpx==0.28.1
+ + idna==3.19
+ + mako==1.4.1
+ + markupsafe==3.0.3
+ + nocturne-memory==0.1.25
+ + pgvector==0.5.0
+ + pip==26.2.1
+ + pydantic==2.13.5
+ + pydantic-core==2.46.5
+ + pydantic-settings==2.15.0
+ + python-dateutil==2.9.0.post0
+ + python-dotenv==1.2.3
+ + pyyaml==6.0.3
+ + regex==2026.9.10
+ + requests==2.34.2
+ + six==1.17.0
+ + sqlalchemy==2.0.54
+ + starlette==1.6.0
+ + tiktoken==0.14.0
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.4
+ + urllib3==2.8.0
+ + uvicorn==0.53.0
+ + uvloop==0.22.1
+ + watchfiles==1.2.0
+ + websockets==17.1

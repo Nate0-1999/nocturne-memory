@@ -1,0 +1,35 @@
+   Building nocturne-harness @ file:///private/tmp/m3sj-workspace/harness
+      Built nocturne-harness @ file:///private/tmp/m3sj-workspace/harness
+Uninstalled 1 package in 2ms
+Installed 1 package in 1ms
+SHELL_STARTED NOCTURNE
+Streaming
+
+SHELL_STARTED 94b36c7e355d The background shell running the command
+
+TOOLS · 46 RUN EVENTS
+SHELL_TURN_1 NOCTURNE
+Streaming
+
+SHELL_TURN_1 running The background shell with ID 94b36c7e355d is still running and producing output as expected.
+
+TOOLS · 19 RUN EVENTS
+SHELL_TURN_2 NOCTURNE
+Streaming
+
+SHELL_TURN_2 running The current folder is empty. The background shell with ID 94b36c7e355
+
+TOOLS · 13 RUN EVENTS
+SHELL_TURN_3 NOCTURNE
+Streaming
+
+SHELL_TURN_3 running The background shell with ID 94b36c7e355d is still running and continuously outputting as expected.
+
+The shell remains running as requested.
+
+TOOLS · 19 RUN EVENTS
+SHELL_STOPPED NOCTURNE
+
+SHELL_STOPPED The original background shell with ID 94b36c7e355d has been explicitly stopped as confirmed by the stop_shell tool.
+
+TOOLS · 20 RUN EVENTS
