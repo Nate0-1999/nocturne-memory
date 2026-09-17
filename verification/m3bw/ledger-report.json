@@ -10,7 +10,12 @@
       "head": "03927cd761d7530768865d0c33d12fe215a748d4"
     }
   ],
-  "unmapped": {},
+  "unmapped": {
+    "spine/verification/m3bw/FL-195.png": "Packet claim, ruling, decision, generated ledger view, or verification evidence only; no runtime feature changes. Original blocked findings are retained as history and superseded only by the explicit fallback ruling.",
+    "spine/verification/m3bw/FL-196.png": "Packet claim, ruling, decision, generated ledger view, or verification evidence only; no runtime feature changes. Original blocked findings are retained as history and superseded only by the explicit fallback ruling.",
+    "spine/verification/m3bw/SHA256SUMS": "Packet claim, ruling, decision, generated ledger view, or verification evidence only; no runtime feature changes. Original blocked findings are retained as history and superseded only by the explicit fallback ruling.",
+    "spine/verification/m3bw/ledger-report.json": "Packet claim, ruling, decision, generated ledger view, or verification evidence only; no runtime feature changes. Original blocked findings are retained as history and superseded only by the explicit fallback ruling."
+  },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
     "FL-195": {
