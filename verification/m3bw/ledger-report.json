@@ -6,15 +6,28 @@
   "diffs": [
     {
       "repo": "spine",
-      "base": "20b96dbf12104a1ede1e41e75fcff90460fe1721",
-      "head": "03927cd761d7530768865d0c33d12fe215a748d4"
+      "base": "5de91125b8301acee4734fda411628d6b57cbedb",
+      "head": "c76a9d9d4091071e05c6b4fee9b6fa00212b8d19"
     }
   ],
   "unmapped": {
-    "spine/verification/m3bw/FL-195.png": "Packet claim, ruling, decision, generated ledger view, or verification evidence only; no runtime feature changes. Original blocked findings are retained as history and superseded only by the explicit fallback ruling.",
-    "spine/verification/m3bw/FL-196.png": "Packet claim, ruling, decision, generated ledger view, or verification evidence only; no runtime feature changes. Original blocked findings are retained as history and superseded only by the explicit fallback ruling.",
-    "spine/verification/m3bw/SHA256SUMS": "Packet claim, ruling, decision, generated ledger view, or verification evidence only; no runtime feature changes. Original blocked findings are retained as history and superseded only by the explicit fallback ruling.",
-    "spine/verification/m3bw/ledger-report.json": "Packet claim, ruling, decision, generated ledger view, or verification evidence only; no runtime feature changes. Original blocked findings are retained as history and superseded only by the explicit fallback ruling."
+    "spine/verification/m3bw/FL-195.png": "M3BW handoff evidence only; no runtime feature change.",
+    "spine/verification/m3bw/FL-196.png": "M3BW handoff evidence only; no runtime feature change.",
+    "spine/verification/m3bw/SHA256SUMS": "M3BW handoff evidence only; no runtime feature change.",
+    "spine/verification/m3bw/ledger-report.json": "M3BW handoff evidence only; no runtime feature change.",
+    "spine/verification/m3tm/FL-195.png": "Verification evidence or decision metadata only. Theme artifacts came unchanged from the already-merged companion main; M3BW claims no theme implementation or acceptance.",
+    "spine/verification/m3tm/FL-196.png": "Verification evidence or decision metadata only. Theme artifacts came unchanged from the already-merged companion main; M3BW claims no theme implementation or acceptance.",
+    "spine/verification/m3tm/SHA256SUMS": "Verification evidence or decision metadata only. Theme artifacts came unchanged from the already-merged companion main; M3BW claims no theme implementation or acceptance.",
+    "spine/verification/m3tm/canon.log": "Verification evidence or decision metadata only. Theme artifacts came unchanged from the already-merged companion main; M3BW claims no theme implementation or acceptance.",
+    "spine/verification/m3tm/ledger-report.json": "Verification evidence or decision metadata only. Theme artifacts came unchanged from the already-merged companion main; M3BW claims no theme implementation or acceptance.",
+    "spine/verification/m3tm/receipts/disposable-state.json": "Verification evidence or decision metadata only. Theme artifacts came unchanged from the already-merged companion main; M3BW claims no theme implementation or acceptance.",
+    "spine/verification/m3tm/receipts/harness-tests.log": "Verification evidence or decision metadata only. Theme artifacts came unchanged from the already-merged companion main; M3BW claims no theme implementation or acceptance.",
+    "spine/verification/m3tm/receipts/live-turn.json": "Verification evidence or decision metadata only. Theme artifacts came unchanged from the already-merged companion main; M3BW claims no theme implementation or acceptance.",
+    "spine/verification/m3tm/receipts/local-cleanup.json": "Verification evidence or decision metadata only. Theme artifacts came unchanged from the already-merged companion main; M3BW claims no theme implementation or acceptance.",
+    "spine/verification/m3tm/receipts/memory-tests.log": "Verification evidence or decision metadata only. Theme artifacts came unchanged from the already-merged companion main; M3BW claims no theme implementation or acceptance.",
+    "spine/verification/m3tm/receipts/packaged-icon.json": "Verification evidence or decision metadata only. Theme artifacts came unchanged from the already-merged companion main; M3BW claims no theme implementation or acceptance.",
+    "spine/verification/m3tm/receipts/proposed-ci-companion.patch": "Verification evidence or decision metadata only. Theme artifacts came unchanged from the already-merged companion main; M3BW claims no theme implementation or acceptance.",
+    "spine/verification/m3tm/receipts/rules-tests.log": "Verification evidence or decision metadata only. Theme artifacts came unchanged from the already-merged companion main; M3BW claims no theme implementation or acceptance."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
