@@ -2,15 +2,20 @@
   "packet": "M3OU",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "cdda969349b60552db40381ab0dd7710520d7f89f6f742e09d21eb620751516f",
+  "ledger_sha256": "f8ca10ebe6f595ad0e41e3864af31d46c18d303ae90fdeb84f6a8f335f687d8d",
   "diffs": [
     {
       "repo": "spine",
       "base": "fc605dc9b223aca98341fecaeff14d456d6cf458",
-      "head": "7da7c88b21ec34d0217023617f8338c653f1c778"
+      "head": "c130f3ac3e12593f5273127e5df1ba946f40f115"
     }
   ],
-  "unmapped": {},
+  "unmapped": {
+    "spine/verification/m3ou/FL-195.png": "Generated frozen law, compiled assets, decision/report record or verification tooling/evidence; feature surfaces are mapped separately. Theme metadata is preserved from accepted product main without new behavior.",
+    "spine/verification/m3ou/FL-196.png": "Generated frozen law, compiled assets, decision/report record or verification tooling/evidence; feature surfaces are mapped separately. Theme metadata is preserved from accepted product main without new behavior.",
+    "spine/verification/m3ou/SHA256SUMS": "Generated frozen law, compiled assets, decision/report record or verification tooling/evidence; feature surfaces are mapped separately. Theme metadata is preserved from accepted product main without new behavior.",
+    "spine/verification/m3ou/ledger-report.json": "Generated frozen law, compiled assets, decision/report record or verification tooling/evidence; feature surfaces are mapped separately. Theme metadata is preserved from accepted product main without new behavior."
+  },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
     "FL-195": {
@@ -179,7 +184,7 @@
     "FL-144": "outside diff",
     "FL-145": "outside diff",
     "FL-146": "outside diff",
-    "FL-147": "unverified",
+    "FL-147": "outside diff",
     "FL-148": "outside diff",
     "FL-149": "outside diff",
     "FL-150": "unverified",
