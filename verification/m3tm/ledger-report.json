@@ -2,18 +2,19 @@
   "packet": "M3TM",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "0bbfbac9f1d71a9828df299971b60e1b4319075d69f9a6151812f9b969291aa9",
+  "ledger_sha256": "ee223f449cb20253de955b53bbd183f7200f5c6d4d9dfb3265fe30db98aea916",
   "diffs": [
     {
       "repo": "spine",
-      "base": "994456a2c9853831a4819bfe3aad880b9120e6a5",
-      "head": "3bb111380db4cc29ae6abd31d8574e6c7e294a9c"
+      "base": "20b96dbf12104a1ede1e41e75fcff90460fe1721",
+      "head": "d479269c5b2b1bd34a982e4217a700b797c982bb"
     }
   ],
   "unmapped": {
-    "spine/openapi.json": "Lockstep distribution/info version 0.1.27 only; no runtime or API schema behavior changed.",
-    "spine/src/spine/__init__.py": "Lockstep distribution/info version 0.1.27 only; no runtime or API schema behavior changed.",
-    "spine/tests/test_packaging.py": "Existing regression assertions aligned with the verified layout or lockstep version; no product feature added.",
+    "spine/verification/m3bw/FL-195.png": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
+    "spine/verification/m3bw/FL-196.png": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
+    "spine/verification/m3bw/SHA256SUMS": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
+    "spine/verification/m3bw/ledger-report.json": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
     "spine/verification/m3tm/FL-195.png": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/FL-196.png": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/SHA256SUMS": "M3TM coverage/hash/canon artifact; no runtime feature impact.",
@@ -27,7 +28,12 @@
     "spine/verification/m3tm/receipts/packaged-icon.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/receipts/proposed-ci-companion.patch": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/receipts/rules-tests.log": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
-    "spine/verification/m3tm/impacted.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact."
+    "spine/verification/m3tm/impacted.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/hosted-ci.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/public-027-restoration.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/version-collision.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/public-027-baseline.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/shared-port-interference.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -128,7 +134,7 @@
     "FL-075": "outside diff",
     "FL-076": "outside diff",
     "FL-077": "horizon",
-    "FL-078": "not built",
+    "FL-078": "outside diff",
     "FL-079": "outside diff",
     "FL-080": "outside diff",
     "FL-081": "outside diff",

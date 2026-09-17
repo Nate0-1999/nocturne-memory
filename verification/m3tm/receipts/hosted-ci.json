@@ -1,0 +1,17 @@
+{
+  "harness_pr": "https://github.com/Nate0-1999/nocturne-harness/pull/31",
+  "memory_pr": "https://github.com/Nate0-1999/nocturne-memory/pull/29",
+  "failed_harness_run": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/35166259591",
+  "failure": "All three jobs fail installation: pinned Memory checkout provides 0.1.26 while Harness 0.1.27 requires Memory==0.1.27.",
+  "proposal": "proposed-ci-companion.patch",
+  "ci_modified": true,
+  "packages_published": false,
+  "memory_checks": "PASS: lint-and-test, feature impact and rules",
+  "memory_run": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/35166256000",
+  "grant": "PLAN M3TM GRANT and owner resumed instruction",
+  "implementation": "One companion job reads pyproject exact nocturne-memory pin; all three jobs consume its release tag.",
+  "prior_dependency_failure_resolved": true,
+  "clean_harness_pr": "https://github.com/Nate0-1999/nocturne-harness/pull/34",
+  "version_decision": "0.1.27 was published by peer; 0.1.28 checked absent on both public indexes; owner confirmation pending.",
+  "packages_published_by_m3tm": false
+}

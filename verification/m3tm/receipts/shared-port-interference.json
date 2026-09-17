@@ -1,0 +1,11 @@
+{
+  "identity_matches": true,
+  "principal_id": "nocturne-verification-f7b6456e-411c-4c69-91df-40d9c43f5a7f",
+  "cloud_transcript_restore_enabled": false,
+  "unexpected_local_records": 1,
+  "record_type": "thread_context",
+  "message_records": 0,
+  "observed_workspace": "another disposable verification workspace",
+  "action": "Stopped standard-port runtime without sending prompts or changing any thread; continue on isolated port 8916.",
+  "interpretation": "An existing client on shared port 8765 appears to have supplied its remembered empty thread context; no foreign conversation content was present."
+}
