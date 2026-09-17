@@ -1568,7 +1568,7 @@
       "section": "5. Agent hands and location",
       "era": "gate-day",
       "label": "Queuing prompts and interjecting or steering a running agent, like the modern harnesses do.",
-      "status": "partial",
+      "status": "built",
       "walk": "Queue a prompt during a run and interject once; the queued prompt runs after and the interjection steers the run.",
       "owner": "owner — \"The harness will largely be the same as what you are seeing with the modern harness but with better visualization and everything: queuing, interjecting, loops, skills, etc etc.\" (first thread turn 1; chat 2026-08-17 15:49:32)",
       "surfaces": [
@@ -1578,11 +1578,11 @@
         "harness/src/harness/pydantic_ai_adapter.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F084",
-        "screenshot": "FL-075.jpg"
+        "packet": "M3OR",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-075.png"
       }
     },
     {
@@ -1726,7 +1726,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Jul 20",
       "label": "The work loop: spec alignment with the user, then the agent loop (optionally several agents in worktrees attempting the same thing), then the judge checks the work against the spec and either calls it done or sends another agent to continue or fix, and the human is only brought back in when the judge says done.",
-      "status": "partial",
+      "status": "built",
       "walk": "Run a symphony; attempts run in worktrees, the judge's verdict against the spec appears, and the card returns to the human only after the judge says done.",
       "owner": "owner — \"The project and agent work for this should be by default spec alignment with user, then agent loop (optional spin up multiple agents in work trees to attempt the same thing), and the judge evaluates compared to spec to see if it is complete or to send another agent out to continue the work or fix something. The user should only interject or get a response when the judge says that they are done and to go back to the human.\" (chat 2026-07-20 00:34:53)",
       "surfaces": [
@@ -1739,11 +1739,11 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F085",
-        "screenshot": "FL-085.jpg"
+        "packet": "M3OR",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-085.png"
       }
     },
     {
@@ -1751,7 +1751,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Jul 20",
       "label": "Both modes supported: a hands-off default with loops, judges and parallel agents, and a traditional chat mode of agent turn then human turn.",
-      "status": "partial",
+      "status": "built",
       "walk": "Run one piece of work as a plain turn-by-turn chat and another as a symphony; both work.",
       "owner": "owner — \"How does symphony also support simpler just chatting mode after a symphony run. Does the user have to switch it etc.\" (chat 2026-08-17 17:02:48 (+ chat 2026-07-20 16:16:55))",
       "surfaces": [
@@ -1765,11 +1765,11 @@
         "harness/web/src/App.tsx"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F085",
-        "screenshot": "FL-086.jpg"
+        "packet": "M3OR",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-086.png"
       }
     },
     {
@@ -1777,7 +1777,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Jul 20",
       "label": "Modes on a music-themed scale: pair mode is Duet and conductor mode is Symphony, with room for more in between.",
-      "status": "partial",
+      "status": "built",
       "walk": "Open the mode selector; Duet and Symphony are listed.",
       "owner": "owner — \"3. Don't remember ensamble keep symphony\" (chat 2026-08-24 17:34:25 (+ chat 2026-07-20 16:29:14))",
       "surfaces": [
@@ -1787,11 +1787,11 @@
         "harness/web/src/App.tsx"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F084",
-        "screenshot": "FL-087.jpg"
+        "packet": "M3OR",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-087.png"
       },
       "protected": true,
       "protected_reason": "owner-iterated in manual sessions"
@@ -1801,7 +1801,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Jul 20",
       "label": "Symphony search starts from a variety of stratagems and works forward in parallel, combining breadth and depth, auto-research style but multi-agent and coordinated.",
-      "status": "partial",
+      "status": "built",
       "walk": "Start a symphony with more than one stratagem; separate attempts run from each at once.",
       "owner": "owner — \"Great work Monte Carlo tree search - this should be a new visualizer. I am seeing that we are able rotate our ant farm like a cube and see from a new prospective the tree roots like in first figure branching out from the same problems parallel agents/worktrees are working on does that make sense?\" (chat 2026-07-20 16:49:44 (+ 16:16:55))",
       "surfaces": [
@@ -1815,11 +1815,11 @@
         "harness/web/src/SymphonyCards.tsx"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F085",
-        "screenshot": "FL-088.jpg"
+        "packet": "M3OR",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-088.png"
       }
     },
     {
@@ -1827,7 +1827,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Jul 31",
       "label": "A configuration per orchestration level.",
-      "status": "partial",
+      "status": "built",
       "walk": "Open the config for Duet and for Symphony; each level has its own config.",
       "owner": "owner — \"One check for you did we build in such a way that the different orchestration levels, duet, ensemble, orchestra, all got their config or such that it's easy to build on that way?\" (chat 2026-07-31 16:45:53)",
       "surfaces": [
@@ -1837,11 +1837,11 @@
         "harness/web/src/AgentPolicies.tsx"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F084",
-        "screenshot": "FL-089.jpg"
+        "packet": "M3OR",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-089.png"
       }
     },
     {
@@ -1870,7 +1870,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 6",
       "label": "When a judge fails a swarm, its feedback is saved as new packets and a new swarm is sent out, looping until every judge is satisfied.",
-      "status": "partial",
+      "status": "built",
       "walk": "Let a judge fail a round; new packets appear from the feedback and a fresh swarm runs, and the loop ends only when all judges pass.",
       "owner": "owner — \"Also want to make sure for symphony mode this loops untill all the judges are satisfied.\" (chat 2026-08-06 17:59:05 (+ 16:27:54))",
       "surfaces": [
@@ -1881,11 +1881,11 @@
         "harness/src/harness/symphony_worker.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F085",
-        "screenshot": "FL-091.jpg"
+        "packet": "M3OR",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-091.png"
       },
       "protected": true,
       "protected_reason": "owner-iterated in manual sessions"
@@ -1895,7 +1895,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 9",
       "label": "Parallel firing of many agents; expired claims released automatically.",
-      "status": "partial",
+      "status": "built",
       "walk": "Fire two agents at once and let one claim expire; both run together and the expired claim frees itself without a hand.",
       "owner": "owner — \"that agent didn't unclaim that packet after it expired. This is a good learning for swarms I'm sure that beads has an idea of how to solve this... but can you manually unclaim it? At least we proved even in parrallel this works!\" (chat 2026-08-09 20:50:51 (+ 19:34:13))",
       "surfaces": [
@@ -1904,11 +1904,11 @@
         "harness/src/harness/symphony_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F085",
-        "screenshot": "FL-092.jpg"
+        "packet": "M3OR",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-092.png"
       }
     },
     {
@@ -1939,7 +1939,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 17",
       "label": "Three phases: deliberation with the agent outlining the spec and recipe with judges and metrics, then auto mode, then adversarial review by the judges that loops to go again.",
-      "status": "partial",
+      "status": "built",
       "walk": "Run a symphony; deliberation in chat, then the unattended run, then a judge review round that can send it round again.",
       "owner": "owner — \"Ok I think we need to make sure that we are aligning to the previous symphony: 1. Deliberation with the agent outlining the spec/recipe, judges fine tune/metrics 2. auto mode 3. \"adversarial\" review from the judges. Loops to go again.\" (chat 2026-08-17 17:02:48)",
       "surfaces": [
@@ -1950,11 +1950,11 @@
         "harness/web/src/SymphonyCards.tsx"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F085",
-        "screenshot": "FL-094.jpg"
+        "packet": "M3OR",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-094.png"
       },
       "protected": true,
       "protected_reason": "owner-iterated in manual sessions"
@@ -1964,7 +1964,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 17",
       "label": "Hard steps marked at spec time can trigger a search swarm that evolves auto-research style, with pruning so it is not overly expensive or long-running.",
-      "status": "partial",
+      "status": "built",
       "walk": "Mark a step as hard at deliberation; a search swarm runs on that step and prunes weak branches.",
       "owner": "owner — \"I was thinking that during the spec we can identify nodes where we will allow our internal search ideas (based on auto research) combined with some RLM methodologies loose to optimize and create the best solutions. These would be very hard parts. We need to make sure that we are leveraging the pruning parts of RLM efficiently as well. I don't want things to be overly expensive or long running.\" (chat 2026-08-17 17:40:31 (+ 15:35:13))",
       "surfaces": [
@@ -1977,11 +1977,11 @@
         "harness/src/harness/symphony_worker.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F085",
-        "screenshot": "FL-095.jpg"
+        "packet": "M3OR",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-095.png"
       }
     },
     {
@@ -1989,7 +1989,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 17",
       "label": "Symphony memory works with the Palace and its injection and extraction policies.",
-      "status": "partial",
+      "status": "built",
       "walk": "Run a symphony; its agents get injected memories and the run's extracted memories reach the Palace.",
       "owner": "owner — \"Lastly all of this needs to work with our context injection and memory extraction policies.\" (chat 2026-08-17 17:40:31 (+ 15:35:13))",
       "surfaces": [
@@ -1999,11 +1999,11 @@
         "harness/src/harness/symphony_context.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F085",
-        "screenshot": "FL-096.jpg"
+        "packet": "M3OR",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-096.png"
       }
     },
     {
@@ -2011,7 +2011,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 17",
       "label": "A component registry grown from the motivation tree that feeds build history and agent start-up.",
-      "status": "partial",
+      "status": "built",
       "walk": "Start an implementation agent; its start-up context carries the component registry, which stems from the motivation tree.",
       "owner": "owner — \"the component registry might be able to be more elegantly integrated into our existing build history and implementation agent start up procedure by stemming from the motivation tree. Again we don't want to overwhelm the implementation agents,  but we need to give them appropriate context, motivation...\" (chat 2026-08-17 17:59:04)",
       "surfaces": [
@@ -2020,11 +2020,11 @@
         "harness/src/harness/symphony_context.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F085",
-        "screenshot": "FL-097.jpg"
+        "packet": "M3OR",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-097.png"
       }
     },
     {
@@ -2055,7 +2055,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 17",
       "label": "Constitution: Rounds as deltas: passed work stands, only judge feedback forms the next round. (chat 2026-08-17 17:02:48)",
-      "status": "partial",
+      "status": "built",
       "walk": "Let a judge fail one packet; round two re-runs only that packet while the passed work stands.",
       "owner": "constitution",
       "surfaces": [
@@ -2065,11 +2065,11 @@
         "harness/src/harness/symphony_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F085",
-        "screenshot": "FL-099.jpg"
+        "packet": "M3OR",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-099.png"
       }
     },
     {
@@ -2144,7 +2144,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Jul 20",
       "label": "Click an agent to open its context visualizer and its injected memories with pop-off and add-back suggestions.",
-      "status": "partial",
+      "status": "built",
       "walk": "Click one agent; a panel opens with its context visualizer, its injected memories each with a pop-off, and suggestions of more memories to add.",
       "owner": "owner — \"I've clicked on a single agent. The right pops up with the context window visualizer, Injected memories with the ability to pop them off and suggestions for more memories to add.\" (chat 2026-07-20 17:15:32)",
       "surfaces": [
@@ -2157,11 +2157,11 @@
         "harness/web/src/SymphonyDeck.tsx"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F084",
-        "screenshot": "FL-103.jpg"
+        "packet": "M3OR",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-103.png"
       }
     },
     {
@@ -2631,7 +2631,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Aug 11",
       "label": "Threads removable or archivable; a back-to-the-stage control on every view.",
-      "status": "partial",
+      "status": "built",
       "walk": "Archive a thread, then open the memory graph and press the back control; the thread is gone from the list and the stage returns.",
       "owner": "owner — \"2. All of the threads, which at best is an alternative module to the stack of flashcards that I wanted are glitched in their text looks cut off, see first attached image. Also, the threads are not remove/archivable. Again I don't want to spend toomuch time on this one but it's worth saying.\" (chat 2026-08-11 15:44:45)",
       "surfaces": [
@@ -2642,11 +2642,11 @@
         "harness/src/harness/extraction.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F084",
-        "screenshot": "FL-124.jpg"
+        "packet": "M3OR",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-124.png"
       }
     },
     {
