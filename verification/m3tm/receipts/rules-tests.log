@@ -1,0 +1,125 @@
+test_builder_includes_new_rows_even_without_a_changed_product_surface (test_ledger.LedgerTests.test_builder_includes_new_rows_even_without_a_changed_product_surface)
+PLAN M3IB / D.2 154: new feature rows join the builder's impacted rows. ... ok
+test_changed_image_missing_hash_and_old_image_refuse (test_ledger.LedgerTests.test_changed_image_missing_hash_and_old_image_refuse)
+M3LM / SPEC B.6: a renamed old screenshot cannot impersonate a fresh walk. ... ok
+test_ci_does_not_trust_a_report_that_omits_the_pushed_change (test_ledger.LedgerTests.test_ci_does_not_trust_a_report_that_omits_the_pushed_change)
+PLAN M3IB / F079: shrinking the report diff cannot hide a missing proof. ... ok
+test_ci_requires_unmapped_reasons_from_its_independent_diff (test_ledger.LedgerTests.test_ci_requires_unmapped_reasons_from_its_independent_diff)
+PLAN M3IB: an author's narrow report cannot hide unclassified pushed files. ... ok
+test_complete_builder_passes_and_fail_requires_real_flag (test_ledger.LedgerTests.test_complete_builder_passes_and_fail_requires_real_flag)
+SPEC B.6: a documented FAIL is coverage, but an invented flag is not. ... ok
+test_deleted_required_row_and_empty_unmapped_reason_refuse (test_ledger.LedgerTests.test_deleted_required_row_and_empty_unmapped_reason_refuse)
+M3LM / P2: editing the report cannot reduce requirements computed from Git. ... ok
+test_diff_includes_rename_old_path_and_unmapped_files (test_ledger.LedgerTests.test_diff_includes_rename_old_path_and_unmapped_files)
+SPEC B.6 / M3LM: a rename still impacts the old module's consumers. ... ok
+test_done_cannot_change_board_until_evidence_passes (test_ledger.LedgerTests.test_done_cannot_change_board_until_evidence_passes)
+M3LM / PLAN step 7: missing evidence leaves the claimed board row untouched. ... FL-001: missing screenshot FL-001.png
+Handoff REFUSED: 2 required rows checked
+ok
+test_empty_done_push_still_checks_the_whole_packet (test_ledger.LedgerTests.test_empty_done_push_still_checks_the_whole_packet)
+PLAN M3IB / F079: a last empty DONE commit cannot drop earlier changed rows. ... ok
+test_frozen_tool_verifies_without_garden_from_an_arbitrary_checkout (test_ledger.LedgerTests.test_frozen_tool_verifies_without_garden_from_an_arbitrary_checkout)
+F091/F092: standalone CI and worktree hooks retain real coverage refusals. ... ok
+test_mint_paths_and_directory_surfaces_use_the_diff_intersection (test_ledger.LedgerTests.test_mint_paths_and_directory_surfaces_use_the_diff_intersection)
+PLAN M3IB / SPEC B.6: mint predicts the same rows as real changed files. ... ok
+test_old_scout_folder_reports_every_missing_row_and_screenshot (test_ledger.LedgerTests.test_old_scout_folder_reports_every_missing_row_and_screenshot)
+D.2 154 / M3LM walk: old non-ledger evidence must not pass as coverage. ... ok
+test_push_writes_impact_and_ci_refuses_only_done_without_evidence (test_ledger.LedgerTests.test_push_writes_impact_and_ci_refuses_only_done_without_evidence)
+PLAN M3IB: ordinary pushes ring; a DONE anywhere in the push needs proof. ... ok
+test_resumed_packet_does_not_inherit_intervening_packet_surfaces (test_ledger.LedgerTests.test_resumed_packet_does_not_inherit_intervening_packet_surfaces)
+PLAN M3IB: prior packet commits stay required without claiming peer changes. ... ok
+test_scout_skeleton_covers_partial_and_lists_unbuilt_without_verdict (test_ledger.LedgerTests.test_scout_skeleton_covers_partial_and_lists_unbuilt_without_verdict)
+D.2 154: scouts cover every built/partial row; unbuilt rows are not run. ... ok
+test_source_drift_and_ledger_drift_refuse (test_ledger.LedgerTests.test_source_drift_and_ledger_drift_refuse)
+SPEC B.6: changing code after proof must require a new report head and walk. ... ok
+test_traversal_symlink_and_non_image_refuse (test_ledger.LedgerTests.test_traversal_symlink_and_non_image_refuse)
+SPEC B.6: evidence belongs inside this packet, not another folder's image. ... ok
+test_unchanged_checks_independent_ci_paths (test_ledger.LedgerTests.test_unchanged_checks_independent_ci_paths)
+F099 / M3IB: a formatting report cannot hide changed code in CI's diff. ... ok
+test_unchanged_proves_formatting_without_screenshots (test_ledger.LedgerTests.test_unchanged_proves_formatting_without_screenshots)
+F099: the verifier itself proves formatting, including docstring whitespace. ... ok
+test_unchanged_refuses_deleted_and_non_python_paths (test_ledger.LedgerTests.test_unchanged_refuses_deleted_and_non_python_paths)
+F099: deletion and non-Python changes cannot prove syntax-tree equality. ... ok
+test_unrelated_peer_surface_does_not_invalidate_this_build (test_ledger.LedgerTests.test_unrelated_peer_surface_does_not_invalidate_this_build)
+PLAN M3LM: fresh evidence is required for exactly the impacted rows. ... ok
+test_validation_refuses_missing_walk_surfaces_duplicate_and_stale_view (test_ledger.LedgerTests.test_validation_refuses_missing_walk_surfaces_duplicate_and_stale_view)
+SPEC B.6 / M3LM: required features cannot silently disappear from coverage. ... generated markdown is stale: run bin/ledger render
+ok
+test_adr_citation_must_precede_its_decision (test_rules.RulesTests.test_adr_citation_must_precede_its_decision) ... ok
+test_each_decision_needs_its_own_problem_node (test_rules.RulesTests.test_each_decision_needs_its_own_problem_node) ... ok
+test_freeze_rejects_one_changed_axiom_or_spec_byte (test_rules.RulesTests.test_freeze_rejects_one_changed_axiom_or_spec_byte) ... ok
+test_precedent_cannot_be_borrowed_from_another_packet (test_rules.RulesTests.test_precedent_cannot_be_borrowed_from_another_packet) ... ok
+test_product_terms_and_governance_dependencies_fail (test_rules.RulesTests.test_product_terms_and_governance_dependencies_fail) ... ok
+test_python_guard_needs_citation_and_a_quoted_message (test_rules.RulesTests.test_python_guard_needs_citation_and_a_quoted_message) ... ok
+test_seed_gap_duplicate_and_missing_or_ambiguous_state_fail (test_rules.RulesTests.test_seed_gap_duplicate_and_missing_or_ambiguous_state_fail) ... ok
+test_web_throw_and_disabled_gate_need_citations (test_rules.RulesTests.test_web_throw_and_disabled_gate_need_citations) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 7.569s
+
+OK
+Ledger coverage PASS: 2 required rows; verdicts, screenshots and hashes verified
+Impact bell: M3TEST -> /var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpfb_vs52g/harness/verification/m3test/impacted.json
+  FL-001: Feature 1
+  FL-002: Feature 2
+  Unmapped: harness/src/renamed.py (add a row or declare no feature impact)
+  Unmapped: harness/unknown.txt (add a row or declare no feature impact)
+missing or invalid ledger-report.json: [Errno 2] No such file or directory: '/private/var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpfb_vs52g/harness/verification/m3test/ledger-report.json'
+report packet must match its evidence folder
+ledger changed: regenerate the report and review required rows
+report header must name the remaining reviewer discretion
+harness/src/renamed.py: add a row or declare no feature impact
+harness/unknown.txt: add a row or declare no feature impact
+missing or malformed SHA256SUMS
+FL-001: needs PASS, FAIL or UNCHANGED; missing screenshot FL-001.png
+FL-002: needs PASS, FAIL or UNCHANGED; missing screenshot FL-002.png
+Impact bell: M3TEST -> /var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpor8do43f/harness/verification/m3test/impacted.json
+  FL-001: Feature 1
+  FL-002: Feature 2
+  Unmapped: harness/src/renamed.py (add a row or declare no feature impact)
+  Unmapped: harness/unknown.txt (add a row or declare no feature impact)
+missing or invalid ledger-report.json: [Errno 2] No such file or directory: '/private/var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpor8do43f/harness/verification/m3test/ledger-report.json'
+report packet must match its evidence folder
+ledger changed: regenerate the report and review required rows
+report header must name the remaining reviewer discretion
+harness/src/renamed.py: add a row or declare no feature impact
+harness/unknown.txt: add a row or declare no feature impact
+missing or malformed SHA256SUMS
+FL-001: needs PASS, FAIL or UNCHANGED; missing screenshot FL-001.png
+FL-002: needs PASS, FAIL or UNCHANGED; missing screenshot FL-002.png
+Work in progress: evidence is required at the DONE handoff.
+Impact bell: M3TEST -> /var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpor8do43f/harness/verification/m3test/impacted.json
+  FL-001: Feature 1
+  FL-002: Feature 2
+  Unmapped: harness/src/renamed.py (add a row or declare no feature impact)
+  Unmapped: harness/unknown.txt (add a row or declare no feature impact)
+missing or invalid ledger-report.json: [Errno 2] No such file or directory: '/private/var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpor8do43f/harness/verification/m3test/ledger-report.json'
+report packet must match its evidence folder
+ledger changed: regenerate the report and review required rows
+report header must name the remaining reviewer discretion
+harness/src/renamed.py: add a row or declare no feature impact
+harness/unknown.txt: add a row or declare no feature impact
+missing or malformed SHA256SUMS
+FL-001: needs PASS, FAIL or UNCHANGED; missing screenshot FL-001.png
+FL-002: needs PASS, FAIL or UNCHANGED; missing screenshot FL-002.png
+Impact bell: M3TEST -> /var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpor8do43f/harness/verification/m3test/impacted.json
+  FL-001: Feature 1
+  FL-002: Feature 2
+  Unmapped: harness/src/renamed.py (add a row or declare no feature impact)
+  Unmapped: harness/unknown.txt (add a row or declare no feature impact)
+Ledger coverage PASS: 2 required rows
+Impact bell: M3TEST -> /var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpd3tm4csx/harness/verification/m3test/impacted.json
+  FL-001: Feature 1
+  FL-002: Feature 2
+  Unmapped: harness/src/renamed.py (add a row or declare no feature impact)
+  Unmapped: harness/unknown.txt (add a row or declare no feature impact)
+missing or invalid ledger-report.json: [Errno 2] No such file or directory: '/private/var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/tmpd3tm4csx/harness/verification/m3test/ledger-report.json'
+report packet must match its evidence folder
+ledger changed: regenerate the report and review required rows
+report header must name the remaining reviewer discretion
+harness/src/renamed.py: add a row or declare no feature impact
+harness/unknown.txt: add a row or declare no feature impact
+missing or malformed SHA256SUMS
+FL-001: needs PASS, FAIL or UNCHANGED; missing screenshot FL-001.png
+FL-002: needs PASS, FAIL or UNCHANGED; missing screenshot FL-002.png
+Work in progress: evidence is required at the DONE handoff.
