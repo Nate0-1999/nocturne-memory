@@ -7,21 +7,21 @@
     {
       "repo": "spine",
       "base": "20b96dbf12104a1ede1e41e75fcff90460fe1721",
-      "head": "f798e7096f51c5a6f54bb45e87480ae8e0cbcc66"
+      "head": "790d4b09d982b0a1d13350e4cd61242898bb92af"
     }
   ],
   "unmapped": {
-    "spine/openapi.json": "Lockstep 0.1.28 release metadata, preserved peer evidence, or recorded packet evidence; no additional runtime feature change.",
-    "spine/src/spine/__init__.py": "Lockstep 0.1.28 release metadata, preserved peer evidence, or recorded packet evidence; no additional runtime feature change.",
-    "spine/tests/test_packaging.py": "Lockstep 0.1.28 release metadata, preserved peer evidence, or recorded packet evidence; no additional runtime feature change.",
+    "spine/openapi.json": "Lockstep distribution/info version 0.1.28 only; no runtime or API schema behavior changed.",
+    "spine/src/spine/__init__.py": "Lockstep distribution/info version 0.1.28 only; no runtime or API schema behavior changed.",
+    "spine/tests/test_packaging.py": "Existing regression assertions aligned with the verified layout or lockstep version; no product feature added.",
     "spine/verification/m3bw/FL-195.png": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
     "spine/verification/m3bw/FL-196.png": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
     "spine/verification/m3bw/SHA256SUMS": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
     "spine/verification/m3bw/ledger-report.json": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
-    "spine/verification/m3ou/FL-195.png": "Lockstep 0.1.28 release metadata, preserved peer evidence, or recorded packet evidence; no additional runtime feature change.",
-    "spine/verification/m3ou/FL-196.png": "Lockstep 0.1.28 release metadata, preserved peer evidence, or recorded packet evidence; no additional runtime feature change.",
-    "spine/verification/m3ou/SHA256SUMS": "Lockstep 0.1.28 release metadata, preserved peer evidence, or recorded packet evidence; no additional runtime feature change.",
-    "spine/verification/m3ou/ledger-report.json": "Lockstep 0.1.28 release metadata, preserved peer evidence, or recorded packet evidence; no additional runtime feature change.",
+    "spine/verification/m3ou/FL-195.png": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
+    "spine/verification/m3ou/FL-196.png": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
+    "spine/verification/m3ou/SHA256SUMS": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
+    "spine/verification/m3ou/ledger-report.json": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
     "spine/verification/m3tm/FL-195.png": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/FL-196.png": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/SHA256SUMS": "M3TM coverage/hash/canon artifact; no runtime feature impact.",
