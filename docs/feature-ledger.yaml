@@ -1622,7 +1622,7 @@
       "era": "founding",
       "label": "The Codex browser-use extension as the agent's browser hands, adopted whole and pinned to upstream because OpenAI maintains it.",
       "status": "not built",
-      "walk": "The agent opens a page through the Codex extension and reads it back; the extension version is pinned in the repo.",
+      "walk": "Ask the agent to open the app it just built and read the page; it navigates, clicks, types and screenshots through the adopted browser hands (Playwright; the Codex extension is revisited when a standalone runtime exists — F116), inside the fence, every action journaled.",
       "owner": "owner — \"I would lik to have a codex browser use extension because it thikn it is really good and the open ai devs will definitely spend a bunch of time maintaining it and making it better\" (chat 2026-09-12)",
       "surfaces": []
     },
