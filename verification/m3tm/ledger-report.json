@@ -7,25 +7,27 @@
     {
       "repo": "spine",
       "base": "994456a2c9853831a4819bfe3aad880b9120e6a5",
-      "head": "c396d5e66925c54021b79e62d9defbd66db17d22"
+      "head": "3bb111380db4cc29ae6abd31d8574e6c7e294a9c"
     }
   ],
   "unmapped": {
     "spine/openapi.json": "Lockstep distribution/info version 0.1.27 only; no runtime or API schema behavior changed.",
     "spine/src/spine/__init__.py": "Lockstep distribution/info version 0.1.27 only; no runtime or API schema behavior changed.",
     "spine/tests/test_packaging.py": "Existing regression assertions aligned with the verified layout or lockstep version; no product feature added.",
-    "spine/verification/m3tm/FL-196.png": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
-    "spine/verification/m3tm/ledger-report.json": "M3TM coverage/hash/canon artifact; no runtime feature impact.",
     "spine/verification/m3tm/FL-195.png": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/FL-196.png": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/SHA256SUMS": "M3TM coverage/hash/canon artifact; no runtime feature impact.",
-    "spine/verification/m3tm/receipts/harness-tests.log": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
-    "spine/verification/m3tm/receipts/proposed-ci-companion.patch": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
-    "spine/verification/m3tm/receipts/packaged-icon.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
-    "spine/verification/m3tm/receipts/memory-tests.log": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/canon.log": "M3TM coverage/hash/canon artifact; no runtime feature impact.",
+    "spine/verification/m3tm/ledger-report.json": "M3TM coverage/hash/canon artifact; no runtime feature impact.",
     "spine/verification/m3tm/receipts/disposable-state.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/harness-tests.log": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/receipts/live-turn.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/local-cleanup.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/memory-tests.log": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/packaged-icon.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/proposed-ci-companion.patch": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/receipts/rules-tests.log": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
-    "spine/verification/m3tm/canon.log": "M3TM coverage/hash/canon artifact; no runtime feature impact."
+    "spine/verification/m3tm/impacted.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
