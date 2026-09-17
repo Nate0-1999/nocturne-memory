@@ -1574,7 +1574,8 @@
       "surfaces": [
         "harness/web/src/App.tsx",
         "harness/web/src/store.ts",
-        "harness/src/harness/run_loop.py"
+        "harness/src/harness/run_loop.py",
+        "harness/src/harness/pydantic_ai_adapter.py"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -1759,7 +1760,9 @@
         "harness/src/harness/rounds.py",
         "harness/src/harness/config.py",
         "harness/src/harness/run_protocol.py",
-        "harness/src/harness/symphony_experience.py"
+        "harness/src/harness/symphony_experience.py",
+        "harness/src/harness/symphony_runtime.py",
+        "harness/web/src/App.tsx"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -1780,7 +1783,8 @@
       "surfaces": [
         "harness/src/harness/config.py",
         "harness/src/harness/run_protocol.py",
-        "harness/src/harness/symphony_experience.py"
+        "harness/src/harness/symphony_experience.py",
+        "harness/web/src/App.tsx"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -1805,7 +1809,10 @@
         "harness/src/harness/judge_panel.py",
         "harness/src/harness/rounds.py",
         "garden/garden_adapter/",
-        "harness/src/harness/supervisor.py"
+        "harness/src/harness/supervisor.py",
+        "harness/src/harness/symphony_runtime.py",
+        "harness/src/harness/envelope.py",
+        "harness/web/src/SymphonyCards.tsx"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -1826,7 +1833,8 @@
       "surfaces": [
         "harness/src/harness/config.py",
         "harness/src/harness/run_protocol.py",
-        "harness/src/harness/symphony_experience.py"
+        "harness/src/harness/symphony_experience.py",
+        "harness/web/src/AgentPolicies.tsx"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -1868,7 +1876,9 @@
       "surfaces": [
         "harness/src/harness/conductor.py",
         "harness/src/harness/judge_panel.py",
-        "harness/src/harness/rounds.py"
+        "harness/src/harness/rounds.py",
+        "harness/src/harness/symphony_runtime.py",
+        "harness/src/harness/symphony_worker.py"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -1890,7 +1900,8 @@
       "owner": "owner — \"that agent didn't unclaim that packet after it expired. This is a good learning for swarms I'm sure that beads has an idea of how to solve this... but can you manually unclaim it? At least we proved even in parrallel this works!\" (chat 2026-08-09 20:50:51 (+ 19:34:13))",
       "surfaces": [
         "garden/garden_adapter/",
-        "harness/src/harness/supervisor.py"
+        "harness/src/harness/supervisor.py",
+        "harness/src/harness/symphony_runtime.py"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -1934,7 +1945,9 @@
       "surfaces": [
         "harness/src/harness/conductor.py",
         "harness/src/harness/judge_panel.py",
-        "harness/src/harness/rounds.py"
+        "harness/src/harness/rounds.py",
+        "harness/src/harness/symphony_runtime.py",
+        "harness/web/src/SymphonyCards.tsx"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -1959,7 +1972,9 @@
         "harness/src/harness/judge_panel.py",
         "harness/src/harness/rounds.py",
         "garden/garden_adapter/",
-        "harness/src/harness/supervisor.py"
+        "harness/src/harness/supervisor.py",
+        "harness/src/harness/symphony_runtime.py",
+        "harness/src/harness/symphony_worker.py"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -1979,7 +1994,9 @@
       "owner": "owner — \"Lastly all of this needs to work with our context injection and memory extraction policies.\" (chat 2026-08-17 17:40:31 (+ 15:35:13))",
       "surfaces": [
         "harness/src/harness/memory_bridge.py",
-        "spine/src/spine/symphony/"
+        "spine/src/spine/symphony/",
+        "harness/src/harness/symphony_runtime.py",
+        "harness/src/harness/symphony_context.py"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -1999,7 +2016,8 @@
       "owner": "owner — \"the component registry might be able to be more elegantly integrated into our existing build history and implementation agent start up procedure by stemming from the motivation tree. Again we don't want to overwhelm the implementation agents,  but we need to give them appropriate context, motivation...\" (chat 2026-08-17 17:59:04)",
       "surfaces": [
         "garden/notes/component-registry.md",
-        "harness/src/harness/WORKER_BRIEF.md"
+        "harness/src/harness/WORKER_BRIEF.md",
+        "harness/src/harness/symphony_context.py"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -2043,7 +2061,8 @@
       "surfaces": [
         "harness/src/harness/conductor.py",
         "harness/src/harness/judge_panel.py",
-        "harness/src/harness/rounds.py"
+        "harness/src/harness/rounds.py",
+        "harness/src/harness/symphony_runtime.py"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -2132,7 +2151,10 @@
         "harness/web/src/spatialSelection.ts",
         "harness/web/src/graphOverlaySelection.ts",
         "harness/web/src/MemoryPanel.tsx",
-        "harness/web/src/ContextBars.tsx"
+        "harness/web/src/ContextBars.tsx",
+        "harness/src/harness/symphony_context.py",
+        "harness/web/src/WorkerContext.tsx",
+        "harness/web/src/SymphonyDeck.tsx"
       ],
       "last_walk": {
         "packet": "M3RW",
@@ -2616,7 +2638,8 @@
         "harness/web/src/stageLayout.ts",
         "harness/web/src/rackLayout.ts",
         "harness/web/src/rack.tsx",
-        "harness/web/src/assets/rack.css"
+        "harness/web/src/assets/rack.css",
+        "harness/src/harness/extraction.py"
       ],
       "last_walk": {
         "packet": "M3RW",
