@@ -6,40 +6,63 @@
   "diffs": [
     {
       "repo": "spine",
-      "base": "3265d7b234736b205db1d60a392fd3255d4249ae",
-      "head": "4b48cc3a599537dd17e07e8eaf3136bc2959a8bb"
+      "base": "20b96dbf12104a1ede1e41e75fcff90460fe1721",
+      "head": "f798e7096f51c5a6f54bb45e87480ae8e0cbcc66"
     }
   ],
   "unmapped": {
-    "spine/openapi.json": "Lockstep 0.1.28 release metadata or recorded packet evidence; no additional runtime feature change.",
-    "spine/src/spine/__init__.py": "Lockstep 0.1.28 release metadata or recorded packet evidence; no additional runtime feature change.",
-    "spine/tests/test_packaging.py": "Lockstep 0.1.28 release metadata or recorded packet evidence; no additional runtime feature change.",
-    "spine/verification/m3tm/SHA256SUMS": "M3TM coverage/hash/canon artifact; no runtime feature impact.",
-    "spine/verification/m3tm/canon.log": "M3TM coverage/hash/canon artifact; no runtime feature impact.",
-    "spine/verification/m3tm/ledger-report.json": "M3TM coverage/hash/canon artifact; no runtime feature impact.",
-    "spine/verification/m3tm/receipts/harness-tests.log": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
-    "spine/verification/m3tm/receipts/hosted-ci.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
-    "spine/verification/m3tm/receipts/memory-tests.log": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
-    "spine/verification/m3tm/receipts/public-027-baseline.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
-    "spine/verification/m3tm/receipts/public-027-restoration.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
-    "spine/verification/m3tm/receipts/shared-port-interference.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
-    "spine/verification/m3tm/receipts/version-collision.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/openapi.json": "Lockstep 0.1.28 release metadata, preserved peer evidence, or recorded packet evidence; no additional runtime feature change.",
+    "spine/src/spine/__init__.py": "Lockstep 0.1.28 release metadata, preserved peer evidence, or recorded packet evidence; no additional runtime feature change.",
+    "spine/tests/test_packaging.py": "Lockstep 0.1.28 release metadata, preserved peer evidence, or recorded packet evidence; no additional runtime feature change.",
     "spine/verification/m3bw/FL-195.png": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
     "spine/verification/m3bw/FL-196.png": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
     "spine/verification/m3bw/SHA256SUMS": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
     "spine/verification/m3bw/ledger-report.json": "Evidence-only record; no runtime feature impact. Peer evidence is preserved verbatim.",
+    "spine/verification/m3ou/FL-195.png": "Lockstep 0.1.28 release metadata, preserved peer evidence, or recorded packet evidence; no additional runtime feature change.",
+    "spine/verification/m3ou/FL-196.png": "Lockstep 0.1.28 release metadata, preserved peer evidence, or recorded packet evidence; no additional runtime feature change.",
+    "spine/verification/m3ou/SHA256SUMS": "Lockstep 0.1.28 release metadata, preserved peer evidence, or recorded packet evidence; no additional runtime feature change.",
+    "spine/verification/m3ou/ledger-report.json": "Lockstep 0.1.28 release metadata, preserved peer evidence, or recorded packet evidence; no additional runtime feature change.",
     "spine/verification/m3tm/FL-195.png": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/FL-196.png": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/SHA256SUMS": "M3TM coverage/hash/canon artifact; no runtime feature impact.",
+    "spine/verification/m3tm/canon.log": "M3TM coverage/hash/canon artifact; no runtime feature impact.",
+    "spine/verification/m3tm/ledger-report.json": "M3TM coverage/hash/canon artifact; no runtime feature impact.",
     "spine/verification/m3tm/receipts/disposable-state.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/harness-tests.log": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/hosted-ci.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/receipts/live-turn.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/receipts/local-cleanup.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/memory-tests.log": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/receipts/packaged-icon.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/receipts/proposed-ci-companion.patch": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/public-027-baseline.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/public-027-restoration.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/receipts/rules-tests.log": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/shared-port-interference.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
+    "spine/verification/m3tm/receipts/version-collision.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact.",
     "spine/verification/m3tm/impacted.json": "M3TM evidence artifact; documents this walk and has no runtime feature impact."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
-  "rows": {},
+  "rows": {
+    "FL-195": {
+      "label": "The feature ledger generates coverage reports and requires evidence for the rows affected by a build.",
+      "walk": "Compute the composer fix's impact with --paths and see attunement rows; push a branch touching socket.ts and observe the hook print rows and write impacted.json; observe a DONE handoff without screenshots fail CI, then verify complete evidence passes.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-195.png",
+      "flag": "F086",
+      "observed": "All 30 local ledger/rules negative and control tests passed, including missing-evidence refusal and valid evidence acceptance. A dedicated failing hosted CI push was not run in this brand packet; screenshot is live-app context only."
+    },
+    "FL-196": {
+      "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
+      "walk": "Remove a guard citation on a disposable branch and observe CI fail; change a frozen axiom and observe the freeze step fail; restore both and observe Rules pass. The master ADR check remains red until the owner applies the citation patch.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-196.png",
+      "flag": "F086",
+      "observed": "Current rules pass and all 30 local negative/control tests pass. Dedicated hosted guard-citation and frozen-axiom mutation runs were not performed; screenshot is live-app context only."
+    }
+  },
   "not_run": {
     "FL-001": "unverified",
     "FL-002": "outside diff",
@@ -235,8 +258,6 @@
     "FL-191": "outside diff",
     "FL-192": "outside diff",
     "FL-193": "outside diff",
-    "FL-194": "outside diff",
-    "FL-195": "outside diff",
-    "FL-196": "outside diff"
+    "FL-194": "outside diff"
   }
 }
