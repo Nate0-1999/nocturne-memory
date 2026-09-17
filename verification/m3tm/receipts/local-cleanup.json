@@ -1,0 +1,8 @@
+{
+  "daemon_stopped": true,
+  "isolated_browsers_closed": true,
+  "disposable_home_removed": "/private/tmp/m3tm-verification/home",
+  "disposable_browser_profile_removed": "/private/tmp/m3tm-browser",
+  "owner_home_accessed": false,
+  "source_verification_credential_modified": false
+}

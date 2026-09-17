@@ -1,0 +1,29 @@
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -45,7 +45,7 @@
+         uses: actions/checkout@v4
+         with:
+           repository: Nate0-1999/nocturne-memory
+-          ref: 99ca73994be36baadb7c32f423ef11381598a94f
++          ref: 4b5034c7ff93ea977874070b74de42b69344ef94
+           path: _d3/spine
+           persist-credentials: false
+       - uses: actions/setup-python@v5
+@@ -100,7 +100,7 @@
+         uses: actions/checkout@v4
+         with:
+           repository: Nate0-1999/nocturne-memory
+-          ref: 99ca73994be36baadb7c32f423ef11381598a94f
++          ref: 4b5034c7ff93ea977874070b74de42b69344ef94
+           path: _canon/spine
+           persist-credentials: false
+       - name: Install web dependencies
+@@ -135,7 +135,7 @@
+         uses: actions/checkout@v4
+         with:
+           repository: Nate0-1999/nocturne-memory
+-          ref: 99ca73994be36baadb7c32f423ef11381598a94f
++          ref: 4b5034c7ff93ea977874070b74de42b69344ef94
+           path: _contract/spine
+           persist-credentials: false
+       - uses: actions/setup-python@v5
