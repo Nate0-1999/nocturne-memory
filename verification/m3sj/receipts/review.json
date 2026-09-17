@@ -1,0 +1,12 @@
+{
+  "method": "Opened all 62 loaded gallery images. Inspected the real shell/run/cron, reference comparison, resize/layer and Palace State captures. Reclassified clipped tool-inventory captures as FAIL. Final public runtime receipt and Jobs capture are reviewed separately. Broad unperformed walks remain explicit FAIL under F086/F104.",
+  "required_rows": 62,
+  "pass": 13,
+  "fail": 49,
+  "owned_rows": [
+    "FL-181",
+    "FL-182",
+    "FL-183",
+    "FL-184"
+  ]
+}

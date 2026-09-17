@@ -1,0 +1,22 @@
+[
+  {
+    "prompt": "Start a background shell with start_shell running exactly: while true; do echo M3SJ_LIVE_TICK; sleep 2; done . Keep it running. Use read_shell to confirm it is running, then reply SHELL_STARTED with its ID. Do not stop it.",
+    "answer": "NOCTURNE\nStreaming\n\nSHELL_STARTED 94b36c7e355d The background shell running the command\n\nTOOLS \u00b7 46 RUN EVENTS"
+  },
+  {
+    "prompt": "First later turn: use read_shell on that same ID and confirm it is still running. Reply SHELL_TURN_1 with the observed status.",
+    "answer": "NOCTURNE\nStreaming\n\nSHELL_TURN_1 running The background shell with ID 94b36c7e355d is still running and producing output as expected.\n\nTOOLS \u00b7 19 RUN EVENTS"
+  },
+  {
+    "prompt": "Second later turn: list this folder with ls, then read_shell on the original ID. Do not start a new shell. Reply SHELL_TURN_2 with the observed status.",
+    "answer": "NOCTURNE\nStreaming\n\nSHELL_TURN_2 running The current folder is empty. The background shell with ID 94b36c7e355\n\nTOOLS \u00b7 13 RUN EVENTS"
+  },
+  {
+    "prompt": "Third later turn: use read_shell on the original ID. Reply SHELL_TURN_3 with the observed status, then leave the shell running.",
+    "answer": "NOCTURNE\nStreaming\n\nSHELL_TURN_3 running The background shell with ID 94b36c7e355d is still running and continuously outputting as expected.\n\nThe shell remains running as requested.\n\nTOOLS \u00b7 19 RUN EVENTS"
+  },
+  {
+    "prompt": "Now explicitly stop that original background shell with stop_shell. Reply SHELL_STOPPED only after the tool confirms the stop.",
+    "answer": "NOCTURNE\n\nSHELL_STOPPED The original background shell with ID 94b36c7e355d has been explicitly stopped as confirmed by the stop_shell tool.\n\nTOOLS \u00b7 20 RUN EVENTS"
+  }
+]

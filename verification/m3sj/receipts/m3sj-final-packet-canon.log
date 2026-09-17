@@ -1,0 +1,55 @@
+Ledger valid: 197 rows; 159 built/partial
+Ledger coverage PASS: 62 required rows; verdicts, screenshots and hashes verified
+M3FP packaged heartbeat PASS: {"fixture":"M3FP REGRESSION","packaged_assets":true,"first_prompt_prepare_calls":1,"first_prompt_commit_calls":1,"receipt_lines":2,"journal_has_prompt_and_answer":true,"tool_turn_ends_clean_with_proposal_and_journal":true,"consecutive_sends_without_reload":true,"compaction_and_durable_history":true,"failure_reason_survives_reload":true,"external_rack_host_refused":true}
+M3FP reinstall heartbeat PASS: {"fixture":"M3FP REGRESSION","packaged_assets":true,"first_prompt_prepare_calls":1,"first_prompt_commit_calls":1,"receipt_lines":2,"journal_has_prompt_and_answer":true,"tool_turn_ends_clean_with_proposal_and_journal":true,"consecutive_sends_without_reload":true,"compaction_and_durable_history":true,"failure_reason_survives_reload":true,"external_rack_host_refused":true,"reinstall_restores_journal_and_failure":true}
+M3FX fixture curtain PASS: M2ST4 REGRESSION (M2ST4)
+M2UX1 audit 390px factory
+M2UX1 audit 390px model_device
+M2UX1 audit 390px threads-drawer
+M2UX1 audit 390px palace_queue
+M2UX1 audit 390px memory_graph
+M2UX1 audit 390px injection_console
+M2UX1 audit 390px thread_end
+M2UX1 audit 480px factory
+M2UX1 audit 480px model_device
+M2UX1 audit 480px palace_queue
+M2UX1 audit 480px memory_graph
+M2UX1 audit 480px injection_console
+M2UX1 audit 480px thread_end
+M2UX1 audit 768px factory
+M2UX1 audit 768px model_device
+M2UX1 audit 768px palace_queue
+M2UX1 audit 768px memory_graph
+M2UX1 audit 768px injection_console
+M2UX1 audit 768px thread_end
+M2UX1 audit 1024px factory
+M2UX1 audit 1024px model_device
+M2UX1 audit 1024px palace_queue
+M2UX1 audit 1024px memory_graph
+M2UX1 audit 1024px injection_console
+M2UX1 audit 1024px thread_end
+M2UX1 audit 1280px factory
+M2UX1 audit 1280px model_device
+M2UX1 audit 1280px palace_queue
+M2UX1 audit 1280px memory_graph
+M2UX1 audit 1280px injection_console
+M2UX1 audit 1280px thread_end
+M2UX1 audit 1440px factory
+M2UX1 audit 1440px model_device
+M2UX1 audit 1440px palace_queue
+M2UX1 audit 1440px memory_graph
+M2UX1 audit 1440px injection_console
+M2UX1 audit 1440px thread_end
+M2UX1 audit 1920px factory
+M2UX1 audit 1920px model_device
+M2UX1 audit 1920px palace_queue
+M2UX1 audit 1920px memory_graph
+M2UX1 audit 1920px injection_console
+M2UX1 audit 1920px thread_end
+M2UX1 rendered sweep PASS: 43 states
+M2ST1 stage PASS: overview, layers, remove/restore, recall, and reload
+M2ST2 chrome diet PASS: rare settings contained, scope honest, labels useful
+M2ST3 honest display PASS: human numbers, honest Palace status, compact absence, and graph declutter
+M3FX fixture curtain PASS: SYM13 REGRESSION (SYM13)
+SYM13 recipe canon PASS: packet rows, joins, dimming, frontier, served milestone
+UI canon PASS: packaged heartbeat, fixture curtain, sweep v2, live controls, human numbers, Stage, and SYM13 recipe

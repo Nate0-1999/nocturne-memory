@@ -1,0 +1,103 @@
+{
+  "fixture": "M2ST4 REGRESSION",
+  "observations": {
+    "vitals": {
+      "cell_collisions": [],
+      "partial_prices": 2
+    },
+    "human_number_scan": {
+      "state": "work",
+      "checked_scopes": [
+        "context_bars",
+        "conversation",
+        "header",
+        "memory",
+        "palace_queue",
+        "palace_state",
+        "shell",
+        "threads",
+        "vitals"
+      ],
+      "leaks": []
+    },
+    "card_contributions": [
+      "0.099",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "-2.86e-9",
+      "0.378",
+      "0.08",
+      "0.088",
+      "0.064",
+      "0",
+      "0",
+      "0",
+      "0.016",
+      "0.042",
+      "-0.067"
+    ],
+    "card_human_number_scan": {
+      "state": "ordinary-memory-cards",
+      "checked_scopes": [
+        "header",
+        "injection_console",
+        "shell"
+      ],
+      "leaks": []
+    },
+    "graph": {
+      "node_count": 10,
+      "visible_label_count": 5,
+      "visible_labels": [
+        "Owner architectu…",
+        "Current project…",
+        "Human attention…",
+        "Module settings…",
+        "Receipts preserv…"
+      ],
+      "priorities": [
+        6011,
+        4009,
+        7,
+        2005,
+        3
+      ],
+      "collisions": []
+    },
+    "graph_human_number_scan": {
+      "state": "graph",
+      "checked_scopes": [
+        "header",
+        "memory_graph",
+        "shell"
+      ],
+      "leaks": []
+    },
+    "degraded_palace": {
+      "header": "PALACE UNAVAILABLE",
+      "expected_console_503s": 3,
+      "failed_queries": [
+        {
+          "status": 503,
+          "url": "http://127.0.0.1:63368/v1/rack/query?resource=vitals&as_of=now"
+        },
+        {
+          "status": 503,
+          "url": "http://127.0.0.1:63368/v1/rack/query?resource=scorer_console&as_of=now"
+        },
+        {
+          "status": 503,
+          "url": "http://127.0.0.1:63368/v1/rack/query?resource=memory_graph&as_of=now"
+        }
+      ]
+    }
+  },
+  "console_problems": [],
+  "page_errors": []
+}
