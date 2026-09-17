@@ -2961,7 +2961,7 @@
       "section": "10. Themes and brand",
       "era": "Jul 20",
       "label": "Neo-noir as the default style, with other configurations easily uploadable.",
-      "status": "partial",
+      "status": "built",
       "walk": "Open a fresh install; NEO-NOIR is the style, and another configuration can be uploaded and selected.",
       "owner": "owner — \"This is what I want as well. As you can see the aesthetic is very important to me. Please one last update. This should be the default style, but we should be able to easily upload other configurations. (im not saying this is a configuration file for the harness just that these phrases etc are useful when describing)\" (chat 2026-07-20 19:18:17)",
       "surfaces": [
@@ -2970,11 +2970,11 @@
         "harness/web/src/platePress.ts"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F084",
-        "screenshot": "FL-143.jpg"
+        "packet": "M3TM",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-143.png"
       },
       "protected": true,
       "protected_reason": "owner-iterated in manual sessions"
@@ -2984,7 +2984,7 @@
       "section": "10. Themes and brand",
       "era": "Jul 21",
       "label": "The name Nocturne and the mark: an ouroboros around the moon.",
-      "status": "partial",
+      "status": "built",
       "walk": "Look at the header; the Nocturne mark shows an ouroboros around the moon.",
       "owner": "owner — \"Ok fair enough let's stick with nocturne and add the ouroboros around the moon to the icon.\" (chat 2026-08-03 22:39:46 (+ chat 2026-07-21 17:03:25))",
       "surfaces": [
@@ -2992,8 +2992,8 @@
         "harness/README.md"
       ],
       "last_walk": {
-        "packet": "M3NM",
-        "date": "2026-09-15",
+        "packet": "M3TM",
+        "date": "2026-09-16",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-144.png"
@@ -3013,11 +3013,11 @@
         "harness/web/src/platePress.ts"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
+        "packet": "M3TM",
+        "date": "2026-09-16",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-145.jpg"
+        "screenshot": "FL-145.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -3027,7 +3027,7 @@
       "section": "10. Themes and brand",
       "era": "Aug 11",
       "label": "The reference picture's exact colors are pulled out and applied to the Harness algorithmically in the picture's proportions, possibly by assigning colors to parts of the module templates.",
-      "status": "partial",
+      "status": "built",
       "walk": "Put a themed screen beside the reference picture; the same exact colors appear in the picture's proportions.",
       "owner": "owner — \"I want to figure out how to to alogrithmically apply these colors in these colors to the harness in the right proportions, maybe assigning colors to parts of module templates.\" (chat 2026-08-11 19:02:25 (+ 16:34:04))",
       "surfaces": [
@@ -3036,11 +3036,11 @@
         "harness/web/src/platePress.ts"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F084",
-        "screenshot": "FL-146.jpg"
+        "packet": "M3TM",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-146.png"
       },
       "protected": true,
       "protected_reason": "owner-iterated in manual sessions"
@@ -3050,20 +3050,21 @@
       "section": "10. Themes and brand",
       "era": "Aug 17",
       "label": "Wizard Mode and Technomancer themes with our own glyph scripts, runes appearing and disappearing.",
-      "status": "unverified",
-      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Switch to Wizard Mode; runes in our own script appear and fade, and Technomancer does the same in neon.",
+      "status": "built",
+      "walk": "Switch to Wizard Mode and Technomancer; original scripts appear and fade outside reading surfaces, controls remain clear, and reduced motion is static.",
       "owner": "owner — \"Can we not copy them and just change them enough to not impinge on and create our own scripts? That way we have something cool on our own?\" (chat 2026-08-17 21:22:02 (+ 18:12:32))",
       "surfaces": [
         "harness/web/src/themes/",
         "harness/web/src/themes.ts",
-        "harness/web/src/platePress.ts"
+        "harness/web/src/platePress.ts",
+        "harness/web/scripts/build_grimoire_motifs.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F086",
-        "screenshot": "FL-147.jpg"
+        "packet": "M3TM",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-147.png"
       }
     },
     {
@@ -3071,7 +3072,7 @@
       "section": "10. Themes and brand",
       "era": "Aug 11",
       "label": "Liquid, shiny, white chrome on borders, not on buttons.",
-      "status": "partial",
+      "status": "built",
       "walk": "Switch to Seraph Dressed; borders show liquid white chrome and buttons do not.",
       "owner": "owner — \"I am thining that kind of chrome for the borders not buttons... that isn't asethetic at all.....\" (chat 2026-08-11 19:22:25 (+ 19:15:43))",
       "surfaces": [
@@ -3080,11 +3081,11 @@
         "harness/web/src/platePress.ts"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F084",
-        "screenshot": "FL-148.jpg"
+        "packet": "M3TM",
+        "date": "2026-09-16",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-148.png"
       }
     },
     {
