@@ -48,7 +48,7 @@ def test_distribution_metadata_uses_the_package_version() -> None:
     """P4 is defended by verifying that distribution metadata uses the package version; this
     prevents drift in the reproducible and least-surprise packaging boundary.
     """
-    assert version("nocturne-memory") == __version__ == "0.1.26"
+    assert version("nocturne-memory") == __version__ == "0.1.27"
 
 
 def test_source_distribution_carries_api_contract_fingerprint_history() -> None:
