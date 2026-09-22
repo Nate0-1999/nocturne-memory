@@ -4123,15 +4123,24 @@
       "section": "6. Context window, history and compaction",
       "era": "Sep 22",
       "label": "Context overwhelm protections: a query or a sub-agent return may take up at most n% of the compaction limit, the share chosen by the sending agent within bounds that are system parameters; a security module shows it.",
-      "status": "not built",
+      "status": "built",
       "walk": "Make a query return more than its share of the compaction limit; the agent gets an error naming the size and a very brief head of the response. Make a sub-agent return more than its share; it is sent back the exact amount to shorten by and returns under the share. The security module shows both.",
       "owner": "owner — \"We should have some context overwhelm protections in place a security module. Like a query or a sub agent return should have n% of total compaction limit it can take up... maybe if the agent who is sending the sub agent or query can pick it within bounds that are system parameters\" (chat 2026-09-22) — ruled 2026-09-22: \"simply enhance what exists… error/show very brief start to the query… submit back to that subagent the response must be shorter by some deterministically calculated amount\"",
       "surfaces": [
         "harness/src/harness/conductor.py",
-        "harness/src/harness/run_loop.py",
-        "harness/src/harness/context_window.py"
+        "harness/src/harness/agent_runtime.py",
+        "harness/src/harness/context_window.py",
+        "harness/src/harness/pydantic_ai_adapter.py",
+        "harness/web/src/SecurityModule.tsx",
+        "harness/web/src/assets/security.css"
       ],
-      "last_walk": null,
+      "last_walk": {
+        "packet": "M3CO",
+        "date": "2026-09-22",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-198.png"
+      },
       "protected": false
     }
   ]
