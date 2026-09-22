@@ -7,7 +7,8 @@ affinity is replay-only. Loop 2, creation: append-only outcomes and survival
 scoreboard, with compaction instructions and memory size not yet learned and
 dedup bands configured. Loop 3, scorer_structure: curator-nominated transparent
 scalar axes, replay-tested and proposed for an owner's activation. Loop 4,
-beyond: optimizer/model training is gated; role policies remain configured.
+beyond: optimizer/model training is gated; role policies and the harness's
+return shares (FL-198) remain configured.
 
 New loops register here. Fences, floors, consent, journals and receipts are
 never trainable. ``LearnerService.manifest`` is the executable registry copied
@@ -136,6 +137,8 @@ class LearnerService:
             ("optimizer", "beyond", None, "gated"),
             ("model_weights", "beyond", None, "gated"),
             ("role_model_policies", "beyond", None, "configured"),
+            ("return_share_percent", "beyond", None, "configured"),
+            ("return_share_bounds", "beyond", None, "configured"),
         ):
             rows.append(
                 {
