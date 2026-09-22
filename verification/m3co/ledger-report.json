@@ -33,7 +33,8 @@
     "spine/verification/m3co/FL-195.png": "M3CO packet evidence in the Palace: the coverage report, captures and hashes; no feature behavior.",
     "spine/verification/m3co/FL-196.png": "M3CO packet evidence in the Palace: the coverage report, captures and hashes; no feature behavior.",
     "spine/verification/m3co/impacted.json": "M3CO packet evidence in the Palace: the coverage report, captures and hashes; no feature behavior.",
-    "spine/verification/m3co/ledger-report.json": "M3CO packet evidence in the Palace: the coverage report, captures and hashes; no feature behavior."
+    "spine/verification/m3co/ledger-report.json": "M3CO packet evidence in the Palace: the coverage report, captures and hashes; no feature behavior.",
+    "spine/verification/m3co/SHA256SUMS": "M3CO packet evidence: the hashes of the report and captures; no feature behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
