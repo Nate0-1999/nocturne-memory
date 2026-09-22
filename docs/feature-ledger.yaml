@@ -4124,8 +4124,8 @@
       "era": "Sep 22",
       "label": "Context overwhelm protections: a query or a sub-agent return may take up at most n% of the compaction limit, the share chosen by the sending agent within bounds that are system parameters; a security module shows it.",
       "status": "not built",
-      "walk": "Set the return share for a sub-agent below the size of what it returns; the return arrives capped at that share of the compaction limit and the security module shows the cap and the cut.",
-      "owner": "owner — \"We should have some context overwhelm protections in place a security module. Like a query or a sub agent return should have n% of total compaction limit it can take up... maybe if the agent who is sending the sub agent or query can pick it within bounds that are system parameters\" (chat 2026-09-22)",
+      "walk": "Make a query return more than its share of the compaction limit; the agent gets an error naming the size and a very brief head of the response. Make a sub-agent return more than its share; it is sent back the exact amount to shorten by and returns under the share. The security module shows both.",
+      "owner": "owner — \"We should have some context overwhelm protections in place a security module. Like a query or a sub agent return should have n% of total compaction limit it can take up... maybe if the agent who is sending the sub agent or query can pick it within bounds that are system parameters\" (chat 2026-09-22) — ruled 2026-09-22: \"simply enhance what exists… error/show very brief start to the query… submit back to that subagent the response must be shorter by some deterministically calculated amount\"",
       "surfaces": [
         "harness/src/harness/conductor.py",
         "harness/src/harness/run_loop.py",
