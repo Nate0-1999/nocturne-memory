@@ -279,7 +279,7 @@
       "era": "Aug 31",
       "label": "Delete a memory from the palace, with an are-you-sure popup.",
       "status": "not built",
-      "walk": "Click delete on a memory; an are-you-sure popup appears; confirm; the memory is gone from the Palace.",
+      "walk": "Press ×! on a memory; a small confirmation asks yes or no to permanently delete, honest about what permanent means here (a tombstone with restore); yes removes it from the palace.",
       "owner": "owner — \"I think that the user should be able to delete a memory from the palace. This can be a new training loop that helps with memory creation tuning.\" (chat 2026-08-31 18:59:34; chat 2026-08-31 18:56:36)",
       "surfaces": []
     },
@@ -714,7 +714,7 @@
       "era": "Aug 21",
       "label": "Constitution: A near-miss 'never show this' veto (Aug 21 leak-fix packet).",
       "status": "partial",
-      "walk": "Press and hold × on a near-miss; it never reappears in that thread's near-misses.",
+      "walk": "On an injected or near-miss memory there are two small buttons: × removes it from this thread (not relevant; alt/long-press for wrong/never) and ×! deletes it permanently after a yes/no confirmation; no four sub-headings above the list (owner, 2026-09-22).",
       "owner": "constitution",
       "surfaces": [
         "harness/web/src/MemoryGate.tsx",
@@ -1679,8 +1679,8 @@
       "era": "Sep 10",
       "label": "A suite of compaction strategies: truncation; summarization; make the compaction memories first, wait for them to land, then drop everything else; keep only the human's messages and each agent turn's final answer.",
       "status": "partial",
-      "walk": "Pick a compaction strategy and cross the fill line; what is left in the thread matches the strategy picked.",
-      "owner": "owner — \"I am thinking that there will be a suite of compaction strategies that we can employ: truncation, summarization, apply memories made at compaction (wait for this to happen) and drop everything else, keep just the agent turn final response and human messages.\" (seed SD-061 (owner 2026-09-10))",
+      "walk": "Open a memory card on the Deck or the gate: it shows only the aggregate score, the name and the memory; hovering shows a spider-web chart across every relevance feature; the provenance (project, thread, keywords, WHERE, revisions, open-the-conversation) is behind the hover or a tap, not on the card (owner, 2026-09-22).",
+      "owner": "owner — \"I am thinking that there will be a suite of compaction strategies that we can employ: truncation, summarization, apply memories made at compaction (wait for this to happen) and drop everything else, keep just the agent turn final response and human messages.\" (seed SD-061 (owner 2026-09-10)) — 2026-09-22: \"each memory should only have the aggregate score, name, and memory then if we hover over a spider web chart should pop up across all the memory relevance features\"",
       "surfaces": [
         "harness/src/harness/pydantic_harness_adapter.py",
         "harness/src/harness/agent_runtime.py"
