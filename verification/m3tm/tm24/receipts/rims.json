@@ -1,0 +1,146 @@
+[
+  {
+    "name": "header",
+    "rim": "none",
+    "attachment": "scroll",
+    "mask": "none",
+    "width": "auto",
+    "height": "auto",
+    "clip": "none"
+  },
+  {
+    "name": "threads",
+    "rim": "linear-gradient(135deg, rgb(239, 248, 250) 0%, rgb(191, 203, 213) 18%, rgb(9, 8, 7) 22%, rgb(239, 248, 250) 25%, rgb(219, 229, 238) 54%, rgb(136, 141, 155) 67%, rgb(239, 248, 250) 72%, rgb(239, 248, 250) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px), linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px)",
+    "width": "1230px",
+    "height": "606px",
+    "clip": "none"
+  },
+  {
+    "name": "conversation",
+    "rim": "linear-gradient(135deg, rgb(239, 248, 250) 0%, rgb(191, 203, 213) 18%, rgb(9, 8, 7) 22%, rgb(239, 248, 250) 25%, rgb(219, 229, 238) 54%, rgb(136, 141, 155) 67%, rgb(239, 248, 250) 72%, rgb(239, 248, 250) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px), linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px)",
+    "width": "1230px",
+    "height": "606px",
+    "clip": "none"
+  },
+  {
+    "name": "memory",
+    "rim": "linear-gradient(135deg, rgb(239, 248, 250) 0%, rgb(191, 203, 213) 18%, rgb(9, 8, 7) 22%, rgb(239, 248, 250) 25%, rgb(219, 229, 238) 54%, rgb(136, 141, 155) 67%, rgb(239, 248, 250) 72%, rgb(239, 248, 250) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px), linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px)",
+    "width": "1230px",
+    "height": "606px",
+    "clip": "none"
+  },
+  {
+    "name": "vitals",
+    "rim": "linear-gradient(135deg, rgb(239, 248, 250) 0%, rgb(191, 203, 213) 18%, rgb(9, 8, 7) 22%, rgb(239, 248, 250) 25%, rgb(219, 229, 238) 54%, rgb(136, 141, 155) 67%, rgb(239, 248, 250) 72%, rgb(239, 248, 250) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px), linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px)",
+    "width": "1230px",
+    "height": "606px",
+    "clip": "none"
+  },
+  {
+    "name": "context_bars",
+    "rim": "linear-gradient(135deg, rgb(239, 248, 250) 0%, rgb(191, 203, 213) 18%, rgb(9, 8, 7) 22%, rgb(239, 248, 250) 25%, rgb(219, 229, 238) 54%, rgb(136, 141, 155) 67%, rgb(239, 248, 250) 72%, rgb(239, 248, 250) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px), linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px)",
+    "width": "1230px",
+    "height": "606px",
+    "clip": "none"
+  },
+  {
+    "name": "palace_state",
+    "rim": "linear-gradient(135deg, rgb(239, 248, 250) 0%, rgb(191, 203, 213) 18%, rgb(9, 8, 7) 22%, rgb(239, 248, 250) 25%, rgb(219, 229, 238) 54%, rgb(136, 141, 155) 67%, rgb(239, 248, 250) 72%, rgb(239, 248, 250) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px), linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px)",
+    "width": "1230px",
+    "height": "606px",
+    "clip": "none"
+  },
+  {
+    "name": "memory_graph",
+    "rim": "linear-gradient(135deg, rgb(239, 248, 250) 0%, rgb(191, 203, 213) 18%, rgb(9, 8, 7) 22%, rgb(239, 248, 250) 25%, rgb(219, 229, 238) 54%, rgb(136, 141, 155) 67%, rgb(239, 248, 250) 72%, rgb(239, 248, 250) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px), linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px)",
+    "width": "1230px",
+    "height": "606px",
+    "clip": "none"
+  },
+  {
+    "name": "palace_nebula",
+    "rim": "linear-gradient(135deg, rgb(239, 248, 250) 0%, rgb(191, 203, 213) 18%, rgb(9, 8, 7) 22%, rgb(239, 248, 250) 25%, rgb(219, 229, 238) 54%, rgb(136, 141, 155) 67%, rgb(239, 248, 250) 72%, rgb(239, 248, 250) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px), linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px)",
+    "width": "1230px",
+    "height": "606px",
+    "clip": "none"
+  },
+  {
+    "name": "farm",
+    "rim": "linear-gradient(135deg, rgb(239, 248, 250) 0%, rgb(191, 203, 213) 18%, rgb(9, 8, 7) 22%, rgb(239, 248, 250) 25%, rgb(219, 229, 238) 54%, rgb(136, 141, 155) 67%, rgb(239, 248, 250) 72%, rgb(239, 248, 250) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px), linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px)",
+    "width": "1230px",
+    "height": "606px",
+    "clip": "none"
+  },
+  {
+    "name": "roots",
+    "rim": "linear-gradient(135deg, rgb(239, 248, 250) 0%, rgb(191, 203, 213) 18%, rgb(9, 8, 7) 22%, rgb(239, 248, 250) 25%, rgb(219, 229, 238) 54%, rgb(136, 141, 155) 67%, rgb(239, 248, 250) 72%, rgb(239, 248, 250) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px), linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px)",
+    "width": "1230px",
+    "height": "606px",
+    "clip": "none"
+  },
+  {
+    "name": "injection_console",
+    "rim": "linear-gradient(135deg, rgb(239, 248, 250) 0%, rgb(191, 203, 213) 18%, rgb(9, 8, 7) 22%, rgb(239, 248, 250) 25%, rgb(219, 229, 238) 54%, rgb(136, 141, 155) 67%, rgb(239, 248, 250) 72%, rgb(239, 248, 250) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px), linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px)",
+    "width": "1230px",
+    "height": "606px",
+    "clip": "none"
+  },
+  {
+    "name": "palace_queue",
+    "rim": "linear-gradient(135deg, rgb(239, 248, 250) 0%, rgb(191, 203, 213) 18%, rgb(9, 8, 7) 22%, rgb(239, 248, 250) 25%, rgb(219, 229, 238) 54%, rgb(136, 141, 155) 67%, rgb(239, 248, 250) 72%, rgb(239, 248, 250) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px), linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px)",
+    "width": "1230px",
+    "height": "606px",
+    "clip": "none"
+  },
+  {
+    "name": "recipe",
+    "rim": "linear-gradient(135deg, rgb(239, 248, 250) 0%, rgb(191, 203, 213) 18%, rgb(9, 8, 7) 22%, rgb(239, 248, 250) 25%, rgb(219, 229, 238) 54%, rgb(136, 141, 155) 67%, rgb(239, 248, 250) 72%, rgb(239, 248, 250) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px), linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px)",
+    "width": "1230px",
+    "height": "606px",
+    "clip": "none"
+  },
+  {
+    "name": "jobs",
+    "rim": "linear-gradient(135deg, rgb(239, 248, 250) 0%, rgb(191, 203, 213) 18%, rgb(9, 8, 7) 22%, rgb(239, 248, 250) 25%, rgb(219, 229, 238) 54%, rgb(136, 141, 155) 67%, rgb(239, 248, 250) 72%, rgb(239, 248, 250) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px), linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px)",
+    "width": "1230px",
+    "height": "606px",
+    "clip": "none"
+  },
+  {
+    "name": "security",
+    "rim": "linear-gradient(135deg, rgb(239, 248, 250) 0%, rgb(191, 203, 213) 18%, rgb(9, 8, 7) 22%, rgb(239, 248, 250) 25%, rgb(219, 229, 238) 54%, rgb(136, 141, 155) 67%, rgb(239, 248, 250) 72%, rgb(239, 248, 250) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px), linear-gradient(rgb(238, 244, 251) 0px, rgb(238, 244, 251) 0px)",
+    "width": "1230px",
+    "height": "606px",
+    "clip": "none"
+  }
+]

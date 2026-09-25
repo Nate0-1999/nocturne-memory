@@ -1,0 +1,6 @@
+{
+  "dependency": "nocturne-memory==0.1.31",
+  "checkout_ref": "v0.1.31",
+  "companion_checkouts": 3,
+  "verified_ci": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/36085996405"
+}

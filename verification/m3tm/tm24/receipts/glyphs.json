@@ -1,0 +1,20 @@
+{
+  "wizard-mode": {
+    "position": "relative",
+    "order": "1",
+    "flex": "0 1000 120px",
+    "animation": "grimoire-rune-inscribe",
+    "iterations": "1",
+    "content": "\"\"",
+    "reduced": "none"
+  },
+  "technomancer": {
+    "position": "relative",
+    "order": "1",
+    "flex": "0 1000 120px",
+    "animation": "grimoire-glitch-in",
+    "iterations": "1",
+    "content": "\"\"",
+    "reduced": "none"
+  }
+}

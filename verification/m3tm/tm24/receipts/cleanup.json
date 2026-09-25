@@ -1,0 +1,11 @@
+{
+  "principal_id": "nocturne-verification-dee0eaef-343d-4b1b-aba2-c61f715e39dd",
+  "active_memory_nodes": 0,
+  "pending_cards": 0,
+  "checked_at": "2026-09-25T02:38:27.664987+00:00",
+  "query": "principal-scoped memory_graph and approval_queue",
+  "verification_port_closed": true,
+  "scratch_home_removed": true,
+  "owner_home_accessed": false,
+  "credential_source": "git-ignored harness/.env used only by scratch verification init; not copied to evidence"
+}

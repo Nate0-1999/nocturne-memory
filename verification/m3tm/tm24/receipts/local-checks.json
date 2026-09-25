@@ -1,0 +1,22 @@
+{
+  "harness": {
+    "passed": 1791,
+    "skipped": 4,
+    "deselected": 3
+  },
+  "memory": {
+    "passed": 320,
+    "skipped": 3,
+    "packaging_after_bump": 8
+  },
+  "web": {
+    "passed": 144,
+    "lint": "PASS",
+    "build": "PASS"
+  },
+  "garden_tests": 30,
+  "extractor": "PASS",
+  "glyph_generator": "PASS",
+  "palettes": "all five PASS",
+  "test_motivations": "Harness 812; Memory 240; no grandfathered tests"
+}

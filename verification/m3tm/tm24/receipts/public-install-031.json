@@ -1,0 +1,11 @@
+{
+  "harness": "0.1.31",
+  "memory": "0.1.31",
+  "harness_path": "/private/tmp/m3tm24-public-after/lib/python3.12/site-packages/harness/__init__.py",
+  "memory_path": "/private/tmp/m3tm24-public-after/lib/python3.12/site-packages/spine/__init__.py",
+  "assets": {
+    "favicon.svg": "7a15e27b8b7fbad3822fcf60f14736ba455e3058eda1c9b3e1f57b556bfc7e27",
+    "assets/index-j4p8hURz.css": "dc92c00b9bee8a7554434e5ce34e090c6ecfa02dfaab74f2d13117dfb9e29c97"
+  },
+  "public_install": "exact versions from https://pypi.org/simple/; no local wheels"
+}

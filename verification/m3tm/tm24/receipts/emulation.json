@@ -1,0 +1,54 @@
+{
+  "theme-seraph-dressed": {
+    "distribution": {
+      "dark": 0.9341,
+      "cool": 0.018866666666666667,
+      "silver": 0.031877777777777776,
+      "warm": 0.0151,
+      "precious": 5.555555555555556e-05,
+      "danger": 0.0
+    },
+    "distance": 0.3773282764066732,
+    "bound": 0.395,
+    "passed": true
+  },
+  "FL-146-pressed": {
+    "distribution": {
+      "dark": 0.9533777777777778,
+      "cool": 0.010544444444444445,
+      "silver": 0.022775,
+      "warm": 0.012297222222222222,
+      "precious": 0.0,
+      "danger": 0.0010055555555555555
+    },
+    "distance": 0.396606054184451,
+    "bound": 0.395,
+    "passed": false
+  },
+  "FL-146-seraph-1280x900": {
+    "distribution": {
+      "dark": 0.9355590277777778,
+      "cool": 0.030302083333333334,
+      "silver": 0.0234375,
+      "warm": 0.010666666666666666,
+      "precious": 3.472222222222222e-05,
+      "danger": 0.0
+    },
+    "distance": 0.378787304184451,
+    "bound": 0.395,
+    "passed": true
+  },
+  "FL-146-pressed-1280x900": {
+    "distribution": {
+      "dark": 0.9667083333333333,
+      "cool": 0.008243055555555556,
+      "silver": 0.01601388888888889,
+      "warm": 0.008461805555555556,
+      "precious": 0.0,
+      "danger": 0.0005729166666666667
+    },
+    "distance": 0.4099366097400065,
+    "bound": 0.395,
+    "passed": false
+  }
+}
