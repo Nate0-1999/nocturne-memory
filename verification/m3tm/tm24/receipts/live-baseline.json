@@ -1,0 +1,47 @@
+[
+  {
+    "type": "gate.open",
+    "thread_id": "914abb11-274f-4503-bf81-4602fca0b0fd",
+    "payload": {
+      "injected": [],
+      "injection_id": "83485db7-9f8c-4b74-a042-dda78b409451",
+      "kind": "memory_gate",
+      "near_misses": [],
+      "resolution_error": null,
+      "run_id": "01M3B4V16QYMQQGFYYSBX3GFE3",
+      "scorer_version": "m3tl-where-v1",
+      "snapshot_ts": "2026-09-25T02:03:21.334309Z",
+      "stage": "review",
+      "wrong_removed": []
+    }
+  },
+  {
+    "type": "run.usage",
+    "thread_id": "914abb11-274f-4503-bf81-4602fca0b0fd",
+    "payload": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "requests": 1,
+      "run_id": "01M3B4V16QYMQQGFYYSBX3GFE3"
+    }
+  },
+  {
+    "type": "run.usage",
+    "thread_id": "914abb11-274f-4503-bf81-4602fca0b0fd",
+    "payload": {
+      "input_tokens": 1191,
+      "output_tokens": 64,
+      "requests": 1,
+      "run_id": "01M3B4V16QYMQQGFYYSBX3GFE3"
+    }
+  },
+  {
+    "type": "run.done",
+    "thread_id": "914abb11-274f-4503-bf81-4602fca0b0fd",
+    "payload": {
+      "partial": false,
+      "run_id": "01M3B4V16QYMQQGFYYSBX3GFE3",
+      "stop_reason": "end_turn"
+    }
+  }
+]

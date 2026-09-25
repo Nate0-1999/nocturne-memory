@@ -1,0 +1,167 @@
+[
+  {
+    "name": "threads",
+    "rim": "linear-gradient(135deg, rgb(253, 254, 248) 0%, rgb(249, 231, 217) 18%, rgb(8, 3, 0) 22%, rgb(253, 254, 248) 25%, rgb(245, 247, 244) 54%, rgb(154, 155, 149) 67%, rgb(253, 254, 248) 72%, rgb(253, 254, 248) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px), linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px)",
+    "width": "682px",
+    "height": "606px",
+    "clip": "none",
+    "padding": "2px",
+    "separator": "1px solid rgb(249, 231, 217)"
+  },
+  {
+    "name": "conversation",
+    "rim": "linear-gradient(135deg, rgb(253, 254, 248) 0%, rgb(249, 231, 217) 18%, rgb(8, 3, 0) 22%, rgb(253, 254, 248) 25%, rgb(245, 247, 244) 54%, rgb(154, 155, 149) 67%, rgb(253, 254, 248) 72%, rgb(253, 254, 248) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px), linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px)",
+    "width": "682px",
+    "height": "606px",
+    "clip": "none",
+    "padding": "2px",
+    "separator": "1px solid rgb(249, 231, 217)"
+  },
+  {
+    "name": "memory",
+    "rim": "linear-gradient(135deg, rgb(253, 254, 248) 0%, rgb(249, 231, 217) 18%, rgb(8, 3, 0) 22%, rgb(253, 254, 248) 25%, rgb(245, 247, 244) 54%, rgb(154, 155, 149) 67%, rgb(253, 254, 248) 72%, rgb(253, 254, 248) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px), linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px)",
+    "width": "682px",
+    "height": "606px",
+    "clip": "none",
+    "padding": "2px",
+    "separator": "1px solid rgb(249, 231, 217)"
+  },
+  {
+    "name": "vitals",
+    "rim": "linear-gradient(135deg, rgb(253, 254, 248) 0%, rgb(249, 231, 217) 18%, rgb(8, 3, 0) 22%, rgb(253, 254, 248) 25%, rgb(245, 247, 244) 54%, rgb(154, 155, 149) 67%, rgb(253, 254, 248) 72%, rgb(253, 254, 248) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px), linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px)",
+    "width": "682px",
+    "height": "606px",
+    "clip": "none",
+    "padding": "2px",
+    "separator": "1px solid rgb(249, 231, 217)"
+  },
+  {
+    "name": "context_bars",
+    "rim": "linear-gradient(135deg, rgb(253, 254, 248) 0%, rgb(249, 231, 217) 18%, rgb(8, 3, 0) 22%, rgb(253, 254, 248) 25%, rgb(245, 247, 244) 54%, rgb(154, 155, 149) 67%, rgb(253, 254, 248) 72%, rgb(253, 254, 248) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px), linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px)",
+    "width": "682px",
+    "height": "606px",
+    "clip": "none",
+    "padding": "2px",
+    "separator": "1px solid rgb(249, 231, 217)"
+  },
+  {
+    "name": "palace_state",
+    "rim": "linear-gradient(135deg, rgb(253, 254, 248) 0%, rgb(249, 231, 217) 18%, rgb(8, 3, 0) 22%, rgb(253, 254, 248) 25%, rgb(245, 247, 244) 54%, rgb(154, 155, 149) 67%, rgb(253, 254, 248) 72%, rgb(253, 254, 248) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px), linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px)",
+    "width": "682px",
+    "height": "606px",
+    "clip": "none",
+    "padding": "2px",
+    "separator": "1px solid rgb(249, 231, 217)"
+  },
+  {
+    "name": "memory_graph",
+    "rim": "linear-gradient(135deg, rgb(253, 254, 248) 0%, rgb(249, 231, 217) 18%, rgb(8, 3, 0) 22%, rgb(253, 254, 248) 25%, rgb(245, 247, 244) 54%, rgb(154, 155, 149) 67%, rgb(253, 254, 248) 72%, rgb(253, 254, 248) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px), linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px)",
+    "width": "682px",
+    "height": "606px",
+    "clip": "none",
+    "padding": "2px",
+    "separator": "1px solid rgb(249, 231, 217)"
+  },
+  {
+    "name": "palace_nebula",
+    "rim": "linear-gradient(135deg, rgb(253, 254, 248) 0%, rgb(249, 231, 217) 18%, rgb(8, 3, 0) 22%, rgb(253, 254, 248) 25%, rgb(245, 247, 244) 54%, rgb(154, 155, 149) 67%, rgb(253, 254, 248) 72%, rgb(253, 254, 248) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px), linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px)",
+    "width": "682px",
+    "height": "606px",
+    "clip": "none",
+    "padding": "2px",
+    "separator": "1px solid rgb(249, 231, 217)"
+  },
+  {
+    "name": "farm",
+    "rim": "linear-gradient(135deg, rgb(253, 254, 248) 0%, rgb(249, 231, 217) 18%, rgb(8, 3, 0) 22%, rgb(253, 254, 248) 25%, rgb(245, 247, 244) 54%, rgb(154, 155, 149) 67%, rgb(253, 254, 248) 72%, rgb(253, 254, 248) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px), linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px)",
+    "width": "682px",
+    "height": "606px",
+    "clip": "none",
+    "padding": "2px",
+    "separator": "1px solid rgb(249, 231, 217)"
+  },
+  {
+    "name": "roots",
+    "rim": "linear-gradient(135deg, rgb(253, 254, 248) 0%, rgb(249, 231, 217) 18%, rgb(8, 3, 0) 22%, rgb(253, 254, 248) 25%, rgb(245, 247, 244) 54%, rgb(154, 155, 149) 67%, rgb(253, 254, 248) 72%, rgb(253, 254, 248) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px), linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px)",
+    "width": "682px",
+    "height": "606px",
+    "clip": "none",
+    "padding": "2px",
+    "separator": "1px solid rgb(249, 231, 217)"
+  },
+  {
+    "name": "injection_console",
+    "rim": "linear-gradient(135deg, rgb(253, 254, 248) 0%, rgb(249, 231, 217) 18%, rgb(8, 3, 0) 22%, rgb(253, 254, 248) 25%, rgb(245, 247, 244) 54%, rgb(154, 155, 149) 67%, rgb(253, 254, 248) 72%, rgb(253, 254, 248) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px), linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px)",
+    "width": "682px",
+    "height": "606px",
+    "clip": "none",
+    "padding": "2px",
+    "separator": "1px solid rgb(249, 231, 217)"
+  },
+  {
+    "name": "palace_queue",
+    "rim": "linear-gradient(135deg, rgb(253, 254, 248) 0%, rgb(249, 231, 217) 18%, rgb(8, 3, 0) 22%, rgb(253, 254, 248) 25%, rgb(245, 247, 244) 54%, rgb(154, 155, 149) 67%, rgb(253, 254, 248) 72%, rgb(253, 254, 248) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px), linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px)",
+    "width": "682px",
+    "height": "606px",
+    "clip": "none",
+    "padding": "2px",
+    "separator": "1px solid rgb(249, 231, 217)"
+  },
+  {
+    "name": "recipe",
+    "rim": "linear-gradient(135deg, rgb(253, 254, 248) 0%, rgb(249, 231, 217) 18%, rgb(8, 3, 0) 22%, rgb(253, 254, 248) 25%, rgb(245, 247, 244) 54%, rgb(154, 155, 149) 67%, rgb(253, 254, 248) 72%, rgb(253, 254, 248) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px), linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px)",
+    "width": "682px",
+    "height": "606px",
+    "clip": "none",
+    "padding": "2px",
+    "separator": "1px solid rgb(249, 231, 217)"
+  },
+  {
+    "name": "jobs",
+    "rim": "linear-gradient(135deg, rgb(253, 254, 248) 0%, rgb(249, 231, 217) 18%, rgb(8, 3, 0) 22%, rgb(253, 254, 248) 25%, rgb(245, 247, 244) 54%, rgb(154, 155, 149) 67%, rgb(253, 254, 248) 72%, rgb(253, 254, 248) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px), linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px)",
+    "width": "682px",
+    "height": "606px",
+    "clip": "none",
+    "padding": "2px",
+    "separator": "1px solid rgb(249, 231, 217)"
+  },
+  {
+    "name": "security",
+    "rim": "linear-gradient(135deg, rgb(253, 254, 248) 0%, rgb(249, 231, 217) 18%, rgb(8, 3, 0) 22%, rgb(253, 254, 248) 25%, rgb(245, 247, 244) 54%, rgb(154, 155, 149) 67%, rgb(253, 254, 248) 72%, rgb(253, 254, 248) 100%)",
+    "attachment": "fixed",
+    "mask": "linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px), linear-gradient(rgb(230, 232, 233) 0px, rgb(230, 232, 233) 0px)",
+    "width": "682px",
+    "height": "606px",
+    "clip": "none",
+    "padding": "2px",
+    "separator": "1px solid rgb(249, 231, 217)"
+  }
+]

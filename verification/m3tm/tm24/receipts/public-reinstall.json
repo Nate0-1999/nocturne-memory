@@ -1,0 +1,24 @@
+{
+  "home": "/private/tmp/m3tm24-verification/home",
+  "journals_before": {
+    "acc725b0b8520a5b0cbbb6c8d56cfdaa4b7e7400e63f0131b757419636fa90f5.jsonl": "d9717abcdf6eb923145b71f53a2d5552087d996bcecec7418702cc42ff9a3303",
+    "9eae8791d2d3923e5d65c9b462915766f915ffa102357cc2e1098f6dd994ff82.jsonl": "4128d8496d8adfddcc93b32459ba635c565dbbd5bed3f6db749b188d9b82f4a1",
+    "9019645d64598b1fc88b14a60fb512bdefeea2458616fa35a0cc75ce488623d0.jsonl": "04c7ff755247e0f9a2ff0d7f6bbd49886867a458f95086e37cbb4169027a3a04"
+  },
+  "code_environment_removed": true,
+  "home_preserved": true,
+  "journals_after_install": {
+    "acc725b0b8520a5b0cbbb6c8d56cfdaa4b7e7400e63f0131b757419636fa90f5.jsonl": "d9717abcdf6eb923145b71f53a2d5552087d996bcecec7418702cc42ff9a3303",
+    "9eae8791d2d3923e5d65c9b462915766f915ffa102357cc2e1098f6dd994ff82.jsonl": "4128d8496d8adfddcc93b32459ba635c565dbbd5bed3f6db749b188d9b82f4a1",
+    "9019645d64598b1fc88b14a60fb512bdefeea2458616fa35a0cc75ce488623d0.jsonl": "04c7ff755247e0f9a2ff0d7f6bbd49886867a458f95086e37cbb4169027a3a04"
+  },
+  "journals_unchanged": true,
+  "identity_after_reinstall": {
+    "principal_id": "nocturne-verification-dee0eaef-343d-4b1b-aba2-c61f715e39dd",
+    "machine_id": "nocturne-a7ff3d54-b9d6-48a0-83a2-f41d2c8dafb4",
+    "home": "/private/tmp/m3tm24-verification/home"
+  },
+  "restored_thread": "2e1a27d3-453d-48ec-891b-69a94499c6c3",
+  "visible_history_restored": true,
+  "credential_reentry": false
+}
