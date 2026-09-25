@@ -13,9 +13,17 @@ from uuid import UUID
 from sqlalchemy import func, select, text, update
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
-from spine.contracts import CommitResponse, FeedbackResponse
+from spine.contracts import (
+    CommitResponse,
+    FeedbackResponse,
+    MemoryAllocation,
+    MemoryFeatures,
+    PrepareResponse,
+    RestoredInjection,
+    ScoredMemoryCard,
+)
 from spine.db.memory import CasUpdate, MemoryUnitChanges, MemoryUnitSnapshot, cas_update_memory_unit
-from spine.db.models import InjectionEvent, MemoryUnit, ScorerConfig
+from spine.db.models import InjectionEvent, MemoryUnit, ScorerConfig, Thread
 from spine.ids import mint_ulid
 from spine.inject.renderer import render_final_block
 from spine.memory.service import contract_memory_from_snapshot
@@ -85,6 +93,113 @@ class DecisionService:
 
     def __init__(self, session_factory: async_sessionmaker[AsyncSession]) -> None:
         self._session_factory = session_factory
+
+    async def restore(self, thread_id: UUID, principal_id: str) -> RestoredInjection | None:
+        """A-070: recover recorded decisions without preparing or learning again."""
+        async with self._session_factory() as session:
+            thread = await session.scalar(
+                select(Thread).where(
+                    Thread.id == thread_id,
+                    Thread.principal_id == principal_id,
+                    Thread.snapshot_ts.is_not(None),
+                )
+            )
+            if thread is None:
+                return None
+            table = InjectionEvent.__table__
+            events = (
+                (
+                    await session.execute(
+                        select(table)
+                        .where(
+                            table.c.thread_id == thread_id,
+                            table.c.principal_id == principal_id,
+                        )
+                        .order_by(table.c.ts, table.c.id)
+                    )
+                )
+                .mappings()
+                .all()
+            )
+
+        latest = {}
+        confirmed: set[UUID] = set()
+        excluded: set[UUID] = set()
+        positive = {"kept", "added_back", "cited", "auto_entered", "mid_thread_added"}
+        for event in events:
+            memory_id, outcome = event["memory_id"], event["outcome"]
+            latest[memory_id] = event
+            if outcome == "mid_thread_removed" or (outcome or "").startswith("removed:"):
+                excluded.add(memory_id)
+                confirmed.discard(memory_id)
+            elif outcome == "mid_thread_added" or (
+                event["actor_class"] == "human" and outcome in positive
+            ):
+                confirmed.add(memory_id)
+                excluded.discard(memory_id)
+        pending = any(
+            e["outcome"] is None and e["shown_as"] in {"injected", "pinned"}
+            for e in latest.values()
+        )
+        selected = [
+            e
+            for e in latest.values()
+            if e["outcome"] in positive
+            or (pending and e["outcome"] is None and e["shown_as"] in {"injected", "pinned"})
+        ]
+        near = [
+            e
+            for e in latest.values()
+            if e["shown_as"] == "near_miss"
+            and e["outcome"] not in positive
+            and e["memory_id"] not in excluded
+        ]
+
+        def card(event):
+            frozen = event["features"]["_memory"]
+            return ScoredMemoryCard(
+                memory_id=event["memory_id"],
+                label=frozen["label"],
+                body=frozen["body"],
+                pin=frozen["pin"],
+                kind=event["memory_kind"],
+                score=event["score"],
+                rank=event["rank"],
+                features=MemoryFeatures.model_validate(
+                    {k: v for k, v in event["features"].items() if not k.startswith("_")}
+                ),
+            )
+
+        last = events[-1] if events else None
+        allocation = (
+            last["features"]["_prepare"]
+            if last
+            else {
+                "memory_context_share": 0.1,
+                "share_tokens": 0,
+                "regular_tokens": 0,
+                "pinned_tokens": 0,
+                "total_tokens": 0,
+                "pinned_overflow_tokens": 0,
+            }
+        )
+        return RestoredInjection(
+            prepared=PrepareResponse(
+                injection_id=last["injection_id"] if last else thread_id,
+                snapshot_ts=thread.snapshot_ts,
+                scorer_version=last["scorer_version"] if last else "empty",
+                injected=[card(e) for e in selected],
+                near_misses=[card(e) for e in near],
+                final_block=None if pending else render_final_block(selected),
+                memory_allocation=MemoryAllocation.model_validate(
+                    {k: v for k, v in allocation.items() if k != "model_context_tokens"}
+                ),
+            ),
+            confirmed_memory_ids=sorted(confirmed),
+            excluded_memory_ids=sorted(excluded),
+            event_sources={k: e["injection_id"] for k, e in latest.items()},
+            pending=pending,
+        )
 
     async def commit(self, command: CommitCommand) -> CommitResponse:
         """Commit one gate decision and render its frozen final block."""

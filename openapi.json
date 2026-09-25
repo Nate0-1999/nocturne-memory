@@ -2068,6 +2068,72 @@
         "title": "MemoryAllocation",
         "type": "object"
       },
+      "MemoryArchive": {
+        "additionalProperties": false,
+        "properties": {
+          "decisions": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Decisions",
+            "type": "array"
+          },
+          "edges": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Edges",
+            "type": "array"
+          },
+          "format": {
+            "const": "nocturne-memories-v1",
+            "default": "nocturne-memories-v1",
+            "title": "Format",
+            "type": "string"
+          },
+          "memories": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Memories",
+            "type": "array"
+          },
+          "principal_id": {
+            "minLength": 1,
+            "title": "Principal Id",
+            "type": "string"
+          },
+          "queue": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Queue",
+            "type": "array"
+          },
+          "revisions": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Revisions",
+            "type": "array"
+          }
+        },
+        "required": [
+          "principal_id",
+          "memories",
+          "revisions",
+          "edges",
+          "queue",
+          "decisions"
+        ],
+        "title": "MemoryArchive",
+        "type": "object"
+      },
       "MemoryFeatures": {
         "additionalProperties": false,
         "properties": {
@@ -4054,6 +4120,54 @@
           "warning"
         ],
         "title": "ResourceSnapshot",
+        "type": "object"
+      },
+      "RestoredInjection": {
+        "additionalProperties": false,
+        "properties": {
+          "confirmed_memory_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Confirmed Memory Ids",
+            "type": "array"
+          },
+          "event_sources": {
+            "additionalProperties": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "propertyNames": {
+              "format": "uuid"
+            },
+            "title": "Event Sources",
+            "type": "object"
+          },
+          "excluded_memory_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Excluded Memory Ids",
+            "type": "array"
+          },
+          "pending": {
+            "title": "Pending",
+            "type": "boolean"
+          },
+          "prepared": {
+            "$ref": "#/components/schemas/PrepareResponse"
+          }
+        },
+        "required": [
+          "prepared",
+          "confirmed_memory_ids",
+          "excluded_memory_ids",
+          "event_sources",
+          "pending"
+        ],
+        "title": "RestoredInjection",
         "type": "object"
       },
       "RetrainResponse": {
@@ -6533,7 +6647,7 @@
   },
   "info": {
     "title": "N8 Spine",
-    "version": "0.1.31"
+    "version": "0.1.32"
   },
   "openapi": "3.1.0",
   "paths": {
@@ -9048,6 +9162,71 @@
         ]
       }
     },
+    "/v1/inject/threads/{thread_id}": {
+      "get": {
+        "operationId": "restore_injection_v1_inject_threads__thread_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "thread_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Thread Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "principal_id",
+            "required": true,
+            "schema": {
+              "title": "Principal Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/RestoredInjection"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Response Restore Injection V1 Inject Threads  Thread Id  Get"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "StaticBearer": []
+          }
+        ],
+        "summary": "Restore Injection",
+        "tags": [
+          "injection"
+        ]
+      }
+    },
     "/v1/injection-event-annotations": {
       "post": {
         "operationId": "annotate_injection_events_v1_injection_event_annotations_post",
@@ -10094,6 +10273,114 @@
         "summary": "Create Memory",
         "tags": [
           "memory"
+        ]
+      }
+    },
+    "/v1/memories/export": {
+      "get": {
+        "operationId": "export_memories_v1_memories_export_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "principal_id",
+            "required": true,
+            "schema": {
+              "title": "Principal Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MemoryArchive"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "StaticBearer": []
+          }
+        ],
+        "summary": "Export Memories",
+        "tags": [
+          "portability"
+        ]
+      }
+    },
+    "/v1/memories/import": {
+      "post": {
+        "operationId": "import_memories_v1_memories_import_post",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "principal_id",
+            "required": true,
+            "schema": {
+              "title": "Principal Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MemoryArchive"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "integer"
+                  },
+                  "title": "Response Import Memories V1 Memories Import Post",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "StaticBearer": []
+          }
+        ],
+        "summary": "Import Memories",
+        "tags": [
+          "portability"
         ]
       }
     },

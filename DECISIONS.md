@@ -1325,3 +1325,11 @@ occurrence key prevents duplicate starts. Each run has its own thread; monitorin
 derives cost and unpriced lines from spend_event. No second money ledger is added.
 API 0.1.25 and additive migration 0025 enact A-069; the prior curator-progress
 migration and contract are preserved.
+
+## M3OB — Recover decisions and portable memory lineage [P1.1, P4.1]
+
+PRECEDENT: F113, FL-172, A-070/071. Restore injection state from recorded
+frozen cards and outcomes without new embedding or learning writes.
+Memory archives use one repeatable-read snapshot of scoped heads, revisions,
+edges and consent history; imports insert atomically and reject conflicts.
+The existing compatible-provider adapter also serves local curator models.

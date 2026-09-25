@@ -65,7 +65,8 @@ class OpenRouterCuratorProvider:
         if not api_key.strip():
             raise ValueError("curator provider requires an OpenRouter key")
         self._api_key = api_key
-        self._model = _openrouter_model(model)
+        self._provider = "openrouter" if base_url == "https://openrouter.ai/api/v1" else "openai"
+        self._model = _openrouter_model(model) if self._provider == "openrouter" else model
         self._spend_service = spend_service
         self._endpoint = f"{base_url.rstrip('/')}/chat/completions"
         self._timeout = timeout
@@ -161,7 +162,7 @@ class OpenRouterCuratorProvider:
             origin_agent="maintenance",
             run_id=run_uid,
             model=str(data.get("model") or self._model),
-            provider="openrouter",
+            provider=self._provider,
             ref=response.headers.get("x-request-id") or f"curator:{run_uid}:{finding.ordinal}",
             meta={
                 "finding_kind": finding.kind,

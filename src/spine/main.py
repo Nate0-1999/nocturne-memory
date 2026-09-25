@@ -46,6 +46,8 @@ from spine.m2k.router import router as m2k_router
 from spine.m2k.service import M2KService
 from spine.memory.router import router as memory_router
 from spine.memory.service import MemoryService
+from spine.portability import PortabilityService
+from spine.portability import router as portability_router
 from spine.problems import ProblemJSONResponse, problem_openapi, problem_response
 from spine.queue.router import router as queue_router
 from spine.queue.service import QueueService
@@ -95,6 +97,7 @@ def create_app(
         session_factory = make_session_factory(owned_engine)
 
     spend_service = SpendService(session_factory)
+    portability_service = PortabilityService(session_factory)
     configured_key = resolved.openai_api_key.get_secret_value() if resolved.openai_api_key else None
     reconciliation_configured = bool(
         configured_key and urlparse(resolved.embed_base_url).hostname == "openrouter.ai"
@@ -124,6 +127,7 @@ def create_app(
             owned_curator_provider = OpenRouterCuratorProvider(
                 api_key=configured_key,
                 model=resolved.chat_model,
+                base_url=resolved.chat_base_url,
                 spend_service=spend_service,
             )
             curator_verdict_provider = owned_curator_provider
@@ -332,6 +336,8 @@ def create_app(
     app.include_router(inject_router)
     app.include_router(learner_router)
     app.include_router(m2k_router)
+    app.state.portability_service = portability_service
+    app.include_router(portability_router)
     app.include_router(memory_router)
     app.include_router(queue_router)
     app.include_router(curation_router)

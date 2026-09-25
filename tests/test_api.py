@@ -23,6 +23,9 @@ MEMORY_ID = "00000000-0000-0000-0000-000000000001"
 INJECTION_ID = "00000000-0000-0000-0000-000000000002"
 
 SPINE_ROUTES = {
+    ("GET", "/v1/inject/threads/{thread_id}"),
+    ("GET", "/v1/memories/export"),
+    ("POST", "/v1/memories/import"),
     ("GET", "/v1/identity"),
     ("POST", "/v1/compactions"),
     ("POST", "/v1/inject/prepare"),
@@ -98,7 +101,7 @@ async def test_health_endpoints_and_auth_are_live(app: FastAPI) -> None:
     assert healthy_healthz.json() == {
         "ok": True,
         "version": __version__,
-        "api_contract_version": "0.1.25",
+        "api_contract_version": "0.1.32",
         "schema_version": "0025",
     }
     assert healthy_healthz.json()["api_contract_version"] == API_CONTRACT_VERSION
