@@ -3398,7 +3398,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "Jul 21",
       "label": "Seed ingestion at startup: upload markdown files (or the machine's CLAUDE.md and AGENTS.md) and the curators break them into individual memories.",
-      "status": "unverified",
+      "status": "built",
       "walk": "M3WF fixture: focus Memory Ingest’s drop/paste control and paste a two-fact fictional Markdown document; review the individual split memories. A native file chooser is optional.",
       "owner": "owner — \"Memory ingest might be a better name. Put current agents/claude mds to jump start your memory palace.\" (chat 2026-08-13 22:51:23; chat 2026-07-21 17:21:05)",
       "surfaces": [
@@ -3420,7 +3420,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "Aug 2",
       "label": "Local mode with no internet, cloud mode, and a way to mirror our cloud setup into your own provider.",
-      "status": "unverified",
+      "status": "built",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Start the Harness with the network off and send one message; the reply arrives and the memory lands in the local palace.",
       "owner": "owner — \"I despise this multiple version thing already; there should be one version that has various levels of capability. I get and agree we aren't supporting people remote memory palaces, but they should have an easy way to mirror our set up, it's designed to be universally supported, into their cloud compute supplier...\" (chat 2026-08-02 13:05:45)",
       "surfaces": [
@@ -3474,7 +3474,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "Aug 5",
       "label": "One obvious start command with an update prompt; update, deploy, launch and doctor as one or two commands.",
-      "status": "unverified",
+      "status": "built",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Run the one start command when a newer release exists; it offers the update, then launches.",
       "owner": "owner — \"It should be only one or two commands and menus to update and deploy going forward for all future enhancents. to make it easy for users and I going forward when there are new releases. Review all we've built trying to get this up and running in the easier, standard update deploy launch doctor etc.\" (chat 2026-08-07 04:58:44; chat 2026-08-05 23:57:35)",
       "surfaces": [
@@ -3588,10 +3588,13 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "gate-day",
       "label": "Constitution: Palace export and portability (gate-day).",
-      "status": "not built",
+      "status": "built",
       "walk": "Press export on the Palace; a file containing every memory is produced.",
       "owner": "constitution",
-      "surfaces": []
+      "surfaces": [
+        "harness/src/harness/cli.py",
+        "spine/src/spine/portability.py"
+      ]
     },
     {
       "id": "FL-173",

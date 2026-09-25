@@ -126,6 +126,14 @@ class CommitResponse(ContractModel):
     wrong_removed: list[MemoryUnit]
 
 
+class RestoredInjection(ContractModel):
+    prepared: PrepareResponse
+    confirmed_memory_ids: list[UUID]
+    excluded_memory_ids: list[UUID]
+    event_sources: dict[UUID, UUID]
+    pending: bool
+
+
 class FeedbackResponse(ContractModel):
     ok: Literal[True]
 

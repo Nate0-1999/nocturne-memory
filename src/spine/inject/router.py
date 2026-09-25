@@ -13,6 +13,7 @@ from spine.contracts import (
     InjectionEventAnnotationsRequest,
     InjectionEventAnnotationsResponse,
     PrepareResponse,
+    RestoredInjection,
 )
 from spine.embeddings import EmbeddingProviderError
 from spine.inject.annotations import (
@@ -89,6 +90,15 @@ class PrepareRequest(ContractRequest):
 class RemovedMemory(ContractRequest):
     memory_id: UUID
     reason: Literal["not_relevant", "wrong", "never"]
+
+
+@router.get("/v1/inject/threads/{thread_id}", response_model=RestoredInjection | None)
+async def restore_injection(
+    thread_id: UUID,
+    principal_id: str,
+    request: Request,
+) -> RestoredInjection | None:
+    return await _decision_service(request).restore(thread_id, principal_id)
 
 
 class MemoryScoresRequest(PrepareRequest):

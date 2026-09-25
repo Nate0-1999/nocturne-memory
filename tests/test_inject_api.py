@@ -164,6 +164,60 @@ async def _insert_memory(
     return root_uid
 
 
+async def test_restored_gate_preserves_decisions_without_new_events(
+    memory_client: AsyncClient,
+    embedding_provider: ScriptedEmbeddingProvider,
+    memory_session_factory: async_sessionmaker[AsyncSession],
+) -> None:
+    """A-070 / F113: restart reads a frozen gate, including consent and exclusions."""
+    memory_id = UUID(int=9199)
+    await _insert_memory(
+        memory_session_factory,
+        memory_id=memory_id,
+        label="Alpha",
+        body="alpha",
+        embedding=basis_vector(0),
+        pin=True,
+    )
+    embedding_provider.set("alpha", basis_vector(0))
+    body = _prepare_body(prompt="alpha")
+    prepared = _assert_json(await memory_client.post("/v1/inject/prepare", json=body), 200)
+    url = f"/v1/inject/threads/{body['thread_id']}"
+    before = _assert_json(await memory_client.get(url, params={"principal_id": "owner"}), 200)
+    assert before["pending"] is True
+    assert before["prepared"]["injection_id"] == prepared["injection_id"]
+    assert (await memory_client.get(url, params={"principal_id": "stranger"})).json() is None
+    committed = _assert_json(
+        await memory_client.post(
+            "/v1/inject/commit",
+            json={
+                "injection_id": prepared["injection_id"],
+                "removed": [],
+                "added_back": [],
+            },
+        ),
+        200,
+    )
+    restored = _assert_json(await memory_client.get(url, params={"principal_id": "owner"}), 200)
+    assert restored["pending"] is False
+    assert restored["prepared"]["final_block"] == committed["final_block"]
+    assert restored["confirmed_memory_ids"] == [str(memory_id)]
+    await memory_client.post(
+        "/v1/feedback",
+        json={
+            "injection_id": prepared["injection_id"],
+            "memory_id": str(memory_id),
+            "signal": "mid_thread_removed",
+        },
+    )
+    restored = _assert_json(await memory_client.get(url, params={"principal_id": "owner"}), 200)
+    assert restored["confirmed_memory_ids"] == []
+    assert restored["excluded_memory_ids"] == [str(memory_id)]
+    assert restored["prepared"]["injected"] == []
+    async with memory_session_factory() as session:
+        assert await session.scalar(select(func.count()).select_from(InjectionEvent)) == 1
+
+
 async def test_memory_scores_include_fresh_owned_cards_without_injection_events(
     memory_client: AsyncClient,
     embedding_provider: ScriptedEmbeddingProvider,

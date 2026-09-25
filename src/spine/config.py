@@ -38,6 +38,7 @@ class Settings(BaseSettings):
     memory_max_tokens: int = Field(default=128, gt=0)
     label_max: int = Field(default=64, gt=0)
     chat_model: str = "anthropic:claude-sonnet-4-6"
+    chat_base_url: str = "https://openrouter.ai/api/v1"
     spend_view_refresh_seconds: int = Field(default=60, gt=0)
     reconciliation_hours: float = Field(default=24, gt=0)
     reconciliation_tolerance_usd: Decimal = Field(
