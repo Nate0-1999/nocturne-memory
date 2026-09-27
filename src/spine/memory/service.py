@@ -268,16 +268,6 @@ class MemoryService:
 
         self._validate_label(command.label)
 
-        # C.4 deliberately puts the cheap active-label check before provider I/O.
-        async with self._session_factory() as preflight_session:
-            conflict = await _find_active_label(
-                preflight_session,
-                principal_id=command.principal_id,
-                label=command.label,
-            )
-        if conflict is not None:
-            raise LabelConflictError(conflict["id"], conflict["label"])
-
         self._validate_body(command.body)
         embedding = await embed_one(
             self._embedding_provider,
@@ -300,14 +290,6 @@ class MemoryService:
                     {"principal_id": command.principal_id},
                 )
 
-                conflict = await _find_active_label(
-                    session,
-                    principal_id=command.principal_id,
-                    label=command.label,
-                )
-                if conflict is not None:
-                    raise LabelConflictError(conflict["id"], conflict["label"])
-
                 matches = await self._dedup_matches(
                     session,
                     principal_id=command.principal_id,
@@ -321,6 +303,13 @@ class MemoryService:
                 )
                 if band == "duplicate":
                     raise DuplicateMemoryError(matches[0])
+                conflict = await _find_active_label(
+                    session,
+                    principal_id=command.principal_id,
+                    label=command.label,
+                )
+                if conflict is not None:
+                    raise LabelConflictError(conflict["id"], conflict["label"])
                 if band == "similar" and not command.force:
                     return SimilarMemories(similar=tuple(matches))
 

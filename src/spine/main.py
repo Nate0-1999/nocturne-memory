@@ -182,6 +182,7 @@ def create_app(
     )
     learner_service = LearnerService(
         session_factory,
+        owner_principal_id=resolved.owner_principal_id,
         settings=LearnerSettings(
             min_dispositions=resolved.learner_min_dispositions,
             holdout_fraction=resolved.learner_holdout_fraction,

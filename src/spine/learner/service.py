@@ -168,6 +168,7 @@ class LearnerService:
         session_factory: async_sessionmaker[AsyncSession],
         *,
         settings: LearnerSettings,
+        owner_principal_id: str,
         retrain_signal_stride: int = 25,
         corpus_max_dispositions: int = 1000,
     ) -> None:
@@ -177,6 +178,7 @@ class LearnerService:
             raise ValueError("optimization corpus max must cover the disposition floor")
         self._session_factory = session_factory
         self._settings = settings
+        self._owner_principal_id = owner_principal_id
         self._retrain_signal_stride = retrain_signal_stride
         self._corpus_max_dispositions = corpus_max_dispositions
 
@@ -250,7 +252,7 @@ class LearnerService:
         optimization_trigger: OptimizationTrigger,
         started_at: datetime,
     ) -> RetrainResponse | None:
-        await sweep_unused(session)
+        await sweep_unused(session, self._owner_principal_id)
         configs = (await session.execute(select(ScorerConfigRow))).scalars().all()
         active_rows = [row for row in configs if row.active]
         if len(active_rows) != 1:
@@ -263,7 +265,9 @@ class LearnerService:
         event_rows = (
             (
                 await session.execute(
-                    select(InjectionEvent).order_by(
+                    select(InjectionEvent)
+                    .where(InjectionEvent.principal_id == self._owner_principal_id)
+                    .order_by(
                         InjectionEvent.ts,
                         InjectionEvent.injection_id,
                         InjectionEvent.event_uid,
