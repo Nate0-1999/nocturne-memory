@@ -2678,6 +2678,8 @@
       "owner": "owner — \"I imagine that the anfarm is much more ant farm looking truly scoped to the whole directory that there are agents in.... there are empty chambers (files) etc. . we can scroll in and out to get close, it's floating in space like a solidworks object almost but the background is a black with faint white line grid.\" (chat 2026-07-20 17:30:44 (+ 16:49:44))",
       "surfaces": [
         "harness/web/src/Farm.tsx",
+        "harness/web/src/farmLayout.ts",
+        "harness/web/src/useFarmLayout.ts",
         "harness/web/src/WorkVisualization.tsx",
         "harness/web/src/VisualizationScene.tsx",
         "harness/web/src/visualization.ts",
