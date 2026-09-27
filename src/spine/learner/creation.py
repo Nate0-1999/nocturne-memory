@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from spine.learner.model import identity_is_excluded
 
 
-async def sweep_unused(session: AsyncSession) -> None:
+async def sweep_unused(session: AsyncSession, principal_id: str) -> None:
     """Record each admitted memory's first zero-injection observation, never a verdict."""
     await session.execute(
         text("""
@@ -16,11 +16,12 @@ async def sweep_unused(session: AsyncSession) -> None:
         SELECT 'zero:' || m.id, m.id, m.principal_id, r.origin_machine_id,
           creation_source(m.id), 'zero_injection', 'no injection at sweep', now()
         FROM memory_unit m JOIN memory_revision r ON r.memory_id = m.id AND r.revision = 1
-        WHERE m.status = 'active' AND NOT EXISTS (
+        WHERE m.principal_id = :principal_id AND m.status = 'active' AND NOT EXISTS (
           SELECT 1 FROM injection_event e WHERE e.memory_id = m.id
           AND e.shown_as IN ('injected','pinned')
         ) ON CONFLICT DO NOTHING
-    """)
+    """),
+        {"principal_id": principal_id},
     )
 
 

@@ -423,7 +423,7 @@ async def test_memory_split_rolls_back_heads_revisions_and_edges_on_late_insert_
     assert counts == [0, 0, 0]
 
 
-async def test_create_writes_root_attribution_and_checks_label_before_embedding(
+async def test_create_writes_root_attribution_and_checks_duplicate_before_label(
     memory_client: AsyncClient,
     embedding_provider: ScriptedEmbeddingProvider,
     memory_session_factory: async_sessionmaker[AsyncSession],
@@ -508,11 +508,19 @@ async def test_create_writes_root_attribution_and_checks_label_before_embedding(
         "",
     )
 
+    duplicate_response = await memory_client.post(
+        "/v1/memories",
+        json=_create_body(label="Original label", body="Original body", force=True),
+    )
+    assert (
+        _assert_json(duplicate_response, 409)["duplicate_of"]["memory_id"] == created["memory_id"]
+    )
+    embedding_provider.set("A different fact", basis_vector(1))
     collision_response = await memory_client.post(
         "/v1/memories",
         json=_create_body(
             label="Original label",
-            body="token " * 129,
+            body="A different fact",
             force=True,
         ),
     )
@@ -523,7 +531,11 @@ async def test_create_writes_root_attribution_and_checks_label_before_embedding(
             "label": "Original label",
         }
     }
-    assert embedding_provider.calls == [("Original body",)]
+    assert embedding_provider.calls == [
+        ("Original body",),
+        ("Original body",),
+        ("A different fact",),
+    ]
 
 
 async def test_create_hard_duplicate_is_forced_but_scoped_to_principal(

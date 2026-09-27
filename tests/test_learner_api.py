@@ -28,6 +28,11 @@ from spine.learner.service import LearnerService, LearnerSettings, OptimizationT
 from spine.learner.worker import LearnerWorker
 
 
+@pytest.fixture(autouse=True)
+def configured_owner(memory_app):
+    memory_app.state.settings.owner_principal_id = "owner"
+
+
 async def test_compaction_route_authenticates_validates_and_only_wakes_worker(app):
     """SPEC D.2 144: a main-thread event queues optimization without blocking chat."""
     from spine.ids import mint_ulid
@@ -47,7 +52,16 @@ async def test_compaction_route_authenticates_validates_and_only_wakes_worker(ap
             await client.post("/v1/compactions", json={**body, "event_uid": "bad"}, headers=headers)
         ).status_code == 422
         assert not calls
-        response = await client.post("/v1/compactions", json=body, headers=headers)
+        for principal in (None, "nocturne-verification-rx", "other-person"):
+            params = {} if principal is None else {"principal_id": principal}
+            refused = await client.post(
+                "/v1/compactions", params=params, json=body, headers=headers
+            )
+            assert refused.status_code == 403
+            assert not calls
+        response = await client.post(
+            "/v1/compactions", params={"principal_id": "local"}, json=body, headers=headers
+        )
     assert response.status_code == 202
     assert calls == [OptimizationTrigger(event_uid=body["event_uid"], thread_id=UUID(int=7))]
 
@@ -73,6 +87,7 @@ def _service(
 ) -> LearnerService:
     return LearnerService(
         session_factory,
+        owner_principal_id="owner",
         settings=_settings(min_dispositions=min_dispositions, win_margin=win_margin),
         retrain_signal_stride=retrain_signal_stride,
         corpus_max_dispositions=corpus_max_dispositions,
@@ -159,6 +174,7 @@ async def _insert_gate(
     *,
     gate: int,
     machine_id: str = "studio-mac",
+    principal_id: str = "owner",
     scorer_version: str = ACTIVE_SCORER_VERSION,
     thread_id: UUID | None = None,
 ) -> None:
@@ -171,7 +187,7 @@ async def _insert_gate(
             thread_id=thread_id or UUID(int=100 + gate),
             agent_id="general",
             machine_id=machine_id,
-            principal_id="owner",
+            principal_id=principal_id,
             project_key=None,
             agent_kind="general",
             prompt_text="learner fixture",
@@ -200,7 +216,7 @@ async def _insert_gate(
             thread_id=thread_id or UUID(int=100 + gate),
             agent_id="general",
             machine_id=machine_id,
-            principal_id="owner",
+            principal_id=principal_id,
             project_key=None,
             agent_kind="general",
             prompt_text="learner fixture",
@@ -270,6 +286,58 @@ async def _insert_passive_disposition(
 
 
 @pytest.mark.asyncio
+async def test_retrain_refuses_nonowners_without_sweeps_or_receipts(
+    memory_app,
+    memory_client,
+    memory_session_factory,
+    embedding_provider,
+):
+    """SPEC D.2 144 / F126: only owner work enters the learner and its sweep."""
+    memory_app.state.learner_service = _service(memory_session_factory)
+    for principal in ("owner", "other-person", "nocturne-verification-rx"):
+        body = f"Fact for {principal}"
+        embedding_provider.set(body, basis_vector(0))
+        created = await memory_client.post(
+            "/v1/memories",
+            json={
+                "principal_id": principal,
+                "label": "Scope",
+                "body": body,
+                "kind": "fact",
+                "editor": "user",
+                "machine_id": "studio",
+            },
+        )
+        assert created.status_code == 201
+    await _insert_gate(memory_session_factory, gate=91, principal_id="other-person")
+    await _insert_gate(memory_session_factory, gate=92, principal_id="owner")
+    for principal in (None, "other-person", "nocturne-verification-rx"):
+        params = {} if principal is None else {"principal_id": principal}
+        response = await memory_client.post("/retrain", params=params)
+        assert response.status_code == 403
+        assert response.json()["detail"] == "Only the Palace owner can retrain the scorer."
+    async with memory_session_factory() as session:
+        for table in ("learner_run", "optimization_run"):
+            assert await session.scalar(text(f"SELECT count(*) FROM {table}")) == 0
+        assert (
+            await session.scalar(
+                text("SELECT count(*) FROM creation_outcome WHERE outcome='zero_injection'")
+            )
+            == 0
+        )
+    accepted = await memory_client.post("/retrain", params={"principal_id": "owner"})
+    assert accepted.status_code == 200
+    assert accepted.json()["eligible_dispositions"] == 2
+    async with memory_session_factory() as session:
+        assert (
+            await session.scalars(
+                text("SELECT principal_id FROM creation_outcome WHERE outcome='zero_injection'")
+            )
+        ).all() == ["owner"]
+        assert len((await session.scalars(select(LearnerRun))).all()) == 1
+        assert len((await session.scalars(select(OptimizationRun))).all()) == 1
+
+
 async def test_retrain_proposes_inactive_content_addressed_winner_idempotently(
     memory_app,
     memory_client: AsyncClient,
@@ -283,8 +351,8 @@ async def test_retrain_proposes_inactive_content_addressed_winner_idempotently(
     await _insert_gate(memory_session_factory, gate=1)
     await _insert_gate(memory_session_factory, gate=2)
 
-    first = await memory_client.post("/retrain")
-    second = await memory_client.post("/retrain")
+    first = await memory_client.post("/retrain", params={"principal_id": "owner"})
+    second = await memory_client.post("/retrain", params={"principal_id": "owner"})
 
     assert first.status_code == 200
     assert second.status_code == 200
@@ -455,6 +523,7 @@ async def test_live_prepare_uses_incumbent_while_optimization_is_fitting(
     await _insert_gate(memory_session_factory, gate=88)
     service = PausingLearnerService(
         memory_session_factory,
+        owner_principal_id="owner",
         settings=_settings(min_dispositions=4, win_margin=1.0),
     )
     retrain_task = asyncio.create_task(service.retrain())
@@ -498,7 +567,7 @@ async def test_retrain_hygiene_excludes_whole_verification_gate(
     memory_app.state.learner_service = _service(memory_session_factory, min_dispositions=1)
     await _insert_gate(memory_session_factory, gate=3, machine_id="m2f-sop-verification")
 
-    response = await memory_client.post("/retrain")
+    response = await memory_client.post("/retrain", params={"principal_id": "owner"})
 
     assert response.status_code == 200
     assert response.json() == {
@@ -540,7 +609,7 @@ async def test_retrain_hygiene_excludes_whole_annotated_gate(
             )
         )
 
-    response = await memory_client.post("/retrain")
+    response = await memory_client.post("/retrain", params={"principal_id": "owner"})
 
     assert response.status_code == 200
     assert response.json() == {
@@ -618,6 +687,7 @@ async def test_real_compaction_worker_persists_background_inactive_winner(
 
     service = ObservedLearnerService(
         memory_session_factory,
+        owner_principal_id="owner",
         settings=_settings(min_dispositions=4, win_margin=1.0),
         retrain_signal_stride=2,
     )
@@ -733,7 +803,7 @@ async def test_force_values_basin_yields_visible_measured_inactive_learner_propo
     await _insert_gate(memory_session_factory, gate=35, scorer_version=control_version)
     await _insert_gate(memory_session_factory, gate=36, scorer_version=control_version)
     memory_app.state.learner_service = _service(memory_session_factory)
-    retrained = await memory_client.post("/retrain")
+    retrained = await memory_client.post("/retrain", params={"principal_id": "owner"})
     assert retrained.status_code == 200
     assert retrained.json()["status"] == "proposed"
     proposal_version = retrained.json()["proposal_version"]
@@ -742,7 +812,7 @@ async def test_force_values_basin_yields_visible_measured_inactive_learner_propo
     refreshed = await memory_client.post(
         "/v1/scorer-console/query",
         params={"scope": "palace"},
-        json={"principal_id": "local", "thread_id": None, "as_of": "now"},
+        json={"principal_id": "owner", "thread_id": None, "as_of": "now"},
     )
     assert refreshed.status_code == 200
     snapshot = refreshed.json()
@@ -1004,6 +1074,7 @@ async def test_learner_lock_is_released_after_snapshot_failure(
 
     failing = FailingLearnerService(
         memory_session_factory,
+        owner_principal_id="owner",
         settings=_settings(min_dispositions=4, win_margin=1.0),
         retrain_signal_stride=2,
     )

@@ -24,7 +24,7 @@ async def test_creation_stream_replays_reasons_and_excludes_verification(memory_
     """A-067: authoritative writes append outcomes; hygiene never trains verification."""
     first, second = await _insert_graph_fixture(memory_session_factory)
     async with memory_session_factory() as session, session.begin():
-        await sweep_unused(session)
+        await sweep_unused(session, "owner")
         session.add(
             MemoryRevision(
                 rev_uid=mint_ulid(),
@@ -190,6 +190,7 @@ async def test_curator_axis_proposal_activation_and_zero_weight_replay(
     # then use neutral LOCAL identities to exercise the learner without bypasses.
     service = LearnerService(
         memory_session_factory,
+        owner_principal_id="local-owner",
         settings=LearnerSettings(
             min_dispositions=25,
             holdout_fraction=0.25,
