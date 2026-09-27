@@ -1,0 +1,40 @@
+{
+  "health": {
+    "ok": true,
+    "version": "0.1.38",
+    "api_contract_version": "0.1.38",
+    "schema_version": "0025"
+  },
+  "verification_identity": "nocturne-verification-a713e45a-71c7-4125-8257-f0a5ec03ee07",
+  "refusals": [
+    {
+      "principal": "omitted",
+      "status": 403,
+      "detail": "Only the Palace owner can retrain the scorer."
+    },
+    {
+      "principal": "verification",
+      "status": 403,
+      "detail": "Only the Palace owner can retrain the scorer."
+    },
+    {
+      "principal": "other",
+      "status": 403,
+      "detail": "Only the Palace owner can retrain the scorer."
+    }
+  ],
+  "compaction_refusal": 403,
+  "denied_calls_added_learner_receipts": 0,
+  "owner_retrain_status": 200,
+  "owner_result": "insufficient_data",
+  "owner_new_receipts": 1,
+  "active_scorer_unchanged": true,
+  "verification_receipts": 0,
+  "daemon_status": 403,
+  "daemon_detail": "Only the Palace owner can retrain the scorer.",
+  "duplicate_status": 409,
+  "duplicate_of": "db7762e9-eb2a-48e7-aba0-961f28d988f6",
+  "different_fact_status": 409,
+  "different_fact_conflict": "label_conflict",
+  "owner_content_recorded": false
+}
