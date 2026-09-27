@@ -1,0 +1,28 @@
+{
+  "native_upgrade": {
+    "from": "0.1.32",
+    "to": "0.1.34",
+    "observed_lines": [
+      "Nocturne 0.1.34 is available. Update the app and Memory Palace together? [y/N] Using Python 3.12.9 environment at: /tmp/m3ob-20260925/released",
+      " - nocturne-harness==0.1.32",
+      " + nocturne-harness==0.1.34",
+      " - nocturne-memory==0.1.32",
+      " + nocturne-memory==0.1.34",
+      "Checking your Palace \u2014 a few seconds\u2026",
+      "INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)"
+    ],
+    "identity": "nocturne-verification-34e92f44-c24b-4f09-b70e-fe5d332bc418"
+  },
+  "palace_at_resume": {
+    "version": "0.1.34",
+    "api_contract_version": "0.1.32",
+    "schema_version": "0025"
+  },
+  "automatic_update": {
+    "live_result": "Already current: no deployment required or attempted by the native up run.",
+    "behind_branch": "Seven fixture tests passed: health -> release guard -> full deploy(dry_run=False, scratch home) -> launch, with no update prompt; malformed/newer contracts refuse.",
+    "real_deploy_dry_run": "20/20 NOOP stages; supported current release and existing cloud topology verified.",
+    "limitation": "No new live behind-Palace rollout was performed because the real Palace had already advanced before this continuation."
+  },
+  "doctor": "Healthy; correct disposable principal/home; cloud contract and journal read successfully."
+}

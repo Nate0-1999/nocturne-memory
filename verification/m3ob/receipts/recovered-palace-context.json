@@ -1,0 +1,15 @@
+{
+  "principal_id": "nocturne-verification-34e92f44-c24b-4f09-b70e-fe5d332bc418",
+  "injection_id": "af3da7d1-b0e9-40ca-abf0-c154f101f2d8",
+  "confirmed_memory_ids": [
+    "1adaf4b3-4fb3-4155-a67b-5ea511077b69"
+  ],
+  "excluded_memory_ids": [],
+  "event_sources": {
+    "1adaf4b3-4fb3-4155-a67b-5ea511077b69": "af3da7d1-b0e9-40ca-abf0-c154f101f2d8",
+    "85364caf-204e-48f1-9ab9-faa40b580ee9": "af3da7d1-b0e9-40ca-abf0-c154f101f2d8"
+  },
+  "pending": false,
+  "active_memories": 2,
+  "pending_cards": 0
+}
