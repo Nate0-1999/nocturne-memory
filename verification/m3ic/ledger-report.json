@@ -7,11 +7,15 @@
     {
       "repo": "spine",
       "base": "ddf63f2d2ea8e61b4feb9261274b7044fbdea22b",
-      "head": "4f1a80d024631e77050db38489390f9824f6f6e4"
+      "head": "8c2e08e6dab9167c5d3423486d38fe5c8310c159"
     }
   ],
   "unmapped": {
+    "spine/openapi.json": "Paired 0.1.36 release metadata or its existing packaging assertion; no API shape or runtime behavior change.",
     "spine/src/spine/__init__.py": "M3IC pinned icon dependency/license, generated UI bundle, concise adoption decision or paired release version metadata; icon behavior is covered by FL-199. No additional semantic behavior.",
+    "spine/tests/test_packaging.py": "Paired 0.1.36 release metadata or its existing packaging assertion; no API shape or runtime behavior change.",
+    "spine/verification/m3ic/FL-195.png": "M3IC verification evidence only; no product behavior.",
+    "spine/verification/m3ic/FL-196.png": "M3IC verification evidence only; no product behavior.",
     "spine/verification/m3ic/SHA256SUMS": "M3IC verification evidence only; no product behavior.",
     "spine/verification/m3ic/SOP.md": "M3IC verification evidence only; no product behavior.",
     "spine/verification/m3ic/ledger-report.json": "M3IC verification evidence only; no product behavior.",
@@ -20,9 +24,7 @@
     "spine/docs/frozen-law.json": "M3IC evidence or synchronized governance only; no additional product behavior.",
     "spine/verification/m3ic/gallery.html": "M3IC verification evidence or synchronized frozen governance; no product behavior.",
     "spine/verification/m3ic/packet-canon.txt": "Packet-aware canon transcript; no product behavior.",
-    "spine/verification/m3ic/impacted.json": "M3IC verification evidence only; no product behavior.",
-    "spine/verification/m3ic/FL-196.png": "M3IC verification evidence only; no product behavior.",
-    "spine/verification/m3ic/FL-195.png": "M3IC verification evidence only; no product behavior."
+    "spine/verification/m3ic/impacted.json": "M3IC verification evidence only; no product behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
