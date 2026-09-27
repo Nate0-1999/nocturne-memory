@@ -198,8 +198,8 @@
         "harness/pyproject.toml"
       ],
       "last_walk": {
-        "packet": "M3NM",
-        "date": "2026-09-15",
+        "packet": "M3OB",
+        "date": "2026-09-26",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-009.png"
@@ -3375,7 +3375,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "Jul 21",
       "label": "Easy onboarding from a single splash repo, needing only two secrets: a GCP credential and an OpenRouter key.",
-      "status": "partial",
+      "status": "built",
       "walk": "On a fresh machine, follow the splash repo's install steps; you are asked for a GCP credential and an OpenRouter key and nothing else before the app comes up.",
       "owner": "owner — \"Sure we can name things nocture- as long as there is a single splash repo for new users I'm good.\" (chat 2026-07-21 17:21:05; chat 2026-07-21 17:04:14)",
       "surfaces": [
@@ -3386,10 +3386,10 @@
         "spine/src/spine/api_contract.py"
       ],
       "last_walk": {
-        "packet": "M3NM",
-        "date": "2026-09-15",
-        "verdict": "FAIL",
-        "flag": "F086",
+        "packet": "M3OB",
+        "date": "2026-09-26",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-162.png"
       }
     },
@@ -3408,11 +3408,11 @@
         "spine/src/spine/queue/service.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F086",
-        "screenshot": "FL-163.jpg"
+        "packet": "M3OB",
+        "date": "2026-09-26",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-163.png"
       }
     },
     {
@@ -3431,11 +3431,11 @@
         "spine/src/spine/api_contract.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F086",
-        "screenshot": "FL-164.jpg"
+        "packet": "M3OB",
+        "date": "2026-09-26",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-164.png"
       }
     },
     {
@@ -3485,11 +3485,11 @@
         "spine/src/spine/api_contract.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F086",
-        "screenshot": "FL-167.jpg"
+        "packet": "M3OB",
+        "date": "2026-09-26",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-167.png"
       }
     },
     {
@@ -3553,8 +3553,8 @@
         "harness/pyproject.toml"
       ],
       "last_walk": {
-        "packet": "M3NM",
-        "date": "2026-09-15",
+        "packet": "M3OB",
+        "date": "2026-09-26",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-170.png"
@@ -3589,12 +3589,19 @@
       "era": "gate-day",
       "label": "Constitution: Palace export and portability (gate-day).",
       "status": "built",
-      "walk": "Press export on the Palace; a file containing every memory is produced.",
+      "walk": "Run nocturne export to produce one file containing every principal-scoped memory and its lineage; import it into another Palace and compare the archive (A-071 CLI front door).",
       "owner": "constitution",
       "surfaces": [
         "harness/src/harness/cli.py",
         "spine/src/spine/portability.py"
-      ]
+      ],
+      "last_walk": {
+        "packet": "M3OB",
+        "date": "2026-09-26",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-172.png"
+      }
     },
     {
       "id": "FL-173",
