@@ -4164,14 +4164,41 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Sep 26",
       "label": "Icons on buttons for the common things people would understand: a button whose meaning has a known icon (send, stop, add, remove, delete, refresh, open, settings, play, pause) carries it; primary actions show icon and word, row actions the icon alone with a tip; unusual actions keep their word; one icon set across every module and theme.",
-      "status": "not built",
+      "status": "built",
       "walk": "Open any module; every common action (send, stop, add, remove, delete, refresh, open, settings, play, pause) has its icon from the one set in the theme's ink; primary buttons pair it with a word; row actions show the icon alone with a tip; an unusual action still reads as a word.",
       "owner": "owner — \"we need icons not just words everywhere on buttons\" (chat 2026-09-26) ; \"For the common things people would understand\" (chat 2026-09-26)",
       "surfaces": [
-        "harness/web/src/rack.tsx",
-        "harness/web/src/App.tsx"
+        "harness/web/src/kit.tsx",
+        "harness/web/src/assets/kit.css",
+        "harness/web/src/App.tsx",
+        "harness/web/src/AgentPolicies.tsx",
+        "harness/web/src/ContextBars.tsx",
+        "harness/web/src/InjectionConsole.tsx",
+        "harness/web/src/JobsModule.tsx",
+        "harness/web/src/MemoryGate.tsx",
+        "harness/web/src/MemoryPanel.tsx",
+        "harness/web/src/MemoryRestore.tsx",
+        "harness/web/src/OutLoud.tsx",
+        "harness/web/src/PalaceNebula.tsx",
+        "harness/web/src/PalaceStateModule.tsx",
+        "harness/web/src/ProjectSelector.tsx",
+        "harness/web/src/RackPluginUpload.tsx",
+        "harness/web/src/RewindControl.tsx",
+        "harness/web/src/SpendHistory.tsx",
+        "harness/web/src/SpendWallSettings.tsx",
+        "harness/web/src/SymphonyCards.tsx",
+        "harness/web/src/SymphonyDeck.tsx",
+        "harness/web/src/VitalsModule.tsx",
+        "harness/web/src/WorkVisualization.tsx",
+        "harness/web/src/WorkerContext.tsx"
       ],
-      "last_walk": null,
+      "last_walk": {
+        "packet": "M3IC",
+        "date": "2026-09-26",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-199.png"
+      },
       "protected": false
     }
   ]
