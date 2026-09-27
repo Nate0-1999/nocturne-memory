@@ -212,10 +212,28 @@ def added_rows(data, diffs):
     return added
 
 
+def charged_rows(packet):
+    """The LEDGER ROWS a charge names in PLAN.md (2026-09-27: required at handoff
+    regardless of the diff — a walk-only packet still owes its rows)."""
+    try:
+        plan = (GARDEN / "PLAN.md").read_text()
+    except OSError:
+        return set()
+    match = re.search(r"^- \*\*" + re.escape(packet.upper()) + r" — .*?(?=^- \*\*[A-Z]|\Z)", plan, re.S | re.M)
+    if not match:
+        return set()
+    rows = set()
+    for chunk in re.findall(r"LEDGER ROWS:\s*([^.]*)", match.group(0)):
+        for token in re.findall(r"FL-\d{3}|\b\d{3}\b", chunk):
+            rows.add(token if token.startswith("FL-") else "FL-" + token)
+    return rows
+
+
 def report(data, packet, diffs):
     result = impact(data, diffs)
+    known = {row["id"] for row in data["rows"]}
     required = (
-        set(result["required"]) | added_rows(data, diffs)
+        (set(result["required"]) | added_rows(data, diffs) | (charged_rows(packet) & known))
         if diffs
         else {
             row["id"] for row in data["rows"] if row["status"] in {"built", "partial"}
