@@ -1,0 +1,7 @@
+{
+  "extra_verification_memory": "e766c7b0-86db-43ef-8410-c86919dd608e",
+  "principal": "nocturne-deploy-verify-b9ed966dbf4b49e3a9b8eb8cb5b818d3",
+  "status": "tombstoned",
+  "revision": 2,
+  "cause": "Legacy memory list ignored principal_id; helper corrected to scoped graph. Only deployment-verifier content was re-created."
+}

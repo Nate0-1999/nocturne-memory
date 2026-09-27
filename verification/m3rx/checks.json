@@ -1,0 +1,17 @@
+{
+  "ground": {
+    "harness": 1798,
+    "memory": 322
+  },
+  "exit": {
+    "harness": 1800,
+    "memory": 323,
+    "web": 158
+  },
+  "ruff": "PASS",
+  "web_lint_build": "PASS",
+  "test_motivations": "PASS",
+  "rendered_canon": "PASS",
+  "owner_manual_probes": 3,
+  "owner_probe_note": "Two initial proof attempts reached accepted owner retrain before evidence-helper errors; final complete attempt is in live-proof.json. No activation or synthetic signals. Receipt history is append-only."
+}
