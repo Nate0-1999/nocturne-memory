@@ -1,0 +1,49 @@
+{
+  "installed_from": "public PyPI",
+  "versions": {
+    "nocturne-memory": "0.1.34",
+    "nocturne-harness": "0.1.34"
+  },
+  "old_code_environment_deleted": true,
+  "preserved_home": "/tmp/m3ob-20260925/live-home",
+  "preserved_thread_id": "35e628e4-6b28-4db4-9cb0-1d5259e647e7",
+  "journal_prefix_sha256": "b554a3d2eae63e85480a4a40e8596fa664e0254ea7ebbf5bf8af7f6136d600d1",
+  "journal_prefix_bytes": 71478,
+  "journal_prefix_matches": true,
+  "restored_messages": [
+    {
+      "role": "user",
+      "content": "What is this verification project\u2019s codeword? Answer in one sentence."
+    },
+    {
+      "role": "assistant",
+      "content": "The M3OB verification project's codeword is copper-orchid.\n\n"
+    },
+    {
+      "role": "user",
+      "content": "What is the codeword again? Answer briefly."
+    },
+    {
+      "role": "assistant",
+      "content": "The codeword is copper-orchid."
+    },
+    {
+      "role": "user",
+      "content": "Move your working directory to /private/tmp/m3ob-20260925/live-work/subfolder using the location tool, then report the current directory and the project codeword from memory. Do not edit any files."
+    },
+    {
+      "role": "assistant",
+      "content": "Current directory: `/private/tmp/m3ob-20260925/live-work/subfolder`\n\nProject codeword (from memory): **copper-orchid**"
+    },
+    {
+      "role": "user",
+      "content": "After this reinstall, use the location tool to move back to /private/tmp/m3ob-20260925/live-work. Confirm the directory and the remembered codeword briefly. Do not edit files."
+    },
+    {
+      "role": "assistant",
+      "content": "I'll use the move tool to relocate, then confirm.Current directory: `/private/tmp/m3ob-20260925/live-work`\n\nRemembered codeword: **copper-orchid**"
+    }
+  ],
+  "message_count": 8,
+  "continuation": "Real OpenRouter move back to original folder with remembered copper-orchid; no gate or memory-unavailable warning."
+}

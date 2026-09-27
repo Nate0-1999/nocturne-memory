@@ -1,0 +1,53 @@
+{
+  "harness": {
+    "passed": 1794,
+    "skipped": 4,
+    "deselected": 3
+  },
+  "memory": {
+    "passed": 322,
+    "skipped": 3
+  },
+  "web": {
+    "passed": 146
+  },
+  "ruff": "PASS both products",
+  "web_lint_build": "PASS",
+  "motivation_checker": "PASS; 815 tests, zero grandfathered",
+  "standing_ui_canon": "PASS: packet-aware run verified all 65 accounted rows and completed packaged heartbeat, fixture curtain, sweep v2, live controls, human numbers, Stage and SYM13. Coverage is not feature acceptance.",
+  "offline": {
+    "external_network": "sandbox-exec denies outbound except loopback and unix sockets",
+    "local_chat_model": "qwen3:1.7b",
+    "local_embedding_model": "qwen3-embedding:4b; 1536 dimensions",
+    "runtime": "Ollama 0.34.4 with OLLAMA_NO_CLOUD=1",
+    "result": "reviewed memory and real local-model reply"
+  },
+  "source_commits": {
+    "harness": "1a748db7ed39c9b2d0ee469f8c63aca757fd1487",
+    "memory": "68e4a4a082efa6b5fb769e64f74ac61ce159e697"
+  },
+  "correction_033": {
+    "harness_hosted": {
+      "passed": 1795,
+      "skipped": 5,
+      "deselected": 3,
+      "ci": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/36095546120"
+    },
+    "memory_hosted": {
+      "passed": 322,
+      "skipped": 3,
+      "ci": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/36095253518"
+    },
+    "web": {
+      "passed": 146
+    },
+    "focused_seed_and_provenance": {
+      "passed": 19
+    },
+    "test_motivations": "817 tests, zero grandfathered",
+    "source_commits": {
+      "harness": "9441fc53e824d786aaf7998ef64e1518dfbfe61a",
+      "memory": "9aed7755fa45543d9089ea875f48cd7ea1488234"
+    }
+  }
+}

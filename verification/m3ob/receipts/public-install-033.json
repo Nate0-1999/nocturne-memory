@@ -1,0 +1,17 @@
+{
+  "harness": "0.1.33",
+  "memory": "0.1.33",
+  "harness_import": "/tmp/m3ob-20260925/public033/lib/python3.12/site-packages/harness/__init__.py",
+  "memory_import": "/tmp/m3ob-20260925/public033/lib/python3.12/site-packages/spine/__init__.py",
+  "release_source_files_match": {
+    "seed.py": true,
+    "seed_identity.py": true,
+    "seed_jump_start.py": true,
+    "daemon.py": true,
+    "onboarding.py": true,
+    "cli.py": true,
+    "memory_gate.py": true
+  },
+  "installed_from": "https://pypi.org/simple",
+  "environment": "fresh /tmp/m3ob-20260925/public033"
+}

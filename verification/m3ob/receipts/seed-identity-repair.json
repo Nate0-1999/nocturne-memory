@@ -1,0 +1,30 @@
+{
+  "principal_id": "nocturne-verification-05c3fb88-b7b5-4721-9f26-58225d6bfe3c",
+  "runtime": "0.1.33 source repair on port 8925; real Palace and OpenRouter",
+  "legacy_batch_uid": "21222849-deb0-89bc-ad25-f024796be01c",
+  "scoped_batch_uid": "f6332944-f3d3-846c-be68-192525bcfae8",
+  "active": 2,
+  "pending": 0,
+  "memories": [
+    {
+      "id": "43492763-867b-4626-90a6-6df6a19a51c0",
+      "label": "M3OB report style preference",
+      "status": "active",
+      "revision": 4
+    },
+    {
+      "id": "6c95ded2-9416-475a-846c-0d8956c05067",
+      "label": "M3OB project codeword",
+      "status": "active",
+      "revision": 4
+    },
+    {
+      "id": "67aee21d-8028-4a0d-ab90-75e22314a9c1",
+      "label": "Seed source \u00b7 AGENTS.md",
+      "status": "tombstoned",
+      "revision": 1
+    }
+  ],
+  "real_model": "openrouter:minimax/minimax-m3",
+  "observed_answer": "The M3OB verification project codeword is copper-orchid."
+}

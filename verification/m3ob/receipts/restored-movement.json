@@ -1,0 +1,123 @@
+{
+  "thread_id": "35e628e4-6b28-4db4-9cb0-1d5259e647e7",
+  "versions": {
+    "harness": "0.1.34",
+    "memory": "0.1.34"
+  },
+  "events": [
+    {
+      "type": "run.started",
+      "ts": "2026-09-27T01:03:08.336372Z",
+      "payload": {
+        "checkpoint": {
+          "commit": "d92ca88cbeec6fc303ae394dbdce70db4ec6c6a6",
+          "location": "/private/tmp/m3ob-20260925/live-work",
+          "parent_id": "01M3BAVY43Y48FSF7YY3RP518M"
+        },
+        "prompt_id": "01M3G668BJSZSQXRFAF25AJS7R",
+        "resolved_model": "openrouter:minimax/minimax-m3",
+        "run_id": "01M3G668BJRH8J6FT0NHM29JTG"
+      }
+    },
+    {
+      "type": "run.usage",
+      "ts": "2026-09-27T01:03:09.944189Z",
+      "payload": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "requests": 1,
+        "run_id": "01M3G668BJRH8J6FT0NHM29JTG"
+      }
+    },
+    {
+      "type": "run.usage",
+      "ts": "2026-09-27T01:03:10.156413Z",
+      "payload": {
+        "input_tokens": 2632,
+        "output_tokens": 61,
+        "requests": 1,
+        "run_id": "01M3G668BJRH8J6FT0NHM29JTG"
+      }
+    },
+    {
+      "type": "thread.snapshot",
+      "ts": "2026-09-27T01:03:10.157635Z",
+      "payload": {
+        "current_location": "/private/tmp/m3ob-20260925/live-work/subfolder"
+      }
+    },
+    {
+      "type": "run.usage",
+      "ts": "2026-09-27T01:03:11.102455Z",
+      "payload": {
+        "input_tokens": 2632,
+        "output_tokens": 61,
+        "requests": 2,
+        "run_id": "01M3G668BJRH8J6FT0NHM29JTG"
+      }
+    },
+    {
+      "type": "run.usage",
+      "ts": "2026-09-27T01:03:12.151172Z",
+      "payload": {
+        "input_tokens": 5357,
+        "output_tokens": 155,
+        "requests": 2,
+        "run_id": "01M3G668BJRH8J6FT0NHM29JTG"
+      }
+    },
+    {
+      "type": "run.done",
+      "ts": "2026-09-27T01:03:12.236263Z",
+      "payload": {
+        "partial": false,
+        "run_id": "01M3G668BJRH8J6FT0NHM29JTG",
+        "stop_reason": "end_turn"
+      }
+    }
+  ],
+  "messages": [
+    {
+      "message_id": "01M3BAM7H9X0PESQH7EPWYM3VK",
+      "role": "user",
+      "content": "What is this verification project\u2019s codeword? Answer in one sentence."
+    },
+    {
+      "message_id": "01M3BAM7H9GVDJZZNBM8YDGA0C",
+      "role": "assistant",
+      "content": "The M3OB verification project's codeword is copper-orchid.\n\n"
+    },
+    {
+      "message_id": "01M3BAVY43HZBQBP6WM9PPPY0B",
+      "role": "user",
+      "content": "What is the codeword again? Answer briefly."
+    },
+    {
+      "message_id": "01M3BAVY43Y48FSF7YY3RP518M",
+      "role": "assistant",
+      "content": "The codeword is copper-orchid."
+    },
+    {
+      "message_id": "01M3G668BJSZSQXRFAF25AJS7R",
+      "role": "user",
+      "content": "Move your working directory to /private/tmp/m3ob-20260925/live-work/subfolder using the location tool, then report the current directory and the project codeword from memory. Do not edit any files."
+    },
+    {
+      "message_id": "01M3G668BJRH8J6FT0NHM29JTG",
+      "role": "assistant",
+      "content": "Current directory: `/private/tmp/m3ob-20260925/live-work/subfolder`\n\nProject codeword (from memory): **copper-orchid**"
+    }
+  ],
+  "journal_before_reinstall": {
+    "file": "be1cf8e0c981110b1c92a6a80cdbcbf03ea234aac28ae8b641a270ab9364f8b0.jsonl",
+    "sha256": "b554a3d2eae63e85480a4a40e8596fa664e0254ea7ebbf5bf8af7f6136d600d1",
+    "size": 71478
+  },
+  "event_counts": {
+    "run.started": 1,
+    "run.delta": 44,
+    "run.usage": 4,
+    "thread.snapshot": 1,
+    "run.done": 1
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "verdict": "PASS",
+  "separate_database_ports": [
+    55432,
+    55433
+  ],
+  "principal_id": "nocturne-verification-b1c9cee3-82d2-4a93-ad21-59632aa5553a",
+  "exact_field_match": true,
+  "counts": {
+    "memories": 2,
+    "revisions": 5,
+    "edges": 0,
+    "queue": 1,
+    "decisions": 1
+  },
+  "archive_sha256": "7d721cc0bb072ff2e33df344695eeb03bbea8f9fe354d10a1dcd59f3c493c5d3"
+}

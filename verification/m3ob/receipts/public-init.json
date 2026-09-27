@@ -1,0 +1,15 @@
+{
+  "package_pair": "0.1.32 from PyPI",
+  "principal_id": "nocturne-verification-05c3fb88-b7b5-4721-9f26-58225d6bfe3c",
+  "machine_id": "nocturne-6c9eca90-39a7-4d21-bf51-1e68ccb4fa46",
+  "home": "/tmp/m3ob-20260925/public-home",
+  "palace_mode": "remote",
+  "prompts": [
+    "Found your Palace (n8-memory-palace, us-central1) \u2014 reconnect? [y/N]",
+    "Back up conversation transcripts to your cloud Palace? [y/N]"
+  ],
+  "palace_url_supplied": false,
+  "palace_token_supplied": false,
+  "palace_token_prompted": false,
+  "runtime_note": "Packaged factory on isolated port 8925 for ingestion while peer owns 8765; standard up acceptance remains separate."
+}
