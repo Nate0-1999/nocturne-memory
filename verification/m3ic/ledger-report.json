@@ -7,22 +7,44 @@
     {
       "repo": "spine",
       "base": "ddf63f2d2ea8e61b4feb9261274b7044fbdea22b",
-      "head": "cd926c17c9626b04f366f6025ff6a02e94301d3c"
+      "head": "4f1a80d024631e77050db38489390f9824f6f6e4"
     }
   ],
   "unmapped": {
     "spine/src/spine/__init__.py": "M3IC pinned icon dependency/license, generated UI bundle, concise adoption decision or paired release version metadata; icon behavior is covered by FL-199. No additional semantic behavior.",
-    "spine/docs/feature-ledger.yaml": "M3IC verification evidence or synchronized frozen governance; no product behavior.",
-    "spine/docs/frozen-law.json": "M3IC verification evidence or synchronized frozen governance; no product behavior.",
-    "spine/verification/m3ic/ledger-report.json": "Paired release verification evidence; no product behavior.",
-    "spine/verification/m3ic/SHA256SUMS": "Paired release verification evidence; no product behavior.",
-    "spine/verification/m3ic/SOP.md": "Paired release verification evidence; no product behavior.",
+    "spine/verification/m3ic/SHA256SUMS": "M3IC verification evidence only; no product behavior.",
+    "spine/verification/m3ic/SOP.md": "M3IC verification evidence only; no product behavior.",
+    "spine/verification/m3ic/ledger-report.json": "M3IC verification evidence only; no product behavior.",
+    "spine/verification/m3ic/memory-tests.txt": "M3IC verification evidence only; no product behavior.",
+    "spine/docs/feature-ledger.yaml": "M3IC evidence or synchronized governance only; no additional product behavior.",
+    "spine/docs/frozen-law.json": "M3IC evidence or synchronized governance only; no additional product behavior.",
     "spine/verification/m3ic/gallery.html": "M3IC verification evidence or synchronized frozen governance; no product behavior.",
-    "spine/verification/m3ic/packet-canon.txt": "M3IC verification evidence or synchronized frozen governance; no product behavior.",
-    "spine/verification/m3ic/memory-tests.txt": "Paired release verification evidence; no product behavior."
+    "spine/verification/m3ic/packet-canon.txt": "Packet-aware canon transcript; no product behavior.",
+    "spine/verification/m3ic/impacted.json": "M3IC verification evidence only; no product behavior.",
+    "spine/verification/m3ic/FL-196.png": "M3IC verification evidence only; no product behavior.",
+    "spine/verification/m3ic/FL-195.png": "M3IC verification evidence only; no product behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
-  "rows": {},
+  "rows": {
+    "FL-195": {
+      "label": "The feature ledger generates coverage reports and requires evidence for the rows affected by a build.",
+      "walk": "Compute the composer fix's impact with --paths and see attunement rows; push a branch touching socket.ts and observe the hook print rows and write impacted.json; observe a DONE handoff without screenshots fail CI, then verify complete evidence passes.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-195.png",
+      "flag": "F086",
+      "observed": "Governance context only. Current ledger verification and rules checks pass; the complete historical adversarial gesture for this row was not repeated in the icon walk. No new semantic PASS claimed."
+    },
+    "FL-196": {
+      "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
+      "walk": "Remove a guard citation on a disposable branch and observe CI fail; change a frozen axiom and observe the freeze step fail; restore both and observe Rules pass. The master ADR check remains red until the owner applies the citation patch.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-196.png",
+      "flag": "F086",
+      "observed": "Governance context only. Current ledger verification and rules checks pass; the complete historical adversarial gesture for this row was not repeated in the icon walk. No new semantic PASS claimed."
+    }
+  },
   "not_run": {
     "FL-001": "unverified",
     "FL-002": "outside diff",
@@ -219,8 +241,6 @@
     "FL-192": "outside diff",
     "FL-193": "outside diff",
     "FL-194": "outside diff",
-    "FL-195": "outside diff",
-    "FL-196": "outside diff",
     "FL-198": "outside diff",
     "FL-199": "outside diff"
   }
