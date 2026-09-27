@@ -281,7 +281,11 @@
       "status": "built",
       "walk": "Press ×! on a memory; a small confirmation asks yes or no to permanently delete, honest about what permanent means here (a tombstone with restore); yes removes it from the palace.",
       "owner": "owner — \"I think that the user should be able to delete a memory from the palace. This can be a new training loop that helps with memory creation tuning.\" (chat 2026-08-31 18:59:34; chat 2026-08-31 18:56:36)",
-      "surfaces": ["harness/web/src/MemoryPanel.tsx", "harness/web/src/MemoryCard.tsx", "harness/src/harness/memory_panel.py"]
+      "surfaces": [
+        "harness/web/src/MemoryPanel.tsx",
+        "harness/web/src/MemoryCard.tsx",
+        "harness/src/harness/memory_panel.py"
+      ]
     },
     {
       "id": "FL-014",
@@ -4153,6 +4157,21 @@
         "flag": "",
         "screenshot": "FL-198.png"
       },
+      "protected": false
+    },
+    {
+      "id": "FL-199",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Sep 26",
+      "label": "Icons on buttons, not just words: every button carries an icon; primary actions show icon and word, row actions icon alone with a hover tip; one icon set across every module and theme.",
+      "status": "not built",
+      "walk": "Open any module; every button has an icon from the one set, drawn in the theme's ink; primary buttons pair it with a word, row actions show the icon alone with a tip.",
+      "owner": "owner — \"we need icons not just words everywhere on buttons\" (chat 2026-09-26)",
+      "surfaces": [
+        "harness/web/src/rack.tsx",
+        "harness/web/src/App.tsx"
+      ],
+      "last_walk": null,
       "protected": false
     }
   ]
