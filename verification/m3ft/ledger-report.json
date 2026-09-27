@@ -14,12 +14,16 @@
     "spine/openapi.json": "Paired 0.1.35 release metadata and verification artifacts; no Memory behavior changes.",
     "spine/src/spine/__init__.py": "Paired 0.1.35 release metadata and verification artifacts; no Memory behavior changes.",
     "spine/tests/test_packaging.py": "Paired 0.1.35 release metadata and verification artifacts; no Memory behavior changes.",
-    "spine/verification/m3ft/FL-195.png": "M3FT release verification evidence; no product behavior.",
-    "spine/verification/m3ft/FL-196.png": "M3FT release verification evidence; no product behavior.",
-    "spine/verification/m3ft/SHA256SUMS": "M3FT release verification evidence; no product behavior.",
-    "spine/verification/m3ft/checks.txt": "M3FT release verification evidence; no product behavior.",
-    "spine/verification/m3ft/governance-checks.txt": "M3FT release verification evidence; no product behavior.",
-    "spine/verification/m3ft/ledger-report.json": "M3FT release verification evidence; no product behavior."
+    "spine/verification/m3ft/FL-195.png": "M3FT release, cleanup or verification evidence only; no runtime behavior.",
+    "spine/verification/m3ft/FL-196.png": "M3FT release, cleanup or verification evidence only; no runtime behavior.",
+    "spine/verification/m3ft/SHA256SUMS": "M3FT release, cleanup or verification evidence only; no runtime behavior.",
+    "spine/verification/m3ft/checks.txt": "M3FT release, cleanup or verification evidence only; no runtime behavior.",
+    "spine/verification/m3ft/governance-checks.txt": "M3FT release, cleanup or verification evidence only; no runtime behavior.",
+    "spine/verification/m3ft/ledger-report.json": "M3FT release, cleanup or verification evidence only; no runtime behavior.",
+    "spine/verification/m3ft/receipts/public-runtime.json": "M3FT release, cleanup or verification evidence only; no runtime behavior.",
+    "spine/verification/m3ft/receipts/cleanup.json": "M3FT release, cleanup or verification evidence only; no runtime behavior.",
+    "spine/verification/m3ft/receipts/releases.json": "M3FT release, cleanup or verification evidence only; no runtime behavior.",
+    "spine/verification/m3ft/receipts/public-index.json": "M3FT release, cleanup or verification evidence only; no runtime behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
