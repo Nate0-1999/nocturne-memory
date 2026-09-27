@@ -1,0 +1,11 @@
+{
+  "principal_id": "nocturne-verification-0be5da22-b84b-4774-be90-53e93d9b6e93",
+  "denied": [],
+  "pending_after": 0,
+  "active_after": 0,
+  "feed_errors": [],
+  "runtime_stop_requested": true,
+  "runtime_stopped": true,
+  "home_removed": true,
+  "hard_purge": false
+}

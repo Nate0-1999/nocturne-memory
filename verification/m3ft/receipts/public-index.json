@@ -1,0 +1,64 @@
+{
+  "nocturne-memory": {
+    "version": "0.1.35",
+    "requires_dist": [
+      "alembic<2,>=1.13",
+      "asyncpg<1,>=0.29",
+      "croniter<7,>=6.2.2",
+      "fastapi<1,>=0.115",
+      "httpx<1,>=0.27",
+      "pgvector<1,>=0.3",
+      "pydantic-settings<3,>=2",
+      "pydantic<3,>=2",
+      "sqlalchemy[asyncio]<3,>=2",
+      "tiktoken<1,>=0.9",
+      "uvicorn[standard]<1,>=0.30",
+      "pytest-asyncio<1,>=0.24; extra == \"dev\"",
+      "pytest<9,>=8; extra == \"dev\"",
+      "ruff<1,>=0.9; extra == \"dev\"",
+      "testcontainers[postgres]<5,>=4.8; extra == \"dev\""
+    ],
+    "files": [
+      {
+        "filename": "nocturne_memory-0.1.35-py3-none-any.whl",
+        "sha256": "56477db8359a4301243f80aa9527cad99e7ab576fd94c642e96b94a29e900a41",
+        "upload_time": "2026-09-27T01:31:42.816937Z"
+      },
+      {
+        "filename": "nocturne_memory-0.1.35.tar.gz",
+        "sha256": "5512744638eaff74348bc273ad17c691d30396a5565053ddcc4d3034814d5ca7",
+        "upload_time": "2026-09-27T01:31:44.283442Z"
+      }
+    ]
+  },
+  "nocturne-harness": {
+    "version": "0.1.35",
+    "requires_dist": [
+      "fastapi<1,>=0.115",
+      "httpx<1,>=0.27",
+      "nocturne-memory==0.1.35",
+      "playwright==1.62.0",
+      "pydantic-ai-harness[skills]==0.31.0",
+      "pydantic-ai==2.43.0",
+      "pydantic-settings<3,>=2.7",
+      "pydantic<3,>=2.10",
+      "uvicorn[standard]<1,>=0.34",
+      "websockets<17,>=14",
+      "pytest-asyncio<2,>=0.25; extra == \"dev\"",
+      "pytest<10,>=8.3; extra == \"dev\"",
+      "ruff<1,>=0.9; extra == \"dev\""
+    ],
+    "files": [
+      {
+        "filename": "nocturne_harness-0.1.35-py3-none-any.whl",
+        "sha256": "7888432d2f8c38351575eda893336c30faf141c9906e532562b6e934c33565cc",
+        "upload_time": "2026-09-27T01:40:38.065323Z"
+      },
+      {
+        "filename": "nocturne_harness-0.1.35.tar.gz",
+        "sha256": "fb30f3a3812baeac9cdf8c21d55ad0302d05bf9e677e718715425c636deb170d",
+        "upload_time": "2026-09-27T01:40:39.435494Z"
+      }
+    ]
+  }
+}

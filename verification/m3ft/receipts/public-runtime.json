@@ -1,0 +1,123 @@
+{
+  "packages": {
+    "nocturne-harness": "0.1.35",
+    "nocturne-memory": "0.1.35"
+  },
+  "principal_id": "nocturne-verification-e73c8e29-6b1a-4029-8d9e-bf4278e591bb",
+  "machine_id": "nocturne-ebfd304e-5421-48f5-9668-d8b0fe170cf5",
+  "runtime": "Public PyPI wheels, packaged factory on disposable port 18878",
+  "thread_id": "590e4c40-ec4d-49d0-ad6c-c1726523850a",
+  "events": {
+    "run.started": 1,
+    "gate.open": 1,
+    "gate.dismiss": 1,
+    "run.delta": 10,
+    "run.usage": 2,
+    "run.done": 1
+  },
+  "messages": [
+    {
+      "message_id": "01M3G8DD1V7B18QN63992FJC54",
+      "run_id": "01M3G8DD1V836J4RJRN5633BY8",
+      "role": "user",
+      "content": "Disposable release verification. Reply exactly: M3FT public release ready. Do not use tools or save memories.",
+      "state": "end_turn",
+      "checkpoint": {
+        "commit": "6c8dbb5d2d1ebd5dc316f7f80d0e9a34233d2fd5",
+        "parent_id": null,
+        "location": "/private/tmp/m3ft-small"
+      }
+    },
+    {
+      "message_id": "01M3G8DD1V836J4RJRN5633BY8",
+      "run_id": "01M3G8DD1V836J4RJRN5633BY8",
+      "role": "assistant",
+      "content": "M3FT public release ready.\n\n",
+      "thinking": "",
+      "events": [
+        {
+          "tool_name": null,
+          "tool_call_id": null,
+          "event_kind": "final_result"
+        },
+        {
+          "index": 0,
+          "part": {
+            "content": "M3FT public release ready.\n\n<nocturne-proposed-response>\n{\"primary\":\"M3FT public release ready.\",\"alternatives\":[]}\n</nocturne-proposed-response>",
+            "id": null,
+            "provider_name": null,
+            "provider_details": null,
+            "part_kind": "text"
+          },
+          "next_part_kind": null,
+          "event_kind": "part_end"
+        },
+        {
+          "event_kind": "proposed_response",
+          "proposal_run_id": "01M3G8DD1V836J4RJRN5633BY8",
+          "primary": "M3FT public release ready.",
+          "alternatives": [],
+          "created_at": "2026-09-27T01:42:05.219338+00:00"
+        }
+      ],
+      "partial": false
+    }
+  ],
+  "restart_messages_match": false,
+  "runtime_stopped": true,
+  "restored_messages": [
+    {
+      "checkpoint": {
+        "commit": "6c8dbb5d2d1ebd5dc316f7f80d0e9a34233d2fd5",
+        "location": "/private/tmp/m3ft-small",
+        "parent_id": null
+      },
+      "content": "Disposable release verification. Reply exactly: M3FT public release ready. Do not use tools or save memories.",
+      "message_id": "01M3G8DD1V7B18QN63992FJC54",
+      "parentId": null,
+      "role": "user",
+      "run_id": "01M3G8DD1V836J4RJRN5633BY8",
+      "state": "end_turn"
+    },
+    {
+      "content": "M3FT public release ready.\n\n",
+      "events": [
+        {
+          "event_kind": "final_result",
+          "tool_call_id": null,
+          "tool_name": null
+        },
+        {
+          "event_kind": "part_end",
+          "index": 0,
+          "next_part_kind": null,
+          "part": {
+            "content": "M3FT public release ready.\n\n<nocturne-proposed-response>\n{\"primary\":\"M3FT public release ready.\",\"alternatives\":[]}\n</nocturne-proposed-response>",
+            "id": null,
+            "part_kind": "text",
+            "provider_details": null,
+            "provider_name": null
+          }
+        },
+        {
+          "alternatives": [],
+          "created_at": "2026-09-27T01:42:05.219338+00:00",
+          "event_kind": "proposed_response",
+          "primary": "M3FT public release ready.",
+          "proposal_run_id": "01M3G8DD1V836J4RJRN5633BY8"
+        }
+      ],
+      "message_id": "01M3G8DD1V836J4RJRN5633BY8",
+      "parentId": "01M3G8DD1V7B18QN63992FJC54",
+      "partial": false,
+      "role": "assistant",
+      "run_id": "01M3G8DD1V836J4RJRN5633BY8",
+      "thinking": ""
+    }
+  ],
+  "pending_after": 0,
+  "active_after": 0,
+  "restart_payload_match_except_added_parent_links": true,
+  "restart_note": "Restoration adds parentId links. Every previously returned message field, content, event, ID and checkpoint is unchanged.",
+  "home_removed": true
+}
