@@ -4163,10 +4163,10 @@
       "id": "FL-199",
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Sep 26",
-      "label": "Icons on buttons, not just words: every button carries an icon; primary actions show icon and word, row actions icon alone with a hover tip; one icon set across every module and theme.",
+      "label": "Icons on buttons for the common things people would understand: a button whose meaning has a known icon (send, stop, add, remove, delete, refresh, open, settings, play, pause) carries it; primary actions show icon and word, row actions the icon alone with a tip; unusual actions keep their word; one icon set across every module and theme.",
       "status": "not built",
-      "walk": "Open any module; every button has an icon from the one set, drawn in the theme's ink; primary buttons pair it with a word, row actions show the icon alone with a tip.",
-      "owner": "owner — \"we need icons not just words everywhere on buttons\" (chat 2026-09-26)",
+      "walk": "Open any module; every common action (send, stop, add, remove, delete, refresh, open, settings, play, pause) has its icon from the one set in the theme's ink; primary buttons pair it with a word; row actions show the icon alone with a tip; an unusual action still reads as a word.",
+      "owner": "owner — \"we need icons not just words everywhere on buttons\" (chat 2026-09-26) ; \"For the common things people would understand\" (chat 2026-09-26)",
       "surfaces": [
         "harness/web/src/rack.tsx",
         "harness/web/src/App.tsx"
