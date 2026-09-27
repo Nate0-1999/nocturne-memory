@@ -7,16 +7,20 @@
     {
       "repo": "spine",
       "base": "d087892b75778eeeeb651a29450657c69a91af0d",
-      "head": "a7cfd6524f323eb807be10c6a0e09b4220c2d04d"
+      "head": "d606c17047c4b4f7fbdf586ef60df41cbddc9705"
     }
   ],
   "unmapped": {
-    "spine/openapi.json": "Lockstep 0.1.35 release metadata or refreshed canonical Farm source mapping; no Memory behavior changes.",
-    "spine/src/spine/__init__.py": "Lockstep 0.1.35 release metadata or refreshed canonical Farm source mapping; no Memory behavior changes.",
-    "spine/tests/test_packaging.py": "Lockstep 0.1.35 release metadata or refreshed canonical Farm source mapping; no Memory behavior changes.",
-    "spine/verification/m3ft/ledger-report.json": "M3FT release verification evidence; no product behavior.",
+    "spine/openapi.json": "Paired 0.1.35 release metadata and verification artifacts; no Memory behavior changes.",
+    "spine/src/spine/__init__.py": "Paired 0.1.35 release metadata and verification artifacts; no Memory behavior changes.",
+    "spine/tests/test_packaging.py": "Paired 0.1.35 release metadata and verification artifacts; no Memory behavior changes.",
     "spine/verification/m3ft/SHA256SUMS": "M3FT release verification evidence; no product behavior.",
-    "spine/verification/m3ft/checks.txt": "M3FT release verification evidence; no product behavior."
+    "spine/verification/m3ft/checks.txt": "M3FT release verification evidence; no product behavior.",
+    "spine/verification/m3ft/ledger-report.json": "M3FT release verification evidence; no product behavior.",
+    "spine/verification/m3ft/impacted.json": "M3FT release verification evidence; no product behavior.",
+    "spine/verification/m3ft/governance-checks.txt": "M3FT release verification evidence; no product behavior.",
+    "spine/verification/m3ft/FL-196.png": "M3FT release verification evidence; no product behavior.",
+    "spine/verification/m3ft/FL-195.png": "M3FT release verification evidence; no product behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -24,19 +28,19 @@
       "label": "The feature ledger generates coverage reports and requires evidence for the rows affected by a build.",
       "walk": "Compute the composer fix's impact with --paths and see attunement rows; push a branch touching socket.ts and observe the hook print rows and write impacted.json; observe a DONE handoff without screenshots fail CI, then verify complete evidence passes.",
       "protected": true,
-      "verdict": "",
+      "verdict": "PASS",
       "screenshot": "FL-195.png",
       "flag": "",
-      "observed": ""
+      "observed": "The 30 current ledger/rules mutation tests pass, including missing-evidence DONE refusal, independent push-range coverage, changed-axiom refusal and missing guard-citation refusal. Current frozen rules also pass. Screenshot renders the captured command transcript; governance-checks.txt retains it verbatim."
     },
     "FL-196": {
       "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
       "walk": "Remove a guard citation on a disposable branch and observe CI fail; change a frozen axiom and observe the freeze step fail; restore both and observe Rules pass. The master ADR check remains red until the owner applies the citation patch.",
       "protected": true,
-      "verdict": "",
+      "verdict": "PASS",
       "screenshot": "FL-196.png",
       "flag": "",
-      "observed": ""
+      "observed": "The 30 current ledger/rules mutation tests pass, including missing-evidence DONE refusal, independent push-range coverage, changed-axiom refusal and missing guard-citation refusal. Current frozen rules also pass. Screenshot renders the captured command transcript; governance-checks.txt retains it verbatim."
     }
   },
   "not_run": {
