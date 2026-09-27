@@ -1,0 +1,8 @@
+{
+  "harness": "0.1.32",
+  "memory": "0.1.32",
+  "harness_import": "/tmp/m3ob-20260925/released/lib/python3.12/site-packages/harness/__init__.py",
+  "memory_import": "/tmp/m3ob-20260925/released/lib/python3.12/site-packages/spine/__init__.py",
+  "install": "uv pip install --refresh --index-url https://pypi.org/simple nocturne-harness==0.1.32",
+  "environment": "fresh /tmp/m3ob-20260925/released; no repository source import"
+}

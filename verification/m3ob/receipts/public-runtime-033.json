@@ -1,0 +1,29 @@
+{
+  "version": "0.1.33",
+  "principal_id": "nocturne-verification-d0f0220f-9726-47cb-be31-5a1aee31dc97",
+  "machine_id": "nocturne-046aef92-c888-4d7a-a35a-d01a821eb948",
+  "thread_id": "16680966-9a75-4425-b5a1-6895d430c8a3",
+  "runtime": "Public PyPI wheels; packaged factory on isolated port 8925, not the native up acceptance.",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Reply exactly: M3OB ready."
+    },
+    {
+      "role": "assistant",
+      "content": "M3OB ready.\n\n"
+    }
+  ],
+  "event_counts": {
+    "run.started": 1,
+    "gate.open": 1,
+    "gate.dismiss": 1,
+    "run.delta": 17,
+    "run.usage": 2,
+    "run.done": 1
+  },
+  "active_memories": 0,
+  "pending_proposals": 0,
+  "browser_isolation_note": "The reused browser origin initially retained the earlier disposable principal thread ID and showed memory unavailable. A new thread created through the UI passed its own empty memory review and real model turn.",
+  "remaining": "Native up paired upgrade, automatic behind-Palace deploy, restored-thread movement and code-deletion/reinstall require peer port 8765 to be released."
+}

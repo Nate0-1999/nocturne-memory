@@ -1,0 +1,76 @@
+{
+  "memory": {
+    "version": "0.1.33",
+    "files": [
+      {
+        "name": "nocturne_memory-0.1.33-py3-none-any.whl",
+        "sha256": "dd318511753316b27cbe1eec0fd234aaa48d3309ce4978f55469a39bbe45f6f6",
+        "uploaded": "2026-09-25T04:43:06.831508Z"
+      },
+      {
+        "name": "nocturne_memory-0.1.33.tar.gz",
+        "sha256": "78db7a8154a9792aa8fe740867214b599eee8f2086459a53aff460f843a507b3",
+        "uploaded": "2026-09-25T04:43:08.287691Z"
+      }
+    ],
+    "merge_commit": "58e6558055bace4c7cbfb2faa872358a398ac41b",
+    "pull_request": "https://github.com/Nate0-1999/nocturne-memory/pull/37",
+    "release_workflow": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/36095509809",
+    "workflow_result": "success"
+  },
+  "release_race": "Initial Harness wheel install ran before Memory appeared in the simple index. The failed jobs were rerun after publication; no workflow or package version was changed.",
+  "harness": {
+    "version": "0.1.33",
+    "files": [
+      {
+        "name": "nocturne_harness-0.1.33-py3-none-any.whl",
+        "sha256": "4cc62120bd8465f1e9fbe88168004e00fc67e5664e76899c2707a11a7758e40e",
+        "uploaded": "2026-09-25T04:53:42.569922Z"
+      },
+      {
+        "name": "nocturne_harness-0.1.33.tar.gz",
+        "sha256": "80ccd2cf6b7e2a50968981018389cd622d01a5439aa3e64f64a2bdb4a40e92cb",
+        "uploaded": "2026-09-25T04:53:44.556696Z"
+      }
+    ],
+    "merge_commit": "8a1b24aaef38d3577f6ed89911594a0e4cb41c14",
+    "pull_request": "https://github.com/Nate0-1999/nocturne-harness/pull/42",
+    "release_workflow": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/36096192273",
+    "ci": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/36095546120",
+    "workflow_result": "success"
+  },
+  "initial_pair": {
+    "memory": {
+      "version": "0.1.32",
+      "source_commit": "68e4a4a082efa6b5fb769e64f74ac61ce159e697",
+      "merge_commit": "0f7a15fc3ad416c60f74fb0670462eec7a5534f6",
+      "pull_request": "https://github.com/Nate0-1999/nocturne-memory/pull/36",
+      "release_workflow": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/36093594397",
+      "workflow_result": "success",
+      "wheel_sha256": "67522b9db8fb75a4b0337f964ddb6e9837ef5c2864f25fdb8976c780827c5262",
+      "sdist_sha256": "f6e1c7fe1c6754547edcbde989bc82f7502a3ee7ae99cfac0a10dc503e0690bd"
+    },
+    "harness": {
+      "version": "0.1.32",
+      "files": [
+        {
+          "name": "nocturne_harness-0.1.32-py3-none-any.whl",
+          "sha256": "f9949638100ecdd609bbdcec497ecd59d187ae6f05f63bcee588376efdf5c9d7",
+          "uploaded": "2026-09-25T04:24:57.223852Z"
+        },
+        {
+          "name": "nocturne_harness-0.1.32.tar.gz",
+          "sha256": "9859d514d0c552d54c93fc413a5ae6f0812d66d405f28e5947d7a641b9a287d7",
+          "uploaded": "2026-09-25T04:24:58.837120Z"
+        }
+      ],
+      "source_commit": "1a748db7ed39c9b2d0ee469f8c63aca757fd1487",
+      "merge_commit": "9b13e034c75b09ca8248d2cab3ba13b302a4a410",
+      "pull_request": "https://github.com/Nate0-1999/nocturne-harness/pull/41",
+      "release_workflow": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/36094251990",
+      "workflow_result": "success",
+      "ci": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/36093606245",
+      "ci_result": "success"
+    }
+  }
+}

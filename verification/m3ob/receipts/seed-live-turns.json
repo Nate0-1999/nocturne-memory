@@ -1,0 +1,33 @@
+{
+  "principal": "nocturne-verification-05c3fb88-b7b5-4721-9f26-58225d6bfe3c",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is the verification project codeword? Answer in one short sentence.",
+      "partial": false
+    },
+    {
+      "role": "assistant",
+      "content": "The M3OB verification project codeword is copper-orchid.\n\n",
+      "partial": false
+    },
+    {
+      "role": "user",
+      "content": "Repeat the codeword once more, without adding anything else.",
+      "partial": false
+    },
+    {
+      "role": "assistant",
+      "content": "copper-orchid",
+      "partial": false
+    }
+  ],
+  "event_types": {
+    "run.started": 2,
+    "gate.open": 1,
+    "gate.dismiss": 1,
+    "run.delta": 43,
+    "run.usage": 4,
+    "run.done": 2
+  }
+}

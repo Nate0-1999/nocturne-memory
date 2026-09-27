@@ -1,0 +1,21 @@
+{
+  "harness": {
+    "passed": 1798,
+    "skipped": 4,
+    "deselected": 3
+  },
+  "web": {
+    "passed": 156
+  },
+  "memory_local": "322 passed, 3 skipped on final full run. Two prior full runs each had 321 passed and one learner timestamp constraint failure; completion about 110ms before start. Separate 20,000-sample database clock probe had zero reversals. No learner code changed.",
+  "remote_update_branches": {
+    "passed": 7
+  },
+  "product_fixes_this_continuation": 0,
+  "public_runtime_version": "0.1.34",
+  "clock_probe": "0|00:00:00.001098|00:00:00.006019",
+  "packet_ui_canon": "PASS: packaged and reinstall heartbeats, speech, fixture curtain, 43-state sweep, stage, controls, human numbers and recipe canon.",
+  "garden_tests": 30,
+  "rules": "PASS",
+  "cleanup": "Both resumed real principals zero active/pending; both scratch homes and daemons removed."
+}

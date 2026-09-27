@@ -1,0 +1,20 @@
+{
+  "principal_id": "nocturne-verification-2e15f6ac-4d34-40de-b04f-c95f6494a8df",
+  "machine_id": "nocturne-61162ec0-6b00-4419-9109-a74e89799fab",
+  "home": "/tmp/m3ob-20260925/discovery-home",
+  "palace_mode": "remote",
+  "package_provenance": "0.1.32.dev0 candidate; exact release implementation, prerelease metadata only",
+  "supplied_secrets": [
+    "existing GCP sign-in",
+    "OpenRouter API key from authorized source"
+  ],
+  "omitted_inputs": [
+    "SPINE_URL",
+    "SPINE_TOKEN"
+  ],
+  "prompts": [
+    "Found your Palace (n8-memory-palace, us-central1) \u2014 reconnect? [y/N]",
+    "Back up conversation transcripts to your cloud Palace? [y/N]"
+  ],
+  "token_prompted": false
+}

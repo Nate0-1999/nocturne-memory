@@ -1,0 +1,28 @@
+{
+  "operation_id": "1ea073bf-e9eb-47c8-87d1-9f4100000032",
+  "operation_type": "BACKUP_VOLUME",
+  "target": "n8-memory-palace-db",
+  "status": "DONE",
+  "start": "2026-09-25T04:04:30.814Z",
+  "end": "2026-09-25T04:06:02.233Z",
+  "cause": "Two existing lifecycle tests mocked the update guard but assumed declining a prompt prevented deployment. Automatic update entered each backup step. Test and gcloud processes were interrupted before rollout. Both tests now stub run_cloud_deploy; the full suite passes.",
+  "data_change": "Two additional backups completed and are retained. No migration or rollout operation was entered by these test runs.",
+  "operations": [
+    {
+      "endTime": "2026-09-25T04:06:02.233Z",
+      "name": "1ea073bf-e9eb-47c8-87d1-9f4100000032",
+      "operationType": "BACKUP_VOLUME",
+      "startTime": "2026-09-25T04:04:30.814Z",
+      "status": "DONE",
+      "targetId": "n8-memory-palace-db"
+    },
+    {
+      "endTime": "2026-09-25T03:58:16.943Z",
+      "name": "18c239c4-b313-47f4-bf87-b5b500000032",
+      "operationType": "BACKUP_VOLUME",
+      "startTime": "2026-09-25T03:56:45.709Z",
+      "status": "DONE",
+      "targetId": "n8-memory-palace-db"
+    }
+  ]
+}
