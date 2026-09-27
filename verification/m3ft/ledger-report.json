@@ -2,25 +2,24 @@
   "packet": "M3FT",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "024dcce84b95e479965cf9505e7c58116748ed8f93a8bd875495df7067f35619",
+  "ledger_sha256": "200979340a5620ee5853bdbcaaad9e10a5dc3dcaa012853e43322ccd00cca553",
   "diffs": [
     {
       "repo": "spine",
-      "base": "d087892b75778eeeeb651a29450657c69a91af0d",
-      "head": "d606c17047c4b4f7fbdf586ef60df41cbddc9705"
+      "base": "ddaef4a897d4e8f8c75fcc7b2aaa9b6215c36503",
+      "head": "612093e649de86fe434d0d42c2a0305710b768ea"
     }
   ],
   "unmapped": {
     "spine/openapi.json": "Paired 0.1.35 release metadata and verification artifacts; no Memory behavior changes.",
     "spine/src/spine/__init__.py": "Paired 0.1.35 release metadata and verification artifacts; no Memory behavior changes.",
     "spine/tests/test_packaging.py": "Paired 0.1.35 release metadata and verification artifacts; no Memory behavior changes.",
+    "spine/verification/m3ft/FL-195.png": "M3FT release verification evidence; no product behavior.",
+    "spine/verification/m3ft/FL-196.png": "M3FT release verification evidence; no product behavior.",
     "spine/verification/m3ft/SHA256SUMS": "M3FT release verification evidence; no product behavior.",
     "spine/verification/m3ft/checks.txt": "M3FT release verification evidence; no product behavior.",
-    "spine/verification/m3ft/ledger-report.json": "M3FT release verification evidence; no product behavior.",
-    "spine/verification/m3ft/impacted.json": "M3FT release verification evidence; no product behavior.",
     "spine/verification/m3ft/governance-checks.txt": "M3FT release verification evidence; no product behavior.",
-    "spine/verification/m3ft/FL-196.png": "M3FT release verification evidence; no product behavior.",
-    "spine/verification/m3ft/FL-195.png": "M3FT release verification evidence; no product behavior."
+    "spine/verification/m3ft/ledger-report.json": "M3FT release verification evidence; no product behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
