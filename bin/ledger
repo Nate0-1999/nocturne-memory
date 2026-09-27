@@ -236,7 +236,9 @@ def report(data, packet, diffs):
         (set(result["required"]) | added_rows(data, diffs) | (charged_rows(packet) & known))
         if diffs
         else {
-            row["id"] for row in data["rows"] if row["status"] in {"built", "partial"}
+            row["id"]
+            for row in data["rows"]
+            if row["status"] in {"built", "partial", "unverified"}  # F125: a scout walks the unverified too
         }
     )
     return {
@@ -383,6 +385,14 @@ def verify(data, directory, check_diffs=()):
     for key in expected["rows"]:
         item = actual.get(key, {})
         problems = []
+        if item.get("verdict") == "OWNER-PENDING":
+            # F125: a row the owner performs by hand (owner_performed in the ledger)
+            # may be handed off pending, with the prepared steps and no screenshot.
+            if not next((r for r in data["rows"] if r["id"] == key and r.get("owner_performed")), None):
+                errors.append(f"{key}: OWNER-PENDING is only for owner-performed rows")
+            elif not isinstance(item.get("observed"), str) or not item["observed"].strip():
+                errors.append(f"{key}: OWNER-PENDING needs the prepared steps in 'observed'")
+            continue
         if item.get("verdict") == "UNCHANGED":
             # F099 ruling: a formatting-only change proves itself by syntax-tree
             # equality on every path that made the row required; no walk, no
@@ -409,7 +419,7 @@ def verify(data, directory, check_diffs=()):
                 errors.append(f"{key}: " + "; ".join(problems))
             continue
         if item.get("verdict") not in {"PASS", "FAIL"}:
-            problems.append("needs PASS, FAIL or UNCHANGED")
+            problems.append("needs PASS, FAIL, UNCHANGED or OWNER-PENDING")
         if item.get("verdict") == "FAIL" and not (
             re.fullmatch(r"F\d{3,}", item.get("flag", ""))
             and re.search(r"\b" + re.escape(item["flag"]) + r"\b", flags)

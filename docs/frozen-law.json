@@ -2,8 +2,8 @@
   "axioms_sha256": "e37c518b3bb11cc8d60654030abcc92da686b1a8f47680addd0cf243b7399a6b",
   "spec_sha256": "6d2ed1f040da4334bda4d381f7aabaf41d9e9ddd1894a46f0f0a39d049de9764",
   "repository": "spine",
-  "ledger_sha256": "50f9e7c696d597ea001b63b93afcae69d7790c655ce543beaf1c4c7cfb6c9ecf",
-  "ledger_tool_sha256": "cfea75993b53557deca8b2e1e2990da2267eb742b107793e8b78d2edb0769fc8",
+  "ledger_sha256": "b7669296bad200bbaf0075623cc108615c07bba2a0501d1533809ae74e969bae",
+  "ledger_tool_sha256": "cdbf29abb0e4eec6850e6de07ccc1fcfbe383bc5f2eb512753ded2144532a435",
   "flag_ids": [
     "F001",
     "F002",

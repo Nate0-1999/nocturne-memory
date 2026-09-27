@@ -23,7 +23,8 @@
         "verdict": "FAIL",
         "flag": "F086",
         "screenshot": "FL-001.jpg"
-      }
+      },
+      "owner_performed": true
     },
     {
       "id": "FL-002",
@@ -2111,7 +2112,8 @@
         "verdict": "FAIL",
         "flag": "F086",
         "screenshot": "FL-101.jpg"
-      }
+      },
+      "owner_performed": true
     },
     {
       "id": "FL-102",
@@ -2515,7 +2517,8 @@
         "harness/web/src/SymphonyDeck.tsx",
         "harness/web/src/rack.tsx",
         "harness/web/src/rackBridge.tsx"
-      ]
+      ],
+      "owner_performed": true
     },
     {
       "id": "FL-119",
