@@ -1333,3 +1333,11 @@ frozen cards and outcomes without new embedding or learning writes.
 Memory archives use one repeatable-read snapshot of scoped heads, revisions,
 edges and consent history; imports insert atomically and reject conflicts.
 The existing compatible-provider adapter also serves local curator models.
+
+## M3RD — Atomic repair and scoped replay [P1.2, P2.4, P4]
+
+PRECEDENT: F127/F129/F130, ADR-022, M3SC's metrics scope.
+Retire curator targets before replacement activation in the existing transaction.
+DEEP and its slices filter events and annotations to the calling principal;
+`scope=palace` uses the existing owner wall. Extraction enforces the existing
+64-code-point label contract at HTTP admission; memory validation returns 422.

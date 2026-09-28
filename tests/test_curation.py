@@ -47,7 +47,7 @@ class FixtureCuratorProvider:
             return CuratorVerdictDraft(
                 action="merge",
                 rationale="These two units state the same durable fact.",
-                label="Merged duplicate",
+                label="First",
                 body="One canonical statement preserves the duplicated fact.",
                 keywords=["canonical", "duplicate"],
             )
@@ -233,6 +233,7 @@ async def test_messy_palace_runs_queues_and_tidies_only_after_explicit_consent(
     memory_app: FastAPI,
     embedding_provider: ScriptedEmbeddingProvider,
     memory_session_factory: async_sessionmaker[AsyncSession],
+    monkeypatch,
 ) -> None:
     """ADR-021 permits curator repair only through explicit owner consent."""
     source_ids = await _seed_mess(memory_client, embedding_provider, memory_session_factory)
@@ -266,6 +267,44 @@ async def test_messy_palace_runs_queues_and_tidies_only_after_explicit_consent(
             )
         ).all()
     assert active_before == 3
+
+    # ADR-022 / F127: activation failure must roll back the preceding retirements.
+    queue_service = memory_app.state.queue_service
+    original_cas = queue_service._curator_cas
+
+    async def refuse_activation(*args, **kwargs):
+        if kwargs.get("suffix") == "activate":
+            raise RuntimeError("replacement activation failed")
+        return await original_cas(*args, **kwargs)
+
+    merge = next(card for card in cards if card.verdict == "merge")
+    with monkeypatch.context() as patch:
+        patch.setattr(queue_service, "_curator_cas", refuse_activation)
+        with pytest.raises(RuntimeError, match="replacement activation failed"):
+            await queue_service.decide(
+                merge.item_uid,
+                QueueDecisionRequest(
+                    decision="approve",
+                    approval_mode="explicit",
+                    actor_class="human",
+                    machine_id="fixture-mac",
+                ),
+            )
+    async with memory_session_factory() as session:
+        assert (
+            await session.scalar(
+                select(func.count())
+                .select_from(MemoryUnit)
+                .where(MemoryUnit.id.in_(source_ids), MemoryUnit.status == "active")
+            )
+            == 3
+        )
+        assert (
+            await session.scalar(
+                select(ApprovalQueueItem.state).where(ApprovalQueueItem.item_uid == merge.item_uid)
+            )
+            == "pending"
+        )
 
     for card in cards:
         await memory_app.state.queue_service.decide(

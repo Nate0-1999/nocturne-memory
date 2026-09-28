@@ -476,6 +476,7 @@ class QueueService:
         elif action in {"merge", "supersede"}:
             if candidate["status"] != "candidate":
                 raise QueueConflictError("curator replacement is no longer pending")
+            await self._enact_targets(session, row, candidate, request.machine_id)
             await self._curator_cas(
                 session,
                 candidate,
@@ -484,7 +485,6 @@ class QueueService:
                 suffix="activate",
                 changes=MemoryUnitChanges(status="active"),
             )
-            await self._enact_targets(session, row, candidate, request.machine_id)
         elif action == "contradict":
             if candidate["status"] != "active":
                 raise QueueConflictError("curator contradiction source is no longer active")

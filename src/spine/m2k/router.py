@@ -63,14 +63,16 @@ async def scorer_console(
 @router.post(
     "/v1/scorer-simulations",
     response_model=ScorerSimulationResponse,
-    responses=_RESPONSES,
+    responses={**_RESPONSES, 403: problem_openapi("Whole-Palace simulation requires the owner")},
 )
 async def simulate_scorer(
     body: ScorerSimulationRequest,
     request: Request,
+    scope: Literal["principal", "palace"] = "principal",
 ) -> ScorerSimulationResponse | ProblemJSONResponse:
+    principal = metrics_principal(request, body.principal_id, scope)
     try:
-        return await _service(request).simulate(body)
+        return await _service(request).simulate(body, palace_scope=principal is None)
     except M2KStateError as error:
         return _state_problem(request, error)
 

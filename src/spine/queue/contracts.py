@@ -14,7 +14,7 @@ Verdict = Literal[
 
 
 class ExtractionCandidate(ContractModel):
-    label: str = Field(min_length=1)
+    label: str = Field(min_length=1, max_length=64)
     body: str = Field(min_length=1)
     kind: MemoryKind
     keywords: list[str] = Field(min_length=2, max_length=5)
