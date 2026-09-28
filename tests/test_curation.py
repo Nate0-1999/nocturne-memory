@@ -47,7 +47,7 @@ class FixtureCuratorProvider:
             return CuratorVerdictDraft(
                 action="merge",
                 rationale="These two units state the same durable fact.",
-                label="Merged duplicate",
+                label="First",
                 body="One canonical statement preserves the duplicated fact.",
                 keywords=["canonical", "duplicate"],
             )
@@ -147,10 +147,7 @@ async def _seed_mess(
     second = await client.post("/v1/memories", json=_memory("Second", bodies[1], force=True))
     slop = await client.post("/v1/memories", json=_memory("Slop", bodies[2]))
     assert (first.status_code, second.status_code, slop.status_code) == (201, 201, 201)
-    ids = tuple(
-        UUID(response.json()["created"]["memory_id"])
-        for response in (first, second, slop)
-    )
+    ids = tuple(UUID(response.json()["created"]["memory_id"]) for response in (first, second, slop))
     async with session_factory() as session, session.begin():
         await session.execute(
             update(MemoryUnit)
@@ -233,6 +230,7 @@ async def test_messy_palace_runs_queues_and_tidies_only_after_explicit_consent(
     memory_app: FastAPI,
     embedding_provider: ScriptedEmbeddingProvider,
     memory_session_factory: async_sessionmaker[AsyncSession],
+    monkeypatch,
 ) -> None:
     """ADR-021 permits curator repair only through explicit owner consent."""
     source_ids = await _seed_mess(memory_client, embedding_provider, memory_session_factory)
@@ -266,6 +264,44 @@ async def test_messy_palace_runs_queues_and_tidies_only_after_explicit_consent(
             )
         ).all()
     assert active_before == 3
+
+    # ADR-022 / F127: activation failure must roll back the preceding retirements.
+    queue_service = memory_app.state.queue_service
+    original_cas = queue_service._curator_cas
+
+    async def refuse_activation(*args, **kwargs):
+        if kwargs.get("suffix") == "activate":
+            raise RuntimeError("replacement activation failed")
+        return await original_cas(*args, **kwargs)
+
+    merge = next(card for card in cards if card.verdict == "merge")
+    with monkeypatch.context() as patch:
+        patch.setattr(queue_service, "_curator_cas", refuse_activation)
+        with pytest.raises(RuntimeError, match="replacement activation failed"):
+            await queue_service.decide(
+                merge.item_uid,
+                QueueDecisionRequest(
+                    decision="approve",
+                    approval_mode="explicit",
+                    actor_class="human",
+                    machine_id="fixture-mac",
+                ),
+            )
+    async with memory_session_factory() as session:
+        assert (
+            await session.scalar(
+                select(func.count())
+                .select_from(MemoryUnit)
+                .where(MemoryUnit.id.in_(source_ids), MemoryUnit.status == "active")
+            )
+            == 3
+        )
+        assert (
+            await session.scalar(
+                select(ApprovalQueueItem.state).where(ApprovalQueueItem.item_uid == merge.item_uid)
+            )
+            == "pending"
+        )
 
     for card in cards:
         await memory_app.state.queue_service.decide(
@@ -360,9 +396,7 @@ async def test_split_tool_preserves_lineage_and_public_maintenance_bypass_is_ref
     embedding_provider.set(source_body, basis_vector(0))
     embedding_provider.set("Alpha guidance.", basis_vector(1))
     embedding_provider.set("Beta guidance.", basis_vector(2))
-    source_response = await memory_client.post(
-        "/v1/memories", json=_memory("Mixed", source_body)
-    )
+    source_response = await memory_client.post("/v1/memories", json=_memory("Mixed", source_body))
     source_id = UUID(source_response.json()["created"]["memory_id"])
     card = await memory_app.state.queue_service.enqueue_curator(
         run_uid="01K3CURATORRUN000000000000",
@@ -693,25 +727,36 @@ async def test_progress_is_visible_during_provider_work_scoped_and_replayable(
             return await super().verdict(*args, **kwargs)
 
     memory_app.state.curator_service = CuratorService(
-        memory_session_factory, HealthReportBuilder(memory_session_factory, duplicate_floor=0.89),
-        PausedProvider(), memory_app.state.queue_service,
+        memory_session_factory,
+        HealthReportBuilder(memory_session_factory, duplicate_floor=0.89),
+        PausedProvider(),
+        memory_app.state.queue_service,
     )
-    task = asyncio.create_task(memory_client.post("/v1/curation/runs", json={
-        "principal_id": "fixture-owner", "machine_id": "fixture-mac",
-    }))
+    task = asyncio.create_task(
+        memory_client.post(
+            "/v1/curation/runs",
+            json={
+                "principal_id": "fixture-owner",
+                "machine_id": "fixture-mac",
+            },
+        )
+    )
     try:
         await asyncio.wait_for(entered.wait(), timeout=10)
-        response = await memory_client.get("/v1/curation/progress",
-                                           params={"principal_id": "fixture-owner"})
+        response = await memory_client.get(
+            "/v1/curation/progress", params={"principal_id": "fixture-owner"}
+        )
         assert response.status_code == 200
         during = response.json()
         assert [event["phase"] for event in during["events"]] == [
-            "run.started", "finding.started",
+            "run.started",
+            "finding.started",
         ]
         assert set(during["events"][-1]["memory_ids"]) <= {str(id_) for id_ in ids}
         assert during["events"][-1]["memory_ids"]
-        foreign = await memory_client.get("/v1/curation/progress",
-                                          params={"principal_id": "other-principal"})
+        foreign = await memory_client.get(
+            "/v1/curation/progress", params={"principal_id": "other-principal"}
+        )
         assert foreign.json() == {"events": [], "cursor": 0}
     finally:
         release.set()
@@ -719,12 +764,24 @@ async def test_progress_is_visible_during_provider_work_scoped_and_replayable(
     assert completed.status_code == 200
     # A replacement service reads the same database-backed stream, including the terminal event.
     _install_fixture_curator(memory_app, memory_session_factory)
-    after = (await memory_client.get("/v1/curation/progress", params={
-        "principal_id": "fixture-owner", "after": during["cursor"],
-    })).json()
+    after = (
+        await memory_client.get(
+            "/v1/curation/progress",
+            params={
+                "principal_id": "fixture-owner",
+                "after": during["cursor"],
+            },
+        )
+    ).json()
     assert after["events"][0]["phase"] == "finding.completed"
     assert after["events"][-1]["phase"] == "run.completed"
     assert all(event["event_id"] > during["cursor"] for event in after["events"])
-    assert (await memory_client.get("/v1/curation/progress", params={
-        "principal_id": "fixture-owner", "after": after["cursor"],
-    })).json() == {"events": [], "cursor": after["cursor"]}
+    assert (
+        await memory_client.get(
+            "/v1/curation/progress",
+            params={
+                "principal_id": "fixture-owner",
+                "after": after["cursor"],
+            },
+        )
+    ).json() == {"events": [], "cursor": after["cursor"]}

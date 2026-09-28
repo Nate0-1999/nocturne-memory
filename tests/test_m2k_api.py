@@ -258,13 +258,19 @@ async def test_console_contributions_sum_exactly_and_control_inserts_a_version(
         base: ScorerConfigRow,
         values: ScorerValues,
         *,
+        principal_id: str | None,
         include_terrain: bool = False,
     ) -> ScorerSimulationResponse:
         isolation = await session.scalar(text("SHOW transaction_isolation"))
         assert isinstance(isolation, str)
         observed_isolation.append(isolation)
         return await original_deep_receipt(
-            service, session, base, values, include_terrain=include_terrain
+            service,
+            session,
+            base,
+            values,
+            principal_id=principal_id,
+            include_terrain=include_terrain,
         )
 
     monkeypatch.setattr(M2KService, "_deep_receipt", observe_deep_receipt)
@@ -836,10 +842,12 @@ async def test_f033_production_legacy_aliases_render_the_honest_owner_scoreboard
 async def test_console_and_deep_simulation_use_the_annotation_aware_evidence_projection(
     memory_client: AsyncClient,
     memory_session_factory: async_sessionmaker[AsyncSession],
+    memory_app,
 ) -> None:
     """A-053/F033 give Console and deep receipts one annotated whole-gate projection."""
 
     started = datetime(2026, 8, 10, 18, tzinfo=UTC)
+    memory_app.state.settings.owner_principal_id = "owner"
 
     def event(seed: int, *, gate: int, outcome: str, shown_as: str) -> InjectionEvent:
         return InjectionEvent(
@@ -906,6 +914,20 @@ async def test_console_and_deep_simulation_use_the_annotation_aware_evidence_pro
     assert before.status_code == 200
     assert before.json()["source_boundary"] == "01KZ5R00000000000000000004"
     assert before.json()["holdout_dispositions"] == 2
+
+    # F129 / M3RD: a different principal cannot borrow the owner's replay evidence.
+    other = {**request, "principal_id": "nocturne-verification-m3rd"}
+    scoped = await memory_client.post("/v1/scorer-simulations", json=other)
+    assert scoped.status_code == 200
+    assert scoped.json()["source_boundary"] is None
+    assert scoped.json()["holdout_dispositions"] == 0
+    assert scoped.json()["terrain"] == []
+    assert all(point["accuracy_percent"] is None for point in scoped.json()["slice"]["points"])
+    denied = await memory_client.post("/v1/scorer-simulations?scope=palace", json=other)
+    assert denied.status_code == 403
+    palace = await memory_client.post("/v1/scorer-simulations?scope=palace", json=request)
+    assert palace.status_code == 200
+    assert palace.json()["simulation_digest"] == before.json()["simulation_digest"]
 
     async with memory_session_factory() as session, session.begin():
         session.add(

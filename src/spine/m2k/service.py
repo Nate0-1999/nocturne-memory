@@ -488,7 +488,7 @@ class M2KService:
         active = await _active_config(session)
         if active.version != body.base_version:
             raise M2KStateError("stale_base")
-        receipt = await self._deep_receipt(session, active, body.values)
+        receipt = await self._deep_receipt(session, active, body.values, principal_id=None)
         if receipt.simulation_digest != body.simulation_digest:
             raise M2KStateError("simulation_stale")
         if await session.get(ScorerConfigRow, target_version) is not None:
@@ -546,7 +546,10 @@ class M2KService:
         await session.refresh(target)
         return _config_view(target)
 
-    async def simulate(self, body: ScorerSimulationRequest) -> ScorerSimulationResponse:
+    async def simulate(
+        self, body: ScorerSimulationRequest, *, palace_scope: bool = False
+    ) -> ScorerSimulationResponse:
+        principal_id = None if palace_scope else body.principal_id
         async with self._session_factory() as session:
             async with session.begin():
                 await session.execute(
@@ -555,7 +558,9 @@ class M2KService:
                 base = await session.get(ScorerConfigRow, body.base_version)
                 if base is None or not base.active:
                     raise M2KStateError("stale_base")
-                receipt = await self._deep_receipt(session, base, body.values, include_terrain=True)
+                receipt = await self._deep_receipt(
+                    session, base, body.values, principal_id=principal_id, include_terrain=True
+                )
                 instant = await _instant(
                     session,
                     principal_id=body.principal_id,
@@ -568,6 +573,7 @@ class M2KService:
                     base,
                     body.values,
                     body.slice_parameter_id,
+                    principal_id=principal_id,
                 )
         return receipt.model_copy(update={"instant": instant, "slice": slice_view})
 
@@ -606,6 +612,7 @@ class M2KService:
         base: ScorerConfigRow,
         values: ScorerValues,
         *,
+        principal_id: str | None,
         include_terrain: bool = False,
     ) -> ScorerSimulationResponse:
         configs = (await session.execute(select(ScorerConfigRow))).scalars().all()
@@ -613,7 +620,13 @@ class M2KService:
         rows = (
             (
                 await session.execute(
-                    select(InjectionEvent).order_by(
+                    select(InjectionEvent)
+                    .where(
+                        InjectionEvent.principal_id == principal_id
+                        if principal_id is not None
+                        else True
+                    )
+                    .order_by(
                         InjectionEvent.ts,
                         InjectionEvent.injection_id,
                         InjectionEvent.event_uid,
@@ -623,7 +636,24 @@ class M2KService:
             .scalars()
             .all()
         )
-        annotations = (await session.execute(select(InjectionEventAnnotation))).scalars().all()
+        annotations = (
+            (
+                await session.execute(
+                    select(InjectionEventAnnotation)
+                    .join(
+                        InjectionEvent,
+                        InjectionEvent.event_uid == InjectionEventAnnotation.target_event_uid,
+                    )
+                    .where(
+                        InjectionEvent.principal_id == principal_id
+                        if principal_id is not None
+                        else True
+                    )
+                )
+            )
+            .scalars()
+            .all()
+        )
         try:
             evidence = project_learning_evidence(
                 rows,
@@ -748,11 +778,13 @@ class M2KService:
         base: ScorerConfigRow,
         values: ScorerValues,
         parameter_id: str,
+        *,
+        principal_id: str | None,
     ) -> AccuracySlice:
         points: list[AccuracySlicePoint] = []
         for value in _slice_values(values, parameter_id):
             candidate = _with_parameter(values, parameter_id, value)
-            receipt = await self._deep_receipt(session, base, candidate)
+            receipt = await self._deep_receipt(session, base, candidate, principal_id=principal_id)
             points.append(
                 AccuracySlicePoint(value=value, accuracy_percent=receipt.accuracy_percent)
             )

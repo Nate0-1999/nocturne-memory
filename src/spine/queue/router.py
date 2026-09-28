@@ -4,6 +4,7 @@ from uuid import UUID
 
 from fastapi import APIRouter, Query, Request
 
+from spine.memory.service import MemoryValidationError
 from spine.problems import ProblemJSONResponse, problem_openapi, problem_response
 from spine.queue.contracts import (
     BatchDecisionResponse,
@@ -30,7 +31,7 @@ async def extract(
 ) -> ExtractionResponse | ProblemJSONResponse:
     try:
         return await request.app.state.queue_service.extract(body)
-    except QueueValidationError as exc:
+    except (QueueValidationError, MemoryValidationError) as exc:
         return _problem(request, 422, str(exc))
 
 

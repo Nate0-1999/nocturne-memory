@@ -38,6 +38,17 @@ def extraction(thread_id, candidate, *, verdict="new", target_ids=None):
 
 
 @pytest.mark.asyncio
+async def test_extraction_label_limit_refuses_before_queue_birth(
+    memory_client: AsyncClient,
+) -> None:
+    """SPEC C.4 / F130: an invalid model label is a 422, never a Palace 500."""
+    response = await memory_client.post("/v1/extractions", json=extraction(uuid4(), "x" * 74))
+    assert response.status_code == 422
+    queue = await memory_client.get("/v1/approval-queue", params={"principal_id": "owner"})
+    assert queue.json()["cards"] == []
+
+
+@pytest.mark.asyncio
 async def test_rejected_seed_hash_survives_a_new_upload_identity(
     memory_client: AsyncClient,
     embedding_provider: ScriptedEmbeddingProvider,
