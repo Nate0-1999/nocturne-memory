@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "0963cfa31bf7bb3e731ba74328d2cdee47eb1203",
-      "head": "9d7e6f68292e962f4a90339b0f3152b014073f46"
+      "head": "56f0b11ccaa0bfca97d932c47c4680717f6fd18a"
     }
   ],
   "unmapped": {
@@ -19,7 +19,52 @@
     "spine/tests/test_curation.py": "Release metadata, generated API contract, decision record, or focused regression proof for the charged repairs.",
     "spine/tests/test_m2k_api.py": "Release metadata, generated API contract, decision record, or focused regression proof for the charged repairs.",
     "spine/tests/test_packaging.py": "Release metadata, generated API contract, decision record, or focused regression proof for the charged repairs.",
-    "spine/tests/test_queue_api.py": "Release metadata, generated API contract, decision record, or focused regression proof for the charged repairs."
+    "spine/tests/test_queue_api.py": "Release metadata, generated API contract, decision record, or focused regression proof for the charged repairs.",
+    "spine/verification/m3rd/FL-021.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-032.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-036.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-038.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-042.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-054.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-080-ui.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-080.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-082-ui.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-109.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-114.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-162.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-163.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-164.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-167.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-169.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-178.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-179.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-197.png": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/SHA256SUMS": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/compaction-proof.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/ledger-report.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/merge-proof.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/cleanup.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/credential-scan.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/health-after.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/public-harness-wheel.log": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/public-install.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/public-memory-wheel.log": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/public/extraction-after.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/public/identity.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/public/runtime-proof.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/public/scope-after.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/public/setup.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/public/tail-walk.log": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/public/tail-wire.jsonl": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/public/thread-walk.log": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/public/thread-wire.jsonl": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/public/thread.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/release.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/receipts/rules-exit.log": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/scope-after.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/impacted.json": "Packet verification artifact; no additional product behavior.",
+    "spine/verification/m3rd/FL-195.png": "Rendered record of the explicit tooling-walk evidence limit; no additional product behavior.",
+    "spine/verification/m3rd/FL-196.png": "Rendered record of the explicit tooling-walk evidence limit; no additional product behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -42,8 +87,8 @@
       "observed": "NOT REWALKED: this row is required by file-level impact, but its broader scenario was not exercised by the three-defect repair walk. Full product suites passed; that is not substituted for this scenario. F086 records the evidence limitation."
     },
     "FL-042": {
-      "label": "Constitution: 'Already known \u2014 reinforced' on re-saves; rejected candidates remembered and never re-proposed without material change (gate-day).",
-      "walk": "Re-save a known fact; the reply says 'already known \u2014 reinforced'; reject a candidate and re-save it unchanged; it is not proposed again.",
+      "label": "Constitution: 'Already known — reinforced' on re-saves; rejected candidates remembered and never re-proposed without material change (gate-day).",
+      "walk": "Re-save a known fact; the reply says 'already known — reinforced'; reject a candidate and re-save it unchanged; it is not proposed again.",
       "protected": true,
       "verdict": "FAIL",
       "screenshot": "FL-042.png",
@@ -104,6 +149,24 @@
       "flag": "F086",
       "observed": "NOT REWALKED: this row is required by file-level impact, but its broader scenario was not exercised by the three-defect repair walk. Full product suites passed; that is not substituted for this scenario. F086 records the evidence limitation."
     },
+    "FL-195": {
+      "label": "The feature ledger generates coverage reports and requires evidence for the rows affected by a build.",
+      "walk": "Compute the composer fix's impact with --paths and see attunement rows; push a branch touching socket.ts and observe the hook print rows and write impacted.json; observe a DONE handoff without screenshots fail CI, then verify complete evidence passes.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-195.png",
+      "flag": "F086",
+      "observed": "NOT REWALKED: refreshed feature mapping and frozen metadata trigger this tooling row. Normal rules and coverage checks pass; the broader intentional-mutation scenario was not rerun. F086 records that evidence limit."
+    },
+    "FL-196": {
+      "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
+      "walk": "Remove a guard citation on a disposable branch and observe CI fail; change a frozen axiom and observe the freeze step fail; restore both and observe Rules pass. The master ADR check remains red until the owner applies the citation patch.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-196.png",
+      "flag": "F086",
+      "observed": "NOT REWALKED: refreshed feature mapping and frozen metadata trigger this tooling row. Normal rules and coverage checks pass; the broader intentional-mutation scenario was not rerun. F086 records that evidence limit."
+    },
     "FL-021": {
       "label": "The memory visualizer shows the hyperparameters and lets the user go in and tweak memories.",
       "walk": "Open the memory visualizer; the hyperparameters are displayed and a memory can be edited from there.",
@@ -151,7 +214,7 @@
     },
     "FL-163": {
       "label": "Seed ingestion at startup: upload markdown files (or the machine's CLAUDE.md and AGENTS.md) and the curators break them into individual memories.",
-      "walk": "M3WF fixture: focus Memory Ingest\u2019s drop/paste control and paste a two-fact fictional Markdown document; review the individual split memories. A native file chooser is optional.",
+      "walk": "M3WF fixture: focus Memory Ingest’s drop/paste control and paste a two-fact fictional Markdown document; review the individual split memories. A native file chooser is optional.",
       "protected": false,
       "verdict": "FAIL",
       "screenshot": "FL-163.png",
@@ -356,8 +419,6 @@
     "FL-192": "outside diff",
     "FL-193": "outside diff",
     "FL-194": "outside diff",
-    "FL-195": "outside diff",
-    "FL-196": "outside diff",
     "FL-198": "outside diff",
     "FL-199": "outside diff",
     "FL-200": "not built"
