@@ -4319,6 +4319,23 @@
         "screenshot": "FL-199.png"
       },
       "protected": false
+    },
+    {
+      "id": "FL-200",
+      "section": "12. Onboarding, lifecycle and palace operations",
+      "era": "Sep 28",
+      "label": "Spin up new palaces easily: one command creates a fresh palace with its own database, schema and token in the owner's project, reachable by name; the app can point at any palace the owner has; a test palace is where verification agents train and is dropped whole afterwards.",
+      "status": "not built",
+      "walk": "Run the new-palace command with a name; a fresh empty palace answers by that name; point the app at it, save a memory, then drop it whole; the owner's main palace is untouched throughout.",
+      "owner": "owner — \"it should be relatively easy to start up a new 'test palace' for the verification agents to train\"; \"spin up new palaces in general\" (chat 2026-09-28)",
+      "surfaces": [
+        "harness/src/harness/deploy.py",
+        "harness/src/harness/cli.py",
+        "harness/src/harness/onboarding.py",
+        "spine/src/spine/deploy_resources.py"
+      ],
+      "last_walk": null,
+      "protected": false
     }
   ]
 }
