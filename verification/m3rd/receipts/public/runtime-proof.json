@@ -1,0 +1,21 @@
+{
+  "principal_id": "nocturne-verification-f6628f81-936e-48f7-a1c1-3a19dec4e88d",
+  "automatic": {
+    "event_kind": "compaction_completed",
+    "before_tokens": 7504,
+    "after_tokens": 638,
+    "event_uid": "01M3K0V2GC4XHNY9DAMSRR7532",
+    "strategy": "memories-then-drop"
+  },
+  "manual": {
+    "event_kind": "compaction_completed",
+    "before_tokens": 1684,
+    "after_tokens": 773,
+    "event_uid": "01M3K0VAN24YP1PRZ1VT9KRZYR",
+    "strategy": "memories-then-drop"
+  },
+  "successful_completions": 6,
+  "initial_continuation": "Model answered observation 298 after reading the penultimate line; not claimed as an accurate final-line answer.",
+  "explicit_tail_followup": "M3RD PUBLIC VERIFIED: Observation 299",
+  "scope": 403
+}

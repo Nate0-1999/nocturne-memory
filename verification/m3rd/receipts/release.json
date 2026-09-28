@@ -1,0 +1,46 @@
+{
+  "nocturne-memory": {
+    "version": "0.1.39",
+    "commit": "74a650d9bf4321791f0f82dc7307c1a225d0d05c",
+    "workflow": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/36373063415",
+    "conclusion": "success",
+    "release": "https://github.com/Nate0-1999/nocturne-memory/releases/tag/v0.1.39",
+    "public_index": {
+      "version": "0.1.39",
+      "files": [
+        {
+          "filename": "nocturne_memory-0.1.39-py3-none-any.whl",
+          "sha256": "586f7e24571ae18c45f4d2aed9111b4ee9f07cd59bd145dd11c593e12f84c75c",
+          "url": "https://files.pythonhosted.org/packages/a9/99/3f6ae08974b2e696891f359ed34733f1bc72f5eaaa373d4fbf6a05d28102/nocturne_memory-0.1.39-py3-none-any.whl"
+        },
+        {
+          "filename": "nocturne_memory-0.1.39.tar.gz",
+          "sha256": "ba0aa32083d2cc9afabcfa835ef752777b301c4b5f3ad0911360ab8a90998476",
+          "url": "https://files.pythonhosted.org/packages/bb/4a/462901959728c11378a5d56ad1301523eec42fa335bfe4625a078588b438/nocturne_memory-0.1.39.tar.gz"
+        }
+      ]
+    }
+  },
+  "nocturne-harness": {
+    "version": "0.1.39",
+    "commit": "2704fc4f8b2da8108a4057ad7641fcbc2b31da7c",
+    "workflow": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/36373536007",
+    "conclusion": "success",
+    "release": "https://github.com/Nate0-1999/nocturne-harness/releases/tag/v0.1.39",
+    "public_index": {
+      "version": "0.1.39",
+      "files": [
+        {
+          "filename": "nocturne_harness-0.1.39-py3-none-any.whl",
+          "sha256": "76618513698e3f702f60cbf779c8876c576528fa3681a1be716f0e244e47186e",
+          "url": "https://files.pythonhosted.org/packages/6c/3e/bfd4a2e9a6cef155f94053b39144cadd81146db0120b1dc69a875e659119/nocturne_harness-0.1.39-py3-none-any.whl"
+        },
+        {
+          "filename": "nocturne_harness-0.1.39.tar.gz",
+          "sha256": "d2e89f9eeb904ea563972a3ac0beab692c63cba6c116c52578632702030bfb48",
+          "url": "https://files.pythonhosted.org/packages/5c/90/b9eba3393622314a4e44ae8047c960f164ef86975452ff0b71c13400ffd7/nocturne_harness-0.1.39.tar.gz"
+        }
+      ]
+    }
+  }
+}

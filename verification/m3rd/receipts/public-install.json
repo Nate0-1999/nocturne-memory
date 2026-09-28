@@ -1,0 +1,12 @@
+{
+  "nocturne-harness": {
+    "version": "0.1.39",
+    "module": "/tmp/m3rd-public-env/lib/python3.12/site-packages/harness/__init__.py",
+    "editable": false
+  },
+  "nocturne-memory": {
+    "version": "0.1.39",
+    "module": "/tmp/m3rd-public-env/lib/python3.12/site-packages/spine/__init__.py",
+    "editable": false
+  }
+}
