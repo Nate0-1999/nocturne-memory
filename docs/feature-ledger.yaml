@@ -106,11 +106,11 @@
         "spine/src/spine/memory/router.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
+        "packet": "M3RX",
+        "date": "2026-09-27",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-005.jpg"
+        "screenshot": "FL-005.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -907,7 +907,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "gate-day",
       "label": "Constitution: 'Already known — reinforced' on re-saves; rejected candidates remembered and never re-proposed without material change (gate-day).",
-      "status": "partial",
+      "status": "built",
       "walk": "Re-save a known fact; the reply says 'already known — reinforced'; reject a candidate and re-save it unchanged; it is not proposed again.",
       "owner": "constitution",
       "surfaces": [
@@ -916,11 +916,11 @@
         "harness/src/harness/agent.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F089",
-        "screenshot": "FL-042.jpg"
+        "packet": "M3RX",
+        "date": "2026-09-27",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-042.png"
       },
       "protected": true,
       "protected_reason": "owner-iterated in manual sessions"
@@ -1170,18 +1170,18 @@
       "section": "4. Learning and training loops",
       "era": "Aug 9",
       "label": "Background retraining on work-based triggers, with one \"force retrain\" button as the only manual lever.",
-      "status": "partial",
+      "status": "built",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Look for retrain controls; one 'force retrain' button exists, and retrain also fires on its own after work.",
       "owner": "owner — \"I thought that the retrain was triggered based on amount of work completed. We have a force button that functinos as retrain right? The user can use that. Maybe call it label it force retrain. Make sure this is true in the spec and is aligned. The reason for this is i don't want duplicate buttons doing the same thing and the default 99/100 time the retrain should happen in the background wihtout a force.\" (chat 2026-08-09 18:26:26)",
       "surfaces": [
         "spine/src/spine/learner/"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
-        "verdict": "FAIL",
-        "flag": "F086",
-        "screenshot": "FL-055.jpg"
+        "packet": "M3RX",
+        "date": "2026-09-27",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-055.png"
       }
     },
     {
@@ -1274,11 +1274,11 @@
         "spine/src/spine/db/migrations/versions/0020_optimization_runs.py"
       ],
       "last_walk": {
-        "packet": "M3RW",
-        "date": "2026-09-13",
+        "packet": "M3RX",
+        "date": "2026-09-27",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-060.jpg"
+        "screenshot": "FL-060.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -3350,8 +3350,8 @@
         "harness/web/src/learning.ts"
       ],
       "last_walk": {
-        "packet": "M3SC",
-        "date": "2026-09-15",
+        "packet": "M3RX",
+        "date": "2026-09-27",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-197.png"
