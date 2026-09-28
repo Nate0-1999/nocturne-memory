@@ -1,0 +1,54 @@
+{
+  "principal_id": "nocturne-verification-36604211-eae3-459a-8e49-5942c6e87425",
+  "model": "openrouter:openai/gpt-4.1-mini",
+  "model_window": 1047576,
+  "trigger_fraction": 0.005,
+  "trigger_tokens": 5237,
+  "automatic_compaction": {
+    "event_kind": "compaction_completed",
+    "before_tokens": 7248,
+    "after_tokens": 628,
+    "event_uid": "01M3JZYGGE9R3DCBWSC27FEXM9",
+    "strategy": "memories-then-drop"
+  },
+  "manual_compaction": {
+    "event_kind": "compaction_completed",
+    "before_tokens": 1510,
+    "after_tokens": 609,
+    "event_uid": "01M3JZYM2MJE1Y5S1P7E9A1B7Z",
+    "strategy": "memories-then-drop"
+  },
+  "successful_run_completions": [
+    {
+      "run_id": "01M3JZYB43HA0VG8H15XCEZBWW",
+      "stop_reason": "end_turn",
+      "partial": false
+    },
+    {
+      "run_id": "01M3JZYDW4P4NJCZYNDAJCCKDB",
+      "stop_reason": "end_turn",
+      "partial": false
+    },
+    {
+      "run_id": "01M3JZYEAVE2YAQZHMJ8R5BG69",
+      "stop_reason": "end_turn",
+      "partial": false
+    },
+    {
+      "run_id": "01M3JZYJCFHHGP2XNAHVXGC0K3",
+      "stop_reason": "end_turn",
+      "partial": false
+    },
+    {
+      "run_id": "01M3JZYM4BC4M94E3JZM9G54VF",
+      "stop_reason": "end_turn",
+      "partial": false
+    }
+  ],
+  "tool_calls_after_compaction": [
+    "read",
+    "read"
+  ],
+  "continuation": "M3RD CONTINUED: maintenance Wednesday; final observation 299.",
+  "optimizer_notice": "Verification principal cannot trigger owner-only optimization; compaction and continuation succeeded."
+}

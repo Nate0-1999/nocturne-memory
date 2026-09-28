@@ -1,0 +1,10 @@
+SEND Use the file tool to read brief.txt in this workspace. Confirm the mai
+DONE {'run_id': '01M3K0TV42TM996T261RM3CMF1', 'stop_reason': 'end_turn', 'partial': False}
+SEND /compact policy cost 0.005
+DONE {'run_id': '01M3K0V05WXX99MGBADWZZZA2W', 'stop_reason': 'end_turn', 'partial': False}
+SEND Continue after compaction: use the file tool to read brief.txt again a
+DONE {'run_id': '01M3K0V0ND45FA9ZDY2C9G5QBE', 'stop_reason': 'end_turn', 'partial': False}
+SEND /compact
+DONE {'run_id': '01M3K0V514ZM36DRWSGHZWXH5T', 'stop_reason': 'end_turn', 'partial': False}
+SEND /compact policy performance
+DONE {'run_id': '01M3K0VAPKWJFD1FF917GPK9ZT', 'stop_reason': 'end_turn', 'partial': False}

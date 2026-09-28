@@ -1,0 +1,106 @@
+{
+  "principal_id": "nocturne-verification-f6628f81-936e-48f7-a1c1-3a19dec4e88d",
+  "learning": {
+    "eligible_dispositions": 0,
+    "hygiene_excluded_dispositions": 0,
+    "minimum_dispositions": 25,
+    "remaining_to_floor": 25,
+    "floor_met": false,
+    "share_tuning_minimum": 100,
+    "share_tuning_remaining": 100,
+    "share_tuning_active": false,
+    "retrain_signal_stride": 25,
+    "evaluated_through": null,
+    "signals_since_last_run": 0,
+    "signals_until_next_run": 25,
+    "active_scorer_version": "m3tl-where-v1",
+    "right": 0,
+    "wrong": 0,
+    "weighted_right": "0",
+    "weighted_wrong": "0",
+    "weighted_agreement_percent": null,
+    "live_agreement": [],
+    "retrain_runs": [],
+    "annotations": []
+  },
+  "simulation": {
+    "terrain": [],
+    "simulation_digest": "4589e474dfe6921c3fc71f9117e1be81384941c8c71f5d8cf10b905b469c3d27",
+    "base_version": "m3tl-where-v1",
+    "values": {
+      "tau": 0.55,
+      "top_k": 8,
+      "memory_context_share": 0.1,
+      "half_life_time_days": 14.0,
+      "half_life_hist_days": 7.0,
+      "weights": {
+        "sem": 0.42,
+        "kw": 0.16,
+        "time": 0.11,
+        "proj": 0.16,
+        "freq": 0.08,
+        "hist": 0.07
+      }
+    },
+    "source_boundary": null,
+    "holdout_dispositions": 0,
+    "accuracy_percent": null,
+    "incumbent_accuracy_percent": null,
+    "delta_percent": null,
+    "instant": {
+      "status": "not_requested",
+      "injection_id": null,
+      "candidates": []
+    },
+    "slice": {
+      "parameter_id": "scorer.tau",
+      "points": [
+        {
+          "value": 0.0,
+          "accuracy_percent": null
+        },
+        {
+          "value": 0.125,
+          "accuracy_percent": null
+        },
+        {
+          "value": 0.25,
+          "accuracy_percent": null
+        },
+        {
+          "value": 0.375,
+          "accuracy_percent": null
+        },
+        {
+          "value": 0.5,
+          "accuracy_percent": null
+        },
+        {
+          "value": 0.625,
+          "accuracy_percent": null
+        },
+        {
+          "value": 0.75,
+          "accuracy_percent": null
+        },
+        {
+          "value": 0.875,
+          "accuracy_percent": null
+        },
+        {
+          "value": 1.0,
+          "accuracy_percent": null
+        }
+      ]
+    }
+  },
+  "whole_palace_status": 403,
+  "whole_palace_response": {
+    "type": "about:blank",
+    "title": "Forbidden",
+    "status": 403,
+    "detail": "Only the Palace owner can view the whole Palace.",
+    "instance": "/v1/scorer-simulations",
+    "endpoint": "POST /v1/scorer-simulations"
+  }
+}

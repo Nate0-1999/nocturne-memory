@@ -1,0 +1,37 @@
+{
+  "principal_id": "nocturne-verification-36604211-eae3-459a-8e49-5942c6e87425",
+  "targets": [
+    "ab685147-cb97-4bb3-84bd-ea1ea6a9fbf8",
+    "effa1404-bd77-444f-b7b0-dc7fa0198292"
+  ],
+  "target_states": [
+    "tombstoned",
+    "tombstoned"
+  ],
+  "replacement": "4b29c056-3380-441c-a6d2-c47fcd92cf4f",
+  "replacement_state": "active",
+  "lineage_edges": [
+    {
+      "edge_uid": "01M3JZWW3KPWFE5ZBZ4FBCKVQJ",
+      "from_memory_id": "4b29c056-3380-441c-a6d2-c47fcd92cf4f",
+      "to_memory_id": "ab685147-cb97-4bb3-84bd-ea1ea6a9fbf8",
+      "edge_type": "merged_from",
+      "created_at": "2026-09-28T03:10:52.470439+00:00"
+    },
+    {
+      "edge_uid": "01M3JZWW5361NTRHHW299XXDFN",
+      "from_memory_id": "4b29c056-3380-441c-a6d2-c47fcd92cf4f",
+      "to_memory_id": "effa1404-bd77-444f-b7b0-dc7fa0198292",
+      "edge_type": "merged_from",
+      "created_at": "2026-09-28T03:10:52.470439+00:00"
+    }
+  ],
+  "transaction_timestamp": "2026-09-28T03:10:52.470439+00:00",
+  "retirement_revision_uids": [
+    "01M3JZWW2F8WYVFSQGYB8QK9N3",
+    "01M3JZWW412XR1AWGGV84MWWRS"
+  ],
+  "activation_revision_uid": "01M3JZWW57TVH84P4P94E32QQ4",
+  "unrelated_memory_unchanged": true,
+  "unrelated_revision": 1
+}

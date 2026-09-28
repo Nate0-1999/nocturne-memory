@@ -1,0 +1,27 @@
+{
+  "status": 422,
+  "response": {
+    "type": "about:blank",
+    "title": "Unprocessable Content",
+    "status": 422,
+    "detail": "The request does not match the endpoint contract.",
+    "instance": "/v1/extractions",
+    "endpoint": "POST /v1/extractions",
+    "errors": [
+      {
+        "type": "string_too_long",
+        "loc": [
+          "body",
+          "candidates",
+          0,
+          "label"
+        ],
+        "msg": "String should have at most 64 characters",
+        "input": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "ctx": {
+          "max_length": 64
+        }
+      }
+    ]
+  }
+}

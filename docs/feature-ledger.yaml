@@ -712,19 +712,22 @@
       "section": "2. Injection and the gate",
       "era": "Aug 3",
       "label": "The Injection Console: see the weights, simulate a change to them and test the result, and force a new set of values.",
-      "status": "unverified",
+      "status": "partial",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Open the Injection Console; change a weight in simulate; a result score appears, and force is available.",
       "owner": "owner — \"I like this I'm imagine a module with the historical performance of the visulizer as a line graph every manual adjust ment should lower the score then whenever the retrain happens the score goes back up. There should be every features hyperparameters labeled and normalized to a decimal that can be viewed. There can be a what if, id call it simulate, feature where the user can modify different hyper parameters and test their results. they should be able to force a new hyper parameter value set if they want.\" (chat 2026-08-03 20:32:37)",
       "surfaces": [
         "harness/web/src/InjectionConsole.tsx",
-        "spine/src/spine/learner/service.py"
+        "spine/src/spine/learner/service.py",
+        "spine/src/spine/m2k/service.py",
+        "spine/src/spine/m2k/router.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3RD",
         "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F129",
-        "screenshot": "FL-032.png"
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-032.png",
+        "observed": "F129 principal boundary repaired: scoped DEEP and slices, non-owner whole-Palace 403. Authentic scored replay remains the isolated learning walk."
       }
     },
     {
@@ -799,18 +802,19 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "The curators have the right tools and standard procedures for their work, and act as surgeons: minimally invasive, targeting the root problem and letting the system sort out the symptoms.",
-      "status": "partial",
+      "status": "built",
       "walk": "Run a curator pass on a Palace with one duplicate pair; the pass touches only that pair and nothing else.",
       "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc.\" (chat 2026-07-23 16:07:44)",
       "surfaces": [
         "spine/src/spine/curation/",
-        "harness/web/src/PalaceStateModule.tsx"
+        "harness/web/src/PalaceStateModule.tsx",
+        "spine/src/spine/queue/service.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3RD",
         "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F127",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-036.png"
       },
       "protected": true,
@@ -1183,14 +1187,17 @@
       "owner": "owner — \"Ideally the force weights the user can only do after simulating the backtest and getting the score so they are aware. Does that make sense?\" (chat 2026-08-03 21:37:16; chat 2026-08-03 20:32:37)",
       "surfaces": [
         "harness/web/src/InjectionConsole.tsx",
-        "spine/src/spine/learner/service.py"
+        "spine/src/spine/learner/service.py",
+        "spine/src/spine/m2k/service.py",
+        "spine/src/spine/m2k/router.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3RD",
         "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F129",
-        "screenshot": "FL-054.png"
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-054.png",
+        "observed": "F129 principal boundary repaired: scoped DEEP and slices, non-owner whole-Palace 403. Authentic scored replay remains the isolated learning walk."
       }
     },
     {
@@ -1712,18 +1719,21 @@
       "section": "6. Context window, history and compaction",
       "era": "Aug 15",
       "label": "Compaction triggered by fill percentage against the model's best working range and max, which vary by model.",
-      "status": "partial",
+      "status": "built",
       "walk": "Fill a thread past its model's fill line; compaction runs and the fill percentage drops.",
       "owner": "owner — \"6. It should be fill percentage.. based we need to figure out a good source for standard model meta data: best ranges to work in max. I feel like the open source harness must have opinions on these.\" (chat 2026-08-15 19:37:48 (+ seed SD-061, owner 2026-09-10))",
       "surfaces": [
         "harness/src/harness/pydantic_harness_adapter.py",
-        "harness/src/harness/context_window.py"
+        "harness/src/harness/context_window.py",
+        "harness/src/harness/agent.py",
+        "spine/src/spine/queue/contracts.py",
+        "spine/src/spine/queue/router.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3RD",
         "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F130",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-080.png"
       }
     },
@@ -1752,7 +1762,7 @@
       "section": "6. Context window, history and compaction",
       "era": "Sep 10",
       "label": "A compaction policy that decides when to compact by optimal performance or by cost management.",
-      "status": "partial",
+      "status": "built",
       "walk": "Switch the policy between optimal performance and cost management; the point at which compaction fires moves.",
       "owner": "owner — \"There are also parameters of when we compact based on optimal performance or cost managment and context window size which are variable by model.\" (seed SD-061 (owner 2026-09-10))",
       "surfaces": [
@@ -1760,10 +1770,10 @@
         "harness/src/harness/pydantic_harness_adapter.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3RD",
         "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F130",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-082.png"
       }
     },
