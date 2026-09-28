@@ -147,7 +147,10 @@ async def _seed_mess(
     second = await client.post("/v1/memories", json=_memory("Second", bodies[1], force=True))
     slop = await client.post("/v1/memories", json=_memory("Slop", bodies[2]))
     assert (first.status_code, second.status_code, slop.status_code) == (201, 201, 201)
-    ids = tuple(UUID(response.json()["created"]["memory_id"]) for response in (first, second, slop))
+    ids = tuple(
+        UUID(response.json()["created"]["memory_id"])
+        for response in (first, second, slop)
+    )
     async with session_factory() as session, session.begin():
         await session.execute(
             update(MemoryUnit)
@@ -396,7 +399,9 @@ async def test_split_tool_preserves_lineage_and_public_maintenance_bypass_is_ref
     embedding_provider.set(source_body, basis_vector(0))
     embedding_provider.set("Alpha guidance.", basis_vector(1))
     embedding_provider.set("Beta guidance.", basis_vector(2))
-    source_response = await memory_client.post("/v1/memories", json=_memory("Mixed", source_body))
+    source_response = await memory_client.post(
+        "/v1/memories", json=_memory("Mixed", source_body)
+    )
     source_id = UUID(source_response.json()["created"]["memory_id"])
     card = await memory_app.state.queue_service.enqueue_curator(
         run_uid="01K3CURATORRUN000000000000",
@@ -727,36 +732,25 @@ async def test_progress_is_visible_during_provider_work_scoped_and_replayable(
             return await super().verdict(*args, **kwargs)
 
     memory_app.state.curator_service = CuratorService(
-        memory_session_factory,
-        HealthReportBuilder(memory_session_factory, duplicate_floor=0.89),
-        PausedProvider(),
-        memory_app.state.queue_service,
+        memory_session_factory, HealthReportBuilder(memory_session_factory, duplicate_floor=0.89),
+        PausedProvider(), memory_app.state.queue_service,
     )
-    task = asyncio.create_task(
-        memory_client.post(
-            "/v1/curation/runs",
-            json={
-                "principal_id": "fixture-owner",
-                "machine_id": "fixture-mac",
-            },
-        )
-    )
+    task = asyncio.create_task(memory_client.post("/v1/curation/runs", json={
+        "principal_id": "fixture-owner", "machine_id": "fixture-mac",
+    }))
     try:
         await asyncio.wait_for(entered.wait(), timeout=10)
-        response = await memory_client.get(
-            "/v1/curation/progress", params={"principal_id": "fixture-owner"}
-        )
+        response = await memory_client.get("/v1/curation/progress",
+                                           params={"principal_id": "fixture-owner"})
         assert response.status_code == 200
         during = response.json()
         assert [event["phase"] for event in during["events"]] == [
-            "run.started",
-            "finding.started",
+            "run.started", "finding.started",
         ]
         assert set(during["events"][-1]["memory_ids"]) <= {str(id_) for id_ in ids}
         assert during["events"][-1]["memory_ids"]
-        foreign = await memory_client.get(
-            "/v1/curation/progress", params={"principal_id": "other-principal"}
-        )
+        foreign = await memory_client.get("/v1/curation/progress",
+                                          params={"principal_id": "other-principal"})
         assert foreign.json() == {"events": [], "cursor": 0}
     finally:
         release.set()
@@ -764,24 +758,12 @@ async def test_progress_is_visible_during_provider_work_scoped_and_replayable(
     assert completed.status_code == 200
     # A replacement service reads the same database-backed stream, including the terminal event.
     _install_fixture_curator(memory_app, memory_session_factory)
-    after = (
-        await memory_client.get(
-            "/v1/curation/progress",
-            params={
-                "principal_id": "fixture-owner",
-                "after": during["cursor"],
-            },
-        )
-    ).json()
+    after = (await memory_client.get("/v1/curation/progress", params={
+        "principal_id": "fixture-owner", "after": during["cursor"],
+    })).json()
     assert after["events"][0]["phase"] == "finding.completed"
     assert after["events"][-1]["phase"] == "run.completed"
     assert all(event["event_id"] > during["cursor"] for event in after["events"])
-    assert (
-        await memory_client.get(
-            "/v1/curation/progress",
-            params={
-                "principal_id": "fixture-owner",
-                "after": after["cursor"],
-            },
-        )
-    ).json() == {"events": [], "cursor": after["cursor"]}
+    assert (await memory_client.get("/v1/curation/progress", params={
+        "principal_id": "fixture-owner", "after": after["cursor"],
+    })).json() == {"events": [], "cursor": after["cursor"]}
