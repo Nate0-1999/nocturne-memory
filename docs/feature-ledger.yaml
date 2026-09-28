@@ -4329,6 +4329,7 @@
       "walk": "Run the new-palace command with a name; a fresh empty palace answers by that name; point the app at it, save a memory, then drop it whole; the owner's main palace is untouched throughout.",
       "owner": "owner — \"it should be relatively easy to start up a new 'test palace' for the verification agents to train\"; \"spin up new palaces in general\" (chat 2026-09-28)",
       "surfaces": [
+        "harness/src/harness/palaces.py",
         "harness/src/harness/deploy.py",
         "harness/src/harness/cli.py",
         "harness/src/harness/onboarding.py",
