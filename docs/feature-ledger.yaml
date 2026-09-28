@@ -622,7 +622,7 @@
       "section": "2. Injection and the gate",
       "era": "Aug 9",
       "label": "A memory share of the context window, shown and editable, with unused allotment returned to chat history.",
-      "status": "partial",
+      "status": "built",
       "walk": "Open Context Bars; the memory share of the window is shown with its unused allotment returning to chat; the share is edited in the Injection Console (v2.94: one console, no duplicate control).",
       "owner": "owner — \"How I'm assuming the context window dynamically gives up the extra memory assingned window to the chat history if there is not memories exceeding the requisite score right?\" (chat 2026-08-24 20:20:55; chat 2026-08-09 18:49:53)",
       "surfaces": [
@@ -632,10 +632,10 @@
         "harness/src/harness/context_window.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F086",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-028.png"
       },
       "protected": true,
@@ -646,7 +646,7 @@
       "section": "2. Injection and the gate",
       "era": "Aug 24",
       "label": "Pinned memories go into the context window even beyond the memory share.",
-      "status": "unverified",
+      "status": "partial",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Pin a memory when the share is full; it is still in the next prompt's context and Context Bars shows it over the share.",
       "owner": "owner — \"Is there the ability to pin memories into the context window in excess of the allocated memory window? that seems like it would be the process to increase context window. The score needed to incorperate the memory should increase if we manually removing lower scored memories etc.\" (chat 2026-08-24 20:24:41)",
       "surfaces": [
@@ -656,7 +656,7 @@
         "harness/src/harness/context_window.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
         "verdict": "FAIL",
         "flag": "F086",
@@ -668,7 +668,7 @@
       "section": "2. Injection and the gate",
       "era": "Aug 24",
       "label": "Force controls for the line, the share and pins, all in the same module as the hyperparameters, each with the algorithm resuming afterward.",
-      "status": "unverified",
+      "status": "built",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): In the Injection Console, force the share; the next retrain moves it again.",
       "owner": "owner — \"Let's just make sure those force or manual set functions all have the same pattern the user can set them but then the algorithm begins automating them agian. Let's make sure these inputs and vizualizatoins are in the same module as the existing hyper parameters.\" (chat 2026-08-24 20:50:21; chat 2026-08-24 20:24:41)",
       "surfaces": [
@@ -677,10 +677,10 @@
         "harness/web/src/MemoryPanel.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F086",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-030.png"
       }
     },
@@ -722,7 +722,7 @@
         "spine/src/spine/m2k/router.py"
       ],
       "last_walk": {
-        "packet": "M3RD",
+        "packet": "M3LW",
         "date": "2026-09-28",
         "verdict": "PASS",
         "flag": "",
@@ -910,7 +910,7 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
         "verdict": "FAIL",
         "flag": "F086",
@@ -1020,7 +1020,7 @@
         "harness/web/src/nebulaBindings.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
         "verdict": "FAIL",
         "flag": "F086",
@@ -1032,7 +1032,7 @@
       "section": "4. Learning and training loops",
       "era": "founding",
       "label": "User edits to injected memories recorded as tuning signals.",
-      "status": "partial",
+      "status": "built",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Remove a memory at the gate; Palace State's authentic feedback count rises by one.",
       "owner": "owner — \"Anytime that we don't inject a memory because of a human overide or inject a memory because of a human overide that needs to be stored in a tracible way and then we can tune the injection hyper parameters to do better in our next optimization pass.\" (chat 2026-08-01 19:41:27; first thread turn 1)",
       "surfaces": [
@@ -1041,10 +1041,10 @@
         "spine/src/spine/learner/evidence.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F086",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-047.png"
       }
     },
@@ -1062,7 +1062,7 @@
         "spine/src/spine/learner/evidence.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
         "verdict": "FAIL",
         "flag": "F086",
@@ -1084,7 +1084,7 @@
         "spine/src/spine/inject/axes.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
         "verdict": "FAIL",
         "flag": "F086",
@@ -1096,17 +1096,17 @@
       "section": "4. Learning and training loops",
       "era": "Jul 27",
       "label": "Weight refits run offline while the previous weights keep serving; the method (gradient descent, linear programming or a solver) was his guess, and it must not slow things down massively.",
-      "status": "partial",
+      "status": "built",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Force retrain; the incumbent weights keep serving during the refit and a proposal appears afterward.",
       "owner": "owner — \"I'd imagine that we might not want them all to be linear forever if we add more features etc to the equation, also i thought we already had more than 6 features, let's build something a little more robust but doesn't slow down massively. remember this can be done offline the previous memory weights can run while we the hyper parameter updates.\" (chat 2026-07-27 23:48:21; chat 2026-07-27 23:42:39)",
       "surfaces": [
         "spine/src/spine/learner/"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F086",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-050.png"
       }
     },
@@ -1124,7 +1124,7 @@
         "harness/web/src/learning.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
         "verdict": "FAIL",
         "flag": "F086",
@@ -1191,7 +1191,7 @@
         "spine/src/spine/m2k/router.py"
       ],
       "last_walk": {
-        "packet": "M3RD",
+        "packet": "M3LW",
         "date": "2026-09-28",
         "verdict": "PASS",
         "flag": "",
@@ -1210,8 +1210,8 @@
         "spine/src/spine/learner/"
       ],
       "last_walk": {
-        "packet": "M3RX",
-        "date": "2026-09-27",
+        "packet": "M3LW",
+        "date": "2026-09-28",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-055.png"
@@ -1243,7 +1243,7 @@
       "section": "4. Learning and training loops",
       "era": "Aug 31",
       "label": "Deleting a memory from the Palace feeds a training loop that tunes memory creation.",
-      "status": "partial",
+      "status": "built",
       "walk": "Delete a memory; the memory-creation loop's ledger records the deletion.",
       "owner": "owner — \"I think that the user should be able to delete a memory from the palace. This can be a new training loop that helps with memory creation tuning.\" (chat 2026-08-31 18:59:34)",
       "surfaces": [
@@ -1254,10 +1254,10 @@
         "spine/src/spine/db/migrations/versions/0023_creation_decisions.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F086",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-057.png"
       }
     },
@@ -1286,7 +1286,7 @@
       "section": "4. Learning and training loops",
       "era": "Aug 31",
       "label": "Optimization at every compaction of a main thread, one at a time under a lock, with mixed and capped back-test material.",
-      "status": "partial",
+      "status": "built",
       "walk": "Cross a compaction on a main thread; one optimization runs under a lock on a capped, mixed back-test.",
       "owner": "owner — \"I would argue we lock and only allow one optimization to happen at once. We should also probably create the backtest material so one threads history doesn't overpower it. There is a a mix across our history etc. There should be a max size in the back test for all optimizations as well.\" (chat 2026-08-31 21:00:39)",
       "surfaces": [
@@ -1294,10 +1294,10 @@
         "spine/src/spine/db/migrations/versions/0020_optimization_runs.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F086",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-059.png"
       }
     },
@@ -1346,7 +1346,7 @@
         "spine/src/spine/learner/service.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
         "verdict": "FAIL",
         "flag": "F086",
@@ -1358,7 +1358,7 @@
       "section": "4. Learning and training loops",
       "era": "gate-day",
       "label": "The scorer need not stay linear forever, and black-box changes from optimization are fine as long as the features being weighted stay understandable.",
-      "status": "partial",
+      "status": "built",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Open the score breakdown after a retrain; each feature is still named and understandable even if the weights came from a black box.",
       "owner": "owner — \"1.  We can have black box score changes as an outcome of an optimiziation loop as long as the features we are optimizing the scalars for are understandable\" (chat 2026-08-24 17:34:25; chat 2026-07-27 23:48:21)",
       "surfaces": [
@@ -1367,10 +1367,10 @@
         "spine/src/spine/learner/"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F086",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-063.png"
       }
     },
@@ -1388,7 +1388,7 @@
         "spine/src/spine/inject/scorer.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
         "verdict": "FAIL",
         "flag": "F086",
@@ -2988,7 +2988,7 @@
         "spine/src/spine/learner/service.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
         "verdict": "FAIL",
         "flag": "F086",
@@ -3328,7 +3328,7 @@
         "harness/src/harness/config.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
+        "packet": "M3LW",
         "date": "2026-09-28",
         "verdict": "FAIL",
         "flag": "F086",
