@@ -57,3 +57,14 @@ Stop and hand off honestly, never guess silently, when: a same-function
 collision with a peer's live branch; a BLACK file; a contract gap you cannot
 complete under PLAN §2; an owner-side setting; a port held by a peer's
 daemon (never adopt or kill it). Say what you need in one sentence.
+
+## Looking (owner, 2026-09-28: "we need the agent to look at the ui too")
+A judgment about how something looks or reads is made on an image you
+have SEEN, never on page text. Two ways to see: (1) the desktop browser
+pane — `preview_start` with the `nocturne` configuration in
+`.claude/launch.json` after `nocturne init --verification` in
+`/private/tmp/nocturne-preview/home`; its screenshots come back to you
+as images, and the owner can watch; use the SHEET view for clicks; (2)
+Playwright for long scripted runs and clips, then `Read` every capture
+you cite before writing its verdict. A verdict on a capture you never
+opened is invalid; a TASTE flag quotes the rule and names the image.
