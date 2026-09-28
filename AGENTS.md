@@ -35,8 +35,9 @@
 
 ## 12. Always read AGENTS.md and the documentation in the path where you are working. Assume the rules of progressive prompting apply to you and act like it even if they aren't mechanistically enforced.
 
-1. You are one runner in a relay governed by ../garden/PLAN.md — run its
-   Boot Sequence before anything else.
+1. You are one runner in a relay governed by ../garden/PLAN.md — load the
+   project skill `garden-relay` (.claude/skills/garden-relay/SKILL.md)
+   first, then run its Boot Sequence before anything else.
 2. The constitution is docs/SPEC.md (v2.124); vernacular is garden/GLOSSARY.md (read it): sections 1 -> 2 -> B -> C; read
    fully the sections your packet names.
 3. You are in Milestone M1 unless your charge says otherwise. Feature
