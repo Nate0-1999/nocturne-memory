@@ -1,7 +1,23 @@
 {
   "version": "0.1.40",
-  "memory_release": "https://github.com/Nate0-1999/nocturne-memory/releases/tag/v0.1.40",
-  "memory_workflow": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/36373992749",
-  "published": true,
-  "runtime_change_in_this_metadata_pr": false
+  "harness_import": "/tmp/m3np-public/venv/lib/python3.12/site-packages/harness/__init__.py",
+  "memory_import": "/tmp/m3np-public/venv/lib/python3.12/site-packages/spine/__init__.py",
+  "installed": {
+    "nocturne-harness": "0.1.40",
+    "nocturne-memory": "0.1.40"
+  },
+  "public": {
+    "nocturne-harness": {
+      "version": "0.1.40",
+      "files": 2
+    },
+    "nocturne-memory": {
+      "version": "0.1.40",
+      "files": 2
+    }
+  },
+  "workflows": {
+    "memory": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/36373992749",
+    "harness": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/36374826331"
+  }
 }
