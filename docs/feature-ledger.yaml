@@ -712,7 +712,7 @@
       "section": "2. Injection and the gate",
       "era": "Aug 3",
       "label": "The Injection Console: see the weights, simulate a change to them and test the result, and force a new set of values.",
-      "status": "partial",
+      "status": "built",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Open the Injection Console; change a weight in simulate; a result score appears, and force is available.",
       "owner": "owner — \"I like this I'm imagine a module with the historical performance of the visulizer as a line graph every manual adjust ment should lower the score then whenever the retrain happens the score goes back up. There should be every features hyperparameters labeled and normalized to a decimal that can be viewed. There can be a what if, id call it simulate, feature where the user can modify different hyper parameters and test their results. they should be able to force a new hyper parameter value set if they want.\" (chat 2026-08-03 20:32:37)",
       "surfaces": [
@@ -726,8 +726,7 @@
         "date": "2026-09-28",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-032.png",
-        "observed": "F129 principal boundary repaired: scoped DEEP and slices, non-owner whole-Palace 403. Authentic scored replay remains the isolated learning walk."
+        "screenshot": "FL-032.png"
       }
     },
     {
@@ -1182,7 +1181,7 @@
       "section": "4. Learning and training loops",
       "era": "Aug 3",
       "label": "Simulate: change weights and back-test the result before forcing them.",
-      "status": "partial",
+      "status": "built",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Simulate in the Injection Console; a back-test score appears before force is enabled.",
       "owner": "owner — \"Ideally the force weights the user can only do after simulating the backtest and getting the score so they are aware. Does that make sense?\" (chat 2026-08-03 21:37:16; chat 2026-08-03 20:32:37)",
       "surfaces": [
@@ -1196,8 +1195,7 @@
         "date": "2026-09-28",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-054.png",
-        "observed": "F129 principal boundary repaired: scoped DEEP and slices, non-owner whole-Palace 403. Authentic scored replay remains the isolated learning walk."
+        "screenshot": "FL-054.png"
       }
     },
     {
