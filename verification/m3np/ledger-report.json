@@ -57,7 +57,15 @@
     "spine/verification/m3rd/receipts/public/thread.json": "Release metadata, frozen rules, generated assets, regression checks or packet evidence; no additional runtime feature.",
     "spine/verification/m3rd/receipts/release.json": "Release metadata, frozen rules, generated assets, regression checks or packet evidence; no additional runtime feature.",
     "spine/verification/m3rd/receipts/rules-exit.log": "Release metadata, frozen rules, generated assets, regression checks or packet evidence; no additional runtime feature.",
-    "spine/verification/m3rd/scope-after.json": "Release metadata, frozen rules, generated assets, regression checks or packet evidence; no additional runtime feature."
+    "spine/verification/m3rd/scope-after.json": "Release metadata, frozen rules, generated assets, regression checks or packet evidence; no additional runtime feature.",
+    "spine/verification/m3np/public-live.json": "M3NP verification evidence; no runtime feature change.",
+    "spine/verification/m3np/FL-200.png": "M3NP verification evidence; no runtime feature change.",
+    "spine/verification/m3np/FL-196.png": "M3NP verification evidence; no runtime feature change.",
+    "spine/verification/m3np/release.json": "M3NP verification evidence; no runtime feature change.",
+    "spine/verification/m3np/ledger-report.json": "M3NP verification evidence; no runtime feature change.",
+    "spine/verification/m3np/FL-195.png": "M3NP verification evidence; no runtime feature change.",
+    "spine/verification/m3np/public-cleanup.json": "M3NP verification evidence; no runtime feature change.",
+    "spine/verification/m3np/SHA256SUMS": "M3NP verification evidence; no runtime feature change."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {

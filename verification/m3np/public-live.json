@@ -1,0 +1,13 @@
+{
+  "harness_version": "0.1.40",
+  "memory_version": "0.1.40",
+  "selected_palace": "test-m3np-public",
+  "identity": {
+    "principal_id": "palace-agent-d1914bbd-0427-4b30-8f06-47e8ce7db739",
+    "machine_id": "palace-agent-ed28d7b1-d6d1-4cf7-940a-9e701128b985",
+    "home": "/private/tmp/m3np-public/home/palaces/test-m3np-public",
+    "palace_name": "test-m3np-public"
+  },
+  "memory_count": 1,
+  "postgres_volume": "nocturne-eb411c72_nocturne_postgres"
+}

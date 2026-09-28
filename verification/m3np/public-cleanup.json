@@ -1,0 +1,10 @@
+{
+  "harness_version": "0.1.40",
+  "memory_version": "0.1.40",
+  "selected_palace": "main",
+  "main_present": true,
+  "test_service_absent": true,
+  "test_database_absent": true,
+  "test_secrets_absent": true,
+  "test_home_absent": true
+}
