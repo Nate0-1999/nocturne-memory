@@ -3120,9 +3120,9 @@
       "section": "10. Themes and brand",
       "era": "Jul 21",
       "label": "The name Nocturne and the mark: an ouroboros around the moon.",
-      "status": "partial",
-      "walk": "Look at the header mark and the favicon: a snake eating its tail around a moon — a head, the tail in its mouth, a tapering body — readable at both sizes, not a ring inside a ring (owner, 2026-09-29).",
-      "owner": "owner — \"Ok fair enough let's stick with nocturne and add the ouroboros around the moon to the icon.\" (chat 2026-08-03 22:39:46 (+ chat 2026-07-21 17:03:25)) — 2026-09-29: \"it just looks like a circle with a circle around the world... make it look a bit more snakelike\"",
+      "status": "built",
+      "walk": "Look at the header mark and the favicon: a snake eating its tail around a moon — a head, the tail in its mouth, a tapering body — readable at both sizes, not a ring inside a ring; up close, the moon's continents look realistic and the snake is cute with a little fang (owner, 2026-09-29).",
+      "owner": "owner — \"Ok fair enough let's stick with nocturne and add the ouroboros around the moon to the icon.\" (chat 2026-08-03 22:39:46 (+ chat 2026-07-21 17:03:25)) — 2026-09-29: \"it just looks like a circle with a circle around the world... make it look a bit more snakelike\"; \"make the continents look a little more realistic and teh snake a bit more cute but like it could grow up to be dangerous...\"; \"add a little fang and your approved.\"",
       "surfaces": [
         "harness/web/public/",
         "harness/README.md"
