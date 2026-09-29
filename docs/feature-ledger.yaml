@@ -120,9 +120,9 @@
       "section": "1. Memory palace — storage, units, lineage",
       "era": "Jul 19",
       "label": "Every memory carries a location column and a project column.",
-      "status": "built",
-      "walk": "Open a memory card; project and location are shown.",
-      "owner": "owner — \"ok write in the amendment. It's important to the thesis of progressive prompting that every memory have a location. remember the agents are all going to be cding themselves around the projects which will change the equation of what memories get added.\" (chat 2026-07-20 00:01:41; chat 2026-07-19 23:51:20)",
+      "status": "partial",
+      "walk": "Move between two folders inside one thread, say a fact in each, then compact: each memory born carries the location of the message it came from (the folder the agent stood in when the fact was said), not the folder at compaction time; the memory card and the palace column show it (SD-072).",
+      "owner": "owner — \"ok write in the amendment. It's important to the thesis of progressive prompting that every memory have a location. remember the agents are all going to be cding themselves around the projects which will change the equation of what memories get added.\" (chat 2026-07-20 00:01:41; chat 2026-07-19 23:51:20) — 2026-09-28: \"at compaction the memory that is created has a location(s) associated to it as a component of its memory relevance score\"",
       "surfaces": [
         "spine/src/spine/contracts.py",
         "harness/src/harness/memory_capability.py",
@@ -1574,7 +1574,7 @@
       "era": "Aug 28",
       "label": "The location rule written into Nocturne's own system prompt.",
       "status": "partial",
-      "walk": "Read the transcript's system line for Nocturne; the location rule is stated there.",
+      "walk": "Open the persisted transcript of a thread that moved: every message carries the location it was written at, and the system prompt's location rule is visible in the transcript (SD-072).",
       "owner": "owner — \"This is something we need to consider in noctures own system prompt as well...\" (chat 2026-08-28 14:17:00)",
       "surfaces": [
         "harness/src/harness/toolset_runtime.py",
