@@ -355,8 +355,8 @@
         "harness/src/harness/onboarding.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3CL",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-016.png"
@@ -403,8 +403,8 @@
         "harness/web/src/frontDoor.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3CL",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-018.png"
@@ -698,8 +698,8 @@
         "spine/src/spine/inject/decisions.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3CL",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-031.png"
@@ -1444,8 +1444,8 @@
         "harness/web/src/projectPath.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3CL",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-067.png"
@@ -1606,8 +1606,8 @@
         "harness/web/src/projectPath.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3SF",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-074.png"
@@ -1703,8 +1703,8 @@
         "harness/src/harness/onboarding.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3CL",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-079.png"
@@ -1826,8 +1826,8 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3SF",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-085.png"
@@ -1850,8 +1850,8 @@
         "harness/src/harness/symphony_experience.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3SF",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-086.png"
@@ -1871,8 +1871,8 @@
         "harness/src/harness/symphony_experience.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3SF",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-087.png"
@@ -1896,8 +1896,8 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3SF",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-088.png"
@@ -1917,8 +1917,8 @@
         "harness/src/harness/symphony_experience.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3SF",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-089.png"
@@ -1938,8 +1938,8 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3SF",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-090.png"
@@ -1959,10 +1959,10 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F086",
+        "packet": "M3SF",
+        "date": "2026-09-29",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-091.png"
       },
       "protected": true,
@@ -2025,8 +2025,8 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3SF",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-094.png"
@@ -2050,10 +2050,10 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F086",
+        "packet": "M3SF",
+        "date": "2026-09-29",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-095.png"
       }
     },
@@ -2111,8 +2111,8 @@
         "harness/web/src/SymphonyDeck.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3SF",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-098.png"
@@ -2134,10 +2134,10 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F086",
+        "packet": "M3SF",
+        "date": "2026-09-29",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-099.png"
       }
     },
@@ -2155,8 +2155,8 @@
         "harness/web/src/SymphonyDeck.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3SF",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-100.png"
@@ -2639,8 +2639,8 @@
         "harness/web/src/stageLayout.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3SF",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-120.png"
@@ -4185,8 +4185,8 @@
         "harness/uv.lock"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3SF",
+        "date": "2026-09-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-194.png"
