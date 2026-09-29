@@ -2,18 +2,19 @@
   "packet": "M3EXF",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "2d9f4f28545a979ebe7dd311e92563b1b8551e73489b7a9be6a1f7849db4694a",
+  "ledger_sha256": "879e79d26c82c549edce773f6fc377f71b9a5e93ba1ff3194c628a4fe4173cce",
   "diffs": [
     {
       "repo": "spine",
       "base": "29d338bac6791cfb5c1feb517bf28f7b51161924",
-      "head": "b11ffe61c34abda781d494739068d381b87a4156"
+      "head": "42d28736c2b207d6883d85e3bb644e15945747f2"
     }
   ],
   "unmapped": {
     "spine/openapi.json": "paired release version 0.1.41 in the contract document; no behavior.",
     "spine/src/spine/__init__.py": "paired release version 0.1.41; no feature behavior.",
     "spine/tests/test_packaging.py": "paired release version 0.1.41 in the packaging test.",
+    "spine/verification/m3exf/FL-195.png": "M3EXF evidence: captures, receipts, coverage report and checksums.",
     "spine/verification/m3exf/FL-196.png": "M3EXF evidence: captures, receipts, coverage report and checksums.",
     "spine/verification/m3exf/SHA256SUMS": "M3EXF evidence: captures, receipts, coverage report and checksums.",
     "spine/verification/m3exf/gallery.html": "M3EXF evidence: captures, receipts, coverage report and checksums.",
@@ -21,6 +22,15 @@
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
+    "FL-195": {
+      "label": "The feature ledger generates coverage reports and requires evidence for the rows affected by a build.",
+      "walk": "Compute the composer fix's impact with --paths and see attunement rows; push a branch touching socket.ts and observe the hook print rows and write impacted.json; observe a DONE handoff without screenshots fail CI, then verify complete evidence passes.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-195.png",
+      "flag": "F086",
+      "observed": "Context only: an M3EXF change touched a file this row maps, so the row is required. Its complete gesture was not repeated in this packet. No new feature PASS or regression is claimed; the screenshot is the current build on the test palace."
+    },
     "FL-196": {
       "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
       "walk": "Remove a guard citation on a disposable branch and observe CI fail; change a frozen axiom and observe the freeze step fail; restore both and observe Rules pass. The master ADR check remains red until the owner applies the citation patch.",
@@ -227,7 +237,6 @@
     "FL-192": "outside diff",
     "FL-193": "outside diff",
     "FL-194": "outside diff",
-    "FL-195": "outside diff",
     "FL-198": "outside diff",
     "FL-199": "outside diff",
     "FL-200": "outside diff"
