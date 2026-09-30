@@ -20,7 +20,7 @@ from spine.model_policy import BenchmarkModel, ModelCatalog, ModelRoute
 async def test_curator_policy_is_owned_validated_persistent_and_append_only(
     memory_client, memory_session_factory
 ):
-    """FL-154 / PLAN M3LF: App settings configures the Palace role durably and privately."""
+    """A-074: App settings configures the Palace role durably and privately (FL-154)."""
     path = "/v1/curation/model-policy"
     response = await memory_client.get(path, params={"principal_id": "local"})
     assert response.status_code == 200

@@ -153,6 +153,7 @@ async def test_models_match_authoritative_c2_schema(
         "approval_queue_item",
         "approval_decision",
         "curator_trigger_state",
+        "curator_model_policy",
         "curator_run",
         "curator_finding",
         "curator_verdict",
@@ -274,6 +275,7 @@ async def test_models_match_authoritative_c2_schema(
             "actor_class",
             "created_at",
         ),
+        "curator_model_policy": ("event_uid", "principal_id", "policy", "changed_at"),
         "curator_trigger_state": (
             "principal_id",
             "admitted_writes",
@@ -512,6 +514,7 @@ async def test_models_match_authoritative_c2_schema(
         },
         "approval_decision": set(),
         "curator_trigger_state": set(),
+        "curator_model_policy": set(),
         "curator_run": {"error"},
         "curator_finding": set(),
         "curator_verdict": set(),
@@ -564,6 +567,7 @@ async def test_models_match_authoritative_c2_schema(
         "approval_queue_item": ("item_uid",),
         "approval_decision": ("decision_uid",),
         "curator_trigger_state": ("principal_id",),
+        "curator_model_policy": ("event_uid",),
         "curator_run": ("run_uid",),
         "curator_finding": ("finding_uid",),
         "curator_verdict": ("verdict_uid",),
@@ -690,6 +694,10 @@ async def test_models_match_authoritative_c2_schema(
         "approval_decision.actor_class": "TEXT",
         "approval_decision.created_at": "TIMESTAMP WITH TIME ZONE",
         "curator_trigger_state.principal_id": "TEXT",
+        "curator_model_policy.event_uid": "TEXT",
+        "curator_model_policy.principal_id": "TEXT",
+        "curator_model_policy.policy": "TEXT",
+        "curator_model_policy.changed_at": "TIMESTAMP WITH TIME ZONE",
         "curator_trigger_state.admitted_writes": "BIGINT",
         "curator_trigger_state.last_run_writes": "BIGINT",
         "curator_trigger_state.pressure_events": "BIGINT",
@@ -898,6 +906,7 @@ async def test_models_match_authoritative_c2_schema(
         "approval_queue_item.created_at": "now()",
         "approval_decision.created_at": "now()",
         "curator_trigger_state.admitted_writes": "0",
+        "curator_model_policy.changed_at": "clock_timestamp()",
         "curator_trigger_state.last_run_writes": "0",
         "curator_trigger_state.pressure_events": "0",
         "curator_trigger_state.last_run_pressure": "0",
@@ -939,6 +948,7 @@ async def test_models_match_authoritative_c2_schema(
         for name, table in Base.metadata.tables.items()
     }
     assert checks == {
+        "curator_model_policy": {},
         "workflow_job": {},
         "workflow_run": {
             "workflow_run_state_check": (

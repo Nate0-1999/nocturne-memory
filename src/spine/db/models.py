@@ -352,6 +352,19 @@ class CuratorTriggerState(Base):
     )
 
 
+class CuratorModelPolicy(Base):
+    """A-074: append-only policy selections for future curator passes."""
+
+    __tablename__ = "curator_model_policy"
+
+    event_uid: Mapped[str] = mapped_column(Text, primary_key=True)
+    principal_id: Mapped[str] = mapped_column(Text)
+    policy: Mapped[str] = mapped_column(Text)
+    changed_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=text("clock_timestamp()")
+    )
+
+
 class CuratorRun(Base):
     """One immutable versioned Palace Health Report and pass receipt."""
 

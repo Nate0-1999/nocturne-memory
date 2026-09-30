@@ -99,8 +99,10 @@ class OpenRouterCuratorProvider:
                     catalog=self._catalog,
                 )
                 selected = (await resolver.resolve(run_uid)).model
-            cached = (run_uid, _openrouter_model(selected)
-                      if self._provider == "openrouter" else selected)
+            cached = (
+                run_uid,
+                _openrouter_model(selected) if self._provider == "openrouter" else selected,
+            )
             self._run_models[report.principal_id] = cached
         model = cached[1]
         try:
