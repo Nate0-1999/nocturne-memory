@@ -1341,3 +1341,16 @@ Retire curator targets before replacement activation in the existing transaction
 DEEP and its slices filter events and annotations to the calling principal;
 `scope=palace` uses the existing owner wall. Extraction enforces the existing
 64-code-point label contract at HTTP admission; memory validation returns 422.
+
+## M3PL — Provenance completes [P1.2]
+
+PRECEDENT: A-073, F146, F147, M3TL (A-063).
+`memory_unit.origin_locations` (text[], default empty) keeps every source folder of a
+memory that spans several; origin_location stays their shared parent and the only folder
+the scorer reads. Extraction candidates carry it, a curator split copies it, and an archive
+exported before migration 0026 imports with an empty list. `POST /v1/memories/projects`
+fills a null project_key from the thread a memory was born in, for the caller's principal,
+in one statement, never overwriting a recorded project and without a revision: it records
+missing provenance, not an edit. The thread-to-project map comes from the Harness journal
+because the Palace sees a thread's project only when its first prompt had candidates.
+Contract 0.1.39 → 0.1.45.
