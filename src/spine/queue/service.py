@@ -14,6 +14,8 @@ from spine.db.memory import CasUpdate, MemoryUnitChanges, cas_update_memory_unit
 from spine.db.models import (
     ApprovalDecision,
     ApprovalQueueItem,
+    CuratorAction,
+    CuratorVerdict,
     MemoryEdge,
     MemoryUnit,
 )
@@ -33,6 +35,7 @@ from spine.queue.contracts import (
     QueueCard,
     QueueDecisionRequest,
     QueueDecisionResponse,
+    QueueFeedbackRequest,
     QueueResponse,
     SeedRequest,
     SeedResponse,
@@ -283,6 +286,7 @@ class QueueService:
     async def decide(self, item_uid: str, request: QueueDecisionRequest) -> QueueDecisionResponse:
         queue = ApprovalQueueItem.__table__
         prepared_split: tuple[PreparedSplitChild, ...] | None = None
+        amendment = None
         async with self._session_factory() as session:
             preflight = (
                 (
@@ -290,6 +294,17 @@ class QueueService:
                 )
                 .mappings()
                 .one_or_none()
+            )
+        if request.amended_body is not None:
+            if preflight is None:
+                raise QueueNotFoundError(item_uid)
+            if (preflight["birthplace"] != "curator" or
+                preflight["verdict"] not in {"merge", "supersede"} or
+                request.decision != "approve" or request.actor_class != "human"):
+                raise QueueValidationError("only an explicit curator replacement can be amended")
+            amendment = await self._memory_service.prepare_curator_amendment(
+                request.amended_body, principal_id=preflight["principal_id"],
+                machine_id=request.machine_id,
             )
         if preflight is not None and preflight["birthplace"] == "curator" and preflight[
             "verdict"
@@ -315,14 +330,39 @@ class QueueService:
                 if row is None:
                     raise QueueNotFoundError(item_uid)
                 return await self._decide_row(
-                    session, row, request, prepared_split=prepared_split
+                    session, row, request, prepared_split=prepared_split, amendment=amendment
                 )
+
+    async def feedback(self, item_uid: str, request: QueueFeedbackRequest) -> dict[str, str]:
+        """Record owner feedback without changing a proposal or deciding a memory."""
+        async with self._session_factory() as session:
+            async with session.begin():
+                row = (await session.execute(
+                    select(ApprovalQueueItem, CuratorVerdict.verdict_uid)
+                    .join(CuratorVerdict,
+                          CuratorVerdict.finding_uid == ApprovalQueueItem.curator_finding_uid)
+                    .where(ApprovalQueueItem.item_uid == item_uid,
+                           ApprovalQueueItem.birthplace == "curator")
+                )).one_or_none()
+                if row is None:
+                    raise QueueNotFoundError(item_uid)
+                card, verdict_uid = row
+                feedback_uid = mint_ulid()
+                await session.execute(insert(CuratorAction).values(
+                    action_uid=feedback_uid, verdict_uid=verdict_uid,
+                    finding_uid=card.curator_finding_uid, queue_item_uid=item_uid, outcome="noop",
+                    detail={"feedback": request.feedback, "actor_class": "human",
+                            "machine_id": request.machine_id},
+                ))
+        return {"feedback_uid": feedback_uid}
 
     async def decide_batch(
         self, batch_uid: UUID, request: QueueDecisionRequest
     ) -> BatchDecisionResponse:
         if request.approval_mode != "explicit" or request.actor_class != "human":
             raise QueueValidationError("queue batches require an explicit human decision")
+        if request.amended_body is not None:
+            raise QueueValidationError("amend one curator replacement at a time")
         queue = ApprovalQueueItem.__table__
         async with self._session_factory() as session:
             async with session.begin():
@@ -365,6 +405,7 @@ class QueueService:
         request: QueueDecisionRequest,
         *,
         prepared_split: tuple[PreparedSplitChild, ...] | None = None,
+        amendment: MemoryUnitChanges | None = None,
     ) -> QueueDecisionResponse:
         decisions = ApprovalDecision.__table__
         queue = ApprovalQueueItem.__table__
@@ -378,6 +419,10 @@ class QueueService:
             .one_or_none()
         )
         if prior_row is not None:
+            if request.amended_body is not None:
+                current = await self._locked_memory(session, row["candidate_memory_id"])
+                if current["body"] != request.amended_body:
+                    raise QueueConflictError("the decided replacement has different text")
             prior = _ExistingDecision(
                 prior_row["decision_uid"],
                 prior_row["decision"],
@@ -407,6 +452,7 @@ class QueueService:
                 candidate,
                 request,
                 prepared_split=prepared_split,
+                amendment=amendment,
             )
         expected = "approved" if request.decision == "approve" else "rejected"
         if candidate["status"] != "candidate":
@@ -465,6 +511,7 @@ class QueueService:
         request: QueueDecisionRequest,
         *,
         prepared_split: tuple[PreparedSplitChild, ...] | None,
+        amendment: MemoryUnitChanges | None,
     ) -> QueueDecisionResponse:
         if request.approval_mode != "explicit" or request.actor_class != "human":
             raise QueueValidationError("curator verdicts require an explicit human decision")
@@ -492,7 +539,7 @@ class QueueService:
                 request.machine_id,
                 row,
                 suffix="activate",
-                changes=MemoryUnitChanges(status="active"),
+                changes=amendment or MemoryUnitChanges(status="active"),
             )
         elif action == "contradict":
             if candidate["status"] != "active":

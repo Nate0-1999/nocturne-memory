@@ -193,6 +193,23 @@ class CuratorService:
                     queue.c.state == "pending",
                 )
             )
+            growth = (await session.execute(text("""
+                WITH points AS (
+                    SELECT (report->>'as_of')::timestamptz AS at,
+                           (report->>'active_units')::int AS active_units
+                    FROM curator_run WHERE principal_id = :principal AND status = 'completed'
+                    UNION ALL
+                    SELECT now(), count(*)::int FROM memory_unit
+                    WHERE principal_id = :principal AND status = 'active'
+                )
+                SELECT points.*, (
+                    SELECT count(*) FROM memory_revision r
+                    JOIN memory_unit u ON u.id = r.memory_id
+                    WHERE u.principal_id = :principal AND r.ts <= points.at
+                      AND r.reason ~ '^curation/[^/]+/(merge|supersede|retire)$'
+                ) AS curator_removals
+                FROM points ORDER BY at
+            """), {"principal": principal_id})).mappings().all()
         admitted = 0 if state_row is None else int(state_row["admitted_writes"])
         cursor = 0 if state_row is None else int(state_row["last_run_writes"])
         pressure = 0 if state_row is None else int(state_row["pressure_events"])
@@ -213,6 +230,7 @@ class CuratorService:
             ),
             latest_run=None if run_row is None else _receipt(run_row),
             pending_cards=int(pending or 0),
+            growth=[dict(point) for point in growth],
         )
 
     async def _run_locked(
@@ -228,6 +246,21 @@ class CuratorService:
         judged: list[_JudgedFinding] = []
         try:
             for finding in report.findings:
+                async with self._session_factory() as session:
+                    feedback = (await session.execute(
+                        select(CuratorAction.detail)
+                        .join(CuratorFinding,
+                              CuratorFinding.finding_uid == CuratorAction.finding_uid)
+                        .join(CuratorRun, CuratorRun.run_uid == CuratorFinding.run_uid)
+                        .where(CuratorRun.principal_id == principal_id,
+                               CuratorFinding.kind == finding.kind,
+                               CuratorAction.detail.has_key("feedback"))
+                        .order_by(CuratorAction.created_at, CuratorAction.action_uid)
+                    )).scalars().all()
+                if feedback:
+                    finding = finding.model_copy(update={
+                        "evidence": {**finding.evidence, "owner_feedback": list(feedback)}
+                    })
                 finding_uid = mint_ulid()
                 verdict_uid = mint_ulid()
                 await record_progress(self._session_factory, principal_id, run_uid,
@@ -271,6 +304,8 @@ class CuratorService:
         for item in judged:
             proposal = item.draft.model_dump(mode="json", exclude_none=True)
             proposal["finding_fingerprint"] = item.finding.fingerprint
+            proposal["sources"] = item.finding.evidence.get("memories", [])
+            proposal["signals"] = item.finding.evidence.get("signals", {})
             if item.suppressed:
                 actions.append(
                     (item, "noop", None, {"reason": "unchanged rejected proposal"})

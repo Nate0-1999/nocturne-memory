@@ -198,7 +198,10 @@ def _verdict_prompt(finding: HealthFinding, report: PalaceHealthReport) -> str:
             "schema": CuratorVerdictDraft.model_json_schema(),
             "surgeon_order": ["keep", "edge", "edit", "merge", "rewrite"],
             "constraints": [
-                "preserve every qualifier",
+                "A merge must preserve every fact and qualifier from every source; "
+                "combine losslessly, never summarize away distinct information.",
+                "Similar relevance scores nominate a pair, but do not establish semantic "
+                "duplication. Choose keep if the sources contain independent facts.",
                 "split only on semantic boundaries",
                 "use 2-5 distinct lowercase keywords",
                 "when uncertain choose keep",

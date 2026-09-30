@@ -139,6 +139,7 @@ def create_app(
             session_factory,
             duplicate_floor=resolved.dedup_sim,
             stale_days=resolved.curator_stale_days,
+            embedding_provider=embedding_provider,
         ),
         curator_verdict_provider,
         queue_service,

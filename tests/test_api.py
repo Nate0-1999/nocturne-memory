@@ -54,6 +54,7 @@ SPINE_ROUTES = {
     ("POST", "/v1/seeds"),
     ("GET", "/v1/approval-queue"),
     ("POST", "/v1/approval-queue/{item_uid}/decisions"),
+    ("POST", "/v1/approval-queue/{item_uid}/feedback"),
     ("POST", "/v1/approval-queue/batches/{batch_uid}/decisions"),
     ("GET", "/v1/curation"),
     ("GET", "/v1/curation/progress"),

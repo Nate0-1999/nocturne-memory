@@ -110,6 +110,12 @@ class CuratorRunReceipt(ContractModel):
     completed_at: datetime
 
 
+class CuratorGrowthPoint(ContractModel):
+    at: datetime
+    active_units: int
+    curator_removals: int
+
+
 class CuratorActivity(ContractModel):
     principal_id: str
     admitted_writes: int = Field(ge=0)
@@ -122,6 +128,7 @@ class CuratorActivity(ContractModel):
     pressure_until_run: int = Field(ge=0)
     latest_run: CuratorRunReceipt | None
     pending_cards: int = Field(ge=0)
+    growth: list[CuratorGrowthPoint] = Field(default_factory=list)
 
 
 __all__ = [
