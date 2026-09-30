@@ -758,8 +758,8 @@
       "era": "Jul 23",
       "label": "The curators deconflict, dedupe and remove slop, triggered by every n memory writes rather than by the clock, and run at the Palace's own location.",
       "status": "built",
-      "walk": "On a fixture Palace, cross n memory writes; a curator pass runs and Palace State shows it.",
-      "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc. They will be triggered by n number of memories being added and run in the memory palaces location. They must be surgeons: minimally invasive, targeting the root problem, and allowing the system to then sort out the symptoms. They are also responsible for removing slop.\" (chat 2026-07-23 16:07:44; chat 2026-08-03 20:02:16)",
+      "walk": "Add 25 memories to a palace holding near-duplicates; a curator pass runs on its own (every 25 admitted writes or 3 gate removals), finds the pair by near-identical relevance scores on the standard probe set as well as by embedding, and proposes one lossless combined memory; Palace State shows the pass and the palace's growth curve bending.",
+      "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc. They will be triggered by n number of memories being added and run in the memory palaces location. They must be surgeons: minimally invasive, targeting the root problem, and allowing the system to then sort out the symptoms. They are also responsible for removing slop.\" (chat 2026-07-23 16:07:44; chat 2026-08-03 20:02:16) — 2026-09-30: \"Curator is going to be the thing that limits the memory growth as much as possible which is super critical… Maybe it triggers when n memories are added?\"",
       "surfaces": [
         "spine/src/spine/curation/",
         "harness/web/src/PalaceStateModule.tsx"
@@ -825,8 +825,8 @@
       "era": "Jul 23",
       "label": "Constitution: Typed consolidation decisions: merge, new, contradict, supersede (curator spec).",
       "status": "built",
-      "walk": "Open a curator proposal card; it names one of merge, new, contradict or supersede.",
-      "owner": "constitution",
+      "walk": "Open a curator merge card: it shows the lossless combined memory beside its sources; approve, amend the text, or give feedback (which is recorded as a tuning signal); a typed merge / new / contradict / supersede verdict is visible on the card (owner, 2026-09-30).",
+      "owner": "constitution — owner 2026-09-30: \"the curator sees if it can combine them into one memory losslessly. I could then approve, provide feedback, or amend them as well.\"",
       "surfaces": [
         "spine/src/spine/curation/",
         "harness/web/src/PalaceStateModule.tsx"
