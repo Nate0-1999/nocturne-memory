@@ -167,7 +167,7 @@ async def test_batch_preserves_an_earlier_denial_and_finishes_pending_cards(
     memory_client: AsyncClient,
     embedding_provider: ScriptedEmbeddingProvider,
 ) -> None:
-    """M3MQ: a mixed batch finishes once without reversing an earlier human decision."""
+    """A-074 / M3MQ: a mixed batch finishes without reversing an earlier human decision."""
     batch_uid = str(uuid4())
     markdown = "Alpha stays. Beta stays."
     embedding_provider.set(markdown, basis_vector(0))

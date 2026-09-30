@@ -223,7 +223,7 @@ async def test_never_is_enforced_by_the_palace_for_the_thread_after_one_veto(
     embedding_provider: ScriptedEmbeddingProvider,
     memory_session_factory: async_sessionmaker[AsyncSession],
 ) -> None:
-    """M3MQ / FL-033: forgetting client exclusions cannot revive a thread's never veto."""
+    """A-070 / M3MQ: forgetting client exclusions cannot revive a thread's never veto."""
     memory_id = UUID(int=9198)
     await _insert_memory(
         memory_session_factory,
