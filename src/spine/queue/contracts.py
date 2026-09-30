@@ -19,6 +19,8 @@ class ExtractionCandidate(ContractModel):
     kind: MemoryKind
     keywords: list[str] = Field(min_length=2, max_length=5)
     project_key: str | None = None
+    # F146: every source folder of a memory that spans several; origin_location is their parent.
+    origin_locations: list[str] = Field(default_factory=list)
     verdict: Verdict
     target_ids: list[UUID] = Field(default_factory=list)
 

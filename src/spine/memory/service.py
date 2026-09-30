@@ -75,6 +75,7 @@ class CreateMemoryCommand:
     origin_thread_id: UUID | None = None
     origin_path: str | None = None
     origin_location: str | None = None
+    origin_locations: Sequence[str] = ()
     force: bool = False
     parent_uid: str | None = None
     revision_reason: str = ""
@@ -684,6 +685,7 @@ class MemoryService:
                         origin_thread_id=source["origin_thread_id"],
                         origin_path=source["origin_path"],
                         origin_location=source["origin_location"],
+                        origin_locations=source["origin_locations"],
                         editor="maintenance",
                         machine_id=machine_id,
                         parent_uid=tombstone_revision_uid,
@@ -975,6 +977,31 @@ class MemoryService:
             offset=query.offset,
         )
 
+    async def backfill_projects(self, principal_id: str, projects: Mapping[UUID, str]) -> int:
+        """F147: a memory born in a thread without a recorded project takes its thread's."""
+
+        async with self._session_factory() as session:
+            async with session.begin():
+                result = await session.execute(
+                    text(
+                        """
+                        UPDATE memory_unit AS m
+                        SET project_key = t.project_key, updated_at = now()
+                        FROM unnest(CAST(:threads AS uuid[]), CAST(:projects AS text[]))
+                          AS t(thread_id, project_key)
+                        WHERE m.principal_id = :principal_id
+                          AND m.origin_thread_id = t.thread_id
+                          AND m.project_key IS NULL
+                        """
+                    ),
+                    {
+                        "principal_id": principal_id,
+                        "threads": list(projects),
+                        "projects": list(projects.values()),
+                    },
+                )
+        return result.rowcount
+
     async def search(self, query: SearchMemoriesQuery) -> SearchResponse:
         """Return current ACTIVE heads ordered by raw cosine similarity."""
 
@@ -1140,6 +1167,7 @@ class MemoryService:
                         origin_thread_id=command.origin_thread_id,
                         origin_path=command.origin_path,
                         origin_location=command.origin_location,
+                        origin_locations=list(command.origin_locations),
                         run_id=run_id,
                         origin_agent=origin_agent,
                         status=status,
@@ -1283,6 +1311,7 @@ def contract_memory_from_snapshot(snapshot: MemoryUnitSnapshot) -> ContractMemor
         origin_thread_id=snapshot.origin_thread_id,
         origin_path=snapshot.origin_path,
         origin_location=snapshot.origin_location,
+        origin_locations=list(snapshot.origin_locations),
         pin=snapshot.pin,
         status=snapshot.status,
         revision=snapshot.revision,

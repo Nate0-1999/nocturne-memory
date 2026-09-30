@@ -8,6 +8,7 @@ from fastapi.responses import JSONResponse
 from pydantic import Field
 
 from spine.contracts import (
+    ContractModel,
     ContractRequest,
     CreatedMemoryResponse,
     CreateMemoryConflictResponse,
@@ -110,6 +111,20 @@ class PatchMemoryRequest(ContractRequest):
     editor: str
     reason: str
     machine_id: str
+
+
+class ThreadProject(ContractModel):
+    thread_id: UUID
+    project_key: str = Field(min_length=1)
+
+
+class ProjectBackfillRequest(ContractRequest):
+    principal_id: str = Field(min_length=1)
+    threads: list[ThreadProject]
+
+
+class ProjectBackfillResponse(ContractModel):
+    updated: int
 
 
 class SearchRequest(ContractRequest):
@@ -326,6 +341,22 @@ async def list_memories(
             instance=request.url.path,
             endpoint=f"{request.method} {request.url.path}",
         )
+
+
+@router.post(
+    "/v1/memories/projects",
+    response_model=ProjectBackfillResponse,
+    responses=ERROR_RESPONSES,
+)
+async def backfill_memory_projects(
+    body: ProjectBackfillRequest,
+    request: Request,
+) -> ProjectBackfillResponse:
+    """F147: memories born in a thread with no recorded project take the thread's project."""
+    updated = await _memory_service(request).backfill_projects(
+        body.principal_id, {thread.thread_id: thread.project_key for thread in body.threads}
+    )
+    return ProjectBackfillResponse(updated=updated)
 
 
 @router.post(

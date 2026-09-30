@@ -919,6 +919,7 @@ def _memory_unit(row: MemoryUnitRow) -> MemoryUnit:
         origin_thread_id=row.origin_thread_id,
         origin_path=row.origin_path,
         origin_location=row.origin_location,
+        origin_locations=list(row.origin_locations),
         pin=row.pin,
         status=row.status,  # type: ignore[arg-type]
         revision=row.revision,

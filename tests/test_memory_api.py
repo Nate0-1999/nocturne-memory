@@ -461,6 +461,7 @@ async def test_create_writes_root_attribution_and_checks_duplicate_before_label(
         "origin_thread_id",
         "origin_path",
         "origin_location",
+        "origin_locations",
         "pin",
         "status",
         "revision",

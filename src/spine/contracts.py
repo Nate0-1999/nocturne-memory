@@ -92,6 +92,7 @@ class MemoryUnit(ContractModel):
     origin_thread_id: UUID | None
     origin_path: str | None
     origin_location: str | None = None
+    origin_locations: list[str] = Field(default_factory=list)
     pin: bool
     status: MemoryStatus
     revision: int

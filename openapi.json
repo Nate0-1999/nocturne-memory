@@ -1097,6 +1097,13 @@
             "title": "Label",
             "type": "string"
           },
+          "origin_locations": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Origin Locations",
+            "type": "array"
+          },
           "project_key": {
             "anyOf": [
               {
@@ -2621,6 +2628,13 @@
             ],
             "title": "Origin Location"
           },
+          "origin_locations": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Origin Locations",
+            "type": "array"
+          },
           "origin_path": {
             "anyOf": [
               {
@@ -3345,6 +3359,43 @@
           "memory_allocation"
         ],
         "title": "PrepareResponse",
+        "type": "object"
+      },
+      "ProjectBackfillRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "principal_id": {
+            "minLength": 1,
+            "title": "Principal Id",
+            "type": "string"
+          },
+          "threads": {
+            "items": {
+              "$ref": "#/components/schemas/ThreadProject"
+            },
+            "title": "Threads",
+            "type": "array"
+          }
+        },
+        "required": [
+          "principal_id",
+          "threads"
+        ],
+        "title": "ProjectBackfillRequest",
+        "type": "object"
+      },
+      "ProjectBackfillResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "updated": {
+            "title": "Updated",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "updated"
+        ],
+        "title": "ProjectBackfillResponse",
         "type": "object"
       },
       "PurposeSpendRow": {
@@ -6157,6 +6208,27 @@
           "updated_at"
         ],
         "title": "SymphonyMemoryRecord",
+        "type": "object"
+      },
+      "ThreadProject": {
+        "additionalProperties": false,
+        "properties": {
+          "project_key": {
+            "minLength": 1,
+            "title": "Project Key",
+            "type": "string"
+          },
+          "thread_id": {
+            "format": "uuid",
+            "title": "Thread Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "thread_id",
+          "project_key"
+        ],
+        "title": "ThreadProject",
         "type": "object"
       },
       "ThreadSpendRow": {
@@ -10481,6 +10553,202 @@
         "summary": "Import Memories",
         "tags": [
           "portability"
+        ]
+      }
+    },
+    "/v1/memories/projects": {
+      "post": {
+        "description": "F147: memories born in a thread with no recorded project take the thread's project.",
+        "operationId": "backfill_memory_projects_v1_memories_projects_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectBackfillRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectBackfillResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "description": "RFC 7807 problem details with an optional endpoint extension.",
+                  "properties": {
+                    "detail": {
+                      "title": "Detail",
+                      "type": "string"
+                    },
+                    "endpoint": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "title": "Endpoint"
+                    },
+                    "instance": {
+                      "title": "Instance",
+                      "type": "string"
+                    },
+                    "status": {
+                      "title": "Status",
+                      "type": "integer"
+                    },
+                    "title": {
+                      "title": "Title",
+                      "type": "string"
+                    },
+                    "type": {
+                      "default": "about:blank",
+                      "title": "Type",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status",
+                    "detail",
+                    "instance"
+                  ],
+                  "title": "ProblemDetail",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bearer token missing or invalid"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "description": "RFC 7807 problem details with an optional endpoint extension.",
+                  "properties": {
+                    "detail": {
+                      "title": "Detail",
+                      "type": "string"
+                    },
+                    "endpoint": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "title": "Endpoint"
+                    },
+                    "instance": {
+                      "title": "Instance",
+                      "type": "string"
+                    },
+                    "status": {
+                      "title": "Status",
+                      "type": "integer"
+                    },
+                    "title": {
+                      "title": "Title",
+                      "type": "string"
+                    },
+                    "type": {
+                      "default": "about:blank",
+                      "title": "Type",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status",
+                    "detail",
+                    "instance"
+                  ],
+                  "title": "ProblemDetail",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Request does not match the endpoint contract"
+          },
+          "500": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "description": "RFC 7807 problem details with an optional endpoint extension.",
+                  "properties": {
+                    "detail": {
+                      "title": "Detail",
+                      "type": "string"
+                    },
+                    "endpoint": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "title": "Endpoint"
+                    },
+                    "instance": {
+                      "title": "Instance",
+                      "type": "string"
+                    },
+                    "status": {
+                      "title": "Status",
+                      "type": "integer"
+                    },
+                    "title": {
+                      "title": "Title",
+                      "type": "string"
+                    },
+                    "type": {
+                      "default": "about:blank",
+                      "title": "Type",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status",
+                    "detail",
+                    "instance"
+                  ],
+                  "title": "ProblemDetail",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Unexpected service failure"
+          }
+        },
+        "security": [
+          {
+            "StaticBearer": []
+          }
+        ],
+        "summary": "Backfill Memory Projects",
+        "tags": [
+          "memory"
         ]
       }
     },

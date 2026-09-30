@@ -110,6 +110,7 @@ class MemoryUnitSnapshot:
     origin_thread_id: UUID | None
     origin_path: str | None
     origin_location: str | None
+    origin_locations: tuple[str, ...]
     pin: bool
     status: str
     revision: int
@@ -136,6 +137,7 @@ class MemoryUnitSnapshot:
             origin_thread_id=row["origin_thread_id"],
             origin_path=row["origin_path"],
             origin_location=row["origin_location"],
+            origin_locations=tuple(row["origin_locations"]),
             pin=row["pin"],
             status=row["status"],
             revision=row["revision"],

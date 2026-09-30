@@ -83,6 +83,7 @@ class QueueService:
                     thread_origin=str(request.thread_id),
                     origin_thread_id=request.thread_id,
                     origin_location=request.origin_location,
+                    origin_locations=draft.origin_locations,
                     editor=request.editor,
                     machine_id=request.machine_id,
                 )

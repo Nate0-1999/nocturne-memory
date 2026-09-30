@@ -405,3 +405,47 @@ async def test_seed_batch_preserves_split_lineage_and_decides_atomically(
         (child_ids[0], child_ids[1]),
         (child_ids[1], child_ids[0]),
     }
+
+
+@pytest.mark.asyncio
+async def test_a_memory_from_several_folders_keeps_them_and_backfill_fills_only_missing_projects(
+    memory_client: AsyncClient,
+    embedding_provider: ScriptedEmbeddingProvider,
+) -> None:
+    """SPEC C.4 / F146 / F147: a memory keeps every source folder beside their shared parent,
+    and a null project is filled from its thread, never overwriting a recorded one."""
+    thread, other_thread = uuid4(), uuid4()
+    folders = ["/repo/docs", "/repo/web"]
+    embedding_provider.set("Both builds share the lockfile.", basis_vector(0))
+    embedding_provider.set("Web uses Vite.", basis_vector(1))
+    embedding_provider.set("Docs use mkdocs.", basis_vector(2))
+    spanning = extraction(thread, "Both builds share the lockfile.")
+    spanning["origin_location"] = "/repo"
+    spanning["candidates"][0]["origin_locations"] = folders
+    born = await memory_client.post("/v1/extractions", json=spanning)
+    assert born.status_code == 200
+    card = born.json()["cards"][0]["candidate"]
+    assert (card["origin_location"], card["origin_locations"]) == ("/repo", folders)
+    projected = extraction(thread, "Web uses Vite.")
+    projected["candidates"][0]["project_key"] = "/elsewhere"
+    assert (await memory_client.post("/v1/extractions", json=projected)).status_code == 200
+    foreign = extraction(other_thread, "Docs use mkdocs.")
+    assert (await memory_client.post("/v1/extractions", json=foreign)).status_code == 200
+
+    def backfill(project):
+        threads = [{"thread_id": str(thread), "project_key": project}]
+        return memory_client.post(
+            "/v1/memories/projects", json={"principal_id": "owner", "threads": threads}
+        )
+
+    filled = await backfill("/repo")
+    assert filled.status_code == 200 and filled.json() == {"updated": 1}
+    queue = await memory_client.get("/v1/approval-queue", params={"principal_id": "owner"})
+    cards = [card["candidate"] for card in queue.json()["cards"]]
+    projects = {card["body"]: card["project_key"] for card in cards}
+    assert projects == {
+        "Both builds share the lockfile.": "/repo",
+        "Web uses Vite.": "/elsewhere",
+        "Docs use mkdocs.": None,
+    }
+    assert (await backfill("/x")).json() == {"updated": 0}
