@@ -1,7 +1,9 @@
 """Authenticated M3CU manual trigger and passive curator activity reads."""
 
-from fastapi import APIRouter, Query, Request
+from fastapi import APIRouter, HTTPException, Query, Request
+from pydantic import Field
 
+from spine.contracts import ContractModel
 from spine.curation.contracts import (
     CuratorActivity,
     CuratorProgress,
@@ -15,6 +17,29 @@ ERRORS = {
     401: problem_openapi("Bearer token missing or invalid"),
     409: problem_openapi("A curator pass is already running"),
 }
+
+
+class CuratorPolicyWrite(ContractModel):
+    principal_id: str = Field(min_length=1)
+    policy: str = Field(min_length=1)
+
+
+@router.get("/v1/curation/model-policy")
+async def model_policy(request: Request, principal_id: str) -> dict[str, str]:
+    if principal_id != request.app.state.settings.owner_principal_id:
+        raise HTTPException(403, "Only the Palace owner can configure curator models.")
+    return {"policy": await request.app.state.curator_policy.read(principal_id)}
+
+
+@router.put("/v1/curation/model-policy")
+async def set_model_policy(body: CuratorPolicyWrite, request: Request) -> dict[str, str]:
+    if body.principal_id != request.app.state.settings.owner_principal_id:
+        raise HTTPException(403, "Only the Palace owner can configure curator models.")
+    try:
+        policy = await request.app.state.curator_policy.save(body.principal_id, body.policy)
+    except ValueError as exc:
+        raise HTTPException(422, str(exc)) from exc
+    return {"policy": policy}
 
 
 @router.get("/v1/curation", response_model=CuratorActivity, responses=ERRORS)

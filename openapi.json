@@ -787,6 +787,27 @@
         "title": "CuratorActivity",
         "type": "object"
       },
+      "CuratorPolicyWrite": {
+        "additionalProperties": false,
+        "properties": {
+          "policy": {
+            "minLength": 1,
+            "title": "Policy",
+            "type": "string"
+          },
+          "principal_id": {
+            "minLength": 1,
+            "title": "Principal Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "principal_id",
+          "policy"
+        ],
+        "title": "CuratorPolicyWrite",
+        "type": "object"
+      },
       "CuratorProgress": {
         "additionalProperties": false,
         "properties": {
@@ -7922,6 +7943,105 @@
           }
         ],
         "summary": "Activity",
+        "tags": [
+          "curation"
+        ]
+      }
+    },
+    "/v1/curation/model-policy": {
+      "get": {
+        "operationId": "model_policy_v1_curation_model_policy_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "principal_id",
+            "required": true,
+            "schema": {
+              "title": "Principal Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "title": "Response Model Policy V1 Curation Model Policy Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "StaticBearer": []
+          }
+        ],
+        "summary": "Model Policy",
+        "tags": [
+          "curation"
+        ]
+      },
+      "put": {
+        "operationId": "set_model_policy_v1_curation_model_policy_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CuratorPolicyWrite"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "title": "Response Set Model Policy V1 Curation Model Policy Put",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "StaticBearer": []
+          }
+        ],
+        "summary": "Set Model Policy",
         "tags": [
           "curation"
         ]

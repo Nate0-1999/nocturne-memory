@@ -20,6 +20,7 @@ from spine.api_contract import API_CONTRACT_VERSION
 from spine.auth import StaticBearerAuthMiddleware
 from spine.config import Settings
 from spine.curation.diagnostics import HealthReportBuilder
+from spine.curation.policy import CuratorPolicy
 from spine.curation.provider import (
     CuratorVerdictProvider,
     OpenRouterCuratorProvider,
@@ -122,6 +123,7 @@ def create_app(
     )
     queue_service = QueueService(session_factory, memory_service)
     owned_curator_provider = None
+    curator_policy = CuratorPolicy(session_factory, resolved.chat_model)
     if curator_verdict_provider is None:
         if configured_key:
             owned_curator_provider = OpenRouterCuratorProvider(
@@ -129,6 +131,7 @@ def create_app(
                 model=resolved.chat_model,
                 base_url=resolved.chat_base_url,
                 spend_service=spend_service,
+                policy=curator_policy,
             )
             curator_verdict_provider = owned_curator_provider
         else:
@@ -244,6 +247,7 @@ def create_app(
     app.state.memory_service = memory_service
     app.state.queue_service = queue_service
     app.state.curator_service = curator_service
+    app.state.curator_policy = curator_policy
     app.state.curator_worker = curator_worker
     app.state.symphony_service = symphony_service
     app.state.prepare_service = prepare_service
