@@ -132,8 +132,8 @@
         "harness/src/harness/toolset_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3LT",
-        "date": "2026-09-29",
+        "packet": "M3PL",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-006.png"
@@ -288,8 +288,8 @@
         "harness/src/harness/memory_panel.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3EXF",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-013.png"
@@ -586,8 +586,8 @@
         "spine/src/spine/memory/service.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3PL",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-026.png"
@@ -3128,8 +3128,8 @@
         "harness/README.md"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3EXF",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-144.png"
@@ -3969,8 +3969,8 @@
         "harness/src/harness/jobs.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3EXF",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-184.png"

@@ -223,7 +223,7 @@ def charged_rows(packet):
     if not match:
         return set()
     rows = set()
-    for chunk in re.findall(r"LEDGER ROWS:\s*([^.]*)", match.group(0)):
+    for chunk in re.findall(r"LEDGER\s+ROWS:\s*([^.]*)", match.group(0)):
         for token in re.findall(r"FL-\d{3}|\b\d{3}\b", chunk):
             rows.add(token if token.startswith("FL-") else "FL-" + token)
     return rows
