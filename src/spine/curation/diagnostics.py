@@ -1,4 +1,4 @@
-"""Deterministic, provider-free Palace Health Report generation."""
+"""Palace Health Reports from stored facts and fixed relevance probes."""
 
 from __future__ import annotations
 
