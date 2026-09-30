@@ -92,6 +92,9 @@ class PortabilityService:
             row.get("item_uid") not in queue_ids for row in archive.decisions
         ):
             raise ValueError("The archive has incomplete review lineage.")
+        for row in archive.memories:
+            # F146: an archive exported before migration 0026 has no folder list.
+            row.setdefault("origin_locations", [])
         groups = (
             archive.memories,
             archive.revisions,

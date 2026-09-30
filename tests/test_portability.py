@@ -67,3 +67,51 @@ async def test_archive_retains_lineage_and_refuses_partial_conflicting_import(
         assert response.status_code == 409
     after = await memory_client.get("/v1/memories/export", params={"principal_id": "destination"})
     assert after.json() == restored
+
+
+async def test_an_archive_from_before_the_folder_list_still_imports(
+    memory_client,
+    embedding_provider,
+):
+    """A-071 / F146: memories exported before migration 0026 carry no origin_locations and
+    import with an empty folder list instead of a conflict."""
+    source = "Gamma is third and delta is fourth."
+    embedding_provider.set(source, basis_vector(3))
+    embedding_provider.set("Gamma is third.", basis_vector(4))
+    embedding_provider.set("Delta is fourth.", basis_vector(5))
+    created = await memory_client.post(
+        "/v1/memory-splits",
+        json={
+            "principal_id": "older",
+            "source_body": source,
+            "editor": "user",
+            "machine_id": "fixture",
+            "children": [
+                {"label": "Gamma", "body": "Gamma is third.", "keywords": ["gamma", "third"]},
+                {"label": "Delta", "body": "Delta is fourth.", "keywords": ["delta", "fourth"]},
+            ],
+        },
+    )
+    assert created.status_code == 201, created.text
+    archive = (
+        await memory_client.get("/v1/memories/export", params={"principal_id": "older"})
+    ).json()
+    encoded = json.dumps(archive)
+    for row in archive["memories"]:
+        encoded = encoded.replace(row["id"], str(uuid4()))
+    for row in archive["revisions"]:
+        encoded = encoded.replace(row["rev_uid"], mint_ulid())
+    for row in archive["edges"]:
+        encoded = encoded.replace(row["edge_uid"], mint_ulid())
+    older = json.loads(encoded.replace('"principal_id": "older"', '"principal_id": "restored"'))
+    older["principal_id"] = "restored"
+    for row in older["memories"]:
+        del row["origin_locations"]
+    response = await memory_client.post(
+        "/v1/memories/import", params={"principal_id": "restored"}, json=older
+    )
+    assert response.status_code == 200, response.text
+    restored = (
+        await memory_client.get("/v1/memories/export", params={"principal_id": "restored"})
+    ).json()
+    assert [row["origin_locations"] for row in restored["memories"]] == [[], [], []]
