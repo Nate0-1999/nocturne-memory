@@ -125,3 +125,4 @@ class BatchDecisionResponse(ContractModel):
     batch_uid: UUID
     decision: Literal["approve", "deny"]
     cards: list[QueueCard]
+    already_decided: int = 0

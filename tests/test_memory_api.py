@@ -110,6 +110,7 @@ async def test_memory_split_preserves_exact_source_and_writes_one_linked_active_
             thread_origin=thread_id,
             origin_thread_id=str(origin_thread_id),
             origin_path="notes/durable",
+            project_key="project-alpha",
             children=[
                 {
                     "label": "Alpha claim",
@@ -141,7 +142,8 @@ async def test_memory_split_preserves_exact_source_and_writes_one_linked_active_
     assert [child["body"] for child in children] == [first_body, second_body]
     assert {child["status"] for child in children} == {"active"}
     assert {child["kind"] for child in children} == {"fact"}
-    assert {child["project_key"] for child in children} == {None}
+    assert source["project_key"] == "project-alpha"
+    assert {child["project_key"] for child in children} == {"project-alpha"}
     assert {child["thread_origin"] for child in children} == {thread_id}
     assert {child["origin_thread_id"] for child in children} == {thread_id}
     assert {child["origin_path"] for child in children} == {"notes/durable"}

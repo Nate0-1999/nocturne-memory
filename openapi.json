@@ -186,6 +186,11 @@
       "BatchDecisionResponse": {
         "additionalProperties": false,
         "properties": {
+          "already_decided": {
+            "default": 0,
+            "title": "Already Decided",
+            "type": "integer"
+          },
           "batch_uid": {
             "format": "uuid",
             "title": "Batch Uid",
@@ -5909,6 +5914,17 @@
           "principal_id": {
             "title": "Principal Id",
             "type": "string"
+          },
+          "project_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Project Key"
           },
           "source_body": {
             "title": "Source Body",

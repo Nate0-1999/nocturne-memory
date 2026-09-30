@@ -144,8 +144,11 @@ class DecisionService:
         selected = [
             e
             for e in latest.values()
-            if e["outcome"] in positive
-            or (pending and e["outcome"] is None and e["shown_as"] in {"injected", "pinned"})
+            if e["memory_id"] not in excluded
+            and (
+                e["outcome"] in positive
+                or (pending and e["outcome"] is None and e["shown_as"] in {"injected", "pinned"})
+            )
         ]
         near = [
             e

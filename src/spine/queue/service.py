@@ -343,11 +343,19 @@ class QueueService:
                 )
                 if not rows:
                     raise QueueNotFoundError(str(batch_uid))
-                responses = [await self._decide_row(session, row, request) for row in rows]
+                cards = []
+                already_decided = 0
+                for row in rows:
+                    if row["state"] != "pending":
+                        already_decided += 1
+                        cards.append(await self._card(session, row))
+                    else:
+                        cards.append((await self._decide_row(session, row, request)).card)
                 return BatchDecisionResponse(
                     batch_uid=batch_uid,
                     decision=request.decision,
-                    cards=[response.card for response in responses],
+                    cards=cards,
+                    already_decided=already_decided,
                 )
 
     async def _decide_row(
