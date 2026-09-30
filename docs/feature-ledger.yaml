@@ -1595,7 +1595,7 @@
       "era": "Sep 2",
       "label": "A new thread starts in a project folder with the location rule in effect; how a thread's project is specified was his open question (maybe configuration).",
       "status": "built",
-      "walk": "Start a new thread in a folder; the thread shows that folder as its project and the location rule applies.",
+      "walk": "Start a new thread from inside a subfolder of a repository: the thread shows the repository root as its project and the subfolder as WHERE (v2.125: the project is the git root; the folder is the location); outside any repository the folder itself is the project.",
       "owner": "owner — \"I think it should start a new thread, project folder and give it a prompt to build something in and start using plan mode? make sure all the different modules activate across tabs. make sure that the physical location rule is in affect. how are we specifying what project a thread is working on is that something that should be a configuration?\" (chat 2026-09-02 14:39:14)",
       "surfaces": [
         "harness/src/harness/toolset_runtime.py",
