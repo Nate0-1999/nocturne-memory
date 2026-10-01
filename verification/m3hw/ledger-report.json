@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "ca247aca9b85dd78981fee82a62464eebfa8d346",
-      "head": "5e1011dac1d0d2bf4595daec622f2fe938e4b61a"
+      "head": "39b64ea2ebf3734f4177ab5d39463d95f50e930b"
     }
   ],
   "unmapped": {
@@ -27,7 +27,7 @@
       "protected": true,
       "verdict": "PASS",
       "screenshot": "FL-196.png",
-      "observed": "On a throwaway checkout of each release head, the script CI runs (scripts/check_rules.py) passed as committed; with every Problem Tree citation removed from DECISIONS.md entry 000 it failed ('DECISIONS.md 000: missing Problem Tree citation'); with frozen axiom 0 changed in CLAUDE.md --freeze-only failed ('frozen axioms differ from the master fingerprint'); restored, both passed with nothing left changed (receipts/FL-196.txt). Walked on both products' release heads (Harness 3d3eb69, Memory 5e1011d); the frozen law itself was re-exported for F165-F169."
+      "observed": "On a throwaway checkout of each product's last head, the script CI runs (scripts/check_rules.py) passed as committed; with every Problem Tree citation removed from DECISIONS.md entry 000 it failed ('DECISIONS.md 000: missing Problem Tree citation'); with frozen axiom 0 changed in CLAUDE.md --freeze-only failed ('frozen axioms differ from the master fingerprint'); restored, both passed with nothing left changed (receipts/FL-196.txt). Walked on both products' last heads, after the frozen law took F165-F170 (Harness d7417c7, Memory 39b64ea)."
     }
   },
   "not_run": {

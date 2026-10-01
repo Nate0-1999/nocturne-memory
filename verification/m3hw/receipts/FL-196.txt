@@ -1,4 +1,4 @@
-# FL-196 — 2026-10-01 05:59:13 CDT, a throwaway checkout of spine 5e1011d (M3HW Memory release head), the script CI runs (scripts/check_rules.py)
+# FL-196 — 2026-10-01 09:03:16 CDT, a throwaway checkout of spine 39b64ea (M3HW's Memory head, after F170 was frozen), the script CI runs (scripts/check_rules.py)
 $ python3 scripts/check_rules.py   (as committed)
 Product rules: PASS
 (exit 0)
