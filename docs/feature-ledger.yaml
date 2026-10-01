@@ -847,7 +847,7 @@
       "era": "Jul 23",
       "label": "A cheap 80/20 duplicate check at memory creation, keeping the agent's memory work under 10% of build run time.",
       "status": "built",
-      "walk": "Save a fact already in the Palace; the save comes back as a duplicate at once, without the agent reading other memories.",
+      "walk": "Save a fact already in the Palace: at cosine 0.92 or above the save comes back 'already known — reinforced' at once, between 0.80 and 0.92 it asks to confirm, without the agent reading other memories; these write-time bands are the C.4 defaults and are separate from the curator's own search band (v2.128).",
       "owner": "owner — \"I'm wondering if at that point we try and squash them together or reject them or if we put them in and let the curators at them later. I don't want to spend more than 10% of build run time for the agent managing memeory so I don't want it reading a whole but of memories itself...\" (chat 2026-07-23 19:32:05; chat 2026-07-23 16:07:44)",
       "surfaces": [
         "spine/src/spine/memory/service.py",
@@ -1267,7 +1267,7 @@
       "era": "Aug 31",
       "label": "A standing registry of every trainable parameter; all training loops triggered from one place in the code where their documentation lives.",
       "status": "built",
-      "walk": "Open the trainable-parameter registry; every trainable parameter is listed, and the training trigger point is one place in code with its documentation beside it.",
+      "walk": "Open the trainable-parameter registry; every trainable parameter is listed with its loop, floor and status — including the curator's candidate-search band (curator_review_sim, default 0.70, config) beside the write-time dedup bands — and the training trigger point is one place in code with its documentation beside it.",
       "owner": "owner — \"I mean our infrastructure that trains should all be triggered in the same set of code right? so that can be where the documentation can live. Can you identify this area of the code and it's trigger please. I want a loose psuedo code with real function names.\" (chat 2026-08-31 19:06:04; chat 2026-08-31 18:59:34)",
       "surfaces": [
         "spine/src/spine/learner/",
