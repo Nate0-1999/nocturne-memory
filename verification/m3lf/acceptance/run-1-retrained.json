@@ -1,0 +1,28 @@
+{
+  "http_status": 200,
+  "elapsed_seconds": 8.752021624997724,
+  "body": {
+    "status": "proposed",
+    "incumbent_version": "m2k-01M3TZF47D0M8HQPSKN5QSSCX8",
+    "proposal_version": "m2f-5de8e6d94ea6a6ea",
+    "eligible_dispositions": 114,
+    "training_dispositions": 90,
+    "holdout_dispositions": 24,
+    "training_pairs": 252,
+    "incumbent": {
+      "disagreements": 14,
+      "weighted_disagreements": "14",
+      "injected_tokens": 256,
+      "share_disagreements": 2,
+      "weighted_share_disagreements": "2"
+    },
+    "challenger": {
+      "disagreements": 2,
+      "weighted_disagreements": "2",
+      "injected_tokens": 128,
+      "share_disagreements": 2,
+      "weighted_share_disagreements": "2"
+    },
+    "reason": "challenger won replay and remains inactive pending owner activation"
+  }
+}

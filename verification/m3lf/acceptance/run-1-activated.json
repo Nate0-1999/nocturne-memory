@@ -1,0 +1,51 @@
+{
+  "http_status": 200,
+  "elapsed_seconds": 0.48412112501682714,
+  "body": {
+    "axes": {},
+    "project_offsets": {
+      "/private/tmp/nocturne-m3lf-0930/projects/observatory": {
+        "kw": 0.0,
+        "sem": 0.0,
+        "freq": 0.0,
+        "hist": 0.0,
+        "proj": 0.0,
+        "time": 0.0
+      }
+    },
+    "version": "m2f-5de8e6d94ea6a6ea",
+    "created_at": "2026-10-01T05:37:18.996345Z",
+    "status": "active",
+    "values": {
+      "tau": 0.54,
+      "top_k": 8,
+      "memory_context_share": 0.01,
+      "half_life_time_days": 14.0,
+      "half_life_hist_days": 7.0,
+      "weights": {
+        "sem": 0.42,
+        "kw": 0.16,
+        "time": 0.11,
+        "proj": 0.16,
+        "freq": 0.08,
+        "hist": 0.07
+      }
+    },
+    "replay": {
+      "incumbent": {
+        "disagreements": 14,
+        "injected_tokens": 256,
+        "share_disagreements": 2,
+        "weighted_disagreements": "14",
+        "weighted_share_disagreements": "2"
+      },
+      "challenger": {
+        "disagreements": 2,
+        "injected_tokens": 128,
+        "share_disagreements": 2,
+        "weighted_disagreements": "2",
+        "weighted_share_disagreements": "2"
+      }
+    }
+  }
+}
