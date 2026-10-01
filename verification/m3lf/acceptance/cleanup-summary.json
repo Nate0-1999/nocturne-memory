@@ -1,0 +1,11 @@
+{
+  "verified_at": "2026-10-01T06:37:26.066185+00:00",
+  "palace": "test-m3lf-r3",
+  "service_absent": true,
+  "database_absent": true,
+  "both_named_secrets_absent": true,
+  "scratch_home_removed": true,
+  "candidate_image_retained": "immutable tags enforced; shared policy unchanged",
+  "cli_drop": "Timed out after 180 seconds at final secret deletion; finished exact secret deletion over authenticated IPv4 HTTPS and confirmed 404. No connection admission failure.",
+  "owner_selection_incident": "Initial helper used wrong environment-variable name and selected main in default home. Drop refused for missing test custody. Previous selection unknown; owner reconciliation pending."
+}
