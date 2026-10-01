@@ -1,0 +1,18 @@
+{
+  "run": 2,
+  "status": "PASS",
+  "thread_id": "94df3ae1-bd21-4795-ba1f-9c431023fbb3",
+  "run_id": "01M3TZGZ91TW6X03SCDYGG5N8B",
+  "rows": [
+    "FL-030",
+    "FL-048",
+    "FL-051",
+    "FL-062",
+    "FL-154"
+  ],
+  "forced_share": 0.16999999999999998,
+  "learned_share": 0.01,
+  "proposal": "m2f-685b8aba9e68d77f",
+  "removed_memories": 6,
+  "fresh_browser_context": true
+}

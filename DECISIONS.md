@@ -1354,3 +1354,11 @@ in one statement, never overwriting a recorded project and without a revision: i
 missing provenance, not an edit. The thread-to-project map comes from the Harness journal
 because the Palace sees a thread's project only when its first prompt had candidates.
 Contract 0.1.39 → 0.1.45.
+
+## M3LF — Persist the curator model policy [P2.4]
+
+PRECEDENT: A-021, A-074, F157; M3LL and M3LW.
+App settings reads and appends the owner's curator policy in the Palace.
+The existing Harness selector moves here unchanged for all four roles. Each
+principal's current pass retains its resolved model; a later pass reads the
+new setting. The original configured model remains the default pinned policy.

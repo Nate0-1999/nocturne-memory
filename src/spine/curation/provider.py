@@ -14,7 +14,9 @@ from spine.curation.contracts import (
     HealthFinding,
     PalaceHealthReport,
 )
+from spine.curation.policy import CuratorPolicy
 from spine.ids import mint_ulid
+from spine.model_policy import ModelPolicyResolver, OpenRouterCatalogClient
 from spine.spend.contracts import SpendEventInput
 from spine.spend.service import SpendService
 
@@ -61,17 +63,21 @@ class OpenRouterCuratorProvider:
         base_url: str = "https://openrouter.ai/api/v1",
         timeout: float = 45.0,
         client: httpx.AsyncClient | None = None,
+        policy: CuratorPolicy | None = None,
     ) -> None:
         if not api_key.strip():
             raise ValueError("curator provider requires an OpenRouter key")
         self._api_key = api_key
         self._provider = "openrouter" if base_url == "https://openrouter.ai/api/v1" else "openai"
-        self._model = _openrouter_model(model) if self._provider == "openrouter" else model
         self._spend_service = spend_service
         self._endpoint = f"{base_url.rstrip('/')}/chat/completions"
         self._timeout = timeout
         self._client = client or httpx.AsyncClient()
         self._owns_client = client is None
+        self._policy = policy
+        self._static_model = model
+        self._catalog = OpenRouterCatalogClient(api_key, base_url=base_url)
+        self._run_models: dict[str, tuple[str, str]] = {}
 
     async def verdict(
         self,
@@ -82,12 +88,29 @@ class OpenRouterCuratorProvider:
         machine_id: str,
     ) -> CuratorVerdictDraft:
         prompt = _verdict_prompt(finding, report)
+        cached = self._run_models.get(report.principal_id)
+        if cached is None or cached[0] != run_uid:
+            selected = self._static_model
+            if self._policy is not None:
+                resolver = ModelPolicyResolver(
+                    policy=await self._policy.read(report.principal_id),
+                    static_model=self._static_model,
+                    static_context_tokens=1_000_000,
+                    catalog=self._catalog,
+                )
+                selected = (await resolver.resolve(run_uid)).model
+            cached = (
+                run_uid,
+                _openrouter_model(selected) if self._provider == "openrouter" else selected,
+            )
+            self._run_models[report.principal_id] = cached
+        model = cached[1]
         try:
             response = await self._client.post(
                 self._endpoint,
                 headers={"Authorization": f"Bearer {self._api_key}"},
                 json={
-                    "model": self._model,
+                    "model": model,
                     "temperature": 0,
                     "messages": [
                         {
@@ -126,6 +149,7 @@ class OpenRouterCuratorProvider:
             machine_id=machine_id,
             principal_id=report.principal_id,
             finding=finding,
+            model=model,
         )
         return draft
 
@@ -138,6 +162,7 @@ class OpenRouterCuratorProvider:
         machine_id: str,
         principal_id: str,
         finding: HealthFinding,
+        model: str,
     ) -> None:
         data = payload if isinstance(payload, dict) else {}
         usage = data.get("usage") if isinstance(data.get("usage"), dict) else {}
@@ -161,7 +186,7 @@ class OpenRouterCuratorProvider:
             machine_id=machine_id,
             origin_agent="maintenance",
             run_id=run_uid,
-            model=str(data.get("model") or self._model),
+            model=str(data.get("model") or model),
             provider=self._provider,
             ref=response.headers.get("x-request-id") or f"curator:{run_uid}:{finding.ordinal}",
             meta={
@@ -173,6 +198,7 @@ class OpenRouterCuratorProvider:
         await self._spend_service.append([event])
 
     async def aclose(self) -> None:
+        await self._catalog.aclose()
         if self._owns_client:
             await self._client.aclose()
 
