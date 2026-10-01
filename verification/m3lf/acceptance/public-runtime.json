@@ -1,0 +1,12 @@
+{
+  "harness": "0.1.48",
+  "memory": "0.1.48",
+  "harness_file": "/private/tmp/nocturne-m3lf-0930/public-env/lib/python3.12/site-packages/harness/__init__.py",
+  "memory_file": "/private/tmp/nocturne-m3lf-0930/public-env/lib/python3.12/site-packages/spine/__init__.py",
+  "home": "/private/tmp/nocturne-m3lf-0930/rerun3-home/palaces/test-m3lf-r3",
+  "palace": "test-m3lf-r3",
+  "principal_id": "palace-agent-6cd2d7f8-4d18-4494-a63e-eb8962c4b070",
+  "machine_id": "palace-agent-58703876-22dc-4c4e-827b-6adbe0d7f977",
+  "factory": "harness.packaged:create_app",
+  "port": 8846
+}

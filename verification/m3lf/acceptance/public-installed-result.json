@@ -1,0 +1,14 @@
+{
+  "v": 1,
+  "id": "01M3V2AY967PF18C5Z7KPJ8PMG",
+  "ts": "2026-10-01T06:27:26.118468Z",
+  "machine_id": "palace-agent-58703876-22dc-4c4e-827b-6adbe0d7f977",
+  "agent_id": "nocturne",
+  "thread_id": "d8171dc2-a3f4-4185-a49b-97bfafdd041d",
+  "type": "run.done",
+  "payload": {
+    "run_id": "01M3V2ATW3B0HN3Q3JM5ZH4MSX",
+    "stop_reason": "end_turn",
+    "partial": false
+  }
+}

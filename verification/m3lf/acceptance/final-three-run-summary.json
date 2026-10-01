@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "consecutive_runs": [
+    {
+      "run": 10,
+      "status": "PASS",
+      "thread_id": "5593e1c6-70e6-4859-8f0a-fd2c4fb0189d",
+      "run_id": "01M3V1453RWDGREEK1TE7606FY",
+      "rows": [
+        "FL-030",
+        "FL-048",
+        "FL-051",
+        "FL-062",
+        "FL-154"
+      ],
+      "forced_share": 0.25,
+      "learned_share": 0.01,
+      "proposal": "m2f-0b16457ad16eded5",
+      "removed_memories": 6,
+      "fresh_browser_context": true,
+      "retrain_seconds": 14.322104584018234,
+      "visual_review": "All five row captures opened and inspected"
+    },
+    {
+      "run": 11,
+      "status": "PASS",
+      "thread_id": "a70842c5-c25e-447b-9f0a-b08441e735e9",
+      "run_id": "01M3V15Y0Y6FM32KTF55G9A7ZX",
+      "rows": [
+        "FL-030",
+        "FL-048",
+        "FL-051",
+        "FL-062",
+        "FL-154"
+      ],
+      "forced_share": 0.26,
+      "learned_share": 0.01,
+      "proposal": "m2f-f677e02fbf58db63",
+      "removed_memories": 6,
+      "fresh_browser_context": true,
+      "retrain_seconds": 15.892101540986914,
+      "visual_review": "All five row captures opened and inspected"
+    },
+    {
+      "run": 12,
+      "status": "PASS",
+      "thread_id": "05b04ed1-a57f-48d7-891d-c67b05f31245",
+      "run_id": "01M3V17Q2XF0H6B9GW2V4QA3G8",
+      "rows": [
+        "FL-030",
+        "FL-048",
+        "FL-051",
+        "FL-062",
+        "FL-154"
+      ],
+      "forced_share": 0.27,
+      "learned_share": 0.01,
+      "proposal": "m2f-416c37dd7f0b07d9",
+      "removed_memories": 6,
+      "fresh_browser_context": true,
+      "retrain_seconds": 18.05316541698994,
+      "visual_review": "All five row captures opened and inspected"
+    }
+  ],
+  "runtime": "same candidate after scratch-daemon restart",
+  "harness_head": "49e18cb9e7ef7c4208db4460fd12b8e80ac77786",
+  "memory_head": "87e8c6877b154d6959db295b0d12752f21372026",
+  "supersedes_for_final_candidate": "Runs 1-6 passed before final integration/restart. Runs 7-8 did not complete; run 9 was a local setup failure. All retained."
+}
