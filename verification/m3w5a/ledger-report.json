@@ -2,18 +2,18 @@
   "packet": "M3W5A",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "24c39b4c229e7d54c65c7deb17e5b96359a86bdcbf43dca4b5ac60eec48f2e40",
+  "ledger_sha256": "a9ece10ecf31f7c66db2b3d306117192762f07c376b496d5ff9503c2928a69fc",
   "diffs": [
     {
       "repo": "spine",
-      "base": "fd10886a7daa2694bf316efe0127220fb6bdaeae",
-      "head": "45513f304c7ea4be9d082ed685280650213f7c5e"
+      "base": "0114392ec42059c1e396bd8b47206f2b26865ecb",
+      "head": "96d533f4575e311301ce0ad1dfcc7ea172b7418f"
     }
   ],
   "unmapped": {
-    "spine/verification/m3w5a/ledger-report.json": "Metadata-only F150 re-freeze receipt. Fresh cross-repository guard walk is retained in Garden verification/m3w5a.",
-    "spine/verification/m3w5a/SHA256SUMS": "Metadata-only F150 re-freeze receipt. Fresh cross-repository guard walk is retained in Garden verification/m3w5a.",
-    "spine/verification/m3w5a/FL-196.png": "Metadata-only F150 re-freeze receipt. Fresh cross-repository guard walk is retained in Garden verification/m3w5a."
+    "spine/verification/m3w5a/ledger-report.json": "Mandatory F150 frozen-law registration and its verification receipt only; no runtime change.",
+    "spine/verification/m3w5a/SHA256SUMS": "Mandatory F150 frozen-law registration and its verification receipt only; no runtime change.",
+    "spine/verification/m3w5a/FL-196.png": "Mandatory F150 frozen-law registration and its verification receipt only; no runtime change."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -24,7 +24,7 @@
       "verdict": "PASS",
       "screenshot": "FL-196.png",
       "flag": "",
-      "observed": "ALIGNED: actual local push hook on a disposable socket.ts branch printed FL-104/117/120 and wrote impacted.json. Missing-evidence DONE commit failed CI; the same diff with a complete three-row report passed. Separate --paths impact included composer attunement. Removing envelope.py\u2019s adjacent citation failed the guard check; altering a frozen axiom failed freeze; restoring both passed. Current master Rules is green; the old row\u2019s red-master note is stale. No product fix was made."
+      "observed": "Fresh metadata validation on 2026-10-01: adding only F150 to current frozen-law metadata restores freeze PASS in both products. Current Garden freeze/adrs/seeds/precedents and all 30 guard/ledger tests pass. The runtime product is unchanged; the complete original rescout remains historical Garden evidence, not a new runtime certification."
     }
   },
   "not_run": {
@@ -70,7 +70,7 @@
     "FL-040": "dropped",
     "FL-041": "outside diff",
     "FL-042": "outside diff",
-    "FL-043": "unverified",
+    "FL-043": "outside diff",
     "FL-044": "outside diff",
     "FL-045": "outside diff",
     "FL-046": "outside diff",
@@ -226,6 +226,7 @@
     "FL-195": "outside diff",
     "FL-198": "outside diff",
     "FL-199": "outside diff",
-    "FL-200": "outside diff"
+    "FL-200": "outside diff",
+    "FL-201": "not built"
   }
 }
