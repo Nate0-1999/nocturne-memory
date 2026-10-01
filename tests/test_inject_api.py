@@ -218,6 +218,44 @@ async def test_restored_gate_preserves_decisions_without_new_events(
         assert await session.scalar(select(func.count()).select_from(InjectionEvent)) == 1
 
 
+async def test_never_is_enforced_by_the_palace_for_the_thread_after_one_veto(
+    memory_client: AsyncClient,
+    embedding_provider: ScriptedEmbeddingProvider,
+    memory_session_factory: async_sessionmaker[AsyncSession],
+) -> None:
+    """A-070 / M3MQ: forgetting client exclusions cannot revive a thread's never veto."""
+    memory_id = UUID(int=9198)
+    await _insert_memory(
+        memory_session_factory,
+        memory_id=memory_id,
+        label="Alpha",
+        body="alpha",
+        embedding=basis_vector(0),
+        pin=True,
+    )
+    embedding_provider.set("alpha", basis_vector(0))
+    body = _prepare_body(prompt="alpha")
+    prepared = (await memory_client.post("/v1/inject/prepare", json=body)).json()
+    committed = await memory_client.post(
+        "/v1/inject/commit",
+        json={
+            "injection_id": prepared["injection_id"],
+            "removed": [{"memory_id": str(memory_id), "reason": "never"}],
+            "added_back": [],
+        },
+    )
+    assert committed.status_code == 200
+    body["mode"] = "autonomous"
+    for _ in range(3):
+        rescore = await memory_client.post("/v1/inject/prepare", json=body)
+        assert rescore.status_code == 200
+        assert rescore.json()["injected"] == rescore.json()["near_misses"] == []
+    body["thread_id"] = str(uuid4())
+    body["mode"] = "gate"
+    other = await memory_client.post("/v1/inject/prepare", json=body)
+    assert [card["memory_id"] for card in other.json()["injected"]] == [str(memory_id)]
+
+
 async def test_memory_scores_include_fresh_owned_cards_without_injection_events(
     memory_client: AsyncClient,
     embedding_provider: ScriptedEmbeddingProvider,

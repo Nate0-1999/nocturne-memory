@@ -1,5 +1,7 @@
 """C.5 defaults and fixed storage-shape configuration tests."""
 
+import asyncio
+from contextlib import AsyncExitStack
 from decimal import Decimal
 from unittest.mock import AsyncMock, Mock
 
@@ -9,6 +11,8 @@ from pydantic import ValidationError
 
 import spine.main as spine_main
 from spine.config import Settings
+from spine.db.engine import make_engine
+from spine.learner.service import LearnerService
 
 
 def _settings(**overrides: object) -> Settings:
@@ -27,6 +31,9 @@ def test_c5_dedup_and_embedding_defaults_are_exact() -> None:
 
     assert settings.dedup_dup == 0.92
     assert settings.dedup_sim == 0.80
+    assert settings.curator_review_sim == 0.70
+    assert settings.database_pool_size == 2
+    assert settings.database_max_overflow == 3
     assert settings.embed_base_url == "https://openrouter.ai/api/v1"
     assert settings.embed_model == "openai/text-embedding-3-small"
     assert settings.embed_dim == 1536
@@ -40,6 +47,41 @@ def test_c5_dedup_and_embedding_defaults_are_exact() -> None:
     assert settings.optimization_corpus_max_dispositions == 1000
     assert settings.reconciliation_hours == 24
     assert settings.reconciliation_tolerance_usd == Decimal("0.000001")
+
+
+@pytest.mark.asyncio
+async def test_database_pool_waits_at_the_configured_connection_budget(
+    migrated_database_url: str, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """F159 bounds each API's connections instead of exhausting the shared instance."""
+    monkeypatch.setenv("SPINE_DATABASE_POOL_SIZE", "1")
+    monkeypatch.setenv("SPINE_DATABASE_MAX_OVERFLOW", "1")
+    settings = _settings()
+    engine = make_engine(migrated_database_url, pool_size=settings.database_pool_size,
+                         max_overflow=settings.database_max_overflow)
+    try:
+        async with AsyncExitStack() as stack:
+            await stack.enter_async_context(engine.connect())
+            await stack.enter_async_context(engine.connect())
+            with pytest.raises(TimeoutError):
+                await asyncio.wait_for(engine.connect(), timeout=0.1)
+        async with engine.connect() as connection:
+            assert (await connection.exec_driver_sql("SELECT 1")).scalar() == 1
+    finally:
+        await engine.dispose()
+
+
+def test_curator_band_is_configured_and_registered(monkeypatch: pytest.MonkeyPatch) -> None:
+    """SPEC C.5 / FL-058 separates curator configuration from write-time bands."""
+    monkeypatch.setenv("SPINE_CURATOR_REVIEW_SIM", "0.75")
+    settings = _settings()
+    assert settings.curator_review_sim == 0.75
+    assert (settings.dedup_dup, settings.dedup_sim) == (0.92, 0.80)
+    assert next(row for row in LearnerService.manifest()
+                if row["parameter"] == "curator_review_sim") == {
+        "parameter": "curator_review_sim", "loop": "creation",
+        "floor": None, "status": "configured",
+    }
 
 
 def test_runtime_environment_cannot_override_artifact_version(

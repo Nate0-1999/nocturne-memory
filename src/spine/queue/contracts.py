@@ -99,6 +99,7 @@ class QueueDecisionRequest(ContractModel):
     approval_mode: Literal["explicit", "passive"]
     actor_class: Literal["human", "passive"]
     machine_id: str = Field(min_length=1)
+    amended_body: str | None = Field(default=None, min_length=1)
 
     @model_validator(mode="after")
     def require_signal_pair(self) -> "QueueDecisionRequest":
@@ -121,7 +122,14 @@ class QueueDecisionResponse(ContractModel):
     decision_uid: str
 
 
+class QueueFeedbackRequest(ContractModel):
+    feedback: str = Field(min_length=1)
+    actor_class: Literal["human"]
+    machine_id: str = Field(min_length=1)
+
+
 class BatchDecisionResponse(ContractModel):
     batch_uid: UUID
     decision: Literal["approve", "deny"]
     cards: list[QueueCard]
+    already_decided: int = 0

@@ -105,6 +105,7 @@ class SplitMemoryCommand:
     children: Sequence[SplitMemoryChild]
     editor: str
     machine_id: str
+    project_key: str | None = None
     thread_origin: str | None = None
     origin_thread_id: UUID | None = None
     origin_path: str | None = None
@@ -296,6 +297,10 @@ class MemoryService:
                     principal_id=command.principal_id,
                     embedding=embedding,
                 )
+                if await self._rejected_body(session, command.principal_id, command.body):
+                    raise MemoryValidationError(
+                        "This exact memory was rejected. Change the fact before saving it again."
+                    )
                 highest_score = matches[0].score if matches else None
                 band = _classify_dedup_score(
                     highest_score,
@@ -384,6 +389,12 @@ class MemoryService:
 
                 # No family row exists yet: every comparison below is against the
                 # pre-existing ACTIVE corpus, never another semantic sibling.
+                for body in (command.source_body, *(child.body for child in command.children)):
+                    if await self._rejected_body(session, command.principal_id, body):
+                        raise MemoryValidationError(
+                            "This exact memory was rejected. "
+                            "Change the fact before saving it again."
+                        )
                 for child, embedding in zip(command.children, child_embeddings, strict=True):
                     conflict = await _find_active_label(
                         session,
@@ -415,7 +426,7 @@ class MemoryService:
                     body=command.source_body,
                     kind="fact",
                     keywords=("split", "source"),
-                    project_key=None,
+                    project_key=command.project_key,
                     thread_origin=command.thread_origin,
                     origin_thread_id=command.origin_thread_id,
                     origin_path=command.origin_path,
@@ -456,7 +467,7 @@ class MemoryService:
                                         body=child.body,
                                         kind="fact",
                                         keywords=child.keywords,
-                                        project_key=None,
+                                        project_key=command.project_key,
                                         thread_origin=command.thread_origin,
                                         origin_thread_id=command.origin_thread_id,
                                         origin_path=command.origin_path,
@@ -515,20 +526,7 @@ class MemoryService:
                     text("SELECT pg_advisory_xact_lock(hashtextextended(:principal_id, 0))"),
                     {"principal_id": command.principal_id},
                 )
-                rejected = await session.scalar(
-                    select(MemoryUnit.id)
-                    .join(ApprovalQueueItem, ApprovalQueueItem.candidate_memory_id == MemoryUnit.id)
-                    .where(
-                        MemoryUnit.principal_id == command.principal_id,
-                        ApprovalQueueItem.principal_id == command.principal_id,
-                        ApprovalQueueItem.state == "rejected",
-                        MemoryUnit.status == "tombstoned",
-                        func.sha256(func.convert_to(MemoryUnit.body, "UTF8"))
-                        == sha256(command.body.encode()).digest(),
-                        MemoryUnit.body == command.body,
-                    )
-                    .limit(1)
-                )
+                rejected = await self._rejected_body(session, command.principal_id, command.body)
                 if rejected is not None:
                     return None
                 embedding = await embed_one(
@@ -597,6 +595,20 @@ class MemoryService:
                     memory=contract_memory_from_row(row),
                     neighbors=tuple(matches),
                 )
+
+    async def prepare_curator_amendment(
+        self, body: str, *, principal_id: str, machine_id: str,
+    ) -> MemoryUnitChanges:
+        """Validate and embed the owner's replacement before the decision transaction."""
+        self._validate_body(body)
+        embedding = await embed_one(
+            self._embedding_provider, body, expected_dimensions=_EMBEDDING_DIMENSIONS,
+            receipt_context=EmbeddingReceiptContext(
+                principal_id=principal_id, machine_id=machine_id, origin_agent="maintenance",
+            ),
+        )
+        return MemoryUnitChanges(body=body, embedding=embedding,
+                                 embedding_model=self._embedding_provider.model, status="active")
 
     async def prepare_curator_split(
         self,
@@ -756,6 +768,23 @@ class MemoryService:
                     run_id=run_id,
                     origin_agent=origin_agent,
                 )
+
+    @staticmethod
+    async def _rejected_body(session: AsyncSession, principal_id: str, body: str) -> UUID | None:
+        return await session.scalar(
+            select(MemoryUnit.id)
+            .join(ApprovalQueueItem, ApprovalQueueItem.candidate_memory_id == MemoryUnit.id)
+            .where(
+                MemoryUnit.principal_id == principal_id,
+                ApprovalQueueItem.principal_id == principal_id,
+                ApprovalQueueItem.state == "rejected",
+                MemoryUnit.status == "tombstoned",
+                func.sha256(func.convert_to(MemoryUnit.body, "UTF8"))
+                == sha256(body.encode()).digest(),
+                MemoryUnit.body == body,
+            )
+            .limit(1)
+        )
 
     async def create_split_source(
         self,

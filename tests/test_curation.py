@@ -16,7 +16,7 @@ from sqlalchemy.exc import DBAPIError
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from spine.curation.contracts import CuratorVerdictDraft, HealthFinding, PalaceHealthReport
-from spine.curation.diagnostics import HealthReportBuilder
+from spine.curation.diagnostics import PROBES, HealthReportBuilder
 from spine.curation.service import CuratorService
 from spine.db.models import (
     ApprovalQueueItem,
@@ -173,6 +173,105 @@ def _install_fixture_curator(
     )
     app.state.curator_service = service
     return service
+
+
+@pytest.mark.asyncio
+async def test_curator_reviews_original_0738_duplicate_without_changing_create_bands(
+    memory_client, memory_app, embedding_provider, memory_session_factory,
+) -> None:
+    """F153 / v2.128 catches the observed 0.738 pair at the curator's own band."""
+    bodies = (
+        "OpenRouter is the default provider for both chat and embeddings in Nocturne.",
+        "Nocturne sends both its chat requests and its embedding requests "
+        "to OpenRouter by default.",
+    )
+    embedding_provider.set(bodies[0], basis_vector(0))
+    embedding_provider.set(bodies[1], vector_with_cosine(0.7384948))
+    for prompt in PROBES[1:]:
+        embedding_provider.set(prompt, basis_vector(0))
+    ids = []
+    for index, body in enumerate(bodies):
+        response = await memory_client.post("/v1/memories", json=_memory(f"Provider {index}", body))
+        assert response.status_code == 201  # The enacted 0.80 write band is unchanged.
+        ids.append(UUID(response.json()["created"]["memory_id"]))
+    report = await memory_app.state.curator_service._report_builder.build("fixture-owner")
+    assert len(report.findings) == 1
+    finding = report.findings[0]
+    assert set(finding.memory_ids) == set(ids)
+    assert float(finding.evidence["cosine"]) == pytest.approx(0.7384948)
+    assert finding.evidence["signals"] == {"embedding": True, "relevance": False}
+    higher_band = HealthReportBuilder(memory_session_factory, duplicate_floor=0.75,
+                                     embedding_provider=embedding_provider)
+    assert not (await higher_band.build("fixture-owner")).findings
+
+
+@pytest.mark.asyncio
+async def test_relevance_probes_find_pair_below_embedding_band(
+    memory_client, embedding_provider, memory_session_factory,
+) -> None:
+    """P1.2 / SD-074 nominates equal relevance vectors with the live scorer."""
+    for prompt in PROBES[1:]:
+        embedding_provider.set(prompt, basis_vector(3))
+    ids = []
+    for index, label in enumerate(("Alpha", "Beta", "Control")):
+        body = f"Fixture fact {label}."
+        embedding_provider.set(body, basis_vector(index if index < 2 else 3))
+        response = await memory_client.post("/v1/memories", json=_memory(label, body))
+        assert response.status_code == 201
+        ids.append(UUID(response.json()["created"]["memory_id"]))
+    builder = HealthReportBuilder(memory_session_factory, duplicate_floor=0.80,
+                                  embedding_provider=embedding_provider)
+    now = datetime.now(UTC)
+    first = await builder.build("fixture-owner", as_of=now)
+    second = await builder.build("fixture-owner", as_of=now)
+    assert first.model_dump_json() == second.model_dump_json()
+    assert len(first.findings) == 1
+    finding = first.findings[0]
+    assert set(finding.memory_ids) == set(ids[:2])
+    assert finding.evidence["signals"] == {"embedding": False, "relevance": True}
+    assert len(finding.evidence["relevance"]["left"]) == len(PROBES)
+
+
+@pytest.mark.asyncio
+async def test_curator_feedback_amendment_and_growth_share_real_consent_path(
+    memory_client, memory_app, embedding_provider, memory_session_factory,
+) -> None:
+    """P1.2 / SD-074 records feedback and enacts only the owner's amended text."""
+    await _seed_mess(memory_client, embedding_provider, memory_session_factory)
+    service = _install_fixture_curator(memory_app, memory_session_factory)
+    await service.run("fixture-owner", machine_id="fixture-mac", trigger="manual")
+    cards = (await memory_client.get("/v1/approval-queue", params={
+        "principal_id": "fixture-owner",
+    })).json()["cards"]
+    merge = next(card for card in cards if card["verdict"] == "merge")
+    assert len(merge["proposal_payload"]["sources"]) == 2
+    note = "Preserve the exact closing hour in future combinations."
+    response = await memory_client.post(f"/v1/approval-queue/{merge['item_uid']}/feedback", json={
+        "feedback": note, "actor_class": "human", "machine_id": "fixture-mac",
+    })
+    assert response.status_code == 200
+    assert (await service.activity("fixture-owner")).pending_cards == 2
+    seen = []
+    provider = service._provider
+    class RecordingProvider:
+        async def verdict(self, finding, report, **kwargs):
+            seen.append(finding)
+            return await provider.verdict(finding, report, **kwargs)
+    service._provider = RecordingProvider()
+    await service.run("fixture-owner", machine_id="fixture-mac", trigger="manual")
+    duplicate = next(finding for finding in seen if finding.kind == "duplicate")
+    assert duplicate.evidence["owner_feedback"][0]["feedback"] == note
+    amended = "The archive closes at nine."
+    response = await memory_client.post(f"/v1/approval-queue/{merge['item_uid']}/decisions", json={
+        "decision": "approve", "approval_mode": "explicit", "actor_class": "human",
+        "machine_id": "fixture-mac", "amended_body": amended,
+    })
+    assert response.status_code == 200, response.text
+    assert response.json()["card"]["candidate"]["body"] == amended
+    activity = await service.activity("fixture-owner")
+    assert activity.growth[0].active_units == 3
+    assert activity.growth[-1].active_units == 2
+    assert activity.growth[-1].curator_removals == 2
 
 
 @pytest.mark.asyncio

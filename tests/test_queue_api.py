@@ -137,6 +137,20 @@ async def test_rejected_candidate_body_is_suppressed_across_threads_but_not_prin
     assert repeated.json()["cards"] == []
     assert repeated.json()["duplicate_count"] == 1
     assert len(embedding_provider.calls) == calls_before
+    explicit_resave = await memory_client.post(
+        "/v1/memories",
+        json={
+            "principal_id": "owner",
+            "label": "Explicit resave",
+            "body": body,
+            "kind": "fact",
+            "editor": "user",
+            "machine_id": "mac",
+            "force": True,
+        },
+    )
+    assert explicit_resave.status_code == 422
+    assert "rejected" in explicit_resave.json()["detail"]
     payload["principal_id"] = "another-fixture"
     other = await memory_client.post("/v1/extractions", json=payload)
     assert other.status_code == 200 and len(other.json()["cards"]) == 1
@@ -146,6 +160,66 @@ async def test_rejected_candidate_body_is_suppressed_across_threads_but_not_prin
     payload["candidates"][0]["body"] = changed
     revised = await memory_client.post("/v1/extractions", json=payload)
     assert revised.status_code == 200 and len(revised.json()["cards"]) == 1
+
+
+@pytest.mark.asyncio
+async def test_batch_preserves_an_earlier_denial_and_finishes_pending_cards(
+    memory_client: AsyncClient,
+    embedding_provider: ScriptedEmbeddingProvider,
+) -> None:
+    """A-075 / M3MQ: a mixed batch finishes without reversing an earlier human decision."""
+    batch_uid = str(uuid4())
+    markdown = "Alpha stays. Beta stays."
+    embedding_provider.set(markdown, basis_vector(0))
+    candidates = []
+    for index, name in enumerate(("Alpha", "Beta"), 1):
+        body = f"{name} stays."
+        embedding_provider.set(body, basis_vector(index))
+        candidates.append(
+            {
+                "label": name,
+                "body": body,
+                "kind": "fact",
+                "keywords": [name.lower(), "stays"],
+                "verdict": "new",
+                "target_ids": [],
+            }
+        )
+    born = await memory_client.post(
+        "/v1/seeds",
+        json={
+            "principal_id": "owner",
+            "batch_uid": batch_uid,
+            "source_name": "mixed.md",
+            "source_sha256": sha256(markdown.encode()).hexdigest(),
+            "markdown": markdown,
+            "machine_id": "mac",
+            "editor": "seed-splitter",
+            "candidates": candidates,
+        },
+    )
+    cards = born.json()["cards"]
+    request = {
+        "decision": "deny",
+        "approval_mode": "explicit",
+        "actor_class": "human",
+        "machine_id": "mac",
+    }
+    denied = await memory_client.post(
+        f"/v1/approval-queue/{cards[0]['item_uid']}/decisions", json=request
+    )
+    assert denied.status_code == 200
+    request["decision"] = "approve"
+    result = await memory_client.post(
+        f"/v1/approval-queue/batches/{batch_uid}/decisions", json=request
+    )
+    assert result.status_code == 200
+    assert result.json()["already_decided"] == 1
+    assert {card["state"] for card in result.json()["cards"]} == {"approved", "rejected"}
+    replay = await memory_client.post(
+        f"/v1/approval-queue/batches/{batch_uid}/decisions", json=request
+    )
+    assert replay.status_code == 200 and replay.json()["already_decided"] == 2
 
 
 @pytest.mark.asyncio

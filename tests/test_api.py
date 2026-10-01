@@ -54,6 +54,7 @@ SPINE_ROUTES = {
     ("POST", "/v1/seeds"),
     ("GET", "/v1/approval-queue"),
     ("POST", "/v1/approval-queue/{item_uid}/decisions"),
+    ("POST", "/v1/approval-queue/{item_uid}/feedback"),
     ("POST", "/v1/approval-queue/batches/{batch_uid}/decisions"),
     ("GET", "/v1/curation"),
     ("GET", "/v1/curation/progress"),
@@ -104,7 +105,7 @@ async def test_health_endpoints_and_auth_are_live(app: FastAPI) -> None:
     assert healthy_healthz.json() == {
         "ok": True,
         "version": __version__,
-        "api_contract_version": "0.1.46",
+        "api_contract_version": "0.1.48",
         "schema_version": "0027",
     }
     assert healthy_healthz.json()["api_contract_version"] == API_CONTRACT_VERSION
