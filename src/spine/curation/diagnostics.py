@@ -1,4 +1,4 @@
-"""Deterministic, provider-free Palace Health Report generation."""
+"""Palace Health Reports from stored facts and fixed relevance probes."""
 
 from __future__ import annotations
 
@@ -15,6 +15,18 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from spine.curation.contracts import HealthFinding, PalaceHealthReport
 from spine.db.models import CuratorRun, MemoryEdge, MemoryRevision, MemoryUnit
+from spine.embeddings import EmbeddingProvider, EmbeddingReceiptContext, embed_one
+from spine.inject.scorer import _score_candidate, prompt_keywords
+from spine.inject.service import _active_scorer_config, _candidate_from_row
+
+PROBES = (
+    "",
+    "What should I remember about how this project works?",
+    "How should I build, test, and release this project?",
+    "Which tools and services does this project use?",
+)
+PROBE_VERSION = "curator-relevance-v1"
+RELEVANCE_MAX_DELTA = 0.015
 
 
 class HealthReportBuilder:
@@ -26,10 +38,13 @@ class HealthReportBuilder:
         *,
         duplicate_floor: float,
         stale_days: int = 180,
+        embedding_provider: EmbeddingProvider | None = None,
     ) -> None:
         self._session_factory = session_factory
         self._duplicate_floor = duplicate_floor
         self._stale_days = stale_days
+        self._embedding_provider = embedding_provider
+        self._probe_embeddings: dict[str, list[float]] = {}
 
     async def build(
         self,
@@ -96,6 +111,37 @@ class HealthReportBuilder:
                 .scalars()
                 .all()
             )
+            config = await _active_scorer_config(session) if self._embedding_provider else None
+            edits = dict((await session.execute(
+                select(MemoryRevision.memory_id, func.max(MemoryRevision.ts))
+                .where(MemoryRevision.memory_id.in_(active_ids), MemoryRevision.editor == "user")
+                .group_by(MemoryRevision.memory_id)
+            )).all()) if config is not None else {}
+
+        vectors: dict[UUID, list[float]] = {row["id"]: [] for row in rows}
+        if config is not None and rows:
+            candidates = [_candidate_from_row(
+                {**row, "last_human_edit_at": edits.get(row["id"])}, pool_sources=("curator",)
+            ) for row in rows]
+            for prompt in PROBES:
+                if prompt not in self._probe_embeddings:
+                    self._probe_embeddings[prompt] = await embed_one(
+                        self._embedding_provider, prompt, expected_dimensions=1536,
+                        receipt_context=EmbeddingReceiptContext(
+                            principal_id=principal_id, machine_id="palace-curator",
+                            origin_agent="maintenance",
+                        ),
+                    ) if prompt else [0.0] * 1536
+                for candidate in candidates:
+                    scored = _score_candidate(
+                        candidate, query=tuple(self._probe_embeddings[prompt]),
+                        semantic=None if prompt else 0.0, prompt_keywords=prompt_keywords(prompt),
+                        snapshot_ts=observed_at, thread_project_key=None, thread_id=None,
+                        location_path=None, weights=config.weights_for_project(None),
+                        params=config.params, learned_bias=config.bias_offset(candidate.memory_id),
+                        axes=config.axes,
+                    )
+                    vectors[candidate.memory_id].append(scored.score)
 
         evidence_by_id = {row["id"]: _memory_evidence(row) for row in rows}
         findings: list[tuple[str, tuple[UUID, ...], dict[str, Any]]] = []
@@ -103,7 +149,11 @@ class HealthReportBuilder:
         for index, left in enumerate(rows):
             for right in rows[index + 1 :]:
                 score = _cosine(left["embedding"], right["embedding"])
-                if score < self._duplicate_floor:
+                left_scores, right_scores = vectors[left["id"]], vectors[right["id"]]
+                delta = max((abs(a-b) for a, b in zip(left_scores, right_scores, strict=True)),
+                            default=1.0)
+                by_relevance = bool(left_scores) and delta <= RELEVANCE_MAX_DELTA
+                if score < self._duplicate_floor and not by_relevance:
                     continue
                 pair = (left["id"], right["id"])
                 duplicate_links.append(pair)
@@ -113,6 +163,16 @@ class HealthReportBuilder:
                         pair,
                         {
                             "cosine": f"{score:.9f}",
+                            "signals": {
+                                "embedding": score >= self._duplicate_floor,
+                                "relevance": by_relevance,
+                            },
+                            "relevance": {
+                                "probe_version": PROBE_VERSION, "prompts": list(PROBES),
+                                "scorer_version": None if config is None else config.version,
+                                "left": left_scores, "right": right_scores,
+                                "max_delta": delta, "threshold": RELEVANCE_MAX_DELTA,
+                            },
                             "memories": [evidence_by_id[memory_id] for memory_id in pair],
                         },
                     )

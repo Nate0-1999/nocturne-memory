@@ -5,10 +5,10 @@ per-memory bias and per-project offsets; tau and memory share wait for 100
 authentic dispositions. Location/decay and corpus size are configured; session
 affinity is replay-only. Loop 2, creation: append-only outcomes and survival
 scoreboard, with compaction instructions and memory size not yet learned and
-dedup bands configured. Loop 3, scorer_structure: curator-nominated transparent
-scalar axes, replay-tested and proposed for an owner's activation. Loop 4,
-beyond: optimizer/model training is gated; role policies and the harness's
-return shares (FL-198) remain configured.
+dedup bands and curator_review_sim configured. Loop 3, scorer_structure:
+curator-nominated transparent scalar axes, replay-tested and proposed for an
+owner's activation. Loop 4, beyond: optimizer/model training is gated; role
+policies and the harness's return shares (FL-198) remain configured.
 
 New loops register here. Fences, floors, consent, journals and receipts are
 never trainable. ``LearnerService.manifest`` is the executable registry copied
@@ -133,6 +133,7 @@ class LearnerService:
             ("compaction_instructions", "creation", None, "signals_only"),
             ("memory_size_cap", "creation", None, "unbuilt"),
             ("dedup_bands", "creation", None, "configured"),
+            ("curator_review_sim", "creation", None, "configured"),
             ("axes", "scorer_structure", minimum, "proposed_then_owner_activation"),
             ("optimizer", "beyond", None, "gated"),
             ("model_weights", "beyond", None, "gated"),

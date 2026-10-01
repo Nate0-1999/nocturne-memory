@@ -419,9 +419,16 @@ async def _load_candidates(
     )
     columns = (*unit.c, human_edits.c.last_human_edit_at)
     excluded_ids = tuple(command.excluded_memory_ids)
+    event = InjectionEvent.__table__
+    never_in_thread = select(event.c.memory_id).where(
+        event.c.principal_id == command.principal_id,
+        event.c.thread_id == command.thread_id,
+        event.c.outcome == "removed:never",
+    )
     base_filters: tuple[Any, ...] = (
         unit.c.principal_id == command.principal_id,
         unit.c.status == "active",
+        unit.c.id.not_in(never_in_thread),
         or_(unit.c.project_key.is_(None), unit.c.project_key == command.project_key),
     )
     if excluded_ids:

@@ -90,6 +90,7 @@ class SplitMemoryChildRequest(ContractRequest):
 class SplitMemoryRequest(ContractRequest):
     principal_id: str
     source_body: str
+    project_key: str | None = None
     children: Annotated[list[SplitMemoryChildRequest], Field(min_length=2, max_length=64)]
     thread_origin: str | None = None
     origin_thread_id: UUID | None = None
@@ -220,6 +221,7 @@ async def split_memory(
             SplitMemoryCommand(
                 principal_id=body.principal_id,
                 source_body=body.source_body,
+                project_key=body.project_key,
                 children=tuple(
                     SplitMemoryChild(
                         label=child.label,

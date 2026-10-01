@@ -93,7 +93,11 @@ def create_app(
     resolved = settings or Settings()  # type: ignore[call-arg]
     owned_engine = None
     if session_factory is None:
-        owned_engine = make_engine(resolved.database_url)
+        owned_engine = make_engine(
+            resolved.database_url,
+            pool_size=resolved.database_pool_size,
+            max_overflow=resolved.database_max_overflow,
+        )
         session_factory = make_session_factory(owned_engine)
 
     spend_service = SpendService(session_factory)
@@ -137,8 +141,9 @@ def create_app(
         session_factory,
         HealthReportBuilder(
             session_factory,
-            duplicate_floor=resolved.dedup_sim,
+            duplicate_floor=resolved.curator_review_sim,
             stale_days=resolved.curator_stale_days,
+            embedding_provider=embedding_provider,
         ),
         curator_verdict_provider,
         queue_service,

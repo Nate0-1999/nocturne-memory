@@ -12,6 +12,7 @@ from spine.queue.contracts import (
     ExtractionResponse,
     QueueDecisionRequest,
     QueueDecisionResponse,
+    QueueFeedbackRequest,
     QueueResponse,
     SeedRequest,
     SeedResponse,
@@ -45,8 +46,20 @@ async def ingest_seed(body: SeedRequest, request: Request) -> SeedResponse | Pro
         return await request.app.state.queue_service.ingest_seed(body)
     except QueueConflictError as exc:
         return _problem(request, 409, str(exc))
-    except QueueValidationError as exc:
+    except (QueueValidationError, MemoryValidationError) as exc:
         return _problem(request, 422, str(exc))
+
+
+@router.post(
+    "/v1/approval-queue/{item_uid}/feedback", response_model=dict[str, str], responses=ERRORS,
+)
+async def feedback(
+    item_uid: str, body: QueueFeedbackRequest, request: Request,
+) -> dict[str, str] | ProblemJSONResponse:
+    try:
+        return await request.app.state.queue_service.feedback(item_uid, body)
+    except QueueNotFoundError:
+        return _problem(request, 404, "Curator proposal does not exist.")
 
 
 @router.get("/v1/approval-queue", response_model=QueueResponse, responses=ERRORS)
@@ -74,7 +87,7 @@ async def decide(
         return _problem(request, 404, "Queue item does not exist.")
     except QueueConflictError as exc:
         return _problem(request, 409, str(exc))
-    except QueueValidationError as exc:
+    except (QueueValidationError, MemoryValidationError) as exc:
         return _problem(request, 422, str(exc))
 
 
