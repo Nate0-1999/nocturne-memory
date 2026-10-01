@@ -176,6 +176,36 @@ def _install_fixture_curator(
 
 
 @pytest.mark.asyncio
+async def test_curator_reviews_original_0738_duplicate_without_changing_create_bands(
+    memory_client, memory_app, embedding_provider, memory_session_factory,
+) -> None:
+    """F153 / v2.128 catches the observed 0.738 pair at the curator's own band."""
+    bodies = (
+        "OpenRouter is the default provider for both chat and embeddings in Nocturne.",
+        "Nocturne sends both its chat requests and its embedding requests "
+        "to OpenRouter by default.",
+    )
+    embedding_provider.set(bodies[0], basis_vector(0))
+    embedding_provider.set(bodies[1], vector_with_cosine(0.7384948))
+    for prompt in PROBES[1:]:
+        embedding_provider.set(prompt, basis_vector(0))
+    ids = []
+    for index, body in enumerate(bodies):
+        response = await memory_client.post("/v1/memories", json=_memory(f"Provider {index}", body))
+        assert response.status_code == 201  # The enacted 0.80 write band is unchanged.
+        ids.append(UUID(response.json()["created"]["memory_id"]))
+    report = await memory_app.state.curator_service._report_builder.build("fixture-owner")
+    assert len(report.findings) == 1
+    finding = report.findings[0]
+    assert set(finding.memory_ids) == set(ids)
+    assert float(finding.evidence["cosine"]) == pytest.approx(0.7384948)
+    assert finding.evidence["signals"] == {"embedding": True, "relevance": False}
+    higher_band = HealthReportBuilder(memory_session_factory, duplicate_floor=0.75,
+                                     embedding_provider=embedding_provider)
+    assert not (await higher_band.build("fixture-owner")).findings
+
+
+@pytest.mark.asyncio
 async def test_relevance_probes_find_pair_below_embedding_band(
     memory_client, embedding_provider, memory_session_factory,
 ) -> None:

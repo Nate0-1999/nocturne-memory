@@ -17,6 +17,9 @@ class Settings(BaseSettings):
     )
 
     database_url: str
+    # F159: bounded per-service pools share the small Palace database instance.
+    database_pool_size: int = Field(default=2, gt=0)
+    database_max_overflow: int = Field(default=3, ge=0)
     token: SecretStr
     owner_principal_id: str = Field(default="local", min_length=1)
     openai_api_key: SecretStr | None = None
@@ -56,6 +59,8 @@ class Settings(BaseSettings):
     curator_write_trigger: int = Field(default=25, gt=0)
     curator_pressure_trigger: int = Field(default=3, gt=0)
     curator_stale_days: int = Field(default=180, gt=0)
+    # SPEC v2.128: curator nomination has its own band; create bands stay unchanged.
+    curator_review_sim: float = Field(default=0.70, ge=0.0, le=1.0)
     curator_poll_seconds: float = Field(default=5.0, gt=0)
 
     @model_validator(mode="after")
