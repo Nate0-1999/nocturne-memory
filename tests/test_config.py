@@ -72,7 +72,7 @@ async def test_database_pool_waits_at_the_configured_connection_budget(
 
 
 def test_curator_band_is_configured_and_registered(monkeypatch: pytest.MonkeyPatch) -> None:
-    """SPEC v2.128 / FL-058 separates curator configuration from write-time bands."""
+    """SPEC C.5 / FL-058 separates curator configuration from write-time bands."""
     monkeypatch.setenv("SPINE_CURATOR_REVIEW_SIM", "0.75")
     settings = _settings()
     assert settings.curator_review_sim == 0.75
