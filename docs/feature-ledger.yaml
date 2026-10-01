@@ -326,7 +326,7 @@
       "section": "1. Memory palace — storage, units, lineage",
       "era": "Sep 2",
       "label": "Constitution: Typed edges between memories (merged from, supersedes, contradicts, and richer kinds at creation and curation) with a depth-limited traversal for the graph and the scorer (SD-057).",
-      "status": "partial",
+      "status": "built",
       "walk": "Open the Memory Graph on a curated memory; typed edges (merged from, supersedes, contradicts) are drawn to its relatives.",
       "owner": "constitution",
       "surfaces": [
@@ -335,12 +335,14 @@
         "harness/web/src/MemoryGraph.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F127",
+        "packet": "M3MQ",
+        "date": "2026-10-01",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-015.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-01"
     },
     {
       "id": "FL-016",
@@ -743,8 +745,8 @@
         "spine/src/spine/inject/decisions.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3MQ",
+        "date": "2026-10-01",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-033.png"
@@ -765,8 +767,8 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3MQ",
+        "date": "2026-10-01",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-034.png"
@@ -810,8 +812,8 @@
         "spine/src/spine/queue/service.py"
       ],
       "last_walk": {
-        "packet": "M3RD",
-        "date": "2026-09-28",
+        "packet": "M3MQ",
+        "date": "2026-10-01",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-036.png"
@@ -832,8 +834,8 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3MQ",
+        "date": "2026-10-01",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-037.png"
@@ -855,8 +857,8 @@
         "harness/src/harness/agent.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3MQ",
+        "date": "2026-10-01",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-038.png"
@@ -933,8 +935,8 @@
         "harness/src/harness/agent.py"
       ],
       "last_walk": {
-        "packet": "M3RX",
-        "date": "2026-09-27",
+        "packet": "M3MQ",
+        "date": "2026-10-01",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-042.png"
@@ -947,7 +949,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "gate-day",
       "label": "Constitution: A marker on a memory superseded after injection instead of yanking it mid-thread (gate-day).",
-      "status": "unverified",
+      "status": "built",
       "walk": "Supersede an injected memory mid-thread; the panel shows a superseded marker on it, not a removal.",
       "owner": "constitution",
       "surfaces": [
@@ -955,12 +957,14 @@
         "harness/src/harness/memory_panel.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "FAIL",
-        "flag": "F127",
+        "packet": "M3MQ",
+        "date": "2026-10-01",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-043.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-01"
     },
     {
       "id": "FL-044",
@@ -997,8 +1001,8 @@
         "spine/src/spine/memory/router.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3MQ",
+        "date": "2026-10-01",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-045.png"
@@ -1274,12 +1278,14 @@
         "garden/notes/trainable-parameters.md"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3MQ",
+        "date": "2026-10-01",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-058.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-01"
     },
     {
       "id": "FL-059",
@@ -2200,8 +2206,8 @@
         "harness/web/src/store.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3EXF2",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-102.png"
@@ -2463,8 +2469,8 @@
         "harness/web/src/ModelDevice.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3EXF2",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-113.png"
@@ -2723,12 +2729,14 @@
         "harness/web/src/assets/rack.css"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3EXF2",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-124.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-30"
     },
     {
       "id": "FL-125",
@@ -3009,8 +3017,8 @@
         "harness/web/src/MemoryGraph.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3EXF2",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F131",
         "screenshot": "FL-138.png"
@@ -3969,12 +3977,14 @@
         "harness/src/harness/jobs.py"
       ],
       "last_walk": {
-        "packet": "M3EXF",
+        "packet": "M3EXF2",
         "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-184.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-09-30"
     },
     {
       "id": "FL-185",
