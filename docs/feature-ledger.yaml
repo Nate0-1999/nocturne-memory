@@ -31,7 +31,7 @@
       "section": "1. Memory palace — storage, units, lineage",
       "era": "founding",
       "label": "Memory units have a length cap; a memory over the cap is shortened to fit as one memory, and it is split only when it holds more than one distinct fact, with the split logged.",
-      "status": "built",
+      "status": "partial",
       "walk": "/remember a 300-token paragraph holding one fact; one memory lands, shortened to the cap; a paragraph holding two facts lands as two.",
       "owner": "owner — \"Like we shorten the length cap then they are too long\" (chat 2026-09-12); \"this was one memory that was split agentically logged\" (chat 2026-07-26)",
       "surfaces": [
@@ -40,10 +40,10 @@
         "spine/src/spine/tokens.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-002.png"
       }
     },
@@ -61,8 +61,8 @@
         "spine/src/spine/memory/router.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-003.png"
@@ -83,8 +83,8 @@
         "harness/web/src/InjectionConsole.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-004.png"
@@ -106,8 +106,8 @@
         "spine/src/spine/memory/router.py"
       ],
       "last_walk": {
-        "packet": "M3RX",
-        "date": "2026-09-27",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-005.png"
@@ -132,7 +132,7 @@
         "harness/src/harness/toolset_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3PL",
+        "packet": "M3W5A+M3W5B",
         "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
@@ -156,8 +156,8 @@
         "harness/src/harness/transcript.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-007.png"
@@ -176,8 +176,8 @@
         "harness/src/harness/transcript.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-008.png"
@@ -199,8 +199,8 @@
         "harness/pyproject.toml"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-009.png"
@@ -224,8 +224,8 @@
         "spine/src/spine/db/migrations/versions/0016_thread_index.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-010.png"
@@ -236,7 +236,7 @@
       "section": "1. Memory palace — storage, units, lineage",
       "era": "Aug 21",
       "label": "Memories promoted out of a sub-agent carry the originating thread id.",
-      "status": "built",
+      "status": "partial",
       "walk": "After a symphony run, open a promoted memory; its thread id is the symphony thread it came from.",
       "owner": "owner — \"Sub agents shouldn't be creating memories unless they are getting promoted out after in which case they can carry the thread id.\" (chat 2026-08-21 19:32:46)",
       "surfaces": [
@@ -245,10 +245,10 @@
         "spine/src/spine/db/migrations/versions/0016_thread_index.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F086",
         "screenshot": "FL-011.png"
       }
     },
@@ -267,8 +267,8 @@
         "harness/web/src/InjectionConsole.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-012.png"
@@ -288,7 +288,7 @@
         "harness/src/harness/memory_panel.py"
       ],
       "last_walk": {
-        "packet": "M3EXF",
+        "packet": "M3W5A+M3W5B",
         "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
@@ -312,8 +312,8 @@
         "harness/src/harness/toolset_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-014.png"
@@ -357,8 +357,8 @@
         "harness/src/harness/onboarding.py"
       ],
       "last_walk": {
-        "packet": "M3CL",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-016.png"
@@ -381,8 +381,8 @@
         "harness/web/src/frontDoor.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-017.png"
@@ -405,8 +405,8 @@
         "harness/web/src/frontDoor.ts"
       ],
       "last_walk": {
-        "packet": "M3CL",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-018.png"
@@ -428,8 +428,8 @@
         "spine/src/spine/inject/decisions.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-019.png"
@@ -451,8 +451,8 @@
         "spine/src/spine/inject/decisions.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-020.png"
@@ -477,8 +477,8 @@
         "spine/src/spine/m2k/service.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-021.png"
@@ -498,8 +498,8 @@
         "spine/src/spine/inject/service.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-022.png"
@@ -522,8 +522,8 @@
         "harness/web/src/InjectionConsole.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-023.png"
@@ -544,8 +544,8 @@
         "spine/src/spine/inject/service.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-024.png"
@@ -566,8 +566,8 @@
         "spine/src/spine/inject/service.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-025.png"
@@ -578,7 +578,7 @@
       "section": "2. Injection and the gate",
       "era": "Aug 3",
       "label": "The keyword, project key and origin path columns on a memory are filled in and factored into scoring.",
-      "status": "built",
+      "status": "partial",
       "walk": "Open a memory card; keyword, project and origin path are filled, and the score breakdown shows them counting.",
       "owner": "owner — \"The columns like keyword, project key, origin path, etc being empty might make sense because we aren't fully implemented but I want to make sure they are factored when we get there...\" (chat 2026-07-22 18:28:43)",
       "surfaces": [
@@ -588,10 +588,10 @@
         "spine/src/spine/memory/service.py"
       ],
       "last_walk": {
-        "packet": "M3PL",
+        "packet": "M3W5A+M3W5B",
         "date": "2026-09-30",
-        "verdict": "PASS",
-        "flag": "",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-026.png"
       }
     },
@@ -610,8 +610,8 @@
         "harness/web/src/InjectionConsole.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-027.png"
@@ -634,8 +634,8 @@
         "harness/src/harness/context_window.py"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-028.png"
@@ -658,8 +658,8 @@
         "harness/src/harness/context_window.py"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F086",
         "screenshot": "FL-029.png"
@@ -670,7 +670,7 @@
       "section": "2. Injection and the gate",
       "era": "Aug 24",
       "label": "Force controls for the line, the share and pins, all in the same module as the hyperparameters, each with the algorithm resuming afterward.",
-      "status": "built",
+      "status": "partial",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): In the Injection Console, force the share; the next retrain moves it again.",
       "owner": "owner — \"Let's just make sure those force or manual set functions all have the same pattern the user can set them but then the algorithm begins automating them agian. Let's make sure these inputs and vizualizatoins are in the same module as the existing hyper parameters.\" (chat 2026-08-24 20:50:21; chat 2026-08-24 20:24:41)",
       "surfaces": [
@@ -679,10 +679,10 @@
         "harness/web/src/MemoryPanel.tsx"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-030.png"
       }
     },
@@ -700,8 +700,8 @@
         "spine/src/spine/inject/decisions.py"
       ],
       "last_walk": {
-        "packet": "M3CL",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-031.png"
@@ -724,8 +724,8 @@
         "spine/src/spine/m2k/router.py"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-032.png"
@@ -789,8 +789,8 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-035.png"
@@ -880,8 +880,8 @@
         "harness/src/harness/memory_capability.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-039.png"
@@ -912,10 +912,10 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
-        "flag": "F086",
+        "flag": "F151",
         "screenshot": "FL-041.png"
       },
       "protected": true,
@@ -980,8 +980,8 @@
         "harness/src/harness/memory_capability.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-044.png"
@@ -1024,10 +1024,10 @@
         "harness/web/src/nebulaBindings.ts"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
-        "flag": "F086",
+        "flag": "F151",
         "screenshot": "FL-046.png"
       }
     },
@@ -1045,8 +1045,8 @@
         "spine/src/spine/learner/evidence.py"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-047.png"
@@ -1057,7 +1057,7 @@
       "section": "4. Learning and training loops",
       "era": "Jul 22",
       "label": "A permanent back-test table of every human add and removal of a memory, as the training data for the injection algorithm.",
-      "status": "built",
+      "status": "partial",
       "walk": "Remove a memory at the gate; a new row for it appears in the back-test table.",
       "owner": "owner — \"2. we should be keeping track of all our training data: human adding or removing memories in a permenant back test table so we can can get fancier on our memory injection algorithm over time.\" (chat 2026-07-22 15:05:49; chat 2026-08-01 19:41:27)",
       "surfaces": [
@@ -1066,10 +1066,10 @@
         "spine/src/spine/learner/evidence.py"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
-        "flag": "F086",
+        "flag": "F158",
         "screenshot": "FL-048.png"
       },
       "protected": true,
@@ -1088,8 +1088,8 @@
         "spine/src/spine/inject/axes.py"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F086",
         "screenshot": "FL-049.png"
@@ -1107,8 +1107,8 @@
         "spine/src/spine/learner/"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-050.png"
@@ -1128,10 +1128,10 @@
         "harness/web/src/learning.ts"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
-        "flag": "F086",
+        "flag": "F158",
         "screenshot": "FL-051.png"
       }
     },
@@ -1149,8 +1149,8 @@
         "harness/web/src/learning.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-052.png"
@@ -1171,8 +1171,8 @@
         "spine/src/spine/learner/service.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-053.png"
@@ -1195,8 +1195,8 @@
         "spine/src/spine/m2k/router.py"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-054.png"
@@ -1214,8 +1214,8 @@
         "spine/src/spine/learner/"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-055.png"
@@ -1233,8 +1233,8 @@
         "spine/src/spine/learner/"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-056.png"
@@ -1247,7 +1247,7 @@
       "section": "4. Learning and training loops",
       "era": "Aug 31",
       "label": "Deleting a memory from the Palace feeds a training loop that tunes memory creation.",
-      "status": "built",
+      "status": "partial",
       "walk": "Delete a memory; the memory-creation loop's ledger records the deletion.",
       "owner": "owner — \"I think that the user should be able to delete a memory from the palace. This can be a new training loop that helps with memory creation tuning.\" (chat 2026-08-31 18:59:34)",
       "surfaces": [
@@ -1258,10 +1258,10 @@
         "spine/src/spine/db/migrations/versions/0023_creation_decisions.py"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-057.png"
       }
     },
@@ -1300,8 +1300,8 @@
         "spine/src/spine/db/migrations/versions/0020_optimization_runs.py"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-059.png"
@@ -1320,8 +1320,8 @@
         "spine/src/spine/db/migrations/versions/0020_optimization_runs.py"
       ],
       "last_walk": {
-        "packet": "M3RX",
-        "date": "2026-09-27",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-060.png"
@@ -1352,10 +1352,10 @@
         "spine/src/spine/learner/service.py"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
-        "flag": "F086",
+        "flag": "F158",
         "screenshot": "FL-062.png"
       }
     },
@@ -1373,8 +1373,8 @@
         "spine/src/spine/learner/"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-063.png"
@@ -1394,10 +1394,10 @@
         "spine/src/spine/inject/scorer.py"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
-        "flag": "F086",
+        "flag": "F152",
         "screenshot": "FL-064.png"
       }
     },
@@ -1426,8 +1426,8 @@
         "harness/verification/m3ll/benchmark_prompt.txt"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F114",
         "screenshot": "FL-066.png"
@@ -1450,8 +1450,8 @@
         "harness/web/src/projectPath.ts"
       ],
       "last_walk": {
-        "packet": "M3CL",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-067.png"
@@ -1474,8 +1474,8 @@
         "harness/src/harness/progressive_prompt.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-068.png"
@@ -1486,7 +1486,7 @@
       "section": "5. Agent hands and location",
       "era": "Jul 28",
       "label": "The core tools every modern harness has: files, terminal, Chrome, skills, changing models, compaction (our own take), and interactions with common apps, taken from the most modular standard source.",
-      "status": "built",
+      "status": "partial",
       "walk": "Ask the agent to read a file, run a terminal command, open a page in the browser and use a skill; each works.",
       "owner": "owner — \"there should be a core of tools that are consistent across al of them that we should fine: using skills, progressive prompting, changing models, compaction strategies (we will have our own take), interactions with common apps, etc, etc. we need to go out and find those common standard ones pick the one we like the best that is the most modular and keep it.\" (chat 2026-08-16 19:37:48; chat 2026-07-28 16:27:32)",
       "surfaces": [
@@ -1499,10 +1499,10 @@
         "harness/src/harness/browser_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F082",
         "screenshot": "FL-069.png"
       }
     },
@@ -1511,7 +1511,7 @@
       "section": "5. Agent hands and location",
       "era": "Aug 2",
       "label": "Image input: paste an image and the agent reviews it.",
-      "status": "built",
+      "status": "partial",
       "walk": "Paste an image; the agent reviews it.",
       "owner": "owner — \"3. Ok multimodality should be something that we must support long term. I must be able to copy in images and have my agents review them. Similarly to browser use and comand line use and all the other basic tooling every modern harness has.\" (chat 2026-08-03 01:00:05)",
       "surfaces": [
@@ -1521,10 +1521,10 @@
         "harness/src/harness/transcript.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-070.png"
       },
       "protected": true,
@@ -1544,8 +1544,8 @@
         "harness/src/harness/progressive_prompt.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-071.png"
@@ -1567,8 +1567,8 @@
         "harness/src/harness/progressive_prompt.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-072.png"
@@ -1588,8 +1588,8 @@
         "harness/src/harness/progressive_prompt.py"
       ],
       "last_walk": {
-        "packet": "M3LT",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-073.png"
@@ -1612,8 +1612,8 @@
         "harness/web/src/projectPath.ts"
       ],
       "last_walk": {
-        "packet": "M3SF",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-074.png"
@@ -1635,8 +1635,8 @@
         "harness/src/harness/run_loop.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-075.png"
@@ -1657,8 +1657,8 @@
         "harness/web/src/RewindControl.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-076.png"
@@ -1679,7 +1679,7 @@
       "section": "5. Agent hands and location",
       "era": "founding",
       "label": "Browser hands adopted whole and pinned upstream: Playwright for Python, with the Codex extension deferred until a standalone runtime exists (F116 ruling).",
-      "status": "built",
+      "status": "partial",
       "walk": "Ask the agent to open the app it just built and read the page; it navigates, clicks, types and screenshots through the adopted browser hands (Playwright; the Codex extension is revisited when a standalone runtime exists — F116), inside the fence, every action journaled.",
       "owner": "owner — \"I would lik to have a codex browser use extension because it thikn it is really good and the open ai devs will definitely spend a bunch of time maintaining it and making it better\" (chat 2026-09-12); Playwright fallback accepted by PLAN M3BW RULING (2026-09-16, F116 resolved).",
       "surfaces": [
@@ -1689,10 +1689,10 @@
         "harness/tests/test_browser_consent.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-078.png"
       }
     },
@@ -1709,8 +1709,8 @@
         "harness/src/harness/onboarding.py"
       ],
       "last_walk": {
-        "packet": "M3CL",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-079.png"
@@ -1734,8 +1734,8 @@
         "spine/src/spine/queue/router.py"
       ],
       "last_walk": {
-        "packet": "M3RD",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-080.png"
@@ -1746,7 +1746,7 @@
       "section": "6. Context window, history and compaction",
       "era": "Sep 10",
       "label": "A suite of compaction strategies: truncation; summarization; make the compaction memories first, wait for them to land, then drop everything else; keep only the human's messages and each agent turn's final answer.",
-      "status": "built",
+      "status": "partial",
       "walk": "Open a memory card on the Deck or the gate: it shows only the aggregate score, the name and the memory; hovering shows a spider-web chart across every relevance feature; the provenance (project, thread, keywords, WHERE, revisions, open-the-conversation) is behind the hover or a tap, not on the card (owner, 2026-09-22).",
       "owner": "owner — \"I am thinking that there will be a suite of compaction strategies that we can employ: truncation, summarization, apply memories made at compaction (wait for this to happen) and drop everything else, keep just the agent turn final response and human messages.\" (seed SD-061 (owner 2026-09-10)) — 2026-09-22: \"each memory should only have the aggregate score, name, and memory then if we hover over a spider web chart should pop up across all the memory relevance features\"",
       "surfaces": [
@@ -1754,10 +1754,10 @@
         "harness/src/harness/agent_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F149",
         "screenshot": "FL-081.png"
       }
     },
@@ -1774,8 +1774,8 @@
         "harness/src/harness/pydantic_harness_adapter.py"
       ],
       "last_walk": {
-        "packet": "M3RD",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-082.png"
@@ -1795,8 +1795,8 @@
         "harness/web/src/ContextBars.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-083.png"
@@ -1832,8 +1832,8 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M3SF",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-085.png"
@@ -1856,8 +1856,8 @@
         "harness/src/harness/symphony_experience.py"
       ],
       "last_walk": {
-        "packet": "M3SF",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-086.png"
@@ -1877,8 +1877,8 @@
         "harness/src/harness/symphony_experience.py"
       ],
       "last_walk": {
-        "packet": "M3SF",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-087.png"
@@ -1902,8 +1902,8 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M3SF",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-088.png"
@@ -1923,8 +1923,8 @@
         "harness/src/harness/symphony_experience.py"
       ],
       "last_walk": {
-        "packet": "M3SF",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-089.png"
@@ -1944,8 +1944,8 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3SF",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-090.png"
@@ -1956,7 +1956,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 6",
       "label": "When a judge fails a swarm, its feedback is saved as new packets and a new swarm is sent out, looping until every judge is satisfied.",
-      "status": "built",
+      "status": "partial",
       "walk": "Let a judge fail a round; new packets appear from the feedback and a fresh swarm runs, and the loop ends only when all judges pass.",
       "owner": "owner — \"Also want to make sure for symphony mode this loops untill all the judges are satisfied.\" (chat 2026-08-06 17:59:05 (+ 16:27:54))",
       "surfaces": [
@@ -1965,10 +1965,10 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3SF",
-        "date": "2026-09-29",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-091.png"
       },
       "protected": true,
@@ -1979,7 +1979,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 9",
       "label": "Parallel firing of many agents; expired claims released automatically.",
-      "status": "built",
+      "status": "partial",
       "walk": "Fire two agents at once and let one claim expire; both run together and the expired claim frees itself without a hand.",
       "owner": "owner — \"that agent didn't unclaim that packet after it expired. This is a good learning for swarms I'm sure that beads has an idea of how to solve this... but can you manually unclaim it? At least we proved even in parrallel this works!\" (chat 2026-08-09 20:50:51 (+ 19:34:13))",
       "surfaces": [
@@ -1987,8 +1987,8 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F086",
         "screenshot": "FL-092.png"
@@ -1999,7 +1999,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 15",
       "label": "The recipe card: a recipe-style implementation plan whose parts build in parallel or in sequence, parallel wherever it keeps build quality and sequential where there is doubt.",
-      "status": "built",
+      "status": "partial",
       "walk": "Open the recipe card of a symphony; some parts are set to run in parallel and others in sequence.",
       "owner": "owner — \"1. It must have the recipe style implementation plan that allows different parts to be build in parallel,  or sequence.\" (chat 2026-08-17 15:35:13 (+ chat 2026-08-15 19:37:48))",
       "surfaces": [
@@ -2010,10 +2010,10 @@
         "harness/web/src/RecipeModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-093.png"
       }
     },
@@ -2031,8 +2031,8 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3SF",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-094.png"
@@ -2045,7 +2045,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 17",
       "label": "Hard steps marked at spec time can trigger a search swarm that evolves auto-research style, with pruning so it is not overly expensive or long-running.",
-      "status": "built",
+      "status": "partial",
       "walk": "Mark a step as hard at deliberation; a search swarm runs on that step and prunes weak branches.",
       "owner": "owner — \"I was thinking that during the spec we can identify nodes where we will allow our internal search ideas (based on auto research) combined with some RLM methodologies loose to optimize and create the best solutions. These would be very hard parts. We need to make sure that we are leveraging the pruning parts of RLM efficiently as well. I don't want things to be overly expensive or long running.\" (chat 2026-08-17 17:40:31 (+ 15:35:13))",
       "surfaces": [
@@ -2056,10 +2056,10 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M3SF",
-        "date": "2026-09-29",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-095.png"
       }
     },
@@ -2068,7 +2068,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 17",
       "label": "Symphony memory works with the Palace and its injection and extraction policies.",
-      "status": "built",
+      "status": "partial",
       "walk": "Run a symphony; its agents get injected memories and the run's extracted memories reach the Palace.",
       "owner": "owner — \"Lastly all of this needs to work with our context injection and memory extraction policies.\" (chat 2026-08-17 17:40:31 (+ 15:35:13))",
       "surfaces": [
@@ -2076,8 +2076,8 @@
         "spine/src/spine/symphony/"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F086",
         "screenshot": "FL-096.png"
@@ -2088,7 +2088,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 17",
       "label": "A component registry grown from the motivation tree that feeds build history and agent start-up.",
-      "status": "built",
+      "status": "partial",
       "walk": "Start an implementation agent; its start-up context carries the component registry, which stems from the motivation tree.",
       "owner": "owner — \"the component registry might be able to be more elegantly integrated into our existing build history and implementation agent start up procedure by stemming from the motivation tree. Again we don't want to overwhelm the implementation agents,  but we need to give them appropriate context, motivation...\" (chat 2026-08-17 17:59:04)",
       "surfaces": [
@@ -2096,10 +2096,10 @@
         "harness/src/harness/WORKER_BRIEF.md"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
-        "flag": "F086",
+        "flag": "F158",
         "screenshot": "FL-097.png"
       }
     },
@@ -2117,8 +2117,8 @@
         "harness/web/src/SymphonyDeck.tsx"
       ],
       "last_walk": {
-        "packet": "M3SF",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-098.png"
@@ -2131,7 +2131,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 17",
       "label": "Constitution: Rounds as deltas: passed work stands, only judge feedback forms the next round. (chat 2026-08-17 17:02:48)",
-      "status": "built",
+      "status": "partial",
       "walk": "Let a judge fail one packet; round two re-runs only that packet while the passed work stands.",
       "owner": "constitution",
       "surfaces": [
@@ -2140,10 +2140,10 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3SF",
-        "date": "2026-09-29",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-099.png"
       }
     },
@@ -2161,8 +2161,8 @@
         "harness/web/src/SymphonyDeck.tsx"
       ],
       "last_walk": {
-        "packet": "M3SF",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-100.png"
@@ -2220,7 +2220,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Jul 20",
       "label": "Click an agent to open its context visualizer and its injected memories with pop-off and add-back suggestions.",
-      "status": "built",
+      "status": "partial",
       "walk": "Click one agent; a panel opens with its context visualizer, its injected memories each with a pop-off, and suggestions of more memories to add.",
       "owner": "owner — \"I've clicked on a single agent. The right pops up with the context window visualizer, Injected memories with the ability to pop them off and suggestions for more memories to add.\" (chat 2026-07-20 17:15:32)",
       "surfaces": [
@@ -2230,8 +2230,8 @@
         "harness/web/src/ContextBars.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F086",
         "screenshot": "FL-103.png"
@@ -2256,8 +2256,8 @@
         "harness/src/harness/agent_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-104.png"
@@ -2280,8 +2280,8 @@
         "harness/src/harness/toolset_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-105.png"
@@ -2303,8 +2303,8 @@
         "harness/src/harness/commands.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-106.png"
@@ -2317,7 +2317,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Jul 28",
       "label": "A plugin to change common model parameters such as top p and temperature, as an Ableton-style visualizer and input block.",
-      "status": "built",
+      "status": "partial",
       "walk": "Change temperature in the model-parameters plugin; the next turn's request carries the new value.",
       "owner": "owner — \"Also, we should have another plug in that allows people to change common model parameters: top p, temperature, etc. That would be a cool abletonesk visualizer and input block as well.\" (chat 2026-07-28 16:31:54)",
       "surfaces": [
@@ -2326,10 +2326,10 @@
         "harness/src/harness/parameter_registry.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-107.png"
       }
     },
@@ -2348,8 +2348,8 @@
         "harness/src/harness/toolset_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-108.png"
@@ -2371,8 +2371,8 @@
         "spine/src/spine/queue/"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-109.png"
@@ -2395,8 +2395,8 @@
         "harness/web/src/spatialSelection.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-110.png"
@@ -2419,8 +2419,8 @@
         "harness/web/src/assets/rack.css"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-111.png"
@@ -2443,8 +2443,8 @@
         "harness/web/src/assets/rack.css"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-112.png"
@@ -2494,8 +2494,8 @@
         "spine/src/spine/queue/"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-114.png"
@@ -2518,8 +2518,8 @@
         "harness/web/src/spatialSelection.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-115.png"
@@ -2542,8 +2542,8 @@
         "harness/web/src/spatialSelection.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-116.png"
@@ -2570,8 +2570,8 @@
         "harness/src/harness/agent_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-117.png"
@@ -2618,8 +2618,8 @@
         "spine/src/spine/vitals/"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-119.png"
@@ -2645,8 +2645,8 @@
         "harness/web/src/stageLayout.ts"
       ],
       "last_walk": {
-        "packet": "M3SF",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-120.png"
@@ -2669,7 +2669,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Aug 17",
       "label": "A recipe module showing the plan graph with completed parts dimmed.",
-      "status": "built",
+      "status": "partial",
       "walk": "Run a symphony with the recipe module open; completed parts dim.",
       "owner": "owner — \"I want the plan completion view to look like this: just matching our livery and some dyamics that indicate at what point we are at maybe just dimming the competed parts.\" (chat 2026-08-17 21:05:47 (+ 17:44:55))",
       "surfaces": [
@@ -2678,10 +2678,10 @@
         "harness/src/harness/recipe_graph.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
-        "flag": "F086",
+        "flag": "F158",
         "screenshot": "FL-122.png"
       },
       "protected": true,
@@ -2707,8 +2707,8 @@
         "harness/web/src/rackModuleTemplate.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F123",
         "screenshot": "FL-123.png"
@@ -2752,8 +2752,8 @@
         "harness/web/src/ContextBars.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-125.png"
@@ -2766,7 +2766,7 @@
       "section": "9. Visualization",
       "era": "founding",
       "label": "The ant farm: the whole directory tree as chambered burrows with files as cells, zoomable, floating on black with a faint grid, showing worktrees.",
-      "status": "built",
+      "status": "partial",
       "walk": "Open the ant farm; the whole directory's folders appear as chambers with files as cells, floating on black with a faint grid, and worktrees are visible. LOOK (v2.119): the module is judged beside its plate (farm.png) — same material, structure and density; the side-by-side capture is required.",
       "owner": "owner — \"I imagine that the anfarm is much more ant farm looking truly scoped to the whole directory that there are agents in.... there are empty chambers (files) etc. . we can scroll in and out to get close, it's floating in space like a solidworks object almost but the background is a black with faint white line grid.\" (chat 2026-07-20 17:30:44 (+ 16:49:44))",
       "surfaces": [
@@ -2782,11 +2782,11 @@
       ],
       "plate": "verification/m3vz/plates/farm.png",
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3LV",
+        "date": "2026-10-01",
         "verdict": "FAIL",
         "flag": "F123",
-        "screenshot": "FL-126.png"
+        "screenshot": "FL-126-plate.png"
       }
     },
     {
@@ -2803,8 +2803,8 @@
         "harness/web/src/MemoryGraph.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-127.png"
@@ -2840,11 +2840,11 @@
       ],
       "plate": "verification/m3vz/plates/roots.png",
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3LV",
+        "date": "2026-10-01",
         "verdict": "FAIL",
-        "flag": "F115",
-        "screenshot": "FL-129.png"
+        "flag": "F155",
+        "screenshot": "FL-129-plate.png"
       }
     },
     {
@@ -2860,8 +2860,8 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3LV",
+        "date": "2026-10-01",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-130.png"
@@ -2882,8 +2882,8 @@
         "harness/web/src/ContextBars.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F086",
         "screenshot": "FL-131.png"
@@ -2906,8 +2906,8 @@
         "harness/src/harness/visualization.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3LV",
+        "date": "2026-10-01",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-132.png"
@@ -2933,11 +2933,11 @@
       ],
       "plate": "verification/m3vz/plates/palace.png",
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3LV",
+        "date": "2026-10-01",
         "verdict": "FAIL",
-        "flag": "F115",
-        "screenshot": "FL-133.png"
+        "flag": "F155",
+        "screenshot": "FL-133-plate.png"
       }
     },
     {
@@ -2955,8 +2955,8 @@
         "harness/src/harness/visualization.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3LV",
+        "date": "2026-10-01",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-134.png"
@@ -2996,10 +2996,10 @@
         "spine/src/spine/learner/service.py"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
-        "flag": "F086",
+        "flag": "F152",
         "screenshot": "FL-137.png"
       }
     },
@@ -3038,10 +3038,10 @@
         "harness/web/src/nebulaBindings.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
-        "flag": "F127",
+        "flag": "F151",
         "screenshot": "FL-139.png"
       }
     },
@@ -3069,8 +3069,8 @@
         "harness/web/src/MemoryGraph.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-141.png"
@@ -3093,8 +3093,8 @@
         "harness/web/src/assets/recipe.css"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-142.png"
@@ -3114,8 +3114,8 @@
         "harness/web/src/platePress.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-143.png"
@@ -3128,7 +3128,7 @@
       "section": "10. Themes and brand",
       "era": "Jul 21",
       "label": "The name Nocturne and the mark: an ouroboros around the moon.",
-      "status": "built",
+      "status": "partial",
       "walk": "Look at the header mark and the favicon: a snake eating its tail around a moon — a head, the tail in its mouth, a tapering body — readable at both sizes, not a ring inside a ring; up close, the moon's continents look realistic and the snake is cute with a little fang (owner, 2026-09-29).",
       "owner": "owner — \"Ok fair enough let's stick with nocturne and add the ouroboros around the moon to the icon.\" (chat 2026-08-03 22:39:46 (+ chat 2026-07-21 17:03:25)) — 2026-09-29: \"it just looks like a circle with a circle around the world... make it look a bit more snakelike\"; \"make the continents look a little more realistic and teh snake a bit more cute but like it could grow up to be dangerous...\"; \"add a little fang and your approved.\"",
       "surfaces": [
@@ -3136,10 +3136,10 @@
         "harness/README.md"
       ],
       "last_walk": {
-        "packet": "M3EXF",
+        "packet": "M3W5A+M3W5B",
         "date": "2026-09-30",
-        "verdict": "PASS",
-        "flag": "",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-144.png"
       }
     },
@@ -3157,8 +3157,8 @@
         "harness/web/src/platePress.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-145.png"
@@ -3180,8 +3180,8 @@
         "harness/web/src/platePress.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F128",
         "screenshot": "FL-146.png"
@@ -3204,8 +3204,8 @@
         "harness/web/scripts/build_grimoire_motifs.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-147.png"
@@ -3225,8 +3225,8 @@
         "harness/web/src/platePress.ts"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-148.png"
@@ -3245,8 +3245,8 @@
         "spine/src/spine/deploy_resources.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-149.png"
@@ -3267,8 +3267,8 @@
         "harness/src/harness/config.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F086",
         "screenshot": "FL-150.png"
@@ -3292,8 +3292,8 @@
         "spine/src/spine/spend/"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-151.png"
@@ -3336,10 +3336,10 @@
         "harness/src/harness/config.py"
       ],
       "last_walk": {
-        "packet": "M3LW",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
-        "flag": "F086",
+        "flag": "F157",
         "screenshot": "FL-154.png"
       },
       "protected": true,
@@ -3359,10 +3359,10 @@
         "spine/src/spine/spend/"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
-        "flag": "F086",
+        "flag": "F158",
         "screenshot": "FL-155.png"
       },
       "protected": true,
@@ -3392,8 +3392,8 @@
         "harness/src/harness/config.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-157.png"
@@ -3418,8 +3418,8 @@
         "harness/src/harness/commands.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-158.png"
@@ -3443,8 +3443,8 @@
         "spine/src/spine/spend/views.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-159.png"
@@ -3478,8 +3478,8 @@
         "harness/web/src/learning.ts"
       ],
       "last_walk": {
-        "packet": "M3RX",
-        "date": "2026-09-27",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-197.png"
@@ -3512,7 +3512,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "Jul 21",
       "label": "Easy onboarding from a single splash repo, needing only two secrets: a GCP credential and an OpenRouter key.",
-      "status": "built",
+      "status": "partial",
       "walk": "On a fresh machine, follow the splash repo's install steps; you are asked for a GCP credential and an OpenRouter key and nothing else before the app comes up.",
       "owner": "owner — \"Sure we can name things nocture- as long as there is a single splash repo for new users I'm good.\" (chat 2026-07-21 17:21:05; chat 2026-07-21 17:04:14)",
       "surfaces": [
@@ -3523,8 +3523,8 @@
         "spine/src/spine/api_contract.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F086",
         "screenshot": "FL-162.png"
@@ -3545,8 +3545,8 @@
         "spine/src/spine/queue/service.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-163.png"
@@ -3557,7 +3557,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "Aug 2",
       "label": "Local mode with no internet, cloud mode, and a way to mirror our cloud setup into your own provider.",
-      "status": "built",
+      "status": "partial",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Start the Harness with the network off and send one message; the reply arrives and the memory lands in the local palace.",
       "owner": "owner — \"I despise this multiple version thing already; there should be one version that has various levels of capability. I get and agree we aren't supporting people remote memory palaces, but they should have an easy way to mirror our set up, it's designed to be universally supported, into their cloud compute supplier...\" (chat 2026-08-02 13:05:45)",
       "surfaces": [
@@ -3568,8 +3568,8 @@
         "spine/src/spine/api_contract.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F086",
         "screenshot": "FL-164.png"
@@ -3599,8 +3599,8 @@
         "harness/src/harness/cli.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F086",
         "screenshot": "FL-166.png"
@@ -3622,8 +3622,8 @@
         "spine/src/spine/api_contract.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-167.png"
@@ -3643,8 +3643,8 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F086",
         "screenshot": "FL-168.png"
@@ -3666,8 +3666,8 @@
         "spine/src/spine/api_contract.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-169.png"
@@ -3690,8 +3690,8 @@
         "harness/pyproject.toml"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-170.png"
@@ -3702,7 +3702,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "Aug 13",
       "label": "A startup and settings option: \"Back up conversation transcripts to cloud?\"",
-      "status": "built",
+      "status": "partial",
       "walk": "Toggle \"Back up conversation transcripts to cloud?\" in the settings menu; the backup line changes, and the same question is asked at first startup.",
       "owner": "owner — \"I think that should be a config in our setting menu. Back up conversation transcripts to cloud? We can ask them chose at start up.\" (chat 2026-08-13 19:32:24)",
       "surfaces": [
@@ -3711,10 +3711,10 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-171.png"
       },
       "protected": true,
@@ -3725,7 +3725,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "gate-day",
       "label": "Constitution: Palace export and portability (gate-day).",
-      "status": "built",
+      "status": "partial",
       "walk": "Run nocturne export to produce one file containing every principal-scoped memory and its lineage; import it into another Palace and compare the archive (A-071 CLI front door).",
       "owner": "constitution",
       "surfaces": [
@@ -3733,10 +3733,10 @@
         "spine/src/spine/portability.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
-        "flag": "F086",
+        "flag": "F158",
         "screenshot": "FL-172.png"
       }
     },
@@ -3745,7 +3745,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "gate-day",
       "label": "Constitution: a warming retry when the Palace is asleep, a \"busy, retrying\" banner on rate limits, and the banner clears on recovery (gate-day).",
-      "status": "built",
+      "status": "partial",
       "walk": "Start the Harness against a sleeping Palace; a warming line shows, then clears when the Palace answers.",
       "owner": "constitution",
       "surfaces": [
@@ -3754,10 +3754,10 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
-        "flag": "F086",
+        "flag": "F158",
         "screenshot": "FL-173.png"
       },
       "protected": true,
@@ -3777,8 +3777,8 @@
         "harness/src/harness/cli.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-174.png"
@@ -3801,8 +3801,8 @@
         "harness/web/src/SymphonyCards.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-175.png"
@@ -3846,8 +3846,8 @@
         "spine/src/spine/queue/service.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-178.png"
@@ -3871,8 +3871,8 @@
         "spine/src/spine/queue/service.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-179.png"
@@ -3904,8 +3904,8 @@
         "harness/src/harness/toolset.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-181.png"
@@ -3930,8 +3930,8 @@
         "spine/src/spine/db/migrations/versions/0025_jobs.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-182.png"
@@ -3953,8 +3953,8 @@
         "spine/src/spine/main.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-183.png"
@@ -4001,7 +4001,7 @@
       "section": "15. Platform and integrations",
       "era": "founding",
       "label": "Build on Pydantic AI in a way that lets us modify and extend without waiting on them, passing features back and forth with their library.",
-      "status": "built",
+      "status": "partial",
       "walk": "Upgrade the Pydantic AI dependency; the Harness's own additions keep working and the new upstream features are usable.",
       "owner": "owner — \"Can we build this in such a way that we can take advantage of the pydantic libraries stuff while still giving ourselves that ability to modify and build onto without having to wait for them. I'm thinking a two modules that can pass features back and forth seamlessly so we don't have to slow down for them but can take advantage of their institutional implementation in the future.\" (chat 2026-07-20 03:10:58; first thread turn 2)",
       "surfaces": [
@@ -4012,10 +4012,10 @@
         "harness/pyproject.toml"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F156",
         "screenshot": "FL-186.png"
       }
     },
@@ -4032,8 +4032,8 @@
         "spine/pyproject.toml"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-187.png"
@@ -4056,8 +4056,8 @@
         "harness/src/harness/config.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
         "flag": "F086",
         "screenshot": "FL-188.png"
@@ -4078,7 +4078,7 @@
       "section": "15. Platform and integrations",
       "era": "Jul 22",
       "label": "The Harness can use skills and has the best and most common tools available, compiled from a list.",
-      "status": "built",
+      "status": "partial",
       "walk": "Ask the agent to use a skill in a thread; it loads the skill and follows it.",
       "owner": "owner — \"Generally, we need to make sure that we can use skills and have the best tools available in the harness: I think codex browser use with the chrome extension (we can probably just port theirs I think it's open source). We should compile a list of the best and most common skills and tools and other things and make sure that we have those.\" (chat 2026-07-22 14:49:11; chat 2026-07-22 15:05:49)",
       "surfaces": [
@@ -4089,10 +4089,10 @@
         "harness/uv.lock"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-190.png"
       }
     },
@@ -4116,8 +4116,8 @@
         "harness/src/harness/browser_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-191.png"
@@ -4147,8 +4147,8 @@
         "harness/pyproject.toml"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-192.png"
@@ -4159,7 +4159,7 @@
       "section": "15. Platform and integrations",
       "era": "Aug 15",
       "label": "The common core of terminal-agent tools (skills, progressive prompting, model switching, compaction, app interactions) in one piece that pulls upstream updates.",
-      "status": "built",
+      "status": "partial",
       "walk": "Update the shared core-tools piece to its newest upstream version; skills, model switching and the rest keep working in the Harness.",
       "owner": "owner — \"there should be a core of tools that are consistent across al of them that we should fine: using skills, progressive prompting, changing models, compaction strategies (we will have our own take), interactions with common apps, etc, etc. we need to go out and find those common standard ones pick the one we like the best that is the most modular and keep it.\" (chat 2026-08-15 19:37:48; chat 2026-08-14 23:19:48)",
       "surfaces": [
@@ -4170,10 +4170,10 @@
         "harness/uv.lock"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
+        "verdict": "FAIL",
+        "flag": "F156",
         "screenshot": "FL-193.png"
       }
     },
@@ -4195,8 +4195,8 @@
         "harness/uv.lock"
       ],
       "last_walk": {
-        "packet": "M3SF",
-        "date": "2026-09-29",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-194.png"
@@ -4229,8 +4229,8 @@
         "spine/.github/workflows/ci.yml"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-195.png"
@@ -4262,8 +4262,8 @@
         "spine/.github/workflows/rules.yml"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-196.png"
@@ -4276,7 +4276,7 @@
       "section": "6. Context window, history and compaction",
       "era": "Sep 22",
       "label": "Context overwhelm protections: a query or a sub-agent return may take up at most n% of the compaction limit, the share chosen by the sending agent within bounds that are system parameters; a security module shows it.",
-      "status": "built",
+      "status": "partial",
       "walk": "Make a query return more than its share of the compaction limit; the agent gets an error naming the size and a very brief head of the response. Make a sub-agent return more than its share; it is sent back the exact amount to shorten by and returns under the share. The security module shows both.",
       "owner": "owner — \"We should have some context overwhelm protections in place a security module. Like a query or a sub agent return should have n% of total compaction limit it can take up... maybe if the agent who is sending the sub agent or query can pick it within bounds that are system parameters\" (chat 2026-09-22) — ruled 2026-09-22: \"simply enhance what exists… error/show very brief start to the query… submit back to that subagent the response must be shorter by some deterministically calculated amount\"",
       "surfaces": [
@@ -4288,10 +4288,10 @@
         "harness/web/src/assets/security.css"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "FAIL",
-        "flag": "F086",
+        "flag": "F158",
         "screenshot": "FL-198.png"
       },
       "protected": false
@@ -4330,8 +4330,8 @@
         "harness/web/src/WorkerContext.tsx"
       ],
       "last_walk": {
-        "packet": "M3W4",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-199.png"
@@ -4354,8 +4354,8 @@
         "spine/src/spine/deploy_resources.py"
       ],
       "last_walk": {
-        "packet": "M3NP",
-        "date": "2026-09-28",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-200.png"
