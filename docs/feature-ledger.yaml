@@ -4361,6 +4361,19 @@
         "screenshot": "FL-200.png"
       },
       "protected": false
+    },
+    {
+      "id": "FL-201",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Oct 1",
+      "label": "One scale across modules: an icon reused anywhere is one size, text of one role is one size and one font, and a box belongs only to an icon that is a button.",
+      "status": "not built",
+      "walk": "Measure every module: each reused icon renders at one size, each text role (module header, row label, body, caption, tip) at one size and font; markers and status glyphs stand bare, only icon buttons are boxed.",
+      "owner": "owner 2026-10-01: \"Icons reused across modules should be the same size, similarly text should be the same size and font. Not every icon needs a box around it as well.\"",
+      "surfaces": [
+        "harness/web/src/"
+      ],
+      "protected": false
     }
   ]
 }
