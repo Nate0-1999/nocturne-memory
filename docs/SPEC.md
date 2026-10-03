@@ -1,6 +1,6 @@
 # NOCTURNE — Harness + Memory Palace Specification
 
-**Version 2.128** (2026-10-01) — THE CURATOR'S OWN BAND (owner, SD-074: 'Curator is going to be the thing that limits the memory growth as much as possible which is super critical'; the memory packet found a true duplicate at 0.738 that the 0.80 review band missed and asked before touching the contract): the write-time bands are unchanged — a create at cosine ≥ 0.92 is a duplicate and 0.80–0.92 is 'similar, confirm' (C.4 defaults dedup_dup / dedup_sim); the CURATOR searches for merge candidates at its own band, `curator_review_sim`, default 0.70, a registered config parameter in the trainable registry (FL-058), beside the relevance-score signal on the standard probe set; a candidate is still only a proposal the owner approves, amends or feeds back. Full version lineage: Appendix D.2 (rows) and D.3 (narrative).
+**Version 2.129** (2026-10-03) — ELBOW SEES THE FREE MODELS (owner, on the model browser's finding that elbow picks nothing because a free model always sits on OpenRouter's price curve: 'I don't think skip free models'): A-025's fail-open on a zero prompt price is replaced — a zero prompt price is mapped to the frontier's PRICE FLOOR, the lowest nonzero prompt price in the benchmark table, so a free model sits at the cheap end of the chord and competes on its intelligence index like any other; elbow stays the recommended chat policy and never fails open on free models again (the floor is a deterministic read of the same table, not a new parameter). Full version lineage: Appendix D.2 (rows) and D.3 (narrative).
 content-preserving. Audience: implementing agents (via /goal) and the human owner.
 Everything here is binding unless marked OPEN or given a non-accepted status.
 ADR numbers are immutable; superseding requires a new ADR. The chronological
@@ -4131,6 +4131,10 @@ mechanics by reference (the floor rule, price-sorted providers).
   context tokens. Other policies continue to evaluate non-negative prices
   under their existing rules.
 
+  SUPERSEDED by v2.129 (2026-10-03): a zero prompt price no longer makes the
+  elbow table degenerate; it is mapped to the frontier's price floor (the
+  lowest nonzero prompt price in the table) before the log-price mapping.
+
   **Folded amendment (A-026, v2.82)** — enacted by H9 against [SPEC C.5;
   A-020(d); A-021(a-revised), (g)], node(s) P4; law text verbatim from
   AMENDMENTS.md:
@@ -4789,6 +4793,7 @@ into its owning ADR above)
 | 169 | 2026-09-29 | v2.126 THE LOCATION TRAIL, AS BUILT: messages carry their folder; a memory is born where its facts were said (the messages' folder, the shared parent across several, the thread's folder as fallback); v2.125's 'locations its thread visited' is read as this; F146 (the folder list) and F147 (the project on compaction-born memories) → M3PL | ACCEPTED |
 | 170 | 2026-09-30 | v2.127 THE RELIABILITY EXIT: a charged row passes only after three consecutive fresh runs; the rows two scouts disagreed on are UNRELIABLE (F158) until proven; the demo-readiness wave M3CL2 / M3HW / M3SF2 / M3MQ / M3LF / M3LV / M3EXF2, then a lighter rescout (M3W6), then M3RV | ACCEPTED |
 | 171 | 2026-10-01 | v2.128 THE CURATOR'S OWN BAND: write-time 0.92 / 0.80 unchanged; the curator's candidate search at curator_review_sim (default 0.70, config, registered) plus the score-vector signal; proposals only — the owner approves, amends or feeds back (SD-074) | ACCEPTED |
+| 172 | 2026-10-03 | v2.129 ELBOW SEES THE FREE MODELS: a zero prompt price maps to the frontier's price floor (lowest nonzero prompt price in the table); A-025's fail-open on zero prices is replaced; elbow stays recommended (owner: 'I don't think skip free models') | ACCEPTED |
 
 ## D.3 Resolved-question index (where each folded)
 
@@ -4915,3 +4920,5 @@ F037 RESOLVED + THE EVIDENCE CAPTURE LAW + REPO VISIBILITY DOCTRINE: the garden 
 **v2.126 (2026-09-29) narrative, folded from the header:** THE LOCATION TRAIL, AS BUILT (reconciling v2.125's wording to M3LT's build, which is what the owner meant): every journal message carries the folder it was written in — a prompt where it was typed, an answer where its run finished; a compaction-born memory carries the folder of the messages it came from, the shared parent when they span several, the thread's folder only when no source is named; the palace stamps one location per request. Open by M3LT: the individual folders of a multi-folder memory need a palace list field (F146), and compaction-born memories must carry the project like every other memory (F147) — M3PL. Full version lineage: Appendix D.2 (rows) and D.3 (narrative).
 
 **v2.127 (2026-09-30) narrative, folded from the header:** THE RELIABILITY EXIT (owner: 'Don't we need to fix these issues? I mean it sounds like we aren't ready.'): two independent rescouts on one build (Codex 133 PASS / Claude 128 PASS of 179) disagreed on 31 rows — the same feature passing for one and failing for the other the same day. A feature that works sometimes is not built. From now on a packet's charged row passes only after THREE consecutive fresh runs pass (fresh thread, fresh identity where it matters), and the 31 rows carry the flag UNRELIABLE (F158) until a packet proves them so. The demo-readiness wave: seven packets minted from the union of both scouts' findings, then a lighter rescout, then the room. Full version lineage: Appendix D.2 (rows) and D.3 (narrative).
+
+**v2.128 (2026-10-01) narrative, folded from the header:** THE CURATOR'S OWN BAND (owner, SD-074: 'Curator is going to be the thing that limits the memory growth as much as possible which is super critical'; the memory packet found a true duplicate at 0.738 that the 0.80 review band missed and asked before touching the contract): the write-time bands are unchanged — a create at cosine ≥ 0.92 is a duplicate and 0.80–0.92 is 'similar, confirm' (C.4 defaults dedup_dup / dedup_sim); the CURATOR searches for merge candidates at its own band, `curator_review_sim`, default 0.70, a registered config parameter in the trainable registry (FL-058), beside the relevance-score signal on the standard probe set; a candidate is still only a proposal the owner approves, amends or feeds back. Full version lineage: Appendix D.2 (rows) and D.3 (narrative).
