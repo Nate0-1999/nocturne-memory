@@ -882,8 +882,8 @@
         "harness/src/harness/memory_capability.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3P1",
+        "date": "2026-10-03",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-039.png"
