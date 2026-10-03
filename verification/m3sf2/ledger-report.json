@@ -2,36 +2,48 @@
   "packet": "M3SF2",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "e04bd686439f889e86920bf9c450872ff55f675bf4aa2241c72d6b5c49629154",
+  "ledger_sha256": "06feeded41da98e6a50d83ff47d2c3b32d69f6d41ca53a88935ad4c87b7d7c49",
   "diffs": [
     {
       "repo": "spine",
       "base": "8942792f8b3fed482e00151645c70a9ad8406196",
-      "head": "c43309d8b514f28f058bec140ee53cf9b0fe20e0"
+      "head": "a20a71ae4d0a56b93c1bd4c86e8b2133999c7ea3"
     }
   ],
   "unmapped": {
     "spine/openapi.json": "Packet metadata, version/schema fingerprint, rationale, tests or frozen finding index; no additional product behavior beyond the mapped Symphony/tool rows.",
     "spine/src/spine/__init__.py": "Packet metadata, version/schema fingerprint, rationale, tests or frozen finding index; no additional product behavior beyond the mapped Symphony/tool rows.",
     "spine/tests/test_packaging.py": "Packet metadata, version/schema fingerprint, rationale, tests or frozen finding index; no additional product behavior beyond the mapped Symphony/tool rows.",
-    "spine/verification/m3sf2/ledger-report.json": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
-    "spine/verification/m3sf2/FL-094.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
-    "spine/verification/m3sf2/FL-097.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
+    "spine/verification/m3p1/SHA256SUMS": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
+    "spine/verification/m3p1/ledger-report.json": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
     "spine/verification/m3sf2/FL-085.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
-    "spine/verification/m3sf2/FL-095.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
-    "spine/verification/m3sf2/FL-098.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
     "spine/verification/m3sf2/FL-086.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
-    "spine/verification/m3sf2/FL-099.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
-    "spine/verification/m3sf2/acceptance-summary.json": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
     "spine/verification/m3sf2/FL-091.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
-    "spine/verification/m3sf2/SHA256SUMS": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
-    "spine/verification/m3sf2/FL-196.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
-    "spine/verification/m3sf2/FL-122.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
     "spine/verification/m3sf2/FL-093.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
-    "spine/verification/m3sf2/impacted.json": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact."
+    "spine/verification/m3sf2/FL-094.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
+    "spine/verification/m3sf2/FL-095.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
+    "spine/verification/m3sf2/FL-097.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
+    "spine/verification/m3sf2/FL-098.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
+    "spine/verification/m3sf2/FL-099.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
+    "spine/verification/m3sf2/FL-122.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
+    "spine/verification/m3sf2/FL-196.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
+    "spine/verification/m3sf2/SHA256SUMS": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
+    "spine/verification/m3sf2/acceptance-summary.json": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
+    "spine/verification/m3sf2/ledger-report.json": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
+    "spine/verification/m3sf2/impacted.json": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact.",
+    "spine/verification/m3sf2/FL-195.png": "Disposable verification evidence or generated coverage/hash metadata; no runtime feature impact."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
+    "FL-195": {
+      "label": "The feature ledger generates coverage reports and requires evidence for the rows affected by a build.",
+      "walk": "Compute the composer fix's impact with --paths and see attunement rows; push a branch touching socket.ts and observe the hook print rows and write impacted.json; observe a DONE handoff without screenshots fail CI, then verify complete evidence passes.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-195.png",
+      "flag": "F086",
+      "observed": "Coverage reports and both positive and refusal paths ran during the handoff, but the complete prescribed temporary-file/deleted-screenshot counterfactual walk was not separately performed. This row is included because the published Garden history imports ledger updates; no ledger implementation was changed."
+    },
     "FL-196": {
       "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
       "walk": "Remove a guard citation on a disposable branch and observe CI fail; change a frozen axiom and observe the freeze step fail; restore both and observe Rules pass. The master ADR check remains red until the owner applies the citation patch.",
@@ -238,7 +250,6 @@
     "FL-192": "outside diff",
     "FL-193": "outside diff",
     "FL-194": "outside diff",
-    "FL-195": "outside diff",
     "FL-198": "outside diff",
     "FL-199": "outside diff",
     "FL-200": "outside diff",

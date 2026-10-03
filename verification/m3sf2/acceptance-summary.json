@@ -1,18 +1,18 @@
 [
   {
-    "run": 5,
-    "id": "01M41SKNZHP342X57ME96G2307",
-    "spend_usd": "0.224691200000",
-    "branch": "symphony/01M41SKNZHP342X57ME96G2307",
-    "commit": "e12fbd624b293cce809b854ee7c1d8ab5911af45",
-    "title": "Add the verified word counter 5",
+    "run": 8,
+    "id": "01M41V8AZN2973P83X1VAYQNJ0",
+    "spend_usd": "0.314638000000",
+    "branch": "symphony/01M41V8AZN2973P83X1VAYQNJ0",
+    "commit": "30eede49e5dbc387abe8c4c6c4e47b1a7c9dd7f0",
+    "title": "Add the verified word counter 8",
     "files": [
-      "proof5/counter.py",
-      "proof5/test_counter.py"
+      "proof8/counter.py",
+      "proof8/test_counter.py"
     ],
     "final_votes": {
       "performance": "round-3-attempt-2",
-      "motivation": "round-3-attempt-1",
+      "motivation": "round-3-attempt-2",
       "implementation": "round-3-attempt-2"
     },
     "feedback_packets": 2,
@@ -22,51 +22,8 @@
       "step-2-round-3/round-3-attempt-3/smoke/result.json"
     ],
     "named_branch_commands": [
-      "git checkout -b nocturne-worktrees/round-2-attempt-1/verified"
-    ],
-    "permission_denials": [
-      "step-2-round-2/round-2-attempt-1/completion/messages.json"
-    ],
-    "checks": {
-      "completed": true,
-      "three_final_judges_pass": true,
-      "feedback_and_fresh_round": true,
-      "passed_step_not_repeated": true,
-      "read_only_step_kept_base": true,
-      "weak_branch_pruned": true,
-      "steering_recorded": true,
-      "component_registry_in_every_worker": true,
-      "named_branch_used": true,
-      "no_repeated_permission_spin": true,
-      "only_permitted_source_files": true,
-      "exact_step_title": true,
-      "user_branch_unchanged": true,
-      "selection_rule_visible": true
-    }
-  },
-  {
-    "run": 6,
-    "id": "01M41SRVWMSZZRPZRQ3EAH657G",
-    "spend_usd": "0.201195200000",
-    "branch": "symphony/01M41SRVWMSZZRPZRQ3EAH657G",
-    "commit": "121ad5caa90450e3f01ff92e0a87d11df52fd28f",
-    "title": "Add the verified word counter 6",
-    "files": [
-      "proof6/counter.py",
-      "proof6/test_counter.py"
-    ],
-    "final_votes": {
-      "performance": "round-2-attempt-2",
-      "motivation": "round-2-attempt-2",
-      "implementation": "round-2-attempt-2"
-    },
-    "feedback_packets": 1,
-    "smoke_failures": [
-      "step-2-round-1/round-1-attempt-3/smoke/result.json",
-      "step-2-round-2/round-2-attempt-3/smoke/result.json"
-    ],
-    "named_branch_commands": [
-      "git checkout -b nocturne-worktrees/round-2-attempt-2/verified"
+      "git checkout -b nocturne-worktrees/round-3-attempt-1/verified",
+      "git branch nocturne-worktrees/round-3-attempt-2/verified"
     ],
     "permission_denials": [],
     "checks": {
@@ -87,15 +44,15 @@
     }
   },
   {
-    "run": 7,
-    "id": "01M41SZ40M7RD5GNYZ093DTNKA",
-    "spend_usd": "0.189920800000",
-    "branch": "symphony/01M41SZ40M7RD5GNYZ093DTNKA",
-    "commit": "bc2b87a77c55f4dc00ad9f32580c2d4b679796de",
-    "title": "Add the verified word counter 7",
+    "run": 9,
+    "id": "01M41VFQB3JB2F9Q688VC2XR36",
+    "spend_usd": "0.167856800000",
+    "branch": "symphony/01M41VFQB3JB2F9Q688VC2XR36",
+    "commit": "fb501a3cca20907735d00dcf0e816c3059130687",
+    "title": "Add the verified word counter 9",
     "files": [
-      "proof7/counter.py",
-      "proof7/test_counter.py"
+      "proof9/counter.py",
+      "proof9/test_counter.py"
     ],
     "final_votes": {
       "performance": "round-2-attempt-2",
@@ -108,11 +65,52 @@
       "step-2-round-2/round-2-attempt-3/smoke/result.json"
     ],
     "named_branch_commands": [
-      "git switch -c nocturne-worktrees/round-2-attempt-1/verified",
+      "git -c user.name='bot' -c user.email='bot@example.com' switch -c nocturne-worktrees/round-2-attempt-2/verified"
+    ],
+    "permission_denials": [],
+    "checks": {
+      "completed": true,
+      "three_final_judges_pass": true,
+      "feedback_and_fresh_round": true,
+      "passed_step_not_repeated": true,
+      "read_only_step_kept_base": true,
+      "weak_branch_pruned": true,
+      "steering_recorded": true,
+      "component_registry_in_every_worker": true,
+      "named_branch_used": true,
+      "no_repeated_permission_spin": true,
+      "only_permitted_source_files": true,
+      "exact_step_title": true,
+      "user_branch_unchanged": true,
+      "selection_rule_visible": true
+    }
+  },
+  {
+    "run": 10,
+    "id": "01M41VM7F9ERTCS3CQN3N9H69V",
+    "spend_usd": "0.206580800000",
+    "branch": "symphony/01M41VM7F9ERTCS3CQN3N9H69V",
+    "commit": "bb5599161700fa916cbdbe5e54fbe582c14764ec",
+    "title": "Add the verified word counter 10",
+    "files": [
+      "proof10/counter.py",
+      "proof10/test_counter.py"
+    ],
+    "final_votes": {
+      "performance": "round-2-attempt-2",
+      "motivation": "round-2-attempt-1",
+      "implementation": "round-2-attempt-2"
+    },
+    "feedback_packets": 1,
+    "smoke_failures": [
+      "step-2-round-1/round-1-attempt-3/smoke/result.json",
+      "step-2-round-2/round-2-attempt-3/smoke/result.json"
+    ],
+    "named_branch_commands": [
       "git checkout -b nocturne-worktrees/round-2-attempt-2/verified"
     ],
     "permission_denials": [
-      "step-2-round-2/round-2-attempt-2/completion/messages.json"
+      "step-2-round-2/round-2-attempt-1/completion/messages.json"
     ],
     "checks": {
       "completed": true,
