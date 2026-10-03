@@ -1492,7 +1492,7 @@
       "section": "5. Agent hands and location",
       "era": "Jul 28",
       "label": "The core tools every modern harness has: files, terminal, Chrome, skills, changing models, compaction (our own take), and interactions with common apps, taken from the most modular standard source.",
-      "status": "built",
+      "status": "partial",
       "walk": "Ask the agent to read a file, run a terminal command, open a page in the browser and use a skill; each works.",
       "owner": "owner — \"there should be a core of tools that are consistent across al of them that we should fine: using skills, progressive prompting, changing models, compaction strategies (we will have our own take), interactions with common apps, etc, etc. we need to go out and find those common standard ones pick the one we like the best that is the most modular and keep it.\" (chat 2026-08-16 19:37:48; chat 2026-07-28 16:27:32)",
       "surfaces": [
@@ -1505,10 +1505,10 @@
         "harness/src/harness/browser_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3CL2",
+        "packet": "M3SF2",
         "date": "2026-10-03",
-        "verdict": "PASS",
-        "flag": "",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-069.png"
       },
       "protected": true,
@@ -1846,12 +1846,14 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3SF2",
+        "date": "2026-10-03",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-085.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-03"
     },
     {
       "id": "FL-086",
@@ -1870,12 +1872,14 @@
         "harness/src/harness/symphony_experience.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3SF2",
+        "date": "2026-10-03",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-086.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-03"
     },
     {
       "id": "FL-087",
@@ -1970,7 +1974,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 6",
       "label": "When a judge fails a swarm, its feedback is saved as new packets and a new swarm is sent out, looping until every judge is satisfied.",
-      "status": "partial",
+      "status": "built",
       "walk": "Let a judge fail a round; new packets appear from the feedback and a fresh swarm runs, and the loop ends only when all judges pass.",
       "owner": "owner — \"Also want to make sure for symphony mode this loops untill all the judges are satisfied.\" (chat 2026-08-06 17:59:05 (+ 16:27:54))",
       "surfaces": [
@@ -1979,10 +1983,10 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M3SF2",
+        "date": "2026-10-03",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-091.png"
       },
       "protected": true,
@@ -2013,7 +2017,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 15",
       "label": "The recipe card: a recipe-style implementation plan whose parts build in parallel or in sequence, parallel wherever it keeps build quality and sequential where there is doubt.",
-      "status": "partial",
+      "status": "built",
       "walk": "Open the recipe card of a symphony; some parts are set to run in parallel and others in sequence.",
       "owner": "owner — \"1. It must have the recipe style implementation plan that allows different parts to be build in parallel,  or sequence.\" (chat 2026-08-17 15:35:13 (+ chat 2026-08-15 19:37:48))",
       "surfaces": [
@@ -2024,12 +2028,14 @@
         "harness/web/src/RecipeModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M3SF2",
+        "date": "2026-10-03",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-093.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-03"
     },
     {
       "id": "FL-094",
@@ -2045,8 +2051,8 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3SF2",
+        "date": "2026-10-03",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-094.png"
@@ -2059,7 +2065,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 17",
       "label": "Hard steps marked at spec time can trigger a search swarm that evolves auto-research style, with pruning so it is not overly expensive or long-running.",
-      "status": "partial",
+      "status": "built",
       "walk": "Mark a step as hard at deliberation; a search swarm runs on that step and prunes weak branches.",
       "owner": "owner — \"I was thinking that during the spec we can identify nodes where we will allow our internal search ideas (based on auto research) combined with some RLM methodologies loose to optimize and create the best solutions. These would be very hard parts. We need to make sure that we are leveraging the pruning parts of RLM efficiently as well. I don't want things to be overly expensive or long running.\" (chat 2026-08-17 17:40:31 (+ 15:35:13))",
       "surfaces": [
@@ -2070,12 +2076,14 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M3SF2",
+        "date": "2026-10-03",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-095.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-03"
     },
     {
       "id": "FL-096",
@@ -2102,7 +2110,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 17",
       "label": "A component registry grown from the motivation tree that feeds build history and agent start-up.",
-      "status": "partial",
+      "status": "built",
       "walk": "Start an implementation agent; its start-up context carries the component registry, which stems from the motivation tree.",
       "owner": "owner — \"the component registry might be able to be more elegantly integrated into our existing build history and implementation agent start up procedure by stemming from the motivation tree. Again we don't want to overwhelm the implementation agents,  but we need to give them appropriate context, motivation...\" (chat 2026-08-17 17:59:04)",
       "surfaces": [
@@ -2110,12 +2118,14 @@
         "harness/src/harness/WORKER_BRIEF.md"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M3SF2",
+        "date": "2026-10-03",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-097.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-03"
     },
     {
       "id": "FL-098",
@@ -2131,8 +2141,8 @@
         "harness/web/src/SymphonyDeck.tsx"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3SF2",
+        "date": "2026-10-03",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-098.png"
@@ -2145,7 +2155,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 17",
       "label": "Constitution: Rounds as deltas: passed work stands, only judge feedback forms the next round. (chat 2026-08-17 17:02:48)",
-      "status": "partial",
+      "status": "built",
       "walk": "Let a judge fail one packet; round two re-runs only that packet while the passed work stands.",
       "owner": "constitution",
       "surfaces": [
@@ -2154,12 +2164,14 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M3SF2",
+        "date": "2026-10-03",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-099.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-03"
     },
     {
       "id": "FL-100",
@@ -2685,7 +2697,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Aug 17",
       "label": "A recipe module showing the plan graph with completed parts dimmed.",
-      "status": "partial",
+      "status": "built",
       "walk": "Run a symphony with the recipe module open; completed parts dim.",
       "owner": "owner — \"I want the plan completion view to look like this: just matching our livery and some dyamics that indicate at what point we are at maybe just dimming the competed parts.\" (chat 2026-08-17 21:05:47 (+ 17:44:55))",
       "surfaces": [
@@ -2694,10 +2706,10 @@
         "harness/src/harness/recipe_graph.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M3SF2",
+        "date": "2026-10-03",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-122.png"
       },
       "protected": true,
@@ -4097,7 +4109,7 @@
       "section": "15. Platform and integrations",
       "era": "Jul 22",
       "label": "The Harness can use skills and has the best and most common tools available, compiled from a list.",
-      "status": "built",
+      "status": "partial",
       "walk": "Ask the agent to use a skill in a thread; it loads the skill and follows it.",
       "owner": "owner — \"Generally, we need to make sure that we can use skills and have the best tools available in the harness: I think codex browser use with the chrome extension (we can probably just port theirs I think it's open source). We should compile a list of the best and most common skills and tools and other things and make sure that we have those.\" (chat 2026-07-22 14:49:11; chat 2026-07-22 15:05:49)",
       "surfaces": [
@@ -4108,10 +4120,10 @@
         "harness/uv.lock"
       ],
       "last_walk": {
-        "packet": "M3CL2",
+        "packet": "M3SF2",
         "date": "2026-10-03",
-        "verdict": "PASS",
-        "flag": "",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-190.png"
       },
       "protected": true,
