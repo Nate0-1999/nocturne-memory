@@ -2,34 +2,25 @@
   "packet": "M3UI2",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "00dc55bc6104c1b8c2d5a257f19e0069b23050633563cae62988a17c901609a4",
+  "ledger_sha256": "04c978d0a37a7166a8fdd297b086314f45f39b2740a63b02758b7b669f5a46ee",
   "diffs": [
     {
       "repo": "spine",
-      "base": "5adaa1aeaf3cd207f2ae9c500529b8764cbc88d7",
-      "head": "85e3a015839d044e820a54a2db1a666277dfad43"
+      "base": "c4347ba008d1b0ba31daa6fa1d1865dcb8660568",
+      "head": "a2ff36d52e1d6d4564d711c7428ba31744dd4ffd"
     }
   ],
   "unmapped": {
-    "spine/openapi.json": "paired release version 0.1.49; no feature behavior.",
-    "spine/src/spine/__init__.py": "paired release version 0.1.49; no feature behavior.",
-    "spine/tests/test_packaging.py": "paired release version 0.1.49 in the packaging test; no product behavior.",
-    "spine/verification/m3ui2/ledger-report.json": "M3UI2 evidence: the measurement and walk scripts, coverage report, captures and checksums.",
+    "spine/openapi.json": "paired release version 0.1.51; no feature behavior.",
+    "spine/src/spine/__init__.py": "paired release version 0.1.51; no feature behavior.",
+    "spine/tests/test_packaging.py": "paired release version 0.1.51 in the packaging test; no product behavior.",
+    "spine/verification/m3ui2/FL-196.png": "M3UI2 evidence: the measurement and walk scripts, coverage report, captures and checksums.",
     "spine/verification/m3ui2/SHA256SUMS": "M3UI2 evidence: the measurement and walk scripts, coverage report, captures and checksums.",
-    "spine/verification/m3ui2/FL-196.png": "M3UI2 evidence: the measurement and walk scripts, coverage report, captures and checksums."
+    "spine/verification/m3ui2/ledger-report.json": "M3UI2 evidence: the measurement and walk scripts, coverage report, captures and checksums.",
+    "spine/verification/m3ui2/impacted.json": "M3UI2 evidence: the measurement and walk scripts, coverage report, captures and checksums."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
-  "rows": {
-    "FL-196": {
-      "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
-      "walk": "Remove a guard citation on a disposable branch and observe CI fail; change a frozen axiom and observe the freeze step fail; restore both and observe Rules pass. The master ADR check remains red until the owner applies the citation patch.",
-      "protected": true,
-      "verdict": "FAIL",
-      "screenshot": "FL-196.png",
-      "flag": "F086",
-      "observed": "Context only: an M3UI2 stylesheet change touched a file this row maps, so the row is required. Its complete gesture was not repeated in this packet; no new feature PASS or regression is claimed. The capture is the final build."
-    }
-  },
+  "rows": {},
   "not_run": {
     "FL-001": "unverified",
     "FL-002": "outside diff",
@@ -227,10 +218,11 @@
     "FL-193": "outside diff",
     "FL-194": "outside diff",
     "FL-195": "outside diff",
+    "FL-196": "outside diff",
     "FL-198": "outside diff",
     "FL-199": "outside diff",
     "FL-200": "outside diff",
     "FL-201": "not built",
-    "FL-202": "not built"
+    "FL-202": "outside diff"
   }
 }
