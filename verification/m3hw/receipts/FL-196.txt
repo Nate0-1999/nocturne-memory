@@ -1,0 +1,17 @@
+# FL-196 — 2026-10-01 09:03:16 CDT, a throwaway checkout of spine 39b64ea (M3HW's Memory head, after F170 was frozen), the script CI runs (scripts/check_rules.py)
+$ python3 scripts/check_rules.py   (as committed)
+Product rules: PASS
+(exit 0)
+$ (removed every Problem Tree citation from DECISIONS.md "## 000 — Relay law") python3 scripts/check_rules.py
+DECISIONS.md 000: missing Problem Tree citation
+Product rules: FAIL
+(exit 1)
+$ (changed frozen axiom 0 in CLAUDE.md) python3 scripts/check_rules.py --freeze-only
+CLAUDE.md: frozen axioms differ from the master fingerprint
+Product rules: FAIL
+(exit 1)
+$ (restored both) python3 scripts/check_rules.py --freeze-only; python3 scripts/check_rules.py
+Product rules: PASS
+Product rules: PASS
+(exit 0)
+git status after restoring: 0 changed files

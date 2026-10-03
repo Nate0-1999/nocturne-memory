@@ -60,12 +60,26 @@ class ModelRoute:
 
 
 @dataclass(frozen=True, slots=True)
+class ListedModel:
+    """FL-202: one source model as the model browser shows it; prices in USD/M tokens."""
+
+    model_id: str
+    name: str
+    context_tokens: int | None
+    prompt_price: Decimal | None
+    completion_price: Decimal | None
+    reasoning: bool
+    intelligence_index: Decimal | None = None
+
+
+@dataclass(frozen=True, slots=True)
 class ModelCatalog:
     """A fetched benchmark table plus executable routes from the same snapshot."""
 
     rows: tuple[BenchmarkModel, ...]
     model_routes: Mapping[str, ModelRoute]
     fetched_at: datetime
+    listing: tuple[ListedModel, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -302,10 +316,12 @@ class OpenRouterCatalogClient:
                 fetched_at = self._clock()
                 if fetched_at.tzinfo is None:
                     raise ModelCatalogUnavailable("catalog clock returned a naive timestamp")
+                rows = _parse_benchmark_rows(benchmark_payload)
                 catalog = ModelCatalog(
-                    rows=_parse_benchmark_rows(benchmark_payload),
+                    rows=rows,
                     model_routes=_parse_model_routes(models_payload),
                     fetched_at=fetched_at,
+                    listing=parse_model_listing(models_payload, rows),
                 )
             except ModelCatalogUnavailable:
                 raise
@@ -825,6 +841,50 @@ def _parse_named_routes(payload: object) -> Mapping[str, ModelRoute]:
     if not resolved:
         raise ModelCatalogUnavailable("model table has no positive-context named routes")
     return resolved
+
+
+def parse_model_listing(
+    payload: object,
+    rows: Sequence[BenchmarkModel] = (),
+) -> tuple[ListedModel, ...]:
+    """FL-202: every priced source model, joined to the benchmark index the policies use.
+
+    A-020 rejects per-prompt classifier routing, so router pseudo-models (variable
+    price, or OpenRouter's own `openrouter/` routers) are never offered.
+    """
+
+    index = {row.permaslug: row.intelligence_index for row in rows}
+    listed: dict[str, ListedModel] = {}
+    for raw in _payload_data(payload, "models"):
+        if not isinstance(raw, dict):
+            continue
+        model_id = raw.get("id")
+        if not isinstance(model_id, str) or not model_id or model_id != model_id.strip():
+            continue
+        pricing = raw.get("pricing")
+        prompt = completion = None
+        if isinstance(pricing, dict):
+            prompt = _finite_decimal(pricing.get("prompt"))
+            completion = _finite_decimal(pricing.get("completion"))
+        if model_id.startswith("openrouter/") or any(
+            price is not None and price < 0 for price in (prompt, completion)
+        ):
+            continue
+        name = raw.get("name")
+        context_length = raw.get("context_length")
+        supported = raw.get("supported_parameters")
+        listed[model_id] = ListedModel(
+            model_id=model_id,
+            name=name.strip() if isinstance(name, str) and name.strip() else model_id,
+            context_tokens=(
+                context_length if type(context_length) is int and context_length > 0 else None
+            ),
+            prompt_price=None if prompt is None else prompt * _PRICE_PER_MILLION,
+            completion_price=None if completion is None else completion * _PRICE_PER_MILLION,
+            reasoning=isinstance(supported, list) and "reasoning" in supported,
+            intelligence_index=index.get(str(raw.get("canonical_slug"))),
+        )
+    return tuple(listed.values())
 
 
 def _parse_input_modalities(raw: Mapping[str, object]) -> frozenset[str] | None:
