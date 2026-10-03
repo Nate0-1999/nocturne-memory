@@ -1456,8 +1456,8 @@
         "harness/web/src/projectPath.ts"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3CL2",
+        "date": "2026-10-03",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-067.png"
@@ -1492,7 +1492,7 @@
       "section": "5. Agent hands and location",
       "era": "Jul 28",
       "label": "The core tools every modern harness has: files, terminal, Chrome, skills, changing models, compaction (our own take), and interactions with common apps, taken from the most modular standard source.",
-      "status": "partial",
+      "status": "built",
       "walk": "Ask the agent to read a file, run a terminal command, open a page in the browser and use a skill; each works.",
       "owner": "owner — \"there should be a core of tools that are consistent across al of them that we should fine: using skills, progressive prompting, changing models, compaction strategies (we will have our own take), interactions with common apps, etc, etc. we need to go out and find those common standard ones pick the one we like the best that is the most modular and keep it.\" (chat 2026-08-16 19:37:48; chat 2026-07-28 16:27:32)",
       "surfaces": [
@@ -1505,12 +1505,14 @@
         "harness/src/harness/browser_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F082",
+        "packet": "M3CL2",
+        "date": "2026-10-03",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-069.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-03"
     },
     {
       "id": "FL-070",
@@ -1573,12 +1575,14 @@
         "harness/src/harness/progressive_prompt.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3CL2",
+        "date": "2026-10-03",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-072.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-03"
     },
     {
       "id": "FL-073",
@@ -1641,12 +1645,14 @@
         "harness/src/harness/run_loop.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3CL2",
+        "date": "2026-10-03",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-075.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-03"
     },
     {
       "id": "FL-076",
@@ -1663,12 +1669,14 @@
         "harness/web/src/RewindControl.tsx"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3CL2",
+        "date": "2026-10-03",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-076.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-03"
     },
     {
       "id": "FL-077",
@@ -2477,8 +2485,8 @@
         "harness/web/src/ModelDevice.tsx"
       ],
       "last_walk": {
-        "packet": "M3EXF2",
-        "date": "2026-09-30",
+        "packet": "M3UI2",
+        "date": "2026-10-03",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-113.png"
@@ -4089,7 +4097,7 @@
       "section": "15. Platform and integrations",
       "era": "Jul 22",
       "label": "The Harness can use skills and has the best and most common tools available, compiled from a list.",
-      "status": "partial",
+      "status": "built",
       "walk": "Ask the agent to use a skill in a thread; it loads the skill and follows it.",
       "owner": "owner — \"Generally, we need to make sure that we can use skills and have the best tools available in the harness: I think codex browser use with the chrome extension (we can probably just port theirs I think it's open source). We should compile a list of the best and most common skills and tools and other things and make sure that we have those.\" (chat 2026-07-22 14:49:11; chat 2026-07-22 15:05:49)",
       "surfaces": [
@@ -4100,12 +4108,14 @@
         "harness/uv.lock"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M3CL2",
+        "date": "2026-10-03",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-190.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-03"
     },
     {
       "id": "FL-191",
@@ -4342,13 +4352,14 @@
         "harness/web/src/WorkerContext.tsx"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3UI2",
+        "date": "2026-10-03",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-199.png"
       },
-      "protected": false
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-03"
     },
     {
       "id": "FL-200",
@@ -4379,13 +4390,21 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Oct 1",
       "label": "One scale across modules: an icon reused anywhere is one size, text of one role is one size and one font, and a box belongs only to an icon that is a button.",
-      "status": "not built",
+      "status": "built",
       "walk": "Measure every module: each reused icon renders at one size, each text role (module header, row label, body, caption, tip) at one size and font; markers and status glyphs stand bare, only icon buttons are boxed.",
       "owner": "owner 2026-10-01: \"Icons reused across modules should be the same size, similarly text should be the same size and font. Not every icon needs a box around it as well.\"",
       "surfaces": [
         "harness/web/src/"
       ],
-      "protected": false
+      "protected": true,
+      "last_walk": {
+        "packet": "M3UI2",
+        "date": "2026-10-03",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-201.png"
+      },
+      "protected_reason": "walk PASS 2026-10-03"
     },
     {
       "id": "FL-202",
