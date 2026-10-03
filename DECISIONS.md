@@ -1362,3 +1362,11 @@ App settings reads and appends the owner's curator policy in the Palace.
 The existing Harness selector moves here unchanged for all four roles. Each
 principal's current pass retains its resolved model; a later pass reads the
 new setting. The original configured model remains the default pinned policy.
+
+## M3EL — A free model sits at the price floor [P4]
+
+PRECEDENT: SPEC C.5 v2.129 (replaces A-025's fail-open), A-021(a-revised, g), M3MD.
+Prices rise strictly along the frontier, so only its cheapest end can be free. Elbow gives
+that model the table's lowest nonzero prompt price (`elbow_price_floor`) before the log-price
+mapping; the zero-price fail-open is deleted. A frontier under three points still takes max
+(A-021(g)), where no floor is used, so the floor is reported only when elbow computed with it.

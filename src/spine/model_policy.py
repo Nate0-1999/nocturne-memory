@@ -223,7 +223,7 @@ def select_model(policy: ModelPolicy, rows: Sequence[BenchmarkModel]) -> Benchma
     try:
         frontier = pareto_frontier(rows)
         if policy.kind == "elbow":
-            return _select_elbow(frontier)
+            return _select_elbow(frontier, elbow_price_floor(frontier, rows))
         if policy.kind == "slope":
             assert isinstance(policy.value, Decimal)
             return _select_slope(frontier, policy.value)
@@ -257,6 +257,18 @@ def pareto_frontier(rows: Sequence[BenchmarkModel]) -> tuple[BenchmarkModel, ...
         )
     ]
     return tuple(sorted(frontier, key=lambda row: row.intelligence_index))
+
+
+def elbow_price_floor(
+    frontier: Sequence[BenchmarkModel],
+    rows: Sequence[BenchmarkModel],
+) -> Decimal | None:
+    """SPEC C.5 (v2.129): the price elbow gives a free frontier model, the table's lowest nonzero
+    prompt price; None when elbow prices no free model."""
+
+    if len(frontier) < 3 or frontier[0].prompt_price > 0:
+        return None
+    return min(row.prompt_price for row in rows if row.prompt_price > 0)
 
 
 def lower_convex_hull(
@@ -647,11 +659,9 @@ def _qualify_model(catalog: ModelCatalogLoader, model_id: str) -> str:
     return f"openrouter:{model_id}"
 
 
-def _select_elbow(frontier: Sequence[BenchmarkModel]) -> BenchmarkModel:
+def _select_elbow(frontier: Sequence[BenchmarkModel], floor: Decimal | None) -> BenchmarkModel:
     if not frontier:
         raise ModelCatalogUnavailable("benchmark frontier is empty")
-    if any(row.prompt_price <= 0 for row in frontier):
-        raise ModelCatalogUnavailable("elbow frontier contains a non-positive prompt price")
     if len(frontier) < 3:
         return _select_max(frontier)
 
@@ -659,7 +669,10 @@ def _select_elbow(frontier: Sequence[BenchmarkModel]) -> BenchmarkModel:
     max_index = frontier[-1].intelligence_index
     with localcontext() as context:
         context.prec = _LOG_PRECISION
-        log_prices = [row.prompt_price.log10() for row in frontier]
+        log_prices = [
+            (row.prompt_price if floor is None or row.prompt_price else floor).log10()
+            for row in frontier
+        ]
         min_log_price = log_prices[0]
         max_log_price = log_prices[-1]
         index_span = max_index - min_index
