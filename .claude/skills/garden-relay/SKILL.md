@@ -10,6 +10,12 @@ Read garden/PLAN.md §0–§2, your packet's charge, its board row, garden/GATE.
 and garden/GLOSSARY.md. Read SPEC.md only by the sections your charge names.
 Scouts read the generated ledger report, never the ledger source.
 
+- Sweep first: `bin/sweep_browsers` in garden/ (`../garden/bin/sweep_browsers`
+  from harness/ or spine/) stops verification browsers and walk drivers that
+  outlived their packet — orphaned, or older than 8 hours. It never touches
+  the owner's own Chrome. (2026-10-04: ten browsers from finished packets
+  had run for days.)
+
 ## Claim
 One packet per session. Claim on the board as `<runner> / <date> / <id>`
 (runner is `codex` or `claude`). The claim commit is the mutex: if your push
@@ -51,6 +57,10 @@ a FAIL cites an existing flag or opens one in the WHAT-I-DID / EXPECTED /
 SAW / WHY form. Report as `reports/NNN-<PACKET>.md`; evidence under
 `verification/<packet>/` with SHA256SUMS; `bin/ledger done` before the board
 turns DONE; final commits marked `<PACKET>: handoff DONE`. Then stop.
+
+- Before the handoff commit, stop every browser and driver you launched,
+  then run `bin/sweep_browsers` once more. A handoff that leaves a browser
+  running is not DONE.
 
 ## Stops
 Stop and hand off honestly, never guess silently, when: a same-function
