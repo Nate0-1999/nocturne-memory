@@ -3223,7 +3223,7 @@
       "era": "Aug 17",
       "label": "Wizard Mode and Technomancer themes with our own glyph scripts, runes appearing and disappearing.",
       "status": "built",
-      "walk": "Switch to Wizard Mode, then Technomancer: the glyph scripts appear and disappear in the module frames, and every module's name reads whole in its header — the glyphs never crowd or cut the name (owner, 2026-10-04).",
+      "walk": "Switch to Wizard Mode, then Technomancer: the glyph scripts appear and disappear in the module frames, and every module's name reads whole in its header — the glyphs never crowd or cut the name (owner, 2026-10-04); on the Stage, the scripts run down the background behind the modules like the matrix screens, never over a data surface (owner, 2026-10-04).",
       "owner": "owner — \"Can we not copy them and just change them enough to not impinge on and create our own scripts? That way we have something cool on our own?\" (chat 2026-08-17 21:22:02 (+ 18:12:32)) — 2026-10-04: \"let's take a pass at making those better\"",
       "surfaces": [
         "harness/web/src/themes/",
