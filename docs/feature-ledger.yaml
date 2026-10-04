@@ -3365,8 +3365,8 @@
         "spine/src/spine/model_policy.py"
       ],
       "last_walk": {
-        "packet": "M3LF",
-        "date": "2026-10-01",
+        "packet": "M3EL",
+        "date": "2026-10-03",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-154.png"
@@ -4424,8 +4424,8 @@
       "era": "Oct 1",
       "label": "The model browser: every model the token source offers, ranked, pinnable, with price and context window; the thinking level beside it; the standard configurations one click away.",
       "status": "built",
-      "walk": "Open the model chip on a conversation: the source's models are listed ranked with price and context window; pin one and it stays on top; pick another and the thread switches; set the thinking level beside it; pick a standard configuration (pinned, max, elbow, floor) and see what it selects now.",
-      "owner": "owner 2026-10-01: \"run whatever models open router or whatever token source they are using can feed us - a function that pulls all available and ranks them by relevance and allows pinning and shows standard configurations … Probably cost and context window as well.\"",
+      "walk": "Open the model chip on a conversation: the source's models are listed ranked with price and context window; pin one and it stays on top; pick another and the thread switches to it and stays on it — new conversations start on it too, until you change it, and the chip says so; set the thinking level beside it; pick a standard configuration (pinned, max, elbow, floor) and see what it selects now; switching back from a model to a policy is one click.",
+      "owner": "owner 2026-10-01: \"run whatever models open router or whatever token source they are using can feed us - a function that pulls all available and ranks them by relevance and allows pinning and shows standard configurations … Probably cost and context window as well.\" — 2026-10-04: \"make sure that switching from a policy like elbow to a specific model isn't hard for the user and is sticky\"",
       "surfaces": [
         "harness/web/src/ModelDevice.tsx",
         "harness/src/harness/model_policy.py",
