@@ -70,6 +70,8 @@ class ListedModel:
     completion_price: Decimal | None
     reasoning: bool
     intelligence_index: Decimal | None = None
+    # SD-079: the request parameters the source says this model takes; None when unpublished.
+    supported_parameters: frozenset[str] | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -562,9 +564,18 @@ class ModelPolicyResolver:
     async def _resolve_uncached(self, thread_id: str) -> ThreadModelResolution:
         if self._policy.kind == "pinned":
             assert isinstance(self._policy.value, str)
+            context_tokens = self._static_context_tokens
+            if self._policy.value != self._static_model and self._catalog is not None:
+                # A pick other than the configured model takes its own window (M3SK); the
+                # benchmark table stays unconsulted, and an unknown route keeps the static one.
+                try:
+                    named = await self.resolve_named(thread_id, self._policy.value)
+                    context_tokens = named.context_tokens
+                except (ModelCatalogUnavailable, NamedModelResolutionError):
+                    pass
             resolved = ThreadModelResolution(
                 model=self._policy.value,
-                context_tokens=self._static_context_tokens,
+                context_tokens=context_tokens,
                 policy=self._policy_text,
             )
             logger.info(
@@ -896,6 +907,11 @@ def parse_model_listing(
             completion_price=None if completion is None else completion * _PRICE_PER_MILLION,
             reasoning=isinstance(supported, list) and "reasoning" in supported,
             intelligence_index=index.get(str(raw.get("canonical_slug"))),
+            supported_parameters=(
+                frozenset(item for item in supported if isinstance(item, str))
+                if isinstance(supported, list)
+                else None
+            ),
         )
     return tuple(listed.values())
 

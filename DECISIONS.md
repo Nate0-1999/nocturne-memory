@@ -1370,3 +1370,14 @@ Prices rise strictly along the frontier, so only its cheapest end can be free. E
 that model the table's lowest nonzero prompt price (`elbow_price_floor`) before the log-price
 mapping; the zero-price fail-open is deleted. A frontier under three points still takes max
 (A-021(g)), where no floor is used, so the floor is reported only when elbow computed with it.
+
+## M3SK — A pinned pick's own window; the parameters a model takes [P4]
+
+PRECEDENT: A-021 (pinned:<model> verbatim, no benchmark table), A-052, SD-079; owner ruling
+2026-10-04 widening M3SK to this file.
+A new thread under pinned:<model> other than the configured model reads that model's own
+route for its context window, the lookup /model and restart already make; the benchmark table
+stays unread, and a pin equal to the configured model, a non-OpenRouter pin or a failed lookup
+keeps the configured window. So A-052's "catalog bypass for every text-only turn" now holds for
+pins of the configured model only. The listing keeps each model's supported_parameters (None
+when the source publishes none) for the Harness parameter dialog.
