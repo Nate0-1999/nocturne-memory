@@ -1,6 +1,6 @@
 # NOCTURNE — Harness + Memory Palace Specification
 
-**Version 2.129** (2026-10-03) — ELBOW SEES THE FREE MODELS (owner, on the model browser's finding that elbow picks nothing because a free model always sits on OpenRouter's price curve: 'I don't think skip free models'): A-025's fail-open on a zero prompt price is replaced — a zero prompt price is mapped to the frontier's PRICE FLOOR, the lowest nonzero prompt price in the benchmark table, so a free model sits at the cheap end of the chord and competes on its intelligence index like any other; elbow stays the recommended chat policy and never fails open on free models again (the floor is a deterministic read of the same table, not a new parameter). Full version lineage: Appendix D.2 (rows) and D.3 (narrative).
+**Version 2.130** (2026-10-04) — THE QUIET BOUND (gate, approving M3P1's documentation proposal after F169: five runs sat at Working… for 10–26 minutes because the harness set no request timeout of its own): C.5 lists `model_request_timeout_seconds=60` beside the run limits — the longest an OpenRouter request may go without sending a byte (silence, not total time; OpenRouter keeps streams alive every second and whole answers at least every 3 s); a stall before the answer is retried and the turn carries on, a stall mid-answer ends the turn with one plain sentence naming the model and the wait; direct single-key providers keep the client's 600 s. Full version lineage: Appendix D.2 (rows) and D.3 (narrative).
 content-preserving. Audience: implementing agents (via /goal) and the human owner.
 Everything here is binding unless marked OPEN or given a non-accepted status.
 ADR numbers are immutable; superseding requires a new ADR. The chronological
@@ -3920,7 +3920,8 @@ direct-provider URLs remain a config override; the bearer-key slot accepts
 any OpenAI-compatible key — OpenRouter primary),
 embed_model="openai/text-embedding-3-small" (dim 1536, provider-pluggable),
 memory_max_tokens=128, label_max=64.
-run_request_limit=40, run_total_tokens_limit=500000 (harness; ADR-014).
+run_request_limit=40, run_total_tokens_limit=500000,
+model_request_timeout_seconds=60 — silence, not total time; v2.130 (harness; ADR-014).
 Chat model defaults: development/testing `openrouter:minimax/minimax-m3`
 (verified live 2026-07-19; ≈$0.30/M in, $1.20/M out); flagship
 `anthropic:claude-sonnet-4-6` for real use; OpenRouter configured as the
@@ -4794,6 +4795,7 @@ into its owning ADR above)
 | 170 | 2026-09-30 | v2.127 THE RELIABILITY EXIT: a charged row passes only after three consecutive fresh runs; the rows two scouts disagreed on are UNRELIABLE (F158) until proven; the demo-readiness wave M3CL2 / M3HW / M3SF2 / M3MQ / M3LF / M3LV / M3EXF2, then a lighter rescout (M3W6), then M3RV | ACCEPTED |
 | 171 | 2026-10-01 | v2.128 THE CURATOR'S OWN BAND: write-time 0.92 / 0.80 unchanged; the curator's candidate search at curator_review_sim (default 0.70, config, registered) plus the score-vector signal; proposals only — the owner approves, amends or feeds back (SD-074) | ACCEPTED |
 | 172 | 2026-10-03 | v2.129 ELBOW SEES THE FREE MODELS: a zero prompt price maps to the frontier's price floor (lowest nonzero prompt price in the table); A-025's fail-open on zero prices is replaced; elbow stays recommended (owner: 'I don't think skip free models') | ACCEPTED |
+| 173 | 2026-10-04 | v2.130 THE QUIET BOUND: model_request_timeout_seconds=60 in C.5 beside the run limits — a silent OpenRouter request ends after 60 s of no bytes; retried before the answer, a plain stop mid-answer; single-key providers keep 600 s (F169, M3P1) | ACCEPTED |
 
 ## D.3 Resolved-question index (where each folded)
 
@@ -4922,3 +4924,5 @@ F037 RESOLVED + THE EVIDENCE CAPTURE LAW + REPO VISIBILITY DOCTRINE: the garden 
 **v2.127 (2026-09-30) narrative, folded from the header:** THE RELIABILITY EXIT (owner: 'Don't we need to fix these issues? I mean it sounds like we aren't ready.'): two independent rescouts on one build (Codex 133 PASS / Claude 128 PASS of 179) disagreed on 31 rows — the same feature passing for one and failing for the other the same day. A feature that works sometimes is not built. From now on a packet's charged row passes only after THREE consecutive fresh runs pass (fresh thread, fresh identity where it matters), and the 31 rows carry the flag UNRELIABLE (F158) until a packet proves them so. The demo-readiness wave: seven packets minted from the union of both scouts' findings, then a lighter rescout, then the room. Full version lineage: Appendix D.2 (rows) and D.3 (narrative).
 
 **v2.128 (2026-10-01) narrative, folded from the header:** THE CURATOR'S OWN BAND (owner, SD-074: 'Curator is going to be the thing that limits the memory growth as much as possible which is super critical'; the memory packet found a true duplicate at 0.738 that the 0.80 review band missed and asked before touching the contract): the write-time bands are unchanged — a create at cosine ≥ 0.92 is a duplicate and 0.80–0.92 is 'similar, confirm' (C.4 defaults dedup_dup / dedup_sim); the CURATOR searches for merge candidates at its own band, `curator_review_sim`, default 0.70, a registered config parameter in the trainable registry (FL-058), beside the relevance-score signal on the standard probe set; a candidate is still only a proposal the owner approves, amends or feeds back. Full version lineage: Appendix D.2 (rows) and D.3 (narrative).
+
+**v2.129 (2026-10-03) narrative, folded from the header:** ELBOW SEES THE FREE MODELS (owner, on the model browser's finding that elbow picks nothing because a free model always sits on OpenRouter's price curve: 'I don't think skip free models'): A-025's fail-open on a zero prompt price is replaced — a zero prompt price is mapped to the frontier's PRICE FLOOR, the lowest nonzero prompt price in the benchmark table, so a free model sits at the cheap end of the chord and competes on its intelligence index like any other; elbow stays the recommended chat policy and never fails open on free models again (the floor is a deterministic read of the same table, not a new parameter). Full version lineage: Appendix D.2 (rows) and D.3 (narrative).
