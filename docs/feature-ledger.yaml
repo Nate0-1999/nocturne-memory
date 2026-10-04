@@ -2344,8 +2344,8 @@
       "era": "Jul 28",
       "label": "A plugin to change common model parameters such as top p and temperature, as an Ableton-style visualizer and input block.",
       "status": "built",
-      "walk": "Change temperature in the model-parameters plugin; the next turn's request carries the new value.",
-      "owner": "owner — \"Also, we should have another plug in that allows people to change common model parameters: top p, temperature, etc. That would be a cool abletonesk visualizer and input block as well.\" (chat 2026-07-28 16:31:54)",
+      "walk": "Open the parameters dialog from the Model Device: it is compact and shows only the parameters the model in use supports (from the source's catalog); change temperature and the next turn's request carries the new value; switch to a model without top k and that control is gone.",
+      "owner": "owner — \"Also, we should have another plug in that allows people to change common model parameters: top p, temperature, etc. That would be a cool abletonesk visualizer and input block as well.\" (chat 2026-07-28 16:31:54) — 2026-10-04: \"The top p, k etc are too large … they should be in a dialogue box … make that dynamic because different models will have different settings available\"",
       "surfaces": [
         "harness/web/src/ModelDevice.tsx",
         "harness/web/src/rack.tsx",
