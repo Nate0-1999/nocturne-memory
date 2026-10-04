@@ -4457,6 +4457,17 @@
         "harness/web/src/platePress.ts"
       ],
       "protected": false
+    },
+    {
+      "id": "FL-204",
+      "section": "4. Learning and training loops",
+      "era": "Oct 4",
+      "label": "The memory palace hooked into Claude Code through its mod surface (hooks and plugin panes), with some of our visualizations ported; explore after v1.",
+      "status": "horizon",
+      "walk": "No walk yet: an exploration report names the attachment points (injection at prompt submit, extraction at compaction, a palace pane or status line) and which visualizations port, with a working proof-of-concept if cheap.",
+      "owner": "owner 2026-10-04: \"Could we hook the memory system we've built up to Claude code? If yes could we port some of our visualizations easily? … mainly explore for now … once we've finished v1\"",
+      "surfaces": [],
+      "protected": false
     }
   ]
 }
