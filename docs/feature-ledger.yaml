@@ -2329,8 +2329,8 @@
         "harness/src/harness/commands.py"
       ],
       "last_walk": {
-        "packet": "M3MD",
-        "date": "2026-10-02",
+        "packet": "M3SK",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-106.png"
@@ -2352,8 +2352,8 @@
         "harness/src/harness/parameter_registry.py"
       ],
       "last_walk": {
-        "packet": "M3MD",
-        "date": "2026-10-02",
+        "packet": "M3SK",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-107.png"
@@ -3112,8 +3112,8 @@
       "era": "Aug 31",
       "label": "Constitution: A sheet mode: an annotated layout of the same views. (chat 2026-08-31 21:38:35)",
       "status": "built",
-      "walk": "Switch to sheet mode; the same views appear laid out with annotations.",
-      "owner": "constitution",
+      "walk": "Stage is the default face; switch to Sheet and the same views appear laid out with annotations on the plate's white ground; the choice is remembered (owner 2026-10-04: both stay, Stage the default).",
+      "owner": "constitution — 2026-10-04: \"We can keep both sheet and stage but stage is the default\"",
       "surfaces": [
         "harness/web/src/PalaceNebula.tsx",
         "harness/web/src/nebulaBindings.ts",
@@ -4435,8 +4435,8 @@
       ],
       "protected": true,
       "last_walk": {
-        "packet": "M3MD",
-        "date": "2026-10-02",
+        "packet": "M3SK",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-202.png"
