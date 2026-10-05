@@ -2,12 +2,12 @@
   "packet": "M4MS",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "d7a2b339141c13fe493af22b095bdb19446d05393b2007166b80865445b2660e",
+  "ledger_sha256": "882edbf027063299760c48fd267288cb4abe8540420becb4830cdbfd04ac2c6b",
   "diffs": [
     {
       "repo": "spine",
       "base": "f2ef2810d029c9970e9cdb940ef01de39585a535",
-      "head": "7fc43580adeba0945610e37b812b8b4670501328"
+      "head": "e980978a355d7b4eb9647ff6f598def1b0434b0d"
     }
   ],
   "unmapped": {
@@ -41,31 +41,7 @@
     "spine/verification/m4ms/public-after-walk.json": "Public release or cleanup verification evidence only; no product behavior.",
     "spine/verification/m4ms/public-code-removal.json": "Public release or cleanup verification evidence only; no product behavior.",
     "spine/verification/m4ms/final-palace-drop.log": "Public release or cleanup verification evidence only; no product behavior.",
-    "spine/verification/m4ms/image-cleanup-retention.json": "Public release or cleanup verification evidence only; no product behavior.",
-    "spine/verification/m4ah/SHA256SUMS": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4ah/ledger-report.json": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-034.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-035.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-036.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-037.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-041.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-133.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-151.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-154.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-155.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-159.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-162.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-164.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-167.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-169.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-183.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-195.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-196.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-197.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/FL-202.png": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/SHA256SUMS": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4cu/ledger-report.json": "Verification evidence retained through final integration; no executable behavior.",
-    "spine/verification/m4ms/pre-peer-metadata-report.json": "Preserved prior report before peer-ledger synchronization; no executable behavior."
+    "spine/verification/m4ms/image-cleanup-retention.json": "Public release or cleanup verification evidence only; no product behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
