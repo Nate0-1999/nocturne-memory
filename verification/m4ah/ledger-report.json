@@ -2,12 +2,12 @@
   "packet": "M4AH",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "3d858d14dce31f8beb017f4c256d7c14756632598aefa08540e4986efcf48258",
+  "ledger_sha256": "8dd95b630fceef27b198347a6cada65973dcb97d432450649850be52b9548e88",
   "diffs": [
     {
       "repo": "spine",
-      "base": "e7fdfee6d3f34064ee5a37d6b214f9af4f4af5c2",
-      "head": "b79a032c0de7b8f236ac7d3f50be55ebd6dc7fa8"
+      "base": "d3dd14bfddb66deb2948af6481179a3f6218949e",
+      "head": "4fa8be01476d52e7edf332644d1b03bb9872d113"
     }
   ],
   "unmapped": {
@@ -15,10 +15,10 @@
     "spine/openapi.json": "paired release version 0.1.59; no feature behavior.",
     "spine/src/spine/__init__.py": "paired release version 0.1.59; no feature behavior.",
     "spine/tests/test_packaging.py": "paired release version 0.1.59 in the packaging test; no product behavior.",
-    "spine/verification/m4ah/ledger-report.json": "M4AH evidence: coverage report, captures and checksums.",
-    "spine/verification/m4ah/SHA256SUMS": "M4AH evidence: coverage report, captures and checksums.",
     "spine/verification/m4ah/FL-154.png": "M4AH evidence: coverage report, captures and checksums.",
-    "spine/verification/m4ah/FL-202.png": "M4AH evidence: coverage report, captures and checksums."
+    "spine/verification/m4ah/FL-202.png": "M4AH evidence: coverage report, captures and checksums.",
+    "spine/verification/m4ah/SHA256SUMS": "M4AH evidence: coverage report, captures and checksums.",
+    "spine/verification/m4ah/ledger-report.json": "M4AH evidence: coverage report, captures and checksums."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
