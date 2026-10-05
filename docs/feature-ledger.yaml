@@ -32,8 +32,8 @@
       "era": "founding",
       "label": "Memory units have a length cap; a memory over the cap is shortened to fit as one memory, and it is split only when it holds more than one distinct fact, with the split logged.",
       "status": "built",
-      "walk": "/remember a 300-token paragraph holding one fact; one memory lands, shortened to the cap; a paragraph holding two facts lands as two.",
-      "owner": "owner — \"Like we shorten the length cap then they are too long\" (chat 2026-09-12); \"this was one memory that was split agentically logged\" (chat 2026-07-26)",
+      "walk": "Save a fact over the cap: the same prompt runs again with 'this memory is too long, break it down into finer pieces' until every piece fits and stands alone (up to three rounds); a single fact is never refused as several, and nothing is dropped silently — the original stays in the journal.",
+      "owner": "owner — \"Like we shorten the length cap then they are too long\" (chat 2026-09-12); \"this was one memory that was split agentically logged\" (chat 2026-07-26) — 2026-10-05 (v2.133): \"If there is a long memory issue we should have a fallback that is like the same prompt but this memory is too long break it down into finer peices.\"",
       "surfaces": [
         "harness/src/harness/agent.py",
         "spine/src/spine/memory/service.py",
@@ -766,7 +766,7 @@
       "era": "Jul 23",
       "label": "The curators deconflict, dedupe and remove slop, triggered by every n memory writes rather than by the clock, and run at the Palace's own location.",
       "status": "built",
-      "walk": "Add 25 memories to a palace holding near-duplicates; a curator pass runs on its own (every 25 admitted writes or 3 gate removals), finds the pair by near-identical relevance scores on the standard probe set as well as by embedding, and proposes one lossless combined memory; Palace State shows the pass and the palace's growth curve bending.",
+      "walk": "Add 25 memories to a palace holding near-duplicates; a curator pass runs on its own (every 25 admitted writes or 3 gate removals), finds the pair by near-identical relevance scores on the standard probe set as well as by embedding, and proposes one lossless combined memory; Palace State shows the pass and the palace's growth curve bending; a compaction's admitted facts trigger a pass too, merging them with what the Palace already holds (owner, 2026-10-05, v2.133).",
       "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc. They will be triggered by n number of memories being added and run in the memory palaces location. They must be surgeons: minimally invasive, targeting the root problem, and allowing the system to then sort out the symptoms. They are also responsible for removing slop.\" (chat 2026-07-23 16:07:44; chat 2026-08-03 20:02:16) — 2026-09-30: \"Curator is going to be the thing that limits the memory growth as much as possible which is super critical… Maybe it triggers when n memories are added?\"",
       "surfaces": [
         "spine/src/spine/curation/",
@@ -878,8 +878,8 @@
       "era": "Jul 23",
       "label": "Agents make no memories until compaction; the explicit /remember command is the other way.",
       "status": "built",
-      "walk": "Run an agent thread through a turn; no memory is created mid-turn, only at compaction or by /remember.",
-      "owner": "owner — \"This is a more clean rule let's implement that. No agent memories until compaction. we need to be careful what sub agents come back to not overwhelm the main agent and force compaction on subagent stuff....\" (seed SD-060 (owner ruling 2026-09-09); chat 2026-08-09 18:49:53)",
+      "walk": "Run an agent thread through a turn; no memory is created mid-turn, only at compaction or by /remember. A /remember of a fact the user states is saved — checked and repaired before the Palace, never a bare refusal.",
+      "owner": "owner — \"This is a more clean rule let's implement that. No agent memories until compaction. we need to be careful what sub agents come back to not overwhelm the main agent and force compaction on subagent stuff....\" (seed SD-060 (owner ruling 2026-09-09); chat 2026-08-09 18:49:53) — 2026-10-05 (v2.133): \"we should also greatly increase the chance that something is turned into a memory if the user said it.\"",
       "surfaces": [
         "harness/src/harness/extraction.py",
         "harness/src/harness/run_loop.py",
@@ -977,9 +977,9 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Aug 9",
       "label": "At compaction the summarizing agent turns anything important but not needed for the next few build steps into a memory through the normal memory creation path, and compaction waits for those memories to land before dropping the rest.",
-      "status": "built",
-      "walk": "Cross a compaction on a main thread; memory candidates from the summary land on the Deck before the old context is dropped.",
-      "owner": "owner — \"To extend this compaction comes should be another chance for agents memories to be created... if somehting is important, but maybe not relavant to the next couple build steps the agent that is summarizing the recent history should make a memory out of it. this should be integrated with our current memory creation schema pretty seemlessly because agent created memories are the norm.\" (chat 2026-08-09 18:49:53; seed SD-061 (owner riff 2026-09-10))",
+      "status": "partial",
+      "walk": "Cross a compaction on a main thread: every fact a continuing agent would want lands as its own self-contained memory (no count cap; an over-long fact is split at its cleanest seam), a curator pass follows and merges them with what the Palace already holds, the last share of the conversation is still there word for word, the next prompt's injection can draw on the new facts, and the whole original chat is still on record beside the facts drawn from it (owner, 2026-10-05, v2.133).",
+      "owner": "owner — \"To extend this compaction comes should be another chance for agents memories to be created... if somehting is important, but maybe not relavant to the next couple build steps the agent that is summarizing the recent history should make a memory out of it. this should be integrated with our current memory creation schema pretty seemlessly because agent created memories are the norm.\" (chat 2026-08-09 18:49:53; seed SD-061 (owner riff 2026-09-10)) — 2026-10-05: \"This should look more like a normal agentic compaction prompt … break them into self contained fact sentences … If you cannot fit the information into one fact chose the cleanest place to break the information down into two.\"",
       "surfaces": [
         "harness/src/harness/extraction.py",
         "harness/src/harness/run_loop.py",
@@ -1767,8 +1767,8 @@
       "era": "Sep 10",
       "label": "A suite of compaction strategies: truncation; summarization; make the compaction memories first, wait for them to land, then drop everything else; keep only the human's messages and each agent turn's final answer.",
       "status": "partial",
-      "walk": "Open a memory card on the Deck or the gate: it shows only the aggregate score, the name and the memory; hovering shows a spider-web chart across every relevance feature; the provenance (project, thread, keywords, WHERE, revisions, open-the-conversation) is behind the hover or a tap, not on the card (owner, 2026-09-22).",
-      "owner": "owner — \"I am thinking that there will be a suite of compaction strategies that we can employ: truncation, summarization, apply memories made at compaction (wait for this to happen) and drop everything else, keep just the agent turn final response and human messages.\" (seed SD-061 (owner 2026-09-10)) — 2026-09-22: \"each memory should only have the aggregate score, name, and memory then if we hover over a spider web chart should pop up across all the memory relevance features\"",
+      "walk": "Open the compaction settings: the strategies are listed (truncation; summarization; memories first then drop; the human's messages and each final answer only) and the default makes the memories first, waits for them to land, then keeps the last n% of the conversation word for word and drops the rest from the window; the whole chat stays on record in primary threads.",
+      "owner": "owner — \"I am thinking that there will be a suite of compaction strategies that we can employ: truncation, summarization, apply memories made at compaction (wait for this to happen) and drop everything else, keep just the agent turn final response and human messages.\" (seed SD-061 (owner 2026-09-10)) — 2026-09-22: \"each memory should only have the aggregate score, name, and memory then if we hover over a spider web chart should pop up across all the memory relevance features\" — 2026-10-05 (v2.133): \"keep the last n% of the conversation that didn't get compacted and continue\" … \"We should keep the whole chat for records to check how good the memories extracted out of the converstation are for now. At least in the primary threads with the user\"",
       "surfaces": [
         "harness/src/harness/pydantic_harness_adapter.py",
         "harness/src/harness/agent_runtime.py"
@@ -3621,10 +3621,14 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "founding",
       "label": "Blue-water mode: work offline on a local copy of the Palace, then on reconnect push the working directory and the agent's memory to the cloud and reconcile the two.",
-      "status": "horizon",
-      "walk": "Save a memory with the network off, then reconnect and push; the cloud Palace shows that memory alongside what was saved there meanwhile.",
-      "owner": "owner — \"I have a local model that I am running on a locally on my machines hardware, I don't have internet because I am sailing: cached version of the memory object on my local hardware is looking as my long term memory. The sailboat and computer is rented. When I reach port I connect to the internet. I want to push the entire working directory and the agents memory into the cloud. How does this reconcile.\" (first thread turn 14) — HORIZON per B.4 (M4 fleet expansion / M5 blue-water), gate 2026-09-16",
-      "surfaces": []
+      "status": "not built",
+      "walk": "With the cloud Palace unreachable, send the first prompt of a new thread: the memory check screen opens from the local mirror and says so; /remember a fact and remove one memory — both are queued and shown as waiting; restore the connection: the queued writes push in order and the cloud Palace shows them alongside what was saved there meanwhile.",
+      "owner": "owner — \"I have a local model that I am running on a locally on my machines hardware, I don't have internet because I am sailing: cached version of the memory object on my local hardware is looking as my long term memory. The sailboat and computer is rented. When I reach port I connect to the internet. I want to push the entire working directory and the agents memory into the cloud. How does this reconcile.\" (first thread turn 14) — HORIZON per B.4 (M4 fleet expansion / M5 blue-water), gate 2026-09-16 — 2026-10-05: \"I thought we maintained some local version of the memory palace as backup that then sync's later when connection is estabilshed?\"",
+      "surfaces": [
+        "harness/src/harness/spine_client.py",
+        "harness/src/harness/memory_bridge.py",
+        "harness/src/harness/receipt_queue.py"
+      ]
     },
     {
       "id": "FL-166",
