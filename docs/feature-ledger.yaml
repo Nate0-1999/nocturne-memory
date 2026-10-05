@@ -3621,10 +3621,14 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "founding",
       "label": "Blue-water mode: work offline on a local copy of the Palace, then on reconnect push the working directory and the agent's memory to the cloud and reconcile the two.",
-      "status": "horizon",
-      "walk": "Save a memory with the network off, then reconnect and push; the cloud Palace shows that memory alongside what was saved there meanwhile.",
-      "owner": "owner — \"I have a local model that I am running on a locally on my machines hardware, I don't have internet because I am sailing: cached version of the memory object on my local hardware is looking as my long term memory. The sailboat and computer is rented. When I reach port I connect to the internet. I want to push the entire working directory and the agents memory into the cloud. How does this reconcile.\" (first thread turn 14) — HORIZON per B.4 (M4 fleet expansion / M5 blue-water), gate 2026-09-16",
-      "surfaces": []
+      "status": "not built",
+      "walk": "With the cloud Palace unreachable, send the first prompt of a new thread: the memory check screen opens from the local mirror and says so; /remember a fact and remove one memory — both are queued and shown as waiting; restore the connection: the queued writes push in order and the cloud Palace shows them alongside what was saved there meanwhile.",
+      "owner": "owner — \"I have a local model that I am running on a locally on my machines hardware, I don't have internet because I am sailing: cached version of the memory object on my local hardware is looking as my long term memory. The sailboat and computer is rented. When I reach port I connect to the internet. I want to push the entire working directory and the agents memory into the cloud. How does this reconcile.\" (first thread turn 14) — HORIZON per B.4 (M4 fleet expansion / M5 blue-water), gate 2026-09-16 — 2026-10-05: \"I thought we maintained some local version of the memory palace as backup that then sync's later when connection is estabilshed?\"",
+      "surfaces": [
+        "harness/src/harness/spine_client.py",
+        "harness/src/harness/memory_bridge.py",
+        "harness/src/harness/receipt_queue.py"
+      ]
     },
     {
       "id": "FL-166",
