@@ -23,6 +23,7 @@ from spine.spend.contracts import (
     PurposeSpendRow,
     SpendEventInput,
     SpendRateLane,
+    SpendReceipt,
     SpendTableSnapshot,
     ThreadSpendRow,
     event_values,
@@ -235,7 +236,7 @@ class SpendService:
                 .mappings()
                 .all()
             )
-            rates, messages, days = await _history(
+            rates, messages, days, receipts = await _history(
                 session, parameters, scoped=scoped, principal_scoped=principal_id is not None
             )
 
@@ -276,12 +277,13 @@ class SpendService:
             ),
             messages=messages,
             days=days,
+            receipts=receipts,
         )
 
 
 async def _history(
     session: AsyncSession, parameters: dict[str, Any], *, scoped: bool, principal_scoped: bool
-) -> tuple[list[SpendRateLane], list[MessageCache], list[DailySpend]]:
+) -> tuple[list[SpendRateLane], list[MessageCache], list[DailySpend], list[SpendReceipt]]:
     """ADR-024 / M3SR: scope ledger reads before grouping, preserving unknown prices."""
     filters = ["ts <= :as_of"]
     if scoped:
@@ -290,6 +292,20 @@ async def _history(
         filters.append("principal_id = :principal_id")
     where = " AND ".join(filters)
     base = f"SELECT * FROM spend_event WHERE {where}"
+    receipt_rows = (
+        (
+            await session.execute(
+                text(f"""
+                SELECT event_uid, ts, thread_id, model, purpose, quantity_type,
+                       unit_of_measure, quantity::text, cost_usd::text, basis, ref
+                FROM ({base}) AS base ORDER BY event_uid
+            """),
+                parameters,
+            )
+        )
+        .mappings()
+        .all()
+    )
     minute_rows = (
         "SELECT minute, purpose, model, cost_usd, receipt_lines, unpriced_lines "
         "FROM v_spend_rate WHERE minute >= :window_start AND minute <= :as_of"
@@ -394,6 +410,7 @@ async def _history(
         rates,
         [MessageCache(**row) for row in cache_rows],
         [DailySpend(**row) for row in day_rows],
+        [SpendReceipt(**row) for row in receipt_rows],
     )
 
 
