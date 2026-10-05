@@ -578,7 +578,7 @@
       "section": "2. Injection and the gate",
       "era": "Aug 3",
       "label": "The keyword, project key and origin path columns on a memory are filled in and factored into scoring.",
-      "status": "partial",
+      "status": "built",
       "walk": "Open a memory card; keyword, project and origin path are filled, and the score breakdown shows them counting.",
       "owner": "owner — \"The columns like keyword, project key, origin path, etc being empty might make sense because we aren't fully implemented but I want to make sure they are factored when we get there...\" (chat 2026-07-22 18:28:43)",
       "surfaces": [
@@ -588,12 +588,14 @@
         "spine/src/spine/memory/service.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4VW",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-026.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-05"
     },
     {
       "id": "FL-027",
@@ -2888,12 +2890,14 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4VW",
+        "date": "2026-10-05",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-130.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-05"
     },
     {
       "id": "FL-131",
@@ -2924,7 +2928,7 @@
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "A time-order control that highlights new roots and moves the panels to the longest-waiting response.",
-      "status": "partial",
+      "status": "built",
       "walk": "Click the time-order control; new roots highlight and the side panels move to the longest-waiting response.",
       "owner": "owner — \"3. I click the left hand side to time order and the visulization highlights new roots and the left hand and right hand side visualizatoins adjust to the longest waiting response for a different project.\" (chat 2026-07-20 17:15:32)",
       "surfaces": [
@@ -2934,12 +2938,14 @@
         "harness/src/harness/visualization.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4VW",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-132.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-05"
     },
     {
       "id": "FL-133",
@@ -2973,7 +2979,7 @@
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "A way to see things being added or removed over time, as SolidWorks does, the project growing like an organic object.",
-      "status": "partial",
+      "status": "built",
       "walk": "Drag the rollback bar back; the visuals show what had been added or removed by that moment.",
       "owner": "owner — \"I think like solid works we can see things being added or removed with time right. The projects that the computer is workin on is an organic object that's almost alive...\" (chat 2026-07-20 17:34:14)",
       "surfaces": [
@@ -2983,12 +2989,14 @@
         "harness/src/harness/visualization.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F181",
+        "packet": "M4VW",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-134.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-05"
     },
     {
       "id": "FL-135",
@@ -4008,8 +4016,8 @@
         "harness/src/harness/jobs.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4VW",
+        "date": "2026-10-05",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-184.png"
