@@ -929,3 +929,62 @@ async def test_progress_is_visible_during_provider_work_scoped_and_replayable(
     assert (await memory_client.get("/v1/curation/progress", params={
         "principal_id": "fixture-owner", "after": after["cursor"],
     })).json() == {"events": [], "cursor": after["cursor"]}
+
+
+@pytest.mark.asyncio
+async def test_a_compactions_approved_facts_wake_one_curator_pass(
+    memory_client: AsyncClient,
+    memory_app: FastAPI,
+    embedding_provider: ScriptedEmbeddingProvider,
+    memory_session_factory: async_sessionmaker[AsyncSession],
+) -> None:
+    """SPEC C.6 / v2.133 / SD-083: no count cap; approved compaction facts wake the curator."""
+    bodies = [f"Compaction fixture fact {index} is stated once." for index in range(6)]
+    for index, body in enumerate(bodies):
+        embedding_provider.set(body, basis_vector(index))
+    born = await memory_client.post(
+        "/v1/extractions",
+        json={
+            "principal_id": "fixture-owner",
+            "thread_id": str(UUID(int=7)),
+            "machine_id": "fixture-mac",
+            "editor": "compaction",
+            "candidates": [
+                {
+                    "label": f"Fact {index}",
+                    "body": body,
+                    "kind": "fact",
+                    "keywords": ["compaction", f"fact{index}"],
+                    "verdict": "new",
+                    "target_ids": [],
+                }
+                for index, body in enumerate(bodies)
+            ],
+        },
+    )
+    assert born.status_code == 200 and len(born.json()["cards"]) == 6
+    service = CuratorService(
+        memory_session_factory,
+        HealthReportBuilder(memory_session_factory, duplicate_floor=0.89),
+        FixtureCuratorProvider(),
+        memory_app.state.queue_service,
+        trigger_every=100,
+        pressure_trigger_every=100,
+    )
+    assert await service.run_due() == []
+
+    approved = await memory_client.post(
+        f"/v1/approval-queue/{born.json()['cards'][0]['item_uid']}/decisions",
+        json={
+            "decision": "approve",
+            "approval_mode": "explicit",
+            "actor_class": "human",
+            "machine_id": "fixture-mac",
+        },
+    )
+    assert approved.status_code == 200
+
+    receipts = await service.run_due()
+    assert [receipt.trigger for receipt in receipts] == ["compaction"]
+    assert receipts[0].status == "completed"
+    assert await service.run_due() == []

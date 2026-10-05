@@ -45,7 +45,8 @@ class ExtractionRequest(ContractModel):
     machine_id: str = Field(min_length=1)
     editor: str = Field(min_length=1)
     origin_location: str | None = None
-    candidates: list[ExtractionCandidate] = Field(max_length=5)
+    # v2.133: no count cap; the curator, not the extractor, limits the Palace's growth.
+    candidates: list[ExtractionCandidate]
 
 
 class SeedRequest(ContractModel):

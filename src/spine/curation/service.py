@@ -31,7 +31,7 @@ from spine.db.models import (
 from spine.ids import mint_ulid
 from spine.queue.service import QueueService
 
-Trigger = Literal["writes", "manual", "injection_pressure", "cron"]
+Trigger = Literal["writes", "manual", "injection_pressure", "cron", "compaction"]
 PAIR_LIMIT = 25
 VERDICT_VERSION = "curator-verdict-v2"
 
@@ -68,7 +68,7 @@ class CuratorService:
         self._pressure_trigger_every = pressure_trigger_every
 
     async def run_due(self) -> list[CuratorRunReceipt]:
-        """Run principals whose durable write or removal-pressure cursor is due."""
+        """Run principals whose write or removal-pressure cursor, or a compaction, is due."""
 
         state = CuratorTriggerState.__table__
         async with self._session_factory() as session:
@@ -102,12 +102,35 @@ class CuratorService:
                 .mappings()
                 .all()
             )
+            # v2.133: a compaction's facts approved since the last pass began are merged with
+            # what the Palace holds.
+            compacted = (
+                await session.execute(
+                    text(
+                        """
+                        SELECT DISTINCT q.principal_id
+                        FROM approval_queue_item q
+                        JOIN memory_revision r
+                          ON r.memory_id = q.candidate_memory_id AND r.editor = 'compaction'
+                        WHERE q.state = 'approved'
+                          AND q.decided_at > COALESCE(
+                            (SELECT max(p.ts) FROM curator_progress p
+                             WHERE p.principal_id = q.principal_id AND p.phase = 'run.started'),
+                            '-infinity')
+                        ORDER BY q.principal_id
+                        """
+                    )
+                )
+            ).scalars().all()
+        triggers: dict[str, Trigger] = {
+            principal: "compaction" for principal in compacted
+        } | {
+            due["principal_id"]: "writes" if due["writes_due"] else "injection_pressure"
+            for due in due_rows
+        }
         receipts: list[CuratorRunReceipt] = []
-        for due in due_rows:
-            trigger: Trigger = "writes" if due["writes_due"] else "injection_pressure"
-            receipt = await self.run(
-                due["principal_id"], machine_id="spine:curator", trigger=trigger
-            )
+        for principal_id, trigger in sorted(triggers.items()):
+            receipt = await self.run(principal_id, machine_id="spine:curator", trigger=trigger)
             if receipt is not None:
                 receipts.append(receipt)
         return receipts

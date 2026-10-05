@@ -1032,7 +1032,7 @@ async def test_models_match_authoritative_c2_schema(
         },
         "curator_run": {
             "curator_run_trigger_check": (
-                "trigger IN ('writes','manual','injection_pressure','cron')"
+                "trigger IN ('writes','manual','injection_pressure','cron','compaction')"
             ),
             "curator_run_status_check": "status IN ('completed','failed')",
             "curator_run_writes_check": "admitted_writes_snapshot >= 0",
