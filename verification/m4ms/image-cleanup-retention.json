@@ -1,0 +1,10 @@
+{
+  "palace_drop": "Dropped Palace test-m4ms and its 3 memories.",
+  "verification_images_deleted": false,
+  "refusal": "FAILED_PRECONDITION: cannot delete tag m4ms-4117r-receipts. The repository has enabled tag immutability",
+  "retained_tags": [
+    "m4ms-4117r-receipts",
+    "m4ms-4117r-final61"
+  ],
+  "repository_policy_changed": false
+}

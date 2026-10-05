@@ -35,7 +35,13 @@
     "spine/verification/m4ms/FL-202.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
     "spine/verification/m4ms/SHA256SUMS": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
     "spine/verification/m4ms/acceptance.json": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
-    "spine/verification/m4ms/ledger-report.json": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197."
+    "spine/verification/m4ms/ledger-report.json": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/public-index-061.json": "Public release or cleanup verification evidence only; no product behavior.",
+    "spine/verification/m4ms/public-after-versions.json": "Public release or cleanup verification evidence only; no product behavior.",
+    "spine/verification/m4ms/public-after-walk.json": "Public release or cleanup verification evidence only; no product behavior.",
+    "spine/verification/m4ms/public-code-removal.json": "Public release or cleanup verification evidence only; no product behavior.",
+    "spine/verification/m4ms/final-palace-drop.log": "Public release or cleanup verification evidence only; no product behavior.",
+    "spine/verification/m4ms/image-cleanup-retention.json": "Public release or cleanup verification evidence only; no product behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -64,7 +70,7 @@
       "verdict": "PASS",
       "screenshot": "FL-155.png",
       "flag": "",
-      "observed": "Three fresh receipt runs proved new real ULIDs, unchanged old rows, stable ordering, exact receipt-derived totals and visible UI/API ID agreement. No additive UUID."
+      "observed": "Three fresh receipt runs proved new real ULIDs, unchanged old rows, stable ordering, exact receipt-derived totals and visible UI/API ID agreement. No additive UUID. Public 0.1.61 wheel also passed the append-only check; root capture is that released wheel."
     },
     "FL-159": {
       "label": "The spend module: a row per thread expanding to models, columns input / KV cache / reasoning / output / total / spend per hour, other costs as their own rows, scopable to a thread or stack.",
@@ -88,10 +94,10 @@
       "label": "Client and cloud versions stay sync-locked or backward compatible, following industry practice, so version differences feel seamless.",
       "walk": "Start a client whose version differs from the cloud Palace's; it either keeps working or refuses with a plain version message.",
       "protected": true,
-      "verdict": "FAIL",
+      "verdict": "PASS",
       "screenshot": "FL-169.png",
-      "flag": "F086",
-      "observed": "Unproven impact coverage, not a claimed product defect: this complete row walk was not performed by M4MS. The fresh capture shows the current related surface, not proof of the missing action. Required walk: Start a client whose version differs from the cloud Palace's; it either keeps working or refuses with a plain version message."
+      "flag": "",
+      "observed": "Public 0.1.59 client and Memory wheels answered a real prompt against cloud Memory 0.1.61 / API 0.1.58. Then the public 0.1.61 pair passed the same-home reinstall and fresh receipt check."
     },
     "FL-195": {
       "label": "The feature ledger generates coverage reports and requires evidence for the rows affected by a build.",

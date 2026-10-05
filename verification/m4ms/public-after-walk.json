@@ -1,0 +1,116 @@
+{
+  "identity": {
+    "principal_id": "palace-agent-b75a73e6-7a9d-40dc-b642-644893eade76",
+    "machine_id": "palace-agent-89c2ec39-dd77-43d8-b971-a93c0ee8341c",
+    "home": "/private/tmp/nocturne-m4ms-4117/public-home",
+    "palace_name": "test-m4ms",
+    "pid": 46782
+  },
+  "retained": "YOU\nChat + files\nChat\nFiles\nREWIND\n\nPublic wheel persistence check: name the largest moon of Jupiter in one word.\n\nNOCTURNE\n\nGanymede.\n\nTOOLS · 4 RUN EVENTS",
+  "retained_thread": "95f48e74-aeb7-4bb5-9626-841a69a79439",
+  "new_thread": "6515abd1-e447-4a82-915e-82e522b56b3d",
+  "answer": "NOCTURNE\n\nMars\n\nTOOLS · 4 RUN EVENTS",
+  "old_receipts": 429,
+  "new_receipts": [
+    {
+      "event_uid": "01M45G48QRV7J2AWA729FZCV2V",
+      "ts": "2026-10-05T07:40:51.832521Z",
+      "thread_id": "95f48e74-aeb7-4bb5-9626-841a69a79439",
+      "model": "text-embedding-3-small",
+      "purpose": "embedding",
+      "quantity_type": "input_fresh",
+      "unit_of_measure": "tokens",
+      "quantity": "15.000000000",
+      "cost_usd": "0.000000300000",
+      "basis": "measured",
+      "ref": "gen-emb-1791186051-9cnoia0T1h5qUmrgo04W"
+    },
+    {
+      "event_uid": "01M45G4B8PC1JHKCNB13S0MGQ0",
+      "ts": "2026-10-05T07:40:54.422557Z",
+      "thread_id": "6515abd1-e447-4a82-915e-82e522b56b3d",
+      "model": "text-embedding-3-small",
+      "purpose": "embedding",
+      "quantity_type": "input_fresh",
+      "unit_of_measure": "tokens",
+      "quantity": "17.000000000",
+      "cost_usd": "0.000000340000",
+      "basis": "measured",
+      "ref": "gen-emb-1791186054-d7dJjX5MMiL06rKKvPD9"
+    },
+    {
+      "event_uid": "01M45G4BP82JZHZ1N9XBTYQCGA",
+      "ts": "2026-10-05T07:40:54.856080Z",
+      "thread_id": "6515abd1-e447-4a82-915e-82e522b56b3d",
+      "model": "text-embedding-3-small",
+      "purpose": "embedding",
+      "quantity_type": "input_fresh",
+      "unit_of_measure": "tokens",
+      "quantity": "17.000000000",
+      "cost_usd": "0.000000340000",
+      "basis": "measured",
+      "ref": "gen-emb-1791186054-ugq8Sdb7j4G8fZ33sYh4"
+    },
+    {
+      "event_uid": "01M45G4G0Q1J1WE3DJ444CKJK2",
+      "ts": "2026-10-05T07:40:59.287676Z",
+      "thread_id": "6515abd1-e447-4a82-915e-82e522b56b3d",
+      "model": "minimax/minimax-m3",
+      "purpose": "building",
+      "quantity_type": "input_fresh",
+      "unit_of_measure": "tokens",
+      "quantity": "2618.000000000",
+      "cost_usd": "0.000623613822",
+      "basis": "allocated",
+      "ref": "gen-1791186055-cJEQjsaQff6qxPg6eAxa"
+    },
+    {
+      "event_uid": "01M45G4G0QDAHMTGGTEZS8HF0C",
+      "ts": "2026-10-05T07:40:59.287676Z",
+      "thread_id": "6515abd1-e447-4a82-915e-82e522b56b3d",
+      "model": "minimax/minimax-m3",
+      "purpose": "building",
+      "quantity_type": "output",
+      "unit_of_measure": "tokens",
+      "quantity": "28.000000000",
+      "cost_usd": "0.000006669667",
+      "basis": "allocated",
+      "ref": "gen-1791186055-cJEQjsaQff6qxPg6eAxa"
+    },
+    {
+      "event_uid": "01M45G4G0QV43JA359579J1WT3",
+      "ts": "2026-10-05T07:40:59.287676Z",
+      "thread_id": "6515abd1-e447-4a82-915e-82e522b56b3d",
+      "model": "minimax/minimax-m3",
+      "purpose": "building",
+      "quantity_type": "input_cached",
+      "unit_of_measure": "tokens",
+      "quantity": "131.000000000",
+      "cost_usd": "0.000031204511",
+      "basis": "allocated",
+      "ref": "gen-1791186055-cJEQjsaQff6qxPg6eAxa"
+    },
+    {
+      "event_uid": "01M45G4HN2P6DCHZ62VRGP3HJ0",
+      "ts": "2026-10-05T07:41:00.962124Z",
+      "thread_id": "6515abd1-e447-4a82-915e-82e522b56b3d",
+      "model": "text-embedding-3-small",
+      "purpose": "embedding",
+      "quantity_type": "input_fresh",
+      "unit_of_measure": "tokens",
+      "quantity": "17.000000000",
+      "cost_usd": "0.000000340000",
+      "basis": "measured",
+      "ref": "gen-emb-1791186060-GzwsDz08C8HTk8KvKjA3"
+    }
+  ],
+  "append_only": true,
+  "catalog_before": [
+    "95f48e74-aeb7-4bb5-9626-841a69a79439",
+    "07323dce-49df-47af-b040-159608ea2016"
+  ],
+  "catalog_after": [
+    "95f48e74-aeb7-4bb5-9626-841a69a79439",
+    "07323dce-49df-47af-b040-159608ea2016"
+  ]
+}
