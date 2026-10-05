@@ -8,11 +8,17 @@ from spine.model_policy import parse_model_policy
 
 
 class CuratorPolicy:
-    def __init__(self, sessions: async_sessionmaker[AsyncSession], default_model: str,
-                 *, base_url: str = "https://openrouter.ai/api/v1"):
+    def __init__(
+        self,
+        sessions: async_sessionmaker[AsyncSession],
+        default_model: str,
+        *,
+        base_url: str = "https://openrouter.ai/api/v1",
+    ):
         self._sessions = sessions
-        if (base_url == "https://openrouter.ai/api/v1"
-                and not default_model.startswith("openrouter:")):
+        if base_url == "https://openrouter.ai/api/v1" and not default_model.startswith(
+            "openrouter:"
+        ):
             default_model = "openrouter:" + default_model.replace(":", "/", 1)
         self.default = f"pinned:{default_model}"
 
