@@ -2,12 +2,12 @@
   "packet": "M4CU",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "882edbf027063299760c48fd267288cb4abe8540420becb4830cdbfd04ac2c6b",
+  "ledger_sha256": "1194543d3338ab85c5e125b0ff79e948aff428784e955da87cd122ca413e08c3",
   "diffs": [
     {
       "repo": "spine",
       "base": "4fa8be01476d52e7edf332644d1b03bb9872d113",
-      "head": "4f46743c1eae04bab6cd0cb47a84fd9cc802dfd7"
+      "head": "3163c9e6b4eef4dc619ce114a268b4cc0fa4a3fc"
     }
   ],
   "unmapped": {
@@ -28,12 +28,19 @@
     "spine/verification/m4cu/FL-037.png": "Frozen historical evidence; no runtime behavior.",
     "spine/verification/m4cu/FL-041.png": "Frozen historical evidence; no runtime behavior.",
     "spine/verification/m4cu/FL-133.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-151.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-154.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-155.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-159.png": "Frozen historical evidence; no runtime behavior.",
     "spine/verification/m4cu/FL-162.png": "Frozen historical evidence; no runtime behavior.",
     "spine/verification/m4cu/FL-164.png": "Frozen historical evidence; no runtime behavior.",
     "spine/verification/m4cu/FL-167.png": "Frozen historical evidence; no runtime behavior.",
     "spine/verification/m4cu/FL-169.png": "Frozen historical evidence; no runtime behavior.",
     "spine/verification/m4cu/FL-183.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-195.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-196.png": "Frozen historical evidence; no runtime behavior.",
     "spine/verification/m4cu/FL-197.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-202.png": "Frozen historical evidence; no runtime behavior.",
     "spine/verification/m4cu/SHA256SUMS": "Frozen historical evidence; no runtime behavior.",
     "spine/verification/m4cu/ledger-report.json": "Frozen historical evidence; no runtime behavior.",
     "spine/verification/m4ms/FL-107.png": "Peer integration, release metadata or evidence; no additional curator repair.",
@@ -53,14 +60,13 @@
     "spine/verification/m4ms/FL-202.png": "Peer integration, release metadata or evidence; no additional curator repair.",
     "spine/verification/m4ms/SHA256SUMS": "Peer integration, release metadata or evidence; no additional curator repair.",
     "spine/verification/m4ms/acceptance.json": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/final-palace-drop.log": "Peer evidence or frozen-ledger metadata; no additional curator runtime change.",
+    "spine/verification/m4ms/image-cleanup-retention.json": "Peer evidence or frozen-ledger metadata; no additional curator runtime change.",
     "spine/verification/m4ms/ledger-report.json": "Peer integration, release metadata or evidence; no additional curator repair.",
-    "spine/verification/m4cu/FL-202.png": "Frozen historical evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-159.png": "Frozen historical evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-154.png": "Frozen historical evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-196.png": "Frozen historical evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-155.png": "Frozen historical evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-195.png": "Frozen historical evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-151.png": "Frozen historical evidence; no runtime behavior."
+    "spine/verification/m4ms/public-after-versions.json": "Peer evidence or frozen-ledger metadata; no additional curator runtime change.",
+    "spine/verification/m4ms/public-after-walk.json": "Peer evidence or frozen-ledger metadata; no additional curator runtime change.",
+    "spine/verification/m4ms/public-code-removal.json": "Peer evidence or frozen-ledger metadata; no additional curator runtime change.",
+    "spine/verification/m4ms/public-index-061.json": "Peer evidence or frozen-ledger metadata; no additional curator runtime change."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
