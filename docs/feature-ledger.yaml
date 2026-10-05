@@ -40,10 +40,10 @@
         "spine/src/spine/tokens.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "FAIL",
-        "flag": "F158",
+        "flag": "F178",
         "screenshot": "FL-002.png"
       }
     },
@@ -335,8 +335,8 @@
         "harness/web/src/MemoryGraph.tsx"
       ],
       "last_walk": {
-        "packet": "M3MQ",
-        "date": "2026-10-01",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-015.png"
@@ -588,8 +588,8 @@
         "spine/src/spine/memory/service.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "FAIL",
         "flag": "F158",
         "screenshot": "FL-026.png"
@@ -670,7 +670,7 @@
       "section": "2. Injection and the gate",
       "era": "Aug 24",
       "label": "Force controls for the line, the share and pins, all in the same module as the hyperparameters, each with the algorithm resuming afterward.",
-      "status": "built",
+      "status": "partial",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): In the Injection Console, force the share; the next retrain moves it again.",
       "owner": "owner — \"Let's just make sure those force or manual set functions all have the same pattern the user can set them but then the algorithm begins automating them agian. Let's make sure these inputs and vizualizatoins are in the same module as the existing hyper parameters.\" (chat 2026-08-24 20:50:21; chat 2026-08-24 20:24:41)",
       "surfaces": [
@@ -679,10 +679,10 @@
         "harness/web/src/MemoryPanel.tsx"
       ],
       "last_walk": {
-        "packet": "M3LF",
-        "date": "2026-10-01",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F152",
         "screenshot": "FL-030.png"
       },
       "protected": true,
@@ -738,7 +738,7 @@
       "section": "2. Injection and the gate",
       "era": "Aug 21",
       "label": "Constitution: A near-miss 'never show this' veto (Aug 21 leak-fix packet).",
-      "status": "built",
+      "status": "partial",
       "walk": "On an injected or near-miss memory there are two small buttons: × removes it from this thread (not relevant; alt/long-press for wrong/never) and ×! deletes it permanently after a yes/no confirmation; no four sub-headings above the list (owner, 2026-09-22).",
       "owner": "constitution",
       "surfaces": [
@@ -747,10 +747,10 @@
         "spine/src/spine/inject/decisions.py"
       ],
       "last_walk": {
-        "packet": "M3MQ",
-        "date": "2026-10-01",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F175",
         "screenshot": "FL-033.png"
       },
       "protected": true,
@@ -761,7 +761,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "The curators deconflict, dedupe and remove slop, triggered by every n memory writes rather than by the clock, and run at the Palace's own location.",
-      "status": "built",
+      "status": "partial",
       "walk": "Add 25 memories to a palace holding near-duplicates; a curator pass runs on its own (every 25 admitted writes or 3 gate removals), finds the pair by near-identical relevance scores on the standard probe set as well as by embedding, and proposes one lossless combined memory; Palace State shows the pass and the palace's growth curve bending.",
       "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc. They will be triggered by n number of memories being added and run in the memory palaces location. They must be surgeons: minimally invasive, targeting the root problem, and allowing the system to then sort out the symptoms. They are also responsible for removing slop.\" (chat 2026-07-23 16:07:44; chat 2026-08-03 20:02:16) — 2026-09-30: \"Curator is going to be the thing that limits the memory growth as much as possible which is super critical… Maybe it triggers when n memories are added?\"",
       "surfaces": [
@@ -769,10 +769,10 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3MQ",
-        "date": "2026-10-01",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-034.png"
       },
       "protected": true,
@@ -814,8 +814,8 @@
         "spine/src/spine/queue/service.py"
       ],
       "last_walk": {
-        "packet": "M3MQ",
-        "date": "2026-10-01",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-036.png"
@@ -836,8 +836,8 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3MQ",
-        "date": "2026-10-01",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-037.png"
@@ -850,7 +850,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "A cheap 80/20 duplicate check at memory creation, keeping the agent's memory work under 10% of build run time.",
-      "status": "built",
+      "status": "partial",
       "walk": "Save a fact already in the Palace: at cosine 0.92 or above the save comes back 'already known — reinforced' at once, between 0.80 and 0.92 it asks to confirm, without the agent reading other memories; these write-time bands are the C.4 defaults and are separate from the curator's own search band (v2.128).",
       "owner": "owner — \"I'm wondering if at that point we try and squash them together or reject them or if we put them in and let the curators at them later. I don't want to spend more than 10% of build run time for the agent managing memeory so I don't want it reading a whole but of memories itself...\" (chat 2026-07-23 19:32:05; chat 2026-07-23 16:07:44)",
       "surfaces": [
@@ -859,10 +859,10 @@
         "harness/src/harness/agent.py"
       ],
       "last_walk": {
-        "packet": "M3MQ",
-        "date": "2026-10-01",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-038.png"
       },
       "protected": true,
@@ -873,7 +873,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "Agents make no memories until compaction; the explicit /remember command is the other way.",
-      "status": "built",
+      "status": "partial",
       "walk": "Run an agent thread through a turn; no memory is created mid-turn, only at compaction or by /remember.",
       "owner": "owner — \"This is a more clean rule let's implement that. No agent memories until compaction. we need to be careful what sub agents come back to not overwhelm the main agent and force compaction on subagent stuff....\" (seed SD-060 (owner ruling 2026-09-09); chat 2026-08-09 18:49:53)",
       "surfaces": [
@@ -882,10 +882,10 @@
         "harness/src/harness/memory_capability.py"
       ],
       "last_walk": {
-        "packet": "M3P1",
-        "date": "2026-10-03",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F178",
         "screenshot": "FL-039.png"
       },
       "protected": true,
@@ -937,8 +937,8 @@
         "harness/src/harness/agent.py"
       ],
       "last_walk": {
-        "packet": "M3MQ",
-        "date": "2026-10-01",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-042.png"
@@ -951,7 +951,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "gate-day",
       "label": "Constitution: A marker on a memory superseded after injection instead of yanking it mid-thread (gate-day).",
-      "status": "built",
+      "status": "partial",
       "walk": "Supersede an injected memory mid-thread; the panel shows a superseded marker on it, not a removal.",
       "owner": "constitution",
       "surfaces": [
@@ -959,10 +959,10 @@
         "harness/src/harness/memory_panel.py"
       ],
       "last_walk": {
-        "packet": "M3MQ",
-        "date": "2026-10-01",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-043.png"
       },
       "protected": true,
@@ -994,7 +994,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Aug 31",
       "label": "Same-memory detection by encoding and retrieving, not exact wording.",
-      "status": "built",
+      "status": "partial",
       "walk": "Save a rephrased known fact; it is recognized as the same memory instead of duplicating.",
       "owner": "owner — \"2. We need a prove a way that we can distinguish the memories that come out are the same or different besides exact wording, even though they should be similar. Maybe we encode them and rag them or something?\" (chat 2026-08-31 21:00:39)",
       "surfaces": [
@@ -1003,10 +1003,10 @@
         "spine/src/spine/memory/router.py"
       ],
       "last_walk": {
-        "packet": "M3MQ",
-        "date": "2026-10-01",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F153",
         "screenshot": "FL-045.png"
       },
       "protected": true,
@@ -1059,7 +1059,7 @@
       "section": "4. Learning and training loops",
       "era": "Jul 22",
       "label": "A permanent back-test table of every human add and removal of a memory, as the training data for the injection algorithm.",
-      "status": "built",
+      "status": "partial",
       "walk": "Remove a memory at the gate; a new row for it appears in the back-test table.",
       "owner": "owner — \"2. we should be keeping track of all our training data: human adding or removing memories in a permenant back test table so we can can get fancier on our memory injection algorithm over time.\" (chat 2026-07-22 15:05:49; chat 2026-08-01 19:41:27)",
       "surfaces": [
@@ -1068,10 +1068,10 @@
         "spine/src/spine/learner/evidence.py"
       ],
       "last_walk": {
-        "packet": "M3LF",
-        "date": "2026-10-01",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-048.png"
       },
       "protected": true,
@@ -1121,7 +1121,7 @@
       "section": "4. Learning and training loops",
       "era": "Aug 3",
       "label": "A performance score for the memory system, back-tested on the history of manual adds and removes plus successful injections; a new set of weights is accepted only if it scores better than the previous generation.",
-      "status": "built",
+      "status": "partial",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Force retrain; the scoreboard shows the new weights' back-test score beside the previous generation's, and the update lands only if it is higher.",
       "owner": "owner — \"I like the idea that there is a performance of memory system. Imagine over time that there is a score that the hyper parameters modification can will improve or the hyper parameter update will not happen does that make sense? All the manual adds or removes for the history of the harness plus the a good amount of the successful ones that did not need manual intervention. We should be able to do a back test and be like our new set of hyper parameters map to  98% correct injection across the backtest while the previous generation did 97% does that make sense.\" (chat 2026-08-03 20:11:30)",
       "surfaces": [
@@ -1130,10 +1130,10 @@
         "harness/web/src/learning.ts"
       ],
       "last_walk": {
-        "packet": "M3LF",
-        "date": "2026-10-01",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F152",
         "screenshot": "FL-051.png"
       },
       "protected": true,
@@ -1251,7 +1251,7 @@
       "section": "4. Learning and training loops",
       "era": "Aug 31",
       "label": "Deleting a memory from the Palace feeds a training loop that tunes memory creation.",
-      "status": "partial",
+      "status": "built",
       "walk": "Delete a memory; the memory-creation loop's ledger records the deletion.",
       "owner": "owner — \"I think that the user should be able to delete a memory from the palace. This can be a new training loop that helps with memory creation tuning.\" (chat 2026-08-31 18:59:34)",
       "surfaces": [
@@ -1262,10 +1262,10 @@
         "spine/src/spine/db/migrations/versions/0023_creation_decisions.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-057.png"
       }
     },
@@ -1282,8 +1282,8 @@
         "garden/notes/trainable-parameters.md"
       ],
       "last_walk": {
-        "packet": "M3MQ",
-        "date": "2026-10-01",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-058.png"
@@ -1348,7 +1348,7 @@
       "section": "4. Learning and training loops",
       "era": "gate-day",
       "label": "Constitution: The audition: a proposed scorer runs as a visible shadow beside the incumbent before acceptance (gate-day).",
-      "status": "built",
+      "status": "partial",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Open a proposal; its shadow results show beside the incumbent's on the live gate.",
       "owner": "constitution",
       "surfaces": [
@@ -1356,10 +1356,10 @@
         "spine/src/spine/learner/service.py"
       ],
       "last_walk": {
-        "packet": "M3LF",
-        "date": "2026-10-01",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-062.png"
       },
       "protected": true,
@@ -1456,8 +1456,8 @@
         "harness/web/src/projectPath.ts"
       ],
       "last_walk": {
-        "packet": "M3CL2",
-        "date": "2026-10-03",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-067.png"
@@ -1505,8 +1505,8 @@
         "harness/src/harness/browser_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3SF2",
-        "date": "2026-10-03",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "FAIL",
         "flag": "F158",
         "screenshot": "FL-069.png"
@@ -1529,8 +1529,8 @@
         "harness/src/harness/transcript.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "FAIL",
         "flag": "F158",
         "screenshot": "FL-070.png"
@@ -1566,7 +1566,7 @@
       "section": "5. Agent hands and location",
       "era": "Aug 17",
       "label": "The progressive prompting protocol is dynamic to the agent's moves: a move re-prompts the agent for its new location.",
-      "status": "built",
+      "status": "partial",
       "walk": "Move the agent; the next turn's system prompt shows the new location.",
       "owner": "owner — \"We are going to have adapters as our agents need to have locations all the time and cd around before they can manipulate a file. We also need to make sure our progressive prompting protocol is dynamic to these moves.\" (chat 2026-08-17 14:53:22; chat 2026-07-20 00:01:41)",
       "surfaces": [
@@ -1575,10 +1575,10 @@
         "harness/src/harness/progressive_prompt.py"
       ],
       "last_walk": {
-        "packet": "M3CL2",
-        "date": "2026-10-03",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-072.png"
       },
       "protected": true,
@@ -1645,8 +1645,8 @@
         "harness/src/harness/run_loop.py"
       ],
       "last_walk": {
-        "packet": "M3CL2",
-        "date": "2026-10-03",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-075.png"
@@ -1659,7 +1659,7 @@
       "section": "5. Agent hands and location",
       "era": "Jul 20",
       "label": "Commit every turn; one-click rewind of chat and code together to any earlier turn.",
-      "status": "built",
+      "status": "partial",
       "walk": "Rewind to turn 2; chat and files both revert.",
       "owner": "owner — \"That's why it's important to commit every turn change. Cursor had this back in the day where you could just revert the code base and chat to a previous state with a single button click.\" (chat 2026-07-20 16:16:55; chat 2026-07-28 22:41:16)",
       "surfaces": [
@@ -1669,10 +1669,10 @@
         "harness/web/src/RewindControl.tsx"
       ],
       "last_walk": {
-        "packet": "M3CL2",
-        "date": "2026-10-03",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-076.png"
       },
       "protected": true,
@@ -1703,8 +1703,8 @@
         "harness/tests/test_browser_consent.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "FAIL",
         "flag": "F158",
         "screenshot": "FL-078.png"
@@ -1833,7 +1833,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Jul 20",
       "label": "The work loop: spec alignment with the user, then the agent loop (optionally several agents in worktrees attempting the same thing), then the judge checks the work against the spec and either calls it done or sends another agent to continue or fix, and the human is only brought back in when the judge says done.",
-      "status": "built",
+      "status": "partial",
       "walk": "Run a symphony; attempts run in worktrees, the judge's verdict against the spec appears, and the card returns to the human only after the judge says done.",
       "owner": "owner — \"The project and agent work for this should be by default spec alignment with user, then agent loop (optional spin up multiple agents in work trees to attempt the same thing), and the judge evaluates compared to spec to see if it is complete or to send another agent out to continue the work or fix something. The user should only interject or get a response when the judge says that they are done and to go back to the human.\" (chat 2026-07-20 00:34:53)",
       "surfaces": [
@@ -1846,10 +1846,10 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M3SF2",
-        "date": "2026-10-03",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-085.png"
       },
       "protected": true,
@@ -1860,7 +1860,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Jul 20",
       "label": "Both modes supported: a hands-off default with loops, judges and parallel agents, and a traditional chat mode of agent turn then human turn.",
-      "status": "built",
+      "status": "partial",
       "walk": "Run one piece of work as a plain turn-by-turn chat and another as a symphony; both work.",
       "owner": "owner — \"How does symphony also support simpler just chatting mode after a symphony run. Does the user have to switch it etc.\" (chat 2026-08-17 17:02:48 (+ chat 2026-07-20 16:16:55))",
       "surfaces": [
@@ -1872,10 +1872,10 @@
         "harness/src/harness/symphony_experience.py"
       ],
       "last_walk": {
-        "packet": "M3SF2",
-        "date": "2026-10-03",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-086.png"
       },
       "protected": true,
@@ -1974,7 +1974,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 6",
       "label": "When a judge fails a swarm, its feedback is saved as new packets and a new swarm is sent out, looping until every judge is satisfied.",
-      "status": "built",
+      "status": "partial",
       "walk": "Let a judge fail a round; new packets appear from the feedback and a fresh swarm runs, and the loop ends only when all judges pass.",
       "owner": "owner — \"Also want to make sure for symphony mode this loops untill all the judges are satisfied.\" (chat 2026-08-06 17:59:05 (+ 16:27:54))",
       "surfaces": [
@@ -1983,10 +1983,10 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3SF2",
-        "date": "2026-10-03",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-091.png"
       },
       "protected": true,
@@ -2017,7 +2017,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 15",
       "label": "The recipe card: a recipe-style implementation plan whose parts build in parallel or in sequence, parallel wherever it keeps build quality and sequential where there is doubt.",
-      "status": "built",
+      "status": "partial",
       "walk": "Open the recipe card of a symphony; some parts are set to run in parallel and others in sequence.",
       "owner": "owner — \"1. It must have the recipe style implementation plan that allows different parts to be build in parallel,  or sequence.\" (chat 2026-08-17 15:35:13 (+ chat 2026-08-15 19:37:48))",
       "surfaces": [
@@ -2028,10 +2028,10 @@
         "harness/web/src/RecipeModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3SF2",
-        "date": "2026-10-03",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-093.png"
       },
       "protected": true,
@@ -2051,8 +2051,8 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3SF2",
-        "date": "2026-10-03",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-094.png"
@@ -2076,8 +2076,8 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M3SF2",
-        "date": "2026-10-03",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-095.png"
@@ -2118,8 +2118,8 @@
         "harness/src/harness/WORKER_BRIEF.md"
       ],
       "last_walk": {
-        "packet": "M3SF2",
-        "date": "2026-10-03",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-097.png"
@@ -2141,8 +2141,8 @@
         "harness/web/src/SymphonyDeck.tsx"
       ],
       "last_walk": {
-        "packet": "M3SF2",
-        "date": "2026-10-03",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-098.png"
@@ -2164,8 +2164,8 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3SF2",
-        "date": "2026-10-03",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-099.png"
@@ -2223,7 +2223,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Jul 20",
       "label": "The Deck: a flashcard stack of terminals, cards colored to match their agents, only one card on top at a time (that project's agent's last response) to interact with, the next card popping up once you respond, ordered purely by which finished first.",
-      "status": "built",
+      "status": "partial",
       "walk": "Answer the top card; it pops and the next card, the earliest to finish, comes up in its agent's color.",
       "owner": "owner — \"I mean it kind of is a flashcard stack of terminals no?\" (seed SD-056 addendum (owner 2026-09-09) (+ chat 2026-07-20 00:01:41))",
       "surfaces": [
@@ -2232,10 +2232,10 @@
         "harness/web/src/store.ts"
       ],
       "last_walk": {
-        "packet": "M3EXF2",
-        "date": "2026-09-30",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F179",
         "screenshot": "FL-102.png"
       },
       "protected": true,
@@ -2329,7 +2329,7 @@
         "harness/src/harness/commands.py"
       ],
       "last_walk": {
-        "packet": "M3SK",
+        "packet": "M3W6A+M3W6B",
         "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
@@ -2343,7 +2343,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Jul 28",
       "label": "A plugin to change common model parameters such as top p and temperature, as an Ableton-style visualizer and input block.",
-      "status": "built",
+      "status": "partial",
       "walk": "Open the parameters dialog from the Model Device: it is compact and shows only the parameters the model in use supports (from the source's catalog); change temperature and the next turn's request carries the new value; switch to a model without top k and that control is gone.",
       "owner": "owner — \"Also, we should have another plug in that allows people to change common model parameters: top p, temperature, etc. That would be a cool abletonesk visualizer and input block as well.\" (chat 2026-07-28 16:31:54) — 2026-10-04: \"The top p, k etc are too large … they should be in a dialogue box … make that dynamic because different models will have different settings available\"",
       "surfaces": [
@@ -2352,10 +2352,10 @@
         "harness/src/harness/parameter_registry.py"
       ],
       "last_walk": {
-        "packet": "M3SK",
+        "packet": "M3W6A+M3W6B",
         "date": "2026-10-04",
-        "verdict": "PASS",
-        "flag": "",
+        "verdict": "FAIL",
+        "flag": "F174",
         "screenshot": "FL-107.png"
       },
       "protected": true,
@@ -2497,8 +2497,8 @@
         "harness/web/src/ModelDevice.tsx"
       ],
       "last_walk": {
-        "packet": "M3UI2",
-        "date": "2026-10-03",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-113.png"
@@ -2697,7 +2697,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Aug 17",
       "label": "A recipe module showing the plan graph with completed parts dimmed.",
-      "status": "built",
+      "status": "partial",
       "walk": "Run a symphony with the recipe module open; completed parts dim.",
       "owner": "owner — \"I want the plan completion view to look like this: just matching our livery and some dyamics that indicate at what point we are at maybe just dimming the competed parts.\" (chat 2026-08-17 21:05:47 (+ 17:44:55))",
       "surfaces": [
@@ -2706,10 +2706,10 @@
         "harness/src/harness/recipe_graph.py"
       ],
       "last_walk": {
-        "packet": "M3SF2",
-        "date": "2026-10-03",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-122.png"
       },
       "protected": true,
@@ -2747,8 +2747,8 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Aug 11",
       "label": "Threads removable or archivable; a back-to-the-stage control on every view.",
-      "status": "built",
-      "walk": "Archive a thread, then open the memory graph and press the back control; the thread is gone from the list and the stage returns.",
+      "status": "partial",
+      "walk": "Archive a thread: it leaves the list and the Conversation module, and a review opens with 'Back to stage'. Views that leave the stage carry a back control; the Memory Graph is a layer tab and needs none (gate, 2026-10-05, after both scouts).",
       "owner": "owner — \"2. All of the threads, which at best is an alternative module to the stack of flashcards that I wanted are glitched in their text looks cut off, see first attached image. Also, the threads are not remove/archivable. Again I don't want to spend toomuch time on this one but it's worth saying.\" (chat 2026-08-11 15:44:45)",
       "surfaces": [
         "harness/web/src/stageLayout.ts",
@@ -2757,10 +2757,10 @@
         "harness/web/src/assets/rack.css"
       ],
       "last_walk": {
-        "packet": "M3EXF2",
-        "date": "2026-09-30",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-124.png"
       },
       "protected": true,
@@ -2888,8 +2888,8 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M3LV",
-        "date": "2026-10-01",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-130.png"
@@ -2924,7 +2924,7 @@
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "A time-order control that highlights new roots and moves the panels to the longest-waiting response.",
-      "status": "built",
+      "status": "partial",
       "walk": "Click the time-order control; new roots highlight and the side panels move to the longest-waiting response.",
       "owner": "owner — \"3. I click the left hand side to time order and the visulization highlights new roots and the left hand and right hand side visualizatoins adjust to the longest waiting response for a different project.\" (chat 2026-07-20 17:15:32)",
       "surfaces": [
@@ -2934,10 +2934,10 @@
         "harness/src/harness/visualization.py"
       ],
       "last_walk": {
-        "packet": "M3LV",
-        "date": "2026-10-01",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-132.png"
       }
     },
@@ -2961,8 +2961,8 @@
       ],
       "plate": "verification/m3vz/plates/palace.png",
       "last_walk": {
-        "packet": "M3HW",
-        "date": "2026-10-02",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "FAIL",
         "flag": "F155",
         "screenshot": "FL-133.png"
@@ -2973,7 +2973,7 @@
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "A way to see things being added or removed over time, as SolidWorks does, the project growing like an organic object.",
-      "status": "built",
+      "status": "partial",
       "walk": "Drag the rollback bar back; the visuals show what had been added or removed by that moment.",
       "owner": "owner — \"I think like solid works we can see things being added or removed with time right. The projects that the computer is workin on is an organic object that's almost alive...\" (chat 2026-07-20 17:34:14)",
       "surfaces": [
@@ -2983,10 +2983,10 @@
         "harness/src/harness/visualization.py"
       ],
       "last_walk": {
-        "packet": "M3LV",
-        "date": "2026-10-01",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F181",
         "screenshot": "FL-134.png"
       }
     },
@@ -3045,8 +3045,8 @@
         "harness/web/src/MemoryGraph.tsx"
       ],
       "last_walk": {
-        "packet": "M3EXF2",
-        "date": "2026-09-30",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "FAIL",
         "flag": "F131",
         "screenshot": "FL-138.png"
@@ -3164,8 +3164,8 @@
         "harness/README.md"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "FAIL",
         "flag": "F158",
         "screenshot": "FL-144.png"
@@ -3365,8 +3365,8 @@
         "spine/src/spine/model_policy.py"
       ],
       "last_walk": {
-        "packet": "M3EL",
-        "date": "2026-10-03",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-154.png"
@@ -3388,8 +3388,8 @@
         "spine/src/spine/spend/"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "FAIL",
         "flag": "F158",
         "screenshot": "FL-155.png"
@@ -3447,8 +3447,8 @@
         "harness/src/harness/commands.py"
       ],
       "last_walk": {
-        "packet": "M3MD",
-        "date": "2026-10-02",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-158.png"
@@ -3619,7 +3619,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "Aug 3",
       "label": "A prompt when the app's memory use passes a threshold of the local system's memory, memory-leak guards, and no proceeding without write access at startup.",
-      "status": "built",
+      "status": "partial",
       "walk": "Start the daemon in a folder with no write access; it refuses to proceed, and doctor shows the app's memory use against its threshold.",
       "owner": "owner — \"We maybe should have a prompt whenever the memory associated with this applicatoin goes over some threshold of the local systems memory. I'm actually ok not letting the user proceed without write access of some sort. We need to store the transaction logs so... does that make sense?\" (chat 2026-08-03 15:17:58; chat 2026-08-03 15:12:10)",
       "surfaces": [
@@ -3628,10 +3628,10 @@
         "harness/src/harness/cli.py"
       ],
       "last_walk": {
-        "packet": "M3HW",
-        "date": "2026-10-02",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F086",
         "screenshot": "FL-166.png"
       },
       "protected": true,
@@ -3733,7 +3733,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "Aug 13",
       "label": "A startup and settings option: \"Back up conversation transcripts to cloud?\"",
-      "status": "partial",
+      "status": "built",
       "walk": "Toggle \"Back up conversation transcripts to cloud?\" in the settings menu; the backup line changes, and the same question is asked at first startup.",
       "owner": "owner — \"I think that should be a config in our setting menu. Back up conversation transcripts to cloud? We can ask them chose at start up.\" (chat 2026-08-13 19:32:24)",
       "surfaces": [
@@ -3742,10 +3742,10 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-171.png"
       },
       "protected": true,
@@ -3764,8 +3764,8 @@
         "spine/src/spine/portability.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "FAIL",
         "flag": "F158",
         "screenshot": "FL-172.png"
@@ -3785,10 +3785,10 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "FAIL",
-        "flag": "F158",
+        "flag": "F086",
         "screenshot": "FL-173.png"
       },
       "protected": true,
@@ -4008,8 +4008,8 @@
         "harness/src/harness/jobs.py"
       ],
       "last_walk": {
-        "packet": "M3HW",
-        "date": "2026-10-02",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-184.png"
@@ -4109,7 +4109,7 @@
       "section": "15. Platform and integrations",
       "era": "Jul 22",
       "label": "The Harness can use skills and has the best and most common tools available, compiled from a list.",
-      "status": "partial",
+      "status": "built",
       "walk": "Ask the agent to use a skill in a thread; it loads the skill and follows it.",
       "owner": "owner — \"Generally, we need to make sure that we can use skills and have the best tools available in the harness: I think codex browser use with the chrome extension (we can probably just port theirs I think it's open source). We should compile a list of the best and most common skills and tools and other things and make sure that we have those.\" (chat 2026-07-22 14:49:11; chat 2026-07-22 15:05:49)",
       "surfaces": [
@@ -4120,10 +4120,10 @@
         "harness/uv.lock"
       ],
       "last_walk": {
-        "packet": "M3SF2",
-        "date": "2026-10-03",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-190.png"
       },
       "protected": true,
@@ -4309,7 +4309,7 @@
       "section": "6. Context window, history and compaction",
       "era": "Sep 22",
       "label": "Context overwhelm protections: a query or a sub-agent return may take up at most n% of the compaction limit, the share chosen by the sending agent within bounds that are system parameters; a security module shows it.",
-      "status": "built",
+      "status": "partial",
       "walk": "Make a query return more than its share of the compaction limit; the agent gets an error naming the size and a very brief head of the response. Make a sub-agent return more than its share; it is sent back the exact amount to shorten by and returns under the share. The security module shows both.",
       "owner": "owner — \"We should have some context overwhelm protections in place a security module. Like a query or a sub agent return should have n% of total compaction limit it can take up... maybe if the agent who is sending the sub agent or query can pick it within bounds that are system parameters\" (chat 2026-09-22) — ruled 2026-09-22: \"simply enhance what exists… error/show very brief start to the query… submit back to that subagent the response must be shorter by some deterministically calculated amount\"",
       "surfaces": [
@@ -4321,10 +4321,10 @@
         "harness/web/src/assets/security.css"
       ],
       "last_walk": {
-        "packet": "M3HW",
-        "date": "2026-10-02",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-198.png"
       },
       "protected": true,
@@ -4335,7 +4335,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Sep 26",
       "label": "Icons on buttons for the common things people would understand: a button whose meaning has a known icon (send, stop, add, remove, delete, refresh, open, settings, play, pause) carries it; primary actions show icon and word, row actions the icon alone with a tip; unusual actions keep their word; one icon set across every module and theme.",
-      "status": "built",
+      "status": "partial",
       "walk": "Open any module; every common action (send, stop, add, remove, delete, refresh, open, settings, play, pause) has its icon from the one set in the theme's ink; primary buttons pair it with a word; row actions show the icon alone with a tip; an unusual action still reads as a word.",
       "owner": "owner — \"we need icons not just words everywhere on buttons\" (chat 2026-09-26) ; \"For the common things people would understand\" (chat 2026-09-26)",
       "surfaces": [
@@ -4364,10 +4364,10 @@
         "harness/web/src/WorkerContext.tsx"
       ],
       "last_walk": {
-        "packet": "M3UI2",
-        "date": "2026-10-03",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F182",
         "screenshot": "FL-199.png"
       },
       "protected": true,
@@ -4402,7 +4402,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Oct 1",
       "label": "One scale across modules: an icon reused anywhere is one size, text of one role is one size and one font, and a box belongs only to an icon that is a button.",
-      "status": "built",
+      "status": "partial",
       "walk": "Measure every module: each reused icon renders at one size, each text role (module header, row label, body, caption, tip) at one size and font; markers and status glyphs stand bare, only icon buttons are boxed.",
       "owner": "owner 2026-10-01: \"Icons reused across modules should be the same size, similarly text should be the same size and font. Not every icon needs a box around it as well.\"",
       "surfaces": [
@@ -4410,10 +4410,10 @@
       ],
       "protected": true,
       "last_walk": {
-        "packet": "M3UI2",
-        "date": "2026-10-03",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-201.png"
       },
       "protected_reason": "walk PASS 2026-10-03"
@@ -4435,7 +4435,7 @@
       ],
       "protected": true,
       "last_walk": {
-        "packet": "M3SK",
+        "packet": "M3W6A+M3W6B",
         "date": "2026-10-04",
         "verdict": "PASS",
         "flag": "",
