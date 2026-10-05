@@ -1381,3 +1381,11 @@ stays unread, and a pin equal to the configured model, a non-OpenRouter pin or a
 keeps the configured window. So A-052's "catalog bypass for every text-only turn" now holds for
 pins of the configured model only. The listing keeps each model's supported_parameters (None
 when the source publishes none) for the Harness parameter dialog.
+
+## M4MS — Preserve known model capabilities during a catalog outage [P4.1]
+
+PRECEDENT: PLAN M4MS, F174, A-021; released-0.1.56 model-switch replay.
+Routes carry the source's supported parameters through resolution to request shaping.
+A named pick still refreshes the model list without benchmarks; a failed refresh may use
+an exact previously observed route. Unknown routes still fail, and a successful list replaces
+the fallback entries so removed models do not survive a successful refresh.

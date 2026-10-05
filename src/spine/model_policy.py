@@ -57,6 +57,7 @@ class ModelRoute:
     model_id: str
     context_tokens: int
     input_modalities: frozenset[str] | None = None
+    supported_parameters: frozenset[str] | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -96,6 +97,7 @@ class ThreadModelResolution:
     benchmark: BenchmarkModel | None = None
     catalog_fetched_at: datetime | None = None
     stickiness_epoch: int = 0
+    supported_parameters: frozenset[str] | None = None
     request_parameters: ModelRequestParameters = field(
         default_factory=lambda: ModelRequestParameters()
     )
@@ -306,6 +308,7 @@ class OpenRouterCatalogClient:
         self._monotonic = monotonic or time.monotonic
         self._cached: ModelCatalog | None = None
         self._cached_at_monotonic: float | None = None
+        self._named_routes: dict[str, tuple[ModelRoute, datetime]] = {}
         self._lock = asyncio.Lock()
 
     async def load(self) -> ModelCatalog:
@@ -337,6 +340,10 @@ class OpenRouterCatalogClient:
                     fetched_at=fetched_at,
                     listing=parse_model_listing(models_payload, rows),
                 )
+                self._named_routes.update(
+                    (key, (route, fetched_at))
+                    for key, route in _parse_named_routes(models_payload).items()
+                )
             except ModelCatalogUnavailable:
                 raise
             except (httpx.HTTPError, ValueError, TypeError, DecimalException) as exc:
@@ -356,13 +363,17 @@ class OpenRouterCatalogClient:
                 fetched_at = self._clock()
                 if fetched_at.tzinfo is None:
                     raise ModelCatalogUnavailable("catalog clock returned a naive timestamp")
-                route = _parse_named_routes(payload).get(model_id)
+                routes = _parse_named_routes(payload)
+                self._named_routes = {key: (route, fetched_at) for key, route in routes.items()}
+                route = routes.get(model_id)
                 if route is None:
                     raise NamedModelResolutionError(f"unknown OpenRouter model: {model_id}")
                 return route, fetched_at
-            except (ModelCatalogUnavailable, NamedModelResolutionError):
+            except NamedModelResolutionError:
                 raise
-            except (httpx.HTTPError, ValueError, TypeError) as exc:
+            except (ModelCatalogUnavailable, httpx.HTTPError, ValueError, TypeError) as exc:
+                if model_id in self._named_routes:
+                    return self._named_routes[model_id]
                 raise ModelCatalogUnavailable("OpenRouter model-list request failed") from exc
 
     async def aclose(self) -> None:
@@ -481,6 +492,7 @@ class ModelPolicyResolver:
             context_tokens=route.context_tokens,
             policy="human_command",
             input_modalities=route.input_modalities,
+            supported_parameters=route.supported_parameters,
             catalog_fetched_at=fetched_at,
         )
         logger.info(
@@ -565,18 +577,21 @@ class ModelPolicyResolver:
         if self._policy.kind == "pinned":
             assert isinstance(self._policy.value, str)
             context_tokens = self._static_context_tokens
+            supported_parameters = None
             if self._policy.value != self._static_model and self._catalog is not None:
                 # A pick other than the configured model takes its own window (M3SK); the
                 # benchmark table stays unconsulted, and an unknown route keeps the static one.
                 try:
                     named = await self.resolve_named(thread_id, self._policy.value)
                     context_tokens = named.context_tokens
+                    supported_parameters = named.supported_parameters
                 except (ModelCatalogUnavailable, NamedModelResolutionError):
                     pass
             resolved = ThreadModelResolution(
                 model=self._policy.value,
                 context_tokens=context_tokens,
                 policy=self._policy_text,
+                supported_parameters=supported_parameters,
             )
             logger.info(
                 "model policy resolved thread=%s policy=%s model=%s",
@@ -617,6 +632,7 @@ class ModelPolicyResolver:
             policy=self._policy_text,
             price_sorted=True,
             input_modalities=route.input_modalities,
+            supported_parameters=route.supported_parameters,
             benchmark=selected,
             catalog_fetched_at=catalog.fetched_at,
         )
@@ -784,7 +800,7 @@ def _parse_benchmark_rows(payload: object) -> tuple[BenchmarkModel, ...]:
 
 def _parse_model_routes(payload: object) -> Mapping[str, ModelRoute]:
     data = _payload_data(payload, "models")
-    grouped: dict[str, dict[str, tuple[object, frozenset[str] | None]]] = {}
+    grouped: dict[str, dict[str, tuple[object, frozenset[str] | None, frozenset[str] | None]]] = {}
     canonical_by_id: dict[str, str] = {}
     for raw in data:
         if not isinstance(raw, dict):
@@ -807,7 +823,7 @@ def _parse_model_routes(payload: object) -> Mapping[str, ModelRoute]:
             raise ModelCatalogUnavailable("model table maps one route to multiple models")
         canonical_by_id[model_id] = permaslug
         routes = grouped.setdefault(permaslug, {})
-        route_value = (context_length, input_modalities)
+        route_value = (context_length, input_modalities, _parse_supported_parameters(raw))
         if model_id in routes and routes[model_id] != route_value:
             raise ModelCatalogUnavailable("model table contains conflicting route rows")
         routes[model_id] = route_value
@@ -822,12 +838,13 @@ def _parse_model_routes(payload: object) -> Mapping[str, ModelRoute]:
             selected_id = next(iter(by_id))
         if selected_id is None:
             continue
-        context_length, input_modalities = by_id[selected_id]
+        context_length, input_modalities, supported_parameters = by_id[selected_id]
         if type(context_length) is int and context_length > 0:
             resolved[permaslug] = ModelRoute(
                 model_id=selected_id,
                 context_tokens=context_length,
                 input_modalities=input_modalities,
+                supported_parameters=supported_parameters,
             )
     if not resolved:
         raise ModelCatalogUnavailable("model table has no unambiguous positive-context routes")
@@ -858,6 +875,7 @@ def _parse_named_routes(payload: object) -> Mapping[str, ModelRoute]:
             model_id=model_id,
             context_tokens=context_length,
             input_modalities=input_modalities,
+            supported_parameters=_parse_supported_parameters(raw),
         )
         if previous is not None and previous != route:
             raise ModelCatalogUnavailable("model table contains conflicting named routes")
@@ -865,6 +883,15 @@ def _parse_named_routes(payload: object) -> Mapping[str, ModelRoute]:
     if not resolved:
         raise ModelCatalogUnavailable("model table has no positive-context named routes")
     return resolved
+
+
+def _parse_supported_parameters(raw: dict) -> frozenset[str] | None:
+    supported = raw.get("supported_parameters")
+    return (
+        frozenset(item for item in supported if isinstance(item, str))
+        if isinstance(supported, list)
+        else None
+    )
 
 
 def parse_model_listing(
@@ -907,11 +934,7 @@ def parse_model_listing(
             completion_price=None if completion is None else completion * _PRICE_PER_MILLION,
             reasoning=isinstance(supported, list) and "reasoning" in supported,
             intelligence_index=index.get(str(raw.get("canonical_slug"))),
-            supported_parameters=(
-                frozenset(item for item in supported if isinstance(item, str))
-                if isinstance(supported, list)
-                else None
-            ),
+            supported_parameters=_parse_supported_parameters(raw),
         )
     return tuple(listed.values())
 
