@@ -12,7 +12,8 @@ Scouts read the generated ledger report, never the ledger source.
 
 - Sweep first: `bin/sweep_browsers` in garden/ (`../garden/bin/sweep_browsers`
   from harness/ or spine/) stops verification browsers and walk drivers that
-  outlived their packet — orphaned, or older than 8 hours. It never touches
+  outlived their packet — parentless for over 4 hours, or older than 8.
+  A peer's live walk is never touched. It never touches
   the owner's own Chrome. (2026-10-04: ten browsers from finished packets
   had run for days.)
 
