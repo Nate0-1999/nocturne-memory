@@ -1406,7 +1406,7 @@ M4CU's fixed-corpus signal anchors probe scoring to the latest active memory upd
 replacing A-076's pass-clock input; the report timestamp and staleness checks stay live.
 The original Ravenscourt replay still missed relevance at 0.02098 (the scout saw 0.0215).
 Probe v2 uses 0.025 tolerance; this only nominates pairs for semantic judgment, never merging
-by score. A-077 records the changed clock and tolerance; the three prompts are unchanged.
+by score. A-078 records the changed clock and tolerance; the three prompts are unchanged.
 A pass reviews at most 25 pairs, strongest cosine first, and reports deferred pairs.
 Keep verdicts persist by finding/revision fingerprint. Earlier judgments that could not
 choose contradict are reviewed once under the complete taxonomy before being reused.
