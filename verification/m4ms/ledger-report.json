@@ -21,15 +21,6 @@
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
-    "FL-107": {
-      "label": "A plugin to change common model parameters such as top p and temperature, as an Ableton-style visualizer and input block.",
-      "walk": "Open the parameters dialog from the Model Device: it is compact and shows only the parameters the model in use supports (from the source's catalog); change temperature and the next turn's request carries the new value; switch to a model without top k and that control is gone.",
-      "protected": true,
-      "verdict": "PASS",
-      "screenshot": "FL-107.png",
-      "flag": "",
-      "observed": "Three fresh scout runs: temperature 0.4 reached actual requests; unsupported Top K disappeared from both the GPT-4o-mini dialog and request."
-    },
     "FL-151": {
       "label": "KV-cache optimization, usage accounting, and sticky sessions on one provider for cache benefits.",
       "walk": "Send several messages in one thread; the spend module's KV cache column fills in after the first message and the provider stays the same across the thread.",
@@ -57,15 +48,6 @@
       "flag": "",
       "observed": "Three fresh receipt runs proved new real ULIDs, unchanged old rows, stable ordering, exact receipt-derived totals and visible UI/API ID agreement. No additive UUID."
     },
-    "FL-158": {
-      "label": "Switch models on command through the same path automatic routing uses; an off-switch to run on a single token or credit.",
-      "walk": "With routing switched off on a single key, type /model with a new model in a thread; the next reply's spend row names the new model on that one key.",
-      "protected": true,
-      "verdict": "PASS",
-      "screenshot": "FL-158.png",
-      "flag": "",
-      "observed": "Three fresh single-key runs changed models with /model, received real replies and named the selected models in spend; unavailable provider pin refused with 422 and saved pin fell back with an explanation."
-    },
     "FL-159": {
       "label": "The spend module: a row per thread expanding to models, columns input / KV cache / reasoning / output / total / spend per hour, other costs as their own rows, scopable to a thread or stack.",
       "walk": "Press the plus on one thread row in the spend module; it opens to that thread's models with the columns input, KV cache, reasoning, output, total and spend per hour, with an everything-else row beneath.",
@@ -83,15 +65,6 @@
       "screenshot": "FL-197.png",
       "flag": "",
       "observed": "Second verification principal sees zero spend receipts and memory counts; scope=palace returns 403. Compared against the owner of this disposable test Palace only; no owner main-rack capture."
-    },
-    "FL-166": {
-      "label": "A prompt when the app's memory use passes a threshold of the local system's memory, memory-leak guards, and no proceeding without write access at startup.",
-      "walk": "Start the daemon in a folder with no write access; it refuses to proceed, and doctor shows the app's memory use against its threshold.",
-      "protected": true,
-      "verdict": "PASS",
-      "screenshot": "FL-166.png",
-      "flag": "",
-      "observed": "Three real starts each refused read-only transcript directories and read-only working folders before listening. Doctor names the memory usage and threshold."
     },
     "FL-169": {
       "label": "Client and cloud versions stay sync-locked or backward compatible, following industry practice, so version differences feel seamless.",
@@ -264,6 +237,7 @@
     "FL-104": "outside diff",
     "FL-105": "outside diff",
     "FL-106": "outside diff",
+    "FL-107": "outside diff",
     "FL-108": "outside diff",
     "FL-109": "outside diff",
     "FL-110": "outside diff",
@@ -311,10 +285,12 @@
     "FL-153": "not built",
     "FL-156": "not built",
     "FL-157": "outside diff",
+    "FL-158": "outside diff",
     "FL-160": "not built",
     "FL-161": "not built",
     "FL-163": "outside diff",
     "FL-165": "horizon",
+    "FL-166": "outside diff",
     "FL-168": "outside diff",
     "FL-170": "outside diff",
     "FL-171": "outside diff",
