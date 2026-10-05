@@ -1,0 +1,9 @@
+{
+  "stopped_pid": 36250,
+  "installation_removed": true,
+  "home_preserved": true,
+  "journal_hashes_before_reinstall": {
+    "transcripts/b16f6c96f8f548d9dc272a09aad4431d061eb8a2292b6cf03f72f971d7673161.jsonl": "6f87392faaf35cdaaf3b14349f20f7a272e9d5a2d3fb61448cdf7ad0c531e03a",
+    "transcripts/afecf926ba9c26d3220fdd094b9a96b4719d30016a509e16065c580223ab956d.jsonl": "beae001cc087779742361a961e65d10a45840d8940271a5cabf028de69607701"
+  }
+}

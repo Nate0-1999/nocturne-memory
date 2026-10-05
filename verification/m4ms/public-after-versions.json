@@ -1,0 +1,19 @@
+{
+  "harness": "0.1.61",
+  "memory": "0.1.61",
+  "harness_file": "/private/tmp/nocturne-m4ms-4117/public-venv/lib/python3.12/site-packages/harness/__init__.py",
+  "memory_file": "/private/tmp/nocturne-m4ms-4117/public-venv/lib/python3.12/site-packages/spine/__init__.py",
+  "cloud": {
+    "ok": true,
+    "version": "0.1.61",
+    "api_contract_version": "0.1.58",
+    "schema_version": "0027"
+  },
+  "daemon": {
+    "principal_id": "palace-agent-b75a73e6-7a9d-40dc-b642-644893eade76",
+    "machine_id": "palace-agent-89c2ec39-dd77-43d8-b971-a93c0ee8341c",
+    "home": "/private/tmp/nocturne-m4ms-4117/public-home",
+    "palace_name": "test-m4ms",
+    "pid": 46782
+  }
+}
