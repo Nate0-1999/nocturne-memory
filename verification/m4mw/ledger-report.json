@@ -2,12 +2,12 @@
   "packet": "M4MW",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "13b8bb862753210b26d684e28a3918ac697dd39e9210f147fae89fb2138f3b22",
+  "ledger_sha256": "0a5f957f200d975063d55c5238abed2853327afa4f4e7c76536fc46b1861cd21",
   "diffs": [
     {
       "repo": "spine",
       "base": "26a3095e44bfefb6d35c702732a35280b7f66c49",
-      "head": "ed97b1b40bec8c60429b0e84b9c1f5ca69df1f8e"
+      "head": "c05bdae32db0ea096d1a24420c4e36dffb1b6627"
     }
   ],
   "unmapped": {
@@ -16,19 +16,24 @@
     "spine/src/spine/__init__.py": "Decision rationale, tests, version/dependency metadata, generated web bundle, or frozen coverage metadata for the declared memory-write changes; no additional runtime feature. Imported peer changes were merged unchanged.",
     "spine/tests/test_packaging.py": "Decision rationale, tests, version/dependency metadata, generated web bundle, or frozen coverage metadata for the declared memory-write changes; no additional runtime feature. Imported peer changes were merged unchanged.",
     "spine/tests/test_queue_api.py": "Decision rationale, tests, version/dependency metadata, generated web bundle, or frozen coverage metadata for the declared memory-write changes; no additional runtime feature. Imported peer changes were merged unchanged.",
-    "spine/verification/m4mw/FL-114.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
-    "spine/verification/m4mw/FL-163.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
-    "spine/verification/m4mw/FL-038.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
-    "spine/verification/m4mw/FL-196.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
-    "spine/verification/m4mw/ledger-report.json": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
+    "spine/verification/m4cd/FL-195.png": "Decision rationale, tests, version/dependency metadata, generated web bundle, or frozen coverage metadata for the declared memory-write changes; no additional runtime feature. Imported peer changes were merged unchanged.",
+    "spine/verification/m4cd/FL-196.png": "Decision rationale, tests, version/dependency metadata, generated web bundle, or frozen coverage metadata for the declared memory-write changes; no additional runtime feature. Imported peer changes were merged unchanged.",
+    "spine/verification/m4cd/SHA256SUMS": "Decision rationale, tests, version/dependency metadata, generated web bundle, or frozen coverage metadata for the declared memory-write changes; no additional runtime feature. Imported peer changes were merged unchanged.",
+    "spine/verification/m4cd/ledger-report.json": "Decision rationale, tests, version/dependency metadata, generated web bundle, or frozen coverage metadata for the declared memory-write changes; no additional runtime feature. Imported peer changes were merged unchanged.",
     "spine/verification/m4mw/FL-036.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
-    "spine/verification/m4mw/acceptance-summary.json": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
-    "spine/verification/m4mw/FL-179.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
-    "spine/verification/m4mw/FL-178.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
+    "spine/verification/m4mw/FL-038.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
     "spine/verification/m4mw/FL-042.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
     "spine/verification/m4mw/FL-109.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
+    "spine/verification/m4mw/FL-114.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
+    "spine/verification/m4mw/FL-163.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
+    "spine/verification/m4mw/FL-178.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
+    "spine/verification/m4mw/FL-179.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
+    "spine/verification/m4mw/FL-196.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
     "spine/verification/m4mw/SHA256SUMS": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
-    "spine/verification/m4mw/impacted.json": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact."
+    "spine/verification/m4mw/acceptance-summary.json": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
+    "spine/verification/m4mw/ledger-report.json": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
+    "spine/verification/m4mw/impacted.json": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
+    "spine/verification/m4mw/FL-195.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -94,6 +99,15 @@
       "screenshot": "FL-179.png",
       "flag": "F086",
       "observed": "Unproven file-level impact, not an observed regression. This memory-write packet did not perform the complete prescribed gesture: As the verification identity, decide a card in the owner's approval queue; a plain refusal appears. The common live-app screenshot is context only, not proof of this row. Imported peer changes retain their own acceptance evidence."
+    },
+    "FL-195": {
+      "label": "The feature ledger generates coverage reports and requires evidence for the rows affected by a build.",
+      "walk": "Compute the composer fix's impact with --paths and see attunement rows; push a branch touching socket.ts and observe the hook print rows and write impacted.json; observe a DONE handoff without screenshots fail CI, then verify complete evidence passes.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-195.png",
+      "flag": "F086",
+      "observed": "Unproven file-level impact, not an observed regression. This memory-write packet did not perform the complete prescribed gesture: Compute the composer fix's impact with --paths and see attunement rows; push a branch touching socket.ts and observe the hook print rows and write impacted.json; observe a DONE handoff without screenshots fail CI, then verify complete evidence passes. The common live-app screenshot is context only, not proof of this row. Imported peer changes retain their own acceptance evidence."
     },
     "FL-196": {
       "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
@@ -302,7 +316,6 @@
     "FL-192": "outside diff",
     "FL-193": "outside diff",
     "FL-194": "outside diff",
-    "FL-195": "outside diff",
     "FL-198": "outside diff",
     "FL-199": "outside diff",
     "FL-200": "outside diff",
