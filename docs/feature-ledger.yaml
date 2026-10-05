@@ -32,8 +32,8 @@
       "era": "founding",
       "label": "Memory units have a length cap; a memory over the cap is shortened to fit as one memory, and it is split only when it holds more than one distinct fact, with the split logged.",
       "status": "built",
-      "walk": "/remember a 300-token paragraph holding one fact; one memory lands, shortened to the cap; a paragraph holding two facts lands as two.",
-      "owner": "owner — \"Like we shorten the length cap then they are too long\" (chat 2026-09-12); \"this was one memory that was split agentically logged\" (chat 2026-07-26)",
+      "walk": "Save a fact over the cap: the same prompt runs again with 'this memory is too long, break it down into finer pieces' until every piece fits and stands alone (up to three rounds); a single fact is never refused as several, and nothing is dropped silently — the original stays in the journal.",
+      "owner": "owner — \"Like we shorten the length cap then they are too long\" (chat 2026-09-12); \"this was one memory that was split agentically logged\" (chat 2026-07-26) — 2026-10-05 (v2.133): \"If there is a long memory issue we should have a fallback that is like the same prompt but this memory is too long break it down into finer peices.\"",
       "surfaces": [
         "harness/src/harness/agent.py",
         "spine/src/spine/memory/service.py",
@@ -766,7 +766,7 @@
       "era": "Jul 23",
       "label": "The curators deconflict, dedupe and remove slop, triggered by every n memory writes rather than by the clock, and run at the Palace's own location.",
       "status": "built",
-      "walk": "Add 25 memories to a palace holding near-duplicates; a curator pass runs on its own (every 25 admitted writes or 3 gate removals), finds the pair by near-identical relevance scores on the standard probe set as well as by embedding, and proposes one lossless combined memory; Palace State shows the pass and the palace's growth curve bending.",
+      "walk": "Add 25 memories to a palace holding near-duplicates; a curator pass runs on its own (every 25 admitted writes or 3 gate removals), finds the pair by near-identical relevance scores on the standard probe set as well as by embedding, and proposes one lossless combined memory; Palace State shows the pass and the palace's growth curve bending; a compaction's admitted facts trigger a pass too, merging them with what the Palace already holds (owner, 2026-10-05, v2.133).",
       "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc. They will be triggered by n number of memories being added and run in the memory palaces location. They must be surgeons: minimally invasive, targeting the root problem, and allowing the system to then sort out the symptoms. They are also responsible for removing slop.\" (chat 2026-07-23 16:07:44; chat 2026-08-03 20:02:16) — 2026-09-30: \"Curator is going to be the thing that limits the memory growth as much as possible which is super critical… Maybe it triggers when n memories are added?\"",
       "surfaces": [
         "spine/src/spine/curation/",
@@ -878,8 +878,8 @@
       "era": "Jul 23",
       "label": "Agents make no memories until compaction; the explicit /remember command is the other way.",
       "status": "built",
-      "walk": "Run an agent thread through a turn; no memory is created mid-turn, only at compaction or by /remember.",
-      "owner": "owner — \"This is a more clean rule let's implement that. No agent memories until compaction. we need to be careful what sub agents come back to not overwhelm the main agent and force compaction on subagent stuff....\" (seed SD-060 (owner ruling 2026-09-09); chat 2026-08-09 18:49:53)",
+      "walk": "Run an agent thread through a turn; no memory is created mid-turn, only at compaction or by /remember. A /remember of a fact the user states is saved — checked and repaired before the Palace, never a bare refusal.",
+      "owner": "owner — \"This is a more clean rule let's implement that. No agent memories until compaction. we need to be careful what sub agents come back to not overwhelm the main agent and force compaction on subagent stuff....\" (seed SD-060 (owner ruling 2026-09-09); chat 2026-08-09 18:49:53) — 2026-10-05 (v2.133): \"we should also greatly increase the chance that something is turned into a memory if the user said it.\"",
       "surfaces": [
         "harness/src/harness/extraction.py",
         "harness/src/harness/run_loop.py",
@@ -1767,8 +1767,8 @@
       "era": "Sep 10",
       "label": "A suite of compaction strategies: truncation; summarization; make the compaction memories first, wait for them to land, then drop everything else; keep only the human's messages and each agent turn's final answer.",
       "status": "partial",
-      "walk": "Open a memory card on the Deck or the gate: it shows only the aggregate score, the name and the memory; hovering shows a spider-web chart across every relevance feature; the provenance (project, thread, keywords, WHERE, revisions, open-the-conversation) is behind the hover or a tap, not on the card (owner, 2026-09-22).",
-      "owner": "owner — \"I am thinking that there will be a suite of compaction strategies that we can employ: truncation, summarization, apply memories made at compaction (wait for this to happen) and drop everything else, keep just the agent turn final response and human messages.\" (seed SD-061 (owner 2026-09-10)) — 2026-09-22: \"each memory should only have the aggregate score, name, and memory then if we hover over a spider web chart should pop up across all the memory relevance features\"",
+      "walk": "Open the compaction settings: the strategies are listed (truncation; summarization; memories first then drop; the human's messages and each final answer only) and the default makes the memories first, waits for them to land, then keeps the last n% of the conversation word for word and drops the rest from the window; the whole chat stays on record in primary threads.",
+      "owner": "owner — \"I am thinking that there will be a suite of compaction strategies that we can employ: truncation, summarization, apply memories made at compaction (wait for this to happen) and drop everything else, keep just the agent turn final response and human messages.\" (seed SD-061 (owner 2026-09-10)) — 2026-09-22: \"each memory should only have the aggregate score, name, and memory then if we hover over a spider web chart should pop up across all the memory relevance features\" — 2026-10-05 (v2.133): \"keep the last n% of the conversation that didn't get compacted and continue\" … \"We should keep the whole chat for records to check how good the memories extracted out of the converstation are for now. At least in the primary threads with the user\"",
       "surfaces": [
         "harness/src/harness/pydantic_harness_adapter.py",
         "harness/src/harness/agent_runtime.py"
