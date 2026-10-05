@@ -136,11 +136,7 @@ class OpenRouterCuratorProvider:
             )
         try:
             payload = response.json()
-            content = payload["choices"][0]["message"]["content"]
-            if not isinstance(content, str):
-                raise TypeError("content is not text")
-            draft = CuratorVerdictDraft.model_validate_json(_strip_fence(content))
-        except (KeyError, IndexError, TypeError, ValueError) as exc:
+        except ValueError as exc:
             raise CuratorProviderError("curator verdict response was malformed") from exc
         await self._receipt(
             payload,
@@ -151,6 +147,13 @@ class OpenRouterCuratorProvider:
             finding=finding,
             model=model,
         )
+        try:
+            content = payload["choices"][0]["message"]["content"]
+            if not isinstance(content, str):
+                raise TypeError("content is not text")
+            draft = CuratorVerdictDraft.model_validate_json(_strip_fence(content))
+        except (KeyError, IndexError, TypeError, ValueError) as exc:
+            raise CuratorProviderError("curator verdict response was malformed") from exc
         return draft
 
     async def _receipt(
@@ -205,7 +208,7 @@ class OpenRouterCuratorProvider:
 
 def _verdict_prompt(finding: HealthFinding, report: PalaceHealthReport) -> str:
     allowed = {
-        "duplicate": ["keep", "merge"],
+        "duplicate": ["keep", "merge", "contradict", "supersede"],
         "contradiction": ["keep", "contradict", "supersede"],
         "stale": ["keep", "supersede", "retire"],
         "slop": ["keep", "retire", "split"],
@@ -226,8 +229,14 @@ def _verdict_prompt(finding: HealthFinding, report: PalaceHealthReport) -> str:
             "constraints": [
                 "A merge must preserve every fact and qualifier from every source; "
                 "combine losslessly, never summarize away distinct information.",
+                "A merge must retain every source qualifier, including eligibility, payment "
+                "location and payee. Rewording a detail does not make it disposable; if you "
+                "cannot preserve every detail in the combined body, choose keep.",
                 "Similar relevance scores nominate a pair, but do not establish semantic "
                 "duplication. Choose keep if the sources contain independent facts.",
+                "If the sources assert incompatible values for the same fact, choose contradict; "
+                "never combine competing truth claims into a merge. Choose supersede only when "
+                "a source explicitly says it replaces the other.",
                 "split only on semantic boundaries",
                 "use 2-5 distinct lowercase keywords",
                 "when uncertain choose keep",

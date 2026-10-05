@@ -3031,6 +3031,23 @@
             "title": "Principal Id",
             "type": "string"
           },
+          "review_summary": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Review Summary",
+            "type": "object"
+          },
           "stats_delta": {
             "additionalProperties": {
               "type": "integer"
@@ -6918,7 +6935,7 @@
   },
   "info": {
     "title": "N8 Spine",
-    "version": "0.1.60"
+    "version": "0.1.61"
   },
   "openapi": "3.1.0",
   "paths": {
