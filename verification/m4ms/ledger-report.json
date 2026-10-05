@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "4fa8be01476d52e7edf332644d1b03bb9872d113",
-      "head": "5165bdce1693187c5f1cf25d4e5ab5ae6702b866"
+      "head": "32c8d9d358006c64bd675c3f506f2729820529be"
     }
   ],
   "unmapped": {
@@ -17,7 +17,25 @@
     "spine/src/spine/__init__.py": "Paired package version 0.1.60 only; public-wheel verification recorded at handoff.",
     "spine/tests/test_api.py": "Focused regression expectations for model, spend, receipt, startup or packaging behavior; runtime impact is accounted by the mapped source rows.",
     "spine/tests/test_packaging.py": "Focused regression expectations for model, spend, receipt, startup or packaging behavior; runtime impact is accounted by the mapped source rows.",
-    "spine/tests/test_spend.py": "Focused regression expectations for model, spend, receipt, startup or packaging behavior; runtime impact is accounted by the mapped source rows."
+    "spine/tests/test_spend.py": "Focused regression expectations for model, spend, receipt, startup or packaging behavior; runtime impact is accounted by the mapped source rows.",
+    "spine/verification/m4ms/FL-107.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/FL-151.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/FL-154.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/FL-155.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/FL-158.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/FL-159.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/FL-162.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/FL-164.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/FL-166.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/FL-167.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/FL-169.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/FL-195.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/FL-196.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/FL-197.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/FL-202.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/SHA256SUMS": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/acceptance.json": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
+    "spine/verification/m4ms/ledger-report.json": "M4MS verification evidence or generated coverage metadata only; no product behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
