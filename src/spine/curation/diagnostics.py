@@ -25,8 +25,8 @@ PROBES = (
     "How should I build, test, and release this project?",
     "Which tools and services does this project use?",
 )
-PROBE_VERSION = "curator-relevance-v1"
-RELEVANCE_MAX_DELTA = 0.015
+PROBE_VERSION = "curator-relevance-v2"
+RELEVANCE_MAX_DELTA = 0.025
 
 
 class HealthReportBuilder:
