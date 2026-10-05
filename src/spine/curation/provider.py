@@ -229,6 +229,9 @@ def _verdict_prompt(finding: HealthFinding, report: PalaceHealthReport) -> str:
             "constraints": [
                 "A merge must preserve every fact and qualifier from every source; "
                 "combine losslessly, never summarize away distinct information.",
+                "A merge must retain every source qualifier, including eligibility, payment "
+                "location and payee. Rewording a detail does not make it disposable; if you "
+                "cannot preserve every detail in the combined body, choose keep.",
                 "Similar relevance scores nominate a pair, but do not establish semantic "
                 "duplication. Choose keep if the sources contain independent facts.",
                 "If the sources assert incompatible values for the same fact, choose contradict; "
