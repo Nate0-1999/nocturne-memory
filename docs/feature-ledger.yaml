@@ -405,8 +405,8 @@
         "harness/web/src/frontDoor.ts"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M4GA",
+        "date": "2026-10-05",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-018.png"
@@ -738,7 +738,7 @@
       "section": "2. Injection and the gate",
       "era": "Aug 21",
       "label": "Constitution: A near-miss 'never show this' veto (Aug 21 leak-fix packet).",
-      "status": "partial",
+      "status": "built",
       "walk": "On an injected or near-miss memory there are two small buttons: × removes it from this thread (not relevant; alt/long-press for wrong/never) and ×! deletes it permanently after a yes/no confirmation; no four sub-headings above the list (owner, 2026-09-22).",
       "owner": "constitution",
       "surfaces": [
@@ -747,10 +747,10 @@
         "spine/src/spine/inject/decisions.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F175",
+        "packet": "M4GA",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-033.png"
       },
       "protected": true,
@@ -951,7 +951,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "gate-day",
       "label": "Constitution: A marker on a memory superseded after injection instead of yanking it mid-thread (gate-day).",
-      "status": "partial",
+      "status": "built",
       "walk": "Supersede an injected memory mid-thread; the panel shows a superseded marker on it, not a removal.",
       "owner": "constitution",
       "surfaces": [
@@ -959,10 +959,10 @@
         "harness/src/harness/memory_panel.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4GA",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-043.png"
       },
       "protected": true,
