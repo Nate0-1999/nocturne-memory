@@ -404,7 +404,7 @@ def test_replay_winner_requires_margin_except_for_exact_cheaper_tie() -> None:
 
 
 def test_replay_exact_tie_keeps_incumbent() -> None:
-    """Equal errors and injected tokens provide no measured improvement."""
+    """ADR-005: equal errors and injected tokens provide no measured improvement."""
 
     score = ReplayScore(
         disagreements=1,
