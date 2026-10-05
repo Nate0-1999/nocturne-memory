@@ -136,11 +136,7 @@ class OpenRouterCuratorProvider:
             )
         try:
             payload = response.json()
-            content = payload["choices"][0]["message"]["content"]
-            if not isinstance(content, str):
-                raise TypeError("content is not text")
-            draft = CuratorVerdictDraft.model_validate_json(_strip_fence(content))
-        except (KeyError, IndexError, TypeError, ValueError) as exc:
+        except ValueError as exc:
             raise CuratorProviderError("curator verdict response was malformed") from exc
         await self._receipt(
             payload,
@@ -151,6 +147,13 @@ class OpenRouterCuratorProvider:
             finding=finding,
             model=model,
         )
+        try:
+            content = payload["choices"][0]["message"]["content"]
+            if not isinstance(content, str):
+                raise TypeError("content is not text")
+            draft = CuratorVerdictDraft.model_validate_json(_strip_fence(content))
+        except (KeyError, IndexError, TypeError, ValueError) as exc:
+            raise CuratorProviderError("curator verdict response was malformed") from exc
         return draft
 
     async def _receipt(

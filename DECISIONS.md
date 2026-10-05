@@ -1410,5 +1410,6 @@ by score. A-077 records the changed clock and tolerance; the three prompts are u
 A pass reviews at most 25 pairs, strongest cosine first, and reports deferred pairs.
 Keep verdicts persist by finding/revision fingerprint. Earlier judgments that could not
 choose contradict are reviewed once under the complete taxonomy before being reused.
-Pass summaries name the model from its spend receipts; the default policy names the
+Pass summaries name the model from its spend receipts, recorded before verdict validation
+so malformed judgments retain their actual model and cost. The default policy names the
 configured OpenRouter transport. No new table or owner setting is needed.
