@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import asyncio
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from typing import Any
 from uuid import UUID
 
@@ -296,6 +296,69 @@ async def test_health_report_is_byte_stable_for_one_snapshot(
         "merges": 0,
         "retirements": 0,
     }
+
+
+@pytest.mark.asyncio
+async def test_relevance_probes_do_not_drift_with_the_pass_clock(
+    memory_client, embedding_provider, memory_session_factory,
+):
+    """ADR-022 / M4CU: unchanged memories nominate identical pairs and score vectors."""
+    await _seed_mess(memory_client, embedding_provider, memory_session_factory)
+    for index, prompt in enumerate(PROBES[1:]):
+        embedding_provider.set(prompt, basis_vector(index + 10))
+    builder = HealthReportBuilder(memory_session_factory, duplicate_floor=0.70,
+                                  embedding_provider=embedding_provider)
+    now = datetime.now(UTC)
+    reports = [await builder.build("fixture-owner", as_of=now + timedelta(days=days))
+               for days in (0, 1, 7)]
+    nominations = [[(f.fingerprint, f.evidence.get("relevance")) for f in r.findings
+                    if f.kind == "duplicate"] for r in reports]
+    assert nominations[0] and nominations[0] == nominations[1] == nominations[2]
+
+
+@pytest.mark.asyncio
+async def test_pair_budget_and_kept_revisions_survive_service_restart(
+    memory_client, memory_app, embedding_provider, memory_session_factory,
+):
+    """ADR-022 / M4CU: cap real pairs, remember keep, and revisit only changed revisions."""
+    calls = []
+
+    class Keep:
+        async def verdict(self, finding, report, **kwargs):
+            calls.append(finding.fingerprint)
+            return CuratorVerdictDraft(action="keep", rationale="Independent facts.")
+
+    units = []
+    for index in range(8):
+        body = f"The curator fixture records independent fact {index}."
+        vector = [0.0] * 1536
+        vector[0], vector[index + 1] = 0.9, 0.19 ** 0.5
+        embedding_provider.set(body, vector)
+        response = await memory_client.post(
+            "/v1/memories", json=_memory(f"Fact{index}", body, force=True))
+        assert response.status_code == 201, response.text
+        units.append(response.json()["created"])
+
+    def restored():
+        return CuratorService(memory_session_factory,
+                              HealthReportBuilder(memory_session_factory, duplicate_floor=0.70),
+                              Keep(), memory_app.state.queue_service)
+
+    first = await restored().run("fixture-owner", machine_id="fixture-mac")
+    assert first.verdict_count == 25 and first.report.review_summary["skipped_limit"] == 3
+    second = await restored().run("fixture-owner", machine_id="fixture-mac")
+    assert second.verdict_count == 3 and second.report.review_summary["skipped_unchanged"] == 25
+    third = await restored().run("fixture-owner", machine_id="fixture-mac")
+    assert third.verdict_count == 0 and third.report.review_summary["skipped_unchanged"] == 28
+    assert len(calls) == len(set(calls)) == 28
+
+    changed = await memory_client.patch(f"/v1/memories/{units[0]['memory_id']}", json={
+        "expected_revision": units[0]["revision"], "pin": True,
+        "editor": "human", "reason": "M4CU changed revision", "machine_id": "fixture-mac",
+    })
+    assert changed.status_code == 200, changed.text
+    fourth = await restored().run("fixture-owner", machine_id="fixture-mac")
+    assert fourth.verdict_count == 7 and fourth.queued_count == 0
 
 
 @pytest.mark.asyncio

@@ -205,7 +205,7 @@ class OpenRouterCuratorProvider:
 
 def _verdict_prompt(finding: HealthFinding, report: PalaceHealthReport) -> str:
     allowed = {
-        "duplicate": ["keep", "merge"],
+        "duplicate": ["keep", "merge", "contradict", "supersede"],
         "contradiction": ["keep", "contradict", "supersede"],
         "stale": ["keep", "supersede", "retire"],
         "slop": ["keep", "retire", "split"],
@@ -228,6 +228,9 @@ def _verdict_prompt(finding: HealthFinding, report: PalaceHealthReport) -> str:
                 "combine losslessly, never summarize away distinct information.",
                 "Similar relevance scores nominate a pair, but do not establish semantic "
                 "duplication. Choose keep if the sources contain independent facts.",
+                "If the sources assert incompatible values for the same fact, choose contradict; "
+                "never combine competing truth claims into a merge. Choose supersede only when "
+                "a source explicitly says it replaces the other.",
                 "split only on semantic boundaries",
                 "use 2-5 distinct lowercase keywords",
                 "when uncertain choose keep",

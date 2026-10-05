@@ -127,7 +127,8 @@ def create_app(
     )
     queue_service = QueueService(session_factory, memory_service)
     owned_curator_provider = None
-    curator_policy = CuratorPolicy(session_factory, resolved.chat_model)
+    curator_policy = CuratorPolicy(session_factory, resolved.chat_model,
+                                   base_url=resolved.chat_base_url)
     if curator_verdict_provider is None:
         if configured_key:
             owned_curator_provider = OpenRouterCuratorProvider(

@@ -3031,6 +3031,23 @@
             "title": "Principal Id",
             "type": "string"
           },
+          "review_summary": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Review Summary",
+            "type": "object"
+          },
           "stats_delta": {
             "additionalProperties": {
               "type": "integer"

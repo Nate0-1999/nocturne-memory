@@ -24,7 +24,7 @@ async def test_curator_policy_is_owned_validated_persistent_and_append_only(
     path = "/v1/curation/model-policy"
     response = await memory_client.get(path, params={"principal_id": "local"})
     assert response.status_code == 200
-    assert response.json()["policy"].startswith("pinned:")
+    assert response.json()["policy"].startswith("pinned:openrouter:")
     for policy in ("pinned:openrouter:openai/gpt-4.1-mini", "max", "elbow", "floor:50"):
         response = await memory_client.put(path, json={"principal_id": "local", "policy": policy})
         assert response.status_code == 200, response.text

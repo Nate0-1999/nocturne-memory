@@ -1398,3 +1398,14 @@ resolution keeps them, so an image turn takes the catalog's word and makes no se
 of the configured model still resolves image input lazily on its first image turn. Image input the
 catalog confirmed for a model is kept for the daemon's life, so a thread resolved while the catalog
 is unreachable still takes it.
+
+## M4CU — Repeatable, bounded curator passes [P1.2, P1.4, P2.4]
+
+PRECEDENT: PLAN M4CU (v2.132), ADR-022, A-074/A-076; M3MQ and M3LF.
+M4CU's fixed-corpus signal anchors probe scoring to the latest active memory update,
+replacing A-076's pass-clock input; the report timestamp and staleness checks stay live.
+A pass reviews at most 25 pairs, strongest cosine first, and reports deferred pairs.
+Keep verdicts persist by finding/revision fingerprint. Earlier judgments that could not
+choose contradict are reviewed once under the complete taxonomy before being reused.
+Pass summaries name the model from its spend receipts; the default policy names the
+configured OpenRouter transport. No new table or owner setting is needed.
