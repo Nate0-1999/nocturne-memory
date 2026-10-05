@@ -5809,6 +5809,89 @@
         "title": "SpendRateLane",
         "type": "object"
       },
+      "SpendReceipt": {
+        "additionalProperties": false,
+        "properties": {
+          "basis": {
+            "$ref": "#/components/schemas/SpendBasis"
+          },
+          "cost_usd": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DecimalString"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "event_uid": {
+            "$ref": "#/components/schemas/ULID"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "purpose": {
+            "title": "Purpose",
+            "type": "string"
+          },
+          "quantity": {
+            "$ref": "#/components/schemas/DecimalString"
+          },
+          "quantity_type": {
+            "title": "Quantity Type",
+            "type": "string"
+          },
+          "ref": {
+            "title": "Ref",
+            "type": "string"
+          },
+          "thread_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Thread Id"
+          },
+          "ts": {
+            "format": "date-time",
+            "title": "Ts",
+            "type": "string"
+          },
+          "unit_of_measure": {
+            "title": "Unit Of Measure",
+            "type": "string"
+          }
+        },
+        "required": [
+          "event_uid",
+          "ts",
+          "thread_id",
+          "model",
+          "purpose",
+          "quantity_type",
+          "unit_of_measure",
+          "quantity",
+          "cost_usd",
+          "basis",
+          "ref"
+        ],
+        "title": "SpendReceipt",
+        "type": "object"
+      },
       "SpendSnapshot": {
         "additionalProperties": false,
         "properties": {
@@ -5896,6 +5979,13 @@
               "$ref": "#/components/schemas/SpendRateLane"
             },
             "title": "Rates",
+            "type": "array"
+          },
+          "receipts": {
+            "items": {
+              "$ref": "#/components/schemas/SpendReceipt"
+            },
+            "title": "Receipts",
             "type": "array"
           },
           "threads": {

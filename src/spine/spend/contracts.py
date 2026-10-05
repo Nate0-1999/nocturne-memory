@@ -197,6 +197,20 @@ class DailySpend(SpendContract):
     unpriced_lines: int = Field(ge=0)
 
 
+class SpendReceipt(SpendContract):
+    event_uid: ULID
+    ts: datetime
+    thread_id: UUID | None
+    model: str | None
+    purpose: str
+    quantity_type: str
+    unit_of_measure: str
+    quantity: DecimalString
+    cost_usd: DecimalString | None
+    basis: SpendBasis
+    ref: str
+
+
 class SpendTableSnapshot(SpendContract):
     can_record_invoice: bool = False
     as_of: datetime
@@ -207,6 +221,7 @@ class SpendTableSnapshot(SpendContract):
     rate_source: Literal["v_spend_rate+spend_event", "spend_event"] = "spend_event"
     messages: list[MessageCache] = Field(default_factory=list)
     days: list[DailySpend] = Field(default_factory=list)
+    receipts: list[SpendReceipt] = Field(default_factory=list)
 
     @field_validator("as_of")
     @classmethod

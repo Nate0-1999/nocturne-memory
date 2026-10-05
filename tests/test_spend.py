@@ -201,6 +201,8 @@ async def test_spend_table_groups_threads_models_token_lanes_and_non_thread_purp
     assert response.status_code == 200
     snapshot = SpendTableSnapshot.model_validate(response.json())
     by_thread = {str(row.thread_id): row for row in snapshot.threads}
+    assert [row.event_uid for row in snapshot.receipts] == sorted(e["event_uid"] for e in events)
+    assert sum(Decimal(row.cost_usd or "0") for row in snapshot.receipts) == Decimal("0.0270007")
     first = by_thread[_THREAD_ID]
     assert first.input_tokens == Decimal("130")
     assert first.kv_cache_tokens == Decimal("75")
@@ -228,6 +230,7 @@ async def test_spend_table_groups_threads_models_token_lanes_and_non_thread_purp
     scoped = SpendTableSnapshot.model_validate(scoped_response.json())
     assert [str(row.thread_id) for row in scoped.threads] == [_THREAD_ID]
     assert scoped.purposes == []
+    assert all(str(row.thread_id) == _THREAD_ID for row in scoped.receipts)
     assert scoped.rate_source == "spend_event"
     total = next(lane for lane in scoped.rates if lane.dimension == "total")
     assert sum(Decimal(point.cost_usd) for point in total.points) == Decimal("0.022")
@@ -241,6 +244,7 @@ async def test_spend_table_groups_threads_models_token_lanes_and_non_thread_purp
     assert empty.threads == []
     assert empty.purposes == []
     assert empty.rates == empty.messages == empty.days == []
+    assert empty.receipts == []
 
 
 @pytest.mark.parametrize("origin", ["run/root.1", "harness-agent/01M2M9GH426AH8972483N6CD0D"])
@@ -268,6 +272,7 @@ async def test_spend_history_filters_principal_and_keeps_unknown_prices(
     assert snapshot.days[0].unpriced_lines == 1
     assert Decimal(snapshot.days[0].total_usd) == Decimal("0.00025")
     assert snapshot.messages[0].thread_id == UUID(_THREAD_ID)
+    assert {row.event_uid for row in snapshot.receipts} == {own["event_uid"], unknown["event_uid"]}
 
 
 async def test_spend_event_database_is_append_only(
