@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "26a3095e44bfefb6d35c702732a35280b7f66c49",
-      "head": "c05bdae32db0ea096d1a24420c4e36dffb1b6627"
+      "head": "9962a3ef34a4525bb11737ca25d827c4bab8cd6c"
     }
   ],
   "unmapped": {
@@ -28,12 +28,14 @@
     "spine/verification/m4mw/FL-163.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
     "spine/verification/m4mw/FL-178.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
     "spine/verification/m4mw/FL-179.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
+    "spine/verification/m4mw/FL-195.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
     "spine/verification/m4mw/FL-196.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
     "spine/verification/m4mw/SHA256SUMS": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
     "spine/verification/m4mw/acceptance-summary.json": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
     "spine/verification/m4mw/ledger-report.json": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
-    "spine/verification/m4mw/impacted.json": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact.",
-    "spine/verification/m4mw/FL-195.png": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact."
+    "spine/docs/frozen-law.json": "Retained draft ancestry or imported peer integration path. Charged behavior is proved by the fresh runs; other file-level rows remain explicitly unproven F086. Tests, metadata, generated assets and evidence have no additional runtime feature.",
+    "spine/src/spine/queue/service.py": "Retained draft ancestry or imported peer integration path. Charged behavior is proved by the fresh runs; other file-level rows remain explicitly unproven F086. Tests, metadata, generated assets and evidence have no additional runtime feature.",
+    "spine/verification/m4mw/impacted.json": "Synthetic disposable verification evidence or generated coverage/hash accounting; no runtime feature impact."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
