@@ -2,12 +2,12 @@
   "packet": "M4MS",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "4f5bef4809db43cbffdd7427bbe18928770a4d9421cd94097c12c214557bc81a",
+  "ledger_sha256": "882edbf027063299760c48fd267288cb4abe8540420becb4830cdbfd04ac2c6b",
   "diffs": [
     {
       "repo": "spine",
-      "base": "4fa8be01476d52e7edf332644d1b03bb9872d113",
-      "head": "32c8d9d358006c64bd675c3f506f2729820529be"
+      "base": "f2ef2810d029c9970e9cdb940ef01de39585a535",
+      "head": "e980978a355d7b4eb9647ff6f598def1b0434b0d"
     }
   ],
   "unmapped": {
@@ -18,24 +18,24 @@
     "spine/tests/test_api.py": "Focused regression expectations for model, spend, receipt, startup or packaging behavior; runtime impact is accounted by the mapped source rows.",
     "spine/tests/test_packaging.py": "Focused regression expectations for model, spend, receipt, startup or packaging behavior; runtime impact is accounted by the mapped source rows.",
     "spine/tests/test_spend.py": "Focused regression expectations for model, spend, receipt, startup or packaging behavior; runtime impact is accounted by the mapped source rows.",
-    "spine/verification/m4ms/FL-107.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/FL-151.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/FL-154.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/FL-155.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/FL-158.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/FL-159.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/FL-162.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/FL-164.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/FL-166.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/FL-167.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/FL-169.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/FL-195.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/FL-196.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/FL-197.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/FL-202.png": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/SHA256SUMS": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/acceptance.json": "M4MS verification evidence or generated coverage metadata only; no product behavior.",
-    "spine/verification/m4ms/ledger-report.json": "M4MS verification evidence or generated coverage metadata only; no product behavior."
+    "spine/verification/m4ms/FL-107.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/FL-151.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/FL-154.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/FL-155.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/FL-158.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/FL-159.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/FL-162.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/FL-164.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/FL-166.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/FL-167.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/FL-169.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/FL-195.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/FL-196.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/FL-197.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/FL-202.png": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/SHA256SUMS": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/acceptance.json": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197.",
+    "spine/verification/m4ms/ledger-report.json": "Generated public API contract and fingerprint for additive read-only receipt fields; spend behavior is covered by FL-155/159/197."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
