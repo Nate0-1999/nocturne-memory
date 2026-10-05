@@ -1422,3 +1422,9 @@ Pass summaries name the model from its spend receipts, recorded before verdict v
 so malformed judgments retain their actual model and cost. The default policy names the
 configured OpenRouter transport. The pool replay exposed an omitted payment location;
 the merge instruction now explicitly preserves source qualifiers. No new table or owner setting is needed.
+## M4MW — Uploaded corrections keep the same replacement exemption [P1.5]
+
+PRECEDENT: PLAN M4MW, F178, M4GA/A-077 above. A real document upload proposed supersede
+correctly but returned no cards and duplicate_count=1. Seed ingestion now passes its
+merge/supersede targets to the same existing candidate creator, preserving all other dedup
+checks. The regression exercises both thread extraction and document ingestion at 0.97.

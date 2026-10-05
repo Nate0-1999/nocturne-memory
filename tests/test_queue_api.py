@@ -328,9 +328,11 @@ async def test_merge_approval_activates_candidate_tombstones_target_and_is_idemp
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("birthplace", ["thread", "seed"])
 async def test_supersede_of_a_near_identical_target_is_carded_not_counted_duplicate(
     memory_client: AsyncClient,
     embedding_provider: ScriptedEmbeddingProvider,
+    birthplace: str,
 ) -> None:
     """A-077 (F158): a correction that names its target (19:00 → 20:00) is not refused as that
     target's duplicate; the same body as a plain new candidate still is.
@@ -351,13 +353,25 @@ async def test_supersede_of_a_near_identical_target_is_carded_not_counted_duplic
     target_id = created.json()["created"]["memory_id"]
     correction = "Vela now opens at 20:00 UTC."
 
-    plain = await memory_client.post("/v1/extractions", json=extraction(uuid4(), correction))
+    def payload(**kwargs):
+        value = extraction(uuid4(), correction, **kwargs)
+        if birthplace == "seed":
+            value.pop("thread_id")
+            value.update(
+                batch_uid=str(uuid4()), source_name="correction.md", markdown=correction,
+                source_sha256=sha256(correction.encode()).hexdigest(),
+            )
+        return value
+
+    endpoint = "/v1/seeds" if birthplace == "seed" else "/v1/extractions"
+    plain = await memory_client.post(endpoint, json=payload())
     born = await memory_client.post(
-        "/v1/extractions",
-        json=extraction(uuid4(), correction, verdict="supersede", target_ids=[target_id]),
+        endpoint,
+        json=payload(verdict="supersede", target_ids=[target_id]),
     )
 
-    assert plain.json() == {"cards": [], "duplicate_count": 1}
+    assert plain.json()["cards"] == []
+    assert plain.json()["duplicate_count"] == 1
     assert born.json()["duplicate_count"] == 0
     [card] = born.json()["cards"]
     assert card["verdict"] == "supersede"
