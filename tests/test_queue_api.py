@@ -328,6 +328,43 @@ async def test_merge_approval_activates_candidate_tombstones_target_and_is_idemp
 
 
 @pytest.mark.asyncio
+async def test_supersede_of_a_near_identical_target_is_carded_not_counted_duplicate(
+    memory_client: AsyncClient,
+    embedding_provider: ScriptedEmbeddingProvider,
+) -> None:
+    """A-077 (F158): a correction that names its target (19:00 → 20:00) is not refused as that
+    target's duplicate; the same body as a plain new candidate still is.
+    """
+    embedding_provider.set("Vela opens at 19:00 UTC.", basis_vector(0))
+    embedding_provider.set("Vela now opens at 20:00 UTC.", vector_with_cosine(0.97))
+    created = await memory_client.post(
+        "/v1/memories",
+        json={
+            "principal_id": "owner",
+            "label": "Vela clock",
+            "body": "Vela opens at 19:00 UTC.",
+            "kind": "procedure",
+            "editor": "human",
+            "machine_id": "mac",
+        },
+    )
+    target_id = created.json()["created"]["memory_id"]
+    correction = "Vela now opens at 20:00 UTC."
+
+    plain = await memory_client.post("/v1/extractions", json=extraction(uuid4(), correction))
+    born = await memory_client.post(
+        "/v1/extractions",
+        json=extraction(uuid4(), correction, verdict="supersede", target_ids=[target_id]),
+    )
+
+    assert plain.json() == {"cards": [], "duplicate_count": 1}
+    assert born.json()["duplicate_count"] == 0
+    [card] = born.json()["cards"]
+    assert card["verdict"] == "supersede"
+    assert card["target_ids"] == [target_id]
+
+
+@pytest.mark.asyncio
 async def test_contradiction_cannot_passively_approve(
     memory_client: AsyncClient,
     embedding_provider: ScriptedEmbeddingProvider,

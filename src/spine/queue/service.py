@@ -89,7 +89,8 @@ class QueueService:
                     origin_locations=draft.origin_locations,
                     editor=request.editor,
                     machine_id=request.machine_id,
-                )
+                ),
+                replaces=draft.target_ids if draft.verdict in {"merge", "supersede"} else (),
             )
             if created is None:
                 duplicates += 1

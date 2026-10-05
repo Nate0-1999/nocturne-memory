@@ -1389,3 +1389,11 @@ Routes carry the source's supported parameters through resolution to request sha
 A named pick still refreshes the model list without benchmarks; a failed refresh may use
 an exact previously observed route. Unknown routes still fail, and a successful list replaces
 the fallback entries so removed models do not survive a successful refresh.
+
+## M4GA — A correction is not its target's duplicate [P1.2]
+
+PRECEDENT: A-077, F158, M3W6A memory-final run 1, the curator's create_curator_candidate.
+An extraction candidate with verdict merge or supersede was deduped against its own target
+("opens at 20:00" against "opens at 19:00" scores above 0.92) and vanished as a duplicate. Such a
+candidate now keeps its targets among its neighbors (enqueue still requires them there) but is
+never refused as their duplicate; any other hard duplicate is still refused.

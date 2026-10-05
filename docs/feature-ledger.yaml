@@ -995,7 +995,7 @@
       "era": "Aug 31",
       "label": "Same-memory detection by encoding and retrieving, not exact wording.",
       "status": "partial",
-      "walk": "Save a rephrased known fact; it is recognized as the same memory instead of duplicating.",
+      "walk": "Save a rephrased known fact: at 0.80 similarity or above it is recognized at once (asked or reinforced, per the write bands) instead of duplicating; a rewording below 0.80 is saved, and the next curator pass proposes merging the pair (its own 0.70 band, v2.128).",
       "owner": "owner — \"2. We need a prove a way that we can distinguish the memories that come out are the same or different besides exact wording, even though they should be similar. Maybe we encode them and rag them or something?\" (chat 2026-08-31 21:00:39)",
       "surfaces": [
         "spine/src/spine/memory/service.py",
@@ -3378,9 +3378,9 @@
       "id": "FL-155",
       "section": "11. Spend, money and model routing",
       "era": "Jul 28",
-      "label": "An append-only spend ledger with fine-grain cost history, its smallest grain a uuid spend unit, and the spend views derived from it.",
+      "label": "An append-only spend ledger with fine-grain cost history, its smallest grain a spend unit with its own immutable id (a ULID, ADR-024 / A-027), and the spend views derived from it.",
       "status": "partial",
-      "walk": "Send one message, then open the spend ledger; new rows with their own uuid spend unit ids appear beneath the unchanged older rows, and the spend module's totals add up from them.",
+      "walk": "Send one message, then open the spend ledger; new rows with their own spend unit ids (ULIDs) appear beneath the unchanged older rows, and the spend module's totals add up from them.",
       "owner": "owner — \"I think this is the right of it. I'm aligned to this schema: append only. I do want to make sure we have the views that i described earlier figured out how to be derived\" (chat 2026-07-28 00:39:29; chat 2026-07-28 00:21:30)",
       "surfaces": [
         "harness/src/harness/spend.py",
