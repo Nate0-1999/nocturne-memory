@@ -1395,4 +1395,6 @@ never refused as their duplicate; any other hard duplicate is still refused.
 PRECEDENT: A-052, M3SK above, M3W6A (the image refused on a pinned gpt-4.1-mini).
 The route M3SK already reads for a pin's window also carries the model's input modalities; the
 resolution keeps them, so an image turn takes the catalog's word and makes no second fetch. A pin
-of the configured model still resolves image input lazily on its first image turn.
+of the configured model still resolves image input lazily on its first image turn. Image input the
+catalog confirmed for a model is kept for the daemon's life, so a thread resolved while the catalog
+is unreachable still takes it.
