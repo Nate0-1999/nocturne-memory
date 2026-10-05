@@ -26,11 +26,14 @@ from spine.db.models import (
     CuratorRun,
     CuratorTriggerState,
     CuratorVerdict,
+    SpendEvent,
 )
 from spine.ids import mint_ulid
 from spine.queue.service import QueueService
 
 Trigger = Literal["writes", "manual", "injection_pressure", "cron"]
+PAIR_LIMIT = 25
+VERDICT_VERSION = "curator-verdict-v2"
 
 
 @dataclass(frozen=True, slots=True)
@@ -244,8 +247,37 @@ class CuratorService:
         report = await self._report_builder.build(principal_id)
         admitted, pressure = await self._trigger_snapshot(principal_id)
         judged: list[_JudgedFinding] = []
+        async with self._session_factory() as session:
+            remembered = set((await session.scalars(
+                select(CuratorFinding.fingerprint)
+                .join(CuratorRun, CuratorRun.run_uid == CuratorFinding.run_uid)
+                .join(CuratorVerdict, CuratorVerdict.finding_uid == CuratorFinding.finding_uid)
+                .where(CuratorRun.principal_id == principal_id,
+                       CuratorFinding.fingerprint.in_([f.fingerprint for f in report.findings]),
+                       # Earlier duplicate judgments could not choose contradict.
+                       CuratorFinding.evidence["verdict_version"].astext == VERDICT_VERSION,
+                       CuratorVerdict.action == "keep")
+            )).all())
+        report.review_summary = {
+            "pair_limit": PAIR_LIMIT, "reviewed_pairs": 0,
+            "skipped_unchanged": 0, "skipped_limit": 0,
+        }
+        # Review the strongest pairs first; a fixed corpus has a fixed tie order.
+        findings = sorted(report.findings, key=lambda f: (
+            f.kind != "contradiction", -float(f.evidence.get("cosine", 0)), f.ordinal,
+        ))
+        reviewed_pairs = 0
         try:
-            for finding in report.findings:
+            for finding in findings:
+                if finding.fingerprint in remembered:
+                    report.review_summary["skipped_unchanged"] += 1
+                    continue
+                if len(finding.memory_ids) == 2:
+                    if reviewed_pairs >= PAIR_LIMIT:
+                        report.review_summary["skipped_limit"] += 1
+                        continue
+                    reviewed_pairs += 1
+                    report.review_summary["reviewed_pairs"] = reviewed_pairs
                 async with self._session_factory() as session:
                     feedback = (await session.execute(
                         select(CuratorAction.detail)
@@ -261,6 +293,9 @@ class CuratorService:
                     finding = finding.model_copy(update={
                         "evidence": {**finding.evidence, "owner_feedback": list(feedback)}
                     })
+                finding = finding.model_copy(update={
+                    "evidence": {**finding.evidence, "verdict_version": VERDICT_VERSION}
+                })
                 finding_uid = mint_ulid()
                 verdict_uid = mint_ulid()
                 await record_progress(self._session_factory, principal_id, run_uid,
@@ -401,6 +436,7 @@ class CuratorService:
         pressure: int,
         error: str,
     ) -> None:
+        await self._record_model(report, run_uid)
         async with self._session_factory() as session:
             async with session.begin():
                 await session.execute(
@@ -433,6 +469,7 @@ class CuratorService:
         actions: list[tuple[_JudgedFinding, str, str | None, dict[str, Any]]],
         queued: int,
     ) -> None:
+        await self._record_model(report, run_uid)
         async with self._session_factory() as session:
             async with session.begin():
                 await session.execute(
@@ -483,6 +520,16 @@ class CuratorService:
                             detail=detail,
                         )
                     )
+
+    async def _record_model(self, report: PalaceHealthReport, run_uid: str) -> None:
+        async with self._session_factory() as session:
+            models = (await session.scalars(
+                select(SpendEvent.model).distinct().where(
+                    SpendEvent.run_id == run_uid, SpendEvent.purpose == "curation",
+                    SpendEvent.model.is_not(None),
+                ).order_by(SpendEvent.model)
+            )).all()
+        report.review_summary["model"] = ", ".join(models) or None
 
     async def _advance_cursor(self, principal_id: str, admitted: int, pressure: int) -> None:
         async with self._session_factory() as session:
@@ -539,7 +586,7 @@ def _receipt(row: Any) -> CuratorRunReceipt:
 
 def _require_allowed(finding: HealthFinding, draft: CuratorVerdictDraft) -> None:
     allowed = {
-        "duplicate": {"keep", "merge"},
+        "duplicate": {"keep", "merge", "contradict", "supersede"},
         "contradiction": {"keep", "contradict", "supersede"},
         "stale": {"keep", "supersede", "retire"},
         "slop": {"keep", "retire", "split"},

@@ -35,6 +35,7 @@ class PalaceHealthReport(ContractModel):
     findings: list[HealthFinding]
     keyword_coverage_percent: str
     stats_delta: dict[str, int]
+    review_summary: dict[str, int | str | None] = Field(default_factory=dict)
 
 
 class CuratorSplitChild(ContractModel):

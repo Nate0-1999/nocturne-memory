@@ -25,8 +25,8 @@ PROBES = (
     "How should I build, test, and release this project?",
     "Which tools and services does this project use?",
 )
-PROBE_VERSION = "curator-relevance-v1"
-RELEVANCE_MAX_DELTA = 0.015
+PROBE_VERSION = "curator-relevance-v2"
+RELEVANCE_MAX_DELTA = 0.025
 
 
 class HealthReportBuilder:
@@ -119,6 +119,8 @@ class HealthReportBuilder:
             )).all()) if config is not None else {}
 
         vectors: dict[UUID, list[float]] = {row["id"]: [] for row in rows}
+        # A pass's wall clock must not change nomination for an unchanged corpus.
+        relevance_at = max((row["updated_at"] for row in rows), default=observed_at)
         if config is not None and rows:
             candidates = [_candidate_from_row(
                 {**row, "last_human_edit_at": edits.get(row["id"])}, pool_sources=("curator",)
@@ -136,7 +138,7 @@ class HealthReportBuilder:
                     scored = _score_candidate(
                         candidate, query=tuple(self._probe_embeddings[prompt]),
                         semantic=None if prompt else 0.0, prompt_keywords=prompt_keywords(prompt),
-                        snapshot_ts=observed_at, thread_project_key=None, thread_id=None,
+                        snapshot_ts=relevance_at, thread_project_key=None, thread_id=None,
                         location_path=None, weights=config.weights_for_project(None),
                         params=config.params, learned_bias=config.bias_offset(candidate.memory_id),
                         axes=config.axes,
@@ -169,6 +171,7 @@ class HealthReportBuilder:
                             },
                             "relevance": {
                                 "probe_version": PROBE_VERSION, "prompts": list(PROBES),
+                                "snapshot_ts": relevance_at.isoformat(),
                                 "scorer_version": None if config is None else config.version,
                                 "left": left_scores, "right": right_scores,
                                 "max_delta": delta, "threshold": RELEVANCE_MAX_DELTA,

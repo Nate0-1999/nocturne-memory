@@ -12,7 +12,7 @@ from sqlalchemy.exc import DBAPIError
 
 from spine.curation.contracts import HealthFinding, PalaceHealthReport
 from spine.curation.policy import CuratorPolicy
-from spine.curation.provider import OpenRouterCuratorProvider
+from spine.curation.provider import CuratorProviderError, OpenRouterCuratorProvider
 from spine.ids import mint_ulid
 from spine.model_policy import BenchmarkModel, ModelCatalog, ModelRoute
 
@@ -24,7 +24,7 @@ async def test_curator_policy_is_owned_validated_persistent_and_append_only(
     path = "/v1/curation/model-policy"
     response = await memory_client.get(path, params={"principal_id": "local"})
     assert response.status_code == 200
-    assert response.json()["policy"].startswith("pinned:")
+    assert response.json()["policy"].startswith("pinned:openrouter:")
     for policy in ("pinned:openrouter:openai/gpt-4.1-mini", "max", "elbow", "floor:50"):
         response = await memory_client.put(path, json={"principal_id": "local", "policy": policy})
         assert response.status_code == 200, response.text
@@ -48,6 +48,7 @@ async def test_curator_policy_selects_real_request_model_and_stays_fixed_for_a_p
     """FL-154 / A-021 / r9-6: pinned and strongest policies govern future passes."""
     calls = []
     receipts = []
+    malformed = False
     first, second = mint_ulid(), mint_ulid()
 
     def respond(request):
@@ -58,9 +59,9 @@ async def test_curator_policy_selects_real_request_model_and_stays_fixed_for_a_p
                 "choices": [
                     {
                         "message": {
-                            "content": json.dumps(
-                                {"action": "keep", "rationale": "No change is needed."}
-                            )
+                            "content": "{}"
+                            if malformed
+                            else json.dumps({"action": "keep", "rationale": "No change is needed."})
                         }
                     }
                 ],
@@ -115,11 +116,15 @@ async def test_curator_policy_selects_real_request_model_and_stays_fixed_for_a_p
         monkeypatch.setattr(provider._catalog, "load", catalog)
         await policy.save("local", "max")
         await provider.verdict(finding, report, run_uid=mint_ulid(), machine_id="local-machine")
+        malformed = True
+        with pytest.raises(CuratorProviderError, match="malformed"):
+            await provider.verdict(finding, report, run_uid=mint_ulid(), machine_id="local-machine")
         await provider.aclose()
     assert calls == [
         "openai/gpt-4.1-mini",
         "openai/gpt-4.1-mini",
         "openai/gpt-4.1",
+        "vendor/strong",
         "vendor/strong",
     ]
     assert [receipt.model for receipt in receipts] == calls
