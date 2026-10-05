@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-05T10:32:24.906261+00:00",
+  "palace": "test-m4mw-1057",
+  "project": "n8-memory-palace",
+  "region": "us-central1",
+  "disposable_memory_count": 565,
+  "remote_resources": {
+    "service": [],
+    "database": [],
+    "secrets": []
+  },
+  "stopped_waiting_clients_after_absence_proof": [
+    6782,
+    6602
+  ],
+  "retired_scratch_custody": [
+    "/private/tmp/m4mw-1057/drop-control-home/palaces/test-m4mw-1057",
+    "/private/tmp/m4mw-1057/home/palaces/test-m4mw-1057"
+  ],
+  "browser_ports_closed": {
+    "8817": true,
+    "9617": true,
+    "18817": true
+  },
+  "owner_home_or_main_palace_selected": false
+}
