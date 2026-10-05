@@ -49,6 +49,12 @@ print its values. Releases: tag through the release workflows at the next
 unused version, both packages together; never a number chosen in advance.
 A packet that adds or resolves a flag or changes the ledger runs
 `garden/bin/check_rules --export` and ships the frozen copies in its pushes.
+- Test on the cheap (v2.134): walk on gpt-4.1-mini; set a test palace's
+  curator, judge and sub-agent policies to pinned gpt-4.1-mini the moment it
+  exists (the shipped curator default is a costly model); a strong model
+  only for rows your charge names, under its dollar cap; state your key
+  spend in the handoff. The verification key has a hard limit — a 402 means
+  stop and say so, never retry in a loop.
 
 ## The walk and the handoff (PLAN §1, GATE §5)
 Walk your charge's LEDGER ROWS plus the impact bell's rows on the real
