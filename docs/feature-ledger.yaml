@@ -1458,8 +1458,8 @@
         "harness/web/src/projectPath.ts"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4AH",
+        "date": "2026-10-05",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-067.png"
@@ -1494,7 +1494,7 @@
       "section": "5. Agent hands and location",
       "era": "Jul 28",
       "label": "The core tools every modern harness has: files, terminal, Chrome, skills, changing models, compaction (our own take), and interactions with common apps, taken from the most modular standard source.",
-      "status": "partial",
+      "status": "built",
       "walk": "Ask the agent to read a file, run a terminal command, open a page in the browser and use a skill; each works.",
       "owner": "owner — \"there should be a core of tools that are consistent across al of them that we should fine: using skills, progressive prompting, changing models, compaction strategies (we will have our own take), interactions with common apps, etc, etc. we need to go out and find those common standard ones pick the one we like the best that is the most modular and keep it.\" (chat 2026-08-16 19:37:48; chat 2026-07-28 16:27:32)",
       "surfaces": [
@@ -1507,10 +1507,10 @@
         "harness/src/harness/browser_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4AH",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-069.png"
       },
       "protected": true,
@@ -1521,7 +1521,7 @@
       "section": "5. Agent hands and location",
       "era": "Aug 2",
       "label": "Image input: paste an image and the agent reviews it.",
-      "status": "partial",
+      "status": "built",
       "walk": "Paste an image; the agent reviews it.",
       "owner": "owner — \"3. Ok multimodality should be something that we must support long term. I must be able to copy in images and have my agents review them. Similarly to browser use and comand line use and all the other basic tooling every modern harness has.\" (chat 2026-08-03 01:00:05)",
       "surfaces": [
@@ -1531,10 +1531,10 @@
         "harness/src/harness/transcript.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4AH",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-070.png"
       },
       "protected": true,
@@ -1568,7 +1568,7 @@
       "section": "5. Agent hands and location",
       "era": "Aug 17",
       "label": "The progressive prompting protocol is dynamic to the agent's moves: a move re-prompts the agent for its new location.",
-      "status": "partial",
+      "status": "built",
       "walk": "Move the agent; the next turn's system prompt shows the new location.",
       "owner": "owner — \"We are going to have adapters as our agents need to have locations all the time and cd around before they can manipulate a file. We also need to make sure our progressive prompting protocol is dynamic to these moves.\" (chat 2026-08-17 14:53:22; chat 2026-07-20 00:01:41)",
       "surfaces": [
@@ -1577,10 +1577,10 @@
         "harness/src/harness/progressive_prompt.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4AH",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-072.png"
       },
       "protected": true,
@@ -1695,7 +1695,7 @@
       "section": "5. Agent hands and location",
       "era": "founding",
       "label": "Browser hands adopted whole and pinned upstream: Playwright for Python, with the Codex extension deferred until a standalone runtime exists (F116 ruling).",
-      "status": "partial",
+      "status": "built",
       "walk": "Ask the agent to open the app it just built and read the page; it navigates, clicks, types and screenshots through the adopted browser hands (Playwright; the Codex extension is revisited when a standalone runtime exists — F116), inside the fence, every action journaled.",
       "owner": "owner — \"I would lik to have a codex browser use extension because it thikn it is really good and the open ai devs will definitely spend a bunch of time maintaining it and making it better\" (chat 2026-09-12); Playwright fallback accepted by PLAN M3BW RULING (2026-09-16, F116 resolved).",
       "surfaces": [
@@ -1705,12 +1705,14 @@
         "harness/tests/test_browser_consent.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4AH",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-078.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-05"
     },
     {
       "id": "FL-079",
@@ -2345,7 +2347,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Jul 28",
       "label": "A plugin to change common model parameters such as top p and temperature, as an Ableton-style visualizer and input block.",
-      "status": "built",
+      "status": "partial",
       "walk": "Open the parameters dialog from the Model Device: it is compact and shows only the parameters the model in use supports (from the source's catalog); change temperature and the next turn's request carries the new value; switch to a model without top k and that control is gone.",
       "owner": "owner — \"Also, we should have another plug in that allows people to change common model parameters: top p, temperature, etc. That would be a cool abletonesk visualizer and input block as well.\" (chat 2026-07-28 16:31:54) — 2026-10-04: \"The top p, k etc are too large … they should be in a dialogue box … make that dynamic because different models will have different settings available\"",
       "surfaces": [
@@ -2354,9 +2356,10 @@
         "harness/src/harness/parameter_registry.py"
       ],
       "last_walk": {
-        "packet": "M4MS",
-        "date": "2026-10-05",
-        "verdict": "PASS",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F174",
         "screenshot": "FL-107.png"
       },
       "protected": true,
@@ -3386,7 +3389,7 @@
       "section": "11. Spend, money and model routing",
       "era": "Jul 28",
       "label": "An append-only spend ledger with fine-grain cost history, its smallest grain a spend unit with its own immutable id (a ULID, ADR-024 / A-027), and the spend views derived from it.",
-      "status": "built",
+      "status": "partial",
       "walk": "Send one message, then open the spend ledger; new rows with their own spend unit ids (ULIDs) appear beneath the unchanged older rows, and the spend module's totals add up from them.",
       "owner": "owner — \"I think this is the right of it. I'm aligned to this schema: append only. I do want to make sure we have the views that i described earlier figured out how to be derived\" (chat 2026-07-28 00:39:29; chat 2026-07-28 00:21:30)",
       "surfaces": [
@@ -3395,9 +3398,10 @@
         "spine/src/spine/spend/"
       ],
       "last_walk": {
-        "packet": "M4MS",
-        "date": "2026-10-05",
-        "verdict": "PASS",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-155.png"
       },
       "protected": true,
@@ -3453,9 +3457,10 @@
         "harness/src/harness/commands.py"
       ],
       "last_walk": {
-        "packet": "M4MS",
-        "date": "2026-10-05",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
         "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-158.png"
       },
       "protected": true,
@@ -3477,9 +3482,10 @@
         "spine/src/spine/spend/views.py"
       ],
       "last_walk": {
-        "packet": "M4MS",
-        "date": "2026-10-05",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-159.png"
       },
       "protected": true,
@@ -3623,7 +3629,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "Aug 3",
       "label": "A prompt when the app's memory use passes a threshold of the local system's memory, memory-leak guards, and no proceeding without write access at startup.",
-      "status": "built",
+      "status": "partial",
       "walk": "Start the daemon in a folder with no write access; it refuses to proceed, and doctor shows the app's memory use against its threshold.",
       "owner": "owner — \"We maybe should have a prompt whenever the memory associated with this applicatoin goes over some threshold of the local systems memory. I'm actually ok not letting the user proceed without write access of some sort. We need to store the transaction logs so... does that make sense?\" (chat 2026-08-03 15:17:58; chat 2026-08-03 15:12:10)",
       "surfaces": [
@@ -3632,9 +3638,10 @@
         "harness/src/harness/cli.py"
       ],
       "last_walk": {
-        "packet": "M4MS",
-        "date": "2026-10-05",
-        "verdict": "PASS",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F086",
         "screenshot": "FL-166.png"
       },
       "protected": true,
@@ -4312,7 +4319,7 @@
       "section": "6. Context window, history and compaction",
       "era": "Sep 22",
       "label": "Context overwhelm protections: a query or a sub-agent return may take up at most n% of the compaction limit, the share chosen by the sending agent within bounds that are system parameters; a security module shows it.",
-      "status": "partial",
+      "status": "built",
       "walk": "Make a query return more than its share of the compaction limit; the agent gets an error naming the size and a very brief head of the response. Make a sub-agent return more than its share; it is sent back the exact amount to shorten by and returns under the share. The security module shows both.",
       "owner": "owner — \"We should have some context overwhelm protections in place a security module. Like a query or a sub agent return should have n% of total compaction limit it can take up... maybe if the agent who is sending the sub agent or query can pick it within bounds that are system parameters\" (chat 2026-09-22) — ruled 2026-09-22: \"simply enhance what exists… error/show very brief start to the query… submit back to that subagent the response must be shorter by some deterministically calculated amount\"",
       "surfaces": [
@@ -4324,10 +4331,10 @@
         "harness/web/src/assets/security.css"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4AH",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-198.png"
       },
       "protected": true,
