@@ -1397,3 +1397,12 @@ An extraction candidate with verdict merge or supersede was deduped against its 
 ("opens at 20:00" against "opens at 19:00" scores above 0.92) and vanished as a duplicate. Such a
 candidate now keeps its targets among its neighbors (enqueue still requires them there) but is
 never refused as their duplicate; any other hard duplicate is still refused.
+
+## M4AH — A pinned pick keeps its route's image input [P4]
+
+PRECEDENT: A-052, M3SK above, M3W6A (the image refused on a pinned gpt-4.1-mini).
+The route M3SK already reads for a pin's window also carries the model's input modalities; the
+resolution keeps them, so an image turn takes the catalog's word and makes no second fetch. A pin
+of the configured model still resolves image input lazily on its first image turn. Image input the
+catalog confirmed for a model is kept for the daemon's life, so a thread resolved while the catalog
+is unreachable still takes it.

@@ -425,6 +425,8 @@ class ModelPolicyResolver:
         self._catalog = catalog
         self._resolutions: dict[str, ThreadModelResolution] = {}
         self._image_resolutions: dict[tuple[str, str, int], ThreadModelResolution] = {}
+        # M4AH: image input the catalog confirmed for a model, kept for the daemon's life.
+        self._image_input: dict[str, frozenset[str]] = {}
         self._lock = asyncio.Lock()
 
     def set_policy(self, policy: str) -> None:
@@ -545,6 +547,10 @@ class ModelPolicyResolver:
         cached = self._image_resolutions.get(cache_key)
         if cached is not None:
             return cached
+        if (known := self._image_input.get(resolution.model)) is not None:
+            # M4AH walk: a thread first resolved while the catalog was unreachable refused an image
+            # the catalog had already confirmed for this model; its earlier word stands.
+            return replace(resolution, input_modalities=known)
 
         slug = resolution.model.removeprefix("openrouter:")
         route, fetched_at = await self._catalog.load_named_route(slug)
@@ -558,6 +564,7 @@ class ModelPolicyResolver:
         # Only positive, structurally valid catalog truth is retained for the
         # stickiness epoch. Unknown capability may be retried on a later turn.
         if enriched.input_modalities is not None:
+            self._image_input[resolution.model] = enriched.input_modalities
             async with self._lock:
                 current = self._image_resolutions.get(cache_key)
                 if current is None:
@@ -578,6 +585,7 @@ class ModelPolicyResolver:
             assert isinstance(self._policy.value, str)
             context_tokens = self._static_context_tokens
             supported_parameters = None
+            input_modalities = None
             if self._policy.value != self._static_model and self._catalog is not None:
                 # A pick other than the configured model takes its own window (M3SK); the
                 # benchmark table stays unconsulted, and an unknown route keeps the static one.
@@ -585,6 +593,11 @@ class ModelPolicyResolver:
                     named = await self.resolve_named(thread_id, self._policy.value)
                     context_tokens = named.context_tokens
                     supported_parameters = named.supported_parameters
+                    # M3W6A: the route's image input was dropped here, so an image turn fetched
+                    # the catalog again and one failed fetch refused a model that takes images.
+                    input_modalities = named.input_modalities
+                    if input_modalities is not None:
+                        self._image_input[self._policy.value] = input_modalities
                 except (ModelCatalogUnavailable, NamedModelResolutionError):
                     pass
             resolved = ThreadModelResolution(
@@ -592,6 +605,7 @@ class ModelPolicyResolver:
                 context_tokens=context_tokens,
                 policy=self._policy_text,
                 supported_parameters=supported_parameters,
+                input_modalities=input_modalities,
             )
             logger.info(
                 "model policy resolved thread=%s policy=%s model=%s",
