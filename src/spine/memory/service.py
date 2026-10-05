@@ -515,8 +515,14 @@ class MemoryService:
     async def create_candidate(
         self,
         command: CreateMemoryCommand,
+        *,
+        replaces: Sequence[UUID] = (),
     ) -> CandidateCreated | None:
-        """Admit a queue-only head, remembering exact rejected bodies as well."""
+        """Admit a queue-only head, remembering exact rejected bodies as well.
+
+        A-077: a replacement stays a neighbor of the memories it names but is never
+        refused as their duplicate.
+        """
 
         self._validate_label(command.label)
         self._validate_body(command.body)
@@ -546,7 +552,8 @@ class MemoryService:
                     embedding=embedding,
                     statuses=("active", "candidate"),
                 )
-                if matches and matches[0].score >= self._dedup_dup:
+                top = next((item for item in matches if item.memory_id not in replaces), None)
+                if top is not None and top.score >= self._dedup_dup:
                     return None
                 row = await self._insert_root(session, command, embedding, status="candidate")
                 return CandidateCreated(
