@@ -1,0 +1,107 @@
+{
+  "version": "0.1.65",
+  "verified_at": "2026-10-05T21:59:13.274775+00:00",
+  "memory": {
+    "merge": "a71a29c3c08b0aee05484e3533e98e365dbd679a",
+    "pr": "https://github.com/Nate0-1999/nocturne-memory/pull/77",
+    "release": "https://github.com/Nate0-1999/nocturne-memory/releases/tag/v0.1.65",
+    "workflow": {
+      "attempt": 1,
+      "conclusion": "success",
+      "headSha": "a71a29c3c08b0aee05484e3533e98e365dbd679a",
+      "status": "completed",
+      "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/37367972162"
+    }
+  },
+  "harness": {
+    "merge": "0439508550fb44859315723c77f5010ddcefefda",
+    "pr": "https://github.com/Nate0-1999/nocturne-harness/pull/81",
+    "release": "https://github.com/Nate0-1999/nocturne-harness/releases/tag/v0.1.65",
+    "workflow": {
+      "attempt": 1,
+      "conclusion": "success",
+      "headSha": "0439508550fb44859315723c77f5010ddcefefda",
+      "status": "completed",
+      "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/37378983376"
+    }
+  },
+  "public_index": {
+    "checked_at": "2026-10-05T21:56:48.392814+00:00",
+    "nocturne-memory": {
+      "version": "0.1.65",
+      "files": [
+        {
+          "filename": "nocturne_memory-0.1.65-py3-none-any.whl",
+          "sha256": "947e930d17e5564e74551a1c1a225b7c00b0ad776409fb01216a89f9533602cd",
+          "url": "https://files.pythonhosted.org/packages/88/39/af4b674a29e7d42b913a3ece85eb2ecf8cdf4e8d62b73af2ea404ca2c12a/nocturne_memory-0.1.65-py3-none-any.whl",
+          "uploaded_at": "2026-10-05T20:26:04.176078Z"
+        },
+        {
+          "filename": "nocturne_memory-0.1.65.tar.gz",
+          "sha256": "42c94714f8a3dd0f8a02ab0d2f7b78386bc65ec52026ac57015b84e3db4d9add",
+          "url": "https://files.pythonhosted.org/packages/2a/7d/d8c163eb2b0ec28272a5e15a16e4da7f7f4ec37aee865d0e83280639d76a/nocturne_memory-0.1.65.tar.gz",
+          "uploaded_at": "2026-10-05T20:26:05.775049Z"
+        }
+      ]
+    },
+    "nocturne-harness": {
+      "version": "0.1.65",
+      "files": [
+        {
+          "filename": "nocturne_harness-0.1.65-py3-none-any.whl",
+          "sha256": "d328a7bfe2752b7e4fcd8bcb294b9bf28a16a058a2a6ea28d531cb5b44f1d9ff",
+          "url": "https://files.pythonhosted.org/packages/c5/71/4405c645a370dc713d0eac91d6e2b2f51fc3041da9f63e39f88c43df5ea8/nocturne_harness-0.1.65-py3-none-any.whl",
+          "uploaded_at": "2026-10-05T21:56:10.636110Z"
+        },
+        {
+          "filename": "nocturne_harness-0.1.65.tar.gz",
+          "sha256": "4b31e463e6b24c4a336da79daa412809141624498ef49db4c6a1559c8b9e22a5",
+          "url": "https://files.pythonhosted.org/packages/af/f1/df8cb693e42f718a49ef07a77340637e46cc07bd39d92a3c59e54ed6a472/nocturne_harness-0.1.65.tar.gz",
+          "uploaded_at": "2026-10-05T21:56:12.287382Z"
+        }
+      ]
+    }
+  },
+  "clean_install": {
+    "checked_at": "2026-10-05T21:58:15.072125+00:00",
+    "cwd": "/private/tmp/m4sy-01a10a5b/public-0.1.65",
+    "home": "/private/tmp/m4sy-01a10a5b/public-0.1.65/home",
+    "packages": {
+      "nocturne-harness": {
+        "version": "0.1.65",
+        "module_origin": "/private/tmp/m4sy-01a10a5b/public-0.1.65/venv/lib/python3.12/site-packages/harness/__init__.py",
+        "editable": false
+      },
+      "nocturne-memory": {
+        "version": "0.1.65",
+        "module_origin": "/private/tmp/m4sy-01a10a5b/public-0.1.65/venv/lib/python3.12/site-packages/spine/__init__.py",
+        "editable": false
+      }
+    },
+    "exact_companion_pin": true
+  },
+  "memory_installed_wheel_smoke": "PASS",
+  "harness_installed_wheel_http_smoke": "PASS",
+  "cleanup": {
+    "checked_at": "2026-10-05T19:46:39.833434+00:00",
+    "services": {
+      "exit_code": 0,
+      "matching_resources": []
+    },
+    "databases": {
+      "exit_code": 0,
+      "matching_resources": []
+    },
+    "secrets": {
+      "exit_code": 0,
+      "matching_resources": []
+    },
+    "owned_processes": [],
+    "palace_home_exists": false
+  },
+  "limitations": [
+    "F189 judge repeated successful checks until one run hit its signed wall; successful retry does not erase it.",
+    "Coverage: 13 PASS, 35 FAIL/unproven, one OWNER-PENDING; all five charged rows PASS."
+  ],
+  "publication_order": "Memory public availability confirmed before Harness release workflow triggered."
+}

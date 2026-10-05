@@ -7,16 +7,17 @@
     {
       "repo": "spine",
       "base": "05481f4f7a13536b4dd5cae963e29374bc7d9fcb",
-      "head": "c766563faeb43d2797c95fc2f8792c720a54c1f6"
+      "head": "a71a29c3c08b0aee05484e3533e98e365dbd679a"
     }
   ],
   "unmapped": {
-    "spine/src/spine/__init__.py": "Lockstep package version metadata only.",
-    "spine/verification/m4sy/FL-196.png": "Packet evidence and integrity manifest only; no runtime feature change.",
-    "spine/verification/m4sy/ledger-report.json": "Packet evidence and integrity manifest only; no runtime feature change.",
-    "spine/verification/m4sy/SHA256SUMS": "Packet evidence and integrity manifest only; no runtime feature change.",
     "spine/openapi.json": "Generated API document changes only its product release version; routes and API contract are unchanged.",
-    "spine/tests/test_packaging.py": "Existing package-version assertion updated to the paired release; no runtime behavior change."
+    "spine/src/spine/__init__.py": "Lockstep package version metadata only.",
+    "spine/tests/test_packaging.py": "Existing package-version assertion updated to the paired release; no runtime behavior change.",
+    "spine/verification/m4sy/FL-196.png": "Packet evidence only; no runtime feature change.",
+    "spine/verification/m4sy/SHA256SUMS": "Packet evidence only; no runtime feature change.",
+    "spine/verification/m4sy/ledger-report.json": "Packet evidence only; no runtime feature change.",
+    "spine/verification/m4sy/release.json": "Packet evidence only; no runtime feature change."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
