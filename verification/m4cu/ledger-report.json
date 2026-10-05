@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "4fa8be01476d52e7edf332644d1b03bb9872d113",
-      "head": "97b4b528172a13de07af75a9b2cee5507f0d9e93"
+      "head": "4f46743c1eae04bab6cd0cb47a84fd9cc802dfd7"
     }
   ],
   "unmapped": {
@@ -19,22 +19,48 @@
     "spine/tests/test_curation.py": "Verification of curation determinism, caching, provider receipts or package contracts; no additional runtime feature.",
     "spine/tests/test_curator_policy.py": "Verification of curation determinism, caching, provider receipts or package contracts; no additional runtime feature.",
     "spine/tests/test_packaging.py": "Verification of curation determinism, caching, provider receipts or package contracts; no additional runtime feature.",
-    "spine/verification/m4cu/FL-162.png": "Frozen packet evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-167.png": "Frozen packet evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-164.png": "Frozen packet evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-183.png": "Frozen packet evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-197.png": "Frozen packet evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-034.png": "Frozen packet evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-035.png": "Frozen packet evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-169.png": "Frozen packet evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-037.png": "Frozen packet evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-036.png": "Frozen packet evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-041.png": "Frozen packet evidence; no runtime behavior.",
-    "spine/verification/m4cu/FL-133.png": "Frozen packet evidence; no runtime behavior.",
-    "spine/verification/m4cu/ledger-report.json": "Frozen packet evidence; no runtime behavior.",
-    "spine/verification/m4cu/SHA256SUMS": "Frozen packet evidence; no runtime behavior.",
-    "spine/docs/feature-ledger.yaml": "Refreshed frozen feature ledger from Garden; no runtime behavior.",
-    "spine/docs/frozen-law.json": "Refreshed frozen feature ledger from Garden; no runtime behavior."
+    "spine/tests/test_spend.py": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ah/SHA256SUMS": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ah/ledger-report.json": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4cu/FL-034.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-035.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-036.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-037.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-041.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-133.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-162.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-164.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-167.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-169.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-183.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-197.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/SHA256SUMS": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/ledger-report.json": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4ms/FL-107.png": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/FL-151.png": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/FL-154.png": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/FL-155.png": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/FL-158.png": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/FL-159.png": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/FL-162.png": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/FL-164.png": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/FL-166.png": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/FL-167.png": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/FL-169.png": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/FL-195.png": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/FL-196.png": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/FL-197.png": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/FL-202.png": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/SHA256SUMS": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/acceptance.json": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4ms/ledger-report.json": "Peer integration, release metadata or evidence; no additional curator repair.",
+    "spine/verification/m4cu/FL-202.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-159.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-154.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-196.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-155.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-195.png": "Frozen historical evidence; no runtime behavior.",
+    "spine/verification/m4cu/FL-151.png": "Frozen historical evidence; no runtime behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -83,6 +109,42 @@
       "flag": "F086",
       "observed": "Outside the charged curator corner: the full prescribed feature was not independently walked. The image is module context only, not feature proof."
     },
+    "FL-151": {
+      "label": "KV-cache optimization, usage accounting, and sticky sessions on one provider for cache benefits.",
+      "walk": "Send several messages in one thread; the spend module's KV cache column fills in after the first message and the provider stays the same across the thread.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-151.png",
+      "flag": "F086",
+      "observed": "Later peer source and ledger mapping; not walked in the historical 0.1.60 curator acceptance. Screenshot is context only."
+    },
+    "FL-154": {
+      "label": "A model configuration and token cost policy per agent type: pinned, max, elbow or floor.",
+      "walk": "Open the agent-type config; each type (agent, sub-agent, curator) has its own token-cost policy set to one of pinned, max, elbow or floor.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-154.png",
+      "flag": "F086",
+      "observed": "Later peer source and ledger mapping; not walked in the historical 0.1.60 curator acceptance. Screenshot is context only."
+    },
+    "FL-155": {
+      "label": "An append-only spend ledger with fine-grain cost history, its smallest grain a spend unit with its own immutable id (a ULID, ADR-024 / A-027), and the spend views derived from it.",
+      "walk": "Send one message, then open the spend ledger; new rows with their own spend unit ids (ULIDs) appear beneath the unchanged older rows, and the spend module's totals add up from them.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-155.png",
+      "flag": "F086",
+      "observed": "Later peer source and ledger mapping; not walked in the historical 0.1.60 curator acceptance. Screenshot is context only."
+    },
+    "FL-159": {
+      "label": "The spend module: a row per thread expanding to models, columns input / KV cache / reasoning / output / total / spend per hour, other costs as their own rows, scopable to a thread or stack.",
+      "walk": "Press the plus on one thread row in the spend module; it opens to that thread's models with the columns input, KV cache, reasoning, output, total and spend per hour, with an everything-else row beneath.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-159.png",
+      "flag": "F086",
+      "observed": "Later peer source and ledger mapping; not walked in the historical 0.1.60 curator acceptance. Screenshot is context only."
+    },
     "FL-197": {
       "label": "Spend and Palace state reads use the calling principal; only the configured owner can request the whole Palace.",
       "walk": "In a verification daemon, open Spend and Palace State and see only that principal's receipts and counts. In a local fixture, compare the configured owner's whole-Palace view. Request scope=palace as the verification principal and see a plain 403. Keep owner-rack captures out of evidence.",
@@ -100,6 +162,33 @@
       "screenshot": "FL-169.png",
       "flag": "F086",
       "observed": "Outside the charged curator corner: the full prescribed feature was not independently walked. The image is module context only, not feature proof."
+    },
+    "FL-195": {
+      "label": "The feature ledger generates coverage reports and requires evidence for the rows affected by a build.",
+      "walk": "Compute the composer fix's impact with --paths and see attunement rows; push a branch touching socket.ts and observe the hook print rows and write impacted.json; observe a DONE handoff without screenshots fail CI, then verify complete evidence passes.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-195.png",
+      "flag": "F086",
+      "observed": "Later peer source and ledger mapping; not walked in the historical 0.1.60 curator acceptance. Screenshot is context only."
+    },
+    "FL-196": {
+      "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
+      "walk": "Remove a guard citation on a disposable branch and observe CI fail; change a frozen axiom and observe the freeze step fail; restore both and observe Rules pass. The master ADR check remains red until the owner applies the citation patch.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-196.png",
+      "flag": "F086",
+      "observed": "Later peer source and ledger mapping; not walked in the historical 0.1.60 curator acceptance. Screenshot is context only."
+    },
+    "FL-202": {
+      "label": "The model browser: every model the token source offers, ranked, pinnable, with price and context window; the thinking level beside it; the standard configurations one click away.",
+      "walk": "Open the model chip on a conversation: the source's models are listed ranked with price and context window; pin one and it stays on top; pick another and the thread switches to it and stays on it \u2014 new conversations start on it too, until you change it, and the chip says so; set the thinking level beside it; pick a standard configuration (pinned, max, elbow, floor) and see what it selects now; switching back from a model to a policy is one click.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-202.png",
+      "flag": "F086",
+      "observed": "Later peer source and ledger mapping; not walked in the historical 0.1.60 curator acceptance. Screenshot is context only."
     },
     "FL-133": {
       "label": "A corner palace view with curators as ghosts moving through the database.",
