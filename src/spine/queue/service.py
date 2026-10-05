@@ -137,7 +137,8 @@ class QueueService:
                     machine_id=request.machine_id,
                     parent_uid=source.revision_uid,
                     revision_reason="seed_split_child",
-                )
+                ),
+                replaces=draft.target_ids if draft.verdict in {"merge", "supersede"} else (),
             )
             if created is None:
                 duplicates += 1
