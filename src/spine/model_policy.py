@@ -565,18 +565,23 @@ class ModelPolicyResolver:
         if self._policy.kind == "pinned":
             assert isinstance(self._policy.value, str)
             context_tokens = self._static_context_tokens
+            input_modalities = None
             if self._policy.value != self._static_model and self._catalog is not None:
                 # A pick other than the configured model takes its own window (M3SK); the
                 # benchmark table stays unconsulted, and an unknown route keeps the static one.
                 try:
                     named = await self.resolve_named(thread_id, self._policy.value)
                     context_tokens = named.context_tokens
+                    # M3W6A: the route's image input was dropped here, so an image turn fetched
+                    # the catalog again and one failed fetch refused a model that takes images.
+                    input_modalities = named.input_modalities
                 except (ModelCatalogUnavailable, NamedModelResolutionError):
                     pass
             resolved = ThreadModelResolution(
                 model=self._policy.value,
                 context_tokens=context_tokens,
                 policy=self._policy_text,
+                input_modalities=input_modalities,
             )
             logger.info(
                 "model policy resolved thread=%s policy=%s model=%s",
