@@ -31,7 +31,7 @@
       "section": "1. Memory palace — storage, units, lineage",
       "era": "founding",
       "label": "Memory units have a length cap; a memory over the cap is shortened to fit as one memory, and it is split only when it holds more than one distinct fact, with the split logged.",
-      "status": "partial",
+      "status": "built",
       "walk": "/remember a 300-token paragraph holding one fact; one memory lands, shortened to the cap; a paragraph holding two facts lands as two.",
       "owner": "owner — \"Like we shorten the length cap then they are too long\" (chat 2026-09-12); \"this was one memory that was split agentically logged\" (chat 2026-07-26)",
       "surfaces": [
@@ -40,12 +40,14 @@
         "spine/src/spine/tokens.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F178",
+        "packet": "M4MW",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-002.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-05"
     },
     {
       "id": "FL-003",
@@ -852,7 +854,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "A cheap 80/20 duplicate check at memory creation, keeping the agent's memory work under 10% of build run time.",
-      "status": "partial",
+      "status": "built",
       "walk": "Save a fact already in the Palace: at cosine 0.92 or above the save comes back 'already known — reinforced' at once, between 0.80 and 0.92 it asks to confirm, without the agent reading other memories; these write-time bands are the C.4 defaults and are separate from the curator's own search band (v2.128).",
       "owner": "owner — \"I'm wondering if at that point we try and squash them together or reject them or if we put them in and let the curators at them later. I don't want to spend more than 10% of build run time for the agent managing memeory so I don't want it reading a whole but of memories itself...\" (chat 2026-07-23 19:32:05; chat 2026-07-23 16:07:44)",
       "surfaces": [
@@ -861,10 +863,10 @@
         "harness/src/harness/agent.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4MW",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-038.png"
       },
       "protected": true,
@@ -875,7 +877,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "Agents make no memories until compaction; the explicit /remember command is the other way.",
-      "status": "partial",
+      "status": "built",
       "walk": "Run an agent thread through a turn; no memory is created mid-turn, only at compaction or by /remember.",
       "owner": "owner — \"This is a more clean rule let's implement that. No agent memories until compaction. we need to be careful what sub agents come back to not overwhelm the main agent and force compaction on subagent stuff....\" (seed SD-060 (owner ruling 2026-09-09); chat 2026-08-09 18:49:53)",
       "surfaces": [
@@ -884,10 +886,10 @@
         "harness/src/harness/memory_capability.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F178",
+        "packet": "M4MW",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-039.png"
       },
       "protected": true,
@@ -996,7 +998,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Aug 31",
       "label": "Same-memory detection by encoding and retrieving, not exact wording.",
-      "status": "partial",
+      "status": "built",
       "walk": "Save a rephrased known fact: at 0.80 similarity or above it is recognized at once (asked or reinforced, per the write bands) instead of duplicating; a rewording below 0.80 is saved, and the next curator pass proposes merging the pair (its own 0.70 band, v2.128).",
       "owner": "owner — \"2. We need a prove a way that we can distinguish the memories that come out are the same or different besides exact wording, even though they should be similar. Maybe we encode them and rag them or something?\" (chat 2026-08-31 21:00:39)",
       "surfaces": [
@@ -1005,10 +1007,10 @@
         "spine/src/spine/memory/router.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F153",
+        "packet": "M4MW",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-045.png"
       },
       "protected": true,
