@@ -2343,7 +2343,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Jul 28",
       "label": "A plugin to change common model parameters such as top p and temperature, as an Ableton-style visualizer and input block.",
-      "status": "partial",
+      "status": "built",
       "walk": "Open the parameters dialog from the Model Device: it is compact and shows only the parameters the model in use supports (from the source's catalog); change temperature and the next turn's request carries the new value; switch to a model without top k and that control is gone.",
       "owner": "owner — \"Also, we should have another plug in that allows people to change common model parameters: top p, temperature, etc. That would be a cool abletonesk visualizer and input block as well.\" (chat 2026-07-28 16:31:54) — 2026-10-04: \"The top p, k etc are too large … they should be in a dialogue box … make that dynamic because different models will have different settings available\"",
       "surfaces": [
@@ -2352,10 +2352,9 @@
         "harness/src/harness/parameter_registry.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F174",
+        "packet": "M4MS",
+        "date": "2026-10-05",
+        "verdict": "PASS",
         "screenshot": "FL-107.png"
       },
       "protected": true,
@@ -3379,7 +3378,7 @@
       "section": "11. Spend, money and model routing",
       "era": "Jul 28",
       "label": "An append-only spend ledger with fine-grain cost history, its smallest grain a spend unit with its own immutable id (a ULID, ADR-024 / A-027), and the spend views derived from it.",
-      "status": "partial",
+      "status": "built",
       "walk": "Send one message, then open the spend ledger; new rows with their own spend unit ids (ULIDs) appear beneath the unchanged older rows, and the spend module's totals add up from them.",
       "owner": "owner — \"I think this is the right of it. I'm aligned to this schema: append only. I do want to make sure we have the views that i described earlier figured out how to be derived\" (chat 2026-07-28 00:39:29; chat 2026-07-28 00:21:30)",
       "surfaces": [
@@ -3388,10 +3387,9 @@
         "spine/src/spine/spend/"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4MS",
+        "date": "2026-10-05",
+        "verdict": "PASS",
         "screenshot": "FL-155.png"
       },
       "protected": true,
@@ -3447,10 +3445,9 @@
         "harness/src/harness/commands.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4MS",
+        "date": "2026-10-05",
         "verdict": "PASS",
-        "flag": "",
         "screenshot": "FL-158.png"
       },
       "protected": true,
@@ -3472,10 +3469,9 @@
         "spine/src/spine/spend/views.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M4MS",
+        "date": "2026-10-05",
         "verdict": "PASS",
-        "flag": "",
         "screenshot": "FL-159.png"
       },
       "protected": true,
@@ -3619,7 +3615,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "Aug 3",
       "label": "A prompt when the app's memory use passes a threshold of the local system's memory, memory-leak guards, and no proceeding without write access at startup.",
-      "status": "partial",
+      "status": "built",
       "walk": "Start the daemon in a folder with no write access; it refuses to proceed, and doctor shows the app's memory use against its threshold.",
       "owner": "owner — \"We maybe should have a prompt whenever the memory associated with this applicatoin goes over some threshold of the local systems memory. I'm actually ok not letting the user proceed without write access of some sort. We need to store the transaction logs so... does that make sense?\" (chat 2026-08-03 15:17:58; chat 2026-08-03 15:12:10)",
       "surfaces": [
@@ -3628,10 +3624,9 @@
         "harness/src/harness/cli.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F086",
+        "packet": "M4MS",
+        "date": "2026-10-05",
+        "verdict": "PASS",
         "screenshot": "FL-166.png"
       },
       "protected": true,
