@@ -977,9 +977,9 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Aug 9",
       "label": "At compaction the summarizing agent turns anything important but not needed for the next few build steps into a memory through the normal memory creation path, and compaction waits for those memories to land before dropping the rest.",
-      "status": "built",
-      "walk": "Cross a compaction on a main thread; memory candidates from the summary land on the Deck before the old context is dropped.",
-      "owner": "owner — \"To extend this compaction comes should be another chance for agents memories to be created... if somehting is important, but maybe not relavant to the next couple build steps the agent that is summarizing the recent history should make a memory out of it. this should be integrated with our current memory creation schema pretty seemlessly because agent created memories are the norm.\" (chat 2026-08-09 18:49:53; seed SD-061 (owner riff 2026-09-10))",
+      "status": "partial",
+      "walk": "Cross a compaction on a main thread: every fact a continuing agent would want lands as its own self-contained memory (no count cap; an over-long fact is split at its cleanest seam), a curator pass follows and merges them with what the Palace already holds, the last share of the conversation is still there word for word, the next prompt's injection can draw on the new facts, and the whole original chat is still on record beside the facts drawn from it (owner, 2026-10-05, v2.133).",
+      "owner": "owner — \"To extend this compaction comes should be another chance for agents memories to be created... if somehting is important, but maybe not relavant to the next couple build steps the agent that is summarizing the recent history should make a memory out of it. this should be integrated with our current memory creation schema pretty seemlessly because agent created memories are the norm.\" (chat 2026-08-09 18:49:53; seed SD-061 (owner riff 2026-09-10)) — 2026-10-05: \"This should look more like a normal agentic compaction prompt … break them into self contained fact sentences … If you cannot fit the information into one fact chose the cleanest place to break the information down into two.\"",
       "surfaces": [
         "harness/src/harness/extraction.py",
         "harness/src/harness/run_loop.py",
