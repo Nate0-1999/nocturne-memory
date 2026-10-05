@@ -415,10 +415,6 @@ def challenger_wins(
     challenger: ReplayScore,
     *,
     margin: Decimal,
-    incumbent_memory_context_share: float | None = None,
-    challenger_memory_context_share: float | None = None,
-    incumbent_tau: float | None = None,
-    challenger_tau: float | None = None,
 ) -> bool:
     """Apply the real-margin rule, then the exact cheaper-at-tie exception."""
 
@@ -427,17 +423,7 @@ def challenger_wins(
         return True
     if improvement != 0:
         return False
-    incumbent_cost = (
-        incumbent.injected_tokens,
-        incumbent_memory_context_share if incumbent_memory_context_share is not None else 1.0,
-        -(incumbent_tau if incumbent_tau is not None else 0.0),
-    )
-    challenger_cost = (
-        challenger.injected_tokens,
-        challenger_memory_context_share if challenger_memory_context_share is not None else 1.0,
-        -(challenger_tau if challenger_tau is not None else 0.0),
-    )
-    return challenger_cost < incumbent_cost
+    return challenger.injected_tokens < incumbent.injected_tokens
 
 
 def canonical_digest(

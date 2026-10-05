@@ -403,8 +403,8 @@ def test_replay_winner_requires_margin_except_for_exact_cheaper_tie() -> None:
     )
 
 
-def test_replay_tie_prefers_smaller_share_then_higher_tau() -> None:
-    """SPEC D.2 133 makes room and line part of the replay's cheaper-at-tie law."""
+def test_replay_exact_tie_keeps_incumbent() -> None:
+    """ADR-005: equal errors and injected tokens provide no measured improvement."""
 
     score = ReplayScore(
         disagreements=1,
@@ -412,30 +412,8 @@ def test_replay_tie_prefers_smaller_share_then_higher_tau() -> None:
         injected_tokens=100,
     )
 
-    assert challenger_wins(
-        score,
-        score,
-        margin=Decimal("0.05"),
-        incumbent_memory_context_share=0.20,
-        challenger_memory_context_share=0.10,
-        incumbent_tau=0.55,
-        challenger_tau=0.55,
-    )
-    assert challenger_wins(
-        score,
-        score,
-        margin=Decimal("0.05"),
-        incumbent_memory_context_share=0.10,
-        challenger_memory_context_share=0.10,
-        incumbent_tau=0.55,
-        challenger_tau=0.60,
-    )
     assert not challenger_wins(
         score,
         score,
         margin=Decimal("0.05"),
-        incumbent_memory_context_share=0.10,
-        challenger_memory_context_share=0.20,
-        incumbent_tau=0.55,
-        challenger_tau=0.60,
     )

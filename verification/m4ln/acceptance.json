@@ -1,0 +1,607 @@
+{
+  "packet": "M4LN",
+  "date": "2026-10-05",
+  "rounds": [
+    {
+      "number": 1,
+      "scout_a": {
+        "run": 1,
+        "status": "PASS",
+        "thread_id": "304f731f-84df-4a4a-9ce9-0a909905bfd2",
+        "run_id": "01M46Q6D3H7CP6J02YVZH2JQNY",
+        "rows": [
+          "FL-030",
+          "FL-048",
+          "FL-051",
+          "FL-062",
+          "FL-154"
+        ],
+        "forced_share": 0.16,
+        "learned_share": 0.01,
+        "proposal": "m2f-716c6fdee6ee2b51",
+        "removed_memories": 6,
+        "fresh_browser_context": true,
+        "force_enabled_after_retrain_and_activation": true,
+        "backtest_visible_without_unfolding": true,
+        "cadence": "AUTHENTIC SIGNALS\n186 / 25\nFloor met\nRIGHT\n0\n0 weighted\nWRONG\n0\n0 weighted\nWEIGHTED AGREEMENT\nNot recorded\nActive m2f-716c6fdee6ee2b51\n\nBackground retraining runs when a main conversation compacts. Current values keep serving until you activate a proposal.\n\n0 otherwise-gradable verification, test, or fixture signals excluded\n\nFORCE RETRAIN\n\nActivated m2f-716c6fdee6ee2b51.\n\n48 held-out decisions \u00b7 Candidate proposed\nBACK-TEST\tPREVIOUS\tPROPOSED\nWeighted errors\t28\t4\nMemory-share errors\t4\t4\nInjected tokens\t512\t256\n\nBoth sets use the same held-out decisions. Weighted errors include memory-share errors; fewer is better."
+      },
+      "a_retrain": {
+        "http_status": 200,
+        "elapsed_seconds": 54.98671175003983,
+        "body": {
+          "status": "proposed",
+          "incumbent_version": "m2k-01M46Q4KS2R376R13FJX6B5BY9",
+          "proposal_version": "m2f-716c6fdee6ee2b51",
+          "eligible_dispositions": 174,
+          "training_dispositions": 126,
+          "holdout_dispositions": 48,
+          "training_pairs": 252,
+          "incumbent": {
+            "disagreements": 28,
+            "weighted_disagreements": "28",
+            "injected_tokens": 512,
+            "share_disagreements": 4,
+            "weighted_share_disagreements": "4"
+          },
+          "challenger": {
+            "disagreements": 4,
+            "weighted_disagreements": "4",
+            "injected_tokens": 256,
+            "share_disagreements": 4,
+            "weighted_share_disagreements": "4"
+          },
+          "reason": "challenger won replay and remains inactive pending owner activation"
+        }
+      },
+      "environment": "checks/fresh-fixture.json",
+      "background": {
+        "run_uid": "01M46QDDH2TH13FKX0RKQQXE54",
+        "trigger": "background",
+        "result": "not_better",
+        "incumbent_version": "m2f-716c6fdee6ee2b51",
+        "proposal_version": null,
+        "eligible_dispositions": 240,
+        "training_dispositions": 204,
+        "holdout_dispositions": 36,
+        "training_pairs": 432,
+        "source_boundary": "01M46Q7JAPXJ1DV5JFY9GE4SWH",
+        "incumbent": {
+          "disagreements": 6,
+          "weighted_disagreements": "1.50",
+          "injected_tokens": 384,
+          "share_disagreements": 6,
+          "weighted_share_disagreements": "1.50"
+        },
+        "challenger": {
+          "disagreements": 42,
+          "weighted_disagreements": "10.50",
+          "injected_tokens": 0,
+          "share_disagreements": 6,
+          "weighted_share_disagreements": "1.50"
+        },
+        "reason": "challenger did not clear the replay win rule",
+        "ts": "2026-10-05T19:04:17.815347Z"
+      },
+      "active_unchanged_after_background": true,
+      "scout_b_retrain": {
+        "url": "http://127.0.0.1:8818/v1/rack/scorers/retrain",
+        "status": 200,
+        "body": {
+          "status": "not_better",
+          "incumbent_version": "m2k-01M46QDSPM18MDJDB9QB6BEZTS",
+          "proposal_version": null,
+          "eligible_dispositions": 240,
+          "training_dispositions": 204,
+          "holdout_dispositions": 36,
+          "training_pairs": 432,
+          "incumbent": {
+            "disagreements": 6,
+            "weighted_disagreements": "1.50",
+            "injected_tokens": 384,
+            "share_disagreements": 6,
+            "weighted_share_disagreements": "1.50"
+          },
+          "challenger": {
+            "disagreements": 42,
+            "weighted_disagreements": "10.50",
+            "injected_tokens": 0,
+            "share_disagreements": 6,
+            "weighted_share_disagreements": "1.50"
+          },
+          "reason": "challenger did not clear the replay win rule"
+        }
+      },
+      "scout_b_rows": {
+        "FL-030-force": {
+          "at": "2026-10-05T19:07:36.877Z",
+          "receipt": "100.0% accuracy +100 points vs current 36 held-out dispositions \u00b7 793bc2b0a393 scorer.tau \u00b7 0.0\u2013100.0% Score terrain Held-out decision agreement across minimum match \u00d7 memory share. Height is agreement; the surface interpolates measured grid points. Rotate terrain X: minimum match 0\u20131 \u00b7 depth: memory share 1\u201350% \u00b7 height: agreement 0\u2013100% MEASURED GRID VALUES",
+          "forcedVersion": "m2k-01M46QDSPM18MDJDB9QB6BEZTS",
+          "values": {
+            "match": "0.1",
+            "share": "0.16",
+            "recipe": "Current recipe m2k-01M46QDSPM18MDJDB9QB6BEZTS"
+          }
+        },
+        "FL-051": {
+          "at": "2026-10-05T19:07:43.225Z",
+          "notice": "The current recipe still wins. Current values kept: the candidate did not improve the back-test enough. Compare the results below.",
+          "version": null,
+          "card": null,
+          "proposalsBefore": [
+            "m2f-716c6fdee6ee2b51"
+          ],
+          "proposalsAfter": [
+            "m2f-716c6fdee6ee2b51"
+          ],
+          "signals": 240,
+          "accuracy": [
+            {
+              "version": "m2k-01M46QDSPM18MDJDB9QB6BEZTS",
+              "status": "not_recorded",
+              "accuracy": null,
+              "holdout": null
+            }
+          ],
+          "lastRetrain": "{\"run_uid\":\"01M46QHFRS363NH3HGK1KGY92D\",\"trigger\":\"manual\",\"result\":\"not_better\",\"incumbent_version\":\"m2k-01M46QDSPM18MDJDB9QB6BEZTS\",\"proposal_version\":null,\"eligible_dispositions\":240,\"training_dispositions\":204,\"holdout_dispositions\":36,\"training_pairs\":432,\"source_boundary\":\"01M46Q7JAPXJ1DV5JFY9GE4SWH\",\"incumbent\":{\"disagreements\":6,\"weighted_disagreements\":\"1.50\",\"injected_tokens\":384,\"share_disagreements\":6,\"weighted_share_disagreements\":\"1.50\"},\"challenger\":{\"disagreements\":42,\"weighted_disagreements\":\"10.50\",\"injected_tokens\":0,\"share_disagreements\":6,\"weighted_share_disagreements\":\"1."
+        },
+        "FL-062": {
+          "at": "2026-10-05T19:09:43.495Z",
+          "problem": "no proposal to audition"
+        },
+        "FL-030": {
+          "at": "2026-10-05T19:09:43.495Z",
+          "problem": "the retrain produced no proposal, so nothing moved the forced values",
+          "values": {
+            "match": "0.1",
+            "share": "0.16",
+            "recipe": "Current recipe m2k-01M46QDSPM18MDJDB9QB6BEZTS"
+          }
+        },
+        "FL-058": {
+          "at": "2026-10-05T19:09:47.367Z",
+          "count": 28,
+          "rows": [
+            "weight.sem | injection_scoring | 25 | trained",
+            "weight.kw | injection_scoring | 25 | trained",
+            "weight.time | injection_scoring | 25 | trained",
+            "weight.proj | injection_scoring | 25 | trained",
+            "weight.freq | injection_scoring | 25 | trained",
+            "weight.hist | injection_scoring | 25 | trained",
+            "thread_weight | injection_scoring | 25 | trained",
+            "where_weight | injection_scoring | 25 | trained",
+            "bias_offsets | injection_scoring | 25 | trained",
+            "project_offsets | injection_scoring | 25 | trained",
+            "tau | injection_scoring | 100 | trained",
+            "memory_context_share | injection_scoring | 100 | trained",
+            "location_weight | injection_scoring | \u2014 | configured",
+            "half_life_time_days | injection_scoring | \u2014 | configured",
+            "half_life_hist_days | injection_scoring | \u2014 | configured",
+            "half_life_location_hops | injection_scoring | \u2014 | configured",
+            "corpus_max_dispositions | injection_scoring | \u2014 | configured",
+            "f_sess | injection_scoring | \u2014 | replay only",
+            "compaction_instructions | creation | \u2014 | signals only",
+            "memory_size_cap | creation | \u2014 | unbuilt",
+            "dedup_bands | creation | \u2014 | configured",
+            "curator_review_sim | creation | \u2014 | configured",
+            "axes | scorer_structure | 25 | proposed then owner activation",
+            "optimizer | beyond | \u2014 | gated",
+            "model_weights | beyond | \u2014 | gated",
+            "role_model_policies | beyond | \u2014 | configured",
+            "return_share_percent | beyond | \u2014 | configured",
+            "return_share_bounds | beyond | \u2014 | configured"
+          ],
+          "head": "PARAMETER\tLOOP\tAUTHENTIC FLOOR\tSTATUS\n"
+        }
+      },
+      "neighbor_receipt": "scout-b/impact-1.json"
+    },
+    {
+      "number": 2,
+      "scout_a": {
+        "run": 2,
+        "status": "PASS",
+        "thread_id": "9cbb150d-0537-49aa-b6de-cc5d88c47807",
+        "run_id": "01M46RBFZYNKGHR9D0EKS8YGQT",
+        "rows": [
+          "FL-030",
+          "FL-048",
+          "FL-051",
+          "FL-062",
+          "FL-154"
+        ],
+        "forced_share": 0.16999999999999998,
+        "learned_share": 0.01,
+        "proposal": "m2f-4dc5e20b6fbcc49b",
+        "removed_memories": 6,
+        "fresh_browser_context": true,
+        "force_enabled_after_retrain_and_activation": true,
+        "backtest_visible_without_unfolding": true,
+        "cadence": "AUTHENTIC SIGNALS\n300 / 25\nFloor met\nRIGHT\n0\n0 weighted\nWRONG\n0\n0 weighted\nWEIGHTED AGREEMENT\nNot recorded\nActive m2f-4dc5e20b6fbcc49b\n\nBackground retraining runs when a main conversation compacts. Current values keep serving until you activate a proposal.\n\n0 otherwise-gradable verification, test, or fixture signals excluded\n\nFORCE RETRAIN\n\nActivated m2f-4dc5e20b6fbcc49b.\n\n66 held-out decisions \u00b7 Candidate proposed\nBACK-TEST\tPREVIOUS\tPROPOSED\nWeighted errors\t28.75\t9.25\nMemory-share errors\t4.75\t4.75\nInjected tokens\t704\t256\n\nBoth sets use the same held-out decisions. Weighted errors include memory-share errors; fewer is better."
+      },
+      "a_retrain": {
+        "http_status": 200,
+        "elapsed_seconds": 118.1416334999958,
+        "body": {
+          "status": "proposed",
+          "incumbent_version": "m2k-01M46R7P319MB4M5DCZDNE974K",
+          "proposal_version": "m2f-4dc5e20b6fbcc49b",
+          "eligible_dispositions": 288,
+          "training_dispositions": 222,
+          "holdout_dispositions": 66,
+          "training_pairs": 432,
+          "incumbent": {
+            "disagreements": 31,
+            "weighted_disagreements": "28.75",
+            "injected_tokens": 704,
+            "share_disagreements": 7,
+            "weighted_share_disagreements": "4.75"
+          },
+          "challenger": {
+            "disagreements": 25,
+            "weighted_disagreements": "9.25",
+            "injected_tokens": 256,
+            "share_disagreements": 7,
+            "weighted_share_disagreements": "4.75"
+          },
+          "reason": "challenger won replay and remains inactive pending owner activation"
+        }
+      },
+      "environment": "checks/fresh-fixture.json",
+      "background": {
+        "run_uid": "01M46SGST9T5SFTZ26F4E9NZYE",
+        "trigger": "background",
+        "result": "not_better",
+        "incumbent_version": "m2f-4dc5e20b6fbcc49b",
+        "proposal_version": null,
+        "eligible_dispositions": 462,
+        "training_dispositions": 390,
+        "holdout_dispositions": 72,
+        "training_pairs": 612,
+        "source_boundary": "01M46S8NBGS7WTP3T4JZW92XK9",
+        "incumbent": {
+          "disagreements": 12,
+          "weighted_disagreements": "3.00",
+          "injected_tokens": 768,
+          "share_disagreements": 12,
+          "weighted_share_disagreements": "3.00"
+        },
+        "challenger": {
+          "disagreements": 84,
+          "weighted_disagreements": "21.00",
+          "injected_tokens": 0,
+          "share_disagreements": 12,
+          "weighted_share_disagreements": "3.00"
+        },
+        "reason": "challenger did not clear the replay win rule",
+        "ts": "2026-10-05T19:39:50.935453Z"
+      },
+      "active_unchanged_after_background": true,
+      "scout_b_retrain": {
+        "url": "http://127.0.0.1:8818/v1/rack/scorers/retrain",
+        "status": 200,
+        "body": {
+          "status": "not_better",
+          "incumbent_version": "m2k-01M46SHQNKPBGPTKBGN3477CHT",
+          "proposal_version": null,
+          "eligible_dispositions": 462,
+          "training_dispositions": 390,
+          "holdout_dispositions": 72,
+          "training_pairs": 612,
+          "incumbent": {
+            "disagreements": 12,
+            "weighted_disagreements": "3.00",
+            "injected_tokens": 768,
+            "share_disagreements": 12,
+            "weighted_share_disagreements": "3.00"
+          },
+          "challenger": {
+            "disagreements": 84,
+            "weighted_disagreements": "21.00",
+            "injected_tokens": 0,
+            "share_disagreements": 12,
+            "weighted_share_disagreements": "3.00"
+          },
+          "reason": "challenger did not clear the replay win rule"
+        }
+      },
+      "scout_b_rows": {
+        "FL-030-force": {
+          "at": "2026-10-05T19:44:41.106Z",
+          "receipt": "100.0% accuracy +100 points vs current 72 held-out dispositions \u00b7 73366bf8985d scorer.tau \u00b7 0.0\u2013100.0% Score terrain Held-out decision agreement across minimum match \u00d7 memory share. Height is agreement; the surface interpolates measured grid points. Rotate terrain X: minimum match 0\u20131 \u00b7 depth: memory share 1\u201350% \u00b7 height: agreement 0\u2013100% MEASURED GRID VALUES",
+          "forcedVersion": "m2k-01M46SHQNKPBGPTKBGN3477CHT",
+          "values": {
+            "match": "0.1",
+            "share": "0.16999999999999998",
+            "recipe": "Current recipe m2k-01M46SHQNKPBGPTKBGN3477CHT"
+          }
+        },
+        "FL-051": {
+          "at": "2026-10-05T19:44:50.234Z",
+          "notice": "The current recipe still wins. Current values kept: the candidate did not improve the back-test enough. Compare the results below.",
+          "version": null,
+          "card": null,
+          "proposalsBefore": [
+            "m2f-716c6fdee6ee2b51",
+            "m2f-359310f552bc0b1d",
+            "m2f-e38f1b8d0d0eb2a2",
+            "m2f-4dc5e20b6fbcc49b"
+          ],
+          "proposalsAfter": [
+            "m2f-716c6fdee6ee2b51",
+            "m2f-359310f552bc0b1d",
+            "m2f-e38f1b8d0d0eb2a2",
+            "m2f-4dc5e20b6fbcc49b"
+          ],
+          "signals": 462,
+          "accuracy": [
+            {
+              "version": "m2k-01M46SHQNKPBGPTKBGN3477CHT",
+              "status": "not_recorded",
+              "accuracy": null,
+              "holdout": null
+            }
+          ],
+          "lastRetrain": "{\"run_uid\":\"01M46SQVG82BRB3YDBKT9A4AVP\",\"trigger\":\"manual\",\"result\":\"not_better\",\"incumbent_version\":\"m2k-01M46SHQNKPBGPTKBGN3477CHT\",\"proposal_version\":null,\"eligible_dispositions\":462,\"training_dispositions\":390,\"holdout_dispositions\":72,\"training_pairs\":612,\"source_boundary\":\"01M46S8NBGS7WTP3T4JZW92XK9\",\"incumbent\":{\"disagreements\":12,\"weighted_disagreements\":\"3.00\",\"injected_tokens\":768,\"share_disagreements\":12,\"weighted_share_disagreements\":\"3.00\"},\"challenger\":{\"disagreements\":84,\"weighted_disagreements\":\"21.00\",\"injected_tokens\":0,\"share_disagreements\":12,\"weighted_share_disagreements\":"
+        },
+        "FL-062": {
+          "at": "2026-10-05T19:48:11.129Z",
+          "problem": "no proposal to audition"
+        },
+        "FL-030": {
+          "at": "2026-10-05T19:48:11.129Z",
+          "problem": "the retrain produced no proposal, so nothing moved the forced values",
+          "values": {
+            "match": "0.1",
+            "share": "0.16999999999999998",
+            "recipe": "Current recipe m2k-01M46SHQNKPBGPTKBGN3477CHT"
+          }
+        },
+        "FL-058": {
+          "at": "2026-10-05T19:48:15.009Z",
+          "count": 28,
+          "rows": [
+            "weight.sem | injection_scoring | 25 | trained",
+            "weight.kw | injection_scoring | 25 | trained",
+            "weight.time | injection_scoring | 25 | trained",
+            "weight.proj | injection_scoring | 25 | trained",
+            "weight.freq | injection_scoring | 25 | trained",
+            "weight.hist | injection_scoring | 25 | trained",
+            "thread_weight | injection_scoring | 25 | trained",
+            "where_weight | injection_scoring | 25 | trained",
+            "bias_offsets | injection_scoring | 25 | trained",
+            "project_offsets | injection_scoring | 25 | trained",
+            "tau | injection_scoring | 100 | trained",
+            "memory_context_share | injection_scoring | 100 | trained",
+            "location_weight | injection_scoring | \u2014 | configured",
+            "half_life_time_days | injection_scoring | \u2014 | configured",
+            "half_life_hist_days | injection_scoring | \u2014 | configured",
+            "half_life_location_hops | injection_scoring | \u2014 | configured",
+            "corpus_max_dispositions | injection_scoring | \u2014 | configured",
+            "f_sess | injection_scoring | \u2014 | replay only",
+            "compaction_instructions | creation | \u2014 | signals only",
+            "memory_size_cap | creation | \u2014 | unbuilt",
+            "dedup_bands | creation | \u2014 | configured",
+            "curator_review_sim | creation | \u2014 | configured",
+            "axes | scorer_structure | 25 | proposed then owner activation",
+            "optimizer | beyond | \u2014 | gated",
+            "model_weights | beyond | \u2014 | gated",
+            "role_model_policies | beyond | \u2014 | configured",
+            "return_share_percent | beyond | \u2014 | configured",
+            "return_share_bounds | beyond | \u2014 | configured"
+          ],
+          "head": "PARAMETER\tLOOP\tAUTHENTIC FLOOR\tSTATUS\n"
+        }
+      },
+      "neighbor_receipt": "scout-b/impact-2.json"
+    },
+    {
+      "number": 3,
+      "scout_a": {
+        "run": 3,
+        "status": "PASS",
+        "thread_id": "95db1136-0510-4227-9120-d7ad449bed2f",
+        "run_id": "01M473NGY4Z58JPWV63CYD69XG",
+        "rows": [
+          "FL-030",
+          "FL-048",
+          "FL-051",
+          "FL-062",
+          "FL-154"
+        ],
+        "forced_share": 0.18,
+        "learned_share": 0.01,
+        "proposal": "m2f-2a4fdb9823eef40b",
+        "removed_memories": 6,
+        "fresh_browser_context": true,
+        "force_enabled_after_retrain_and_activation": true,
+        "backtest_visible_without_unfolding": true,
+        "cadence": "AUTHENTIC SIGNALS\n210 / 25\nFloor met\nRIGHT\n0\n0 weighted\nWRONG\n0\n0 weighted\nWEIGHTED AGREEMENT\nNot recorded\nActive m2f-2a4fdb9823eef40b\n\nBackground retraining runs when a main conversation compacts. Current values keep serving until you activate a proposal.\n\n0 otherwise-gradable verification, test, or fixture signals excluded\n\nFORCE RETRAIN\n\nActivated m2f-2a4fdb9823eef40b.\n\n48 held-out decisions \u00b7 Candidate proposed\nBACK-TEST\tPREVIOUS\tPROPOSED\nWeighted errors\t28\t4\nMemory-share errors\t4\t4\nInjected tokens\t512\t256\n\nBoth sets use the same held-out decisions. Weighted errors include memory-share errors; fewer is better."
+      },
+      "a_retrain": {
+        "http_status": 200,
+        "elapsed_seconds": 85.09871804201975,
+        "body": {
+          "status": "proposed",
+          "incumbent_version": "m2k-01M473JQTBNGTNT1NVS0EJXF32",
+          "proposal_version": "m2f-2a4fdb9823eef40b",
+          "eligible_dispositions": 198,
+          "training_dispositions": 150,
+          "holdout_dispositions": 48,
+          "training_pairs": 324,
+          "incumbent": {
+            "disagreements": 28,
+            "weighted_disagreements": "28",
+            "injected_tokens": 512,
+            "share_disagreements": 4,
+            "weighted_share_disagreements": "4"
+          },
+          "challenger": {
+            "disagreements": 4,
+            "weighted_disagreements": "4",
+            "injected_tokens": 256,
+            "share_disagreements": 4,
+            "weighted_share_disagreements": "4"
+          },
+          "reason": "challenger won replay and remains inactive pending owner activation"
+        }
+      },
+      "environment": "checks/round3-integration.json",
+      "background": {
+        "run_uid": "01M473Z72HRP8RPQVZ92KS45Y8",
+        "trigger": "background",
+        "result": "not_better",
+        "incumbent_version": "m2f-2a4fdb9823eef40b",
+        "proposal_version": null,
+        "eligible_dispositions": 264,
+        "training_dispositions": 228,
+        "holdout_dispositions": 36,
+        "training_pairs": 504,
+        "source_boundary": "01M473PNB1H610KAEH0Q9AW4NN",
+        "incumbent": {
+          "disagreements": 6,
+          "weighted_disagreements": "1.50",
+          "injected_tokens": 384,
+          "share_disagreements": 6,
+          "weighted_share_disagreements": "1.50"
+        },
+        "challenger": {
+          "disagreements": 42,
+          "weighted_disagreements": "10.50",
+          "injected_tokens": 0,
+          "share_disagreements": 6,
+          "weighted_share_disagreements": "1.50"
+        },
+        "reason": "challenger did not clear the replay win rule",
+        "ts": "2026-10-05T22:42:15.139117Z"
+      },
+      "active_unchanged_after_background": true,
+      "scout_b_retrain": {
+        "url": "http://127.0.0.1:8818/v1/rack/scorers/retrain",
+        "status": 200,
+        "body": {
+          "status": "not_better",
+          "incumbent_version": "m2k-01M473ZX51KEANH9T18TDG3GMB",
+          "proposal_version": null,
+          "eligible_dispositions": 264,
+          "training_dispositions": 228,
+          "holdout_dispositions": 36,
+          "training_pairs": 504,
+          "incumbent": {
+            "disagreements": 6,
+            "weighted_disagreements": "1.50",
+            "injected_tokens": 384,
+            "share_disagreements": 6,
+            "weighted_share_disagreements": "1.50"
+          },
+          "challenger": {
+            "disagreements": 42,
+            "weighted_disagreements": "10.50",
+            "injected_tokens": 0,
+            "share_disagreements": 6,
+            "weighted_share_disagreements": "1.50"
+          },
+          "reason": "challenger did not clear the replay win rule"
+        }
+      },
+      "scout_b_rows": {
+        "FL-030-force": {
+          "at": "2026-10-05T22:47:12.400Z",
+          "receipt": "100.0% accuracy +100 points vs current 36 held-out dispositions \u00b7 4cd4df5ab451 scorer.tau \u00b7 0.0\u2013100.0% Score terrain Held-out decision agreement across minimum match \u00d7 memory share. Height is agreement; the surface interpolates measured grid points. Rotate terrain X: minimum match 0\u20131 \u00b7 depth: memory share 1\u201350% \u00b7 height: agreement 0\u2013100% MEASURED GRID VALUES",
+          "forcedVersion": "m2k-01M473ZX51KEANH9T18TDG3GMB",
+          "values": {
+            "match": "0.1",
+            "share": "0.18",
+            "recipe": "Current recipe m2k-01M473ZX51KEANH9T18TDG3GMB"
+          }
+        },
+        "FL-051": {
+          "at": "2026-10-05T22:47:20.373Z",
+          "notice": "The current recipe still wins. Current values kept: the candidate did not improve the back-test enough. Compare the results below.",
+          "version": null,
+          "card": null,
+          "proposalsBefore": [
+            "m2f-2a4fdb9823eef40b"
+          ],
+          "proposalsAfter": [
+            "m2f-2a4fdb9823eef40b"
+          ],
+          "signals": 264,
+          "accuracy": [
+            {
+              "version": "m2k-01M473ZX51KEANH9T18TDG3GMB",
+              "status": "not_recorded",
+              "accuracy": null,
+              "holdout": null
+            }
+          ],
+          "lastRetrain": "{\"run_uid\":\"01M47452CGE7S1K2APZVSH0QMM\",\"trigger\":\"manual\",\"result\":\"not_better\",\"incumbent_version\":\"m2k-01M473ZX51KEANH9T18TDG3GMB\",\"proposal_version\":null,\"eligible_dispositions\":264,\"training_dispositions\":228,\"holdout_dispositions\":36,\"training_pairs\":504,\"source_boundary\":\"01M473PNB1H610KAEH0Q9AW4NN\",\"incumbent\":{\"disagreements\":6,\"weighted_disagreements\":\"1.50\",\"injected_tokens\":384,\"share_disagreements\":6,\"weighted_share_disagreements\":\"1.50\"},\"challenger\":{\"disagreements\":42,\"weighted_disagreements\":\"10.50\",\"injected_tokens\":0,\"share_disagreements\":6,\"weighted_share_disagreements\":\"1."
+        },
+        "FL-062": {
+          "at": "2026-10-05T22:50:08.889Z",
+          "problem": "no proposal to audition"
+        },
+        "FL-030": {
+          "at": "2026-10-05T22:50:08.889Z",
+          "problem": "the retrain produced no proposal, so nothing moved the forced values",
+          "values": {
+            "match": "0.1",
+            "share": "0.18",
+            "recipe": "Current recipe m2k-01M473ZX51KEANH9T18TDG3GMB"
+          }
+        },
+        "FL-058": {
+          "at": "2026-10-05T22:50:12.773Z",
+          "count": 28,
+          "rows": [
+            "weight.sem | injection_scoring | 25 | trained",
+            "weight.kw | injection_scoring | 25 | trained",
+            "weight.time | injection_scoring | 25 | trained",
+            "weight.proj | injection_scoring | 25 | trained",
+            "weight.freq | injection_scoring | 25 | trained",
+            "weight.hist | injection_scoring | 25 | trained",
+            "thread_weight | injection_scoring | 25 | trained",
+            "where_weight | injection_scoring | 25 | trained",
+            "bias_offsets | injection_scoring | 25 | trained",
+            "project_offsets | injection_scoring | 25 | trained",
+            "tau | injection_scoring | 100 | trained",
+            "memory_context_share | injection_scoring | 100 | trained",
+            "location_weight | injection_scoring | \u2014 | configured",
+            "half_life_time_days | injection_scoring | \u2014 | configured",
+            "half_life_hist_days | injection_scoring | \u2014 | configured",
+            "half_life_location_hops | injection_scoring | \u2014 | configured",
+            "corpus_max_dispositions | injection_scoring | \u2014 | configured",
+            "f_sess | injection_scoring | \u2014 | replay only",
+            "compaction_instructions | creation | \u2014 | signals only",
+            "memory_size_cap | creation | \u2014 | unbuilt",
+            "dedup_bands | creation | \u2014 | configured",
+            "curator_review_sim | creation | \u2014 | configured",
+            "axes | scorer_structure | 25 | proposed then owner activation",
+            "optimizer | beyond | \u2014 | gated",
+            "model_weights | beyond | \u2014 | gated",
+            "role_model_policies | beyond | \u2014 | configured",
+            "return_share_percent | beyond | \u2014 | configured",
+            "return_share_bounds | beyond | \u2014 | configured"
+          ],
+          "head": "PARAMETER\tLOOP\tAUTHENTIC FLOOR\tSTATUS\n"
+        }
+      },
+      "neighbor_receipt": "scout-b/impact-3.json"
+    }
+  ],
+  "runtime": {
+    "palace": "test-m4ln-fresh",
+    "image": "m4ln-ab25109",
+    "memory_candidate": "c6f484a5b0376f9b2c2ddc626c057c27522655e8",
+    "harness_candidate": "0439fec63a314ef2a36cb205808105600720b191",
+    "base_release": "0.1.64",
+    "later_rebase": "Rounds 1/2 predate the peer Symphony merge. Round 3 integrates that merge; charged learning source is unchanged. See checks/round3-integration.json."
+  },
+  "limitations": [
+    "Lost foreground Palace requests invalidate an attempt and are retained in learning/*lost*.",
+    "Transient 429 status observations during asynchronous background work are retained; the same submitted job is observed, never resubmitted by the observer.",
+    "Transport admission failures remain open; no infrastructure repair is claimed.",
+    "Round 3 recreates the same twelve facts and fourteen completed setup gates on a new principal. Two failed setup answers are preserved; their earlier gate feedback remains in the corpus. GPT-4.1-mini replaces stalled MiniMax for the final setup and A3.",
+    "FL-064 project offsets and FL-137 running animation remain unproved.",
+    "Existing structural near-zero-axis retirement exception remains unchanged."
+  ]
+}

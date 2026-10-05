@@ -483,10 +483,6 @@ class LearnerService:
             incumbent_score,
             fitted_score,
             margin=Decimal(str(self._settings.win_margin)),
-            incumbent_memory_context_share=incumbent.params.memory_context_share,
-            challenger_memory_context_share=fit.memory_context_share,
-            incumbent_tau=incumbent.params.tau,
-            challenger_tau=fit.tau,
         )
         # A retired near-zero term saves serving work at an exact replay tie.
         retires_term = any(

@@ -1428,3 +1428,10 @@ PRECEDENT: PLAN M4MW, F178, M4GA/A-077 above. A real document upload proposed su
 correctly but returned no cards and duplicate_count=1. Seed ingestion now passes its
 merge/supersede targets to the same existing candidate creator, preserving all other dedup
 checks. The regression exercises both thread extraction and document ingestion at 0.97.
+
+## M4LN — A replay tie must save measured tokens [P1.2]
+
+PRECEDENT: F152, M3W6B helper A, ADR-005. The live replay offered equal errors and
+equal token use because a smaller configured share broke the tie. Winner selection
+now compares measured injected tokens only; unused allowance and threshold changes
+are not savings. This removes the test's unsupported interpretation of D.2 133.
