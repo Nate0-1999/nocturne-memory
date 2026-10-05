@@ -763,7 +763,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "The curators deconflict, dedupe and remove slop, triggered by every n memory writes rather than by the clock, and run at the Palace's own location.",
-      "status": "partial",
+      "status": "built",
       "walk": "Add 25 memories to a palace holding near-duplicates; a curator pass runs on its own (every 25 admitted writes or 3 gate removals), finds the pair by near-identical relevance scores on the standard probe set as well as by embedding, and proposes one lossless combined memory; Palace State shows the pass and the palace's growth curve bending.",
       "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc. They will be triggered by n number of memories being added and run in the memory palaces location. They must be surgeons: minimally invasive, targeting the root problem, and allowing the system to then sort out the symptoms. They are also responsible for removing slop.\" (chat 2026-07-23 16:07:44; chat 2026-08-03 20:02:16) — 2026-09-30: \"Curator is going to be the thing that limits the memory growth as much as possible which is super critical… Maybe it triggers when n memories are added?\"",
       "surfaces": [
@@ -771,10 +771,10 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4CU",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-034.png"
       },
       "protected": true,
@@ -793,8 +793,8 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M4CU",
+        "date": "2026-10-05",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-035.png"
@@ -816,8 +816,8 @@
         "spine/src/spine/queue/service.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4CU",
+        "date": "2026-10-05",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-036.png"
@@ -4345,7 +4345,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Sep 26",
       "label": "Icons on buttons for the common things people would understand: a button whose meaning has a known icon (send, stop, add, remove, delete, refresh, open, settings, play, pause) carries it; primary actions show icon and word, row actions the icon alone with a tip; unusual actions keep their word; one icon set across every module and theme.",
-      "status": "partial",
+      "status": "built",
       "walk": "Open any module; every common action (send, stop, add, remove, delete, refresh, open, settings, play, pause) has its icon from the one set in the theme's ink; primary buttons pair it with a word; row actions show the icon alone with a tip; an unusual action still reads as a word.",
       "owner": "owner — \"we need icons not just words everywhere on buttons\" (chat 2026-09-26) ; \"For the common things people would understand\" (chat 2026-09-26)",
       "surfaces": [
@@ -4374,10 +4374,10 @@
         "harness/web/src/WorkerContext.tsx"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F182",
+        "packet": "M4CU",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-199.png"
       },
       "protected": true,
