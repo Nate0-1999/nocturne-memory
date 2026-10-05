@@ -763,7 +763,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "The curators deconflict, dedupe and remove slop, triggered by every n memory writes rather than by the clock, and run at the Palace's own location.",
-      "status": "partial",
+      "status": "built",
       "walk": "Add 25 memories to a palace holding near-duplicates; a curator pass runs on its own (every 25 admitted writes or 3 gate removals), finds the pair by near-identical relevance scores on the standard probe set as well as by embedding, and proposes one lossless combined memory; Palace State shows the pass and the palace's growth curve bending.",
       "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc. They will be triggered by n number of memories being added and run in the memory palaces location. They must be surgeons: minimally invasive, targeting the root problem, and allowing the system to then sort out the symptoms. They are also responsible for removing slop.\" (chat 2026-07-23 16:07:44; chat 2026-08-03 20:02:16) — 2026-09-30: \"Curator is going to be the thing that limits the memory growth as much as possible which is super critical… Maybe it triggers when n memories are added?\"",
       "surfaces": [
@@ -771,10 +771,10 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4CU",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-034.png"
       },
       "protected": true,
@@ -793,8 +793,8 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M4CU",
+        "date": "2026-10-05",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-035.png"
@@ -816,8 +816,8 @@
         "spine/src/spine/queue/service.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4CU",
+        "date": "2026-10-05",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-036.png"
@@ -1647,8 +1647,8 @@
         "harness/src/harness/run_loop.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4CD",
+        "date": "2026-10-05",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-075.png"
@@ -1661,7 +1661,7 @@
       "section": "5. Agent hands and location",
       "era": "Jul 20",
       "label": "Commit every turn; one-click rewind of chat and code together to any earlier turn.",
-      "status": "partial",
+      "status": "built",
       "walk": "Rewind to turn 2; chat and files both revert.",
       "owner": "owner — \"That's why it's important to commit every turn change. Cursor had this back in the day where you could just revert the code base and chat to a previous state with a single button click.\" (chat 2026-07-20 16:16:55; chat 2026-07-28 22:41:16)",
       "surfaces": [
@@ -1671,10 +1671,10 @@
         "harness/web/src/RewindControl.tsx"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4CD",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-076.png"
       },
       "protected": true,
@@ -2227,7 +2227,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Jul 20",
       "label": "The Deck: a flashcard stack of terminals, cards colored to match their agents, only one card on top at a time (that project's agent's last response) to interact with, the next card popping up once you respond, ordered purely by which finished first.",
-      "status": "partial",
+      "status": "built",
       "walk": "Answer the top card; it pops and the next card, the earliest to finish, comes up in its agent's color.",
       "owner": "owner — \"I mean it kind of is a flashcard stack of terminals no?\" (seed SD-056 addendum (owner 2026-09-09) (+ chat 2026-07-20 00:01:41))",
       "surfaces": [
@@ -2236,10 +2236,10 @@
         "harness/web/src/store.ts"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F179",
+        "packet": "M4CD",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-102.png"
       },
       "protected": true,
@@ -2501,8 +2501,8 @@
         "harness/web/src/ModelDevice.tsx"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4CD",
+        "date": "2026-10-05",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-113.png"
@@ -2751,7 +2751,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Aug 11",
       "label": "Threads removable or archivable; a back-to-the-stage control on every view.",
-      "status": "partial",
+      "status": "built",
       "walk": "Archive a thread: it leaves the list and the Conversation module, and a review opens with 'Back to stage'. Views that leave the stage carry a back control; the Memory Graph is a layer tab and needs none (gate, 2026-10-05, after both scouts).",
       "owner": "owner — \"2. All of the threads, which at best is an alternative module to the stack of flashcards that I wanted are glitched in their text looks cut off, see first attached image. Also, the threads are not remove/archivable. Again I don't want to spend toomuch time on this one but it's worth saying.\" (chat 2026-08-11 15:44:45)",
       "surfaces": [
@@ -2761,10 +2761,10 @@
         "harness/web/src/assets/rack.css"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4CD",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-124.png"
       },
       "protected": true,
@@ -4345,7 +4345,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Sep 26",
       "label": "Icons on buttons for the common things people would understand: a button whose meaning has a known icon (send, stop, add, remove, delete, refresh, open, settings, play, pause) carries it; primary actions show icon and word, row actions the icon alone with a tip; unusual actions keep their word; one icon set across every module and theme.",
-      "status": "partial",
+      "status": "built",
       "walk": "Open any module; every common action (send, stop, add, remove, delete, refresh, open, settings, play, pause) has its icon from the one set in the theme's ink; primary buttons pair it with a word; row actions show the icon alone with a tip; an unusual action still reads as a word.",
       "owner": "owner — \"we need icons not just words everywhere on buttons\" (chat 2026-09-26) ; \"For the common things people would understand\" (chat 2026-09-26)",
       "surfaces": [
@@ -4374,10 +4374,10 @@
         "harness/web/src/WorkerContext.tsx"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F182",
+        "packet": "M4CU",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-199.png"
       },
       "protected": true,
@@ -4412,7 +4412,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Oct 1",
       "label": "One scale across modules: an icon reused anywhere is one size, text of one role is one size and one font, and a box belongs only to an icon that is a button.",
-      "status": "partial",
+      "status": "built",
       "walk": "Measure every module: each reused icon renders at one size, each text role (module header, row label, body, caption, tip) at one size and font; markers and status glyphs stand bare, only icon buttons are boxed.",
       "owner": "owner 2026-10-01: \"Icons reused across modules should be the same size, similarly text should be the same size and font. Not every icon needs a box around it as well.\"",
       "surfaces": [
@@ -4420,10 +4420,10 @@
       ],
       "protected": true,
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4CD",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-201.png"
       },
       "protected_reason": "walk PASS 2026-10-03"
