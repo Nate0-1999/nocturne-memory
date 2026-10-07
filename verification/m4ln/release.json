@@ -1,0 +1,52 @@
+{
+  "version": "0.1.66",
+  "memory": {
+    "pr": "https://github.com/Nate0-1999/nocturne-memory/pull/79",
+    "commit": "c9d138e3f1bebb72c0733d320994d483504429fb",
+    "release": "https://github.com/Nate0-1999/nocturne-memory/releases/tag/v0.1.66",
+    "workflow": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/37385569435",
+    "workflow_conclusion": "success",
+    "public_index": "checks/memory-public-index.json",
+    "installed_wheel": "checks/public-memory-wheel-with-pip.log",
+    "deployed_runtime_source_matches_merge": true,
+    "published_at": "2026-10-05T22:56:20Z"
+  },
+  "harness": {
+    "pr": "https://github.com/Nate0-1999/nocturne-harness/pull/83",
+    "status": "published",
+    "push_ci": {
+      "run": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/37385601259",
+      "conclusion": "success"
+    },
+    "pr_ci_note": "Initial installed-wheel check could not see the newly published Memory; identical push CI and the targeted PR rerun both passed.",
+    "commit": "60ae9868fae2df59aca5d5e8f5ccfb091e9f7365",
+    "release": "https://github.com/Nate0-1999/nocturne-harness/releases/tag/v0.1.66",
+    "workflow": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/37550509606",
+    "pr_ci": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/37385605488",
+    "pr_ci_conclusion": "success after targeted packaging rerun",
+    "workflow_conclusion": "success",
+    "installed_wheel": "checks/public-harness-wheel.log",
+    "public_index": "checks/harness-public-index.json",
+    "published_at": "2026-10-07T00:09:56Z"
+  },
+  "garden_pr": "https://github.com/Nate0-1999/nocturne-garden/pull/105",
+  "public_runtime_and_cleanup": "PASS",
+  "public_runtime": {
+    "installed": "PASS: retained conversation, real memory gate and completed GPT-4.1-mini answer",
+    "reinstalled": "PASS: retained conversation and four pinned policies",
+    "package_identity": "checks/public-package-identity.json",
+    "palace_health_version": "0.1.66",
+    "visual_review": "checks/fresh-visual-review.json",
+    "final_palace_measured_usd": "0.098423980000",
+    "whole_packet_spend": "Unknown: earlier disposable databases were dropped before the new spend-accounting rule."
+  },
+  "cleanup": {
+    "palace": "test-m4ln-fresh",
+    "service_database_and_two_secrets_absent": true,
+    "receipt": "checks/final-palace-absent.json",
+    "earlier_palace_absent": "checks/old-palace-absent.json",
+    "owned_processes_stopped": true,
+    "browser_sweep": "checks/final-browser-sweep.log"
+  },
+  "full_evidence_repository": "https://github.com/Nate0-1999/nocturne-garden/pull/105"
+}
