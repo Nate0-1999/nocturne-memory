@@ -674,7 +674,7 @@
       "section": "2. Injection and the gate",
       "era": "Aug 24",
       "label": "Force controls for the line, the share and pins, all in the same module as the hyperparameters, each with the algorithm resuming afterward.",
-      "status": "partial",
+      "status": "built",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): In the Injection Console, force the share; the next retrain moves it again.",
       "owner": "owner — \"Let's just make sure those force or manual set functions all have the same pattern the user can set them but then the algorithm begins automating them agian. Let's make sure these inputs and vizualizatoins are in the same module as the existing hyper parameters.\" (chat 2026-08-24 20:50:21; chat 2026-08-24 20:24:41)",
       "surfaces": [
@@ -683,10 +683,10 @@
         "harness/web/src/MemoryPanel.tsx"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F152",
+        "packet": "M4LN",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-030.png"
       },
       "protected": true,
@@ -1063,7 +1063,7 @@
       "section": "4. Learning and training loops",
       "era": "Jul 22",
       "label": "A permanent back-test table of every human add and removal of a memory, as the training data for the injection algorithm.",
-      "status": "partial",
+      "status": "built",
       "walk": "Remove a memory at the gate; a new row for it appears in the back-test table.",
       "owner": "owner — \"2. we should be keeping track of all our training data: human adding or removing memories in a permenant back test table so we can can get fancier on our memory injection algorithm over time.\" (chat 2026-07-22 15:05:49; chat 2026-08-01 19:41:27)",
       "surfaces": [
@@ -1072,10 +1072,10 @@
         "spine/src/spine/learner/evidence.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4LN",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-048.png"
       },
       "protected": true,
@@ -1125,7 +1125,7 @@
       "section": "4. Learning and training loops",
       "era": "Aug 3",
       "label": "A performance score for the memory system, back-tested on the history of manual adds and removes plus successful injections; a new set of weights is accepted only if it scores better than the previous generation.",
-      "status": "partial",
+      "status": "built",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Force retrain; the scoreboard shows the new weights' back-test score beside the previous generation's, and the update lands only if it is higher.",
       "owner": "owner — \"I like the idea that there is a performance of memory system. Imagine over time that there is a score that the hyper parameters modification can will improve or the hyper parameter update will not happen does that make sense? All the manual adds or removes for the history of the harness plus the a good amount of the successful ones that did not need manual intervention. We should be able to do a back test and be like our new set of hyper parameters map to  98% correct injection across the backtest while the previous generation did 97% does that make sense.\" (chat 2026-08-03 20:11:30)",
       "surfaces": [
@@ -1134,10 +1134,10 @@
         "harness/web/src/learning.ts"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F152",
+        "packet": "M4LN",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-051.png"
       },
       "protected": true,
@@ -1222,8 +1222,8 @@
         "spine/src/spine/learner/"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M4LN",
+        "date": "2026-10-05",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-055.png"
@@ -1352,7 +1352,7 @@
       "section": "4. Learning and training loops",
       "era": "gate-day",
       "label": "Constitution: The audition: a proposed scorer runs as a visible shadow beside the incumbent before acceptance (gate-day).",
-      "status": "partial",
+      "status": "built",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Open a proposal; its shadow results show beside the incumbent's on the live gate.",
       "owner": "constitution",
       "surfaces": [
@@ -1360,10 +1360,10 @@
         "spine/src/spine/learner/service.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4LN",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-062.png"
       },
       "protected": true,
