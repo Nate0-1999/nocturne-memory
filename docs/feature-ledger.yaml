@@ -4484,6 +4484,21 @@
       "owner": "owner 2026-10-04: \"Could we hook the memory system we've built up to Claude code? If yes could we port some of our visualizations easily? … mainly explore for now … once we've finished v1\"",
       "surfaces": [],
       "protected": false
+    },
+    {
+      "id": "FL-205",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Oct 7",
+      "label": "The thread list tells you where and how: each thread shows its project by name and the model and thinking level in force, and the list reads cleaner.",
+      "status": "not built",
+      "walk": "Open the thread list with threads in two projects on two models: each row names its project (not a path), its model and thinking level, with the same marks wherever that thread is named (the Deck, the conversation header); nothing repeats, nothing truncates.",
+      "owner": "owner 2026-10-07: \"to tell which project each thread is in thread list and what thinking level things are etc. it just needs to be cleaner.\"",
+      "surfaces": [
+        "harness/web/src/App.tsx",
+        "harness/web/src/threadTitles.ts",
+        "harness/web/src/SymphonyDeck.tsx"
+      ],
+      "protected": false
     }
   ]
 }
