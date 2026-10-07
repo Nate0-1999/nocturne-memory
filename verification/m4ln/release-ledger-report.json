@@ -2,12 +2,12 @@
   "packet": "M4LN",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "c580d6bef5180a2983d9a70db91fe06baf6366151f4ce38b3a727400e7552038",
+  "ledger_sha256": "212fbcf603c809969e1e077d2cc642bf11c224da9f81b74740622a41d281725c",
   "diffs": [
     {
       "repo": "spine",
       "base": "a37a60bb59249b6d825566af3c1a0886adbc7e41",
-      "head": "cd411c4b45ce154c82f708096b29ca053628de7d"
+      "head": "c9cce920fe484b0af39e8adf0c13c48438c87885"
     }
   ],
   "unmapped": {
@@ -16,33 +16,31 @@
     "spine/src/spine/__init__.py": "Paired release version/lock metadata; API contract unchanged.",
     "spine/tests/test_learner_model.py": "Regression assertion for the mapped timeout, replay tie rule or console; test only.",
     "spine/tests/test_packaging.py": "Regression assertion for the mapped timeout, replay tie rule or console; test only.",
-    "spine/verification/m4ln/FL-021.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-030.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-032.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-048.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-049.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-050.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-051.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-052.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-053.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-054.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-055.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-056.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-058.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-059.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-060.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-062.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-063.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-064.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-137.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-195.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/FL-196.png": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/SHA256SUMS": "Packet coverage and hashes; no runtime behavior.",
-    "spine/verification/m4ln/acceptance.json": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/ledger-report.json": "Packet coverage and hashes; no runtime behavior.",
-    "spine/verification/m4ln/release.json": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/impacted.json": "Packet evidence or verification helper, no runtime behavior.",
-    "spine/verification/m4ln/release-ledger-report.json": "Packet evidence or verification helper, no runtime behavior."
+    "spine/verification/m4ln/FL-062.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-063.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-049.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-060.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-048.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-064.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-058.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-059.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/acceptance.json": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-021.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-196.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/ledger-report.json": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-195.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-032.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-030.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-137.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-056.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-054.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-055.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/SHA256SUMS": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-051.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-050.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-052.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/FL-053.png": "Packet evidence, release/cleanup receipt or helper; no runtime behavior.",
+    "spine/verification/m4ln/release.json": "Packet evidence, release/cleanup receipt or helper; no runtime behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -411,7 +409,6 @@
     "FL-201": "outside diff",
     "FL-202": "outside diff",
     "FL-203": "not built",
-    "FL-204": "horizon",
-    "FL-205": "not built"
+    "FL-204": "horizon"
   }
 }
