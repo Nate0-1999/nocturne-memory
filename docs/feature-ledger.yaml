@@ -674,7 +674,7 @@
       "section": "2. Injection and the gate",
       "era": "Aug 24",
       "label": "Force controls for the line, the share and pins, all in the same module as the hyperparameters, each with the algorithm resuming afterward.",
-      "status": "built",
+      "status": "partial",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): In the Injection Console, force the share; the next retrain moves it again.",
       "owner": "owner — \"Let's just make sure those force or manual set functions all have the same pattern the user can set them but then the algorithm begins automating them agian. Let's make sure these inputs and vizualizatoins are in the same module as the existing hyper parameters.\" (chat 2026-08-24 20:50:21; chat 2026-08-24 20:24:41)",
       "surfaces": [
@@ -683,10 +683,10 @@
         "harness/web/src/MemoryPanel.tsx"
       ],
       "last_walk": {
-        "packet": "M4LN",
-        "date": "2026-10-05",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F152",
         "screenshot": "FL-030.png"
       },
       "protected": true,
@@ -1063,7 +1063,7 @@
       "section": "4. Learning and training loops",
       "era": "Jul 22",
       "label": "A permanent back-test table of every human add and removal of a memory, as the training data for the injection algorithm.",
-      "status": "built",
+      "status": "partial",
       "walk": "Remove a memory at the gate; a new row for it appears in the back-test table.",
       "owner": "owner — \"2. we should be keeping track of all our training data: human adding or removing memories in a permenant back test table so we can can get fancier on our memory injection algorithm over time.\" (chat 2026-07-22 15:05:49; chat 2026-08-01 19:41:27)",
       "surfaces": [
@@ -1072,10 +1072,10 @@
         "spine/src/spine/learner/evidence.py"
       ],
       "last_walk": {
-        "packet": "M4LN",
-        "date": "2026-10-05",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-048.png"
       },
       "protected": true,
@@ -1125,7 +1125,7 @@
       "section": "4. Learning and training loops",
       "era": "Aug 3",
       "label": "A performance score for the memory system, back-tested on the history of manual adds and removes plus successful injections; a new set of weights is accepted only if it scores better than the previous generation.",
-      "status": "built",
+      "status": "partial",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Force retrain; the scoreboard shows the new weights' back-test score beside the previous generation's, and the update lands only if it is higher.",
       "owner": "owner — \"I like the idea that there is a performance of memory system. Imagine over time that there is a score that the hyper parameters modification can will improve or the hyper parameter update will not happen does that make sense? All the manual adds or removes for the history of the harness plus the a good amount of the successful ones that did not need manual intervention. We should be able to do a back test and be like our new set of hyper parameters map to  98% correct injection across the backtest while the previous generation did 97% does that make sense.\" (chat 2026-08-03 20:11:30)",
       "surfaces": [
@@ -1134,10 +1134,10 @@
         "harness/web/src/learning.ts"
       ],
       "last_walk": {
-        "packet": "M4LN",
-        "date": "2026-10-05",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F152",
         "screenshot": "FL-051.png"
       },
       "protected": true,
@@ -1222,8 +1222,8 @@
         "spine/src/spine/learner/"
       ],
       "last_walk": {
-        "packet": "M4LN",
-        "date": "2026-10-05",
+        "packet": "M3W5A+M3W5B",
+        "date": "2026-09-30",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-055.png"
@@ -1352,7 +1352,7 @@
       "section": "4. Learning and training loops",
       "era": "gate-day",
       "label": "Constitution: The audition: a proposed scorer runs as a visible shadow beside the incumbent before acceptance (gate-day).",
-      "status": "built",
+      "status": "partial",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Open a proposal; its shadow results show beside the incumbent's on the live gate.",
       "owner": "constitution",
       "surfaces": [
@@ -1360,10 +1360,10 @@
         "spine/src/spine/learner/service.py"
       ],
       "last_walk": {
-        "packet": "M4LN",
-        "date": "2026-10-05",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M3W6A+M3W6B",
+        "date": "2026-10-04",
+        "verdict": "FAIL",
+        "flag": "F158",
         "screenshot": "FL-062.png"
       },
       "protected": true,
@@ -1839,7 +1839,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Jul 20",
       "label": "The work loop: spec alignment with the user, then the agent loop (optionally several agents in worktrees attempting the same thing), then the judge checks the work against the spec and either calls it done or sends another agent to continue or fix, and the human is only brought back in when the judge says done.",
-      "status": "partial",
+      "status": "built",
       "walk": "Run a symphony; attempts run in worktrees, the judge's verdict against the spec appears, and the card returns to the human only after the judge says done.",
       "owner": "owner — \"The project and agent work for this should be by default spec alignment with user, then agent loop (optional spin up multiple agents in work trees to attempt the same thing), and the judge evaluates compared to spec to see if it is complete or to send another agent out to continue the work or fix something. The user should only interject or get a response when the judge says that they are done and to go back to the human.\" (chat 2026-07-20 00:34:53)",
       "surfaces": [
@@ -1852,10 +1852,10 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4SY",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-085.png"
       },
       "protected": true,
@@ -1866,7 +1866,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Jul 20",
       "label": "Both modes supported: a hands-off default with loops, judges and parallel agents, and a traditional chat mode of agent turn then human turn.",
-      "status": "partial",
+      "status": "built",
       "walk": "Run one piece of work as a plain turn-by-turn chat and another as a symphony; both work.",
       "owner": "owner — \"How does symphony also support simpler just chatting mode after a symphony run. Does the user have to switch it etc.\" (chat 2026-08-17 17:02:48 (+ chat 2026-07-20 16:16:55))",
       "surfaces": [
@@ -1878,10 +1878,10 @@
         "harness/src/harness/symphony_experience.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4SY",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-086.png"
       },
       "protected": true,
@@ -1980,7 +1980,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 6",
       "label": "When a judge fails a swarm, its feedback is saved as new packets and a new swarm is sent out, looping until every judge is satisfied.",
-      "status": "partial",
+      "status": "built",
       "walk": "Let a judge fail a round; new packets appear from the feedback and a fresh swarm runs, and the loop ends only when all judges pass.",
       "owner": "owner — \"Also want to make sure for symphony mode this loops untill all the judges are satisfied.\" (chat 2026-08-06 17:59:05 (+ 16:27:54))",
       "surfaces": [
@@ -1989,10 +1989,10 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4SY",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-091.png"
       },
       "protected": true,
@@ -2023,7 +2023,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 15",
       "label": "The recipe card: a recipe-style implementation plan whose parts build in parallel or in sequence, parallel wherever it keeps build quality and sequential where there is doubt.",
-      "status": "partial",
+      "status": "built",
       "walk": "Open the recipe card of a symphony; some parts are set to run in parallel and others in sequence.",
       "owner": "owner — \"1. It must have the recipe style implementation plan that allows different parts to be build in parallel,  or sequence.\" (chat 2026-08-17 15:35:13 (+ chat 2026-08-15 19:37:48))",
       "surfaces": [
@@ -2034,10 +2034,10 @@
         "harness/web/src/RecipeModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4SY",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-093.png"
       },
       "protected": true,
@@ -2703,7 +2703,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Aug 17",
       "label": "A recipe module showing the plan graph with completed parts dimmed.",
-      "status": "partial",
+      "status": "built",
       "walk": "Run a symphony with the recipe module open; completed parts dim.",
       "owner": "owner — \"I want the plan completion view to look like this: just matching our livery and some dyamics that indicate at what point we are at maybe just dimming the competed parts.\" (chat 2026-08-17 21:05:47 (+ 17:44:55))",
       "surfaces": [
@@ -2712,10 +2712,10 @@
         "harness/src/harness/recipe_graph.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4SY",
+        "date": "2026-10-05",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-122.png"
       },
       "protected": true,
@@ -4483,6 +4483,21 @@
       "walk": "No walk yet: an exploration report names the attachment points (injection at prompt submit, extraction at compaction, a palace pane or status line) and which visualizations port, with a working proof-of-concept if cheap.",
       "owner": "owner 2026-10-04: \"Could we hook the memory system we've built up to Claude code? If yes could we port some of our visualizations easily? … mainly explore for now … once we've finished v1\"",
       "surfaces": [],
+      "protected": false
+    },
+    {
+      "id": "FL-205",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Oct 7",
+      "label": "The thread list tells you where and how: each thread shows its project by name and the model and thinking level in force, and the list reads cleaner.",
+      "status": "not built",
+      "walk": "Open the thread list with threads in two projects on two models: each row names its project (not a path), its model and thinking level, with the same marks wherever that thread is named (the Deck, the conversation header); nothing repeats, nothing truncates.",
+      "owner": "owner 2026-10-07: \"to tell which project each thread is in thread list and what thinking level things are etc. it just needs to be cleaner.\"",
+      "surfaces": [
+        "harness/web/src/App.tsx",
+        "harness/web/src/threadTitles.ts",
+        "harness/web/src/SymphonyDeck.tsx"
+      ],
       "protected": false
     }
   ]
