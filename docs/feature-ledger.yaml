@@ -3793,8 +3793,8 @@
       "era": "gate-day",
       "label": "Constitution: a warming retry when the Palace is asleep, a \"busy, retrying\" banner on rate limits, and the banner clears on recovery (gate-day).",
       "status": "partial",
-      "walk": "Start the Harness against a sleeping Palace; a warming line shows, then clears when the Palace answers.",
-      "owner": "constitution",
+      "walk": "Start the Harness against a sleeping Palace; a warming line shows, then clears when the Palace answers; drop one Palace request on purpose mid-conversation: a read or an idempotent write is retried on its own and the step completes, and only a refusal or a /remember fails at once (owner, 2026-10-07).",
+      "owner": "constitution — 2026-10-07: \"on really long things some network volatility is expected maybe we should be a bit more robust to this and have some retry things?\"",
       "surfaces": [
         "harness/src/harness/daemon.py",
         "harness/src/harness/onboarding.py",
