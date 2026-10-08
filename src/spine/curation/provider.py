@@ -120,7 +120,7 @@ class OpenRouterCuratorProvider:
         ]
         # v2.133 / M4IN: a verdict missing what its action needs goes back once with the
         # rule it broke (gpt-4.1-mini merged without label, body and keywords).
-        for attempt in range(2):
+        for attempt in (0, 1):
             content = await self._verdict_content(
                 messages,
                 model=model,
@@ -148,7 +148,7 @@ class OpenRouterCuratorProvider:
                         + ". Return the complete JSON verdict.",
                     },
                 ]
-        raise AssertionError("unreachable")
+        raise CuratorProviderError("curator verdict response was malformed")
 
     async def _verdict_content(
         self,
