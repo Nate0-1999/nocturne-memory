@@ -287,10 +287,14 @@ def test_golden_selection_preserves_pin_score_order_ranks_and_greedy_skips() -> 
 def test_threshold_and_share_inject_more_than_eight_without_a_count_cap() -> None:
     """SPEC ADR-005 / rules-ledger r3-3: every passing memory fits until room is spent."""
     result = score_and_select(
-        prompt="the", query_embedding=(1.0, 0.0), snapshot_ts=SNAPSHOT,
-        thread_project_key=None, pinned_candidates=(),
+        prompt="the",
+        query_embedding=(1.0, 0.0),
+        snapshot_ts=SNAPSHOT,
+        thread_project_key=None,
+        pinned_candidates=(),
         regular_candidates=tuple(_candidate(i) for i in range(1, 21)),
-        model_context_tokens=300, config=_config(),
+        model_context_tokens=300,
+        config=_config(),
     )
     assert [item.candidate.memory_id.int for item in result.injected] == list(range(1, 16))
     assert result.regular_token_cost == 15

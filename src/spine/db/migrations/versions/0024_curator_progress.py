@@ -22,11 +22,15 @@ def upgrade() -> None:
       ts TIMESTAMPTZ NOT NULL DEFAULT clock_timestamp()
     )
     """)
-    op.execute("CREATE INDEX curator_progress_principal_event_idx "
-               "ON curator_progress (principal_id, event_id)")
-    op.execute("CREATE TRIGGER curator_progress_append_only "
-               "BEFORE UPDATE OR DELETE ON curator_progress "
-               "FOR EACH ROW EXECUTE FUNCTION nocturne_refuse_curator_history_change()")
+    op.execute(
+        "CREATE INDEX curator_progress_principal_event_idx "
+        "ON curator_progress (principal_id, event_id)"
+    )
+    op.execute(
+        "CREATE TRIGGER curator_progress_append_only "
+        "BEFORE UPDATE OR DELETE ON curator_progress "
+        "FOR EACH ROW EXECUTE FUNCTION nocturne_refuse_curator_history_change()"
+    )
 
 
 def downgrade() -> None:

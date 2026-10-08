@@ -82,8 +82,7 @@ class HealthReportBuilder:
                             edge.c.edge_type.asc(),
                         )
                     )
-                )
-                .all()
+                ).all()
                 if active_ids
                 else []
             )
@@ -112,35 +111,62 @@ class HealthReportBuilder:
                 .all()
             )
             config = await _active_scorer_config(session) if self._embedding_provider else None
-            edits = dict((await session.execute(
-                select(MemoryRevision.memory_id, func.max(MemoryRevision.ts))
-                .where(MemoryRevision.memory_id.in_(active_ids), MemoryRevision.editor == "user")
-                .group_by(MemoryRevision.memory_id)
-            )).all()) if config is not None else {}
+            edits = (
+                dict(
+                    (
+                        await session.execute(
+                            select(MemoryRevision.memory_id, func.max(MemoryRevision.ts))
+                            .where(
+                                MemoryRevision.memory_id.in_(active_ids),
+                                MemoryRevision.editor == "user",
+                            )
+                            .group_by(MemoryRevision.memory_id)
+                        )
+                    ).all()
+                )
+                if config is not None
+                else {}
+            )
 
         vectors: dict[UUID, list[float]] = {row["id"]: [] for row in rows}
         # A pass's wall clock must not change nomination for an unchanged corpus.
         relevance_at = max((row["updated_at"] for row in rows), default=observed_at)
         if config is not None and rows:
-            candidates = [_candidate_from_row(
-                {**row, "last_human_edit_at": edits.get(row["id"])}, pool_sources=("curator",)
-            ) for row in rows]
+            candidates = [
+                _candidate_from_row(
+                    {**row, "last_human_edit_at": edits.get(row["id"])}, pool_sources=("curator",)
+                )
+                for row in rows
+            ]
             for prompt in PROBES:
                 if prompt not in self._probe_embeddings:
-                    self._probe_embeddings[prompt] = await embed_one(
-                        self._embedding_provider, prompt, expected_dimensions=1536,
-                        receipt_context=EmbeddingReceiptContext(
-                            principal_id=principal_id, machine_id="palace-curator",
-                            origin_agent="maintenance",
-                        ),
-                    ) if prompt else [0.0] * 1536
+                    self._probe_embeddings[prompt] = (
+                        await embed_one(
+                            self._embedding_provider,
+                            prompt,
+                            expected_dimensions=1536,
+                            receipt_context=EmbeddingReceiptContext(
+                                principal_id=principal_id,
+                                machine_id="palace-curator",
+                                origin_agent="maintenance",
+                            ),
+                        )
+                        if prompt
+                        else [0.0] * 1536
+                    )
                 for candidate in candidates:
                     scored = _score_candidate(
-                        candidate, query=tuple(self._probe_embeddings[prompt]),
-                        semantic=None if prompt else 0.0, prompt_keywords=prompt_keywords(prompt),
-                        snapshot_ts=relevance_at, thread_project_key=None, thread_id=None,
-                        location_path=None, weights=config.weights_for_project(None),
-                        params=config.params, learned_bias=config.bias_offset(candidate.memory_id),
+                        candidate,
+                        query=tuple(self._probe_embeddings[prompt]),
+                        semantic=None if prompt else 0.0,
+                        prompt_keywords=prompt_keywords(prompt),
+                        snapshot_ts=relevance_at,
+                        thread_project_key=None,
+                        thread_id=None,
+                        location_path=None,
+                        weights=config.weights_for_project(None),
+                        params=config.params,
+                        learned_bias=config.bias_offset(candidate.memory_id),
                         axes=config.axes,
                     )
                     vectors[candidate.memory_id].append(scored.score)
@@ -152,8 +178,10 @@ class HealthReportBuilder:
             for right in rows[index + 1 :]:
                 score = _cosine(left["embedding"], right["embedding"])
                 left_scores, right_scores = vectors[left["id"]], vectors[right["id"]]
-                delta = max((abs(a-b) for a, b in zip(left_scores, right_scores, strict=True)),
-                            default=1.0)
+                delta = max(
+                    (abs(a - b) for a, b in zip(left_scores, right_scores, strict=True)),
+                    default=1.0,
+                )
                 by_relevance = bool(left_scores) and delta <= RELEVANCE_MAX_DELTA
                 if score < self._duplicate_floor and not by_relevance:
                     continue
@@ -170,11 +198,14 @@ class HealthReportBuilder:
                                 "relevance": by_relevance,
                             },
                             "relevance": {
-                                "probe_version": PROBE_VERSION, "prompts": list(PROBES),
+                                "probe_version": PROBE_VERSION,
+                                "prompts": list(PROBES),
                                 "snapshot_ts": relevance_at.isoformat(),
                                 "scorer_version": None if config is None else config.version,
-                                "left": left_scores, "right": right_scores,
-                                "max_delta": delta, "threshold": RELEVANCE_MAX_DELTA,
+                                "left": left_scores,
+                                "right": right_scores,
+                                "max_delta": delta,
+                                "threshold": RELEVANCE_MAX_DELTA,
                             },
                             "memories": [evidence_by_id[memory_id] for memory_id in pair],
                         },

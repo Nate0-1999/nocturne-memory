@@ -51,10 +51,14 @@ async def ingest_seed(body: SeedRequest, request: Request) -> SeedResponse | Pro
 
 
 @router.post(
-    "/v1/approval-queue/{item_uid}/feedback", response_model=dict[str, str], responses=ERRORS,
+    "/v1/approval-queue/{item_uid}/feedback",
+    response_model=dict[str, str],
+    responses=ERRORS,
 )
 async def feedback(
-    item_uid: str, body: QueueFeedbackRequest, request: Request,
+    item_uid: str,
+    body: QueueFeedbackRequest,
+    request: Request,
 ) -> dict[str, str] | ProblemJSONResponse:
     try:
         return await request.app.state.queue_service.feedback(item_uid, body)

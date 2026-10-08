@@ -1445,3 +1445,7 @@ by a compaction has been approved since the latest pass began (its run.started p
 time). One SQL predicate over the queue, revision and progress tables decides it; migration
 0028 only widens the trigger check. Approval is the moment a fact can be merged, since a
 candidate stays invisible until approved.
+On the test palace's v2.134 curator (gpt-4.1-mini) one verdict in five was "merge" without
+its label, body and keywords, and that one malformed verdict failed the whole pass. A verdict
+that fails validation now goes back once with the validation message; a second failure is
+the same truthful failed pass as before.

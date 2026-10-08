@@ -8,9 +8,7 @@ from pydantic import Field, model_validator
 
 from spine.contracts import ContractModel, MemoryKind, MemoryUnit, SimilarityMemoryCard
 
-Verdict = Literal[
-    "new", "merge", "supersede", "contradict", "retire", "keyword_repair", "split"
-]
+Verdict = Literal["new", "merge", "supersede", "contradict", "retire", "keyword_repair", "split"]
 
 
 class ExtractionCandidate(ContractModel):

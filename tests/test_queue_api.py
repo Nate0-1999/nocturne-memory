@@ -358,7 +358,9 @@ async def test_supersede_of_a_near_identical_target_is_carded_not_counted_duplic
         if birthplace == "seed":
             value.pop("thread_id")
             value.update(
-                batch_uid=str(uuid4()), source_name="correction.md", markdown=correction,
+                batch_uid=str(uuid4()),
+                source_name="correction.md",
+                markdown=correction,
                 source_sha256=sha256(correction.encode()).hexdigest(),
             )
         return value

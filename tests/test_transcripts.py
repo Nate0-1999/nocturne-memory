@@ -39,9 +39,7 @@ async def test_append_replay_list_and_status_are_exact(memory_client: AsyncClien
     first = await memory_client.post("/v1/transcripts", json=body)
     replay = await memory_client.post("/v1/transcripts", json=body)
     listing = await memory_client.get("/v1/transcripts", params={"principal_id": "owner"})
-    status = await memory_client.get(
-        "/v1/transcripts/status", params={"principal_id": "owner"}
-    )
+    status = await memory_client.get("/v1/transcripts/status", params={"principal_id": "owner"})
 
     assert first.status_code == 200
     assert first.json()["accepted"] == 2
@@ -95,9 +93,7 @@ async def test_validation_and_database_both_defend_immutability(
     )
     assert response.status_code == 422
 
-    await memory_client.post(
-        "/v1/transcripts", json={"principal_id": "owner", "records": [record]}
-    )
+    await memory_client.post("/v1/transcripts", json={"principal_id": "owner", "records": [record]})
     async with memory_session_factory() as session:
         with pytest.raises(DBAPIError, match="append-only"):
             async with session.begin():

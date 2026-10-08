@@ -105,9 +105,10 @@ class CuratorService:
             # v2.133: a compaction's facts approved since the last pass began are merged with
             # what the Palace holds.
             compacted = (
-                await session.execute(
-                    text(
-                        """
+                (
+                    await session.execute(
+                        text(
+                            """
                         SELECT DISTINCT q.principal_id
                         FROM approval_queue_item q
                         JOIN memory_revision r
@@ -119,12 +120,13 @@ class CuratorService:
                             '-infinity')
                         ORDER BY q.principal_id
                         """
+                        )
                     )
                 )
-            ).scalars().all()
-        triggers: dict[str, Trigger] = {
-            principal: "compaction" for principal in compacted
-        } | {
+                .scalars()
+                .all()
+            )
+        triggers: dict[str, Trigger] = {principal: "compaction" for principal in compacted} | {
             due["principal_id"]: "writes" if due["writes_due"] else "injection_pressure"
             for due in due_rows
         }
@@ -165,9 +167,12 @@ class CuratorService:
                     machine_id=machine_id,
                     trigger=trigger,
                 )
-                await record_progress(self._session_factory, principal_id, run_uid,
-                                      "run.completed" if receipt.status == "completed"
-                                      else "run.failed")
+                await record_progress(
+                    self._session_factory,
+                    principal_id,
+                    run_uid,
+                    "run.completed" if receipt.status == "completed" else "run.failed",
+                )
                 return receipt
             except BaseException:
                 await record_progress(self._session_factory, principal_id, run_uid, "run.failed")
@@ -219,7 +224,10 @@ class CuratorService:
                     queue.c.state == "pending",
                 )
             )
-            growth = (await session.execute(text("""
+            growth = (
+                (
+                    await session.execute(
+                        text("""
                 WITH points AS (
                     SELECT (report->>'as_of')::timestamptz AS at,
                            (report->>'active_units')::int AS active_units
@@ -235,7 +243,13 @@ class CuratorService:
                       AND r.reason ~ '^curation/[^/]+/(merge|supersede|retire)$'
                 ) AS curator_removals
                 FROM points ORDER BY at
-            """), {"principal": principal_id})).mappings().all()
+            """),
+                        {"principal": principal_id},
+                    )
+                )
+                .mappings()
+                .all()
+            )
         admitted = 0 if state_row is None else int(state_row["admitted_writes"])
         cursor = 0 if state_row is None else int(state_row["last_run_writes"])
         pressure = 0 if state_row is None else int(state_row["pressure_events"])
@@ -251,9 +265,7 @@ class CuratorService:
             trigger_every=self._trigger_every,
             pressure_trigger_every=self._pressure_trigger_every,
             writes_until_run=max(0, self._trigger_every - outstanding),
-            pressure_until_run=max(
-                0, self._pressure_trigger_every - pressure_outstanding
-            ),
+            pressure_until_run=max(0, self._pressure_trigger_every - pressure_outstanding),
             latest_run=None if run_row is None else _receipt(run_row),
             pending_cards=int(pending or 0),
             growth=[dict(point) for point in growth],
@@ -271,24 +283,41 @@ class CuratorService:
         admitted, pressure = await self._trigger_snapshot(principal_id)
         judged: list[_JudgedFinding] = []
         async with self._session_factory() as session:
-            remembered = set((await session.scalars(
-                select(CuratorFinding.fingerprint)
-                .join(CuratorRun, CuratorRun.run_uid == CuratorFinding.run_uid)
-                .join(CuratorVerdict, CuratorVerdict.finding_uid == CuratorFinding.finding_uid)
-                .where(CuratorRun.principal_id == principal_id,
-                       CuratorFinding.fingerprint.in_([f.fingerprint for f in report.findings]),
-                       # Earlier duplicate judgments could not choose contradict.
-                       CuratorFinding.evidence["verdict_version"].astext == VERDICT_VERSION,
-                       CuratorVerdict.action == "keep")
-            )).all())
+            remembered = set(
+                (
+                    await session.scalars(
+                        select(CuratorFinding.fingerprint)
+                        .join(CuratorRun, CuratorRun.run_uid == CuratorFinding.run_uid)
+                        .join(
+                            CuratorVerdict, CuratorVerdict.finding_uid == CuratorFinding.finding_uid
+                        )
+                        .where(
+                            CuratorRun.principal_id == principal_id,
+                            CuratorFinding.fingerprint.in_(
+                                [f.fingerprint for f in report.findings]
+                            ),
+                            # Earlier duplicate judgments could not choose contradict.
+                            CuratorFinding.evidence["verdict_version"].astext == VERDICT_VERSION,
+                            CuratorVerdict.action == "keep",
+                        )
+                    )
+                ).all()
+            )
         report.review_summary = {
-            "pair_limit": PAIR_LIMIT, "reviewed_pairs": 0,
-            "skipped_unchanged": 0, "skipped_limit": 0,
+            "pair_limit": PAIR_LIMIT,
+            "reviewed_pairs": 0,
+            "skipped_unchanged": 0,
+            "skipped_limit": 0,
         }
         # Review the strongest pairs first; a fixed corpus has a fixed tie order.
-        findings = sorted(report.findings, key=lambda f: (
-            f.kind != "contradiction", -float(f.evidence.get("cosine", 0)), f.ordinal,
-        ))
+        findings = sorted(
+            report.findings,
+            key=lambda f: (
+                f.kind != "contradiction",
+                -float(f.evidence.get("cosine", 0)),
+                f.ordinal,
+            ),
+        )
         reviewed_pairs = 0
         try:
             for finding in findings:
@@ -302,28 +331,43 @@ class CuratorService:
                     reviewed_pairs += 1
                     report.review_summary["reviewed_pairs"] = reviewed_pairs
                 async with self._session_factory() as session:
-                    feedback = (await session.execute(
-                        select(CuratorAction.detail)
-                        .join(CuratorFinding,
-                              CuratorFinding.finding_uid == CuratorAction.finding_uid)
-                        .join(CuratorRun, CuratorRun.run_uid == CuratorFinding.run_uid)
-                        .where(CuratorRun.principal_id == principal_id,
-                               CuratorFinding.kind == finding.kind,
-                               CuratorAction.detail.has_key("feedback"))
-                        .order_by(CuratorAction.created_at, CuratorAction.action_uid)
-                    )).scalars().all()
+                    feedback = (
+                        (
+                            await session.execute(
+                                select(CuratorAction.detail)
+                                .join(
+                                    CuratorFinding,
+                                    CuratorFinding.finding_uid == CuratorAction.finding_uid,
+                                )
+                                .join(CuratorRun, CuratorRun.run_uid == CuratorFinding.run_uid)
+                                .where(
+                                    CuratorRun.principal_id == principal_id,
+                                    CuratorFinding.kind == finding.kind,
+                                    CuratorAction.detail.has_key("feedback"),
+                                )
+                                .order_by(CuratorAction.created_at, CuratorAction.action_uid)
+                            )
+                        )
+                        .scalars()
+                        .all()
+                    )
                 if feedback:
-                    finding = finding.model_copy(update={
-                        "evidence": {**finding.evidence, "owner_feedback": list(feedback)}
-                    })
-                finding = finding.model_copy(update={
-                    "evidence": {**finding.evidence, "verdict_version": VERDICT_VERSION}
-                })
+                    finding = finding.model_copy(
+                        update={"evidence": {**finding.evidence, "owner_feedback": list(feedback)}}
+                    )
+                finding = finding.model_copy(
+                    update={"evidence": {**finding.evidence, "verdict_version": VERDICT_VERSION}}
+                )
                 finding_uid = mint_ulid()
                 verdict_uid = mint_ulid()
-                await record_progress(self._session_factory, principal_id, run_uid,
-                                      "finding.started", memory_ids=finding.memory_ids,
-                                      finding_uid=finding_uid)
+                await record_progress(
+                    self._session_factory,
+                    principal_id,
+                    run_uid,
+                    "finding.started",
+                    memory_ids=finding.memory_ids,
+                    finding_uid=finding_uid,
+                )
                 draft = await self._provider.verdict(
                     finding,
                     report,
@@ -331,9 +375,15 @@ class CuratorService:
                     machine_id=machine_id,
                 )
                 _require_allowed(finding, draft)
-                await record_progress(self._session_factory, principal_id, run_uid,
-                                      "finding.completed", memory_ids=finding.memory_ids,
-                                      finding_uid=finding_uid, action=draft.action)
+                await record_progress(
+                    self._session_factory,
+                    principal_id,
+                    run_uid,
+                    "finding.completed",
+                    memory_ids=finding.memory_ids,
+                    finding_uid=finding_uid,
+                    action=draft.action,
+                )
                 suppressed = await self._was_seen_unchanged(finding, draft.action)
                 judged.append(
                     _JudgedFinding(
@@ -365,9 +415,7 @@ class CuratorService:
             proposal["sources"] = item.finding.evidence.get("memories", [])
             proposal["signals"] = item.finding.evidence.get("signals", {})
             if item.suppressed:
-                actions.append(
-                    (item, "noop", None, {"reason": "unchanged rejected proposal"})
-                )
+                actions.append((item, "noop", None, {"reason": "unchanged rejected proposal"}))
                 continue
             if item.draft.action == "keep":
                 actions.append((item, "noop", None, {"reason": "surgeon verdict kept corpus"}))
@@ -383,9 +431,7 @@ class CuratorService:
                     proposal=proposal,
                 )
             except Exception as exc:
-                actions.append(
-                    (item, "refused", None, {"reason": _bounded_error(exc)})
-                )
+                actions.append((item, "refused", None, {"reason": _bounded_error(exc)}))
                 continue
             if card is None:
                 actions.append(
@@ -423,9 +469,7 @@ class CuratorService:
                     select(
                         CuratorTriggerState.admitted_writes,
                         CuratorTriggerState.pressure_events,
-                    ).where(
-                        CuratorTriggerState.principal_id == principal_id
-                    )
+                    ).where(CuratorTriggerState.principal_id == principal_id)
                 )
             ).one_or_none()
         return (0, 0) if row is None else (int(row[0]), int(row[1]))
@@ -546,12 +590,18 @@ class CuratorService:
 
     async def _record_model(self, report: PalaceHealthReport, run_uid: str) -> None:
         async with self._session_factory() as session:
-            models = (await session.scalars(
-                select(SpendEvent.model).distinct().where(
-                    SpendEvent.run_id == run_uid, SpendEvent.purpose == "curation",
-                    SpendEvent.model.is_not(None),
-                ).order_by(SpendEvent.model)
-            )).all()
+            models = (
+                await session.scalars(
+                    select(SpendEvent.model)
+                    .distinct()
+                    .where(
+                        SpendEvent.run_id == run_uid,
+                        SpendEvent.purpose == "curation",
+                        SpendEvent.model.is_not(None),
+                    )
+                    .order_by(SpendEvent.model)
+                )
+            ).all()
         report.review_summary["model"] = ", ".join(models) or None
 
     async def _advance_cursor(self, principal_id: str, admitted: int, pressure: int) -> None:

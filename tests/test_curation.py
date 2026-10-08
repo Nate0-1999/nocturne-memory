@@ -147,10 +147,7 @@ async def _seed_mess(
     second = await client.post("/v1/memories", json=_memory("Second", bodies[1], force=True))
     slop = await client.post("/v1/memories", json=_memory("Slop", bodies[2]))
     assert (first.status_code, second.status_code, slop.status_code) == (201, 201, 201)
-    ids = tuple(
-        UUID(response.json()["created"]["memory_id"])
-        for response in (first, second, slop)
-    )
+    ids = tuple(UUID(response.json()["created"]["memory_id"]) for response in (first, second, slop))
     async with session_factory() as session, session.begin():
         await session.execute(
             update(MemoryUnit)
@@ -177,7 +174,10 @@ def _install_fixture_curator(
 
 @pytest.mark.asyncio
 async def test_curator_reviews_original_0738_duplicate_without_changing_create_bands(
-    memory_client, memory_app, embedding_provider, memory_session_factory,
+    memory_client,
+    memory_app,
+    embedding_provider,
+    memory_session_factory,
 ) -> None:
     """F153 / v2.128 catches the observed 0.738 pair at the curator's own band."""
     bodies = (
@@ -200,14 +200,17 @@ async def test_curator_reviews_original_0738_duplicate_without_changing_create_b
     assert set(finding.memory_ids) == set(ids)
     assert float(finding.evidence["cosine"]) == pytest.approx(0.7384948)
     assert finding.evidence["signals"] == {"embedding": True, "relevance": False}
-    higher_band = HealthReportBuilder(memory_session_factory, duplicate_floor=0.75,
-                                     embedding_provider=embedding_provider)
+    higher_band = HealthReportBuilder(
+        memory_session_factory, duplicate_floor=0.75, embedding_provider=embedding_provider
+    )
     assert not (await higher_band.build("fixture-owner")).findings
 
 
 @pytest.mark.asyncio
 async def test_relevance_probes_find_pair_below_embedding_band(
-    memory_client, embedding_provider, memory_session_factory,
+    memory_client,
+    embedding_provider,
+    memory_session_factory,
 ) -> None:
     """P1.2 / SD-074 nominates equal relevance vectors with the live scorer."""
     for prompt in PROBES[1:]:
@@ -219,8 +222,9 @@ async def test_relevance_probes_find_pair_below_embedding_band(
         response = await memory_client.post("/v1/memories", json=_memory(label, body))
         assert response.status_code == 201
         ids.append(UUID(response.json()["created"]["memory_id"]))
-    builder = HealthReportBuilder(memory_session_factory, duplicate_floor=0.80,
-                                  embedding_provider=embedding_provider)
+    builder = HealthReportBuilder(
+        memory_session_factory, duplicate_floor=0.80, embedding_provider=embedding_provider
+    )
     now = datetime.now(UTC)
     first = await builder.build("fixture-owner", as_of=now)
     second = await builder.build("fixture-owner", as_of=now)
@@ -234,38 +238,59 @@ async def test_relevance_probes_find_pair_below_embedding_band(
 
 @pytest.mark.asyncio
 async def test_curator_feedback_amendment_and_growth_share_real_consent_path(
-    memory_client, memory_app, embedding_provider, memory_session_factory,
+    memory_client,
+    memory_app,
+    embedding_provider,
+    memory_session_factory,
 ) -> None:
     """P1.2 / SD-074 records feedback and enacts only the owner's amended text."""
     await _seed_mess(memory_client, embedding_provider, memory_session_factory)
     service = _install_fixture_curator(memory_app, memory_session_factory)
     await service.run("fixture-owner", machine_id="fixture-mac", trigger="manual")
-    cards = (await memory_client.get("/v1/approval-queue", params={
-        "principal_id": "fixture-owner",
-    })).json()["cards"]
+    cards = (
+        await memory_client.get(
+            "/v1/approval-queue",
+            params={
+                "principal_id": "fixture-owner",
+            },
+        )
+    ).json()["cards"]
     merge = next(card for card in cards if card["verdict"] == "merge")
     assert len(merge["proposal_payload"]["sources"]) == 2
     note = "Preserve the exact closing hour in future combinations."
-    response = await memory_client.post(f"/v1/approval-queue/{merge['item_uid']}/feedback", json={
-        "feedback": note, "actor_class": "human", "machine_id": "fixture-mac",
-    })
+    response = await memory_client.post(
+        f"/v1/approval-queue/{merge['item_uid']}/feedback",
+        json={
+            "feedback": note,
+            "actor_class": "human",
+            "machine_id": "fixture-mac",
+        },
+    )
     assert response.status_code == 200
     assert (await service.activity("fixture-owner")).pending_cards == 2
     seen = []
     provider = service._provider
+
     class RecordingProvider:
         async def verdict(self, finding, report, **kwargs):
             seen.append(finding)
             return await provider.verdict(finding, report, **kwargs)
+
     service._provider = RecordingProvider()
     await service.run("fixture-owner", machine_id="fixture-mac", trigger="manual")
     duplicate = next(finding for finding in seen if finding.kind == "duplicate")
     assert duplicate.evidence["owner_feedback"][0]["feedback"] == note
     amended = "The archive closes at nine."
-    response = await memory_client.post(f"/v1/approval-queue/{merge['item_uid']}/decisions", json={
-        "decision": "approve", "approval_mode": "explicit", "actor_class": "human",
-        "machine_id": "fixture-mac", "amended_body": amended,
-    })
+    response = await memory_client.post(
+        f"/v1/approval-queue/{merge['item_uid']}/decisions",
+        json={
+            "decision": "approve",
+            "approval_mode": "explicit",
+            "actor_class": "human",
+            "machine_id": "fixture-mac",
+            "amended_body": amended,
+        },
+    )
     assert response.status_code == 200, response.text
     assert response.json()["card"]["candidate"]["body"] == amended
     activity = await service.activity("fixture-owner")
@@ -300,25 +325,34 @@ async def test_health_report_is_byte_stable_for_one_snapshot(
 
 @pytest.mark.asyncio
 async def test_relevance_probes_do_not_drift_with_the_pass_clock(
-    memory_client, embedding_provider, memory_session_factory,
+    memory_client,
+    embedding_provider,
+    memory_session_factory,
 ):
     """ADR-022 / M4CU: unchanged memories nominate identical pairs and score vectors."""
     await _seed_mess(memory_client, embedding_provider, memory_session_factory)
     for index, prompt in enumerate(PROBES[1:]):
         embedding_provider.set(prompt, basis_vector(index + 10))
-    builder = HealthReportBuilder(memory_session_factory, duplicate_floor=0.70,
-                                  embedding_provider=embedding_provider)
+    builder = HealthReportBuilder(
+        memory_session_factory, duplicate_floor=0.70, embedding_provider=embedding_provider
+    )
     now = datetime.now(UTC)
-    reports = [await builder.build("fixture-owner", as_of=now + timedelta(days=days))
-               for days in (0, 1, 7)]
-    nominations = [[(f.fingerprint, f.evidence.get("relevance")) for f in r.findings
-                    if f.kind == "duplicate"] for r in reports]
+    reports = [
+        await builder.build("fixture-owner", as_of=now + timedelta(days=days)) for days in (0, 1, 7)
+    ]
+    nominations = [
+        [(f.fingerprint, f.evidence.get("relevance")) for f in r.findings if f.kind == "duplicate"]
+        for r in reports
+    ]
     assert nominations[0] and nominations[0] == nominations[1] == nominations[2]
 
 
 @pytest.mark.asyncio
 async def test_pair_budget_and_kept_revisions_survive_service_restart(
-    memory_client, memory_app, embedding_provider, memory_session_factory,
+    memory_client,
+    memory_app,
+    embedding_provider,
+    memory_session_factory,
 ):
     """ADR-022 / M4CU: cap real pairs, remember keep, and revisit only changed revisions."""
     calls = []
@@ -332,17 +366,21 @@ async def test_pair_budget_and_kept_revisions_survive_service_restart(
     for index in range(8):
         body = f"The curator fixture records independent fact {index}."
         vector = [0.0] * 1536
-        vector[0], vector[index + 1] = 0.9, 0.19 ** 0.5
+        vector[0], vector[index + 1] = 0.9, 0.19**0.5
         embedding_provider.set(body, vector)
         response = await memory_client.post(
-            "/v1/memories", json=_memory(f"Fact{index}", body, force=True))
+            "/v1/memories", json=_memory(f"Fact{index}", body, force=True)
+        )
         assert response.status_code == 201, response.text
         units.append(response.json()["created"])
 
     def restored():
-        return CuratorService(memory_session_factory,
-                              HealthReportBuilder(memory_session_factory, duplicate_floor=0.70),
-                              Keep(), memory_app.state.queue_service)
+        return CuratorService(
+            memory_session_factory,
+            HealthReportBuilder(memory_session_factory, duplicate_floor=0.70),
+            Keep(),
+            memory_app.state.queue_service,
+        )
 
     first = await restored().run("fixture-owner", machine_id="fixture-mac")
     assert first.verdict_count == 25 and first.report.review_summary["skipped_limit"] == 3
@@ -352,10 +390,16 @@ async def test_pair_budget_and_kept_revisions_survive_service_restart(
     assert third.verdict_count == 0 and third.report.review_summary["skipped_unchanged"] == 28
     assert len(calls) == len(set(calls)) == 28
 
-    changed = await memory_client.patch(f"/v1/memories/{units[0]['memory_id']}", json={
-        "expected_revision": units[0]["revision"], "pin": True,
-        "editor": "human", "reason": "M4CU changed revision", "machine_id": "fixture-mac",
-    })
+    changed = await memory_client.patch(
+        f"/v1/memories/{units[0]['memory_id']}",
+        json={
+            "expected_revision": units[0]["revision"],
+            "pin": True,
+            "editor": "human",
+            "reason": "M4CU changed revision",
+            "machine_id": "fixture-mac",
+        },
+    )
     assert changed.status_code == 200, changed.text
     fourth = await restored().run("fixture-owner", machine_id="fixture-mac")
     assert fourth.verdict_count == 7 and fourth.queued_count == 0
@@ -561,9 +605,7 @@ async def test_split_tool_preserves_lineage_and_public_maintenance_bypass_is_ref
     embedding_provider.set(source_body, basis_vector(0))
     embedding_provider.set("Alpha guidance.", basis_vector(1))
     embedding_provider.set("Beta guidance.", basis_vector(2))
-    source_response = await memory_client.post(
-        "/v1/memories", json=_memory("Mixed", source_body)
-    )
+    source_response = await memory_client.post("/v1/memories", json=_memory("Mixed", source_body))
     source_id = UUID(source_response.json()["created"]["memory_id"])
     card = await memory_app.state.queue_service.enqueue_curator(
         run_uid="01K3CURATORRUN000000000000",
@@ -894,25 +936,36 @@ async def test_progress_is_visible_during_provider_work_scoped_and_replayable(
             return await super().verdict(*args, **kwargs)
 
     memory_app.state.curator_service = CuratorService(
-        memory_session_factory, HealthReportBuilder(memory_session_factory, duplicate_floor=0.89),
-        PausedProvider(), memory_app.state.queue_service,
+        memory_session_factory,
+        HealthReportBuilder(memory_session_factory, duplicate_floor=0.89),
+        PausedProvider(),
+        memory_app.state.queue_service,
     )
-    task = asyncio.create_task(memory_client.post("/v1/curation/runs", json={
-        "principal_id": "fixture-owner", "machine_id": "fixture-mac",
-    }))
+    task = asyncio.create_task(
+        memory_client.post(
+            "/v1/curation/runs",
+            json={
+                "principal_id": "fixture-owner",
+                "machine_id": "fixture-mac",
+            },
+        )
+    )
     try:
         await asyncio.wait_for(entered.wait(), timeout=10)
-        response = await memory_client.get("/v1/curation/progress",
-                                           params={"principal_id": "fixture-owner"})
+        response = await memory_client.get(
+            "/v1/curation/progress", params={"principal_id": "fixture-owner"}
+        )
         assert response.status_code == 200
         during = response.json()
         assert [event["phase"] for event in during["events"]] == [
-            "run.started", "finding.started",
+            "run.started",
+            "finding.started",
         ]
         assert set(during["events"][-1]["memory_ids"]) <= {str(id_) for id_ in ids}
         assert during["events"][-1]["memory_ids"]
-        foreign = await memory_client.get("/v1/curation/progress",
-                                          params={"principal_id": "other-principal"})
+        foreign = await memory_client.get(
+            "/v1/curation/progress", params={"principal_id": "other-principal"}
+        )
         assert foreign.json() == {"events": [], "cursor": 0}
     finally:
         release.set()
@@ -920,15 +973,27 @@ async def test_progress_is_visible_during_provider_work_scoped_and_replayable(
     assert completed.status_code == 200
     # A replacement service reads the same database-backed stream, including the terminal event.
     _install_fixture_curator(memory_app, memory_session_factory)
-    after = (await memory_client.get("/v1/curation/progress", params={
-        "principal_id": "fixture-owner", "after": during["cursor"],
-    })).json()
+    after = (
+        await memory_client.get(
+            "/v1/curation/progress",
+            params={
+                "principal_id": "fixture-owner",
+                "after": during["cursor"],
+            },
+        )
+    ).json()
     assert after["events"][0]["phase"] == "finding.completed"
     assert after["events"][-1]["phase"] == "run.completed"
     assert all(event["event_id"] > during["cursor"] for event in after["events"])
-    assert (await memory_client.get("/v1/curation/progress", params={
-        "principal_id": "fixture-owner", "after": after["cursor"],
-    })).json() == {"events": [], "cursor": after["cursor"]}
+    assert (
+        await memory_client.get(
+            "/v1/curation/progress",
+            params={
+                "principal_id": "fixture-owner",
+                "after": after["cursor"],
+            },
+        )
+    ).json() == {"events": [], "cursor": after["cursor"]}
 
 
 @pytest.mark.asyncio

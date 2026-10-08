@@ -126,5 +126,60 @@ async def test_curator_policy_selects_real_request_model_and_stays_fixed_for_a_p
         "openai/gpt-4.1",
         "vendor/strong",
         "vendor/strong",
+        "vendor/strong",
     ]
     assert [receipt.model for receipt in receipts] == calls
+
+
+async def test_a_verdict_missing_its_payload_goes_back_once_with_the_rule() -> None:
+    """SPEC C.6 / v2.133 / A-021: a merge without label, body and keywords (gpt-4.1-mini, the
+    test palace curator) is sent back once with the validation error, then accepted."""
+    bodies = []
+    answers = [
+        {"action": "merge", "rationale": "Both describe the test command."},
+        {
+            "action": "merge",
+            "rationale": "Both describe the test command.",
+            "label": "Test command",
+            "body": "The test command is `pnpm test --run`.",
+            "keywords": ["test", "pnpm"],
+        },
+    ]
+
+    def respond(request):
+        bodies.append(json.loads(request.content))
+        return httpx.Response(
+            200, json={"choices": [{"message": {"content": json.dumps(answers.pop(0))}}]}
+        )
+
+    class Spend:
+        async def append(self, events):
+            pass
+
+    finding = HealthFinding(
+        ordinal=0,
+        kind="duplicate",
+        memory_ids=[uuid4(), uuid4()],
+        evidence={},
+        fingerprint="b" * 64,
+    )
+    report = PalaceHealthReport(
+        principal_id="local",
+        as_of=datetime.now(UTC),
+        corpus_revision="one",
+        active_units=2,
+        clusters=[],
+        findings=[finding],
+        keyword_coverage_percent="100",
+        stats_delta={},
+    )
+    async with httpx.AsyncClient(transport=httpx.MockTransport(respond)) as client:
+        provider = OpenRouterCuratorProvider(
+            api_key="test", model="openai:gpt-4.1-mini", spend_service=Spend(), client=client
+        )
+        draft = await provider.verdict(finding, report, run_uid=mint_ulid(), machine_id="m")
+        await provider.aclose()
+    assert (draft.action, draft.label) == ("merge", "Test command")
+    assert len(bodies) == 2
+    assert bodies[1]["messages"][-1]["content"].startswith("That verdict was invalid:")
+    assert "require label, body, and keywords" in bodies[1]["messages"][-1]["content"]

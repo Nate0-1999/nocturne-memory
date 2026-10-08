@@ -143,12 +143,10 @@ def upgrade() -> None:
     )
     op.execute("ALTER TABLE approval_queue_item DROP CONSTRAINT approval_queue_item_verdict_check")
     op.execute(
-        "ALTER TABLE approval_queue_item DROP CONSTRAINT "
-        "approval_queue_item_birthplace_check"
+        "ALTER TABLE approval_queue_item DROP CONSTRAINT approval_queue_item_birthplace_check"
     )
     op.execute(
-        "ALTER TABLE approval_queue_item DROP CONSTRAINT "
-        "approval_queue_item_birthplace_shape_check"
+        "ALTER TABLE approval_queue_item DROP CONSTRAINT approval_queue_item_birthplace_shape_check"
     )
     op.execute("ALTER TABLE approval_queue_item ADD COLUMN candidate_revision INTEGER")
     op.execute("ALTER TABLE approval_queue_item ADD COLUMN curator_run_uid TEXT")
@@ -216,12 +214,10 @@ def downgrade() -> None:
         op.execute(f"DROP TRIGGER {table}_append_only ON {table}")
     op.execute("DROP FUNCTION nocturne_refuse_curator_history_change")
     op.execute(
-        "ALTER TABLE approval_queue_item DROP CONSTRAINT "
-        "approval_queue_item_birthplace_shape_check"
+        "ALTER TABLE approval_queue_item DROP CONSTRAINT approval_queue_item_birthplace_shape_check"
     )
     op.execute(
-        "ALTER TABLE approval_queue_item DROP CONSTRAINT "
-        "approval_queue_item_birthplace_check"
+        "ALTER TABLE approval_queue_item DROP CONSTRAINT approval_queue_item_birthplace_check"
     )
     op.execute("ALTER TABLE approval_queue_item DROP CONSTRAINT approval_queue_item_verdict_check")
     op.execute("ALTER TABLE approval_queue_item DROP COLUMN proposal_payload")

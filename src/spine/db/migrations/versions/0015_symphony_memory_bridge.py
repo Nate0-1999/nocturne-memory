@@ -43,9 +43,7 @@ def upgrade() -> None:
     op.drop_constraint(
         "approval_queue_item_birthplace_shape_check", "approval_queue_item", type_="check"
     )
-    op.drop_constraint(
-        "approval_queue_item_birthplace_check", "approval_queue_item", type_="check"
-    )
+    op.drop_constraint("approval_queue_item_birthplace_check", "approval_queue_item", type_="check")
     op.execute("ALTER TABLE approval_queue_item ADD COLUMN birthplace_run_id TEXT")
     op.execute("ALTER TABLE approval_queue_item ADD COLUMN birthplace_origin_agent TEXT")
     op.execute("ALTER TABLE approval_queue_item ADD COLUMN judged_context JSONB")
@@ -123,9 +121,7 @@ def downgrade() -> None:
     op.drop_constraint(
         "approval_queue_item_birthplace_shape_check", "approval_queue_item", type_="check"
     )
-    op.drop_constraint(
-        "approval_queue_item_birthplace_check", "approval_queue_item", type_="check"
-    )
+    op.drop_constraint("approval_queue_item_birthplace_check", "approval_queue_item", type_="check")
     op.execute("ALTER TABLE approval_queue_item DROP COLUMN judged_context")
     op.execute("ALTER TABLE approval_queue_item DROP COLUMN birthplace_origin_agent")
     op.execute("ALTER TABLE approval_queue_item DROP COLUMN birthplace_run_id")

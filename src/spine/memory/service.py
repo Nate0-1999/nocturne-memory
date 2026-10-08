@@ -604,18 +604,30 @@ class MemoryService:
                 )
 
     async def prepare_curator_amendment(
-        self, body: str, *, principal_id: str, machine_id: str,
+        self,
+        body: str,
+        *,
+        principal_id: str,
+        machine_id: str,
     ) -> MemoryUnitChanges:
         """Validate and embed the owner's replacement before the decision transaction."""
         self._validate_body(body)
         embedding = await embed_one(
-            self._embedding_provider, body, expected_dimensions=_EMBEDDING_DIMENSIONS,
+            self._embedding_provider,
+            body,
+            expected_dimensions=_EMBEDDING_DIMENSIONS,
             receipt_context=EmbeddingReceiptContext(
-                principal_id=principal_id, machine_id=machine_id, origin_agent="maintenance",
+                principal_id=principal_id,
+                machine_id=machine_id,
+                origin_agent="maintenance",
             ),
         )
-        return MemoryUnitChanges(body=body, embedding=embedding,
-                                 embedding_model=self._embedding_provider.model, status="active")
+        return MemoryUnitChanges(
+            body=body,
+            embedding=embedding,
+            embedding_model=self._embedding_provider.model,
+            status="active",
+        )
 
     async def prepare_curator_split(
         self,
