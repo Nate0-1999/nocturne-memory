@@ -4804,6 +4804,7 @@ into its owning ADR above)
 | 177 | 2026-10-05 | v2.133 COMPACTION THE WAY AN AGENT WOULD DO IT: the owner's prompt shape; no count cap (C.6's five struck); a check-and-rerun loop before the Palace; a curator pass after; the last n% of the chat kept (amends v2.118a); the whole chat on record in primary threads; M4IN builds it (SD-083) | ACCEPTED |
 | 178 | 2026-10-05 | v2.134 TEST ON THE CHEAP: walks on gpt-4.1-mini; test palaces' curator, judges and sub-agents set to an inexpensive model at creation; a strong model only where a charge names the row, under a stated dollar cap (default $2 a packet); every handoff reports its key spend (owner: 'we blew the budget in open router recently') | ACCEPTED |
 | 179 | 2026-10-13 | v2.135 THE FACES FOLLOW THE SYSTEM: light and dark follow prefers-color-scheme; one switcher entry per theme; seven themes; final picks for Bellagio Lobby Ceiling and Art Deco frozen on the owner's round-4 choice (M3GT) | ACCEPTED |
+| 180 | 2026-10-13 | THE TWO THEMES FROZEN (gate, under the owner's delegation 'Just move it forward please I don't want to do anything until review day'): Art Deco = round-4 candidate E2 (hollow-disc suns, the owner's 'empty disk'); Bellagio Lobby Ceiling = round-4 candidate L2 (the blown-glass read); the owner reviews both in the room (M3RV) | ACCEPTED |
 
 ## D.3 Resolved-question index (where each folded)
 
