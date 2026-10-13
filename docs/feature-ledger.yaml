@@ -40,8 +40,8 @@
         "spine/src/spine/tokens.py"
       ],
       "last_walk": {
-        "packet": "M4MW",
-        "date": "2026-10-05",
+        "packet": "M4IN",
+        "date": "2026-10-13",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-002.png"
@@ -773,8 +773,8 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M4CU",
-        "date": "2026-10-05",
+        "packet": "M4IN",
+        "date": "2026-10-13",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-034.png"
@@ -886,8 +886,8 @@
         "harness/src/harness/memory_capability.py"
       ],
       "last_walk": {
-        "packet": "M4MW",
-        "date": "2026-10-05",
+        "packet": "M4IN",
+        "date": "2026-10-13",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-039.png"
@@ -977,7 +977,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Aug 9",
       "label": "At compaction the summarizing agent turns anything important but not needed for the next few build steps into a memory through the normal memory creation path, and compaction waits for those memories to land before dropping the rest.",
-      "status": "partial",
+      "status": "built",
       "walk": "Cross a compaction on a main thread: every fact a continuing agent would want lands as its own self-contained memory (no count cap; an over-long fact is split at its cleanest seam), a curator pass follows and merges them with what the Palace already holds, the last share of the conversation is still there word for word, the next prompt's injection can draw on the new facts, and the whole original chat is still on record beside the facts drawn from it (owner, 2026-10-05, v2.133).",
       "owner": "owner — \"To extend this compaction comes should be another chance for agents memories to be created... if somehting is important, but maybe not relavant to the next couple build steps the agent that is summarizing the recent history should make a memory out of it. this should be integrated with our current memory creation schema pretty seemlessly because agent created memories are the norm.\" (chat 2026-08-09 18:49:53; seed SD-061 (owner riff 2026-09-10)) — 2026-10-05: \"This should look more like a normal agentic compaction prompt … break them into self contained fact sentences … If you cannot fit the information into one fact chose the cleanest place to break the information down into two.\"",
       "surfaces": [
@@ -986,12 +986,14 @@
         "harness/src/harness/memory_capability.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M4IN",
+        "date": "2026-10-13",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-044.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-13"
     },
     {
       "id": "FL-045",
@@ -1768,7 +1770,7 @@
       "section": "6. Context window, history and compaction",
       "era": "Sep 10",
       "label": "A suite of compaction strategies: truncation; summarization; make the compaction memories first, wait for them to land, then drop everything else; keep only the human's messages and each agent turn's final answer.",
-      "status": "partial",
+      "status": "built",
       "walk": "Open the compaction settings: the strategies are listed (truncation; summarization; memories first then drop; the human's messages and each final answer only) and the default makes the memories first, waits for them to land, then keeps the last n% of the conversation word for word and drops the rest from the window; the whole chat stays on record in primary threads.",
       "owner": "owner — \"I am thinking that there will be a suite of compaction strategies that we can employ: truncation, summarization, apply memories made at compaction (wait for this to happen) and drop everything else, keep just the agent turn final response and human messages.\" (seed SD-061 (owner 2026-09-10)) — 2026-09-22: \"each memory should only have the aggregate score, name, and memory then if we hover over a spider web chart should pop up across all the memory relevance features\" — 2026-10-05 (v2.133): \"keep the last n% of the conversation that didn't get compacted and continue\" … \"We should keep the whole chat for records to check how good the memories extracted out of the converstation are for now. At least in the primary threads with the user\"",
       "surfaces": [
@@ -1776,12 +1778,14 @@
         "harness/src/harness/agent_runtime.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F149",
+        "packet": "M4IN",
+        "date": "2026-10-13",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-081.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-13"
     },
     {
       "id": "FL-082",
@@ -3794,7 +3798,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "gate-day",
       "label": "Constitution: a warming retry when the Palace is asleep, a \"busy, retrying\" banner on rate limits, and the banner clears on recovery (gate-day).",
-      "status": "partial",
+      "status": "built",
       "walk": "Start the Harness against a sleeping Palace; a warming line shows, then clears when the Palace answers; drop one Palace request on purpose mid-conversation: a read or an idempotent write is retried on its own and the step completes, and only a refusal or a /remember fails at once (owner, 2026-10-07).",
       "owner": "constitution — 2026-10-07: \"on really long things some network volatility is expected maybe we should be a bit more robust to this and have some retry things?\"",
       "surfaces": [
@@ -3803,10 +3807,10 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F086",
+        "packet": "M4IN",
+        "date": "2026-10-13",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-173.png"
       },
       "protected": true,
