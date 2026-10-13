@@ -55,7 +55,8 @@
     "spine/verification/m4in/FL-045.png": "M4IN evidence; no feature behavior.",
     "spine/verification/m4in/FL-163.png": "M4IN evidence; no feature behavior.",
     "spine/verification/m4in/FL-178.png": "M4IN evidence; no feature behavior.",
-    "spine/verification/m4in/FL-179.png": "M4IN evidence; no feature behavior."
+    "spine/verification/m4in/FL-179.png": "M4IN evidence; no feature behavior.",
+    "spine/scripts/verify_wheel.py": "installed-wheel smoke expects schema head 0028 (the compaction trigger migration); no feature behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
