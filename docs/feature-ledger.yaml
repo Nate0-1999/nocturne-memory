@@ -684,7 +684,7 @@
       ],
       "last_walk": {
         "packet": "M4LN",
-        "date": "2026-10-05",
+        "date": "2026-10-07",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-030.png"
@@ -1073,7 +1073,7 @@
       ],
       "last_walk": {
         "packet": "M4LN",
-        "date": "2026-10-05",
+        "date": "2026-10-07",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-048.png"
@@ -1135,7 +1135,7 @@
       ],
       "last_walk": {
         "packet": "M4LN",
-        "date": "2026-10-05",
+        "date": "2026-10-07",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-051.png"
@@ -1223,11 +1223,13 @@
       ],
       "last_walk": {
         "packet": "M4LN",
-        "date": "2026-10-05",
+        "date": "2026-10-07",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-055.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-07"
     },
     {
       "id": "FL-056",
@@ -1361,7 +1363,7 @@
       ],
       "last_walk": {
         "packet": "M4LN",
-        "date": "2026-10-05",
+        "date": "2026-10-07",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-062.png"
