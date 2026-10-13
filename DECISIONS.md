@@ -1435,3 +1435,17 @@ PRECEDENT: F152, M3W6B helper A, ADR-005. The live replay offered equal errors a
 equal token use because a smaller configured share broke the tie. Winner selection
 now compares measured injected tokens only; unused allowance and threshold changes
 are not savings. This removes the test's unsupported interpretation of D.2 133.
+
+## M4IN — A compaction's facts wake the curator; no count cap [P1.4]
+
+PRECEDENT: v2.133 / SD-083, SPEC C.6, SD-074, M3CU, PLAN M4IN.
+POST /v1/extractions drops its five-candidate cap (a new API contract version). The curator
+worker also runs a pass, trigger `compaction`, when a fact whose first revision was written
+by a compaction has been approved since the latest pass began (its run.started progress
+time). One SQL predicate over the queue, revision and progress tables decides it; migration
+0028 only widens the trigger check. Approval is the moment a fact can be merged, since a
+candidate stays invisible until approved.
+On the test palace's v2.134 curator (gpt-4.1-mini) one verdict in five was "merge" without
+its label, body and keywords, and that one malformed verdict failed the whole pass. A verdict
+that fails validation now goes back once with the validation message; a second failure is
+the same truthful failed pass as before.

@@ -1000,7 +1000,8 @@
               "writes",
               "manual",
               "injection_pressure",
-              "cron"
+              "cron",
+              "compaction"
             ],
             "title": "Trigger",
             "type": "string"
@@ -1212,7 +1213,6 @@
             "items": {
               "$ref": "#/components/schemas/ExtractionCandidate"
             },
-            "maxItems": 5,
             "title": "Candidates",
             "type": "array"
           },
@@ -6935,7 +6935,7 @@
   },
   "info": {
     "title": "N8 Spine",
-    "version": "0.1.67"
+    "version": "0.1.68"
   },
   "openapi": "3.1.0",
   "paths": {

@@ -8,6 +8,7 @@ from decimal import Decimal, InvalidOperation
 from typing import Protocol
 
 import httpx
+from pydantic import ValidationError
 
 from spine.curation.contracts import (
     CuratorVerdictDraft,
@@ -105,6 +106,60 @@ class OpenRouterCuratorProvider:
             )
             self._run_models[report.principal_id] = cached
         model = cached[1]
+        messages = [
+            {
+                "role": "system",
+                "content": (
+                    "You are a minimally invasive memory curator. Read the supplied "
+                    "deterministic finding. Return one JSON object matching the "
+                    "schema. Judge only; never claim you changed data. Prefer keep "
+                    "when uncertain."
+                ),
+            },
+            {"role": "user", "content": prompt},
+        ]
+        # v2.133 / M4IN: a verdict missing what its action needs goes back once with the
+        # rule it broke (gpt-4.1-mini merged without label, body and keywords).
+        for attempt in (0, 1):
+            content = await self._verdict_content(
+                messages,
+                model=model,
+                run_uid=run_uid,
+                machine_id=machine_id,
+                report=report,
+                finding=finding,
+            )
+            try:
+                return CuratorVerdictDraft.model_validate_json(_strip_fence(content))
+            except ValueError as exc:
+                if attempt == 1:
+                    raise CuratorProviderError("curator verdict response was malformed") from exc
+                messages = [
+                    *messages,
+                    {"role": "assistant", "content": content},
+                    {
+                        "role": "user",
+                        "content": "That verdict was invalid: "
+                        + (
+                            "; ".join(error["msg"] for error in exc.errors())
+                            if isinstance(exc, ValidationError)
+                            else str(exc)
+                        )
+                        + ". Return the complete JSON verdict.",
+                    },
+                ]
+        raise CuratorProviderError("curator verdict response was malformed")
+
+    async def _verdict_content(
+        self,
+        messages: list[dict[str, str]],
+        *,
+        model: str,
+        run_uid: str,
+        machine_id: str,
+        report: PalaceHealthReport,
+        finding: HealthFinding,
+    ) -> str:
         try:
             response = await self._client.post(
                 self._endpoint,
@@ -112,18 +167,7 @@ class OpenRouterCuratorProvider:
                 json={
                     "model": model,
                     "temperature": 0,
-                    "messages": [
-                        {
-                            "role": "system",
-                            "content": (
-                                "You are a minimally invasive memory curator. Read the supplied "
-                                "deterministic finding. Return one JSON object matching the "
-                                "schema. Judge only; never claim you changed data. Prefer keep "
-                                "when uncertain."
-                            ),
-                        },
-                        {"role": "user", "content": prompt},
-                    ],
+                    "messages": messages,
                     "response_format": {"type": "json_object"},
                 },
                 timeout=self._timeout,
@@ -151,10 +195,9 @@ class OpenRouterCuratorProvider:
             content = payload["choices"][0]["message"]["content"]
             if not isinstance(content, str):
                 raise TypeError("content is not text")
-            draft = CuratorVerdictDraft.model_validate_json(_strip_fence(content))
-        except (KeyError, IndexError, TypeError, ValueError) as exc:
+        except (KeyError, IndexError, TypeError) as exc:
             raise CuratorProviderError("curator verdict response was malformed") from exc
-        return draft
+        return content
 
     async def _receipt(
         self,

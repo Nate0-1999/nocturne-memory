@@ -99,7 +99,7 @@ class CuratorProgress(ContractModel):
 class CuratorRunReceipt(ContractModel):
     run_uid: str
     principal_id: str
-    trigger: Literal["writes", "manual", "injection_pressure", "cron"]
+    trigger: Literal["writes", "manual", "injection_pressure", "cron", "compaction"]
     status: Literal["completed", "failed"]
     admitted_writes_snapshot: int = Field(ge=0)
     pressure_snapshot: int = Field(ge=0)

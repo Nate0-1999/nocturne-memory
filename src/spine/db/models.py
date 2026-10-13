@@ -371,7 +371,7 @@ class CuratorRun(Base):
     __tablename__ = "curator_run"
     __table_args__ = (
         CheckConstraint(
-            "trigger IN ('writes','manual','injection_pressure','cron')",
+            "trigger IN ('writes','manual','injection_pressure','cron','compaction')",
             name="curator_run_trigger_check",
         ),
         CheckConstraint("status IN ('completed','failed')", name="curator_run_status_check"),
