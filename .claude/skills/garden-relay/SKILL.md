@@ -26,7 +26,10 @@ AUDITED is finished: verify, do not rebuild, and stand down.
 
 ## Work in isolation
 An isolated worktree per repo (`git worktree add --detach`), never a shared
-checkout. Push only the claim commit mid-flight; everything else at handoff.
+checkout, under `~/relay/<packet>/` — never /private/tmp, which macOS purges
+after three idle days (every relay worktree was lost on 2026-10-12). Push the
+claim commit, and push your branch at every stopping point; the rest at
+handoff.
 Never force-push. A scratch `NOCTURNE_HOME` for every launch; never the
 owner's `~/.nocturne`. Anything the packet creates in the cloud goes on a
 test palace (`nocturne palace new test-<packet>`), dropped whole after.
