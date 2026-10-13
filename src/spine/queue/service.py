@@ -291,30 +291,26 @@ class QueueService:
         amendment = None
         async with self._session_factory() as session:
             preflight = (
-                (await session.execute(select(*queue.c).where(queue.c.item_uid == item_uid)))
+                (
+                    await session.execute(select(*queue.c).where(queue.c.item_uid == item_uid))
+                )
                 .mappings()
                 .one_or_none()
             )
         if request.amended_body is not None:
             if preflight is None:
                 raise QueueNotFoundError(item_uid)
-            if (
-                preflight["birthplace"] != "curator"
-                or preflight["verdict"] not in {"merge", "supersede"}
-                or request.decision != "approve"
-                or request.actor_class != "human"
-            ):
+            if (preflight["birthplace"] != "curator" or
+                preflight["verdict"] not in {"merge", "supersede"} or
+                request.decision != "approve" or request.actor_class != "human"):
                 raise QueueValidationError("only an explicit curator replacement can be amended")
             amendment = await self._memory_service.prepare_curator_amendment(
-                request.amended_body,
-                principal_id=preflight["principal_id"],
+                request.amended_body, principal_id=preflight["principal_id"],
                 machine_id=request.machine_id,
             )
-        if (
-            preflight is not None
-            and preflight["birthplace"] == "curator"
-            and preflight["verdict"] == "split"
-        ):
+        if preflight is not None and preflight["birthplace"] == "curator" and preflight[
+            "verdict"
+        ] == "split":
             payload = preflight["proposal_payload"]
             children = _proposal_children(payload)
             prepared_split = await self._memory_service.prepare_curator_split(
@@ -343,37 +339,23 @@ class QueueService:
         """Record owner feedback without changing a proposal or deciding a memory."""
         async with self._session_factory() as session:
             async with session.begin():
-                row = (
-                    await session.execute(
-                        select(ApprovalQueueItem, CuratorVerdict.verdict_uid)
-                        .join(
-                            CuratorVerdict,
-                            CuratorVerdict.finding_uid == ApprovalQueueItem.curator_finding_uid,
-                        )
-                        .where(
-                            ApprovalQueueItem.item_uid == item_uid,
-                            ApprovalQueueItem.birthplace == "curator",
-                        )
-                    )
-                ).one_or_none()
+                row = (await session.execute(
+                    select(ApprovalQueueItem, CuratorVerdict.verdict_uid)
+                    .join(CuratorVerdict,
+                          CuratorVerdict.finding_uid == ApprovalQueueItem.curator_finding_uid)
+                    .where(ApprovalQueueItem.item_uid == item_uid,
+                           ApprovalQueueItem.birthplace == "curator")
+                )).one_or_none()
                 if row is None:
                     raise QueueNotFoundError(item_uid)
                 card, verdict_uid = row
                 feedback_uid = mint_ulid()
-                await session.execute(
-                    insert(CuratorAction).values(
-                        action_uid=feedback_uid,
-                        verdict_uid=verdict_uid,
-                        finding_uid=card.curator_finding_uid,
-                        queue_item_uid=item_uid,
-                        outcome="noop",
-                        detail={
-                            "feedback": request.feedback,
-                            "actor_class": "human",
-                            "machine_id": request.machine_id,
-                        },
-                    )
-                )
+                await session.execute(insert(CuratorAction).values(
+                    action_uid=feedback_uid, verdict_uid=verdict_uid,
+                    finding_uid=card.curator_finding_uid, queue_item_uid=item_uid, outcome="noop",
+                    detail={"feedback": request.feedback, "actor_class": "human",
+                            "machine_id": request.machine_id},
+                ))
         return {"feedback_uid": feedback_uid}
 
     async def decide_batch(
@@ -1020,7 +1002,10 @@ def _proposal_keywords(proposal: dict[str, Any]) -> list[str]:
     if not isinstance(value, list) or not 2 <= len(value) <= 5:
         raise QueueValidationError("curator keywords must contain 2-5 values")
     if any(
-        not isinstance(item, str) or not item or item != item.strip() or item != item.lower()
+        not isinstance(item, str)
+        or not item
+        or item != item.strip()
+        or item != item.lower()
         for item in value
     ) or len(set(value)) != len(value):
         raise QueueValidationError("curator keywords must be distinct lowercase terms")
