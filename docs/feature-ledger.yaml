@@ -4480,10 +4480,17 @@
       "era": "Oct 4",
       "label": "The memory palace hooked into Claude Code through its mod surface (hooks and plugin panes), with some of our visualizations ported; explore after v1.",
       "status": "horizon",
-      "walk": "No walk yet: an exploration report names the attachment points (injection at prompt submit, extraction at compaction, a palace pane or status line) and which visualizations port, with a working proof-of-concept if cheap.",
+      "walk": "No walk yet: an exploration report names the attachment points (injection at prompt submit, extraction at compaction, a palace pane or status line) and which visualizations port, with a working proof-of-concept if cheap. (M3CC, 2026-10-07: proven on Claude Code 2.1.293 — a prompt hook fetched memories from a test palace and attached them; the 2D modules can be redrawn in panes, the 3D scenes cannot; a build is the owner's call.)",
       "owner": "owner 2026-10-04: \"Could we hook the memory system we've built up to Claude code? If yes could we port some of our visualizations easily? … mainly explore for now … once we've finished v1\"",
       "surfaces": [],
-      "protected": false
+      "protected": false,
+      "last_walk": {
+        "packet": "M3CC",
+        "date": "2026-10-07",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-204.png"
+      }
     },
     {
       "id": "FL-205",
