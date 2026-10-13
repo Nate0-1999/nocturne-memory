@@ -51,18 +51,14 @@ def test_c5_dedup_and_embedding_defaults_are_exact() -> None:
 
 @pytest.mark.asyncio
 async def test_database_pool_waits_at_the_configured_connection_budget(
-    migrated_database_url: str,
-    monkeypatch: pytest.MonkeyPatch,
+    migrated_database_url: str, monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """F159 bounds each API's connections instead of exhausting the shared instance."""
     monkeypatch.setenv("SPINE_DATABASE_POOL_SIZE", "1")
     monkeypatch.setenv("SPINE_DATABASE_MAX_OVERFLOW", "1")
     settings = _settings()
-    engine = make_engine(
-        migrated_database_url,
-        pool_size=settings.database_pool_size,
-        max_overflow=settings.database_max_overflow,
-    )
+    engine = make_engine(migrated_database_url, pool_size=settings.database_pool_size,
+                         max_overflow=settings.database_max_overflow)
     try:
         async with AsyncExitStack() as stack:
             await stack.enter_async_context(engine.connect())
@@ -81,13 +77,10 @@ def test_curator_band_is_configured_and_registered(monkeypatch: pytest.MonkeyPat
     settings = _settings()
     assert settings.curator_review_sim == 0.75
     assert (settings.dedup_dup, settings.dedup_sim) == (0.92, 0.80)
-    assert next(
-        row for row in LearnerService.manifest() if row["parameter"] == "curator_review_sim"
-    ) == {
-        "parameter": "curator_review_sim",
-        "loop": "creation",
-        "floor": None,
-        "status": "configured",
+    assert next(row for row in LearnerService.manifest()
+                if row["parameter"] == "curator_review_sim") == {
+        "parameter": "curator_review_sim", "loop": "creation",
+        "floor": None, "status": "configured",
     }
 
 
