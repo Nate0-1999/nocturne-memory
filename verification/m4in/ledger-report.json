@@ -44,7 +44,18 @@
     "spine/verification/m4in/FL-167.png": "M4IN evidence; no feature behavior.",
     "spine/verification/m4in/FL-169.png": "M4IN evidence; no feature behavior.",
     "spine/verification/m4in/FL-182.png": "M4IN evidence; no feature behavior.",
-    "spine/verification/m4in/SHA256SUMS": "M4IN evidence; no feature behavior."
+    "spine/verification/m4in/SHA256SUMS": "M4IN evidence; no feature behavior.",
+    "spine/verification/m4in/FL-002.png": "M4IN evidence; no feature behavior.",
+    "spine/verification/m4in/FL-003.png": "M4IN evidence; no feature behavior.",
+    "spine/verification/m4in/FL-005.png": "M4IN evidence; no feature behavior.",
+    "spine/verification/m4in/FL-015.png": "M4IN evidence; no feature behavior.",
+    "spine/verification/m4in/FL-026.png": "M4IN evidence; no feature behavior.",
+    "spine/verification/m4in/FL-038.png": "M4IN evidence; no feature behavior.",
+    "spine/verification/m4in/FL-042.png": "M4IN evidence; no feature behavior.",
+    "spine/verification/m4in/FL-045.png": "M4IN evidence; no feature behavior.",
+    "spine/verification/m4in/FL-163.png": "M4IN evidence; no feature behavior.",
+    "spine/verification/m4in/FL-178.png": "M4IN evidence; no feature behavior.",
+    "spine/verification/m4in/FL-179.png": "M4IN evidence; no feature behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
