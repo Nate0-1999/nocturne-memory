@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "f9bc42d5217450a5d5a7505306d67416c3204ee4",
-      "head": "8b2919874b8f5ac8fe1833d95b1d864c682e9b48"
+      "head": "664a366f19c31b944924fe085f55e57b19597b2f"
     }
   ],
   "unmapped": {
@@ -66,8 +66,24 @@
     "spine/verification/m5rm/public-install.json": "Paired version metadata or generated schema version only; API behavior unchanged.",
     "spine/verification/m5rm/public-smoke.json": "Paired version metadata or generated schema version only; API behavior unchanged.",
     "spine/verification/m5rm/spend-summary.json": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-002.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-003.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-005.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-015.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-026.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-036.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-038.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-042.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-045.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-109.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-114.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
     "spine/verification/m5rt/FL-154.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-163.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
     "spine/verification/m5rt/FL-173.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-178.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-179.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-195.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
+    "spine/verification/m5rt/FL-196.png": "Paired version metadata or generated schema version only; API behavior unchanged.",
     "spine/verification/m5rt/SHA256SUMS": "Paired version metadata or generated schema version only; API behavior unchanged.",
     "spine/verification/m5rt/ledger-report.json": "Paired version metadata or generated schema version only; API behavior unchanged."
   },
@@ -162,24 +178,6 @@
       "screenshot": "FL-114.png",
       "flag": "F086",
       "observed": "Unproven in M5RT: this broader row is reached through a shared file or package dependency. The fresh context capture shows the exercised compaction path only, not this row. No regression or full-row acceptance is claimed; existing protected status is unchanged."
-    },
-    "FL-154": {
-      "label": "A model configuration and token cost policy per agent type: pinned, max, elbow or floor.",
-      "walk": "Open the agent-type config; each type (agent, sub-agent, curator) has its own token-cost policy set to one of pinned, max, elbow or floor.",
-      "protected": true,
-      "verdict": "PASS",
-      "screenshot": "FL-154.png",
-      "flag": "",
-      "observed": "Three fresh runs display distinct agent, sub-agent, judge and curator policies, initially pinned to GPT-4.1 mini. Sub-agent policy changes to max without changing other roles, then is restored. Every archive, comparison and seed request uses GPT-4.1 mini (receipts/resume-model-proof.json); released 0.1.70 used MiniMax M3 for these same operations."
-    },
-    "FL-173": {
-      "label": "Constitution: a warming retry when the Palace is asleep, a \"busy, retrying\" banner on rate limits, and the banner clears on recovery (gate-day).",
-      "walk": "Start the Harness against a sleeping Palace; a warming line shows, then clears when the Palace answers; drop one Palace request on purpose mid-conversation: a read or an idempotent write is retried on its own and the step completes, and only a refusal or a /remember fails at once (owner, 2026-10-07).",
-      "protected": true,
-      "verdict": "PASS",
-      "screenshot": "FL-173.png",
-      "flag": "",
-      "observed": "F195 busy-response corner: three consecutive fresh runs (8,9,10) on the one-instance test Palace; native loads returned 250/219/168 Cloud Run 429s. Forced 429 and 503 compactions complete, retrying notice clears, Jobs recovers, confirmed deletes replay. Symphony stage and post-judge resolution also complete after forced 429; /remember survives three refusals through the outbox. This is not a new cold-start warming claim. See run results, busy logs, remember and symphony-3/4."
     },
     "FL-178": {
       "label": "Constitution: a verification identity with its own account and home for tests and scouts (gate verification-identity work).",
@@ -379,6 +377,7 @@
     "FL-151": "outside diff",
     "FL-152": "not built",
     "FL-153": "not built",
+    "FL-154": "outside diff",
     "FL-155": "outside diff",
     "FL-156": "not built",
     "FL-157": "outside diff",
@@ -397,6 +396,7 @@
     "FL-170": "outside diff",
     "FL-171": "outside diff",
     "FL-172": "outside diff",
+    "FL-173": "outside diff",
     "FL-174": "outside diff",
     "FL-175": "outside diff",
     "FL-176": "horizon",
