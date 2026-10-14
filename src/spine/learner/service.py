@@ -389,8 +389,8 @@ class LearnerService:
                 active_row,
                 eligible=eligible_dispositions,
                 reason=(
-                    "minimum disposition floor not reached: "
-                    f"{eligible_dispositions}/{self._settings.min_dispositions}"
+                    "Not enough authentic signals yet: "
+                    f"{eligible_dispositions} / {self._settings.min_dispositions} available."
                 ),
             )
         try:
@@ -545,7 +545,9 @@ class LearnerService:
                     training_pairs=fit.pair_count,
                     incumbent=_score_view(incumbent_score),
                     challenger=_score_view(fitted_score),
-                    reason="challenger did not clear the replay win rule",
+                    reason=(
+                        "Current values kept: the candidate did not improve the back-test enough."
+                    ),
                 ),
                 incumbent_params=_config_parameter_manifest(active_row),
                 challenger_params={
@@ -665,7 +667,10 @@ class LearnerService:
                 training_pairs=fit.pair_count,
                 incumbent=_score_view(incumbent_score),
                 challenger=_score_view(fitted_score),
-                reason="challenger won replay and remains inactive pending owner activation",
+                reason=(
+                    f"Proposal {version} is ready to audition. It won the back-test; "
+                    "current values keep serving until activation."
+                ),
             ),
             incumbent_params=_config_parameter_manifest(active_row),
             challenger_params={
