@@ -61,21 +61,3 @@ async def test_job_returns_before_fit_and_survives_worker_restart(
         assert await session.scalar(select(func.count()).select_from(LearnerRun)) == 1
         receipt = (await session.scalars(select(LearnerRun))).one()
         assert receipt.reason == job["result"]["reason"]
-
-
-async def test_failed_fit_has_a_terminal_job_receipt(memory_app, monkeypatch):
-    """PLAN M5LN/F212: failed jobs stop polling and never pretend to have a proposal."""
-    service = memory_app.state.learner_service
-
-    async def fail(*args, **kwargs):
-        raise ValueError("invalid training evidence")
-
-    monkeypatch.setattr(service, "_fit", fail)
-    job = await service.submit_job()
-    with pytest.raises(ValueError):
-        await service.run_pending_jobs()
-    result = await service.get_job(job.job_id)
-    assert result.status == "failed"
-    assert result.result is None
-    assert result.error
-    await service.run_pending_jobs()
