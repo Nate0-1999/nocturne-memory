@@ -1,0 +1,12 @@
+{
+  "nocturne-harness": {
+    "version": "0.1.73",
+    "module_path": "/Users/nateoswalt/relay/m5rm/release-install/lib/python3.12/site-packages/harness/__init__.py",
+    "direct_url": null
+  },
+  "nocturne-memory": {
+    "version": "0.1.73",
+    "module_path": "/Users/nateoswalt/relay/m5rm/release-install/lib/python3.12/site-packages/spine/__init__.py",
+    "direct_url": null
+  }
+}
