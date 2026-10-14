@@ -1449,3 +1449,11 @@ On the test palace's v2.134 curator (gpt-4.1-mini) one verdict in five was "merg
 its label, body and keywords, and that one malformed verdict failed the whole pass. A verdict
 that fails validation now goes back once with the validation message; a second failure is
 the same truthful failed pass as before.
+
+## M5RM — A colliding approval label does not strand the fact [P1.2, P1.5]
+
+F194 replayed on the third shared-principal compaction. Approval qualifies an occupied label
+with the project or a distinguishing keyword, then a number if needed, under the existing
+principal advisory lock. The label and activation share one revision and transaction;
+replacement targets retire before activation, as curator replacements already do (F127).
+The fact and consent remain unchanged; no automatic merge.
