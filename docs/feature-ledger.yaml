@@ -31,7 +31,7 @@
       "section": "1. Memory palace — storage, units, lineage",
       "era": "founding",
       "label": "Memory units have a length cap; a memory over the cap is shortened to fit as one memory, and it is split only when it holds more than one distinct fact, with the split logged.",
-      "status": "built",
+      "status": "partial",
       "walk": "Save a fact over the cap: the same prompt runs again with 'this memory is too long, break it down into finer pieces' until every piece fits and stands alone (up to three rounds); a single fact is never refused as several, and nothing is dropped silently — the original stays in the journal.",
       "owner": "owner — \"Like we shorten the length cap then they are too long\" (chat 2026-09-12); \"this was one memory that was split agentically logged\" (chat 2026-07-26) — 2026-10-05 (v2.133): \"If there is a long memory issue we should have a fallback that is like the same prompt but this memory is too long break it down into finer peices.\"",
       "surfaces": [
@@ -40,10 +40,10 @@
         "spine/src/spine/tokens.py"
       ],
       "last_walk": {
-        "packet": "M4IN",
-        "date": "2026-10-13",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F208",
         "screenshot": "FL-002.png"
       },
       "protected": true,
@@ -328,7 +328,7 @@
       "section": "1. Memory palace — storage, units, lineage",
       "era": "Sep 2",
       "label": "Constitution: Typed edges between memories (merged from, supersedes, contradicts, and richer kinds at creation and curation) with a depth-limited traversal for the graph and the scorer (SD-057).",
-      "status": "built",
+      "status": "partial",
       "walk": "Open the Memory Graph on a curated memory; typed edges (merged from, supersedes, contradicts) are drawn to its relatives.",
       "owner": "constitution",
       "surfaces": [
@@ -337,10 +337,10 @@
         "harness/web/src/MemoryGraph.tsx"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F204",
         "screenshot": "FL-015.png"
       },
       "protected": true,
@@ -407,8 +407,8 @@
         "harness/web/src/frontDoor.ts"
       ],
       "last_walk": {
-        "packet": "M4GA",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-018.png"
@@ -590,8 +590,8 @@
         "spine/src/spine/memory/service.py"
       ],
       "last_walk": {
-        "packet": "M4VW",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-026.png"
@@ -674,7 +674,7 @@
       "section": "2. Injection and the gate",
       "era": "Aug 24",
       "label": "Force controls for the line, the share and pins, all in the same module as the hyperparameters, each with the algorithm resuming afterward.",
-      "status": "built",
+      "status": "partial",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): In the Injection Console, force the share; the next retrain moves it again.",
       "owner": "owner — \"Let's just make sure those force or manual set functions all have the same pattern the user can set them but then the algorithm begins automating them agian. Let's make sure these inputs and vizualizatoins are in the same module as the existing hyper parameters.\" (chat 2026-08-24 20:50:21; chat 2026-08-24 20:24:41)",
       "surfaces": [
@@ -683,10 +683,10 @@
         "harness/web/src/MemoryPanel.tsx"
       ],
       "last_walk": {
-        "packet": "M4LN",
-        "date": "2026-10-07",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F207",
         "screenshot": "FL-030.png"
       },
       "protected": true,
@@ -751,8 +751,8 @@
         "spine/src/spine/inject/decisions.py"
       ],
       "last_walk": {
-        "packet": "M4GA",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-033.png"
@@ -765,7 +765,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "The curators deconflict, dedupe and remove slop, triggered by every n memory writes rather than by the clock, and run at the Palace's own location.",
-      "status": "built",
+      "status": "partial",
       "walk": "Add 25 memories to a palace holding near-duplicates; a curator pass runs on its own (every 25 admitted writes or 3 gate removals), finds the pair by near-identical relevance scores on the standard probe set as well as by embedding, and proposes one lossless combined memory; Palace State shows the pass and the palace's growth curve bending; a compaction's admitted facts trigger a pass too, merging them with what the Palace already holds (owner, 2026-10-05, v2.133).",
       "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc. They will be triggered by n number of memories being added and run in the memory palaces location. They must be surgeons: minimally invasive, targeting the root problem, and allowing the system to then sort out the symptoms. They are also responsible for removing slop.\" (chat 2026-07-23 16:07:44; chat 2026-08-03 20:02:16) — 2026-09-30: \"Curator is going to be the thing that limits the memory growth as much as possible which is super critical… Maybe it triggers when n memories are added?\"",
       "surfaces": [
@@ -773,10 +773,10 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M4IN",
-        "date": "2026-10-13",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F206",
         "screenshot": "FL-034.png"
       },
       "protected": true,
@@ -787,7 +787,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "Constitution: A scripted pre-pass that writes a versioned Palace Health Report the curator must read before acting (v2.8–2.9 curator law).",
-      "status": "built",
+      "status": "partial",
       "walk": "Run a curator pass; its record shows the Palace Health Report it read first.",
       "owner": "constitution",
       "surfaces": [
@@ -795,10 +795,10 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M4CU",
-        "date": "2026-10-05",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F205",
         "screenshot": "FL-035.png"
       },
       "protected": true,
@@ -809,7 +809,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "The curators have the right tools and standard procedures for their work, and act as surgeons: minimally invasive, targeting the root problem and letting the system sort out the symptoms.",
-      "status": "built",
+      "status": "partial",
       "walk": "Run a curator pass on a Palace with one duplicate pair; the pass touches only that pair and nothing else.",
       "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc.\" (chat 2026-07-23 16:07:44)",
       "surfaces": [
@@ -818,10 +818,10 @@
         "spine/src/spine/queue/service.py"
       ],
       "last_walk": {
-        "packet": "M4CU",
-        "date": "2026-10-05",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F206",
         "screenshot": "FL-036.png"
       },
       "protected": true,
@@ -832,7 +832,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "Constitution: Typed consolidation decisions: merge, new, contradict, supersede (curator spec).",
-      "status": "built",
+      "status": "partial",
       "walk": "Open a curator merge card: it shows the lossless combined memory beside its sources; approve, amend the text, or give feedback (which is recorded as a tuning signal); a typed merge / new / contradict / supersede verdict is visible on the card (owner, 2026-09-30).",
       "owner": "constitution — owner 2026-09-30: \"the curator sees if it can combine them into one memory losslessly. I could then approve, provide feedback, or amend them as well.\"",
       "surfaces": [
@@ -840,10 +840,10 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F206",
         "screenshot": "FL-037.png"
       },
       "protected": true,
@@ -863,8 +863,8 @@
         "harness/src/harness/agent.py"
       ],
       "last_walk": {
-        "packet": "M4MW",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-038.png"
@@ -886,8 +886,8 @@
         "harness/src/harness/memory_capability.py"
       ],
       "last_walk": {
-        "packet": "M4IN",
-        "date": "2026-10-13",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-039.png"
@@ -941,8 +941,8 @@
         "harness/src/harness/agent.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-042.png"
@@ -963,8 +963,8 @@
         "harness/src/harness/memory_panel.py"
       ],
       "last_walk": {
-        "packet": "M4GA",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-043.png"
@@ -977,7 +977,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Aug 9",
       "label": "At compaction the summarizing agent turns anything important but not needed for the next few build steps into a memory through the normal memory creation path, and compaction waits for those memories to land before dropping the rest.",
-      "status": "built",
+      "status": "partial",
       "walk": "Cross a compaction on a main thread: every fact a continuing agent would want lands as its own self-contained memory (no count cap; an over-long fact is split at its cleanest seam), a curator pass follows and merges them with what the Palace already holds, the last share of the conversation is still there word for word, the next prompt's injection can draw on the new facts, and the whole original chat is still on record beside the facts drawn from it (owner, 2026-10-05, v2.133).",
       "owner": "owner — \"To extend this compaction comes should be another chance for agents memories to be created... if somehting is important, but maybe not relavant to the next couple build steps the agent that is summarizing the recent history should make a memory out of it. this should be integrated with our current memory creation schema pretty seemlessly because agent created memories are the norm.\" (chat 2026-08-09 18:49:53; seed SD-061 (owner riff 2026-09-10)) — 2026-10-05: \"This should look more like a normal agentic compaction prompt … break them into self contained fact sentences … If you cannot fit the information into one fact chose the cleanest place to break the information down into two.\"",
       "surfaces": [
@@ -986,10 +986,10 @@
         "harness/src/harness/memory_capability.py"
       ],
       "last_walk": {
-        "packet": "M4IN",
-        "date": "2026-10-13",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F194",
         "screenshot": "FL-044.png"
       },
       "protected": true,
@@ -1000,7 +1000,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Aug 31",
       "label": "Same-memory detection by encoding and retrieving, not exact wording.",
-      "status": "built",
+      "status": "partial",
       "walk": "Save a rephrased known fact: at 0.80 similarity or above it is recognized at once (asked or reinforced, per the write bands) instead of duplicating; a rewording below 0.80 is saved, and the next curator pass proposes merging the pair (its own 0.70 band, v2.128).",
       "owner": "owner — \"2. We need a prove a way that we can distinguish the memories that come out are the same or different besides exact wording, even though they should be similar. Maybe we encode them and rag them or something?\" (chat 2026-08-31 21:00:39)",
       "surfaces": [
@@ -1009,10 +1009,10 @@
         "spine/src/spine/memory/router.py"
       ],
       "last_walk": {
-        "packet": "M4MW",
-        "date": "2026-10-05",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F206",
         "screenshot": "FL-045.png"
       },
       "protected": true,
@@ -1074,8 +1074,8 @@
         "spine/src/spine/learner/evidence.py"
       ],
       "last_walk": {
-        "packet": "M4LN",
-        "date": "2026-10-07",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-048.png"
@@ -1127,7 +1127,7 @@
       "section": "4. Learning and training loops",
       "era": "Aug 3",
       "label": "A performance score for the memory system, back-tested on the history of manual adds and removes plus successful injections; a new set of weights is accepted only if it scores better than the previous generation.",
-      "status": "built",
+      "status": "partial",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Force retrain; the scoreboard shows the new weights' back-test score beside the previous generation's, and the update lands only if it is higher.",
       "owner": "owner — \"I like the idea that there is a performance of memory system. Imagine over time that there is a score that the hyper parameters modification can will improve or the hyper parameter update will not happen does that make sense? All the manual adds or removes for the history of the harness plus the a good amount of the successful ones that did not need manual intervention. We should be able to do a back test and be like our new set of hyper parameters map to  98% correct injection across the backtest while the previous generation did 97% does that make sense.\" (chat 2026-08-03 20:11:30)",
       "surfaces": [
@@ -1136,10 +1136,10 @@
         "harness/web/src/learning.ts"
       ],
       "last_walk": {
-        "packet": "M4LN",
-        "date": "2026-10-07",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F207",
         "screenshot": "FL-051.png"
       },
       "protected": true,
@@ -1224,8 +1224,8 @@
         "spine/src/spine/learner/"
       ],
       "last_walk": {
-        "packet": "M4LN",
-        "date": "2026-10-07",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-055.png"
@@ -1270,12 +1270,14 @@
         "spine/src/spine/db/migrations/versions/0023_creation_decisions.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-057.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-14"
     },
     {
       "id": "FL-058",
@@ -1290,8 +1292,8 @@
         "garden/notes/trainable-parameters.md"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-058.png"
@@ -1356,7 +1358,7 @@
       "section": "4. Learning and training loops",
       "era": "gate-day",
       "label": "Constitution: The audition: a proposed scorer runs as a visible shadow beside the incumbent before acceptance (gate-day).",
-      "status": "built",
+      "status": "partial",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Open a proposal; its shadow results show beside the incumbent's on the live gate.",
       "owner": "constitution",
       "surfaces": [
@@ -1364,10 +1366,10 @@
         "spine/src/spine/learner/service.py"
       ],
       "last_walk": {
-        "packet": "M4LN",
-        "date": "2026-10-07",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F207",
         "screenshot": "FL-062.png"
       },
       "protected": true,
@@ -1464,8 +1466,8 @@
         "harness/web/src/projectPath.ts"
       ],
       "last_walk": {
-        "packet": "M4AH",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-067.png"
@@ -1500,7 +1502,7 @@
       "section": "5. Agent hands and location",
       "era": "Jul 28",
       "label": "The core tools every modern harness has: files, terminal, Chrome, skills, changing models, compaction (our own take), and interactions with common apps, taken from the most modular standard source.",
-      "status": "built",
+      "status": "partial",
       "walk": "Ask the agent to read a file, run a terminal command, open a page in the browser and use a skill; each works.",
       "owner": "owner — \"there should be a core of tools that are consistent across al of them that we should fine: using skills, progressive prompting, changing models, compaction strategies (we will have our own take), interactions with common apps, etc, etc. we need to go out and find those common standard ones pick the one we like the best that is the most modular and keep it.\" (chat 2026-08-16 19:37:48; chat 2026-07-28 16:27:32)",
       "surfaces": [
@@ -1513,10 +1515,10 @@
         "harness/src/harness/browser_runtime.py"
       ],
       "last_walk": {
-        "packet": "M4AH",
-        "date": "2026-10-05",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F200",
         "screenshot": "FL-069.png"
       },
       "protected": true,
@@ -1527,7 +1529,7 @@
       "section": "5. Agent hands and location",
       "era": "Aug 2",
       "label": "Image input: paste an image and the agent reviews it.",
-      "status": "built",
+      "status": "partial",
       "walk": "Paste an image; the agent reviews it.",
       "owner": "owner — \"3. Ok multimodality should be something that we must support long term. I must be able to copy in images and have my agents review them. Similarly to browser use and comand line use and all the other basic tooling every modern harness has.\" (chat 2026-08-03 01:00:05)",
       "surfaces": [
@@ -1537,10 +1539,10 @@
         "harness/src/harness/transcript.py"
       ],
       "last_walk": {
-        "packet": "M4AH",
-        "date": "2026-10-05",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F200",
         "screenshot": "FL-070.png"
       },
       "protected": true,
@@ -1583,8 +1585,8 @@
         "harness/src/harness/progressive_prompt.py"
       ],
       "last_walk": {
-        "packet": "M4AH",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-072.png"
@@ -1653,8 +1655,8 @@
         "harness/src/harness/run_loop.py"
       ],
       "last_walk": {
-        "packet": "M4CD",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-075.png"
@@ -1677,8 +1679,8 @@
         "harness/web/src/RewindControl.tsx"
       ],
       "last_walk": {
-        "packet": "M4CD",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-076.png"
@@ -1701,7 +1703,7 @@
       "section": "5. Agent hands and location",
       "era": "founding",
       "label": "Browser hands adopted whole and pinned upstream: Playwright for Python, with the Codex extension deferred until a standalone runtime exists (F116 ruling).",
-      "status": "built",
+      "status": "partial",
       "walk": "Ask the agent to open the app it just built and read the page; it navigates, clicks, types and screenshots through the adopted browser hands (Playwright; the Codex extension is revisited when a standalone runtime exists — F116), inside the fence, every action journaled.",
       "owner": "owner — \"I would lik to have a codex browser use extension because it thikn it is really good and the open ai devs will definitely spend a bunch of time maintaining it and making it better\" (chat 2026-09-12); Playwright fallback accepted by PLAN M3BW RULING (2026-09-16, F116 resolved).",
       "surfaces": [
@@ -1711,10 +1713,10 @@
         "harness/tests/test_browser_consent.py"
       ],
       "last_walk": {
-        "packet": "M4AH",
-        "date": "2026-10-05",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F201",
         "screenshot": "FL-078.png"
       },
       "protected": true,
@@ -1778,8 +1780,8 @@
         "harness/src/harness/agent_runtime.py"
       ],
       "last_walk": {
-        "packet": "M4IN",
-        "date": "2026-10-13",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-081.png"
@@ -1858,8 +1860,8 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M4SY",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-085.png"
@@ -1884,8 +1886,8 @@
         "harness/src/harness/symphony_experience.py"
       ],
       "last_walk": {
-        "packet": "M4SY",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-086.png"
@@ -1995,8 +1997,8 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M4SY",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-091.png"
@@ -2040,8 +2042,8 @@
         "harness/web/src/RecipeModule.tsx"
       ],
       "last_walk": {
-        "packet": "M4SY",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-093.png"
@@ -2063,8 +2065,8 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-094.png"
@@ -2088,8 +2090,8 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-095.png"
@@ -2130,8 +2132,8 @@
         "harness/src/harness/WORKER_BRIEF.md"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-097.png"
@@ -2144,7 +2146,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 17",
       "label": "The symphony lifecycle shows its human touchpoints, the human prompt and any interjection or steering, so they can be seen.",
-      "status": "built",
+      "status": "partial",
       "walk": "Steer a symphony mid-run; the human prompt and the steering both show on the run's trace.",
       "owner": "owner — \"Can you improve this trace with some visualizations and touchstones on the symphony lifecycle: human promt, interjection/steering, etc so I can see it.\" (chat 2026-08-17 15:49:32)",
       "surfaces": [
@@ -2153,10 +2155,10 @@
         "harness/web/src/SymphonyDeck.tsx"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F193",
         "screenshot": "FL-098.png"
       },
       "protected": true,
@@ -2176,8 +2178,8 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-099.png"
@@ -2244,8 +2246,8 @@
         "harness/web/src/store.ts"
       ],
       "last_walk": {
-        "packet": "M4CD",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-102.png"
@@ -2341,8 +2343,8 @@
         "harness/src/harness/commands.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-106.png"
@@ -2364,8 +2366,8 @@
         "harness/src/harness/parameter_registry.py"
       ],
       "last_walk": {
-        "packet": "M4MS",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-107.png"
@@ -2509,8 +2511,8 @@
         "harness/web/src/ModelDevice.tsx"
       ],
       "last_walk": {
-        "packet": "M4UX",
-        "date": "2026-10-13",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-113.png"
@@ -2718,8 +2720,8 @@
         "harness/src/harness/recipe_graph.py"
       ],
       "last_walk": {
-        "packet": "M4SY",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-122.png"
@@ -2769,8 +2771,8 @@
         "harness/web/src/assets/rack.css"
       ],
       "last_walk": {
-        "packet": "M4CD",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-124.png"
@@ -2900,8 +2902,8 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M4VW",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-130.png"
@@ -2938,7 +2940,7 @@
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "A time-order control that highlights new roots and moves the panels to the longest-waiting response.",
-      "status": "built",
+      "status": "partial",
       "walk": "Click the time-order control; new roots highlight and the side panels move to the longest-waiting response.",
       "owner": "owner — \"3. I click the left hand side to time order and the visulization highlights new roots and the left hand and right hand side visualizatoins adjust to the longest waiting response for a different project.\" (chat 2026-07-20 17:15:32)",
       "surfaces": [
@@ -2948,10 +2950,10 @@
         "harness/src/harness/visualization.py"
       ],
       "last_walk": {
-        "packet": "M4VW",
-        "date": "2026-10-05",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F202",
         "screenshot": "FL-132.png"
       },
       "protected": true,
@@ -2977,8 +2979,8 @@
       ],
       "plate": "verification/m3vz/plates/palace.png",
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "FAIL",
         "flag": "F155",
         "screenshot": "FL-133.png"
@@ -2989,7 +2991,7 @@
       "section": "9. Visualization",
       "era": "Jul 20",
       "label": "A way to see things being added or removed over time, as SolidWorks does, the project growing like an organic object.",
-      "status": "built",
+      "status": "partial",
       "walk": "Drag the rollback bar back; the visuals show what had been added or removed by that moment.",
       "owner": "owner — \"I think like solid works we can see things being added or removed with time right. The projects that the computer is workin on is an organic object that's almost alive...\" (chat 2026-07-20 17:34:14)",
       "surfaces": [
@@ -2999,10 +3001,10 @@
         "harness/src/harness/visualization.py"
       ],
       "last_walk": {
-        "packet": "M4VW",
-        "date": "2026-10-05",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F181",
         "screenshot": "FL-134.png"
       },
       "protected": true,
@@ -3063,8 +3065,8 @@
         "harness/web/src/MemoryGraph.tsx"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "FAIL",
         "flag": "F131",
         "screenshot": "FL-138.png"
@@ -3182,8 +3184,8 @@
         "harness/README.md"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "FAIL",
         "flag": "F158",
         "screenshot": "FL-144.png"
@@ -3383,8 +3385,8 @@
         "spine/src/spine/model_policy.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-154.png"
@@ -3406,8 +3408,8 @@
         "spine/src/spine/spend/"
       ],
       "last_walk": {
-        "packet": "M4MS",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-155.png"
@@ -3465,8 +3467,8 @@
         "harness/src/harness/commands.py"
       ],
       "last_walk": {
-        "packet": "M4MS",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-158.png"
@@ -3490,8 +3492,8 @@
         "spine/src/spine/spend/views.py"
       ],
       "last_walk": {
-        "packet": "M4MS",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-159.png"
@@ -3636,7 +3638,7 @@
         "harness/src/harness/receipt_queue.py"
       ],
       "last_walk": {
-        "packet": "M4BW",
+        "packet": "M4W1B",
         "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
@@ -3659,8 +3661,8 @@
         "harness/src/harness/cli.py"
       ],
       "last_walk": {
-        "packet": "M4MS",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-166.png"
@@ -3773,8 +3775,8 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-171.png"
@@ -3787,7 +3789,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "gate-day",
       "label": "Constitution: Palace export and portability (gate-day).",
-      "status": "partial",
+      "status": "built",
       "walk": "Run nocturne export to produce one file containing every principal-scoped memory and its lineage; import it into another Palace and compare the archive (A-071 CLI front door).",
       "owner": "constitution",
       "surfaces": [
@@ -3795,12 +3797,14 @@
         "spine/src/spine/portability.py"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
-        "verdict": "FAIL",
-        "flag": "F158",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-172.png"
-      }
+      },
+      "protected": true,
+      "protected_reason": "walk PASS 2026-10-14"
     },
     {
       "id": "FL-173",
@@ -3816,7 +3820,7 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M4BW",
+        "packet": "M4W1B",
         "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
@@ -4039,8 +4043,8 @@
         "harness/src/harness/jobs.py"
       ],
       "last_walk": {
-        "packet": "M4VW",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-184.png"
@@ -4151,8 +4155,8 @@
         "harness/uv.lock"
       ],
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-190.png"
@@ -4340,7 +4344,7 @@
       "section": "6. Context window, history and compaction",
       "era": "Sep 22",
       "label": "Context overwhelm protections: a query or a sub-agent return may take up at most n% of the compaction limit, the share chosen by the sending agent within bounds that are system parameters; a security module shows it.",
-      "status": "built",
+      "status": "partial",
       "walk": "Make a query return more than its share of the compaction limit; the agent gets an error naming the size and a very brief head of the response. Make a sub-agent return more than its share; it is sent back the exact amount to shorten by and returns under the share. The security module shows both.",
       "owner": "owner — \"We should have some context overwhelm protections in place a security module. Like a query or a sub agent return should have n% of total compaction limit it can take up... maybe if the agent who is sending the sub agent or query can pick it within bounds that are system parameters\" (chat 2026-09-22) — ruled 2026-09-22: \"simply enhance what exists… error/show very brief start to the query… submit back to that subagent the response must be shorter by some deterministically calculated amount\"",
       "surfaces": [
@@ -4352,10 +4356,10 @@
         "harness/web/src/assets/security.css"
       ],
       "last_walk": {
-        "packet": "M4AH",
-        "date": "2026-10-05",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F200",
         "screenshot": "FL-198.png"
       },
       "protected": true,
@@ -4395,8 +4399,8 @@
         "harness/web/src/WorkerContext.tsx"
       ],
       "last_walk": {
-        "packet": "M4CU",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-199.png"
@@ -4441,8 +4445,8 @@
       ],
       "protected": true,
       "last_walk": {
-        "packet": "M4CD",
-        "date": "2026-10-05",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-201.png"
@@ -4466,8 +4470,8 @@
       ],
       "protected": true,
       "last_walk": {
-        "packet": "M3W6A+M3W6B",
-        "date": "2026-10-04",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-202.png"
@@ -4512,7 +4516,7 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Oct 7",
       "label": "The thread list tells you where and how: each thread shows its project by name and the model and thinking level in force, and the list reads cleaner.",
-      "status": "built",
+      "status": "partial",
       "walk": "Open the thread list with threads in two projects on two models: each row names its project (not a path), its model and thinking level, with the same marks wherever that thread is named (the Deck, the conversation header); nothing repeats, nothing truncates.",
       "owner": "owner 2026-10-07: \"to tell which project each thread is in thread list and what thinking level things are etc. it just needs to be cleaner.\"",
       "surfaces": [
@@ -4522,10 +4526,10 @@
       ],
       "protected": true,
       "last_walk": {
-        "packet": "M4UX",
-        "date": "2026-10-13",
-        "verdict": "PASS",
-        "flag": "",
+        "packet": "M4W1B",
+        "date": "2026-10-14",
+        "verdict": "FAIL",
+        "flag": "F203",
         "screenshot": "FL-205.png"
       },
       "protected_reason": "walk PASS 2026-10-13"
