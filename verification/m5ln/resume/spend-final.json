@@ -1,0 +1,114 @@
+{
+  "palace": "test-m5ln-job",
+  "rows": [
+    {
+      "basis": "allocated",
+      "product_type": "llm.request",
+      "receipt_lines": 148,
+      "unpriced_lines": 0,
+      "priced_usd": "0.057422400000",
+      "first_at": "2026-10-14 06:47:48.144502+00:00",
+      "last_at": "2026-10-14 08:28:12.069359+00:00"
+    },
+    {
+      "basis": "measured",
+      "product_type": "llm.embedding",
+      "receipt_lines": 229,
+      "unpriced_lines": 0,
+      "priced_usd": "0.000152620000",
+      "first_at": "2026-10-14 06:47:49.450573+00:00",
+      "last_at": "2026-10-14 08:28:14.991966+00:00"
+    },
+    {
+      "basis": "measured",
+      "product_type": "llm.request",
+      "receipt_lines": 285,
+      "unpriced_lines": 0,
+      "priced_usd": "0.146552800000",
+      "first_at": "2026-10-14 06:52:18.786557+00:00",
+      "last_at": "2026-10-14 07:47:26.291061+00:00"
+    }
+  ],
+  "fits": [
+    {
+      "run_uid": "01M4WJVA830EJYD6E4B4DQ76P2",
+      "trigger_kind": "manual",
+      "trigger_event_uid": "01M4WJV9XX7ETN2YRGZFTDBS28",
+      "verdict": "insufficient_data",
+      "started_at": "2026-10-14 06:50:55.964407+00:00",
+      "completed_at": "2026-10-14 06:50:56.150055+00:00",
+      "elapsed_seconds": "0.185648"
+    },
+    {
+      "run_uid": "01M4WM2VYYXJS81J1YTWSFTDVB",
+      "trigger_kind": "manual",
+      "trigger_event_uid": "01M4WKPZC638BT319SR1RBEGMS",
+      "verdict": "proposed",
+      "started_at": "2026-10-14 07:06:02.589005+00:00",
+      "completed_at": "2026-10-14 07:12:32.250156+00:00",
+      "elapsed_seconds": "389.661151"
+    },
+    {
+      "run_uid": "01M4WMJ5STA4FPZ0SKCKGP3SV1",
+      "trigger_kind": "background",
+      "trigger_event_uid": "01M4WM5DSWBQXWHKGHZZJZ8Z0A",
+      "verdict": "proposed",
+      "started_at": "2026-10-14 07:13:58.267284+00:00",
+      "completed_at": "2026-10-14 07:20:53.834574+00:00",
+      "elapsed_seconds": "415.567290"
+    },
+    {
+      "run_uid": "01M4WN0RFCC4ZNQ03S97DHB4GB",
+      "trigger_kind": "manual",
+      "trigger_event_uid": "01M4WMMC6JR3ZXKA8MJSNVYM6E",
+      "verdict": "proposed",
+      "started_at": "2026-10-14 07:22:06.024931+00:00",
+      "completed_at": "2026-10-14 07:28:51.702647+00:00",
+      "elapsed_seconds": "405.677716"
+    },
+    {
+      "run_uid": "01M4WNHFB975CSAKH4AJWQKXY9",
+      "trigger_kind": "background",
+      "trigger_event_uid": "01M4WN3GW83YE9744P93HDB90E",
+      "verdict": "proposed",
+      "started_at": "2026-10-14 07:30:22.423605+00:00",
+      "completed_at": "2026-10-14 07:37:59.419084+00:00",
+      "elapsed_seconds": "456.995479"
+    },
+    {
+      "run_uid": "01M4WP1Z63Q9XQPSWDJ9QYVE9R",
+      "trigger_kind": "manual",
+      "trigger_event_uid": "01M4WNKJ35YMFF7Q0FZ5A73C7Y",
+      "verdict": "proposed",
+      "started_at": "2026-10-14 07:39:07.839752+00:00",
+      "completed_at": "2026-10-14 07:46:59.916884+00:00",
+      "elapsed_seconds": "472.077132"
+    },
+    {
+      "run_uid": "01M4WPGMMMBYE7VXN0B4W7E0J8",
+      "trigger_kind": "background",
+      "trigger_event_uid": "01M4WP4HFVDG5T7CFT7NF51SKS",
+      "verdict": "proposed",
+      "started_at": "2026-10-14 07:48:24.344078+00:00",
+      "completed_at": "2026-10-14 07:55:00.654986+00:00",
+      "elapsed_seconds": "396.310908"
+    },
+    {
+      "run_uid": "01M4WRWVH77M26F07QTR6H2Q3B",
+      "trigger_kind": "manual",
+      "trigger_event_uid": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+      "verdict": "proposed",
+      "started_at": "2026-10-14 08:28:28.868085+00:00",
+      "completed_at": "2026-10-14 08:36:38.070124+00:00",
+      "elapsed_seconds": "489.202039"
+    }
+  ],
+  "totals": {
+    "resume_measured_usd": "0.146705420000",
+    "resume_allocated_usd": "0.057422400000",
+    "whole_packet_measured_usd": "0.467166840000",
+    "whole_packet_allocated_usd": "0.191218400000",
+    "cloud_infrastructure": "not attributed",
+    "note": "Measured and allocated are separate bases, not additive. Previous session totals preserved in report 288; shared-key balance is not a packet bill."
+  }
+}

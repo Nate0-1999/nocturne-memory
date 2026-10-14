@@ -1,0 +1,20 @@
+{
+  "packages": {
+    "nocturne-harness": {
+      "version": "0.1.78",
+      "module": "/Users/nateoswalt/relay/M5LN/public-resume-venv/lib/python3.12/site-packages/harness/__init__.py",
+      "direct_url": null
+    },
+    "nocturne-memory": {
+      "version": "0.1.78",
+      "module": "/Users/nateoswalt/relay/M5LN/public-resume-venv/lib/python3.12/site-packages/spine/__init__.py",
+      "direct_url": null
+    }
+  },
+  "web_root": "/Users/nateoswalt/relay/M5LN/public-resume-venv/lib/python3.12/site-packages/harness/_web",
+  "index_sha256": "087cfa53795b5afe7fa9d28fec2d583c7cf0a9ad1ab64686f1c225ff7a2293fa",
+  "memory_workflow": 38533011049,
+  "harness_workflow": 38534751009,
+  "public_index": "https://pypi.org/simple",
+  "editable": false
+}
