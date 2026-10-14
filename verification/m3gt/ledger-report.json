@@ -2,18 +2,18 @@
  "packet": "M3GT",
  "mode": "builder",
  "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
- "ledger_sha256": "7baff053d5273729047f8e3956b9fd78a0a2651537655cd47956369f67b07bba",
+ "ledger_sha256": "797511980941adc38182d074e16e8009f64cc013615eac1af706efd24651872a",
  "diffs": [
   {
    "repo": "spine",
-   "base": "90c9871d6e86588bbc9ecaf5db883bfb14a35828",
-   "head": "56456698049950bd8756d707d93a63fc037180e9"
+   "base": "f18e13618782d414231371378bd6739f30cb0daa",
+   "head": "2dcb5426cffa1e1005cc137e25e1cdab3b319663"
   }
  ],
  "unmapped": {
-  "spine/openapi.json": "paired release version 0.1.69 for the M3GT theme release; no feature behavior.",
-  "spine/src/spine/__init__.py": "paired release version 0.1.69 for the M3GT theme release; no feature behavior.",
-  "spine/tests/test_packaging.py": "paired release version 0.1.69 in the packaging test; no product behavior.",
+  "spine/openapi.json": "paired release version 0.1.81 for the M3GT theme release; no feature behavior.",
+  "spine/src/spine/__init__.py": "paired release version 0.1.81 for the M3GT theme release; no feature behavior.",
+  "spine/tests/test_packaging.py": "paired release version 0.1.81 in the packaging test; no product behavior.",
   "spine/verification/m3gt/ledger-report.json": "M3GT evidence: this coverage report and its checksums.",
   "spine/verification/m3gt/SHA256SUMS": "M3GT evidence: this coverage report and its checksums."
  },
@@ -185,7 +185,7 @@
   "FL-162": "outside diff",
   "FL-163": "outside diff",
   "FL-164": "outside diff",
-  "FL-165": "not built",
+  "FL-165": "outside diff",
   "FL-166": "outside diff",
   "FL-167": "outside diff",
   "FL-168": "outside diff",
