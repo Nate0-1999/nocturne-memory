@@ -688,5 +688,10 @@
       "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38514360354",
       "workflowName": "CI"
     }
-  ]
+  ],
+  "integration_note": {
+    "run": 38532350637,
+    "job": 115746950711,
+    "cause": "The push contains inherited M5RT DONE commits. Its historical report is checked against current M5LN changes and the new frozen ledger; peer evidence is not rewritten. A subsequent M5LN-only checkpoint has its own complete current coverage."
+  }
 }
