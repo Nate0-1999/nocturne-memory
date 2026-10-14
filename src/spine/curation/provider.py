@@ -132,19 +132,23 @@ class OpenRouterCuratorProvider:
             try:
                 return CuratorVerdictDraft.model_validate_json(_strip_fence(content))
             except ValueError as exc:
+                error = (
+                    "; ".join(
+                        f"{'.'.join(map(str, item['loc'])) or 'verdict'}: {item['msg']}"
+                        for item in exc.errors()
+                    ) if isinstance(exc, ValidationError) else str(exc)
+                )
                 if attempt == 1:
-                    raise CuratorProviderError("curator verdict response was malformed") from exc
+                    raise CuratorProviderError(
+                        f"curator verdict response was malformed: {error}"
+                    ) from exc
                 messages = [
                     *messages,
                     {"role": "assistant", "content": content},
                     {
                         "role": "user",
                         "content": "That verdict was invalid: "
-                        + (
-                            "; ".join(error["msg"] for error in exc.errors())
-                            if isinstance(exc, ValidationError)
-                            else str(exc)
-                        )
+                        + error
                         + ". Return the complete JSON verdict.",
                     },
                 ]
