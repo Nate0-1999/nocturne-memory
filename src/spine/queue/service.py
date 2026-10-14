@@ -459,6 +459,11 @@ class QueueService:
         expected = "approved" if request.decision == "approve" else "rejected"
         if candidate["status"] != "candidate":
             raise QueueConflictError("queue candidate is no longer pending")
+        changes = MemoryUnitChanges(status="tombstoned")
+        if request.decision == "approve":
+            await self._enact_targets(session, row, candidate, request.machine_id)
+            label = await self._memory_service.approval_label(session, candidate)
+            changes = MemoryUnitChanges(status="active", label=label)
         await cas_update_memory_unit(
             session,
             CasUpdate(
@@ -468,13 +473,9 @@ class QueueService:
                 editor="human" if request.actor_class == "human" else "passive",
                 origin_machine_id=request.machine_id,
                 reason="approved" if request.decision == "approve" else "rejected",
-                changes=MemoryUnitChanges(
-                    status="active" if request.decision == "approve" else "tombstoned"
-                ),
+                changes=changes,
             ),
         )
-        if request.decision == "approve":
-            await self._enact_targets(session, row, candidate, request.machine_id)
         decision_uid = mint_ulid()
         await session.execute(
             insert(decisions).values(
