@@ -31,8 +31,8 @@
       "section": "1. Memory palace — storage, units, lineage",
       "era": "founding",
       "label": "Memory units have a length cap; a memory over the cap is shortened to fit as one memory, and it is split only when it holds more than one distinct fact, with the split logged.",
-      "status": "partial",
-      "walk": "Save a fact over the cap: the same prompt runs again with 'this memory is too long, break it down into finer pieces' until every piece fits and stands alone (up to three rounds); a single fact is never refused as several, and nothing is dropped silently — the original stays in the journal.",
+      "status": "built",
+      "walk": "Save an over-cap single fact: shorten it into one memory, preserving its schedule and qualifiers; split only independent claims. Repeat the scout's long single-fact and two-fact inputs three times. The same prompt repairs failed checks up to three rounds; nothing is dropped silently and the original stays in the journal (M5RM / F208).",
       "owner": "owner — \"Like we shorten the length cap then they are too long\" (chat 2026-09-12); \"this was one memory that was split agentically logged\" (chat 2026-07-26) — 2026-10-05 (v2.133): \"If there is a long memory issue we should have a fallback that is like the same prompt but this memory is too long break it down into finer peices.\"",
       "surfaces": [
         "harness/src/harness/agent.py",
@@ -40,10 +40,10 @@
         "spine/src/spine/tokens.py"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5RM",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F208",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-002.png"
       },
       "protected": true,
@@ -978,7 +978,7 @@
       "era": "Aug 9",
       "label": "At compaction the summarizing agent turns anything important but not needed for the next few build steps into a memory through the normal memory creation path, and compaction waits for those memories to land before dropping the rest.",
       "status": "partial",
-      "walk": "Cross a compaction on a main thread: every fact a continuing agent would want lands as its own self-contained memory (no count cap; an over-long fact is split at its cleanest seam), a curator pass follows and merges them with what the Palace already holds, the last share of the conversation is still there word for word, the next prompt's injection can draw on the new facts, and the whole original chat is still on record beside the facts drawn from it (owner, 2026-10-05, v2.133).",
+      "walk": "Cross a compaction on a main thread: every fact a continuing agent would want lands as its own self-contained memory (no count cap; shorten one over-long claim, split only independent claims), a curator pass follows and merges them with what the Palace already holds, the last share of the conversation is still there word for word, the next prompt's injection can draw on the new facts, and the whole original chat is still on record beside the facts drawn from it (owner, 2026-10-05, v2.133; M5RM).",
       "owner": "owner — \"To extend this compaction comes should be another chance for agents memories to be created... if somehting is important, but maybe not relavant to the next couple build steps the agent that is summarizing the recent history should make a memory out of it. this should be integrated with our current memory creation schema pretty seemlessly because agent created memories are the norm.\" (chat 2026-08-09 18:49:53; seed SD-061 (owner riff 2026-09-10)) — 2026-10-05: \"This should look more like a normal agentic compaction prompt … break them into self contained fact sentences … If you cannot fit the information into one fact chose the cleanest place to break the information down into two.\"",
       "surfaces": [
         "harness/src/harness/extraction.py",
@@ -986,10 +986,10 @@
         "harness/src/harness/memory_capability.py"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5RM",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F194",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-044.png"
       },
       "protected": true,
