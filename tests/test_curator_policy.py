@@ -132,7 +132,9 @@ async def test_curator_policy_selects_real_request_model_and_stays_fixed_for_a_p
 
 
 @pytest.mark.parametrize("too_many_keywords", [False, True])
-async def test_a_verdict_missing_its_payload_goes_back_once_with_the_rule(too_many_keywords) -> None:
+async def test_a_verdict_missing_its_payload_goes_back_once_with_the_rule(
+    too_many_keywords,
+) -> None:
     """SPEC C.6 / v2.133 / A-021: a merge without label, body and keywords (gpt-4.1-mini, the
     test palace curator) is sent back once with the validation error, then accepted."""
     bodies = []
@@ -185,4 +187,5 @@ async def test_a_verdict_missing_its_payload_goes_back_once_with_the_rule(too_ma
     assert (draft.action, draft.label) == ("merge", "Test command")
     assert len(bodies) == 2
     assert bodies[1]["messages"][-1]["content"].startswith("That verdict was invalid:")
-    assert ("at most 5" if too_many_keywords else "require label, body, and keywords") in bodies[1]["messages"][-1]["content"]
+    error = "at most 5" if too_many_keywords else "require label, body, and keywords"
+    assert error in bodies[1]["messages"][-1]["content"]

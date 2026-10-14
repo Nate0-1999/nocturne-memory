@@ -139,7 +139,9 @@ class OpenRouterCuratorProvider:
                     ) if isinstance(exc, ValidationError) else str(exc)
                 )
                 if attempt == 1:
-                    raise CuratorProviderError(f"curator verdict response was malformed: {error}") from exc
+                    raise CuratorProviderError(
+                        f"curator verdict response was malformed: {error}"
+                    ) from exc
                 messages = [
                     *messages,
                     {"role": "assistant", "content": content},
