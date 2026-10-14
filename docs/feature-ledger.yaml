@@ -3386,7 +3386,7 @@
         "spine/src/spine/model_policy.py"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5RT",
         "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
@@ -3821,7 +3821,7 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5RT",
         "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
