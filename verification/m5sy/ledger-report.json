@@ -2,20 +2,20 @@
   "packet": "M5SY",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "4060c5bed1e1c5bb8f5b2f48b7dc43ab4f7eaa586edecb604eb5c7d2a23a0f86",
+  "ledger_sha256": "797511980941adc38182d074e16e8009f64cc013615eac1af706efd24651872a",
   "diffs": [
     {
       "repo": "spine",
-      "base": "8e7a272d7e2c14391d0459985fd028ca56b1a3c5",
-      "head": "a928f9b407efecbefd3c71f2fd6f471120631ef2"
+      "base": "f18e13618782d414231371378bd6739f30cb0daa",
+      "head": "8fe6ab02c6287f9af610412137b71ed9cf618709"
     }
   ],
   "unmapped": {
     "spine/openapi.json": "paired release version 0.1.75; no feature behavior.",
     "spine/src/spine/__init__.py": "paired release version 0.1.75; no feature behavior.",
     "spine/tests/test_packaging.py": "paired release version 0.1.75 in the packaging test; no product behavior.",
-    "spine/verification/m5sy/ledger-report.json": "M5SY evidence: coverage report, captures and checksums.",
-    "spine/verification/m5sy/SHA256SUMS": "M5SY evidence: coverage report, captures and checksums."
+    "spine/verification/m5sy/SHA256SUMS": "M5SY evidence: coverage report, captures and checksums.",
+    "spine/verification/m5sy/ledger-report.json": "M5SY evidence: coverage report, captures and checksums."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {},
