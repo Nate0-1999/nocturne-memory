@@ -52,6 +52,12 @@ print its values. Releases: tag through the release workflows at the next
 unused version, both packages together; never a number chosen in advance.
 A packet that adds or resolves a flag or changes the ledger runs
 `garden/bin/check_rules --export` and ships the frozen copies in its pushes.
+- TESTS (owner, 2026-10-14, SD-085): tests are for what fails outside our
+  control (the cloud, the network, the model, the browser, the clock) and
+  to prevent catastrophic failures (a lost memory, a wrong write, a dead
+  core loop, a secret leaving the machine). Do not write a test for every
+  change; a test that only restates the code is entropy (axiom 5). Prefer
+  one fresh run on the real thing over a new unit test of a stub.
 - Test on the cheap (v2.134): walk on gpt-4.1-mini; set a test palace's
   curator, judge and sub-agent policies to pinned gpt-4.1-mini the moment it
   exists (the shipped curator default is a costly model); a strong model

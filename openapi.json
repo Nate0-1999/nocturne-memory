@@ -4336,6 +4336,50 @@
         "title": "RestoredInjection",
         "type": "object"
       },
+      "RetrainJobView": {
+        "properties": {
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "job_id": {
+            "title": "Job Id",
+            "type": "string"
+          },
+          "result": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RetrainResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "completed",
+              "failed"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id",
+          "status"
+        ],
+        "title": "RetrainJobView",
+        "type": "object"
+      },
       "RetrainResponse": {
         "properties": {
           "challenger": {
@@ -6935,7 +6979,7 @@
   },
   "info": {
     "title": "N8 Spine",
-    "version": "0.1.69"
+    "version": "0.1.78"
   },
   "openapi": "3.1.0",
   "paths": {
@@ -12365,6 +12409,123 @@
         "summary": "Split Memory",
         "tags": [
           "memory"
+        ]
+      }
+    },
+    "/v1/retrain-jobs": {
+      "post": {
+        "operationId": "start_retrain_job_v1_retrain_jobs_post",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "principal_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Principal Id"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetrainJobView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "StaticBearer": []
+          }
+        ],
+        "summary": "Start Retrain Job",
+        "tags": [
+          "learner"
+        ]
+      }
+    },
+    "/v1/retrain-jobs/{job_id}": {
+      "get": {
+        "operationId": "retrain_job_v1_retrain_jobs__job_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "job_id",
+            "required": true,
+            "schema": {
+              "title": "Job Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "principal_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Principal Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetrainJobView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "StaticBearer": []
+          }
+        ],
+        "summary": "Retrain Job",
+        "tags": [
+          "learner"
         ]
       }
     },

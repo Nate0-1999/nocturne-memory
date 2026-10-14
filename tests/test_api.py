@@ -23,6 +23,8 @@ MEMORY_ID = "00000000-0000-0000-0000-000000000001"
 INJECTION_ID = "00000000-0000-0000-0000-000000000002"
 
 SPINE_ROUTES = {
+    ("POST", "/v1/retrain-jobs"),
+    ("GET", "/v1/retrain-jobs/{job_id}"),
     ("GET", "/v1/inject/threads/{thread_id}"),
     ("GET", "/v1/memories/export"),
     ("POST", "/v1/memories/import"),
@@ -105,8 +107,8 @@ async def test_health_endpoints_and_auth_are_live(app: FastAPI) -> None:
     assert healthy_healthz.json() == {
         "ok": True,
         "version": __version__,
-        "api_contract_version": "0.1.68",
-        "schema_version": "0028",
+        "api_contract_version": "0.1.77",
+        "schema_version": "0029",
     }
     assert healthy_healthz.json()["api_contract_version"] == API_CONTRACT_VERSION
     assert re.fullmatch(r"(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)", API_CONTRACT_VERSION)

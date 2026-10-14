@@ -1449,3 +1449,27 @@ On the test palace's v2.134 curator (gpt-4.1-mini) one verdict in five was "merg
 its label, body and keywords, and that one malformed verdict failed the whole pass. A verdict
 that fails validation now goes back once with the validation message; a second failure is
 the same truthful failed pass as before.
+
+## M5CU — Preserve decisions and narrow relevance nominations [P1.4]
+
+F206 replay: the ferry merge carried eight keywords and was refused after validation.
+The verdict schema now applies the queue's 2–5 limit, so its existing retry can repair it.
+A later failed verdict retains and queues earlier valid decisions; the pass still says failed.
+Under PLAN M5CU's minority requirement, relevance-v3 retains A-078's probes, clock and
+0.025 band but nominates mutual nearest score profiles (memory ID breaks ties), instead
+of every equally low-scoring pair. Embedding-near candidates remain independent and go first.
+
+## M5RM — A colliding approval label does not strand the fact [P1.2, P1.5]
+
+F194 replayed on the third shared-principal compaction. Approval qualifies an occupied label
+with the project or a distinguishing keyword, then a number if needed, under the existing
+principal advisory lock. The label and activation share one revision and transaction;
+replacement targets retire before activation, as curator replacements already do (F127).
+The fact and consent remain unchanged; no automatic merge.
+
+## M5LN — The fit outlives its request [P1.2, P2]
+
+F212's ruling adds a durable manual retrain job, drained by the existing learner
+worker. Its result commits with the proposal and immutable fit receipt under the
+existing advisory lock; interruption rolls them back together for restart pickup.
+The console starts and polls this job. The synchronous endpoint remains compatible.

@@ -287,9 +287,10 @@ class CuratorService:
         }
         # Review the strongest pairs first; a fixed corpus has a fixed tie order.
         findings = sorted(report.findings, key=lambda f: (
-            f.kind != "contradiction", -float(f.evidence.get("cosine", 0)), f.ordinal,
+            -float(f.evidence.get("cosine", 0)), f.kind != "contradiction", f.ordinal,
         ))
         reviewed_pairs = 0
+        error = None
         try:
             for finding in findings:
                 if finding.fingerprint in remembered:
@@ -346,16 +347,6 @@ class CuratorService:
                 )
         except Exception as exc:
             error = _bounded_error(exc)
-            await self._persist_failed(
-                run_uid,
-                principal_id=principal_id,
-                trigger=trigger,
-                report=report,
-                admitted=admitted,
-                pressure=pressure,
-                error=error,
-            )
-            return await self._run_receipt(run_uid)
 
         actions: list[tuple[_JudgedFinding, str, str | None, dict[str, Any]]] = []
         queued = 0
@@ -402,7 +393,7 @@ class CuratorService:
                 )
             )
 
-        await self._persist_completed(
+        await self._persist_run(
             run_uid,
             principal_id=principal_id,
             trigger=trigger,
@@ -412,8 +403,10 @@ class CuratorService:
             judged=judged,
             actions=actions,
             queued=queued,
+            error=error,
         )
-        await self._advance_cursor(principal_id, admitted, pressure)
+        if error is None:
+            await self._advance_cursor(principal_id, admitted, pressure)
         return await self._run_receipt(run_uid)
 
     async def _trigger_snapshot(self, principal_id: str) -> tuple[int, int]:
@@ -448,38 +441,7 @@ class CuratorService:
             )
         return bool(count)
 
-    async def _persist_failed(
-        self,
-        run_uid: str,
-        *,
-        principal_id: str,
-        trigger: Trigger,
-        report: PalaceHealthReport,
-        admitted: int,
-        pressure: int,
-        error: str,
-    ) -> None:
-        await self._record_model(report, run_uid)
-        async with self._session_factory() as session:
-            async with session.begin():
-                await session.execute(
-                    insert(CuratorRun).values(
-                        run_uid=run_uid,
-                        principal_id=principal_id,
-                        trigger=trigger,
-                        report_version=report.version,
-                        report=report.model_dump(mode="json"),
-                        admitted_writes_snapshot=admitted,
-                        pressure_snapshot=pressure,
-                        verdict_count=0,
-                        queued_count=0,
-                        executed_count=0,
-                        status="failed",
-                        error=error,
-                    )
-                )
-
-    async def _persist_completed(
+    async def _persist_run(
         self,
         run_uid: str,
         *,
@@ -491,6 +453,7 @@ class CuratorService:
         judged: list[_JudgedFinding],
         actions: list[tuple[_JudgedFinding, str, str | None, dict[str, Any]]],
         queued: int,
+        error: str | None,
     ) -> None:
         await self._record_model(report, run_uid)
         async with self._session_factory() as session:
@@ -507,8 +470,8 @@ class CuratorService:
                         verdict_count=len(judged),
                         queued_count=queued,
                         executed_count=0,
-                        status="completed",
-                        error=None,
+                        status="completed" if error is None else "failed",
+                        error=error,
                     )
                 )
                 for item in judged:

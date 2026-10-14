@@ -1,0 +1,25 @@
+{
+  "pair": "0.1.73",
+  "noneditable": true,
+  "old_threads_retained": 18,
+  "old_threads_total": 18,
+  "long_reply": "NOCTURNE\n\nRemembered 'Monthly flushing of Kinloss Parade hydrants' (36997308-c121-4689-bb89-4e656e663275).",
+  "two_reply": "NOCTURNE\n\nRemembered 2 linked memories: 'Orrin Street launderette Sunday hours', 'Calbourne astronomy society Friday meetings'.",
+  "compaction_error": null,
+  "approvals": [
+    {
+      "item_uid": "01M4W90Y9PXQT4BRFR7FR4DF5Q",
+      "outcome": "approved"
+    }
+  ],
+  "next_reply": "NOCTURNE\n\nWe deploy to Fly.io in the ams region, use pnpm exclusively, and start the mock server with pnpm mock.\n\nTOOLS \u00b7 0 CALLS",
+  "curator_wait": "Error: walk condition did not settle",
+  "public_curator_failed_runs": 7,
+  "public_curator_completed_runs": 1,
+  "palace_health": {
+    "ok": true,
+    "version": "0.1.73",
+    "api_contract_version": "0.1.68",
+    "schema_version": "0028"
+  }
+}
