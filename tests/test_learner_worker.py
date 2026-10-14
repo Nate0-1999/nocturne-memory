@@ -16,6 +16,9 @@ class _RecordingService:
     async def compact(self, trigger: OptimizationTrigger) -> None:
         await self.calls.put(trigger)
 
+    async def run_pending_jobs(self) -> None:
+        pass
+
 
 async def test_worker_waits_for_real_compaction_instead_of_startup_or_stride() -> None:
     """SPEC D.2 144/153: no optimization before a main-thread compaction event."""

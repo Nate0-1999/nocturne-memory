@@ -35,4 +35,11 @@ class RetrainResponse(BaseModel):
     reason: str
 
 
-__all__ = ["ReplayScoreView", "RetrainResponse"]
+class RetrainJobView(BaseModel):
+    job_id: str
+    status: Literal["pending", "completed", "failed"]
+    result: RetrainResponse | None = None
+    error: str | None = None
+
+
+__all__ = ["ReplayScoreView", "RetrainResponse", "RetrainJobView"]

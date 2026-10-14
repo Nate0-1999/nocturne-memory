@@ -39,12 +39,13 @@ from spine.db.models import (
     InjectionEventAnnotation,
     LearnerRun,
     OptimizationRun,
+    RetrainJob,
 )
 from spine.db.models import ScorerConfig as ScorerConfigRow
 from spine.ids import mint_ulid
 from spine.inject.scorer import ScorerConfig as RuntimeScorerConfig
 from spine.inject.scorer import ScorerWeights
-from spine.learner.contracts import ReplayScoreView, RetrainResponse
+from spine.learner.contracts import ReplayScoreView, RetrainJobView, RetrainResponse
 from spine.learner.creation import sweep_unused
 from spine.learner.evidence import LearnerDataError, LearningEvidence, project_learning_evidence
 from spine.learner.locking import LEARNER_ADVISORY_LOCK_KEY
@@ -183,6 +184,48 @@ class LearnerService:
         self._retrain_signal_stride = retrain_signal_stride
         self._corpus_max_dispositions = corpus_max_dispositions
 
+    async def submit_job(self) -> RetrainJobView:
+        job_id = mint_ulid()
+        async with self._session_factory() as session, session.begin():
+            session.add(RetrainJob(job_id=job_id))
+        return RetrainJobView(job_id=job_id, status="pending")
+
+    async def get_job(self, job_id: str) -> RetrainJobView | None:
+        async with self._session_factory() as session:
+            job = await session.get(RetrainJob, job_id)
+            if job is None:
+                return None
+            return RetrainJobView(
+                job_id=job.job_id,
+                status="failed" if job.error else "completed" if job.result else "pending",
+                result=RetrainResponse.model_validate(job.result) if job.result else None,
+                error=job.error,
+            )
+
+    async def run_pending_jobs(self) -> None:
+        async with self._session_factory() as session:
+            job_ids = list(
+                await session.scalars(
+                    select(RetrainJob.job_id)
+                    .where(RetrainJob.result.is_(None), RetrainJob.error.is_(None))
+                    .order_by(RetrainJob.job_id)
+                )
+            )
+        for job_id in job_ids:
+            try:
+                await self._retrain(
+                    trigger="manual",
+                    due_only=False,
+                    optimization_trigger=OptimizationTrigger(event_uid=job_id),
+                    job_id=job_id,
+                )
+            except Exception:
+                async with self._session_factory() as session, session.begin():
+                    job = await session.get(RetrainJob, job_id, with_for_update=True)
+                    if job is not None and job.result is None:
+                        job.error = "Retraining failed. Start a new retrain to try again."
+                raise
+
     async def retrain(
         self,
         *,
@@ -226,6 +269,7 @@ class LearnerService:
         trigger: Literal["manual", "background"],
         due_only: bool,
         optimization_trigger: OptimizationTrigger,
+        job_id: str | None = None,
     ) -> RetrainResponse | None:
         async with session_advisory_lock(
             self._session_factory,
@@ -235,14 +279,20 @@ class LearnerService:
             async with self._session_factory(bind=connection) as session:
                 async with session.begin():
                     await session.execute(text("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ"))
+                    job = await session.get(RetrainJob, job_id) if job_id else None
+                    if job is not None and (job.result is not None or job.error is not None):
+                        return None
                     started_at = await _database_clock(session)
-                    return await self._retrain_in_snapshot(
+                    result = await self._retrain_in_snapshot(
                         session,
                         trigger=trigger,
                         due_only=due_only,
                         optimization_trigger=optimization_trigger,
                         started_at=started_at,
                     )
+                    if job is not None:
+                        job.result = result.model_dump(mode="json")
+                    return result
 
     async def _retrain_in_snapshot(
         self,

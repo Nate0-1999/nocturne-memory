@@ -165,6 +165,7 @@ async def test_models_match_authoritative_c2_schema(
         "spend_event",
         "spend_reconciliation",
         "scorer_config",
+        "retrain_job",
         "learner_run",
         "optimization_run",
         "scorer_activation",
@@ -177,6 +178,7 @@ async def test_models_match_authoritative_c2_schema(
     )
 
     expected_columns = {
+        "retrain_job": ("job_id", "result", "error", "created_at"),
         "workflow_job": (
             "job_id", "principal_id", "machine_id", "definition", "revision",
             "enabled", "next_run_at", "trigger_cursor", "created_at",
@@ -545,6 +547,7 @@ async def test_models_match_authoritative_c2_schema(
             "error_code",
         },
         "scorer_config": set(),
+        "retrain_job": {"result", "error"},
         "learner_run": {"proposal_version", "source_boundary", "incumbent", "challenger"},
         "optimization_run": {"trigger_thread_id", "challenger_version", "challenger_params"},
         "scorer_activation": set(),
@@ -579,6 +582,7 @@ async def test_models_match_authoritative_c2_schema(
         "spend_event": ("event_uid",),
         "spend_reconciliation": ("event_uid",),
         "scorer_config": ("version",),
+        "retrain_job": ("job_id",),
         "learner_run": ("run_uid",),
         "optimization_run": ("run_uid",),
         "scorer_activation": ("event_uid",),
@@ -820,6 +824,10 @@ async def test_models_match_authoritative_c2_schema(
         "scorer_config.params": "JSONB",
         "scorer_config.created_at": "TIMESTAMP WITH TIME ZONE",
         "scorer_config.active": "BOOLEAN",
+        "retrain_job.job_id": "TEXT",
+        "retrain_job.result": "JSONB",
+        "retrain_job.error": "TEXT",
+        "retrain_job.created_at": "TIMESTAMP WITH TIME ZONE",
         "learner_run.run_uid": "TEXT",
         "learner_run.trigger": "TEXT",
         "learner_run.result": "TEXT",
@@ -927,6 +935,7 @@ async def test_models_match_authoritative_c2_schema(
         "scorer_config.created_at": "now()",
         "scorer_config.active": "false",
         "learner_run.ts": "now()",
+        "retrain_job.created_at": "now()",
         "optimization_run.cost_refs": "'[]'::jsonb",
         "scorer_activation.ts": "now()",
         "optimization_run_adoption.adopted_at": "now()",

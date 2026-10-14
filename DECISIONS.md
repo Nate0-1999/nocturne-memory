@@ -1466,3 +1466,10 @@ with the project or a distinguishing keyword, then a number if needed, under the
 principal advisory lock. The label and activation share one revision and transaction;
 replacement targets retire before activation, as curator replacements already do (F127).
 The fact and consent remain unchanged; no automatic merge.
+
+## M5LN — The fit outlives its request [P1.2, P2]
+
+F212's ruling adds a durable manual retrain job, drained by the existing learner
+worker. Its result commits with the proposal and immutable fit receipt under the
+existing advisory lock; interruption rolls them back together for restart pickup.
+The console starts and polls this job. The synchronous endpoint remains compatible.
