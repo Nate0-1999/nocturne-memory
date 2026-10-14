@@ -1,0 +1,49 @@
+{
+  "baseline": {
+    "version": "0.1.70 public install",
+    "shown": "Not enough authentic signals yet: 150 / 25 available.",
+    "recorded": "at least one positive-negative training pair is required",
+    "receipt": "receipts/baseline.json"
+  },
+  "candidate": {
+    "shown": "at least one positive-negative training pair is required",
+    "saved": {
+      "run_uid": "01M4W9JVKWT8S8A3KP7Z9ANS6T",
+      "trigger": "manual",
+      "result": "insufficient_data",
+      "incumbent_version": "m3tl-where-v1",
+      "proposal_version": null,
+      "eligible_dispositions": 30,
+      "training_dispositions": 24,
+      "holdout_dispositions": 6,
+      "training_pairs": 0,
+      "source_boundary": "01M4W9FJKMVY6R28CC4XDNKBM8",
+      "incumbent": null,
+      "challenger": null,
+      "reason": "at least one positive-negative training pair is required",
+      "ts": "2026-10-14T04:09:01.762062Z"
+    },
+    "reasonMatchesReceipt": true
+  },
+  "below_floor": {
+    "shown": "Not enough authentic signals yet: 0 / 25 available.",
+    "saved": {
+      "run_uid": "01M4W9A0XXNHWX8V6M1JT97EG0",
+      "trigger": "manual",
+      "result": "insufficient_data",
+      "incumbent_version": "m3tl-where-v1",
+      "proposal_version": null,
+      "eligible_dispositions": 0,
+      "training_dispositions": 0,
+      "holdout_dispositions": 0,
+      "training_pairs": 0,
+      "source_boundary": null,
+      "incumbent": null,
+      "challenger": null,
+      "reason": "Not enough authentic signals yet: 0 / 25 available.",
+      "ts": "2026-10-14T04:04:12.323159Z"
+    },
+    "reasonMatchesReceipt": true
+  },
+  "fit_change": "None. Released baseline also produced better proposals after authentic positive/negative training gates existed."
+}
