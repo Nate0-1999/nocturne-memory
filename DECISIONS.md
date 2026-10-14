@@ -1458,3 +1458,11 @@ A later failed verdict retains and queues earlier valid decisions; the pass stil
 Under PLAN M5CU's minority requirement, relevance-v3 retains A-078's probes, clock and
 0.025 band but nominates mutual nearest score profiles (memory ID breaks ties), instead
 of every equally low-scoring pair. Embedding-near candidates remain independent and go first.
+
+## M5RM — A colliding approval label does not strand the fact [P1.2, P1.5]
+
+F194 replayed on the third shared-principal compaction. Approval qualifies an occupied label
+with the project or a distinguishing keyword, then a number if needed, under the existing
+principal advisory lock. The label and activation share one revision and transaction;
+replacement targets retire before activation, as curator replacements already do (F127).
+The fact and consent remain unchanged; no automatic merge.
