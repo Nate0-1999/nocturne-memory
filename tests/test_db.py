@@ -957,6 +957,7 @@ async def test_models_match_authoritative_c2_schema(
         for name, table in Base.metadata.tables.items()
     }
     assert checks == {
+        "retrain_job": {},
         "curator_model_policy": {},
         "workflow_job": {},
         "workflow_run": {
