@@ -362,6 +362,62 @@ async def test_pair_budget_and_kept_revisions_survive_service_restart(
 
 
 @pytest.mark.asyncio
+async def test_later_malformed_verdict_keeps_the_earlier_merge(
+    memory_client, memory_app, embedding_provider, memory_session_factory,
+):
+    """ADR-022 / F206 / PLAN M5CU: a later failure cannot erase a merge decision."""
+    await _seed_mess(memory_client, embedding_provider, memory_session_factory)
+
+    class FailsAfterMerge(FixtureCuratorProvider):
+        merged = False
+
+        async def verdict(self, finding, report, **kwargs):
+            if self.merged:
+                raise RuntimeError("curator verdict response was malformed")
+            draft = await super().verdict(finding, report, **kwargs)
+            self.merged = draft.action == "merge"
+            return draft
+
+    service = CuratorService(
+        memory_session_factory,
+        HealthReportBuilder(memory_session_factory, duplicate_floor=0.70),
+        FailsAfterMerge(), memory_app.state.queue_service,
+    )
+    receipt = await service.run("fixture-owner", machine_id="fixture-mac")
+    assert receipt.status == "failed"
+    assert receipt.error == "curator verdict response was malformed"
+    assert receipt.verdict_count > 0
+    assert receipt.queued_count == 1
+    response = await memory_app.state.queue_service.list_pending(
+        principal_id="fixture-owner", birthplace="curator",
+    )
+    assert any(card.verdict == "merge" for card in response.cards)
+
+
+@pytest.mark.asyncio
+async def test_equal_probe_scores_do_not_nominate_every_unrelated_pair(
+    memory_client, embedding_provider, memory_session_factory,
+):
+    """ADR-022 / F206 / M5CU: equally irrelevant facts must not flood the pair budget."""
+    for prompt in PROBES[1:]:
+        embedding_provider.set(prompt, basis_vector(10))
+    for index in range(8):
+        body = f"Independent topic {index}."
+        embedding_provider.set(body, basis_vector(index))
+        response = await memory_client.post(
+            "/v1/memories", json=_memory(f"Topic{index}", body))
+        assert response.status_code == 201
+    builder = HealthReportBuilder(
+        memory_session_factory, duplicate_floor=0.70, embedding_provider=embedding_provider,
+    )
+    report = await builder.build("fixture-owner")
+    pairs = [finding for finding in report.findings if finding.kind == "duplicate"]
+    assert 0 < len(pairs) <= 4  # At most mutual neighbours, never all 28 pairs.
+    assert all(finding.evidence["signals"] == {"embedding": False, "relevance": True}
+               for finding in pairs)
+
+
+@pytest.mark.asyncio
 async def test_removal_pressure_wakes_the_same_durable_curator_path(
     memory_client: AsyncClient,
     memory_app: FastAPI,

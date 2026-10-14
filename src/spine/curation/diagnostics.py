@@ -25,7 +25,7 @@ PROBES = (
     "How should I build, test, and release this project?",
     "Which tools and services does this project use?",
 )
-PROBE_VERSION = "curator-relevance-v2"
+PROBE_VERSION = "curator-relevance-v3"
 RELEVANCE_MAX_DELTA = 0.025
 
 
@@ -146,6 +146,18 @@ class HealthReportBuilder:
                     vectors[candidate.memory_id].append(scored.score)
 
         evidence_by_id = {row["id"]: _memory_evidence(row) for row in rows}
+        # Similar low scores on generic probes are not evidence that every pair
+        # belongs together. Nominate mutual nearest profiles within the same band.
+        nearest = {
+            memory_id: min(
+                (
+                    (max(abs(a - b) for a, b in zip(scores, other, strict=True)), str(other_id))
+                    for other_id, other in vectors.items() if other_id != memory_id
+                ),
+                default=None,
+            )
+            for memory_id, scores in vectors.items() if scores
+        }
         findings: list[tuple[str, tuple[UUID, ...], dict[str, Any]]] = []
         duplicate_links: list[tuple[UUID, UUID]] = []
         for index, left in enumerate(rows):
@@ -154,7 +166,11 @@ class HealthReportBuilder:
                 left_scores, right_scores = vectors[left["id"]], vectors[right["id"]]
                 delta = max((abs(a-b) for a, b in zip(left_scores, right_scores, strict=True)),
                             default=1.0)
-                by_relevance = bool(left_scores) and delta <= RELEVANCE_MAX_DELTA
+                mutual_nearest = (
+                    nearest.get(left["id"]) == (delta, str(right["id"]))
+                    and nearest.get(right["id"]) == (delta, str(left["id"]))
+                )
+                by_relevance = bool(left_scores) and delta <= RELEVANCE_MAX_DELTA and mutual_nearest
                 if score < self._duplicate_floor and not by_relevance:
                     continue
                 pair = (left["id"], right["id"])
@@ -175,6 +191,7 @@ class HealthReportBuilder:
                                 "scorer_version": None if config is None else config.version,
                                 "left": left_scores, "right": right_scores,
                                 "max_delta": delta, "threshold": RELEVANCE_MAX_DELTA,
+                                "mutual_nearest": mutual_nearest,
                             },
                             "memories": [evidence_by_id[memory_id] for memory_id in pair],
                         },

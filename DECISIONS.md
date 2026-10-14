@@ -1449,3 +1449,12 @@ On the test palace's v2.134 curator (gpt-4.1-mini) one verdict in five was "merg
 its label, body and keywords, and that one malformed verdict failed the whole pass. A verdict
 that fails validation now goes back once with the validation message; a second failure is
 the same truthful failed pass as before.
+
+## M5CU — Preserve decisions and narrow relevance nominations [P1.4]
+
+F206 replay: the ferry merge carried eight keywords and was refused after validation.
+The verdict schema now applies the queue's 2–5 limit, so its existing retry can repair it.
+A later failed verdict retains and queues earlier valid decisions; the pass still says failed.
+Under PLAN M5CU's minority requirement, relevance-v3 retains A-078's probes, clock and
+0.025 band but nominates mutual nearest score profiles (memory ID breaks ties), instead
+of every equally low-scoring pair. Embedding-near candidates remain independent and go first.
