@@ -1,0 +1,131 @@
+{
+  "three_runs_passed": true,
+  "scope": [
+    "FL-030",
+    "FL-051",
+    "FL-062"
+  ],
+  "neighbor_background": "Three completed compaction-triggered fits",
+  "runs": [
+    {
+      "run": 1,
+      "started": "2026-10-14T07:05:44.047Z",
+      "finished": "2026-10-14T07:21:02.371Z",
+      "job_id": "01M4WKPZC638BT319SR1RBEGMS",
+      "fit_seconds": 389.661151,
+      "signals": 402,
+      "errors": [
+        "56",
+        "8"
+      ],
+      "tokens": [
+        1024,
+        512
+      ],
+      "forced": [
+        0.1,
+        0.16
+      ],
+      "learned": [
+        0.56,
+        0.01
+      ],
+      "proposal": "m2f-89ac55d27f8e08e9",
+      "audition_cards": 12,
+      "removed": 6,
+      "reason_matches_receipt": true,
+      "background_runs": [
+        {
+          "trigger": "background",
+          "result": "proposed",
+          "ts": "2026-10-14T07:13:58.259091Z",
+          "eligible": 438,
+          "holdout": 84,
+          "proposal": "m2f-68cd3772bbf5e3bd",
+          "reason": "Proposal m2f-68cd3772bbf5e3bd is ready to audition. It won the back-test; current values keep serving until activation."
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "started": "2026-10-14T07:21:50.080Z",
+      "finished": "2026-10-14T07:38:08.773Z",
+      "job_id": "01M4WMMC6JR3ZXKA8MJSNVYM6E",
+      "fit_seconds": 405.677716,
+      "signals": 438,
+      "errors": [
+        "36.00",
+        "12.00"
+      ],
+      "tokens": [
+        896,
+        484
+      ],
+      "forced": [
+        0.1,
+        0.16
+      ],
+      "learned": [
+        0.56,
+        0.01
+      ],
+      "proposal": "m2f-f564208b2db6d800",
+      "audition_cards": 12,
+      "removed": 6,
+      "reason_matches_receipt": true,
+      "background_runs": [
+        {
+          "trigger": "background",
+          "result": "proposed",
+          "ts": "2026-10-14T07:30:22.415153Z",
+          "eligible": 474,
+          "holdout": 72,
+          "proposal": "m2f-cb7a669e41464ae0",
+          "reason": "Proposal m2f-cb7a669e41464ae0 is ready to audition. It won the back-test; current values keep serving until activation."
+        }
+      ]
+    },
+    {
+      "run": 3,
+      "started": "2026-10-14T07:38:51.229Z",
+      "finished": "2026-10-14T07:55:07.003Z",
+      "job_id": "01M4WNKJ35YMFF7Q0FZ5A73C7Y",
+      "fit_seconds": 472.077132,
+      "signals": 474,
+      "errors": [
+        "16.00",
+        "16.00"
+      ],
+      "tokens": [
+        768,
+        456
+      ],
+      "forced": [
+        0.1,
+        0.16
+      ],
+      "learned": [
+        0.57,
+        0.01
+      ],
+      "proposal": "m2f-90467922a17da285",
+      "audition_cards": 12,
+      "removed": 6,
+      "reason_matches_receipt": true,
+      "background_runs": [
+        {
+          "trigger": "background",
+          "result": "proposed",
+          "ts": "2026-10-14T07:48:24.332457Z",
+          "eligible": 510,
+          "holdout": 78,
+          "proposal": "m2f-59226c76f4ea3793",
+          "reason": "Proposal m2f-59226c76f4ea3793 is ready to audition. It won the back-test; current values keep serving until activation."
+        }
+      ]
+    }
+  ],
+  "qualification": "Run 3 wins the existing cheaper-at-exact-tie rule: weighted errors stay 16, tokens fall 768 to 456; raw disagreement counts rise 22 to 40. Fitting and candidate selection are unchanged.",
+  "release": "Pending public publication and clean-install verification",
+  "historical_evidence": "../acceptance.json and reports/288-M5LN.md remain the prior BLOCKED handoff."
+}
