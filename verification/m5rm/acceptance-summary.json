@@ -1,0 +1,41 @@
+{
+  "baseline": {
+    "package": "0.1.70",
+    "single_fact_memories": 5,
+    "two_fact_memories": 2,
+    "collision_app_status": 503
+  },
+  "final": {
+    "long_fact_counts": [
+      1,
+      1,
+      1
+    ],
+    "long_body_tokens": [
+      87,
+      47,
+      60
+    ],
+    "two_fact_counts": [
+      2,
+      2,
+      2
+    ],
+    "compaction_approvals": [
+      1,
+      1,
+      2
+    ],
+    "exact_collision_qualified_projects": [
+      "ibis",
+      "auk",
+      "finch"
+    ]
+  },
+  "limits": [
+    "Wrenfield input itself mixes monthly and fortnightly wording.",
+    "Exact-collision fixtures were API-created; original compaction inputs were real model runs.",
+    "Approvals followed the app endpoint as in the original scout; explicit button clicks were not claimed for every case.",
+    "Broader F206 curator reliability is not closed by this packet."
+  ]
+}

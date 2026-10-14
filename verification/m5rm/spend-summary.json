@@ -1,0 +1,9 @@
+{
+  "palace_receipts_usd": "0.209197940000",
+  "receipt_lines": 896,
+  "unpriced_lines": 0,
+  "shared_key_start_usd": 76.181420707,
+  "shared_key_end_usd": 79.194132427,
+  "shared_key_window_usd": "3.012711720",
+  "limits": "Shared key includes concurrent packets. Palace receipts are measured/allocated provider charges, not a complete cloud invoice."
+}
