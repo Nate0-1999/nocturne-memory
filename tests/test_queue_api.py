@@ -49,6 +49,44 @@ async def test_extraction_label_limit_refuses_before_queue_birth(
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("project", ["lark", None])
+async def test_approval_disambiguates_an_active_label_without_losing_the_fact(
+    memory_client: AsyncClient,
+    embedding_provider: ScriptedEmbeddingProvider,
+    project: str | None,
+) -> None:
+    """M5RM / F194 / FL-044: unrelated facts may share a proposed label and still approve."""
+    label = "staging database name"
+    approved = []
+    for i, database in enumerate(("kestrel", "lark", "heron")):
+        body = f"The staging database is called {database}-stage."
+        embedding_provider.set(body, basis_vector(i))
+        payload = extraction(uuid4(), label)
+        payload["candidates"][0].update(
+            body=body, project_key=project, keywords=["staging", database]
+        )
+        born = await memory_client.post("/v1/extractions", json=payload)
+        assert born.status_code == 200
+        card = born.json()["cards"][0]
+        decision = {
+            "decision": "approve", "approval_mode": "explicit",
+            "actor_class": "human", "machine_id": "mac",
+        }
+        url = f"/v1/approval-queue/{card['item_uid']}/decisions"
+        response = await memory_client.post(url, json=decision)
+        assert response.status_code == 200
+        memory = response.json()["card"]["candidate"]
+        assert memory["status"] == "active" and memory["body"] == body
+        assert len(memory["label"]) <= 64
+        approved.append(memory["label"])
+        replay = await memory_client.post(url, json=decision)
+        assert replay.json()["decision_uid"] == response.json()["decision_uid"]
+    assert approved[0] == label
+    assert len(set(approved)) == 3
+    assert (project or "lark") in approved[1]
+
+
+@pytest.mark.asyncio
 async def test_rejected_seed_hash_survives_a_new_upload_identity(
     memory_client: AsyncClient,
     embedding_provider: ScriptedEmbeddingProvider,
@@ -288,7 +326,7 @@ async def test_merge_approval_activates_candidate_tombstones_target_and_is_idemp
         "/v1/memories",
         json={
             "principal_id": "owner",
-            "label": "old",
+            "label": "merged lesson",
             "body": "old lesson",
             "kind": "procedure",
             "editor": "human",
