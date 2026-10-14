@@ -328,7 +328,7 @@
       "section": "1. Memory palace — storage, units, lineage",
       "era": "Sep 2",
       "label": "Constitution: Typed edges between memories (merged from, supersedes, contradicts, and richer kinds at creation and curation) with a depth-limited traversal for the graph and the scorer (SD-057).",
-      "status": "partial",
+      "status": "built",
       "walk": "Open the Memory Graph on a curated memory; typed edges (merged from, supersedes, contradicts) are drawn to its relatives.",
       "owner": "constitution",
       "surfaces": [
@@ -337,10 +337,10 @@
         "harness/web/src/MemoryGraph.tsx"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5CU",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F204",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-015.png"
       },
       "protected": true,
@@ -765,7 +765,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "The curators deconflict, dedupe and remove slop, triggered by every n memory writes rather than by the clock, and run at the Palace's own location.",
-      "status": "partial",
+      "status": "built",
       "walk": "Add 25 memories to a palace holding near-duplicates; a curator pass runs on its own (every 25 admitted writes or 3 gate removals), finds the pair by near-identical relevance scores on the standard probe set as well as by embedding, and proposes one lossless combined memory; Palace State shows the pass and the palace's growth curve bending; a compaction's admitted facts trigger a pass too, merging them with what the Palace already holds (owner, 2026-10-05, v2.133).",
       "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc. They will be triggered by n number of memories being added and run in the memory palaces location. They must be surgeons: minimally invasive, targeting the root problem, and allowing the system to then sort out the symptoms. They are also responsible for removing slop.\" (chat 2026-07-23 16:07:44; chat 2026-08-03 20:02:16) — 2026-09-30: \"Curator is going to be the thing that limits the memory growth as much as possible which is super critical… Maybe it triggers when n memories are added?\"",
       "surfaces": [
@@ -773,10 +773,10 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5CU",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F206",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-034.png"
       },
       "protected": true,
@@ -787,7 +787,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "Constitution: A scripted pre-pass that writes a versioned Palace Health Report the curator must read before acting (v2.8–2.9 curator law).",
-      "status": "partial",
+      "status": "built",
       "walk": "Run a curator pass; its record shows the Palace Health Report it read first.",
       "owner": "constitution",
       "surfaces": [
@@ -795,10 +795,10 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5CU",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F205",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-035.png"
       },
       "protected": true,
@@ -809,7 +809,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "The curators have the right tools and standard procedures for their work, and act as surgeons: minimally invasive, targeting the root problem and letting the system sort out the symptoms.",
-      "status": "partial",
+      "status": "built",
       "walk": "Run a curator pass on a Palace with one duplicate pair; the pass touches only that pair and nothing else.",
       "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc.\" (chat 2026-07-23 16:07:44)",
       "surfaces": [
@@ -818,10 +818,10 @@
         "spine/src/spine/queue/service.py"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5CU",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F206",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-036.png"
       },
       "protected": true,
@@ -832,7 +832,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "Constitution: Typed consolidation decisions: merge, new, contradict, supersede (curator spec).",
-      "status": "partial",
+      "status": "built",
       "walk": "Open a curator merge card: it shows the lossless combined memory beside its sources; approve, amend the text, or give feedback (which is recorded as a tuning signal); a typed merge / new / contradict / supersede verdict is visible on the card (owner, 2026-09-30).",
       "owner": "constitution — owner 2026-09-30: \"the curator sees if it can combine them into one memory losslessly. I could then approve, provide feedback, or amend them as well.\"",
       "surfaces": [
@@ -840,10 +840,10 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5CU",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F206",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-037.png"
       },
       "protected": true,
@@ -1000,7 +1000,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Aug 31",
       "label": "Same-memory detection by encoding and retrieving, not exact wording.",
-      "status": "partial",
+      "status": "built",
       "walk": "Save a rephrased known fact: at 0.80 similarity or above it is recognized at once (asked or reinforced, per the write bands) instead of duplicating; a rewording below 0.80 is saved, and the next curator pass proposes merging the pair (its own 0.70 band, v2.128).",
       "owner": "owner — \"2. We need a prove a way that we can distinguish the memories that come out are the same or different besides exact wording, even though they should be similar. Maybe we encode them and rag them or something?\" (chat 2026-08-31 21:00:39)",
       "surfaces": [
@@ -1009,10 +1009,10 @@
         "spine/src/spine/memory/router.py"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5CU",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F206",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-045.png"
       },
       "protected": true,
