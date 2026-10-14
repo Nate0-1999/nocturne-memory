@@ -50,7 +50,7 @@ class CuratorVerdictDraft(ContractModel):
     rationale: str = Field(min_length=1, max_length=2000)
     label: str | None = Field(default=None, max_length=64)
     body: str | None = None
-    keywords: list[str] | None = None
+    keywords: list[str] | None = Field(default=None, min_length=2, max_length=5)
     children: list[CuratorSplitChild] | None = None
 
     @model_validator(mode="after")
