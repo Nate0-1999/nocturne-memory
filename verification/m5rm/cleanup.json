@@ -1,0 +1,20 @@
+{
+  "test_palace": "test-m5rm",
+  "service_absent": true,
+  "database_absent": true,
+  "secrets_absent": true,
+  "local_palace_home_removed": true,
+  "ports_closed": [
+    8812,
+    9612
+  ],
+  "verification_browser_count": 0,
+  "sweep": "nothing to stop",
+  "retained_registry_images": [
+    "m5rm-rm14",
+    "m5rm-rm14-0-1-72",
+    "m5rm-rm14-0-1-73"
+  ],
+  "retention_reason": "Repository tag immutability refused deletion; shared policy was not changed. No running service uses these packet images.",
+  "source_uploads_deleted": 3
+}

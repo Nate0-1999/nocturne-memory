@@ -6,6 +6,7 @@ from collections.abc import Mapping, Sequence
 from copy import deepcopy
 from dataclasses import dataclass
 from hashlib import sha256
+from pathlib import PurePath
 from typing import Any, Final, Literal
 from uuid import UUID
 
@@ -1080,6 +1081,27 @@ class MemoryService:
             )
 
         return SearchResponse(results=[_similarity_card_from_row(row) for row in rows])
+
+    async def approval_label(self, session: AsyncSession, candidate: Mapping[str, Any]) -> str:
+        """F194: retain the fact, qualifying a colliding handle inside its approval transaction."""
+        await session.execute(
+            text("SELECT pg_advisory_xact_lock(hashtextextended(:principal_id, 0))"),
+            {"principal_id": candidate["principal_id"]},
+        )
+        label = candidate["label"]
+        qualifier = (
+            PurePath(candidate["project_key"]).name if candidate["project_key"] else
+            next((word for word in candidate["keywords"] if word not in label.lower()), "fact")
+        )
+        attempt = 0
+        while await _find_active_label(
+            session, principal_id=candidate["principal_id"], label=label
+        ) is not None:
+            attempt += 1
+            number = f" {attempt}" if attempt > 1 else ""
+            suffix = f" · {qualifier[:self._label_max // 2 - len(number) - 3]}{number}"
+            label = candidate["label"][:self._label_max - len(suffix)].rstrip() + suffix
+        return label
 
     def _validate_label(self, label: str) -> None:
         if len(label) > self._label_max:

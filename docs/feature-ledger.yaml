@@ -31,8 +31,8 @@
       "section": "1. Memory palace — storage, units, lineage",
       "era": "founding",
       "label": "Memory units have a length cap; a memory over the cap is shortened to fit as one memory, and it is split only when it holds more than one distinct fact, with the split logged.",
-      "status": "partial",
-      "walk": "Save a fact over the cap: the same prompt runs again with 'this memory is too long, break it down into finer pieces' until every piece fits and stands alone (up to three rounds); a single fact is never refused as several, and nothing is dropped silently — the original stays in the journal.",
+      "status": "built",
+      "walk": "Save an over-cap single fact: shorten it into one memory, preserving its schedule and qualifiers; split only independent claims. Repeat the scout's long single-fact and two-fact inputs three times. The same prompt repairs failed checks up to three rounds; nothing is dropped silently and the original stays in the journal (M5RM / F208).",
       "owner": "owner — \"Like we shorten the length cap then they are too long\" (chat 2026-09-12); \"this was one memory that was split agentically logged\" (chat 2026-07-26) — 2026-10-05 (v2.133): \"If there is a long memory issue we should have a fallback that is like the same prompt but this memory is too long break it down into finer peices.\"",
       "surfaces": [
         "harness/src/harness/agent.py",
@@ -40,10 +40,10 @@
         "spine/src/spine/tokens.py"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5RM",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F208",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-002.png"
       },
       "protected": true,
@@ -328,7 +328,7 @@
       "section": "1. Memory palace — storage, units, lineage",
       "era": "Sep 2",
       "label": "Constitution: Typed edges between memories (merged from, supersedes, contradicts, and richer kinds at creation and curation) with a depth-limited traversal for the graph and the scorer (SD-057).",
-      "status": "partial",
+      "status": "built",
       "walk": "Open the Memory Graph on a curated memory; typed edges (merged from, supersedes, contradicts) are drawn to its relatives.",
       "owner": "constitution",
       "surfaces": [
@@ -337,10 +337,10 @@
         "harness/web/src/MemoryGraph.tsx"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5CU",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F204",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-015.png"
       },
       "protected": true,
@@ -765,7 +765,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "The curators deconflict, dedupe and remove slop, triggered by every n memory writes rather than by the clock, and run at the Palace's own location.",
-      "status": "partial",
+      "status": "built",
       "walk": "Add 25 memories to a palace holding near-duplicates; a curator pass runs on its own (every 25 admitted writes or 3 gate removals), finds the pair by near-identical relevance scores on the standard probe set as well as by embedding, and proposes one lossless combined memory; Palace State shows the pass and the palace's growth curve bending; a compaction's admitted facts trigger a pass too, merging them with what the Palace already holds (owner, 2026-10-05, v2.133).",
       "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc. They will be triggered by n number of memories being added and run in the memory palaces location. They must be surgeons: minimally invasive, targeting the root problem, and allowing the system to then sort out the symptoms. They are also responsible for removing slop.\" (chat 2026-07-23 16:07:44; chat 2026-08-03 20:02:16) — 2026-09-30: \"Curator is going to be the thing that limits the memory growth as much as possible which is super critical… Maybe it triggers when n memories are added?\"",
       "surfaces": [
@@ -773,10 +773,10 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5CU",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F206",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-034.png"
       },
       "protected": true,
@@ -787,7 +787,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "Constitution: A scripted pre-pass that writes a versioned Palace Health Report the curator must read before acting (v2.8–2.9 curator law).",
-      "status": "partial",
+      "status": "built",
       "walk": "Run a curator pass; its record shows the Palace Health Report it read first.",
       "owner": "constitution",
       "surfaces": [
@@ -795,10 +795,10 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5CU",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F205",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-035.png"
       },
       "protected": true,
@@ -809,7 +809,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "The curators have the right tools and standard procedures for their work, and act as surgeons: minimally invasive, targeting the root problem and letting the system sort out the symptoms.",
-      "status": "partial",
+      "status": "built",
       "walk": "Run a curator pass on a Palace with one duplicate pair; the pass touches only that pair and nothing else.",
       "owner": "owner — \"It's the curators job, and we must give them the right tools and standard procedures to do this, to remediate this. They curate the memory collection: deconflict, deduplicate, etc.\" (chat 2026-07-23 16:07:44)",
       "surfaces": [
@@ -818,10 +818,10 @@
         "spine/src/spine/queue/service.py"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5CU",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F206",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-036.png"
       },
       "protected": true,
@@ -832,7 +832,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Jul 23",
       "label": "Constitution: Typed consolidation decisions: merge, new, contradict, supersede (curator spec).",
-      "status": "partial",
+      "status": "built",
       "walk": "Open a curator merge card: it shows the lossless combined memory beside its sources; approve, amend the text, or give feedback (which is recorded as a tuning signal); a typed merge / new / contradict / supersede verdict is visible on the card (owner, 2026-09-30).",
       "owner": "constitution — owner 2026-09-30: \"the curator sees if it can combine them into one memory losslessly. I could then approve, provide feedback, or amend them as well.\"",
       "surfaces": [
@@ -840,10 +840,10 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5CU",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F206",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-037.png"
       },
       "protected": true,
@@ -978,7 +978,7 @@
       "era": "Aug 9",
       "label": "At compaction the summarizing agent turns anything important but not needed for the next few build steps into a memory through the normal memory creation path, and compaction waits for those memories to land before dropping the rest.",
       "status": "partial",
-      "walk": "Cross a compaction on a main thread: every fact a continuing agent would want lands as its own self-contained memory (no count cap; an over-long fact is split at its cleanest seam), a curator pass follows and merges them with what the Palace already holds, the last share of the conversation is still there word for word, the next prompt's injection can draw on the new facts, and the whole original chat is still on record beside the facts drawn from it (owner, 2026-10-05, v2.133).",
+      "walk": "Cross a compaction on a main thread: every fact a continuing agent would want lands as its own self-contained memory (no count cap; shorten one over-long claim, split only independent claims), a curator pass follows and merges them with what the Palace already holds, the last share of the conversation is still there word for word, the next prompt's injection can draw on the new facts, and the whole original chat is still on record beside the facts drawn from it (owner, 2026-10-05, v2.133; M5RM).",
       "owner": "owner — \"To extend this compaction comes should be another chance for agents memories to be created... if somehting is important, but maybe not relavant to the next couple build steps the agent that is summarizing the recent history should make a memory out of it. this should be integrated with our current memory creation schema pretty seemlessly because agent created memories are the norm.\" (chat 2026-08-09 18:49:53; seed SD-061 (owner riff 2026-09-10)) — 2026-10-05: \"This should look more like a normal agentic compaction prompt … break them into self contained fact sentences … If you cannot fit the information into one fact chose the cleanest place to break the information down into two.\"",
       "surfaces": [
         "harness/src/harness/extraction.py",
@@ -986,10 +986,10 @@
         "harness/src/harness/memory_capability.py"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5RM",
         "date": "2026-10-14",
         "verdict": "FAIL",
-        "flag": "F194",
+        "flag": "F206",
         "screenshot": "FL-044.png"
       },
       "protected": true,
@@ -1000,7 +1000,7 @@
       "section": "3. Curators and the memory lifecycle",
       "era": "Aug 31",
       "label": "Same-memory detection by encoding and retrieving, not exact wording.",
-      "status": "partial",
+      "status": "built",
       "walk": "Save a rephrased known fact: at 0.80 similarity or above it is recognized at once (asked or reinforced, per the write bands) instead of duplicating; a rewording below 0.80 is saved, and the next curator pass proposes merging the pair (its own 0.70 band, v2.128).",
       "owner": "owner — \"2. We need a prove a way that we can distinguish the memories that come out are the same or different besides exact wording, even though they should be similar. Maybe we encode them and rag them or something?\" (chat 2026-08-31 21:00:39)",
       "surfaces": [
@@ -1009,10 +1009,10 @@
         "spine/src/spine/memory/router.py"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5CU",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F206",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-045.png"
       },
       "protected": true,
@@ -1502,7 +1502,7 @@
       "section": "5. Agent hands and location",
       "era": "Jul 28",
       "label": "The core tools every modern harness has: files, terminal, Chrome, skills, changing models, compaction (our own take), and interactions with common apps, taken from the most modular standard source.",
-      "status": "partial",
+      "status": "built",
       "walk": "Ask the agent to read a file, run a terminal command, open a page in the browser and use a skill; each works.",
       "owner": "owner — \"there should be a core of tools that are consistent across al of them that we should fine: using skills, progressive prompting, changing models, compaction strategies (we will have our own take), interactions with common apps, etc, etc. we need to go out and find those common standard ones pick the one we like the best that is the most modular and keep it.\" (chat 2026-08-16 19:37:48; chat 2026-07-28 16:27:32)",
       "surfaces": [
@@ -1515,10 +1515,10 @@
         "harness/src/harness/browser_runtime.py"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5HD",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F200",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-069.png"
       },
       "protected": true,
@@ -1529,7 +1529,7 @@
       "section": "5. Agent hands and location",
       "era": "Aug 2",
       "label": "Image input: paste an image and the agent reviews it.",
-      "status": "partial",
+      "status": "built",
       "walk": "Paste an image; the agent reviews it.",
       "owner": "owner — \"3. Ok multimodality should be something that we must support long term. I must be able to copy in images and have my agents review them. Similarly to browser use and comand line use and all the other basic tooling every modern harness has.\" (chat 2026-08-03 01:00:05)",
       "surfaces": [
@@ -1539,10 +1539,10 @@
         "harness/src/harness/transcript.py"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5HD",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F200",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-070.png"
       },
       "protected": true,
@@ -1703,7 +1703,7 @@
       "section": "5. Agent hands and location",
       "era": "founding",
       "label": "Browser hands adopted whole and pinned upstream: Playwright for Python, with the Codex extension deferred until a standalone runtime exists (F116 ruling).",
-      "status": "partial",
+      "status": "built",
       "walk": "Ask the agent to open the app it just built and read the page; it navigates, clicks, types and screenshots through the adopted browser hands (Playwright; the Codex extension is revisited when a standalone runtime exists — F116), inside the fence, every action journaled.",
       "owner": "owner — \"I would lik to have a codex browser use extension because it thikn it is really good and the open ai devs will definitely spend a bunch of time maintaining it and making it better\" (chat 2026-09-12); Playwright fallback accepted by PLAN M3BW RULING (2026-09-16, F116 resolved).",
       "surfaces": [
@@ -1713,10 +1713,10 @@
         "harness/tests/test_browser_consent.py"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5HD",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F201",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-078.png"
       },
       "protected": true,
@@ -3867,8 +3867,8 @@
         "harness/web/src/SymphonyCards.tsx"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M5HD",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-175.png"
@@ -4356,7 +4356,7 @@
         "harness/web/src/assets/security.css"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5HD",
         "date": "2026-10-14",
         "verdict": "FAIL",
         "flag": "F200",
