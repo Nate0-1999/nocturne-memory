@@ -25,6 +25,7 @@ class LearnerWorker:
             raise RuntimeError("learner worker is already running")
         self._stop.clear()
         self._task = asyncio.create_task(self._run(), name="chrysopoeia-learner")
+        self._wake.set()
 
     def notify(self, trigger: OptimizationTrigger | None = None) -> None:
         """Wake the singleton worker; no caller creates or awaits a learner task."""
@@ -49,6 +50,7 @@ class LearnerWorker:
             if self._stop.is_set():
                 return
             try:
+                await self._service.run_pending_jobs()
                 trigger = self._pending_trigger
                 self._pending_trigger = None
                 if trigger is not None:

@@ -1,0 +1,24 @@
+{
+  "status": "BLOCKED",
+  "flag": "F212",
+  "final_three_runs_proven": false,
+  "release": "None; 0.1.74 was a local candidate only. Draft branches retain main's 0.1.73 metadata until a next-unused release is authorized by completed acceptance.",
+  "repair": "Console displays the recorded retrain reason. Learner reason text is consistent for floor, retained and proposal outcomes. Fitting and candidate selection are unchanged.",
+  "baseline": "Public 0.1.70 reproduced the reason mismatch but produced winning proposals after genuine positive-negative gate reviews: errors 63 to 9 and 43 to 16.",
+  "reason_proof": "reason-proof.json",
+  "successful_diagnostics": [
+    {"run": "run-1", "errors": [43,16], "forced": [0.1,0.16], "learned": [0.55,0.01], "audition_cards": 12, "removed": 6, "reason_matches": true, "final_integrated_build": false},
+    {"run": "run-3", "errors": [24.5,13.5], "forced": [0.1,0.16], "learned": [0.73,0.01], "audition_cards": 12, "removed": 6, "reason_matches": true, "final_integrated_build": false}
+  ],
+  "excluded_attempts": [
+    {"run": "run-2", "cause": "Activation 503; observer 429."},
+    {"run": "run-5", "cause": "Audition 503."},
+    {"run": "run-6", "cause": "Force 503; final read 429."},
+    {"run": "final-1", "cause": "Charged gestures visible, but final read 429 lost full receipt."},
+    {"run": "observed-1", "cause": "Manual request terminated at 299.972 seconds; Harness 503. Later saved proposal errors 36 to 12 is not a successful request. Browser and driver stopped after failure was established; full-run JSON unavailable."}
+  ],
+  "not_run": ["observed-2", "observed-3"],
+  "verification_adjustment": "Only observation windows extended from 300 to 600 seconds and final status reads retried for actual 429/503 up to 60 seconds. No failed writes replayed. Original actions and assertions retained.",
+  "tests": {"harness_passed":1924,"harness_skipped":4,"harness_deselected":3,"memory_passed":346,"memory_skipped":2,"web_lint_build_unit":"PASS","ui_canon":"PASS"},
+  "cleanup": "cleanup.json"
+}

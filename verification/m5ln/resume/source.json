@@ -1,0 +1,23 @@
+{
+  "session": "codex / 2026-10-14 / ln14r",
+  "prior_session": "codex / 2026-10-14 / ln14",
+  "prior_report": "reports/288-M5LN.md",
+  "palace": "test-m5ln-job",
+  "home": "/Users/nateoswalt/relay/M5LN/resume-home",
+  "model_policy": "pinned:openrouter:openai/gpt-4.1-mini",
+  "deployed_runtime_source": "60c00b73eaef08ca9974992e3c1d20446b21c5e9",
+  "current_sources": {
+    "garden": "e61b5bd3b1090fbdbb6d0b5303abd35ee3c03f1b",
+    "harness": "ae4db2061556b0fc43f78e87dbbc167e3a5a0f18",
+    "spine": "87183870bb777f7132068fe8bc2d6e33fc35fdd5"
+  },
+  "walk": "Prior observed-1 actions and assertions; fresh scratch path/run labels and job response observation. Runs 2-3 scroll to Minimum match for the value capture; run 1 retains a targeted recapture.",
+  "baseline": "Report 288 and its retained F212 Cloud Run timeout evidence; not rerun on owner Palace.",
+  "harness_walk_source": "1c51eece0f7b9d3eda9f8f906810057415435ce6",
+  "harness_runtime_changes_after_launch": [],
+  "memory_runtime_changes_from_deploy": "diff --git a/src/spine/__init__.py b/src/spine/__init__.py\nindex 8de4244..59f4863 100644\n--- a/src/spine/__init__.py\n+++ b/src/spine/__init__.py\n@@ -1,3 +1,3 @@\n \"\"\"Spine service package.\"\"\"\n \n-__version__ = \"0.1.76\"\n+__version__ = \"0.1.77\"",
+  "complete_packet_bases": {
+    "harness": "e1011fae90457ca4e239fd8ab250cd5e22b037f2",
+    "spine": "82930975a6d075e838a05fd937b53af6144e2d7c"
+  }
+}

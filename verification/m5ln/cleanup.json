@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-14T04:58:00Z",
+  "palaces": [
+    "test-m5ln",
+    "test-m5ln-reason"
+  ],
+  "services": [],
+  "databases": [],
+  "secrets": [],
+  "browsers": "Both contexts explicitly closed; owned drivers and daemons stopped; ports 8821/9621/8822/9622 checked separately.",
+  "sweep": "nothing to stop",
+  "dropRetry": "Second database deletion initially failed; ordinary palace drop retry succeeded after the service drained."
+}

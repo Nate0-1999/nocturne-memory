@@ -859,6 +859,19 @@ class ScorerConfig(Base):
     active: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default=text("false"))
 
 
+class RetrainJob(Base):
+    """Durable manual requests; the fit and its result commit together."""
+
+    __tablename__ = "retrain_job"
+
+    job_id: Mapped[str] = mapped_column(Text, primary_key=True)
+    result: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
+    error: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=text("now()")
+    )
+
+
 class LearnerRun(Base):
     """One immutable receipt for an actual manual or background retrain."""
 
@@ -1101,7 +1114,8 @@ class CuratorProgress(Base):
     __table_args__ = (
         CheckConstraint(
             "phase IN ('run.started','finding.started','finding.completed',"
-            "'run.completed','run.failed')", name="curator_progress_phase_check",
+            "'run.completed','run.failed')",
+            name="curator_progress_phase_check",
         ),
         Index("curator_progress_principal_event_idx", "principal_id", "event_id"),
     )
@@ -1111,12 +1125,16 @@ class CuratorProgress(Base):
     run_uid: Mapped[str] = mapped_column(Text, nullable=False)
     phase: Mapped[str] = mapped_column(Text, nullable=False)
     memory_ids: Mapped[list[UUID]] = mapped_column(
-        ARRAY(PGUUID(as_uuid=True)), nullable=False, server_default=text("'{}'::uuid[]"),
+        ARRAY(PGUUID(as_uuid=True)),
+        nullable=False,
+        server_default=text("'{}'::uuid[]"),
     )
     finding_uid: Mapped[str | None] = mapped_column(Text)
     action: Mapped[str | None] = mapped_column(Text)
     ts: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True), nullable=False, server_default=text("clock_timestamp()"),
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=text("clock_timestamp()"),
     )
 
 
