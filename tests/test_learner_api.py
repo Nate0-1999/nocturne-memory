@@ -580,7 +580,7 @@ async def test_retrain_hygiene_excludes_whole_verification_gate(
         "training_pairs": 0,
         "incumbent": None,
         "challenger": None,
-        "reason": "minimum disposition floor not reached: 0/1",
+        "reason": "Not enough authentic signals yet: 0 / 1 available.",
     }
 
 
@@ -622,7 +622,7 @@ async def test_retrain_hygiene_excludes_whole_annotated_gate(
         "training_pairs": 0,
         "incumbent": None,
         "challenger": None,
-        "reason": "minimum disposition floor not reached: 0/1",
+        "reason": "Not enough authentic signals yet: 0 / 1 available.",
     }
 
 

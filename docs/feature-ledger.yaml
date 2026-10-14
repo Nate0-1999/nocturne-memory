@@ -1132,6 +1132,7 @@
       "owner": "owner — \"I like the idea that there is a performance of memory system. Imagine over time that there is a score that the hyper parameters modification can will improve or the hyper parameter update will not happen does that make sense? All the manual adds or removes for the history of the harness plus the a good amount of the successful ones that did not need manual intervention. We should be able to do a back test and be like our new set of hyper parameters map to  98% correct injection across the backtest while the previous generation did 97% does that make sense.\" (chat 2026-08-03 20:11:30)",
       "surfaces": [
         "spine/src/spine/learner/",
+        "spine/src/spine/db/migrations/versions/0029_retrain_jobs.py",
         "harness/web/src/LearningTelemetry.tsx",
         "harness/web/src/learning.ts"
       ],
