@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "82930975a6d075e838a05fd937b53af6144e2d7c",
-      "head": "859f95517c6d32877ff3cbb0fd1fee59a5c191f1"
+      "head": "a123da4220eb822fc87c625ee2f40bd854712a23"
     }
   ],
   "unmapped": {
@@ -152,7 +152,11 @@
     "spine/verification/m5rt/FL-196.png": "Packet evidence or inherited peer evidence; no shipped behavior.",
     "spine/verification/m5rt/SHA256SUMS": "Packet evidence or inherited peer evidence; no shipped behavior.",
     "spine/verification/m5rt/ledger-report.json": "Packet evidence or inherited peer evidence; no shipped behavior.",
-    "spine/verification/m5ln/impacted.json": "Packet evidence or coverage declaration; no runtime behavior."
+    "spine/verification/m5ln/impacted.json": "Packet evidence or coverage declaration; no runtime behavior.",
+    "spine/verification/m5ln/resume/public-walk.json": "Packet evidence or coverage declaration; no runtime behavior.",
+    "spine/verification/m5ln/resume/spend-final.json": "Packet evidence or coverage declaration; no runtime behavior.",
+    "spine/verification/m5ln/resume/cleanup.json": "Packet evidence or coverage declaration; no runtime behavior.",
+    "spine/verification/m5ln/resume/public-install.json": "Packet evidence or coverage declaration; no runtime behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {

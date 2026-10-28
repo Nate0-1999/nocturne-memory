@@ -126,6 +126,14 @@
     }
   ],
   "qualification": "Run 3 wins the existing cheaper-at-exact-tie rule: weighted errors stay 16, tokens fall 768 to 456; raw disagreement counts rise 22 to 40. Fitting and candidate selection are unchanged.",
-  "release": "Pending public publication and clean-install verification",
+  "release": {
+    "version": "0.1.78",
+    "memory_workflow": 38533011049,
+    "harness_workflow": 38534751009,
+    "public_install": "PASS",
+    "public_walk": "PASS",
+    "public_job_seconds": "489.202039",
+    "cleanup": "PASS"
+  },
   "historical_evidence": "../acceptance.json and reports/288-M5LN.md remain the prior BLOCKED handoff."
 }

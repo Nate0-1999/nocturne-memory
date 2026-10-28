@@ -1,0 +1,458 @@
+{
+ "ok": true,
+ "result": {
+  "started": "2026-10-14T08:28:03.676Z",
+  "thread": "c3f816a6-056f-43d1-82e3-e6113445d868",
+  "injected": 4,
+  "answer": "NOCTURNE\n\nObservatory telescope filters are stored in the blue cabinet.\n\nTOOLS · 0 CALLS",
+  "notice": "Proposal m2f-720138dd2fcdddcc is ready to audition. It won the back-test; current values keep serving until activation.",
+  "receipt": {
+   "run_uid": "01M4WRWVH77M26F07QTR6H2Q3B",
+   "trigger": "manual",
+   "result": "proposed",
+   "incumbent_version": "m2f-90467922a17da285",
+   "proposal_version": "m2f-720138dd2fcdddcc",
+   "eligible_dispositions": 514,
+   "training_dispositions": 438,
+   "holdout_dispositions": 76,
+   "training_pairs": 1152,
+   "source_boundary": "01M4WRDASWTF5EKTSM7896H8RD",
+   "incumbent": {
+    "disagreements": 23,
+    "weighted_disagreements": "16.25",
+    "injected_tokens": 812,
+    "share_disagreements": 11,
+    "weighted_share_disagreements": "4.25"
+   },
+   "challenger": {
+    "disagreements": 37,
+    "weighted_disagreements": "12.25",
+    "injected_tokens": 403,
+    "share_disagreements": 11,
+    "weighted_share_disagreements": "4.25"
+   },
+   "reason": "Proposal m2f-720138dd2fcdddcc is ready to audition. It won the back-test; current values keep serving until activation.",
+   "ts": "2026-10-14T08:28:28.853552Z"
+  },
+  "reasonMatchesReceipt": true,
+  "responses": [
+   {
+    "at": "2026-10-14T08:28:28.854Z",
+    "method": "POST",
+    "status": 202,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:28:29.351Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:28:36.862Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:28:43.265Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:28:49.480Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:28:55.007Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:29:05.229Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:29:20.326Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:29:35.288Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:29:46.541Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:30:16.926Z",
+    "method": "GET",
+    "status": 503,
+    "body": {
+     "detail": "Retrain status is unavailable."
+    }
+   },
+   {
+    "at": "2026-10-14T08:30:47.314Z",
+    "method": "GET",
+    "status": 503,
+    "body": {
+     "detail": "Retrain status is unavailable."
+    }
+   },
+   {
+    "at": "2026-10-14T08:31:02.620Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:31:19.765Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:31:35.276Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:31:58.351Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:32:07.858Z",
+    "method": "GET",
+    "status": 503,
+    "body": {
+     "detail": "Retrain status is unavailable."
+    }
+   },
+   {
+    "at": "2026-10-14T08:32:27.866Z",
+    "method": "GET",
+    "status": 503,
+    "body": {
+     "detail": "Retrain status is unavailable."
+    }
+   },
+   {
+    "at": "2026-10-14T08:32:37.417Z",
+    "method": "GET",
+    "status": 503,
+    "body": {
+     "detail": "Retrain status is unavailable."
+    }
+   },
+   {
+    "at": "2026-10-14T08:32:53.586Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:33:13.237Z",
+    "method": "GET",
+    "status": 503,
+    "body": {
+     "detail": "Retrain status is unavailable."
+    }
+   },
+   {
+    "at": "2026-10-14T08:33:22.586Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:33:36.713Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:33:46.390Z",
+    "method": "GET",
+    "status": 503,
+    "body": {
+     "detail": "Retrain status is unavailable."
+    }
+   },
+   {
+    "at": "2026-10-14T08:34:03.669Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:34:18.229Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:34:29.907Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:34:39.565Z",
+    "method": "GET",
+    "status": 503,
+    "body": {
+     "detail": "Retrain status is unavailable."
+    }
+   },
+   {
+    "at": "2026-10-14T08:34:45.983Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:34:55.859Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:35:01.987Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:35:11.630Z",
+    "method": "GET",
+    "status": 503,
+    "body": {
+     "detail": "Retrain status is unavailable."
+    }
+   },
+   {
+    "at": "2026-10-14T08:35:21.151Z",
+    "method": "GET",
+    "status": 503,
+    "body": {
+     "detail": "Retrain status is unavailable."
+    }
+   },
+   {
+    "at": "2026-10-14T08:35:30.683Z",
+    "method": "GET",
+    "status": 503,
+    "body": {
+     "detail": "Retrain status is unavailable."
+    }
+   },
+   {
+    "at": "2026-10-14T08:35:50.507Z",
+    "method": "GET",
+    "status": 503,
+    "body": {
+     "detail": "Retrain status is unavailable."
+    }
+   },
+   {
+    "at": "2026-10-14T08:36:05.706Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:36:15.303Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:36:27.565Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "pending",
+     "result": null,
+     "error": null
+    }
+   },
+   {
+    "at": "2026-10-14T08:36:38.447Z",
+    "method": "GET",
+    "status": 200,
+    "body": {
+     "job_id": "01M4WRDXQY1EM4ZRFQ8Q20Y4G1",
+     "status": "completed",
+     "result": {
+      "status": "proposed",
+      "incumbent_version": "m2f-90467922a17da285",
+      "proposal_version": "m2f-720138dd2fcdddcc",
+      "eligible_dispositions": 514,
+      "training_dispositions": 438,
+      "holdout_dispositions": 76,
+      "training_pairs": 1152,
+      "incumbent": {
+       "disagreements": 23,
+       "weighted_disagreements": "16.25",
+       "injected_tokens": 812,
+       "share_disagreements": 11,
+       "weighted_share_disagreements": "4.25"
+      },
+      "challenger": {
+       "disagreements": 37,
+       "weighted_disagreements": "12.25",
+       "injected_tokens": 403,
+       "share_disagreements": 11,
+       "weighted_share_disagreements": "4.25"
+      },
+      "reason": "Proposal m2f-720138dd2fcdddcc is ready to audition. It won the back-test; current values keep serving until activation."
+     },
+     "error": null
+    }
+   }
+  ],
+  "finished": "2026-10-14T08:36:42.503Z"
+ }
+}

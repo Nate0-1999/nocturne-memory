@@ -1,0 +1,18 @@
+{
+  "palace": "test-m5ln-job",
+  "service_absent": true,
+  "database_absent": true,
+  "secrets_absent": true,
+  "scratch_homes_removed": [
+    "resume-home",
+    "public-resume-home"
+  ],
+  "journals_exported": "journal-export.json",
+  "browser_closed": true,
+  "ports_closed": [
+    8823,
+    9593
+  ],
+  "sweep": "nothing to stop",
+  "images": "Retained: registry tag immutability rejected deletion of the first owned image; second left under the same policy. No registry policy change."
+}

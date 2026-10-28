@@ -693,5 +693,554 @@
     "run": 38532350637,
     "job": 115746950711,
     "cause": "The push contains inherited M5RT DONE commits. Its historical report is checked against current M5LN changes and the new frozen ledger; peer evidence is not rewritten. A subsequent M5LN-only checkpoint has its own complete current coverage."
-  }
+  },
+  "final_source_and_release": {
+    "garden": [
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T08:38:02Z",
+        "databaseId": 38536491901,
+        "event": "push",
+        "headSha": "5c2f93639167a6a3c3121ce3a8acb93b5e9ccd91",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38536491901",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:38:02Z",
+        "databaseId": 38536491892,
+        "event": "push",
+        "headSha": "5c2f93639167a6a3c3121ce3a8acb93b5e9ccd91",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38536491892",
+        "workflowName": "Feature ledger"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:30:02Z",
+        "databaseId": 38535534082,
+        "event": "push",
+        "headSha": "37f94a565f910b10aa2a953c573b80e659a238f1",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38535534082",
+        "workflowName": "Feature ledger"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:30:02Z",
+        "databaseId": 38535534064,
+        "event": "push",
+        "headSha": "37f94a565f910b10aa2a953c573b80e659a238f1",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38535534064",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T08:27:32Z",
+        "databaseId": 38535241282,
+        "event": "push",
+        "headSha": "3794c5ab08ea54c020b82ae6ce23b0bdd8772c6d",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38535241282",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:27:32Z",
+        "databaseId": 38535241279,
+        "event": "push",
+        "headSha": "3794c5ab08ea54c020b82ae6ce23b0bdd8772c6d",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38535241279",
+        "workflowName": "Feature ledger"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T08:27:31Z",
+        "databaseId": 38535238492,
+        "event": "push",
+        "headSha": "3794c5ab08ea54c020b82ae6ce23b0bdd8772c6d",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38535238492",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T08:27:31Z",
+        "databaseId": 38535238431,
+        "event": "push",
+        "headSha": "3794c5ab08ea54c020b82ae6ce23b0bdd8772c6d",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38535238431",
+        "workflowName": "Feature ledger"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:07:04Z",
+        "databaseId": 38532874486,
+        "event": "pull_request",
+        "headSha": "f4bfcf5ca28fc87ee0cc455e67638b206d4ceb5f",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38532874486",
+        "workflowName": "Feature ledger"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T08:07:04Z",
+        "databaseId": 38532874389,
+        "event": "pull_request",
+        "headSha": "f4bfcf5ca28fc87ee0cc455e67638b206d4ceb5f",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38532874389",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:07:00Z",
+        "databaseId": 38532866792,
+        "event": "push",
+        "headSha": "f4bfcf5ca28fc87ee0cc455e67638b206d4ceb5f",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38532866792",
+        "workflowName": "Feature ledger"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T08:07:00Z",
+        "databaseId": 38532866624,
+        "event": "push",
+        "headSha": "f4bfcf5ca28fc87ee0cc455e67638b206d4ceb5f",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38532866624",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T07:49:14Z",
+        "databaseId": 38530843464,
+        "event": "pull_request",
+        "headSha": "60b4a7860ca1003f57a05ce2462c514abf51451c",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38530843464",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T07:49:14Z",
+        "databaseId": 38530843407,
+        "event": "pull_request",
+        "headSha": "60b4a7860ca1003f57a05ce2462c514abf51451c",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38530843407",
+        "workflowName": "Feature ledger"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T07:49:12Z",
+        "databaseId": 38530838712,
+        "event": "push",
+        "headSha": "60b4a7860ca1003f57a05ce2462c514abf51451c",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38530838712",
+        "workflowName": "Feature ledger"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T07:49:12Z",
+        "databaseId": 38530838684,
+        "event": "push",
+        "headSha": "60b4a7860ca1003f57a05ce2462c514abf51451c",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38530838684",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T07:39:45Z",
+        "databaseId": 38529784547,
+        "event": "pull_request",
+        "headSha": "4552ff1ab2781f955f829f01d13451bc8892b95b",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38529784547",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T07:39:45Z",
+        "databaseId": 38529784418,
+        "event": "pull_request",
+        "headSha": "4552ff1ab2781f955f829f01d13451bc8892b95b",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38529784418",
+        "workflowName": "Feature ledger"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T07:39:43Z",
+        "databaseId": 38529778931,
+        "event": "push",
+        "headSha": "4552ff1ab2781f955f829f01d13451bc8892b95b",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38529778931",
+        "workflowName": "Feature ledger"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T07:39:43Z",
+        "databaseId": 38529778851,
+        "event": "push",
+        "headSha": "4552ff1ab2781f955f829f01d13451bc8892b95b",
+        "url": "https://github.com/Nate0-1999/nocturne-garden/actions/runs/38529778851",
+        "workflowName": "Rules"
+      }
+    ],
+    "harness": [
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T08:37:34Z",
+        "databaseId": 38536436455,
+        "event": "pull_request",
+        "headSha": "ce6c7b76c37fdafdc32cb4e5eb8685e87c322c90",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38536436455",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:37:34Z",
+        "databaseId": 38536436424,
+        "event": "pull_request",
+        "headSha": "ce6c7b76c37fdafdc32cb4e5eb8685e87c322c90",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38536436424",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:37:33Z",
+        "databaseId": 38536433072,
+        "event": "push",
+        "headSha": "ce6c7b76c37fdafdc32cb4e5eb8685e87c322c90",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38536433072",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T08:37:32Z",
+        "databaseId": 38536432972,
+        "event": "push",
+        "headSha": "ce6c7b76c37fdafdc32cb4e5eb8685e87c322c90",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38536432972",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T08:35:58Z",
+        "databaseId": 38536247309,
+        "event": "pull_request",
+        "headSha": "ad1c9c2360e9d3575cfdc40177ec1f1cee2c28b6",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38536247309",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:35:58Z",
+        "databaseId": 38536246906,
+        "event": "pull_request",
+        "headSha": "ad1c9c2360e9d3575cfdc40177ec1f1cee2c28b6",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38536246906",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:35:52Z",
+        "databaseId": 38536234893,
+        "event": "push",
+        "headSha": "ad1c9c2360e9d3575cfdc40177ec1f1cee2c28b6",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38536234893",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T08:35:52Z",
+        "databaseId": 38536234883,
+        "event": "push",
+        "headSha": "ad1c9c2360e9d3575cfdc40177ec1f1cee2c28b6",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38536234883",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T08:34:35Z",
+        "databaseId": 38536083051,
+        "event": "pull_request",
+        "headSha": "a8e3437558b355a8a0a501e948424e1d614be6ae",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38536083051",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:34:35Z",
+        "databaseId": 38536082934,
+        "event": "pull_request",
+        "headSha": "a8e3437558b355a8a0a501e948424e1d614be6ae",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38536082934",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:34:32Z",
+        "databaseId": 38536075797,
+        "event": "push",
+        "headSha": "a8e3437558b355a8a0a501e948424e1d614be6ae",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38536075797",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T08:34:32Z",
+        "databaseId": 38536075714,
+        "event": "push",
+        "headSha": "a8e3437558b355a8a0a501e948424e1d614be6ae",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38536075714",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:26:17Z",
+        "databaseId": 38535095284,
+        "event": "push",
+        "headSha": "98c878b750c3e44c2db39512130660f95a7910bb",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38535095284",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T08:26:17Z",
+        "databaseId": 38535095157,
+        "event": "push",
+        "headSha": "98c878b750c3e44c2db39512130660f95a7910bb",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38535095157",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:23:21Z",
+        "databaseId": 38534751009,
+        "event": "release",
+        "headSha": "9e99cecf4cc1a4ea963a3d150326214202dd117d",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38534751009",
+        "workflowName": "Release nocturne-harness"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:23:21Z",
+        "databaseId": 38534750376,
+        "event": "push",
+        "headSha": "9e99cecf4cc1a4ea963a3d150326214202dd117d",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38534750376",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:23:21Z",
+        "databaseId": 38534750320,
+        "event": "push",
+        "headSha": "9e99cecf4cc1a4ea963a3d150326214202dd117d",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38534750320",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T08:23:07Z",
+        "databaseId": 38534722607,
+        "event": "push",
+        "headSha": "9e99cecf4cc1a4ea963a3d150326214202dd117d",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38534722607",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:23:07Z",
+        "databaseId": 38534722528,
+        "event": "push",
+        "headSha": "9e99cecf4cc1a4ea963a3d150326214202dd117d",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38534722528",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:17:15Z",
+        "databaseId": 38534038412,
+        "event": "pull_request",
+        "headSha": "e86918da71a951b869b49d5086fffda9e7a9e396",
+        "url": "https://github.com/Nate0-1999/nocturne-harness/actions/runs/38534038412",
+        "workflowName": "Rules"
+      }
+    ],
+    "spine": [
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:37:34Z",
+        "databaseId": 38536436530,
+        "event": "pull_request",
+        "headSha": "09c8670ad6259843bd2d077cb0ea7950fe6e83ba",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38536436530",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:37:34Z",
+        "databaseId": 38536436528,
+        "event": "pull_request",
+        "headSha": "09c8670ad6259843bd2d077cb0ea7950fe6e83ba",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38536436528",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:37:32Z",
+        "databaseId": 38536431368,
+        "event": "push",
+        "headSha": "09c8670ad6259843bd2d077cb0ea7950fe6e83ba",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38536431368",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:37:32Z",
+        "databaseId": 38536431227,
+        "event": "push",
+        "headSha": "09c8670ad6259843bd2d077cb0ea7950fe6e83ba",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38536431227",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:33:05Z",
+        "databaseId": 38535905192,
+        "event": "pull_request",
+        "headSha": "8fe6ab02c6287f9af610412137b71ed9cf618709",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38535905192",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:33:05Z",
+        "databaseId": 38535905099,
+        "event": "pull_request",
+        "headSha": "8fe6ab02c6287f9af610412137b71ed9cf618709",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38535905099",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-10-14T08:33:02Z",
+        "databaseId": 38535899946,
+        "event": "push",
+        "headSha": "8fe6ab02c6287f9af610412137b71ed9cf618709",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38535899946",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:33:02Z",
+        "databaseId": 38535899857,
+        "event": "push",
+        "headSha": "8fe6ab02c6287f9af610412137b71ed9cf618709",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38535899857",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:26:16Z",
+        "databaseId": 38535094368,
+        "event": "pull_request",
+        "headSha": "6a63c2694f3be19477bb4757487efd884fccc40f",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38535094368",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:26:16Z",
+        "databaseId": 38535094274,
+        "event": "pull_request",
+        "headSha": "6a63c2694f3be19477bb4757487efd884fccc40f",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38535094274",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:26:14Z",
+        "databaseId": 38535089294,
+        "event": "push",
+        "headSha": "6a63c2694f3be19477bb4757487efd884fccc40f",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38535089294",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:26:14Z",
+        "databaseId": 38535089148,
+        "event": "push",
+        "headSha": "6a63c2694f3be19477bb4757487efd884fccc40f",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38535089148",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:14:14Z",
+        "databaseId": 38533685250,
+        "event": "pull_request",
+        "headSha": "30012832735e953c0c44e584eb7eaabd913128e4",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38533685250",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:14:14Z",
+        "databaseId": 38533685069,
+        "event": "pull_request",
+        "headSha": "30012832735e953c0c44e584eb7eaabd913128e4",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38533685069",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:14:03Z",
+        "databaseId": 38533662829,
+        "event": "push",
+        "headSha": "30012832735e953c0c44e584eb7eaabd913128e4",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38533662829",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:14:03Z",
+        "databaseId": 38533662769,
+        "event": "push",
+        "headSha": "30012832735e953c0c44e584eb7eaabd913128e4",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38533662769",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:08:17Z",
+        "databaseId": 38533011049,
+        "event": "release",
+        "headSha": "f18e13618782d414231371378bd6739f30cb0daa",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38533011049",
+        "workflowName": "Release nocturne-memory"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:08:14Z",
+        "databaseId": 38533008442,
+        "event": "push",
+        "headSha": "f18e13618782d414231371378bd6739f30cb0daa",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38533008442",
+        "workflowName": "Rules"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:08:14Z",
+        "databaseId": 38533008429,
+        "event": "push",
+        "headSha": "f18e13618782d414231371378bd6739f30cb0daa",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38533008429",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-10-14T08:07:55Z",
+        "databaseId": 38532972756,
+        "event": "push",
+        "headSha": "f18e13618782d414231371378bd6739f30cb0daa",
+        "url": "https://github.com/Nate0-1999/nocturne-memory/actions/runs/38532972756",
+        "workflowName": "CI"
+      }
+    ]
+  },
+  "preserved_failures": "Earlier failure entries and saved logs remain authoritative for failed attempts even where a successful rerun replaces the API conclusion."
 }
