@@ -176,7 +176,7 @@ class VitalsService:
                     else "v_spend_rate"
                 ),
             ),
-            reconciliation=_reconciliation_snapshot(
+            reconciliation=reconciliation_snapshot(
                 reconciliation,
                 configured=self._reconciliation_configured and principal_id is None,
             ),
@@ -396,7 +396,7 @@ def _nonnegative_count(value: object, name: str) -> int:
     return value
 
 
-def _reconciliation_snapshot(
+def reconciliation_snapshot(
     row: SpendReconciliation | None,
     *,
     configured: bool,
@@ -425,6 +425,8 @@ def _reconciliation_snapshot(
         ledger_since_baseline_usd=_decimal_text(row.ledger_since_baseline_usd),
         drift_usd=_decimal_text(row.drift_usd),
         tolerance_usd=_decimal_text(row.tolerance_usd),
+        broker_day_usd=_decimal_text(row.broker_day_usd),
+        ledger_day_usd=_decimal_text(row.ledger_day_usd),
         unpriced_lines=row.unpriced_lines,
         source="openrouter:/api/v1/key",
         error_code=row.error_code,
@@ -435,4 +437,4 @@ def _decimal_text(value: Decimal | None) -> str | None:
     return None if value is None else format(value, "f")
 
 
-__all__ = ["VitalsService"]
+__all__ = ["VitalsService", "reconciliation_snapshot"]

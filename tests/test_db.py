@@ -417,6 +417,8 @@ async def test_models_match_authoritative_c2_schema(
             "tolerance_usd",
             "unpriced_lines",
             "error_code",
+            "broker_day_usd",
+            "ledger_day_usd",
         ),
         "scorer_config": ("version", "weights", "params", "created_at", "active"),
         "learner_run": (
@@ -543,6 +545,8 @@ async def test_models_match_authoritative_c2_schema(
             "ledger_cost_usd",
             "broker_since_baseline_usd",
             "ledger_since_baseline_usd",
+            "broker_day_usd",
+            "ledger_day_usd",
             "drift_usd",
             "error_code",
         },
@@ -815,6 +819,8 @@ async def test_models_match_authoritative_c2_schema(
         "spend_reconciliation.ledger_cost_usd": "NUMERIC(20, 12)",
         "spend_reconciliation.broker_since_baseline_usd": "NUMERIC(20, 12)",
         "spend_reconciliation.ledger_since_baseline_usd": "NUMERIC(20, 12)",
+        "spend_reconciliation.broker_day_usd": "NUMERIC(20, 12)",
+        "spend_reconciliation.ledger_day_usd": "NUMERIC(20, 12)",
         "spend_reconciliation.drift_usd": "NUMERIC(20, 12)",
         "spend_reconciliation.tolerance_usd": "NUMERIC(20, 12)",
         "spend_reconciliation.unpriced_lines": "BIGINT",
@@ -1124,6 +1130,8 @@ async def test_models_match_authoritative_c2_schema(
             ),
             "spend_reconciliation_tolerance_check": "tolerance_usd >= 0",
             "spend_reconciliation_unpriced_check": "unpriced_lines >= 0",
+            "spend_reconciliation_broker_day_check": "broker_day_usd >= 0",
+            "spend_reconciliation_ledger_day_check": "ledger_day_usd >= 0",
             "spend_reconciliation_error_check": (
                 "error_code IS NULL OR error_code IN "
                 "('broker_unavailable','invalid_broker_response')"

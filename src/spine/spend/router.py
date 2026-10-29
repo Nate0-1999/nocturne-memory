@@ -14,6 +14,8 @@ from spine.spend.contracts import (
     SpendTableSnapshot,
 )
 from spine.spend.service import SpendEventConflictError, SpendService
+from spine.vitals.contracts import ReconciliationSnapshot
+from spine.vitals.service import reconciliation_snapshot
 
 router = APIRouter(prefix="/v1/spend", tags=["spend"])
 
@@ -49,6 +51,29 @@ async def record_invoice(
             endpoint=f"{request.method} {request.url.path}",
         )
     return SpendEventsResponse(accepted=accepted)
+
+
+@router.post(
+    "/reconciliation",
+    response_model=ReconciliationSnapshot,
+    responses={
+        401: problem_openapi("Bearer token missing or invalid"),
+        403: problem_openapi("Only the Palace owner can reconcile spend"),
+        409: problem_openapi("No broker reconciliation is configured"),
+        422: problem_openapi("Request does not match the endpoint contract"),
+    },
+)
+async def reconcile_spend(
+    request: Request,
+    principal_id: Annotated[str, Query(min_length=1)],
+) -> ReconciliationSnapshot:
+    """A-080: the owner's on-demand run of the daily broker reconciliation."""
+    if principal_id != request.app.state.settings.owner_principal_id:
+        raise HTTPException(403, "Only the Palace owner can reconcile spend.")
+    service = request.app.state.reconciliation_service
+    if service is None:
+        raise HTTPException(409, "This Palace has no OpenRouter key to reconcile against.")
+    return reconciliation_snapshot(await service.reconcile_once(), configured=True)
 
 
 @router.get(

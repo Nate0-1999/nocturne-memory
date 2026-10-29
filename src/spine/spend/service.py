@@ -219,6 +219,8 @@ class SpendService:
         scoped = thread_ids is not None
         parameters: dict[str, Any] = {
             "window_start": instant - timedelta(minutes=60),
+            # FL-160: the bottom strip draws up to a day of per-minute lanes (10 m, 1 h, today).
+            "rate_start": instant - timedelta(hours=24),
             "as_of": instant,
         }
         if principal_id is not None:
@@ -308,12 +310,12 @@ async def _history(
     )
     minute_rows = (
         "SELECT minute, purpose, model, cost_usd, receipt_lines, unpriced_lines "
-        "FROM v_spend_rate WHERE minute >= :window_start AND minute <= :as_of"
+        "FROM v_spend_rate WHERE minute >= :rate_start AND minute <= :as_of"
         if not scoped and not principal_scoped
         else "SELECT date_trunc('minute', ts) AS minute, purpose, model, "
         "sum(cost_usd) AS cost_usd, count(*) AS receipt_lines, "
         "count(*) FILTER (WHERE cost_usd IS NULL) AS unpriced_lines "
-        "FROM base WHERE ts >= :window_start GROUP BY minute, purpose, model"
+        "FROM base WHERE ts >= :rate_start GROUP BY minute, purpose, model"
     )
     rate_rows = (
         (
@@ -332,7 +334,9 @@ async def _history(
                     THEN 'subagent' ELSE 'agent' END,
                 origin_agent, sum(cost_usd), count(*),
                 count(*) FILTER (WHERE cost_usd IS NULL)
-            FROM base WHERE ts >= :window_start AND product_type = 'llm.request'
+            FROM base WHERE ts >= :rate_start AND product_type = 'llm.request'
+                -- FL-160: the curator's spend is its own series, not an agent's.
+                AND purpose <> 'curation'
             GROUP BY 1, 2, 3
         )
         SELECT dimension, key, minute, sum(cost_usd)::text AS cost_usd,
@@ -372,7 +376,7 @@ async def _history(
         (
             await session.execute(
                 text(f"""
-        SELECT thread_id, prompt_id, min(ts) AS first_request_at,
+        SELECT thread_id, prompt_id, model, min(ts) AS first_request_at,
             coalesce(sum(quantity) FILTER (WHERE quantity_type = 'input_fresh'), 0)::text
                 AS fresh_tokens,
             coalesce(sum(quantity) FILTER (WHERE quantity_type = 'input_cached'), 0)::text
@@ -381,7 +385,8 @@ async def _history(
                 AS cache_write_tokens
         FROM ({base}) AS base WHERE product_type = 'llm.request'
             AND unit_of_measure = 'tokens' AND thread_id IS NOT NULL
-        GROUP BY thread_id, prompt_id ORDER BY first_request_at, thread_id, prompt_id
+        GROUP BY thread_id, prompt_id, model
+        ORDER BY first_request_at, thread_id, prompt_id, model
     """),
                 parameters,
             )
