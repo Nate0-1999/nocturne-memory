@@ -13,6 +13,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from spine.spend.reconciliation import (
     BrokerUnavailable,
+    BrokerUsage,
     OpenRouterUsageClient,
     ReconciliationScheduler,
     ReconciliationService,
@@ -25,11 +26,12 @@ class _Gateway:
     def __init__(self, *values: Decimal | Exception) -> None:
         self.values = list(values)
 
-    async def cumulative_usage_usd(self) -> Decimal:
+    async def usage(self) -> BrokerUsage:
         value = self.values.pop(0)
         if isinstance(value, Exception):
             raise value
-        return value
+        # The fixtures' key started today: its day usage is its growth since the first read.
+        return BrokerUsage(total_usd=value, day_usd=value - Decimal("9.5"))
 
 
 async def _receipt(
@@ -79,6 +81,9 @@ async def test_baseline_balanced_drift_and_vitals_projection(
     assert drift.broker_since_baseline_usd == Decimal("0.300000000000")
     assert drift.ledger_since_baseline_usd == Decimal("0.350000000000")
     assert drift.drift_usd == Decimal("0.050000000000")
+    # A-080: today's ledger (1.35 of llm receipts, never the invoice) beside today's bill (0.80).
+    assert drift.ledger_day_usd == Decimal("1.350000000000")
+    assert drift.broker_day_usd == Decimal("0.800000000000")
     async with memory_session_factory() as session:
         receipt_time = (await session.execute(text("SELECT max(ts) FROM spend_event"))).scalar_one()
     daily = (await SpendService(memory_session_factory).table(as_of=receipt_time)).days
@@ -94,6 +99,7 @@ async def test_baseline_balanced_drift_and_vitals_projection(
     assert snapshot.reconciliation.status == "drift"
     assert snapshot.reconciliation.drift_usd == "0.050000000000"
     assert snapshot.reconciliation.source == "openrouter:/api/v1/key"
+    assert snapshot.reconciliation.ledger_day_usd == "1.350000000000"
 
 
 async def test_unavailable_is_safe_and_reconciliation_rows_are_append_only(
@@ -129,7 +135,7 @@ async def test_openrouter_client_reads_only_current_key_usage() -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         assert request.url.path == "/api/v1/key"
         assert request.headers["authorization"] == "Bearer existing-key"
-        return httpx.Response(200, json={"data": {"usage": 12.345678901234}})
+        return httpx.Response(200, json={"data": {"usage": 12.345678901234, "usage_daily": 0.5}})
 
     client = OpenRouterUsageClient(
         api_key="existing-key",
@@ -142,7 +148,9 @@ async def test_openrouter_client_reads_only_current_key_usage() -> None:
         transport=httpx.MockTransport(handler),
     )
     try:
-        assert await client.cumulative_usage_usd() == Decimal("12.345678901234")
+        assert await client.usage() == BrokerUsage(
+            total_usd=Decimal("12.345678901234"), day_usd=Decimal("0.5")
+        )
     finally:
         await client.aclose()
 

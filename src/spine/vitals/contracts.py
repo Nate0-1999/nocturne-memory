@@ -101,6 +101,9 @@ class ReconciliationSnapshot(VitalsContract):
     ledger_since_baseline_usd: DecimalString | None
     drift_usd: SignedDecimalString | None
     tolerance_usd: DecimalString | None
+    # A-080: today's (UTC) bill and ledger; null on rows recorded before migration 0030.
+    broker_day_usd: DecimalString | None = None
+    ledger_day_usd: DecimalString | None = None
     unpriced_lines: NonNegativeInt
     source: Literal["openrouter:/api/v1/key"] | None
     error_code: Literal["broker_unavailable", "invalid_broker_response"] | None
@@ -114,6 +117,10 @@ class ReconciliationSnapshot(VitalsContract):
             self.ledger_since_baseline_usd,
             self.drift_usd,
         )
+        if self.status in {"not_recorded", "unavailable"} and (
+            self.broker_day_usd is not None or self.ledger_day_usd is not None
+        ):
+            raise ValueError("only a successful reconciliation records today's figures")
         if self.status == "not_recorded":
             if self.checked_at is not None or any(value is not None for value in observations):
                 raise ValueError("not_recorded reconciliation cannot contain observations")

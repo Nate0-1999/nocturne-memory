@@ -183,6 +183,8 @@ class SpendRateLane(SpendContract):
 class MessageCache(SpendContract):
     thread_id: UUID
     prompt_id: str | None
+    # FL-161: the model prices the cache saving; a message on two models has a row for each.
+    model: str | None = None
     first_request_at: datetime
     fresh_tokens: DecimalString
     cached_tokens: DecimalString
