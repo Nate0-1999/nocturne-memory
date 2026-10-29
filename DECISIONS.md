@@ -1473,3 +1473,10 @@ F212's ruling adds a durable manual retrain job, drained by the existing learner
 worker. Its result commits with the proposal and immutable fit receipt under the
 existing advisory lock; interruption rolls them back together for restart pickup.
 The console starts and polls this job. The synchronous endpoint remains compatible.
+
+## M6LP — Project floors and observable fits [P1.2, P2.5]
+
+A-081 uses the existing learner minimum per project's training split; holdout signals
+cannot unlock a fit. Progress samples the actual global objective every 100 iterations
+and records later phases through a separate transaction, so polling never waits for the fit.
+History retains all authentic generations; effective weights use the serving projection.

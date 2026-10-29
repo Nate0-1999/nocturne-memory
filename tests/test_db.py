@@ -166,6 +166,7 @@ async def test_models_match_authoritative_c2_schema(
         "spend_reconciliation",
         "scorer_config",
         "retrain_job",
+        "retrain_progress",
         "learner_run",
         "optimization_run",
         "scorer_activation",
@@ -178,6 +179,7 @@ async def test_models_match_authoritative_c2_schema(
     )
 
     expected_columns = {
+        "retrain_progress": ("job_id", "points"),
         "retrain_job": ("job_id", "result", "error", "created_at"),
         "workflow_job": (
             "job_id", "principal_id", "machine_id", "definition", "revision",
@@ -548,6 +550,7 @@ async def test_models_match_authoritative_c2_schema(
         },
         "scorer_config": set(),
         "retrain_job": {"result", "error"},
+        "retrain_progress": set(),
         "learner_run": {"proposal_version", "source_boundary", "incumbent", "challenger"},
         "optimization_run": {"trigger_thread_id", "challenger_version", "challenger_params"},
         "scorer_activation": set(),
@@ -583,6 +586,7 @@ async def test_models_match_authoritative_c2_schema(
         "spend_reconciliation": ("event_uid",),
         "scorer_config": ("version",),
         "retrain_job": ("job_id",),
+        "retrain_progress": ("job_id",),
         "learner_run": ("run_uid",),
         "optimization_run": ("run_uid",),
         "scorer_activation": ("event_uid",),
@@ -825,6 +829,8 @@ async def test_models_match_authoritative_c2_schema(
         "scorer_config.created_at": "TIMESTAMP WITH TIME ZONE",
         "scorer_config.active": "BOOLEAN",
         "retrain_job.job_id": "TEXT",
+        "retrain_progress.job_id": "TEXT",
+        "retrain_progress.points": "JSONB",
         "retrain_job.result": "JSONB",
         "retrain_job.error": "TEXT",
         "retrain_job.created_at": "TIMESTAMP WITH TIME ZONE",
@@ -957,6 +963,7 @@ async def test_models_match_authoritative_c2_schema(
         for name, table in Base.metadata.tables.items()
     }
     assert checks == {
+        "retrain_progress": {},
         "retrain_job": {},
         "curator_model_policy": {},
         "workflow_job": {},

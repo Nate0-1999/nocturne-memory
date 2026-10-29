@@ -4353,6 +4353,14 @@
             "title": "Job Id",
             "type": "string"
           },
+          "progress": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Progress",
+            "type": "array"
+          },
           "result": {
             "anyOf": [
               {
@@ -4812,6 +4820,11 @@
             "title": "Project Offsets",
             "type": "object"
           },
+          "project_weights": {
+            "additionalProperties": true,
+            "title": "Project Weights",
+            "type": "object"
+          },
           "replay": {
             "anyOf": [
               {
@@ -5099,6 +5112,24 @@
           "slice_parameter_id": {
             "$ref": "#/components/schemas/ScorerParameterId"
           },
+          "terrain_parameters": {
+            "default": [
+              "scorer.tau",
+              "scorer.memory_context_share"
+            ],
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/components/schemas/ScorerParameterId"
+              },
+              {
+                "$ref": "#/components/schemas/ScorerParameterId"
+              }
+            ],
+            "title": "Terrain Parameters",
+            "type": "array"
+          },
           "values": {
             "$ref": "#/components/schemas/ScorerValues"
           }
@@ -5181,6 +5212,24 @@
               "type": "object"
             },
             "title": "Terrain",
+            "type": "array"
+          },
+          "terrain_parameters": {
+            "default": [
+              "scorer.tau",
+              "scorer.memory_context_share"
+            ],
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Terrain Parameters",
             "type": "array"
           },
           "values": {
