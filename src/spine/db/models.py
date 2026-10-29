@@ -872,6 +872,14 @@ class RetrainJob(Base):
     )
 
 
+class RetrainProgress(Base):
+    """Observed fitting steps, committed independently of a retrain's result."""
+
+    __tablename__ = "retrain_progress"
+    job_id: Mapped[str] = mapped_column(Text, ForeignKey("retrain_job.job_id"), primary_key=True)
+    points: Mapped[list[dict[str, Any]]] = mapped_column(JSONB, nullable=False)
+
+
 class LearnerRun(Base):
     """One immutable receipt for an actual manual or background retrain."""
 

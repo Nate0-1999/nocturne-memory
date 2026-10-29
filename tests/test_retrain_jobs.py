@@ -19,6 +19,9 @@ async def test_job_returns_before_fit_and_survives_worker_restart(
     fit = service._fit
 
     async def slow_fit(*args, **kwargs):
+        await service._record_progress(
+            kwargs["job_id"], {"phase": "global", "iteration": 1, "objective": 0.5}
+        )
         started.set()
         await release.wait()
         return await fit(*args, **kwargs)
@@ -39,9 +42,11 @@ async def test_job_returns_before_fit_and_survives_worker_restart(
     task = asyncio.create_task(service.run_pending_jobs())
     await asyncio.wait_for(started.wait(), timeout=2)
     assert (await service.get_job(job_id)).status == "pending"
+    assert (await service.get_job(job_id)).progress[-1]["objective"] == 0.5
     task.cancel()
     with pytest.raises(asyncio.CancelledError):
         await task
+    assert (await service.get_job(job_id)).progress[-1]["iteration"] == 1
     release.set()
     await service.run_pending_jobs()
     async with AsyncClient(

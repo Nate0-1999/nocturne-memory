@@ -40,6 +40,7 @@ from spine.db.models import (
     LearnerRun,
     OptimizationRun,
     RetrainJob,
+    RetrainProgress,
 )
 from spine.db.models import ScorerConfig as ScorerConfigRow
 from spine.ids import mint_ulid
@@ -63,7 +64,7 @@ from spine.learner.model import (
     split_gates,
 )
 
-_ALGORITHM_ID = "m3ll-project-offsets-transparent-axes-v4"
+_ALGORITHM_ID = "m6lp-project-floor-v5"
 _SHARE_TUNING_MINIMUM = 100
 
 
@@ -195,12 +196,23 @@ class LearnerService:
             job = await session.get(RetrainJob, job_id)
             if job is None:
                 return None
+            progress = await session.get(RetrainProgress, job_id)
             return RetrainJobView(
                 job_id=job.job_id,
                 status="failed" if job.error else "completed" if job.result else "pending",
                 result=RetrainResponse.model_validate(job.result) if job.result else None,
                 error=job.error,
+                progress=progress.points if progress else [],
             )
+
+    async def _record_progress(self, job_id: str, point: dict) -> None:
+        async with self._session_factory() as session, session.begin():
+            row = await session.get(RetrainProgress, job_id)
+            observed = {**point, "observed_at": (await _database_clock(session)).isoformat()}
+            if row is None:
+                session.add(RetrainProgress(job_id=job_id, points=[observed]))
+            else:
+                row.points = [*row.points, observed]
 
     async def run_pending_jobs(self) -> None:
         async with self._session_factory() as session:
@@ -289,6 +301,7 @@ class LearnerService:
                         due_only=due_only,
                         optimization_trigger=optimization_trigger,
                         started_at=started_at,
+                        job_id=job_id,
                     )
                     if job is not None:
                         job.result = result.model_dump(mode="json")
@@ -302,6 +315,7 @@ class LearnerService:
         due_only: bool,
         optimization_trigger: OptimizationTrigger,
         started_at: datetime,
+        job_id: str | None = None,
     ) -> RetrainResponse | None:
         await sweep_unused(session, self._owner_principal_id)
         configs = (await session.execute(select(ScorerConfigRow))).scalars().all()
@@ -345,6 +359,7 @@ class LearnerService:
             incumbent=incumbent,
             eligible_dispositions=eligible_dispositions,
             corpus=corpus,
+            job_id=job_id,
         )
         # The mappings intentionally expose no ORM relationship. Persist a
         # winning proposal before its same-transaction receipt satisfies the FK.
@@ -428,6 +443,7 @@ class LearnerService:
         incumbent: RuntimeScorerConfig,
         eligible_dispositions: int,
         corpus: _BalancedCorpus,
+        job_id: str | None = None,
     ) -> _OptimizationOutcome:
         examples = corpus.examples
         share_boundaries = corpus.share_boundaries
@@ -463,6 +479,11 @@ class LearnerService:
             boundary for boundary in share_boundaries if boundary.injection_id in holdout_ids
         )
         tune_share_and_tau = len(examples) >= _SHARE_TUNING_MINIMUM
+        loop = asyncio.get_running_loop()
+
+        def progress(point: dict) -> None:
+            asyncio.run_coroutine_threadsafe(self._record_progress(job_id, point), loop).result()
+
         try:
             fit = await asyncio.to_thread(
                 fit_pairwise,
@@ -474,9 +495,11 @@ class LearnerService:
                 incumbent_memory_context_share=incumbent.params.memory_context_share,
                 share_boundaries=training_boundaries,
                 tune_share_and_tau=tune_share_and_tau,
+                progress=progress if job_id is not None else None,
                 settings=FitSettings(
                     pair_margin=self._settings.pair_margin,
                     bias_l2=self._settings.bias_l2,
+                    project_min_dispositions=self._settings.min_dispositions,
                 ),
             )
         except ValueError as error:

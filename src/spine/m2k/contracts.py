@@ -167,6 +167,7 @@ class ScorerConfigurationView(M2KContract):
     replay: dict[str, Any] | None
     axes: dict[str, Any] = Field(default_factory=dict)
     project_offsets: dict[str, Any] = Field(default_factory=dict)
+    project_weights: dict[str, Any] = Field(default_factory=dict)
 
 
 class ScorerActivationView(M2KContract):
@@ -324,6 +325,10 @@ class ScorerSimulationRequest(M2KContract):
     base_version: NonBlankString
     values: ScorerValues
     slice_parameter_id: ScorerParameterId
+    terrain_parameters: tuple[ScorerParameterId, ScorerParameterId] = (
+        "scorer.tau",
+        "scorer.memory_context_share",
+    )
 
 
 class ScorerComparisonRow(M2KContract):
@@ -357,6 +362,7 @@ class AccuracySlice(M2KContract):
 
 class ScorerSimulationResponse(M2KContract):
     terrain: list[dict[str, float]] = Field(default_factory=list)
+    terrain_parameters: tuple[str, str] = ("scorer.tau", "scorer.memory_context_share")
     simulation_digest: Annotated[StrictStr, Field(pattern=r"^[0-9a-f]{64}$")]
     base_version: NonBlankString
     values: ScorerValues

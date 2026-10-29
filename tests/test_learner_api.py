@@ -1068,6 +1068,7 @@ async def test_learner_lock_is_released_after_snapshot_failure(
             due_only: bool,
             optimization_trigger: OptimizationTrigger,
             started_at: datetime,
+            job_id: str | None = None,
         ) -> RetrainResponse | None:
             del session, trigger, due_only, optimization_trigger, started_at
             raise RuntimeError("deterministic learner failure")
