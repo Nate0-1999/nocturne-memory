@@ -2,12 +2,12 @@
   "packet": "M5SY",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "797511980941adc38182d074e16e8009f64cc013615eac1af706efd24651872a",
+  "ledger_sha256": "eed3f6ce2b6f2d5eedc6c5b9404d179cc6a8a5c92ff44968684381fedb31f939",
   "diffs": [
     {
       "repo": "spine",
-      "base": "f18e13618782d414231371378bd6739f30cb0daa",
-      "head": "8fe6ab02c6287f9af610412137b71ed9cf618709"
+      "base": "753319ab5a57295d6a8303a194d8f5f9e39180b4",
+      "head": "d4b6a070ffe67e8966e54261d207dae8969ac6f7"
     }
   ],
   "unmapped": {
