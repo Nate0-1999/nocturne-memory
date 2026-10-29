@@ -335,6 +335,8 @@ async def _history(
                 origin_agent, sum(cost_usd), count(*),
                 count(*) FILTER (WHERE cost_usd IS NULL)
             FROM base WHERE ts >= :rate_start AND product_type = 'llm.request'
+                -- FL-160: the curator's spend is its own series, not an agent's.
+                AND purpose <> 'curation'
             GROUP BY 1, 2, 3
         )
         SELECT dimension, key, minute, sum(cost_usd)::text AS cost_usd,
