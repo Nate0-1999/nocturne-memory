@@ -4600,6 +4600,28 @@
         "screenshot": "FL-205.png"
       },
       "protected_reason": "walk PASS 2026-10-13"
+    },
+    {
+      "id": "FL-206",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Nov 9",
+      "label": "Strategies and models: the strategies rail beside the model list, each strategy with its one-sentence meaning and the model it picks now; one plain summary of the model in use; the strategy named wherever the model is.",
+      "status": "built",
+      "walk": "Open the Model Device from the conversation's model chip: the strategies (Pinned, Max, Elbow, Floor, Budget once the ledger has a burn, Local when offline) stand beside the ranked model list, each with what it means and the model it picks now, the one in force marked; the model in use has one paragraph naming its price in and out (the price the chip quotes), context, rank, thinking level, which strategy chose it and why, and since when. Click Elbow; a new thread's header chip, thread-list row, conversation configuration legend and spend-module model row all read 'Elbow · <model>'. Pick Floor and Budget from the rail the same way.",
+      "owner": "owner 2026-11-09 (SD-090): \"could work on the model summary and model selection strategies … in the actual like text window where you can select what you want to do, like this, as opposed to just there being model lists there. There could be like a strategy in the same place as the model lists. So like strategies and models, that might look good.\"",
+      "surfaces": [
+        "harness/web/src/ModelDevice.tsx",
+        "harness/web/src/modelBrowser.ts",
+        "harness/web/src/AgentPolicies.tsx",
+        "harness/web/src/VitalsModule.tsx",
+        "harness/web/src/App.tsx",
+        "harness/web/src/store.ts",
+        "harness/web/src/protocol.ts",
+        "harness/src/harness/run_loop.py",
+        "harness/src/harness/transcript.py",
+        "harness/src/harness/daemon.py",
+        "spine/src/spine/model_policy.py"
+      ]
     }
   ]
 }
