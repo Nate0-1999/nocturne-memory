@@ -1349,10 +1349,20 @@
       "section": "4. Learning and training loops",
       "era": "Aug 31",
       "label": "Compaction instructions tuned by back-test; memory size as a tunable beside the threshold and allotments.",
-      "status": "not built",
-      "walk": "Open the tunables; memory size is listed beside threshold and allotments, and the ledger shows a compaction-instruction generation with its back-test.",
+      "status": "built",
+      "walk": "In the Injection Console, open Memory creation: memory size can be back-tested and instruction generations list their parent, date and scores. Force retrain replays recent source spans; only a strictly better score adopts a generation. Verification previews show scores but never adopt.",
       "owner": "owner — \"The compaction instruction tuning is what can be tuned by having it back test new compaction instructions on memories based on how much they are used or if they have been removed. only update the instructions to a new set of instructions if the memory generation performance is improved by the back test it doesn't generate memories that are deleted.)\" (seed SD-053 (owner riff 2026-08-31); seed SD-054)",
-      "surfaces": []
+      "surfaces": [
+        "spine/src/spine/learner/compaction.py",
+        "spine/src/spine/learner/creation.py",
+        "spine/src/spine/learner/contracts.py",
+        "spine/src/spine/learner/router.py",
+        "spine/src/spine/learner/service.py",
+        "harness/web/src/LearningTelemetry.tsx",
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/extraction.py",
+        "harness/src/harness/agent.py"
+      ]
     },
     {
       "id": "FL-062",
@@ -1837,11 +1847,16 @@
       "id": "FL-084",
       "section": "6. Context window, history and compaction",
       "era": "founding",
-      "label": "Constitution: Plan-mode compaction: the summarizer asks the user one to four questions before compacting (parked). (seed SD-040)",
-      "status": "not built",
-      "walk": "Cross the fill line in plan mode; the summarizer asks one to four questions before compacting.",
+      "label": "Plan-mode compaction: the summarizer asks the user one to four questions before compacting. (seed SD-040)",
+      "status": "built",
+      "walk": "Enable /compact plan on, cross the configured fill line, and answer the one to four model questions. No history is dropped before the answer; the ensuing compaction record retains questions and answer, including across restart.",
       "owner": "constitution",
-      "surfaces": []
+      "surfaces": [
+        "harness/src/harness/agent.py",
+        "harness/src/harness/agent_runtime.py",
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/transcript.py"
+      ]
     },
     {
       "id": "FL-085",
@@ -3366,20 +3381,32 @@
       "section": "11. Spend, money and model routing",
       "era": "Jul 27",
       "label": "Cost routing: lowest cost above an intelligence threshold, or a spend rate per hour buying the most intelligence that burn allows.",
-      "status": "not built",
-      "walk": "Set an intelligence threshold in the token-cost policy; a new thread's chosen model is the cheapest one at or above that threshold.",
+      "status": "built",
+      "walk": "Set Floor with an intelligence threshold in the token-cost policy; a new thread's chosen model is the cheapest one at or above that threshold. Set Budget with dollars per hour; a new thread's chosen model is the most intelligent one the agents' measured hourly token burn can buy for that, and the readout says what it costs an hour and what the next smarter model would cost.",
       "owner": "owner — \"another way would  set spend per hour and then have the highest intelligence given the token burn...\" (chat 2026-07-28 00:26:44; chat 2026-07-27 23:45:55)",
-      "surfaces": []
+      "surfaces": [
+        "spine/src/spine/model_policy.py",
+        "harness/src/harness/model_policy.py",
+        "harness/web/src/AgentPolicies.tsx",
+        "harness/web/src/ModelDevice.tsx",
+        "harness/web/src/modelBrowser.ts"
+      ]
     },
     {
       "id": "FL-153",
       "section": "11. Spend, money and model routing",
       "era": "Jul 28",
       "label": "The elbow: a standard point on the cost-to-intelligence Pareto curve.",
-      "status": "not built",
-      "walk": "Choose the elbow policy for a thread; the policy readout names which frontier model is the elbow.",
+      "status": "built",
+      "walk": "Choose the elbow policy; a new thread's policy readout names which frontier model is the elbow, how far below the frontier's price chord it sits, and what the next model up adds for its price.",
       "owner": "owner — \"I don't think that we ever quantified how we would actually calculate the elbow: it's on the pareto frontier, its not the most expensive nor the least but where is it? just below a a dense pocket of models at derivative of pareto >.5? something like that?\" (chat 2026-07-28 16:22:57; chat 2026-07-28 00:26:44)",
-      "surfaces": []
+      "surfaces": [
+        "spine/src/spine/model_policy.py",
+        "harness/src/harness/model_policy.py",
+        "harness/web/src/AgentPolicies.tsx",
+        "harness/web/src/ModelDevice.tsx",
+        "harness/web/src/modelBrowser.ts"
+      ]
     },
     {
       "id": "FL-154",
