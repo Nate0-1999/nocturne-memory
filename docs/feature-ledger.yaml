@@ -3366,20 +3366,32 @@
       "section": "11. Spend, money and model routing",
       "era": "Jul 27",
       "label": "Cost routing: lowest cost above an intelligence threshold, or a spend rate per hour buying the most intelligence that burn allows.",
-      "status": "not built",
-      "walk": "Set an intelligence threshold in the token-cost policy; a new thread's chosen model is the cheapest one at or above that threshold.",
+      "status": "built",
+      "walk": "Set Floor with an intelligence threshold in the token-cost policy; a new thread's chosen model is the cheapest one at or above that threshold. Set Budget with dollars per hour; a new thread's chosen model is the most intelligent one the agents' measured hourly token burn can buy for that, and the readout says what it costs an hour and what the next smarter model would cost.",
       "owner": "owner — \"another way would  set spend per hour and then have the highest intelligence given the token burn...\" (chat 2026-07-28 00:26:44; chat 2026-07-27 23:45:55)",
-      "surfaces": []
+      "surfaces": [
+        "spine/src/spine/model_policy.py",
+        "harness/src/harness/model_policy.py",
+        "harness/web/src/AgentPolicies.tsx",
+        "harness/web/src/ModelDevice.tsx",
+        "harness/web/src/modelBrowser.ts"
+      ]
     },
     {
       "id": "FL-153",
       "section": "11. Spend, money and model routing",
       "era": "Jul 28",
       "label": "The elbow: a standard point on the cost-to-intelligence Pareto curve.",
-      "status": "not built",
-      "walk": "Choose the elbow policy for a thread; the policy readout names which frontier model is the elbow.",
+      "status": "built",
+      "walk": "Choose the elbow policy; a new thread's policy readout names which frontier model is the elbow, how far below the frontier's price chord it sits, and what the next model up adds for its price.",
       "owner": "owner — \"I don't think that we ever quantified how we would actually calculate the elbow: it's on the pareto frontier, its not the most expensive nor the least but where is it? just below a a dense pocket of models at derivative of pareto >.5? something like that?\" (chat 2026-07-28 16:22:57; chat 2026-07-28 00:26:44)",
-      "surfaces": []
+      "surfaces": [
+        "spine/src/spine/model_policy.py",
+        "harness/src/harness/model_policy.py",
+        "harness/web/src/AgentPolicies.tsx",
+        "harness/web/src/ModelDevice.tsx",
+        "harness/web/src/modelBrowser.ts"
+      ]
     },
     {
       "id": "FL-154",
