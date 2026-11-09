@@ -366,6 +366,8 @@ class CompactionLearner:
                 json={
                     "model": model,
                     "temperature": 0,
+                    # Source-sized replies keep a replay from spending a full model window.
+                    "max_tokens": cl100k_token_count(prompt) + self.settings.memory_max_tokens,
                     "usage": {"include": True},
                     "response_format": {
                         "type": "json_schema",
