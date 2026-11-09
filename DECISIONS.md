@@ -1493,3 +1493,10 @@ verification exclusions remain. Different sizes cannot adopt outside the require
 tau/share/size fit; that integration overlaps M6LP's live `_fit` (F216). This 0.1.86 pair
 is draft-only. API label 0.1.90 retains the recorded 0.1.89 schema while removing an
 unjustified minimum size; every positive size within the existing 128-token cap is valid.
+
+## M6LP — Project floors and observable fits [P1.2, P2.5]
+
+A-081 uses the existing learner minimum per project's training split; holdout signals
+cannot unlock a fit. Progress samples the actual global objective every 100 iterations
+and records later phases through a separate transaction, so polling never waits for the fit.
+History retains all authentic generations; effective weights use the serving projection.

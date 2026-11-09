@@ -73,6 +73,7 @@ class RetrainJobView(BaseModel):
     status: Literal["pending", "completed", "failed"]
     result: RetrainResponse | None = None
     error: str | None = None
+    progress: list[dict] = Field(default_factory=list)
 
 
 __all__ = ["ReplayScoreView", "RetrainResponse", "RetrainJobView"]
