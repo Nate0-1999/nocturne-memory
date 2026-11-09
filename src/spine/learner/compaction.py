@@ -75,8 +75,10 @@ class CompactionLearner:
     async def record(self, trigger, principal):
         record = trigger.record.model_dump(mode="json")
         policy = record["policy"]
-        if "{messages}" not in policy["instructions"] or not 16 <= policy["memory_size"] <= 128:
-            raise ValueError("Compaction policy needs {messages} and a 16–128 token size.")
+        if "{messages}" not in policy["instructions"] or not 1 <= policy["memory_size"] <= 128:
+            raise ValueError(
+                "Compaction policy needs {messages} and a positive size within 128 tokens."
+            )
         async with self.sessions() as session, session.begin():
             if await session.get(OptimizationRun, trigger.event_uid):
                 return
@@ -238,7 +240,7 @@ class CompactionLearner:
                     else await self._call(
                         "Improve these compaction instructions using the older observed facts. "
                         "Return JSON {instructions: string containing {messages}, "
-                        "memory_size: integer 16..128}. Keep durable user decisions, "
+                        "memory_size: positive integer at most 128}. Keep durable user decisions, "
                         "corrections and facts; leave transient "
                         "progress out. Never include secrets. "
                         + json.dumps({"current": current, "training": corpus[:cutoff]}),
@@ -251,7 +253,7 @@ class CompactionLearner:
                     not isinstance(instructions, str)
                     or "{messages}" not in instructions
                     or type(size) is not int
-                    or not 16 <= size <= 128
+                    or not 1 <= size <= 128
                 ):
                     raise ValueError("Invalid compaction instruction candidate")
                 candidate = {
@@ -359,7 +361,7 @@ class CompactionLearner:
             if kind == "replay"
             else {
                 "instructions": {"type": "string"},
-                "memory_size": {"type": "integer", "minimum": 16, "maximum": 128},
+                "memory_size": {"type": "integer", "minimum": 1, "maximum": 128},
             }
         )
         async with httpx.AsyncClient(timeout=60) as client:

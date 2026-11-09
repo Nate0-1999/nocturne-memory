@@ -12,7 +12,7 @@ class CompactionPolicy(BaseModel):
     id: str
     parent: str | None
     instructions: str
-    memory_size: int = Field(ge=16, le=128)
+    memory_size: int = Field(ge=1, le=128)
 
     @field_validator("instructions")
     @classmethod
@@ -43,7 +43,7 @@ class CompactionTrigger(BaseModel):
 
 class CompactionBacktest(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    memory_size: int | None = Field(default=None, ge=16, le=128)
+    memory_size: int | None = Field(default=None, ge=1, le=128)
     preview: bool = False
 
 

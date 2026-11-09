@@ -443,7 +443,7 @@
             "anyOf": [
               {
                 "maximum": 128.0,
-                "minimum": 16.0,
+                "minimum": 1.0,
                 "type": "integer"
               },
               {
@@ -492,7 +492,7 @@
           },
           "memory_size": {
             "maximum": 128.0,
-            "minimum": 16.0,
+            "minimum": 1.0,
             "title": "Memory Size",
             "type": "integer"
           },
