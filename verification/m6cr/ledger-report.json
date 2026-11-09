@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "0c0f847cf7b69646c53b1518e6116c2a7c51dfb3",
-      "head": "25e79be53c78202a2795b1124f9636a6a43fa78e"
+      "head": "c521a8df5c89a18208859794f0a07fd6987f7316"
     }
   ],
   "unmapped": {
@@ -22,8 +22,8 @@
     "spine/verification/m6cr/FL-196.png": "M6CR evidence (report, captures, receipts, checksums); no feature behavior.",
     "spine/verification/m6cr/FL-202.png": "M6CR evidence (report, captures, receipts, checksums); no feature behavior.",
     "spine/verification/m6cr/SHA256SUMS": "M6CR evidence (report, captures, receipts, checksums); no feature behavior.",
-    "spine/verification/m6cr/impacted.json": "M6CR evidence (report, captures, receipts, checksums); no feature behavior.",
-    "spine/verification/m6cr/ledger-report.json": "M6CR evidence (report, captures, receipts, checksums); no feature behavior."
+    "spine/verification/m6cr/ledger-report.json": "M6CR evidence (report, captures, receipts, checksums); no feature behavior.",
+    "spine/verification/m6cr/impacted.json": "M6CR evidence (report, captures, receipts, checksums); no feature behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
