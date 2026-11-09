@@ -6,8 +6,8 @@
   "diffs": [
     {
       "repo": "spine",
-      "base": "0c0f847cf7b69646c53b1518e6116c2a7c51dfb3",
-      "head": "e39741aaece107894da4fdeac729b092467b963a"
+      "base": "753319ab5a57295d6a8303a194d8f5f9e39180b4",
+      "head": "e8bdd1341621da6d9aed23879694949dc2d254de"
     }
   ],
   "unmapped": {
@@ -16,6 +16,7 @@
     "spine/openapi.json": "A-081's additive fields, contract 0.1.88; FL-064/137 carry the evidence.",
     "spine/scripts/verify_wheel.py": "the wheel smoke expects migration head 0031; no feature behavior.",
     "spine/src/spine/__init__.py": "paired release version 0.1.88; no feature behavior.",
+    "spine/src/spine/db/migrations/versions/0030_reconciliation_day.py": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
     "spine/src/spine/db/migrations/versions/0031_retrain_progress.py": "A-081's retrain_progress table; FL-137 carries the evidence.",
     "spine/tests/conftest.py": "the fixture table list gains retrain_progress; no feature behavior.",
     "spine/tests/test_api.py": "contract version and schema head expectations; no feature behavior.",
@@ -26,7 +27,13 @@
     "spine/tests/test_m2n_migrations.py": "expected migration head 0031; no feature behavior.",
     "spine/tests/test_migration.py": "expected migration head 0031; no feature behavior.",
     "spine/tests/test_packaging.py": "expected version 0.1.88; no feature behavior.",
+    "spine/tests/test_reconciliation.py": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
     "spine/tests/test_retrain_jobs.py": "a job read carries its observed progress; no feature behavior.",
+    "spine/tests/test_spend.py": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m3gt/SHA256SUMS": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m3gt/ledger-report.json": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m5sy/SHA256SUMS": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m5sy/ledger-report.json": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
     "spine/verification/m6lp/FL-021.png": "M6LP evidence (report, captures, receipts, checksums); no feature behavior.",
     "spine/verification/m6lp/FL-030.png": "M6LP evidence (report, captures, receipts, checksums); no feature behavior.",
     "spine/verification/m6lp/FL-032.png": "M6LP evidence (report, captures, receipts, checksums); no feature behavior.",
@@ -52,7 +59,31 @@
     "spine/verification/m6lp/FL-182.png": "M6LP evidence (report, captures, receipts, checksums); no feature behavior.",
     "spine/verification/m6lp/FL-197.png": "M6LP evidence (report, captures, receipts, checksums); no feature behavior.",
     "spine/verification/m6lp/SHA256SUMS": "M6LP evidence (report, captures, receipts, checksums); no feature behavior.",
-    "spine/verification/m6lp/ledger-report.json": "M6LP evidence (report, captures, receipts, checksums); no feature behavior."
+    "spine/verification/m6lp/ledger-report.json": "M6LP evidence (report, captures, receipts, checksums); no feature behavior.",
+    "spine/verification/m6mm/SHA256SUMS": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6mm/ledger-report.json": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6sp/FL-119.png": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6sp/FL-151.png": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6sp/FL-154.png": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6sp/FL-155.png": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6sp/FL-159.png": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6sp/FL-162.png": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6sp/FL-164.png": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6sp/FL-167.png": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6sp/FL-169.png": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6sp/FL-182.png": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6sp/FL-197.png": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6sp/FL-202.png": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6sp/SHA256SUMS": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6sp/ledger-report.json": "already on main: peer packets' work brought in by merging main into the lp28 branch; no M6LP feature behavior.",
+    "spine/verification/m6lp/FL-119.png": "M6LP evidence (report, captures, receipts, checksums); no feature behavior.",
+    "spine/verification/m6lp/FL-151.png": "M6LP evidence (report, captures, receipts, checksums); no feature behavior.",
+    "spine/verification/m6lp/FL-154.png": "M6LP evidence (report, captures, receipts, checksums); no feature behavior.",
+    "spine/verification/m6lp/FL-155.png": "M6LP evidence (report, captures, receipts, checksums); no feature behavior.",
+    "spine/verification/m6lp/FL-159.png": "M6LP evidence (report, captures, receipts, checksums); no feature behavior.",
+    "spine/verification/m6lp/FL-195.png": "M6LP evidence (report, captures, receipts, checksums); no feature behavior.",
+    "spine/verification/m6lp/FL-196.png": "M6LP evidence (report, captures, receipts, checksums); no feature behavior.",
+    "spine/verification/m6lp/FL-202.png": "M6LP evidence (report, captures, receipts, checksums); no feature behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -63,7 +94,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-030.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-051": {
       "label": "A performance score for the memory system, back-tested on the history of manual adds and removes plus successful injections; a new set of weights is accepted only if it scores better than the previous generation.",
@@ -72,7 +103,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-051.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-052": {
       "label": "The scoreboard counts right and wrong injection decisions, injected or not, with no arbitrary scoring.",
@@ -81,7 +112,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-052.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-053": {
       "label": "Every feature's weight labeled and shown normalized to a decimal.",
@@ -90,7 +121,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-053.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-055": {
       "label": "Background retraining on work-based triggers, with one \"force retrain\" button as the only manual lever.",
@@ -99,7 +130,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-055.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-056": {
       "label": "Automatic training of the memory line and the share from human feedback, switching on by itself after 100 pieces of authentic feedback.",
@@ -108,7 +139,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-056.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-058": {
       "label": "A standing registry of every trainable parameter; all training loops triggered from one place in the code where their documentation lives.",
@@ -117,7 +148,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-058.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-060": {
       "label": "An optimization ledger: state and scores across runs in a proper history schema.",
@@ -126,7 +157,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-060.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-062": {
       "label": "Constitution: The audition: a proposed scorer runs as a visible shadow beside the incumbent before acceptance (gate-day).",
@@ -135,7 +166,52 @@
       "verdict": "FAIL",
       "screenshot": "FL-062.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+    },
+    "FL-119": {
+      "label": "A Palace State module holding the general state stats.",
+      "walk": "Open the Palace State module; the general state stats are there, not in the Spend table.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-119.png",
+      "flag": "F086",
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+    },
+    "FL-151": {
+      "label": "KV-cache optimization, usage accounting, and sticky sessions on one provider for cache benefits.",
+      "walk": "Send several messages in one thread; the spend module's KV cache column fills in after the first message and the provider stays the same across the thread.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-151.png",
+      "flag": "F086",
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+    },
+    "FL-154": {
+      "label": "A model configuration and token cost policy per agent type: pinned, max, elbow or floor.",
+      "walk": "Open the agent-type config; each type (agent, sub-agent, curator) has its own token-cost policy set to one of pinned, max, elbow or floor.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-154.png",
+      "flag": "F086",
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+    },
+    "FL-155": {
+      "label": "An append-only spend ledger with fine-grain cost history, its smallest grain a spend unit with its own immutable id (a ULID, ADR-024 / A-027), and the spend views derived from it.",
+      "walk": "Send one message, then open the spend ledger; new rows with their own spend unit ids (ULIDs) appear beneath the unchanged older rows, and the spend module's totals add up from them.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-155.png",
+      "flag": "F086",
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+    },
+    "FL-159": {
+      "label": "The spend module: a row per thread expanding to models, columns input / KV cache / reasoning / output / total / spend per hour, other costs as their own rows, scopable to a thread or stack.",
+      "walk": "Press the plus on one thread row in the spend module; it opens to that thread's models with the columns input, KV cache, reasoning, output, total and spend per hour, with an everything-else row beneath.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-159.png",
+      "flag": "F086",
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-197": {
       "label": "Spend and Palace state reads use the calling principal; only the configured owner can request the whole Palace.",
@@ -144,7 +220,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-197.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-169": {
       "label": "Client and cloud versions stay sync-locked or backward compatible, following industry practice, so version differences feel seamless.",
@@ -153,7 +229,34 @@
       "verdict": "FAIL",
       "screenshot": "FL-169.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+    },
+    "FL-195": {
+      "label": "The feature ledger generates coverage reports and requires evidence for the rows affected by a build.",
+      "walk": "Compute the composer fix's impact with --paths and see attunement rows; push a branch touching socket.ts and observe the hook print rows and write impacted.json; observe a DONE handoff without screenshots fail CI, then verify complete evidence passes.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-195.png",
+      "flag": "F086",
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+    },
+    "FL-196": {
+      "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
+      "walk": "Remove a guard citation on a disposable branch and observe CI fail; change a frozen axiom and observe the freeze step fail; restore both and observe Rules pass. The master ADR check remains red until the owner applies the citation patch.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-196.png",
+      "flag": "F086",
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+    },
+    "FL-202": {
+      "label": "The model browser: every model the token source offers, ranked, pinnable, with price and context window; the thinking level beside it; the standard configurations one click away.",
+      "walk": "Open the model chip on a conversation: the source's models are listed ranked with price and context window; pin one and it stays on top; pick another and the thread switches to it and stays on it \u2014 new conversations start on it too, until you change it, and the chip says so; set the thinking level beside it; pick a standard configuration (pinned, max, elbow, floor) and see what it selects now; switching back from a model to a policy is one click.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-202.png",
+      "flag": "F086",
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-021": {
       "label": "The memory visualizer shows the hyperparameters and lets the user go in and tweak memories.",
@@ -162,7 +265,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-021.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-032": {
       "label": "The Injection Console: see the weights, simulate a change to them and test the result, and force a new set of values.",
@@ -171,7 +274,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-032.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-049": {
       "label": "Scoring parameters that can be added and removed easily; curators can add and retire axes over time.",
@@ -180,7 +283,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-049.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-050": {
       "label": "Weight refits run offline while the previous weights keep serving; the method (gradient descent, linear programming or a solver) was his guess, and it must not slow things down massively.",
@@ -189,7 +292,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-050.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-054": {
       "label": "Simulate: change weights and back-test the result before forcing them.",
@@ -198,7 +301,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-054.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-059": {
       "label": "Optimization at every compaction of a main thread, one at a time under a lock, with mixed and capped back-test material.",
@@ -207,7 +310,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-059.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-063": {
       "label": "The scorer need not stay linear forever, and black-box changes from optimization are fine as long as the features being weighted stay understandable.",
@@ -216,7 +319,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-063.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-064": {
       "label": "Constitution: Per-project weight offsets starting at zero, after global weights (founding ADR-005 / SD-041).",
@@ -243,7 +346,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-162.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-164": {
       "label": "Local mode with no internet, cloud mode, and a way to mirror our cloud setup into your own provider.",
@@ -252,7 +355,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-164.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-167": {
       "label": "One obvious start command with an update prompt; update, deploy, launch and doctor as one or two commands.",
@@ -261,7 +364,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-167.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     },
     "FL-182": {
       "label": "Agent workflows that are programmable, so making agents do work is extremely easy.",
@@ -270,7 +373,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-182.png",
       "flag": "F086",
-      "observed": "Context only: an M6LP change touched a file this row maps (InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner, or the paired release's Memory pin), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
+      "observed": "Context only: a file this row maps changed in the packet's range from lp28's base (M6LP's InjectionConsole.tsx, LearningTelemetry.tsx, rack.tsx, spine_client.py, the learner and the paired release's Memory pin, or peers' work already on main that merged in), so the row is required. Its own gesture was not repeated in this packet; no new PASS or regression is claimed. The capture is the final build on the local Palace rung (run 3; the cloud Palace is off, F214)."
     }
   },
   "not_run": {
@@ -375,7 +478,6 @@
     "FL-116": "outside diff",
     "FL-117": "outside diff",
     "FL-118": "outside diff",
-    "FL-119": "outside diff",
     "FL-120": "outside diff",
     "FL-121": "outside diff",
     "FL-122": "outside diff",
@@ -406,15 +508,11 @@
     "FL-148": "outside diff",
     "FL-149": "outside diff",
     "FL-150": "unverified",
-    "FL-151": "outside diff",
     "FL-152": "not built",
     "FL-153": "not built",
-    "FL-154": "outside diff",
-    "FL-155": "outside diff",
     "FL-156": "not built",
     "FL-157": "outside diff",
     "FL-158": "outside diff",
-    "FL-159": "outside diff",
     "FL-160": "not built",
     "FL-161": "not built",
     "FL-163": "outside diff",
@@ -445,13 +543,10 @@
     "FL-192": "outside diff",
     "FL-193": "outside diff",
     "FL-194": "outside diff",
-    "FL-195": "outside diff",
-    "FL-196": "outside diff",
     "FL-198": "outside diff",
     "FL-199": "outside diff",
     "FL-200": "outside diff",
     "FL-201": "outside diff",
-    "FL-202": "outside diff",
     "FL-203": "outside diff",
     "FL-204": "horizon",
     "FL-205": "outside diff"
