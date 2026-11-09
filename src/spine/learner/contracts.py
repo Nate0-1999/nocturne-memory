@@ -3,7 +3,7 @@
 from typing import Annotated, Literal
 from uuid import UUID
 
-from pydantic import AfterValidator, BaseModel, ConfigDict, Field
+from pydantic import AfterValidator, BaseModel, ConfigDict, Field, field_validator
 
 from spine.ids import normalize_ulid
 
@@ -13,6 +13,13 @@ class CompactionPolicy(BaseModel):
     parent: str | None
     instructions: str
     memory_size: int = Field(ge=16, le=128)
+
+    @field_validator("instructions")
+    @classmethod
+    def includes_messages(cls, value: str) -> str:
+        if "{messages}" not in value:
+            raise ValueError("Compaction instructions need {messages}.")
+        return value
 
 
 class CompactionFact(BaseModel):

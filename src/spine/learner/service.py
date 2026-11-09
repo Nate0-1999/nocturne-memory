@@ -4,7 +4,7 @@ Loop 1, injection_scoring: six global weights, thread/WHERE coefficients,
 per-memory bias and per-project offsets; tau and memory share wait for 100
 authentic dispositions. Location/decay and corpus size are configured; session
 affinity is replay-only. Loop 2, creation: append-only outcomes and survival
-scoreboard, with compaction instructions and memory size not yet learned and
+scoreboard, with backtested compaction instructions, size awaiting the coupled fit, and
 dedup bands and curator_review_sim configured. Loop 3, scorer_structure:
 curator-nominated transparent scalar axes, replay-tested and proposed for an
 owner's activation. Loop 4, beyond: optimizer/model training is gated; role
@@ -20,6 +20,7 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import json
+import logging
 from collections import defaultdict, deque
 from collections.abc import Mapping, Sequence
 from copy import deepcopy
@@ -65,6 +66,7 @@ from spine.learner.model import (
 
 _ALGORITHM_ID = "m3ll-project-offsets-transparent-axes-v4"
 _SHARE_TUNING_MINIMUM = 100
+logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)
@@ -132,7 +134,7 @@ class LearnerService:
             ("corpus_max_dispositions", "injection_scoring", None, "configured"),
             ("f_sess", "injection_scoring", None, "replay_only"),
             ("compaction_instructions", "creation", None, "backtested"),
-            ("memory_size_cap", "creation", None, "backtested"),
+            ("memory_size_cap", "creation", None, "pending_coupled_fit"),
             ("dedup_bands", "creation", None, "configured"),
             ("curator_review_sim", "creation", None, "configured"),
             ("axes", "scorer_structure", minimum, "proposed_then_owner_activation"),
@@ -214,8 +216,7 @@ class LearnerService:
             )
         for job_id in job_ids:
             try:
-                if self.compaction_learner is not None:
-                    await self.compaction_learner.retrain(job_id)
+                await self._retrain_compaction(job_id)
                 await self._retrain(
                     trigger="manual",
                     due_only=False,
@@ -260,13 +261,20 @@ class LearnerService:
 
     async def compact(self, trigger: OptimizationTrigger) -> RetrainResponse:
         """D.2 144/153: main-thread compaction replaces the interim signal stride."""
-        if self.compaction_learner is not None:
-            await self.compaction_learner.retrain(trigger.event_uid)
+        await self._retrain_compaction(trigger.event_uid)
         return await self._retrain(
             trigger="background",
             due_only=False,
             optimization_trigger=trigger,
         )
+
+    async def _retrain_compaction(self, event_uid: str) -> None:
+        if self.compaction_learner is not None:
+            try:
+                await self.compaction_learner.retrain(event_uid)
+            except Exception:
+                # A provider failure in creation must not disable the existing scorer fit.
+                logger.exception("Compaction backtest failed; incumbent instructions kept")
 
     async def _retrain(
         self,

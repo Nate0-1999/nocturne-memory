@@ -11,11 +11,11 @@ from spine.learner.compaction import CompactionLearner
 from spine.learner.contracts import CompactionTrigger
 
 
-@pytest.mark.parametrize("preview", [False, True])
+@pytest.mark.parametrize("preview,size", [(False, 128), (False, 64), (True, 64)])
 async def test_losing_or_verification_replay_never_changes_instructions(
-    memory_session_factory, preview
+    memory_session_factory, preview, size
 ):
-    """SD-085: a model omitting a used fact cannot cause an unsafe instruction write."""
+    """SPEC D.2 144 / PLAN M6CP: a model miss cannot cause an unsafe instruction write."""
 
     class Embeddings:
         async def embed_with_receipt(self, texts, context):
@@ -61,16 +61,18 @@ async def test_losing_or_verification_replay_never_changes_instructions(
             )
     calls = 0
 
-    async def model_call(prompt, uid, costs):
+    async def model_call(prompt, uid, costs, **kwargs):
         nonlocal calls
         calls += 1
         if calls == 1:
-            return {"instructions": "Forget decisions: {messages}", "memory_size": 64}
+            return {"instructions": "Forget decisions: {messages}", "memory_size": size}
         return {"facts": ["Keep the copper notebook."] if calls == 2 else []}
 
     learner._call = model_call
     result = await learner.retrain(mint_ulid(), preview=preview)
-    assert result["verdict"] == ("preview_only" if preview else "not_better")
+    assert result["verdict"] == (
+        "preview_only" if preview else "coupled_fit_required" if size != 128 else "not_better"
+    )
     assert result["scores"]["candidate"]["score"] < result["scores"]["incumbent"]["score"]
     snapshot = await learner.snapshot()
     assert snapshot["active"] == policy

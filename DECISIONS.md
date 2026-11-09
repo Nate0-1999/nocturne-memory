@@ -1481,3 +1481,14 @@ A-037's cumulative reconciliation is unchanged. Each run also reads the key's `u
 and sums today's (UTC) llm receipts into two new columns (0030); the owner can run it on
 demand. Rate lanes reach back a day so the strip can draw today. Cache rows split by model,
 and the model listing keeps OpenRouter's cache-read price, so the Harness can price a saving.
+
+## M6CP — Replay compaction instructions against later outcomes [P1.2, P2.5]
+
+PRECEDENT: FL-061/084; D.2 144/177; A-067/A-083; M4IN, M5LN.
+Source spans and generation records use the existing append-only optimization ledger.
+Older spans construct the candidate; newer spans replay both prompts without outcome
+labels. Existing embedding bands match facts, duplicate matches count once, novel facts
+are neutral, and equal scores prefer fewer/smaller outputs. The optimizer lock and
+verification exclusions remain. Different sizes cannot adopt outside the required joint
+tau/share/size fit; that integration overlaps M6LP's live `_fit` (F216). This 0.1.86 pair
+is draft-only. API label 0.1.88 avoids M6LP's independently reserved API 0.1.86.
