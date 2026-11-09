@@ -1491,4 +1491,4 @@ labels. Existing embedding bands match facts, duplicate matches count once, nove
 are neutral, and equal scores prefer fewer/smaller outputs. The optimizer lock and
 verification exclusions remain. Different sizes cannot adopt outside the required joint
 tau/share/size fit; that integration overlaps M6LP's live `_fit` (F216). This 0.1.86 pair
-is draft-only. API label 0.1.88 avoids M6LP's independently reserved API 0.1.86.
+is draft-only. API label 0.1.89 avoids M6LP's API 0.1.86 and newly reserved package 0.1.88.
