@@ -797,6 +797,8 @@ class SpendReconciliation(Base):
         ),
         CheckConstraint("tolerance_usd >= 0", name="spend_reconciliation_tolerance_check"),
         CheckConstraint("unpriced_lines >= 0", name="spend_reconciliation_unpriced_check"),
+        CheckConstraint("broker_day_usd >= 0", name="spend_reconciliation_broker_day_check"),
+        CheckConstraint("ledger_day_usd >= 0", name="spend_reconciliation_ledger_day_check"),
         CheckConstraint(
             "error_code IS NULL OR error_code IN ('broker_unavailable','invalid_broker_response')",
             name="spend_reconciliation_error_check",
@@ -833,6 +835,9 @@ class SpendReconciliation(Base):
     tolerance_usd: Mapped[Decimal] = mapped_column(Numeric(20, 12), nullable=False)
     unpriced_lines: Mapped[int] = mapped_column(BigInteger, nullable=False)
     error_code: Mapped[str | None] = mapped_column(Text)
+    # A-080 (0030): today's bill and today's ledger beside A-037's cumulative figures.
+    broker_day_usd: Mapped[Decimal | None] = mapped_column(Numeric(20, 12))
+    ledger_day_usd: Mapped[Decimal | None] = mapped_column(Numeric(20, 12))
 
 
 class ScorerConfig(Base):

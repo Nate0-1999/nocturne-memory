@@ -2147,7 +2147,7 @@
       "section": "7. Symphony, judges and search",
       "era": "Aug 17",
       "label": "The symphony lifecycle shows its human touchpoints, the human prompt and any interjection or steering, so they can be seen.",
-      "status": "partial",
+      "status": "built",
       "walk": "Steer a symphony mid-run; the human prompt and the steering both show on the run's trace.",
       "owner": "owner — \"Can you improve this trace with some visualizations and touchstones on the symphony lifecycle: human promt, interjection/steering, etc so I can see it.\" (chat 2026-08-17 15:49:32)",
       "surfaces": [
@@ -2156,10 +2156,10 @@
         "harness/web/src/SymphonyDeck.tsx"
       ],
       "last_walk": {
-        "packet": "M4W1B",
+        "packet": "M5SY",
         "date": "2026-10-14",
-        "verdict": "FAIL",
-        "flag": "F193",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-098.png"
       },
       "protected": true,
@@ -2202,8 +2202,8 @@
         "harness/web/src/SymphonyDeck.tsx"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M5SY",
+        "date": "2026-10-14",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-100.png"
@@ -2702,10 +2702,19 @@
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Aug 31",
       "label": "In the memory module, the edit-body and pin buttons become icons and a delete-memory button is added with an are-you-sure pop-up.",
-      "status": "not built",
+      "status": "built",
       "walk": "Press delete on a memory in the memory module; an are-you-sure pop-up appears, and edit and pin are icons.",
       "owner": "owner — \"1 we can make the edit body, pin buttons in the memory module icons and we should also add a delete memory button, but it should have a pop up are you sure. This will serve a couple functions I want to have more memories displayed at once so less space taken up by buttons will help that and it will look cleaner.\" (chat 2026-08-31 18:56:36)",
-      "surfaces": []
+      "surfaces": [
+        "harness/web/src/MemoryPanel.tsx"
+      ],
+      "last_walk": {
+        "packet": "M6MM",
+        "date": "2026-10-29",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-121.png"
+      }
     },
     {
       "id": "FL-122",
@@ -3255,8 +3264,8 @@
         "harness/web/scripts/build_grimoire_motifs.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
+        "packet": "M3GT",
+        "date": "2026-10-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-147.png"
@@ -3701,7 +3710,7 @@
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "Aug 5",
       "label": "A restore popup that asks whether to roll back these memories and lists them.",
-      "status": "partial",
+      "status": "built",
       "walk": "Press restore; a popup asks whether to roll back and lists the memories that would come back.",
       "owner": "owner — \"Could we have a pop up for restore that says do you want to roll back these memories and then gives a list?\" (chat 2026-08-05 01:34:28)",
       "surfaces": [
@@ -3710,10 +3719,10 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F086",
+        "packet": "M6MM",
+        "date": "2026-10-29",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-168.png"
       }
     },
@@ -4448,8 +4457,8 @@
       ],
       "protected": true,
       "last_walk": {
-        "packet": "M4W1B",
-        "date": "2026-10-14",
+        "packet": "M3GT",
+        "date": "2026-10-29",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-201.png"
@@ -4486,7 +4495,7 @@
       "section": "10. Themes and brand",
       "era": "Oct 4",
       "label": "Two more themes, each chosen by the owner from real-app candidates: Bellagio Lobby Ceiling (Chihuly's glass flowers over cream) and Art Deco (black and gold, stepped sunbursts, chevrons).",
-      "status": "not built",
+      "status": "built",
       "walk": "Pick Bellagio Lobby Ceiling in settings, then Art Deco: every module and both faces wear the theme; the frames, grids and glyph strips carry its motif; the one icon size and type scale hold; the chosen candidate matches the owner's pick.",
       "owner": "owner 2026-10-04: \"I want to add a bellagio lobby ceiling mode and an art deco mode\"",
       "surfaces": [
@@ -4494,7 +4503,14 @@
         "harness/web/src/themes.ts",
         "harness/web/src/platePress.ts"
       ],
-      "protected": false
+      "protected": false,
+      "last_walk": {
+        "packet": "M3GT",
+        "date": "2026-10-29",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-203.png"
+      }
     },
     {
       "id": "FL-204",
