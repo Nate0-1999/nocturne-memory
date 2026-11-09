@@ -213,10 +213,9 @@ class CompactionLearner:
                     if "used" in observed
                     else 0
                 )
-                if target:
-                    facts.append({"body": fact["body"], "target": target,
-                                  "memory_id": fact["memory_id"]})
-            if facts:
+                facts.append({"body": fact["body"], "target": target,
+                              "memory_id": fact["memory_id"]})
+            if any(fact["target"] for fact in facts):
                 groups[str(row.trigger_thread_id)].append(
                     {
                         "id": row.run_uid,

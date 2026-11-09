@@ -680,6 +680,19 @@ class LearnerService:
                 "creation_improved": creation["better"], "proposal_eligible": creation["eligible"],
                 "size_tuning_active": tune_share_and_tau,
                 "resized_memories": len(creation["token_sizes"]) if creation["eligible"] else 0,
+                "resized_dispositions": sum(
+                    old.body_tokens != new.body_tokens
+                    for old, new in zip(
+                        (*original_training, *original_holdout), (*training, *holdout), strict=True
+                    )
+                ),
+                "resized_boundaries": sum(
+                    old.required_share != new.required_share
+                    for old, new in zip(
+                        (*original_training_boundaries, *original_holdout_boundaries),
+                        (*training_boundaries, *holdout_boundaries), strict=True
+                    )
+                ),
                 "incumbent": _score_manifest(incumbent_score),
                 "candidate": _score_manifest(fitted_score),
             }
