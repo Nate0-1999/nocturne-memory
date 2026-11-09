@@ -5,7 +5,7 @@ from __future__ import annotations
 import asyncio
 import logging
 import time
-from collections.abc import Callable, Mapping, Sequence
+from collections.abc import Awaitable, Callable, Mapping, Sequence
 from dataclasses import dataclass, field, replace
 from datetime import UTC, datetime
 from decimal import Decimal, DecimalException, InvalidOperation, localcontext
@@ -36,7 +36,7 @@ class NamedModelResolutionError(ValueError):
 class ModelPolicy:
     """One parsed A-021 policy."""
 
-    kind: Literal["pinned", "max", "elbow", "slope", "floor"]
+    kind: Literal["pinned", "max", "elbow", "slope", "floor", "budget"]
     value: str | Decimal | None = None
 
 
@@ -48,6 +48,21 @@ class BenchmarkModel:
     intelligence_index: Decimal
     prompt_price: Decimal
     completion_price: Decimal
+
+
+@dataclass(frozen=True, slots=True)
+class TokenBurn:
+    """FL-152: the measured agent token burn per working hour that a budget policy prices."""
+
+    input_tokens_per_hour: Decimal
+    output_tokens_per_hour: Decimal
+    hours: int
+
+    def hourly_cost(self, row: BenchmarkModel) -> Decimal:
+        return (
+            row.prompt_price * self.input_tokens_per_hour
+            + row.completion_price * self.output_tokens_per_hour
+        ) / _PRICE_PER_MILLION
 
 
 @dataclass(frozen=True, slots=True)
@@ -103,6 +118,8 @@ class ThreadModelResolution:
     request_parameters: ModelRequestParameters = field(
         default_factory=lambda: ModelRequestParameters()
     )
+    # FL-152/153: the policy's own sentence for this pick, from the table it was made on.
+    reason: str | None = None
 
     def __post_init__(self) -> None:
         _validate_model_name(self.model)
@@ -176,7 +193,7 @@ class ThreadModelResolver(Protocol):
 
 
 def parse_model_policy(value: str) -> ModelPolicy:
-    """Parse exactly the five lowercase A-021 policy forms."""
+    """Parse exactly the six lowercase A-021 policy forms (budget: A-082)."""
 
     if not isinstance(value, str) or not value or value != value.strip():
         raise ModelPolicyConfigurationError(
@@ -190,7 +207,7 @@ def parse_model_policy(value: str) -> ModelPolicy:
         model = value.removeprefix("pinned:")
         _validate_model_name(model)
         return ModelPolicy("pinned", model)
-    for prefix, kind in (("slope:", "slope"), ("floor:", "floor")):
+    for prefix, kind in (("slope:", "slope"), ("floor:", "floor"), ("budget:", "budget")):
         if value.startswith(prefix):
             raw_number = value.removeprefix(prefix)
             try:
@@ -205,17 +222,25 @@ def parse_model_policy(value: str) -> ModelPolicy:
                 )
             return ModelPolicy(kind, number)  # type: ignore[arg-type]
     raise ModelPolicyConfigurationError(
-        "model policy must be pinned:<model>, max, elbow, slope:<lambda>, or floor:<n>"
+        "model policy must be pinned:<model>, max, elbow, slope:<lambda>, floor:<n>, "
+        "or budget:<dollars per hour>"
     )
 
 
-def select_model(policy: ModelPolicy, rows: Sequence[BenchmarkModel]) -> BenchmarkModel:
+def select_model(
+    policy: ModelPolicy,
+    rows: Sequence[BenchmarkModel],
+    burn: TokenBurn | None = None,
+) -> BenchmarkModel:
     """Select one benchmark row under the exact A-021 deterministic rules."""
 
     if not rows:
         raise ModelCatalogUnavailable("benchmark table has no complete rows")
     if policy.kind == "max":
         return _select_max(rows)
+    if policy.kind == "budget":
+        assert isinstance(policy.value, Decimal)
+        return _select_budget(rows, policy.value, burn)
     if policy.kind == "floor":
         assert isinstance(policy.value, Decimal)
         eligible = [row for row in rows if row.intelligence_index >= policy.value]
@@ -414,8 +439,11 @@ class ModelPolicyResolver:
         static_model: str,
         static_context_tokens: int,
         catalog: ModelCatalogLoader | None,
+        burn: Callable[[], Awaitable[TokenBurn | None]] | None = None,
     ) -> None:
         self._policy_text = policy
+        # FL-152: a budget policy prices models at the agents' measured burn (the spend ledger).
+        self._burn = burn
         self._policy = parse_model_policy(policy)
         _validate_model_name(static_model)
         if type(static_context_tokens) is not int or static_context_tokens <= 0:
@@ -448,22 +476,19 @@ class ModelPolicyResolver:
             return "Pinned model selected for this conversation."
         benchmark = resolution.benchmark
         if benchmark is None:
+            cause = "" if resolution.reason is None else f" ({resolution.reason})"
             return (
-                f"{policy.kind.title()} could not resolve the catalog; "
+                f"{policy.kind.title()} could not resolve the catalog{cause}; "
                 "using the configured fallback."
             )
-        reason = {
-            "max": "Highest intelligence score in the catalog",
-            "floor": f"Cheapest model meeting intelligence floor {policy.value}",
-            "elbow": "Elbow of the intelligence versus log-price frontier",
-            "slope": (
-                f"Frontier choice allowing ${policy.value}/M input tokens per intelligence point"
-            ),
-        }[policy.kind]
         return (
-            f"{reason}. Score {benchmark.intelligence_index}; "
-            f"input ${benchmark.prompt_price}/M, output ${benchmark.completion_price}/M tokens. "
-            "This token-cost policy does not impose an hourly dollar limit."
+            f"{resolution.reason}. Score {benchmark.intelligence_index}; "
+            f"input ${benchmark.prompt_price}/M, output ${benchmark.completion_price}/M tokens."
+            + (
+                ""
+                if policy.kind == "budget"
+                else " This token-cost policy does not impose an hourly dollar limit."
+            )
         )
 
     async def resolve(self, thread_id: str) -> ThreadModelResolution:
@@ -621,7 +646,10 @@ class ModelPolicyResolver:
             if self._catalog is None:
                 raise ModelCatalogUnavailable("OpenRouter catalog is not configured")
             catalog = await self._catalog.load()
-            selected = select_model(self._policy, catalog.rows)
+            burn = None
+            if self._policy.kind == "budget" and self._burn is not None:
+                burn = await self._burn()
+            selected = select_model(self._policy, catalog.rows, burn)
             route = catalog.model_routes.get(selected.permaslug)
             if route is None:
                 raise ModelCatalogUnavailable(
@@ -640,6 +668,7 @@ class ModelPolicyResolver:
                 context_tokens=self._static_context_tokens,
                 policy=self._policy_text,
                 price_sorted=True,
+                reason=str(exc),
             )
 
         resolved = ThreadModelResolution(
@@ -651,6 +680,7 @@ class ModelPolicyResolver:
             supported_parameters=route.supported_parameters,
             benchmark=selected,
             catalog_fetched_at=catalog.fetched_at,
+            reason=explain_choice(self._policy, catalog.rows, selected, burn),
         )
         logger.info(
             "model policy resolved thread=%s policy=%s model=%s "
@@ -707,7 +737,29 @@ def _select_elbow(frontier: Sequence[BenchmarkModel], floor: Decimal | None) -> 
         raise ModelCatalogUnavailable("benchmark frontier is empty")
     if len(frontier) < 3:
         return _select_max(frontier)
+    positive = [(offset, row) for offset, row in elbow_offsets(frontier, floor) if offset > 0]
+    if not positive:
+        return _select_max(frontier)
+    return min(positive, key=lambda item: (-item[0], item[1].prompt_price, item[1].permaslug))[1]
 
+
+def elbow_offsets(
+    frontier: Sequence[BenchmarkModel], floor: Decimal | None
+) -> list[tuple[Decimal, BenchmarkModel]]:
+    """The elbow's whole computation (A-021 a-revised; SPEC C.5 v2.129), one signed offset each.
+
+    1. The frontier: drop every model another beats or ties on both intelligence and prompt price
+       (`pareto_frontier`), sorted by intelligence. A free model is priced at the table's lowest
+       nonzero prompt price (`elbow_price_floor`) so its log exists.
+    2. Put the frontier in a unit square: x = (intelligence - min) / (max - min) and
+       y = (log10 prompt price - min) / (max - min). The cheapest model sits at (0, 0) and the
+       most intelligent at (1, 1); the diagonal y = x is the frontier's average rate of
+       log-price per intelligence point.
+    3. Each model's offset is x - y, how far its price sits below that diagonal. The elbow is the
+       largest positive offset (ties: lower prompt price, then id), the deepest bargain against
+       the frontier's average rate. No positive offset, or a frontier of fewer than three
+       models, falls back to max.
+    """
     min_index = frontier[0].intelligence_index
     max_index = frontier[-1].intelligence_index
     with localcontext() as context:
@@ -722,16 +774,87 @@ def _select_elbow(frontier: Sequence[BenchmarkModel], floor: Decimal | None) -> 
         log_price_span = max_log_price - min_log_price
         if index_span <= 0 or log_price_span <= 0:
             raise ModelCatalogUnavailable("elbow frontier has a degenerate axis")
-        positive: list[tuple[Decimal, BenchmarkModel]] = []
+        offsets: list[tuple[Decimal, BenchmarkModel]] = []
         for row, log_price in zip(frontier, log_prices, strict=True):
             x = (row.intelligence_index - min_index) / index_span
             y = (log_price - min_log_price) / log_price_span
-            offset = x - y
-            if offset > 0:
-                positive.append((offset, row))
-    if not positive:
-        return _select_max(frontier)
-    return min(positive, key=lambda item: (-item[0], item[1].prompt_price, item[1].permaslug))[1]
+            offsets.append((x - y, row))
+    return offsets
+
+
+def _select_budget(
+    rows: Sequence[BenchmarkModel], budget: Decimal, burn: TokenBurn | None
+) -> BenchmarkModel:
+    """FL-152: the most intelligent model whose cost at the measured burn fits the hourly budget;
+    ties by lower prompt price, then id. No measured burn, or nothing fits, fails open (A-020 f).
+    """
+    if burn is None:
+        raise ModelCatalogUnavailable("budget has no measured token burn yet")
+    eligible = [row for row in rows if burn.hourly_cost(row) <= budget]
+    if not eligible:
+        raise ModelCatalogUnavailable("no model fits the budget at the measured token burn")
+    return _select_max(eligible)
+
+
+def explain_choice(
+    policy: ModelPolicy,
+    rows: Sequence[BenchmarkModel],
+    selected: BenchmarkModel,
+    burn: TokenBurn | None = None,
+) -> str:
+    """FL-152/153: the readout — the pick and why, from the same table and numbers it used."""
+    name = selected.permaslug
+    if policy.kind == "floor":
+        return f"Cheapest at or above intelligence {policy.value}: {name}"
+    if policy.kind == "slope":
+        return f"Slope ${policy.value}/M per point: {name}, the last frontier step within it"
+    if policy.kind == "budget" and burn is not None:
+        smarter = [row for row in rows if row.intelligence_index > selected.intelligence_index]
+        text = (
+            f"Budget ${policy.value}/h: {name} costs ${_money(burn.hourly_cost(selected))}/h at "
+            f"the measured burn of {_tokens(burn.input_tokens_per_hour)} input and "
+            f"{_tokens(burn.output_tokens_per_hour)} output tokens per working hour "
+            f"({burn.hours} h in the last day)"
+        )
+        if smarter:
+            dearer = min(smarter, key=lambda row: (burn.hourly_cost(row), row.permaslug))
+            text += (
+                f"; the next smarter, {dearer.permaslug}, would cost "
+                f"${_money(burn.hourly_cost(dearer))}/h"
+            )
+        return text
+    if policy.kind == "elbow":
+        frontier = pareto_frontier(rows)
+        floor = elbow_price_floor(frontier, rows)
+        offset = None
+        if len(frontier) >= 3:
+            offset = next(
+                (value for value, row in elbow_offsets(frontier, floor) if row == selected), None
+            )
+        if offset is None or offset <= 0:
+            return f"Elbow: {name}, the most intelligent (no frontier model sits below its chord)"
+        text = f"Elbow: {name}, the largest offset below the frontier's price chord ({offset:.3f})"
+        above = frontier[frontier.index(selected) + 1 :]
+        if above:
+            nxt = above[0]
+            ratio = nxt.prompt_price / (selected.prompt_price or floor or nxt.prompt_price)
+            gain = nxt.intelligence_index - selected.intelligence_index
+            text += (
+                f"; next up, {nxt.permaslug}, adds {gain.normalize():f} points "
+                f"for {ratio:.1f}x the input price"
+            )
+        return text
+    return f"Max: {name}, the highest intelligence score in the catalog"
+
+
+def _money(value: Decimal) -> str:
+    return f"{value:.4f}" if value < 1 else f"{value:.2f}"
+
+
+def _tokens(value: Decimal) -> str:
+    if value >= 1_000_000:
+        return f"{value / 1_000_000:.1f}M"
+    return f"{value / 1_000:.0f}k" if value >= 1_000 else f"{value:.0f}"
 
 
 def _select_slope(
