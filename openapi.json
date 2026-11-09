@@ -436,12 +436,133 @@
         "title": "CommitResponse",
         "type": "object"
       },
+      "CompactionBacktest": {
+        "additionalProperties": false,
+        "properties": {
+          "memory_size": {
+            "anyOf": [
+              {
+                "maximum": 128.0,
+                "minimum": 16.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Memory Size"
+          },
+          "preview": {
+            "default": false,
+            "title": "Preview",
+            "type": "boolean"
+          }
+        },
+        "title": "CompactionBacktest",
+        "type": "object"
+      },
+      "CompactionFact": {
+        "properties": {
+          "body": {
+            "title": "Body",
+            "type": "string"
+          },
+          "memory_id": {
+            "format": "uuid",
+            "title": "Memory Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "body",
+          "memory_id"
+        ],
+        "title": "CompactionFact",
+        "type": "object"
+      },
+      "CompactionPolicy": {
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "instructions": {
+            "title": "Instructions",
+            "type": "string"
+          },
+          "memory_size": {
+            "maximum": 128.0,
+            "minimum": 16.0,
+            "title": "Memory Size",
+            "type": "integer"
+          },
+          "parent": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent"
+          }
+        },
+        "required": [
+          "id",
+          "parent",
+          "instructions",
+          "memory_size"
+        ],
+        "title": "CompactionPolicy",
+        "type": "object"
+      },
+      "CompactionRecord": {
+        "properties": {
+          "facts": {
+            "items": {
+              "$ref": "#/components/schemas/CompactionFact"
+            },
+            "title": "Facts",
+            "type": "array"
+          },
+          "machine_id": {
+            "title": "Machine Id",
+            "type": "string"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/CompactionPolicy"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "policy",
+          "source",
+          "machine_id",
+          "facts"
+        ],
+        "title": "CompactionRecord",
+        "type": "object"
+      },
       "CompactionTrigger": {
         "additionalProperties": false,
         "properties": {
           "event_uid": {
             "title": "Event Uid",
             "type": "string"
+          },
+          "record": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CompactionRecord"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "thread_id": {
             "format": "uuid",
@@ -7010,7 +7131,7 @@
   },
   "info": {
     "title": "N8 Spine",
-    "version": "0.1.84"
+    "version": "0.1.86"
   },
   "openapi": "3.1.0",
   "paths": {
@@ -8154,6 +8275,128 @@
         "summary": "Feedback",
         "tags": [
           "approval-queue"
+        ]
+      }
+    },
+    "/v1/compaction-backtest": {
+      "post": {
+        "operationId": "compaction_backtest_v1_compaction_backtest_post",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "principal_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Principal Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompactionBacktest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Compaction Backtest V1 Compaction Backtest Post",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "StaticBearer": []
+          }
+        ],
+        "summary": "Compaction Backtest",
+        "tags": [
+          "learner"
+        ]
+      }
+    },
+    "/v1/compaction-policy": {
+      "get": {
+        "operationId": "compaction_policy_v1_compaction_policy_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "principal_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Principal Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Compaction Policy V1 Compaction Policy Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "StaticBearer": []
+          }
+        ],
+        "summary": "Compaction Policy",
+        "tags": [
+          "learner"
         ]
       }
     },

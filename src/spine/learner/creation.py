@@ -5,6 +5,7 @@ from collections import defaultdict
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from spine.learner.compaction import history, policy_and_generations
 from spine.learner.model import identity_is_excluded
 
 
@@ -87,5 +88,6 @@ async def creation_snapshot(session: AsyncSession, principal: str | None) -> dic
         "sources": sources,
         "events": events,
         "hygiene_excluded_events": len(rows) - len(events),
-        "learner": "signals_only",
+        "learner": "backtested",
+        "compaction": policy_and_generations(await history(session, principal)),
     }

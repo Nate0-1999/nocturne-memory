@@ -131,8 +131,8 @@ class LearnerService:
             ("half_life_location_hops", "injection_scoring", None, "configured"),
             ("corpus_max_dispositions", "injection_scoring", None, "configured"),
             ("f_sess", "injection_scoring", None, "replay_only"),
-            ("compaction_instructions", "creation", None, "signals_only"),
-            ("memory_size_cap", "creation", None, "unbuilt"),
+            ("compaction_instructions", "creation", None, "backtested"),
+            ("memory_size_cap", "creation", None, "backtested"),
             ("dedup_bands", "creation", None, "configured"),
             ("curator_review_sim", "creation", None, "configured"),
             ("axes", "scorer_structure", minimum, "proposed_then_owner_activation"),
@@ -183,6 +183,7 @@ class LearnerService:
         self._owner_principal_id = owner_principal_id
         self._retrain_signal_stride = retrain_signal_stride
         self._corpus_max_dispositions = corpus_max_dispositions
+        self.compaction_learner = None
 
     async def submit_job(self) -> RetrainJobView:
         job_id = mint_ulid()
@@ -213,6 +214,8 @@ class LearnerService:
             )
         for job_id in job_ids:
             try:
+                if self.compaction_learner is not None:
+                    await self.compaction_learner.retrain(job_id)
                 await self._retrain(
                     trigger="manual",
                     due_only=False,
@@ -257,6 +260,8 @@ class LearnerService:
 
     async def compact(self, trigger: OptimizationTrigger) -> RetrainResponse:
         """D.2 144/153: main-thread compaction replaces the interim signal stride."""
+        if self.compaction_learner is not None:
+            await self.compaction_learner.retrain(trigger.event_uid)
         return await self._retrain(
             trigger="background",
             due_only=False,
