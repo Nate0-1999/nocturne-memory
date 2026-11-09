@@ -33,6 +33,9 @@ async def test_manual_invoice_is_owner_only_replay_safe_and_counted_on_its_day(
     url = "/v1/spend/invoices?principal_id=invoice-owner"
     denied = await memory_client.post("/v1/spend/invoices?principal_id=visitor", json=invoice)
     assert denied.status_code == 403
+    # A-080: the on-demand reconciliation reads the shared key's bill; only the owner may run it.
+    refused = await memory_client.post("/v1/spend/reconciliation?principal_id=visitor")
+    assert refused.status_code == 403
     replies = await asyncio.gather(*(memory_client.post(url, json=invoice) for _ in range(2)))
     assert [response.status_code for response in replies] == [200, 200]
     for changed in ({"amount_usd": "26"}, {"invoice_date": "2026-09-02"}):
@@ -233,11 +236,15 @@ async def test_spend_table_groups_threads_models_token_lanes_and_non_thread_purp
     assert all(str(row.thread_id) == _THREAD_ID for row in scoped.receipts)
     assert scoped.rate_source == "spend_event"
     total = next(lane for lane in scoped.rates if lane.dimension == "total")
-    assert sum(Decimal(point.cost_usd) for point in total.points) == Decimal("0.022")
-    assert len(scoped.messages) == 1
-    assert Decimal(scoped.messages[0].fresh_tokens) == Decimal("130")
-    assert Decimal(scoped.messages[0].cached_tokens) == Decimal("50")
-    assert Decimal(scoped.messages[0].cache_write_tokens) == Decimal("25")
+    # FL-160: the lanes hold the last day, so the two-hour-old line is drawn too.
+    assert sum(Decimal(point.cost_usd) for point in total.points) == Decimal("0.025")
+    # FL-161: one message on two models is one cache row per model, for pricing the saving.
+    assert [(row.model, Decimal(row.fresh_tokens)) for row in scoped.messages] == [
+        (second_model, Decimal("30")),
+        ("anthropic/claude-sonnet-4.6", Decimal("100")),
+    ]
+    assert Decimal(scoped.messages[1].cached_tokens) == Decimal("50")
+    assert Decimal(scoped.messages[1].cache_write_tokens) == Decimal("25")
 
     empty_response = await memory_client.get("/v1/spend/table?principal_id=owner&scope=threads")
     empty = SpendTableSnapshot.model_validate(empty_response.json())

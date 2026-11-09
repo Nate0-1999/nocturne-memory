@@ -1473,3 +1473,11 @@ F212's ruling adds a durable manual retrain job, drained by the existing learner
 worker. Its result commits with the proposal and immutable fit receipt under the
 existing advisory lock; interruption rolls them back together for restart pickup.
 The console starts and polls this job. The synchronous endpoint remains compatible.
+
+## M6SP — Today's bill beside today's ledger [P4.1]
+
+PRECEDENT: PLAN M6SP; FL-156 160 161; A-037, A-080; M3SR, M4MS.
+A-037's cumulative reconciliation is unchanged. Each run also reads the key's `usage_daily`
+and sums today's (UTC) llm receipts into two new columns (0030); the owner can run it on
+demand. Rate lanes reach back a day so the strip can draw today. Cache rows split by model,
+and the model listing keeps OpenRouter's cache-read price, so the Harness can price a saving.

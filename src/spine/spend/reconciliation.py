@@ -5,6 +5,7 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+from dataclasses import dataclass
 from decimal import ROUND_HALF_EVEN, Decimal, InvalidOperation
 from typing import Protocol
 
@@ -28,12 +29,20 @@ class InvalidBrokerResponse(RuntimeError):
     """The broker responded, but its usage observation was invalid."""
 
 
+@dataclass(frozen=True, slots=True)
+class BrokerUsage:
+    """The key's cumulative usage and its usage for the current UTC day. [A-080]"""
+
+    total_usd: Decimal
+    day_usd: Decimal
+
+
 class BrokerUsageGateway(Protocol):
-    async def cumulative_usage_usd(self) -> Decimal: ...
+    async def usage(self) -> BrokerUsage: ...
 
 
 class OpenRouterUsageClient:
-    """Read cumulative usage for the already-configured OpenRouter key."""
+    """Read cumulative and today's usage for the already-configured OpenRouter key."""
 
     def __init__(self, *, api_key: str, base_url: str) -> None:
         self._client = httpx.AsyncClient(
@@ -42,7 +51,7 @@ class OpenRouterUsageClient:
             timeout=10.0,
         )
 
-    async def cumulative_usage_usd(self) -> Decimal:
+    async def usage(self) -> BrokerUsage:
         try:
             response = await self._client.get("/key")
             response.raise_for_status()
@@ -54,13 +63,10 @@ class OpenRouterUsageClient:
                 parse_float=Decimal,
                 parse_int=Decimal,
             )
-            usage = payload["data"]["usage"]
-            if isinstance(usage, bool):
-                raise TypeError
-            value = Decimal(usage) if isinstance(usage, str) else usage
-            if not isinstance(value, Decimal) or not value.is_finite() or value < 0:
-                raise ValueError
-            return _usd(value)
+            return BrokerUsage(
+                total_usd=_usage_value(payload["data"]["usage"]),
+                day_usd=_usage_value(payload["data"]["usage_daily"]),
+            )
         except (InvalidOperation, KeyError, TypeError, ValueError, json.JSONDecodeError) as error:
             raise InvalidBrokerResponse from error
 
@@ -93,18 +99,18 @@ class ReconciliationService:
                     text("SELECT pg_advisory_xact_lock(:key)"),
                     {"key": _ADVISORY_LOCK_KEY},
                 )
-                ledger_cost, unpriced = await _ledger_totals(session)
+                ledger_cost, ledger_day, unpriced = await _ledger_totals(session)
                 try:
-                    broker_usage = await self._gateway.cumulative_usage_usd()
-                    if not broker_usage.is_finite() or broker_usage < 0:
-                        raise InvalidBrokerResponse
-                    broker_usage = _usd(broker_usage)
+                    broker = await self._gateway.usage()
                     row = await self._successful_row(
                         session,
-                        broker_usage=broker_usage,
+                        broker_usage=_usd(broker.total_usd),
                         ledger_cost=ledger_cost,
                         unpriced=unpriced,
                     )
+                    # A-080: today's bill beside today's ledger; A-037's status is unchanged.
+                    row.broker_day_usd = _usd(broker.day_usd)
+                    row.ledger_day_usd = ledger_day
                 except BrokerUnavailable:
                     row = _unavailable_row("broker_unavailable", self._tolerance, unpriced)
                 except (InvalidBrokerResponse, InvalidOperation, TypeError, ValueError):
@@ -192,16 +198,29 @@ class ReconciliationScheduler:
                 pass
 
 
-async def _ledger_totals(session: AsyncSession) -> tuple[Decimal, int]:
+async def _ledger_totals(session: AsyncSession) -> tuple[Decimal, Decimal, int]:
+    today = func.date_trunc("day", func.now(), "UTC")
     row = (
         await session.execute(
             select(
                 func.coalesce(func.sum(SpendEvent.cost_usd), Decimal(0)),
+                func.coalesce(
+                    func.sum(SpendEvent.cost_usd).filter(SpendEvent.ts >= today), Decimal(0)
+                ),
                 func.count().filter(SpendEvent.cost_usd.is_(None)),
             ).where(SpendEvent.product_type.in_(("llm.request", "llm.embedding")))
         )
     ).one()
-    return _usd(row[0]), int(row[1])
+    return _usd(row[0]), _usd(row[1]), int(row[2])
+
+
+def _usage_value(raw: object) -> Decimal:
+    if isinstance(raw, bool):
+        raise TypeError
+    value = Decimal(raw) if isinstance(raw, str) else raw
+    if not isinstance(value, Decimal) or not value.is_finite() or value < 0:
+        raise ValueError
+    return _usd(value)
 
 
 def _row(
@@ -247,6 +266,7 @@ def _usd(value: Decimal) -> Decimal:
 
 __all__ = [
     "BrokerUnavailable",
+    "BrokerUsage",
     "BrokerUsageGateway",
     "InvalidBrokerResponse",
     "OpenRouterUsageClient",

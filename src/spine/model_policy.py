@@ -73,6 +73,8 @@ class ListedModel:
     intelligence_index: Decimal | None = None
     # SD-079: the request parameters the source says this model takes; None when unpublished.
     supported_parameters: frozenset[str] | None = None
+    # FL-161: the price of a cached prompt token, when the source publishes one.
+    cache_read_price: Decimal | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -927,10 +929,11 @@ def parse_model_listing(
         if not isinstance(model_id, str) or not model_id or model_id != model_id.strip():
             continue
         pricing = raw.get("pricing")
-        prompt = completion = None
+        prompt = completion = cache_read = None
         if isinstance(pricing, dict):
             prompt = _finite_decimal(pricing.get("prompt"))
             completion = _finite_decimal(pricing.get("completion"))
+            cache_read = _finite_decimal(pricing.get("input_cache_read"))
         if model_id.startswith("openrouter/") or any(
             price is not None and price < 0 for price in (prompt, completion)
         ):
@@ -949,6 +952,9 @@ def parse_model_listing(
             reasoning=isinstance(supported, list) and "reasoning" in supported,
             intelligence_index=index.get(str(raw.get("canonical_slug"))),
             supported_parameters=_parse_supported_parameters(raw),
+            cache_read_price=(
+                None if cache_read is None or cache_read < 0 else cache_read * _PRICE_PER_MILLION
+            ),
         )
     return tuple(listed.values())
 
