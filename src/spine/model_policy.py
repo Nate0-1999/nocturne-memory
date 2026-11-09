@@ -481,16 +481,9 @@ class ModelPolicyResolver:
                 f"{policy.kind.title()} could not resolve the catalog{cause}; "
                 "using the configured fallback."
             )
-        return (
-            f"{resolution.reason}. Score {benchmark.intelligence_index}; "
-            f"input ${_price(benchmark.prompt_price)}/M, "
-            f"output ${_price(benchmark.completion_price)}/M tokens."
-            + (
-                ""
-                if policy.kind == "budget"
-                else " This token-cost policy does not impose an hourly dollar limit."
-            )
-        )
+        # FL-206 / F173: the reason alone; the model summary quotes the price the conversation
+        # pays from the model listing, so one screen no longer shows two prices.
+        return f"{resolution.reason}."
 
     async def resolve(self, thread_id: str) -> ThreadModelResolution:
         if not isinstance(thread_id, str) or not thread_id.strip():
@@ -846,10 +839,6 @@ def explain_choice(
             )
         return text
     return f"Max: {name}, the highest intelligence score in the catalog"
-
-
-def _price(value: Decimal) -> str:
-    return format(value.normalize(), "f")
 
 
 def _money(value: Decimal) -> str:
