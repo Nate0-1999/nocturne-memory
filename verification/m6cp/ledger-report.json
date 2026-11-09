@@ -2,23 +2,187 @@
   "packet": "M6CP",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "12797daac6237dd0a3228f46624d797993cf09e7dde8b8cb09e5bb54a72e43a8",
+  "ledger_sha256": "c4194e9004df54ab624353ba2b2b2761ac1e2a48c02ab709aee76e12b71e4f75",
   "diffs": [
     {
       "repo": "spine",
       "base": "0c0f847cf7b69646c53b1518e6116c2a7c51dfb3",
-      "head": "128b786aba1ed207b7f2ce79e791e90ae2d4e199"
+      "head": "d1a2d35d05ed40a43766ae7308f1c8b6b2834ae8"
     }
   ],
   "unmapped": {
-    "spine/DECISIONS.md": "M6CP generated/frozen metadata, package/API version, bundled web asset, decision/release note, test adaptation or verification artifact; supports the mapped compaction behavior without a separate feature change.",
-    "spine/api_contract_fingerprints.json": "M6CP generated/frozen metadata, package/API version, bundled web asset, decision/release note, test adaptation or verification artifact; supports the mapped compaction behavior without a separate feature change.",
-    "spine/openapi.json": "M6CP generated/frozen metadata, package/API version, bundled web asset, decision/release note, test adaptation or verification artifact; supports the mapped compaction behavior without a separate feature change.",
-    "spine/src/spine/__init__.py": "M6CP generated/frozen metadata, package/API version, bundled web asset, decision/release note, test adaptation or verification artifact; supports the mapped compaction behavior without a separate feature change.",
-    "spine/tests/test_api.py": "M6CP generated/frozen metadata, package/API version, bundled web asset, decision/release note, test adaptation or verification artifact; supports the mapped compaction behavior without a separate feature change.",
-    "spine/tests/test_compaction_learning.py": "M6CP generated/frozen metadata, package/API version, bundled web asset, decision/release note, test adaptation or verification artifact; supports the mapped compaction behavior without a separate feature change.",
-    "spine/tests/test_learner_worker.py": "M6CP generated/frozen metadata, package/API version, bundled web asset, decision/release note, test adaptation or verification artifact; supports the mapped compaction behavior without a separate feature change.",
-    "spine/tests/test_packaging.py": "M6CP generated/frozen metadata, package/API version, bundled web asset, decision/release note, test adaptation or verification artifact; supports the mapped compaction behavior without a separate feature change."
+    "spine/DECISIONS.md": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/api_contract_fingerprints.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/openapi.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/scripts/verify_wheel.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/src/spine/__init__.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/src/spine/db/migrations/versions/0031_retrain_progress.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/tests/conftest.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/tests/test_api.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/tests/test_compaction_learning.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/tests/test_db.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/tests/test_learner_api.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/tests/test_learner_worker.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/tests/test_learning_loops.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/tests/test_m2k_api.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/tests/test_m2n_migrations.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/tests/test_migration.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/tests/test_packaging.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/tests/test_retrain_jobs.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-021.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-030.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-032.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-049.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-050.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-051.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-052.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-053.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-054.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-055.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-056.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-057.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-058.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-059.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-060.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-061.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-062.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-063.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-064.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-137.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-162.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-164.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-167.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-169.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-183.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-195.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-196.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-197.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/SHA256SUMS": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/ledger-report.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6lp/FL-021.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-030.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-032.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-049.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-050.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-051.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-052.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-053.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-054.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-055.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-056.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-058.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-059.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-060.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-062.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-063.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-064.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-119.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-137.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-151.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-154.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-155.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-159.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-162.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-164.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-167.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-169.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-182.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-195.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-196.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-197.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/FL-202.png": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/SHA256SUMS": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6lp/ledger-report.json": "Inherited immutable M6LP evidence or supporting metadata from its completed branch; not edited or re-walked by M6CP; see Garden report 300.",
+    "spine/verification/m6cp/FL-048.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-182.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-084.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/FL-047.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-memory-rules.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-look-wrapped.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-FL-061-lineage.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-ports.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/read_local.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-creation-decisions.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-harness-rules.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-spend.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-memory-build.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-release-gates.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/run_driver.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-garden-ledger.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-nocturne-memory-prs.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-web-tests.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-wheel-install.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/joint-canon-ground.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-canon-packet.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-nocturne-harness-releases.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/counted-fit-third.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/plan.js": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/phase2-model-policies.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-harness-ledger.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/bounded-spine.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-nocturne-harness-prs.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final_evidence.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/local_palace.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-memory-ledger-ci.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-memory-wheel-smoke.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/joint-memory-tests.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-memory-tests.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-browser-sweep.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/counted-spine.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/gates-meaning.js": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-web-build.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/bounded-fit-runs.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/phase2-spend-start.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-pypi.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/gates-keywords.js": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/keyspend.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-gates-keywords.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-harness-tests.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-plan-runs.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/fit.js": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-web-lint.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/replay-match-trace.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-gates-meaning.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-memory-ledger.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-harness-motivations.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/trace_replay.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-memory-motivations.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-plan-after-restart.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/counted-fit-runs.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-cleanup.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-nocturne-harness-pr-state.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/fit-final-96.js": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-nocturne-memory-releases.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-garden-rules.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/trial-provider-timeout.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/release-gates.js": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-fit-counted.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/fit-third.js": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-FL-061-readout.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-guards.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-harness-wheel-smoke.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-harness-ledger-ci.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-local-receipts.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/matched-spine.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/fit-bounded.js": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-fit-runs.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/driver.mjs": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-remote-ci-failures.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/phase2_setup.py": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-size96.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/artifacts.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/handoff-nocturne-memory-pr-state.json": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/final-harness-build.log": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/run2/FL-061-preview.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/run2/FL-084-questions.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/run2/FL-084-completed.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/run2/FL-061-lineage.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/run3/FL-084-questions.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/run3/FL-084-completed.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/run1/FL-061-preview.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/run1/FL-084-questions.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/run1/FL-084-completed.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline.",
+    "spine/verification/m6cp/receipts/final/run1/FL-061-lineage.png": "Package/API version and pin, generated or frozen metadata, bundled asset, decision, test adaptation or packet evidence supporting the mapped behavior; no separate feature change is claimed. Inherited paths are retained from the merged baseline."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -29,7 +193,16 @@
       "verdict": "FAIL",
       "screenshot": "FL-030.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
+    },
+    "FL-048": {
+      "label": "A permanent back-test table of every human add and removal of a memory, as the training data for the injection algorithm.",
+      "walk": "Remove a memory at the gate; a new row for it appears in the back-test table.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-048.png",
+      "flag": "F086",
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-051": {
       "label": "A performance score for the memory system, back-tested on the history of manual adds and removes plus successful injections; a new set of weights is accepted only if it scores better than the previous generation.",
@@ -38,7 +211,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-051.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-052": {
       "label": "The scoreboard counts right and wrong injection decisions, injected or not, with no arbitrary scoring.",
@@ -47,7 +220,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-052.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-053": {
       "label": "Every feature's weight labeled and shown normalized to a decimal.",
@@ -56,7 +229,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-053.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-055": {
       "label": "Background retraining on work-based triggers, with one \"force retrain\" button as the only manual lever.",
@@ -65,7 +238,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-055.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-056": {
       "label": "Automatic training of the memory line and the share from human feedback, switching on by itself after 100 pieces of authentic feedback.",
@@ -74,7 +247,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-056.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-057": {
       "label": "Deleting a memory from the Palace feeds a training loop that tunes memory creation.",
@@ -83,16 +256,16 @@
       "verdict": "FAIL",
       "screenshot": "FL-057.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-058": {
       "label": "A standing registry of every trainable parameter; all training loops triggered from one place in the code where their documentation lives.",
-      "walk": "Open the trainable-parameter registry; every trainable parameter is listed with its loop, floor and status \u2014 including the curator's candidate-search band (curator_review_sim, default 0.70, config) beside the write-time dedup bands \u2014 and the training trigger point is one place in code with its documentation beside it.",
+      "walk": "Open the trainable-parameter registry; every trainable parameter is listed with its loop, floor and status — including the curator's candidate-search band (curator_review_sim, default 0.70, config) beside the write-time dedup bands — and the training trigger point is one place in code with its documentation beside it.",
       "protected": true,
       "verdict": "FAIL",
       "screenshot": "FL-058.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-060": {
       "label": "An optimization ledger: state and scores across runs in a proper history schema.",
@@ -101,7 +274,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-060.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-062": {
       "label": "Constitution: The audition: a proposed scorer runs as a visible shadow beside the incumbent before acceptance (gate-day).",
@@ -110,7 +283,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-062.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-197": {
       "label": "Spend and Palace state reads use the calling principal; only the configured owner can request the whole Palace.",
@@ -119,7 +292,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-197.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-169": {
       "label": "Client and cloud versions stay sync-locked or backward compatible, following industry practice, so version differences feel seamless.",
@@ -128,7 +301,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-169.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-195": {
       "label": "The feature ledger generates coverage reports and requires evidence for the rows affected by a build.",
@@ -137,7 +310,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-195.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-196": {
       "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
@@ -146,7 +319,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-196.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-021": {
       "label": "The memory visualizer shows the hyperparameters and lets the user go in and tweak memories.",
@@ -155,7 +328,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-021.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-032": {
       "label": "The Injection Console: see the weights, simulate a change to them and test the result, and force a new set of values.",
@@ -164,7 +337,16 @@
       "verdict": "FAIL",
       "screenshot": "FL-032.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
+    },
+    "FL-047": {
+      "label": "User edits to injected memories recorded as tuning signals.",
+      "walk": "M3WF fixture (harness/verification/m3wf/README.md): Remove a memory at the gate; Palace State's authentic feedback count rises by one.",
+      "protected": false,
+      "verdict": "FAIL",
+      "screenshot": "FL-047.png",
+      "flag": "F086",
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-049": {
       "label": "Scoring parameters that can be added and removed easily; curators can add and retire axes over time.",
@@ -173,7 +355,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-049.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-050": {
       "label": "Weight refits run offline while the previous weights keep serving; the method (gradient descent, linear programming or a solver) was his guess, and it must not slow things down massively.",
@@ -182,7 +364,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-050.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-054": {
       "label": "Simulate: change weights and back-test the result before forcing them.",
@@ -191,7 +373,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-054.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-059": {
       "label": "Optimization at every compaction of a main thread, one at a time under a lock, with mixed and capped back-test material.",
@@ -200,16 +382,16 @@
       "verdict": "FAIL",
       "screenshot": "FL-059.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-061": {
       "label": "Compaction instructions tuned by back-test; memory size as a tunable beside the threshold and allotments.",
-      "walk": "In the Injection Console, open Memory creation: instruction generations list their parent, date, size and scores. Owner API previews can replay source spans, but the size control and coupled tau/share/size fit remain pending (F216). Better results adopt only at the current size; verification previews never adopt.",
+      "walk": "In the Injection Console, change Memory size to back-test and inspect the joint replay with minimum match and memory share. Instruction generations retain text, parent, date, size and scores. A winning production fit carries instructions and size in the scorer proposal and its existing activation; previews retain only a receipt. Verification feedback is excluded from production training.",
       "protected": false,
       "verdict": "FAIL",
       "screenshot": "FL-061.png",
-      "flag": "F216",
-      "observed": "Partial: real source-span instruction preview and parent/date/size/scores readout work. Joint tau/share/size fitting and the rack action for a size control remain unfinished in M6LP live functions. Different-size adoption is refused; verification replay never adopts. One real structured preview, not three full acceptance runs."
+      "flag": "F169",
+      "observed": "Implemented joint instruction/size/tau/share fit and connected control. Real successful previews changed 32 dispositions and 3 budget boundaries, with creation score 2 to 3. Later LLM and embedding ReadTimeouts prevent three complete accepted fresh runs. Failed receipts remain; active scorer is unchanged and no preview proposal persisted."
     },
     "FL-063": {
       "label": "The scorer need not stay linear forever, and black-box changes from optimization are fine as long as the features being weighted stay understandable.",
@@ -218,7 +400,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-063.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-064": {
       "label": "Constitution: Per-project weight offsets starting at zero, after global weights (founding ADR-005 / SD-041).",
@@ -227,7 +409,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-064.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-137": {
       "label": "A line graph of the injection system's historical performance; a 3D terrain of the score surface across parameters; the optimization shown while it runs (the landscape module is this terrain, placed beside the curators).",
@@ -236,7 +418,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-137.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-162": {
       "label": "Easy onboarding from a single splash repo, needing only two secrets: a GCP credential and an OpenRouter key.",
@@ -245,7 +427,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-162.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-164": {
       "label": "Local mode with no internet, cloud mode, and a way to mirror our cloud setup into your own provider.",
@@ -254,7 +436,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-164.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-167": {
       "label": "One obvious start command with an update prompt; update, deploy, launch and doctor as one or two commands.",
@@ -263,7 +445,16 @@
       "verdict": "FAIL",
       "screenshot": "FL-167.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
+    },
+    "FL-182": {
+      "label": "Agent workflows that are programmable, so making agents do work is extremely easy.",
+      "walk": "Save an agent workflow and run it twice; both runs do the same work without a person steering.",
+      "protected": false,
+      "verdict": "FAIL",
+      "screenshot": "FL-182.png",
+      "flag": "F086",
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     },
     "FL-183": {
       "label": "Agent workflows can be set up on cron jobs.",
@@ -272,7 +463,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-183.png",
       "flag": "F086",
-      "observed": "Context only: a shared file mapped to this row changed for M6CP. Its own gesture was not repeated. This is the final local-Palace generation readout, not a row-specific proof or a new PASS/regression claim. Exact additional coverage remains unproven under F086."
+      "observed": "Context only: a shared or inherited path maps here. Its own gesture was not repeated. This final local-Palace readout is not row-specific proof or a new PASS/regression claim. Additional coverage remains unproven under F086."
     }
   },
   "not_run": {
@@ -319,8 +510,6 @@
     "FL-044": "outside diff",
     "FL-045": "outside diff",
     "FL-046": "outside diff",
-    "FL-047": "outside diff",
-    "FL-048": "outside diff",
     "FL-065": "horizon",
     "FL-066": "outside diff",
     "FL-067": "outside diff",
@@ -433,7 +622,6 @@
     "FL-179": "outside diff",
     "FL-180": "horizon",
     "FL-181": "outside diff",
-    "FL-182": "outside diff",
     "FL-184": "outside diff",
     "FL-185": "horizon",
     "FL-186": "outside diff",

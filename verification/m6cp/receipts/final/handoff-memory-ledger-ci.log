@@ -1,0 +1,116 @@
+Impact bell: M6CP -> /Users/nateoswalt/relay/m6cp/spine/verification/m6cp/impacted.json
+  FL-030: Force controls for the line, the share and pins, all in the same module as the hyperparameters, each with the algorithm resuming afterward. [PROTECTED: flagged corner only]
+  FL-048: A permanent back-test table of every human add and removal of a memory, as the training data for the injection algorithm. [PROTECTED: flagged corner only]
+  FL-051: A performance score for the memory system, back-tested on the history of manual adds and removes plus successful injections; a new set of weights is accepted only if it scores better than the previous generation. [PROTECTED: flagged corner only]
+  FL-052: The scoreboard counts right and wrong injection decisions, injected or not, with no arbitrary scoring. [PROTECTED: flagged corner only]
+  FL-053: Every feature's weight labeled and shown normalized to a decimal. [PROTECTED: flagged corner only]
+  FL-055: Background retraining on work-based triggers, with one "force retrain" button as the only manual lever. [PROTECTED: flagged corner only]
+  FL-056: Automatic training of the memory line and the share from human feedback, switching on by itself after 100 pieces of authentic feedback. [PROTECTED: flagged corner only]
+  FL-057: Deleting a memory from the Palace feeds a training loop that tunes memory creation. [PROTECTED: flagged corner only]
+  FL-058: A standing registry of every trainable parameter; all training loops triggered from one place in the code where their documentation lives. [PROTECTED: flagged corner only]
+  FL-060: An optimization ledger: state and scores across runs in a proper history schema. [PROTECTED: flagged corner only]
+  FL-062: Constitution: The audition: a proposed scorer runs as a visible shadow beside the incumbent before acceptance (gate-day). [PROTECTED: flagged corner only]
+  FL-197: Spend and Palace state reads use the calling principal; only the configured owner can request the whole Palace. [PROTECTED: flagged corner only]
+  FL-169: Client and cloud versions stay sync-locked or backward compatible, following industry practice, so version differences feel seamless. [PROTECTED: flagged corner only]
+  FL-195: The feature ledger generates coverage reports and requires evidence for the rows affected by a build. [PROTECTED: flagged corner only]
+  FL-196: The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents. [PROTECTED: flagged corner only]
+  FL-001: The Palace is a transactional database in the cloud on GCP that agents on many machines reach, behaving the same for every agent and sub-agent wherever it runs.
+  FL-021: The memory visualizer shows the hyperparameters and lets the user go in and tweak memories.
+  FL-032: The Injection Console: see the weights, simulate a change to them and test the result, and force a new set of values.
+  FL-047: User edits to injected memories recorded as tuning signals.
+  FL-049: Scoring parameters that can be added and removed easily; curators can add and retire axes over time.
+  FL-050: Weight refits run offline while the previous weights keep serving; the method (gradient descent, linear programming or a solver) was his guess, and it must not slow things down massively.
+  FL-054: Simulate: change weights and back-test the result before forcing them.
+  FL-059: Optimization at every compaction of a main thread, one at a time under a lock, with mixed and capped back-test material.
+  FL-061: Compaction instructions tuned by back-test; memory size as a tunable beside the threshold and allotments.
+  FL-063: The scorer need not stay linear forever, and black-box changes from optimization are fine as long as the features being weighted stay understandable.
+  FL-064: Constitution: Per-project weight offsets starting at zero, after global weights (founding ADR-005 / SD-041).
+  FL-137: A line graph of the injection system's historical performance; a 3D terrain of the score surface across parameters; the optimization shown while it runs (the landscape module is this terrain, placed beside the curators).
+  FL-162: Easy onboarding from a single splash repo, needing only two secrets: a GCP credential and an OpenRouter key.
+  FL-164: Local mode with no internet, cloud mode, and a way to mirror our cloud setup into your own provider.
+  FL-167: One obvious start command with an update prompt; update, deploy, launch and doctor as one or two commands.
+  FL-182: Agent workflows that are programmable, so making agents do work is extremely easy.
+  FL-183: Agent workflows can be set up on cron jobs.
+  Unmapped: spine/DECISIONS.md (add a row or declare no feature impact)
+  Unmapped: spine/api_contract_fingerprints.json (add a row or declare no feature impact)
+  Unmapped: spine/openapi.json (add a row or declare no feature impact)
+  Unmapped: spine/scripts/verify_wheel.py (add a row or declare no feature impact)
+  Unmapped: spine/src/spine/__init__.py (add a row or declare no feature impact)
+  Unmapped: spine/src/spine/db/migrations/versions/0031_retrain_progress.py (add a row or declare no feature impact)
+  Unmapped: spine/tests/conftest.py (add a row or declare no feature impact)
+  Unmapped: spine/tests/test_api.py (add a row or declare no feature impact)
+  Unmapped: spine/tests/test_compaction_learning.py (add a row or declare no feature impact)
+  Unmapped: spine/tests/test_db.py (add a row or declare no feature impact)
+  Unmapped: spine/tests/test_learner_api.py (add a row or declare no feature impact)
+  Unmapped: spine/tests/test_learner_worker.py (add a row or declare no feature impact)
+  Unmapped: spine/tests/test_learning_loops.py (add a row or declare no feature impact)
+  Unmapped: spine/tests/test_m2k_api.py (add a row or declare no feature impact)
+  Unmapped: spine/tests/test_m2n_migrations.py (add a row or declare no feature impact)
+  Unmapped: spine/tests/test_migration.py (add a row or declare no feature impact)
+  Unmapped: spine/tests/test_packaging.py (add a row or declare no feature impact)
+  Unmapped: spine/tests/test_retrain_jobs.py (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-021.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-030.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-032.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-049.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-050.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-051.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-052.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-053.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-054.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-055.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-056.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-057.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-058.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-059.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-060.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-061.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-062.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-063.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-064.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-137.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-162.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-164.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-167.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-169.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-183.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-195.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-196.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/FL-197.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/SHA256SUMS (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6cp/ledger-report.json (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-021.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-030.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-032.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-049.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-050.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-051.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-052.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-053.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-054.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-055.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-056.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-058.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-059.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-060.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-062.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-063.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-064.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-119.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-137.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-151.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-154.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-155.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-159.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-162.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-164.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-167.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-169.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-182.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-195.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-196.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-197.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/FL-202.png (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/SHA256SUMS (add a row or declare no feature impact)
+  Unmapped: spine/verification/m6lp/ledger-report.json (add a row or declare no feature impact)
+Ledger coverage PASS: 31 required rows

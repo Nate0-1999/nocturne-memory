@@ -1,0 +1,30 @@
+await openApp('Sheet'); await sleep(1500)
+await page.getByRole('tab',{name:'Injection',exact:true}).click(); await sleep(1500)
+const before = await api('/v1/rack/query?resource=scorer_console&as_of=now')
+const hygiene = await post('/v1/rack/compaction-backtest',{memory_size:64,preview:false})
+if (hygiene.fit.eligible_dispositions !== 0) throw Error('Verification entered authentic training')
+const generated = null
+const log=[]
+for (const [index,size] of [[3,96]]) {
+  const con=frame('injection_console'), region=con.getByRole('region',{name:'Memory creation outcomes'})
+  await region.getByLabel('Memory size to back-test').fill(String(size))
+  await region.getByLabel('Include verification history in this preview').check()
+  await region.getByRole('button',{name:'Back-test size',exact:true}).scrollIntoViewIfNeeded()
+  const responsePromise=page.waitForResponse(r=>r.url().endsWith('/v1/rack/compaction-backtest') && r.request().method()==='POST',{timeout:360000})
+  await region.getByRole('button',{name:'Back-test size',exact:true}).click()
+  const response=await responsePromise, result=await response.json()
+  if (!response.ok()) throw Error(`Preview failed ${response.status()}: ${JSON.stringify(result)}`)
+  await waitUntil(async()=>await region.getByRole('button',{name:'Back-test size',exact:true}).isEnabled(),360000)
+  if(result.verdict!=='preview_only' || !result.joint_fit || !result.joint_fit.size_tuning_active) throw Error(JSON.stringify(result))
+  await region.getByRole('status').last().scrollIntoViewIfNeeded()
+  await shot(`run${index}/FL-061-preview`)
+  const details=region.locator('details').filter({has:con.locator(':scope > summary').filter({hasText:'Compaction instruction generations'})}).first()
+  const summary=region.getByText('Compaction instruction generations',{exact:true})
+  if((await summary.locator('..').getAttribute('open')) === null) await summary.click()
+  await region.getByRole('heading',{name:new RegExp(result.id)}).scrollIntoViewIfNeeded()
+  await shot(`run${index}/FL-061-lineage`)
+  log.push({index,size,result})
+}
+const after = await api('/v1/rack/query?resource=scorer_console&as_of=now')
+if(before.data.active_version!==after.data.active_version) throw Error('Preview changed active scorer')
+return {beforeActive:before.data.active_version,afterActive:after.data.active_version,hygiene,generated,log}

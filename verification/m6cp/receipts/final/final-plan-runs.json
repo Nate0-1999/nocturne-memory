@@ -1,0 +1,2419 @@
+{
+ "ok": true,
+ "result": [
+  {
+   "index": 1,
+   "thread": "10947999-7daf-4f25-8cff-dbb74d340b29",
+   "initialQueue": {
+    "cards": [
+     {
+      "item_uid": "01M6ZQABDWYT7AR4Y54GWYWYW5",
+      "candidate": {
+       "memory_id": "4eac8fd4-78ac-4612-99ae-660201080fb9",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Mira owns Orion",
+       "body": "Mira is the owner of Orion in the fictional release plan.",
+       "kind": "fact",
+       "keywords": [
+        "mira",
+        "orion",
+        "ownership",
+        "release plan"
+       ],
+       "project_key": null,
+       "thread_origin": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:38:09.853921Z",
+       "updated_at": "2026-11-09T08:38:09.853921Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:38:10.209565Z"
+     },
+     {
+      "item_uid": "01M6ZQABR7S7HMQ4PGF1BK7GR4",
+      "candidate": {
+       "memory_id": "04d03261-3f76-46f2-a7d4-43660a1021ba",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Notebook named Copper",
+       "body": "The notebook involved in the release plan is named Copper.",
+       "kind": "fact",
+       "keywords": [
+        "notebook",
+        "copper",
+        "release plan"
+       ],
+       "project_key": null,
+       "thread_origin": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:38:10.231736Z",
+       "updated_at": "2026-11-09T08:38:10.231736Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:38:10.534288Z"
+     },
+     {
+      "item_uid": "01M6ZQAC1ZKNT4CDK0JGCX39EP",
+      "candidate": {
+       "memory_id": "01ed777a-9a4c-4a64-841e-cac4f2a7a221",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Shipping scheduled for Friday",
+       "body": "Shipping for the release plan is scheduled for Friday.",
+       "kind": "fact",
+       "keywords": [
+        "shipping",
+        "friday",
+        "release plan"
+       ],
+       "project_key": null,
+       "thread_origin": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:38:10.544256Z",
+       "updated_at": "2026-11-09T08:38:10.544256Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:38:10.849677Z"
+     },
+     {
+      "item_uid": "01M6ZQACDYTGG86TN59Q15G1ZX",
+      "candidate": {
+       "memory_id": "c5f1fdc2-151d-4891-a165-ab9414ae30c8",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Launch checklist remains open",
+       "body": "The launch checklist for the release plan remains open and unresolved.",
+       "kind": "fact",
+       "keywords": [
+        "launch checklist",
+        "open",
+        "release plan"
+       ],
+       "project_key": null,
+       "thread_origin": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:38:10.862998Z",
+       "updated_at": "2026-11-09T08:38:10.862998Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:38:11.234033Z"
+     },
+     {
+      "item_uid": "01M6ZQACP5HP20NVS0T68EM0XS",
+      "candidate": {
+       "memory_id": "be36aee1-179c-480d-923a-0b96934818ef",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Kettle boiling is a temporary detail",
+       "body": "A kettle is currently boiling, but this is a temporary detail in the context of the release plan.",
+       "kind": "fact",
+       "keywords": [
+        "kettle",
+        "boiling",
+        "temporary detail"
+       ],
+       "project_key": null,
+       "thread_origin": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:38:11.247582Z",
+       "updated_at": "2026-11-09T08:38:11.247582Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:38:11.494946Z"
+     }
+    ]
+   },
+   "questions": "NOCTURNE\n\nBefore I compact this plan:\n\nWhich specific release decisions should be preserved?\nWhat details about the launch checklist need to be maintained?\nIs the shipping date of Friday confirmed or subject to change?\nShould temporary details like the boiling kettle be included or excluded?\nTOOLS · 0 CALLS",
+   "answer": "NOCTURNE\nCONVERSATION COMPACTED · FULL HISTORY KEPT IN THE JOURNAL\n\nThe next concise step is to review the current items on the launch checklist, prioritize any remaining tasks, and assign ownership and deadlines for their completion to ensure the Friday shipping target remains on track.\n\nTOOLS · 0 CALLS",
+   "compactions": {
+    "compactions": [
+     {
+      "captured_at": "2026-11-09T08:38:11.417798+00:00",
+      "event_uid": "01M6ZQACPPZFN98EVEYVMQ0T15",
+      "facts": [
+       {
+        "body": "Mira is the owner of Orion in the fictional release plan.",
+        "label": "Mira owns Orion",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The notebook involved in the release plan is named Copper.",
+        "label": "Notebook named Copper",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "Shipping for the release plan is scheduled for Friday.",
+        "label": "Shipping scheduled for Friday",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The launch checklist for the release plan remains open and unresolved.",
+        "label": "Launch checklist remains open",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "A kettle is currently boiling, but this is a temporary detail in the context of the release plan.",
+        "label": "Kettle boiling is a temporary detail",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       }
+      ],
+      "plan_clarification": null,
+      "policy": {
+       "id": "manual-03eb045e2d68574b",
+       "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+       "memory_size": 128,
+       "parent": "baseline"
+      },
+      "record_type": "compaction_record",
+      "run_id": "01M6ZQ9YQGYYARSGR82CZEJGT0",
+      "span": [
+       {
+        "id": "m0",
+        "kept": false,
+        "text": "User: This is a fictional release plan. Mira owns Orion, the notebook is copper, and shipping is Friday. The launch checklist remains open. A kettle is boiling right now; that detail is temporary. Summarize in two sentences. Do not use tools."
+       },
+       {
+        "id": "m1",
+        "kept": true,
+        "text": "Assistant: Mira is responsible for Orion, and the notebook named Copper is involved in the release, with shipping scheduled for Friday. The launch checklist is still open, and a kettle is currently boiling, though that detail is temporary. \n\n<nocturne-proposed-response>\n{\"primary\":\"Mira owns Orion, with the Copper notebook included, and shipping is set for Friday. The launch checklist remains open, and a kettle is boiling right now, but that is a temporary detail.\",\"alternatives\":[\"The release involves Mira's Orion and the Copper notebook, with shipping planned for Friday. The launch checklist is still open, and there's a temporary detail of a kettle boiling.\",\"Mira is in charge of Orion, and the Copper notebook is part of the plan, with shipping on Friday. The launch checklist remains open, and a kettle is boiling at the moment, which is temporary.\",\"The plan includes Mira as the owner of Orion and the Copper notebook, with shipping on Friday. The launch checklist is open, and a kettle boiling is a current but temporary detail.\"]}\n</nocturne-proposed-response>"
+       }
+      ],
+      "strategy": "memories-then-drop",
+      "thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "version": 1,
+      "working_summary": "The user described a fictional release plan where Mira owns Orion, the notebook is named Copper, and shipping is scheduled for Friday. The launch checklist is still open, and a kettle is boiling currently, noted as a temporary detail."
+     },
+     {
+      "captured_at": "2026-11-09T08:38:31.376735+00:00",
+      "event_uid": "01M6ZQB06GQ3ZY1KJ66H6EXKTK",
+      "facts": [
+       {
+        "body": "Mira is designated as the release owner for the Orion project.",
+        "label": "Mira is release owner for Orion",
+        "source_message_ids": [
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The notebook involved in the release is named Copper.",
+        "label": "Notebook named Copper involved in release",
+        "source_message_ids": [
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The shipping date for the release is scheduled for Friday.",
+        "label": "Shipping scheduled for Friday",
+        "source_message_ids": [
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The launch checklist for the release remains open and unresolved.",
+        "label": "Launch checklist is still open",
+        "source_message_ids": [
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The temporary detail about the boiling kettle is to be discarded and not preserved.",
+        "label": "Discard boiling kettle detail",
+        "source_message_ids": [
+         "m4"
+        ],
+        "verdict": "new"
+       }
+      ],
+      "plan_clarification": {
+       "answer": "Keep Mira as release owner for Orion, the copper notebook and Friday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools.",
+       "captured_at": "2026-11-09T08:38:17.061541+00:00",
+       "questions": [
+        "Which specific release decisions should be preserved?",
+        "What details about the launch checklist need to be maintained?",
+        "Is the shipping date of Friday confirmed or subject to change?",
+        "Should temporary details like the boiling kettle be included or excluded?"
+       ],
+       "record_type": "plan_compaction",
+       "status": "answered",
+       "thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "version": 1
+      },
+      "policy": {
+       "id": "manual-03eb045e2d68574b",
+       "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+       "memory_size": 128,
+       "parent": "manual-03eb045e2d68574b"
+      },
+      "record_type": "compaction_record",
+      "run_id": "01M6ZQAHPF6DVHJVXA88TQG839",
+      "span": [
+       {
+        "id": "m0",
+        "kept": false,
+        "text": "System: Summary of previous conversation:\n\nThe user described a fictional release plan where Mira owns Orion, the notebook is named Copper, and shipping is scheduled for Friday. The launch checklist is still open, and a kettle is boiling currently, noted as a temporary detail.\n\nThe launch checklist remains open and unresolved.\nUser: [History before this point (1 messages, ~2316 tokens) was summarized by openai. The summary above is secondhand; re-verify critical facts against primary sources.]"
+       },
+       {
+        "id": "m1",
+        "kept": false,
+        "text": "Assistant: Mira is responsible for Orion, and the notebook named Copper is involved in the release, with shipping scheduled for Friday. The launch checklist is still open, and a kettle is currently boiling, though that detail is temporary. \n\n"
+       },
+       {
+        "id": "m2",
+        "kept": false,
+        "text": "User: We need to preserve the release decisions while the conversation fills. What is the next step?"
+       },
+       {
+        "id": "m3",
+        "kept": false,
+        "text": "Assistant: Before I compact this plan:\n1. Which specific release decisions should be preserved?\n2. What details about the launch checklist need to be maintained?\n3. Is the shipping date of Friday confirmed or subject to change?\n4. Should temporary details like the boiling kettle be included or excluded?"
+       },
+       {
+        "id": "m4",
+        "kept": true,
+        "text": "User: Keep Mira as release owner for Orion, the copper notebook and Friday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools."
+       }
+      ],
+      "strategy": "memories-then-drop",
+      "thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "version": 1,
+      "working_summary": "The user confirmed that Mira is the release owner for Orion, the notebook is named Copper, and shipping is scheduled for Friday. The launch checklist remains open. The temporary detail about the boiling kettle is to be discarded. The user requested one concise next step without using tools."
+     }
+    ]
+   },
+   "finalQueue": {
+    "cards": [
+     {
+      "item_uid": "01M6ZQABDWYT7AR4Y54GWYWYW5",
+      "candidate": {
+       "memory_id": "4eac8fd4-78ac-4612-99ae-660201080fb9",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Mira owns Orion",
+       "body": "Mira is the owner of Orion in the fictional release plan.",
+       "kind": "fact",
+       "keywords": [
+        "mira",
+        "orion",
+        "ownership",
+        "release plan"
+       ],
+       "project_key": null,
+       "thread_origin": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:38:09.853921Z",
+       "updated_at": "2026-11-09T08:38:09.853921Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:38:10.209565Z"
+     },
+     {
+      "item_uid": "01M6ZQABR7S7HMQ4PGF1BK7GR4",
+      "candidate": {
+       "memory_id": "04d03261-3f76-46f2-a7d4-43660a1021ba",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Notebook named Copper",
+       "body": "The notebook involved in the release plan is named Copper.",
+       "kind": "fact",
+       "keywords": [
+        "notebook",
+        "copper",
+        "release plan"
+       ],
+       "project_key": null,
+       "thread_origin": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:38:10.231736Z",
+       "updated_at": "2026-11-09T08:38:10.231736Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:38:10.534288Z"
+     },
+     {
+      "item_uid": "01M6ZQAC1ZKNT4CDK0JGCX39EP",
+      "candidate": {
+       "memory_id": "01ed777a-9a4c-4a64-841e-cac4f2a7a221",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Shipping scheduled for Friday",
+       "body": "Shipping for the release plan is scheduled for Friday.",
+       "kind": "fact",
+       "keywords": [
+        "shipping",
+        "friday",
+        "release plan"
+       ],
+       "project_key": null,
+       "thread_origin": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:38:10.544256Z",
+       "updated_at": "2026-11-09T08:38:10.544256Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:38:10.849677Z"
+     },
+     {
+      "item_uid": "01M6ZQACDYTGG86TN59Q15G1ZX",
+      "candidate": {
+       "memory_id": "c5f1fdc2-151d-4891-a165-ab9414ae30c8",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Launch checklist remains open",
+       "body": "The launch checklist for the release plan remains open and unresolved.",
+       "kind": "fact",
+       "keywords": [
+        "launch checklist",
+        "open",
+        "release plan"
+       ],
+       "project_key": null,
+       "thread_origin": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:38:10.862998Z",
+       "updated_at": "2026-11-09T08:38:10.862998Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:38:11.234033Z"
+     },
+     {
+      "item_uid": "01M6ZQACP5HP20NVS0T68EM0XS",
+      "candidate": {
+       "memory_id": "be36aee1-179c-480d-923a-0b96934818ef",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Kettle boiling is a temporary detail",
+       "body": "A kettle is currently boiling, but this is a temporary detail in the context of the release plan.",
+       "kind": "fact",
+       "keywords": [
+        "kettle",
+        "boiling",
+        "temporary detail"
+       ],
+       "project_key": null,
+       "thread_origin": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:38:11.247582Z",
+       "updated_at": "2026-11-09T08:38:11.247582Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:38:11.494946Z"
+     },
+     {
+      "item_uid": "01M6ZQAY51BHXC63AWSZXFQWJD",
+      "candidate": {
+       "memory_id": "ddeb0cba-ed5e-4b6f-b83e-fcce9dc2b04f",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Mira is release owner for Orion",
+       "body": "Mira is designated as the release owner for the Orion project.",
+       "kind": "fact",
+       "keywords": [
+        "mira",
+        "release owner",
+        "orion"
+       ],
+       "project_key": null,
+       "thread_origin": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:38:28.854014Z",
+       "updated_at": "2026-11-09T08:38:28.854014Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:38:29.358615Z"
+     },
+     {
+      "item_uid": "01M6ZQAZGR9KNB79DQF2WDV8AA",
+      "candidate": {
+       "memory_id": "3b265b52-7316-4e35-be96-90357a78d579",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Shipping scheduled for Friday",
+       "body": "The shipping date for the release is scheduled for Friday.",
+       "kind": "fact",
+       "keywords": [
+        "shipping",
+        "friday",
+        "release"
+       ],
+       "project_key": null,
+       "thread_origin": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:38:29.818833Z",
+       "updated_at": "2026-11-09T08:38:29.818833Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:38:30.761090Z"
+     },
+     {
+      "item_uid": "01M6ZQB04W2BNW1628CBSJK5HY",
+      "candidate": {
+       "memory_id": "6146b6a8-e4d1-4eca-ad70-e64db3a017a1",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Discard boiling kettle detail",
+       "body": "The temporary detail about the boiling kettle is to be discarded and not preserved.",
+       "kind": "fact",
+       "keywords": [
+        "boiling kettle",
+        "temporary detail",
+        "discard"
+       ],
+       "project_key": null,
+       "thread_origin": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:38:31.072761Z",
+       "updated_at": "2026-11-09T08:38:31.072761Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:38:31.409273Z"
+     }
+    ]
+   }
+  },
+  {
+   "index": 2,
+   "thread": "16969755-d432-4f99-b9da-b366eb3667f6",
+   "initialQueue": {
+    "cards": [
+     {
+      "item_uid": "01M6ZQC1ZR1726Y60EF4K0A36C",
+      "candidate": {
+       "memory_id": "0513d64d-a3fb-467b-9926-e0472478f84c",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Luis owns Selene project",
+       "body": "Luis is the owner of the Selene project.",
+       "kind": "fact",
+       "keywords": [
+        "luis",
+        "ownership",
+        "selene",
+        "project"
+       ],
+       "project_key": null,
+       "thread_origin": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:05.515031Z",
+       "updated_at": "2026-11-09T08:39:05.515031Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:06.078926Z"
+     },
+     {
+      "item_uid": "01M6ZQC2AX6MJHB0X36M5ZP132",
+      "candidate": {
+       "memory_id": "1c77ce90-d130-4be3-9eba-2888e47b4f66",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Notebook is graphite",
+       "body": "The notebook is named graphite.",
+       "kind": "fact",
+       "keywords": [
+        "notebook",
+        "graphite",
+        "name"
+       ],
+       "project_key": null,
+       "thread_origin": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:06.098638Z",
+       "updated_at": "2026-11-09T08:39:06.098638Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:06.436705Z"
+     },
+     {
+      "item_uid": "01M6ZQC2N5N8GN727KETB801YD",
+      "candidate": {
+       "memory_id": "b7b3d816-322a-49d9-a2f8-26d7c66ecac3",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Shipping scheduled for Saturday",
+       "body": "Shipping is scheduled for Saturday.",
+       "kind": "fact",
+       "keywords": [
+        "shipping",
+        "schedule",
+        "saturday"
+       ],
+       "project_key": null,
+       "thread_origin": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:06.453038Z",
+       "updated_at": "2026-11-09T08:39:06.453038Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:06.766912Z"
+     },
+     {
+      "item_uid": "01M6ZQC33Q71TNSHN5B1RR1XGF",
+      "candidate": {
+       "memory_id": "aa5ebc7d-4c21-419b-ac21-e6ac3207b097",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Launch checklist is open",
+       "body": "The launch checklist is still open.",
+       "kind": "fact",
+       "keywords": [
+        "launch",
+        "checklist",
+        "status",
+        "open"
+       ],
+       "project_key": null,
+       "thread_origin": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:06.782872Z",
+       "updated_at": "2026-11-09T08:39:06.782872Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:07.232744Z"
+     },
+     {
+      "item_uid": "01M6ZQC3M6TE0FK9JTF8V65RQD",
+      "candidate": {
+       "memory_id": "f3cca053-683b-4570-93a8-d89b1f53b091",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Kettle boiling is temporary detail",
+       "body": "A kettle is boiling right now, which is a temporary detail.",
+       "kind": "fact",
+       "keywords": [
+        "kettle",
+        "boiling",
+        "temporary",
+        "detail"
+       ],
+       "project_key": null,
+       "thread_origin": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:07.250588Z",
+       "updated_at": "2026-11-09T08:39:07.250588Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:07.758713Z"
+     }
+    ]
+   },
+   "questions": "NOCTURNE\n\nBefore I compact this plan:\n\nWhich release decisions should be preserved exactly as they are?\nIs the ownership of Selene and the notebook name graphite confirmed and final?\nShould the shipping date on Saturday remain unchanged?\nWhat is the status of the launch checklist and who is responsible for it?\nTOOLS · 0 CALLS",
+   "answer": "NOCTURNE\nCONVERSATION COMPACTED · FULL HISTORY KEPT IN THE JOURNAL\n\nThe next step is to review and update the launch checklist for Selene to ensure all required tasks are identified and assigned before shipping on Saturday.\n\nTOOLS · 0 CALLS",
+   "compactions": {
+    "compactions": [
+     {
+      "captured_at": "2026-11-09T08:39:07.682528+00:00",
+      "event_uid": "01M6ZQC3N2N75HZQB3ECMVWP8H",
+      "facts": [
+       {
+        "body": "Luis is the owner of the Selene project.",
+        "label": "Luis owns Selene project",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The notebook is named graphite.",
+        "label": "Notebook is graphite",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "Shipping is scheduled for Saturday.",
+        "label": "Shipping scheduled for Saturday",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The launch checklist is still open.",
+        "label": "Launch checklist is open",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "A kettle is boiling right now, which is a temporary detail.",
+        "label": "Kettle boiling is temporary detail",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       }
+      ],
+      "plan_clarification": null,
+      "policy": {
+       "id": "manual-03eb045e2d68574b",
+       "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+       "memory_size": 128,
+       "parent": "manual-03eb045e2d68574b"
+      },
+      "record_type": "compaction_record",
+      "run_id": "01M6ZQBR3F8DKKV7H7SJHAQ6NN",
+      "span": [
+       {
+        "id": "m0",
+        "kept": false,
+        "text": "User: This is a fictional release plan. Luis owns Selene, the notebook is graphite, and shipping is Saturday. The launch checklist remains open. A kettle is boiling right now; that detail is temporary. Summarize in two sentences. Do not use tools."
+       },
+       {
+        "id": "m1",
+        "kept": true,
+        "text": "Assistant: Luis is the owner of the Selene project, with the notebook named graphite, and the planned shipping day is Saturday. The launch checklist is still open, and a kettle is currently boiling, which is a temporary detail. \n\n<nocturne-proposed-response>\n{\"primary\":\"Luis owns Selene, the notebook is graphite, and shipping is scheduled for Saturday. The launch checklist is still open, and a kettle is boiling right now as a temporary detail.\",\"alternatives\":[]} \n</nocturne-proposed-response>"
+       }
+      ],
+      "strategy": "memories-then-drop",
+      "thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "version": 1,
+      "working_summary": "The user provided a fictional release plan where Luis owns Selene, the notebook is graphite, shipping is scheduled for Saturday, the launch checklist is still open, and a kettle is boiling as a temporary detail."
+     },
+     {
+      "captured_at": "2026-11-09T08:39:26.522142+00:00",
+      "event_uid": "01M6ZQCP1SNA135CGQH30T7F2F",
+      "facts": [
+       {
+        "body": "Luis is the release owner for the Selene project.",
+        "label": "Luis is release owner for Selene",
+        "source_message_ids": [
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The notebook associated with the release is named graphite.",
+        "label": "Notebook named graphite",
+        "source_message_ids": [
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The shipping date for the release is scheduled for Saturday.",
+        "label": "Shipping scheduled for Saturday",
+        "source_message_ids": [
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The launch checklist for the release is still open and unresolved.",
+        "label": "Launch checklist is still open",
+        "source_message_ids": [
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The temporary detail about the kettle boiling should be discarded and not preserved.",
+        "label": "Discard kettle boiling detail",
+        "source_message_ids": [
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       }
+      ],
+      "plan_clarification": {
+       "answer": "Keep Luis as release owner for Selene, the graphite notebook and Saturday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools.",
+       "captured_at": "2026-11-09T08:39:14.065627+00:00",
+       "questions": [
+        "Which release decisions should be preserved exactly as they are?",
+        "Is the ownership of Selene and the notebook name graphite confirmed and final?",
+        "Should the shipping date on Saturday remain unchanged?",
+        "What is the status of the launch checklist and who is responsible for it?"
+       ],
+       "record_type": "plan_compaction",
+       "status": "answered",
+       "thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "version": 1
+      },
+      "policy": {
+       "id": "manual-03eb045e2d68574b",
+       "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+       "memory_size": 128,
+       "parent": "manual-03eb045e2d68574b"
+      },
+      "record_type": "compaction_record",
+      "run_id": "01M6ZQC92VY2K098Q4MBHTVBB0",
+      "span": [
+       {
+        "id": "m0",
+        "kept": false,
+        "text": "System: Summary of previous conversation:\n\nThe user provided a fictional release plan where Luis owns Selene, the notebook is graphite, shipping is scheduled for Saturday, the launch checklist is still open, and a kettle is boiling as a temporary detail.\n\nThe launch checklist remains open.\nUser: [History before this point (1 messages, ~2316 tokens) was summarized by openai. The summary above is secondhand; re-verify critical facts against primary sources.]"
+       },
+       {
+        "id": "m1",
+        "kept": false,
+        "text": "Assistant: Luis is the owner of the Selene project, with the notebook named graphite, and the planned shipping day is Saturday. The launch checklist is still open, and a kettle is currently boiling, which is a temporary detail. \n\n"
+       },
+       {
+        "id": "m2",
+        "kept": false,
+        "text": "User: We need to preserve the release decisions while the conversation fills. What is the next step?"
+       },
+       {
+        "id": "m3",
+        "kept": false,
+        "text": "Assistant: Before I compact this plan:\n1. Which release decisions should be preserved exactly as they are?\n2. Is the ownership of Selene and the notebook name graphite confirmed and final?\n3. Should the shipping date on Saturday remain unchanged?\n4. What is the status of the launch checklist and who is responsible for it?"
+       },
+       {
+        "id": "m4",
+        "kept": true,
+        "text": "User: Keep Luis as release owner for Selene, the graphite notebook and Saturday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools."
+       }
+      ],
+      "strategy": "memories-then-drop",
+      "thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "version": 1,
+      "working_summary": "The user confirmed that Luis is the release owner for Selene, the notebook is named graphite, and shipping is scheduled for Saturday. The launch checklist remains open. The temporary detail about the kettle boiling should be discarded. The user requested one concise next step without using tools."
+     }
+    ]
+   },
+   "finalQueue": {
+    "cards": [
+     {
+      "item_uid": "01M6ZQC1ZR1726Y60EF4K0A36C",
+      "candidate": {
+       "memory_id": "0513d64d-a3fb-467b-9926-e0472478f84c",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Luis owns Selene project",
+       "body": "Luis is the owner of the Selene project.",
+       "kind": "fact",
+       "keywords": [
+        "luis",
+        "ownership",
+        "selene",
+        "project"
+       ],
+       "project_key": null,
+       "thread_origin": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:05.515031Z",
+       "updated_at": "2026-11-09T08:39:05.515031Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:06.078926Z"
+     },
+     {
+      "item_uid": "01M6ZQC2AX6MJHB0X36M5ZP132",
+      "candidate": {
+       "memory_id": "1c77ce90-d130-4be3-9eba-2888e47b4f66",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Notebook is graphite",
+       "body": "The notebook is named graphite.",
+       "kind": "fact",
+       "keywords": [
+        "notebook",
+        "graphite",
+        "name"
+       ],
+       "project_key": null,
+       "thread_origin": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:06.098638Z",
+       "updated_at": "2026-11-09T08:39:06.098638Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:06.436705Z"
+     },
+     {
+      "item_uid": "01M6ZQC2N5N8GN727KETB801YD",
+      "candidate": {
+       "memory_id": "b7b3d816-322a-49d9-a2f8-26d7c66ecac3",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Shipping scheduled for Saturday",
+       "body": "Shipping is scheduled for Saturday.",
+       "kind": "fact",
+       "keywords": [
+        "shipping",
+        "schedule",
+        "saturday"
+       ],
+       "project_key": null,
+       "thread_origin": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:06.453038Z",
+       "updated_at": "2026-11-09T08:39:06.453038Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:06.766912Z"
+     },
+     {
+      "item_uid": "01M6ZQC33Q71TNSHN5B1RR1XGF",
+      "candidate": {
+       "memory_id": "aa5ebc7d-4c21-419b-ac21-e6ac3207b097",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Launch checklist is open",
+       "body": "The launch checklist is still open.",
+       "kind": "fact",
+       "keywords": [
+        "launch",
+        "checklist",
+        "status",
+        "open"
+       ],
+       "project_key": null,
+       "thread_origin": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:06.782872Z",
+       "updated_at": "2026-11-09T08:39:06.782872Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:07.232744Z"
+     },
+     {
+      "item_uid": "01M6ZQC3M6TE0FK9JTF8V65RQD",
+      "candidate": {
+       "memory_id": "f3cca053-683b-4570-93a8-d89b1f53b091",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Kettle boiling is temporary detail",
+       "body": "A kettle is boiling right now, which is a temporary detail.",
+       "kind": "fact",
+       "keywords": [
+        "kettle",
+        "boiling",
+        "temporary",
+        "detail"
+       ],
+       "project_key": null,
+       "thread_origin": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:07.250588Z",
+       "updated_at": "2026-11-09T08:39:07.250588Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:07.758713Z"
+     },
+     {
+      "item_uid": "01M6ZQCM40RQN7YPH54878FX6R",
+      "candidate": {
+       "memory_id": "0bafdcb4-5af4-4107-ad66-9a1fead6033f",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Luis is release owner for Selene",
+       "body": "Luis is the release owner for the Selene project.",
+       "kind": "fact",
+       "keywords": [
+        "luis",
+        "release owner",
+        "selene",
+        "ownership"
+       ],
+       "project_key": null,
+       "thread_origin": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:23.991105Z",
+       "updated_at": "2026-11-09T08:39:23.991105Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:24.562657Z"
+     },
+     {
+      "item_uid": "01M6ZQCMN9FKBAVEGP2SRXDGMT",
+      "candidate": {
+       "memory_id": "0f1a13b4-26d6-4ac4-8106-510aaab7bda3",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Notebook named graphite",
+       "body": "The notebook associated with the release is named graphite.",
+       "kind": "fact",
+       "keywords": [
+        "notebook",
+        "graphite",
+        "name"
+       ],
+       "project_key": null,
+       "thread_origin": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:24.584529Z",
+       "updated_at": "2026-11-09T08:39:24.584529Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:25.118116Z"
+     },
+     {
+      "item_uid": "01M6ZQCN89BQD9E8BSJV49HTGK",
+      "candidate": {
+       "memory_id": "303aedb2-8eb3-480f-a494-9ea9001ff5eb",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Shipping scheduled for Saturday",
+       "body": "The shipping date for the release is scheduled for Saturday.",
+       "kind": "fact",
+       "keywords": [
+        "shipping",
+        "saturday",
+        "schedule"
+       ],
+       "project_key": null,
+       "thread_origin": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:25.141035Z",
+       "updated_at": "2026-11-09T08:39:25.141035Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:25.722122Z"
+     }
+    ]
+   }
+  },
+  {
+   "index": 3,
+   "thread": "abaccbca-6019-4930-8aa0-3462b82e6241",
+   "initialQueue": {
+    "cards": [
+     {
+      "item_uid": "01M6ZQDP0ZD797JA3QWQ9J1V7Y",
+      "candidate": {
+       "memory_id": "6695629f-97ca-49d0-8f16-544a7fc10dff",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Anika owns the Vega project",
+       "body": "Anika is responsible for the Vega project.",
+       "kind": "fact",
+       "keywords": [
+        "anika",
+        "vega",
+        "ownership",
+        "project"
+       ],
+       "project_key": null,
+       "thread_origin": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:58.769604Z",
+       "updated_at": "2026-11-09T08:39:58.769604Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:59.364502Z"
+     },
+     {
+      "item_uid": "01M6ZQDPC5K7B1VBG5S1KF06QT",
+      "candidate": {
+       "memory_id": "aae47ce9-a456-4628-870c-4d189b0f48ec",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "The notebook is Indigo",
+       "body": "The notebook involved in the release plan is Indigo.",
+       "kind": "fact",
+       "keywords": [
+        "notebook",
+        "indigo",
+        "release plan"
+       ],
+       "project_key": null,
+       "thread_origin": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:59.382959Z",
+       "updated_at": "2026-11-09T08:39:59.382959Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:59.723048Z"
+     }
+    ]
+   },
+   "questions": "NOCTURNE\n\nBefore I compact this plan:\n\nWhich specific release decisions do you want to preserve?\nIs the shipping date on Monday confirmed or tentative?\nWhat aspects of the launch checklist remain open?\nShould temporary details like the boiling kettle be retained or discarded?\nTOOLS · 0 CALLS",
+   "answer": "NOCTURNE\nCONVERSATION COMPACTED · FULL HISTORY KEPT IN THE JOURNAL\n\ngrep result not delivered for its size · 271,846 tokens, share 10 · full result kept in the journal\n\nThe next step is to coordinate with Anika to confirm the final readiness of all components in the indigo notebook and ensure Monday's shipping plan is on track while keeping the launch checklist updated and monitored for completion.\n\nSince I cannot directly coordinate with Anika or update the launch checklist without external tools or communication channels, the concrete next step I can take now is to verify the current status of the launch checklist and indigo notebook to ensure all items are accounted for and ready for Monday shipping. I will locate this information and present the current state for your review.\n\nThere is no direct reference or file currently accessible that explicitly tracks the launch checklist or the indigo notebook status. Thus, I cannot retrieve or validate the checklist and notebook items directly here.\n\nThe next best concrete step is for you or Anika to review the launch checklist and indigo notebook content manually or in your designated systems to confirm readiness and monitor progress for the Monday shipping milestone.\n\nLet me know if you want me to help create or update any related documents or tracking mechanisms for a clearer status overview.\n\nTOOLS · 2 CALLS",
+   "compactions": {
+    "compactions": [
+     {
+      "captured_at": "2026-11-09T08:40:00.679297+00:00",
+      "event_uid": "01M6ZQDQD6FWBSTYTFMC2E4VFW",
+      "facts": [
+       {
+        "body": "Anika is responsible for the Vega project.",
+        "label": "Anika owns the Vega project",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The notebook involved in the release plan is Indigo.",
+        "label": "The notebook is Indigo",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "Shipping for the release plan is scheduled for Monday.",
+        "label": "Shipping is scheduled for Monday",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The launch checklist for the release plan is still open and unresolved.",
+        "label": "The launch checklist remains open",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "A kettle is currently boiling, which is a temporary detail unrelated to the release plan.",
+        "label": "A kettle is boiling now as a temporary detail",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       }
+      ],
+      "plan_clarification": null,
+      "policy": {
+       "id": "manual-03eb045e2d68574b",
+       "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+       "memory_size": 128,
+       "parent": "manual-03eb045e2d68574b"
+      },
+      "record_type": "compaction_record",
+      "run_id": "01M6ZQDCJMPXCKEGSQJBGS1PBY",
+      "span": [
+       {
+        "id": "m0",
+        "kept": false,
+        "text": "User: This is a fictional release plan. Anika owns Vega, the notebook is indigo, and shipping is Monday. The launch checklist remains open. A kettle is boiling right now; that detail is temporary. Summarize in two sentences. Do not use tools."
+       },
+       {
+        "id": "m1",
+        "kept": true,
+        "text": "Assistant: Anika is responsible for the Vega project, with the Indigo notebook involved, and the shipping scheduled for Monday. The launch checklist is still open, and a kettle is currently boiling, which is a temporary detail. \n\n<nocturne-proposed-response>\n{\"primary\":\"Anika owns the Vega project with the Indigo notebook involved, and shipping is planned for Monday. The launch checklist remains open, and a kettle is boiling now, which is a temporary detail.\",\"alternatives\":[]} \n</nocturne-proposed-response>"
+       }
+      ],
+      "strategy": "memories-then-drop",
+      "thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+      "version": 1,
+      "working_summary": "The user provided a fictional release plan where Anika owns the Vega project, the notebook is Indigo, shipping is scheduled for Monday, and the launch checklist is still open. Additionally, a kettle is boiling right now, noted as a temporary detail."
+     },
+     {
+      "captured_at": "2026-11-09T08:40:17.974535+00:00",
+      "event_uid": "01M6ZQE89P9WXPXCZESAHCCE3N",
+      "facts": [
+       {
+        "body": "Anika is designated as the release owner for the Vega project.",
+        "label": "Anika is release owner for Vega project",
+        "source_message_ids": [
+         "m0",
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The Indigo notebook is associated with the Vega project release.",
+        "label": "Indigo is the notebook for the Vega project",
+        "source_message_ids": [
+         "m0",
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The shipping date for the Vega project release is scheduled for Monday.",
+        "label": "Shipping scheduled for Monday",
+        "source_message_ids": [
+         "m0",
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The launch checklist for the Vega project release is still open and unresolved.",
+        "label": "Launch checklist remains open",
+        "source_message_ids": [
+         "m0",
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The temporary detail about the boiling kettle is discarded and not retained in the release plan.",
+        "label": "Discard boiling kettle detail",
+        "source_message_ids": [
+         "m0",
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       }
+      ],
+      "plan_clarification": {
+       "answer": "Keep Anika as release owner for Vega, the indigo notebook and Monday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools.",
+       "captured_at": "2026-11-09T08:40:05.856731+00:00",
+       "questions": [
+        "Which specific release decisions do you want to preserve?",
+        "Is the shipping date on Monday confirmed or tentative?",
+        "What aspects of the launch checklist remain open?",
+        "Should temporary details like the boiling kettle be retained or discarded?"
+       ],
+       "record_type": "plan_compaction",
+       "status": "answered",
+       "thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "version": 1
+      },
+      "policy": {
+       "id": "manual-03eb045e2d68574b",
+       "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+       "memory_size": 128,
+       "parent": "manual-03eb045e2d68574b"
+      },
+      "record_type": "compaction_record",
+      "run_id": "01M6ZQDVZVJQYRK61X694PWE7W",
+      "span": [
+       {
+        "id": "m0",
+        "kept": false,
+        "text": "System: Summary of previous conversation:\n\nThe user provided a fictional release plan where Anika owns the Vega project, the notebook is Indigo, shipping is scheduled for Monday, and the launch checklist is still open. Additionally, a kettle is boiling right now, noted as a temporary detail.\n\nThe launch checklist remains open and unresolved.\nUser: [History before this point (1 messages, ~2297 tokens) was summarized by openai. The summary above is secondhand; re-verify critical facts against primary sources.]"
+       },
+       {
+        "id": "m1",
+        "kept": false,
+        "text": "Assistant: Anika is responsible for the Vega project, with the Indigo notebook involved, and the shipping scheduled for Monday. The launch checklist is still open, and a kettle is currently boiling, which is a temporary detail. \n\n"
+       },
+       {
+        "id": "m2",
+        "kept": false,
+        "text": "User: We need to preserve the release decisions while the conversation fills. What is the next step?"
+       },
+       {
+        "id": "m3",
+        "kept": false,
+        "text": "Assistant: Before I compact this plan:\n1. Which specific release decisions do you want to preserve?\n2. Is the shipping date on Monday confirmed or tentative?\n3. What aspects of the launch checklist remain open?\n4. Should temporary details like the boiling kettle be retained or discarded?"
+       },
+       {
+        "id": "m4",
+        "kept": true,
+        "text": "User: Keep Anika as release owner for Vega, the indigo notebook and Monday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools."
+       }
+      ],
+      "strategy": "memories-then-drop",
+      "thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+      "version": 1,
+      "working_summary": "The user confirmed to keep Anika as the release owner for the Vega project, retain the Indigo notebook and Monday shipping date, and keep the launch checklist open. The boiling kettle detail is discarded. The user requested one concise next step without using tools."
+     }
+    ]
+   },
+   "finalQueue": {
+    "cards": [
+     {
+      "item_uid": "01M6ZQDP0ZD797JA3QWQ9J1V7Y",
+      "candidate": {
+       "memory_id": "6695629f-97ca-49d0-8f16-544a7fc10dff",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Anika owns the Vega project",
+       "body": "Anika is responsible for the Vega project.",
+       "kind": "fact",
+       "keywords": [
+        "anika",
+        "vega",
+        "ownership",
+        "project"
+       ],
+       "project_key": null,
+       "thread_origin": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:58.769604Z",
+       "updated_at": "2026-11-09T08:39:58.769604Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:59.364502Z"
+     },
+     {
+      "item_uid": "01M6ZQDPC5K7B1VBG5S1KF06QT",
+      "candidate": {
+       "memory_id": "aae47ce9-a456-4628-870c-4d189b0f48ec",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "The notebook is Indigo",
+       "body": "The notebook involved in the release plan is Indigo.",
+       "kind": "fact",
+       "keywords": [
+        "notebook",
+        "indigo",
+        "release plan"
+       ],
+       "project_key": null,
+       "thread_origin": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:39:59.382959Z",
+       "updated_at": "2026-11-09T08:39:59.382959Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:39:59.723048Z"
+     },
+     {
+      "item_uid": "01M6ZQE6VGTC7PQAEXV204N6WK",
+      "candidate": {
+       "memory_id": "9646a68c-7591-44fb-9689-5dae5b09286a",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Anika is release owner for Vega project",
+       "body": "Anika is designated as the release owner for the Vega project.",
+       "kind": "fact",
+       "keywords": [
+        "anika",
+        "release owner",
+        "vega",
+        "project"
+       ],
+       "project_key": null,
+       "thread_origin": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:40:16.159127Z",
+       "updated_at": "2026-11-09T08:40:16.159127Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:40:16.564176Z"
+     },
+     {
+      "item_uid": "01M6ZQE77H04XK3E314MGM7VK7",
+      "candidate": {
+       "memory_id": "d9cbba6a-c5d1-44f7-b631-825e3cded3bc",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Indigo is the notebook for the Vega project",
+       "body": "The Indigo notebook is associated with the Vega project release.",
+       "kind": "fact",
+       "keywords": [
+        "indigo",
+        "notebook",
+        "vega",
+        "project"
+       ],
+       "project_key": null,
+       "thread_origin": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:40:16.588929Z",
+       "updated_at": "2026-11-09T08:40:16.588929Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:40:16.945484Z"
+     },
+     {
+      "item_uid": "01M6ZQE7KKSHH7W6V2KAF4R5HB",
+      "candidate": {
+       "memory_id": "f395af1b-0f75-41d4-b4a2-9682f6ffdce0",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Shipping scheduled for Monday",
+       "body": "The shipping date for the Vega project release is scheduled for Monday.",
+       "kind": "fact",
+       "keywords": [
+        "shipping",
+        "monday",
+        "schedule",
+        "vega"
+       ],
+       "project_key": null,
+       "thread_origin": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:40:16.950857Z",
+       "updated_at": "2026-11-09T08:40:16.950857Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:40:17.336025Z"
+     },
+     {
+      "item_uid": "01M6ZQE7XR9JGM3AVXSXXXAFF3",
+      "candidate": {
+       "memory_id": "ffd95190-043f-4629-ab6f-bfce96635f2c",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Launch checklist remains open",
+       "body": "The launch checklist for the Vega project release is still open and unresolved.",
+       "kind": "fact",
+       "keywords": [
+        "launch checklist",
+        "open",
+        "vega",
+        "release"
+       ],
+       "project_key": null,
+       "thread_origin": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:40:17.348434Z",
+       "updated_at": "2026-11-09T08:40:17.348434Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:40:17.661142Z"
+     },
+     {
+      "item_uid": "01M6ZQE88N072NE051AX3CP55Y",
+      "candidate": {
+       "memory_id": "5b1f8704-b912-404e-a390-a745538794cc",
+       "principal_id": "nocturne-verification-55a9b123-348c-4241-8ff5-137698b42f96",
+       "label": "Discard boiling kettle detail",
+       "body": "The temporary detail about the boiling kettle is discarded and not retained in the release plan.",
+       "kind": "fact",
+       "keywords": [
+        "boiling kettle",
+        "temporary detail",
+        "discarded"
+       ],
+       "project_key": null,
+       "thread_origin": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "origin_path": null,
+       "origin_location": "/Users/nateoswalt/relay/m6cp/harness",
+       "origin_locations": [],
+       "pin": false,
+       "status": "candidate",
+       "revision": 1,
+       "stats": {
+        "removals": 0,
+        "citations": 0,
+        "injections": 0,
+        "never_kills": 0,
+        "last_injected_at": null
+       },
+       "bias": 0,
+       "embedding_model": "openai/text-embedding-3-small",
+       "created_at": "2026-11-09T08:40:17.669527Z",
+       "updated_at": "2026-11-09T08:40:17.669527Z"
+      },
+      "birthplace": "thread",
+      "birthplace_thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+      "batch_uid": null,
+      "source_name": null,
+      "source_sha256": null,
+      "birthplace_run_id": null,
+      "birthplace_origin_agent": null,
+      "judged_context": null,
+      "candidate_revision": null,
+      "curator_run_uid": null,
+      "curator_finding_uid": null,
+      "proposal_payload": null,
+      "verdict": "new",
+      "neighbors": [],
+      "target_ids": [],
+      "state": "pending",
+      "created_at": "2026-11-09T08:40:18.012108Z"
+     }
+    ]
+   }
+  }
+ ]
+}
