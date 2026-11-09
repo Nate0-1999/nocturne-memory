@@ -154,7 +154,7 @@ class CompactionLearner:
             return await self._prepare(session, event, memory_size=memory_size, preview=preview)
         except Exception:
             async with self.sessions() as session, session.begin():
-                current = policy_and_generations(await history(session, self.principal))["active"]
+                current = (await compaction_snapshot(session, self.principal))["active"]
                 if current is not None:
                     await self._append(
                         session,
