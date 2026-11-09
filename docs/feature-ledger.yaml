@@ -1349,8 +1349,8 @@
       "section": "4. Learning and training loops",
       "era": "Aug 31",
       "label": "Compaction instructions tuned by back-test; memory size as a tunable beside the threshold and allotments.",
-      "status": "built",
-      "walk": "In the Injection Console, open Memory creation: memory size can be back-tested and instruction generations list their parent, date and scores. Force retrain replays recent source spans; only a strictly better score adopts a generation. Verification previews show scores but never adopt.",
+      "status": "partial",
+      "walk": "In the Injection Console, open Memory creation: instruction generations list their parent, date, size and scores. Owner API previews can replay source spans, but the size control and coupled tau/share/size fit remain pending (F216). Better results adopt only at the current size; verification previews never adopt.",
       "owner": "owner — \"The compaction instruction tuning is what can be tuned by having it back test new compaction instructions on memories based on how much they are used or if they have been removed. only update the instructions to a new set of instructions if the memory generation performance is improved by the back test it doesn't generate memories that are deleted.)\" (seed SD-053 (owner riff 2026-08-31); seed SD-054)",
       "surfaces": [
         "spine/src/spine/learner/compaction.py",
