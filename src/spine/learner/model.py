@@ -61,6 +61,8 @@ class ShareBoundary:
     target_at_least: bool
     actor_weight: Decimal
     kind: Literal["valuable_budget_cut", "marginal_uncited", "marginal_removed", "pin_overflow"]
+    token_basis: tuple[tuple[UUID, int], ...] = ()
+    context_tokens: int | None = None
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)

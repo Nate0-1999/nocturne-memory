@@ -2,7 +2,6 @@
 
 from fastapi import APIRouter, HTTPException, Request, Response
 
-from spine.ids import mint_ulid
 from spine.learner.contracts import (
     CompactionBacktest,
     CompactionTrigger,
@@ -75,10 +74,9 @@ async def compaction_backtest(
     request: Request, body: CompactionBacktest, principal_id: str | None = None
 ) -> dict:
     _require_owner(request, principal_id)
-    result = await request.app.state.compaction_learner.retrain(
-        mint_ulid(), memory_size=body.memory_size, preview=body.preview
+    return await _service(request).preview_compaction(
+        memory_size=body.memory_size, include_verification=body.preview
     )
-    return result or {"verdict": "insufficient_data", "scores": {}}
 
 
 def _require_owner(request: Request, principal_id: str | None) -> None:

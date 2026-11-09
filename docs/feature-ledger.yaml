@@ -3642,6 +3642,7 @@
     },
     {
       "id": "FL-164",
+      "owner_performed": true,
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "Aug 2",
       "label": "Local mode with no internet, cloud mode, and a way to mirror our cloud setup into your own provider.",
@@ -4148,6 +4149,7 @@
     },
     {
       "id": "FL-188",
+      "owner_performed": true,
       "section": "15. Platform and integrations",
       "era": "founding",
       "label": "Running a local model on the machine's own hardware.",

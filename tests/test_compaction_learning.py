@@ -64,15 +64,15 @@ async def test_losing_or_verification_replay_never_changes_instructions(
     async def model_call(prompt, uid, costs, **kwargs):
         nonlocal calls
         calls += 1
-        if calls == 1:
+        if kwargs.get("kind") != "replay":
             return {"instructions": "Forget decisions: {messages}", "memory_size": size}
-        return {"facts": ["Keep the copper notebook."] if calls == 2 else []}
+        return {"facts": ["Keep the copper notebook."] if "Remember decisions:" in prompt else []}
 
     learner._call = model_call
-    result = await learner.retrain(mint_ulid(), preview=preview)
-    assert result["verdict"] == (
-        "preview_only" if preview else "coupled_fit_required" if size != 128 else "not_better"
-    )
+    async with memory_session_factory() as session, session.begin():
+        result = await learner.prepare(session, mint_ulid(), preview=preview)
+        assert result["better"] is False
+        await learner.record_fit(session, result, verdict="not_better")
     assert result["scores"]["candidate"]["score"] < result["scores"]["incumbent"]["score"]
     snapshot = await learner.snapshot()
     assert snapshot["active"] == policy

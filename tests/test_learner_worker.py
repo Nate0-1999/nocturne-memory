@@ -44,5 +44,5 @@ def test_training_calls_have_only_the_worker_and_manual_router_entrypoints() -> 
             if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute):
                 if node.func.attr in {"retrain", "retrain_if_due", "compact"}:
                     callers.add(path.relative_to(root).as_posix())
-    # Creation shares the scorer's manual/compaction entrypoints and advisory lock.
-    assert callers == {"learner/worker.py", "learner/router.py", "learner/service.py"}
+    # Creation is now inside the scorer fit rather than a second service-level retrain.
+    assert callers == {"learner/worker.py", "learner/router.py"}

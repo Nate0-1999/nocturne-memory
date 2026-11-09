@@ -1489,10 +1489,12 @@ Source spans and generation records use the existing append-only optimization le
 Older spans construct the candidate; newer spans replay both prompts without outcome
 labels. Existing embedding bands match facts, duplicate matches count once, novel facts
 are neutral, and equal scores prefer fewer/smaller outputs. The optimizer lock and
-verification exclusions remain. Different sizes cannot adopt outside the required joint
-tau/share/size fit; that integration overlaps M6LP's live `_fit` (F216). This 0.1.86 pair
-is draft-only. API label 0.1.90 retains the recorded 0.1.89 schema while removing an
-unjustified minimum size; every positive size within the existing 128-token cap is valid.
+verification exclusions remain. The shared scorer fit replays matched fact lengths into
+the frozen token budgets, fits tau/share with size after the existing 100-signal floor,
+and carries improved instructions and size in the same scorer proposal and activation.
+Read-only previews roll back proposed scorer writes and retain a receipt. M6LP handed
+off before this integration. API label 0.1.91 composes its schema; package pair 0.1.89
+follows its 0.1.88 pair. Every positive size within the existing 128-token cap is valid.
 
 ## M6LP — Project floors and observable fits [P1.2, P2.5]
 
