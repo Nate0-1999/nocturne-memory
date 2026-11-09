@@ -483,7 +483,8 @@ class ModelPolicyResolver:
             )
         return (
             f"{resolution.reason}. Score {benchmark.intelligence_index}; "
-            f"input ${benchmark.prompt_price}/M, output ${benchmark.completion_price}/M tokens."
+            f"input ${_price(benchmark.prompt_price)}/M, "
+            f"output ${_price(benchmark.completion_price)}/M tokens."
             + (
                 ""
                 if policy.kind == "budget"
@@ -847,8 +848,12 @@ def explain_choice(
     return f"Max: {name}, the highest intelligence score in the catalog"
 
 
+def _price(value: Decimal) -> str:
+    return format(value.normalize(), "f")
+
+
 def _money(value: Decimal) -> str:
-    return f"{value:.4f}" if value < 1 else f"{value:.2f}"
+    return f"{value:.2g}" if value < 1 else f"{value:.2f}"
 
 
 def _tokens(value: Decimal) -> str:
