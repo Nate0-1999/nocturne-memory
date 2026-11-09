@@ -245,6 +245,7 @@ class CompactionLearner:
             if memory_size is not None
             else await self._call(
                 "Improve these compaction instructions using the older observed facts. "
+                "A target of 1 means later used; -1 means removed or rejected. "
                 "Return JSON {instructions: string containing {messages}, "
                 "memory_size: positive integer at most 128}. Keep durable user decisions, "
                 "corrections and facts; choose size from useful fact lengths, not just "
