@@ -1349,10 +1349,32 @@
       "section": "4. Learning and training loops",
       "era": "Aug 31",
       "label": "Compaction instructions tuned by back-test; memory size as a tunable beside the threshold and allotments.",
-      "status": "not built",
-      "walk": "Open the tunables; memory size is listed beside threshold and allotments, and the ledger shows a compaction-instruction generation with its back-test.",
+      "status": "built",
+      "walk": "In the Injection Console, change Memory size to back-test and inspect the joint replay with minimum match and memory share. Instruction generations retain text, parent, date, size and scores. A winning production fit carries instructions and size in the scorer proposal and its existing activation; previews retain only a receipt. Verification feedback is excluded from production training.",
       "owner": "owner — \"The compaction instruction tuning is what can be tuned by having it back test new compaction instructions on memories based on how much they are used or if they have been removed. only update the instructions to a new set of instructions if the memory generation performance is improved by the back test it doesn't generate memories that are deleted.)\" (seed SD-053 (owner riff 2026-08-31); seed SD-054)",
-      "surfaces": []
+      "surfaces": [
+        "spine/src/spine/learner/compaction.py",
+        "spine/src/spine/learner/creation.py",
+        "spine/src/spine/learner/contracts.py",
+        "spine/src/spine/learner/router.py",
+        "spine/src/spine/learner/service.py",
+        "harness/web/src/LearningTelemetry.tsx",
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/extraction.py",
+        "harness/src/harness/agent.py",
+        "spine/src/spine/learner/evidence.py",
+        "spine/src/spine/learner/model.py",
+        "harness/web/src/rack.tsx",
+        "harness/web/src/InjectionConsole.tsx",
+        "harness/src/harness/spine_client.py"
+      ],
+      "last_walk": {
+        "packet": "M6CP",
+        "date": "2026-11-09",
+        "verdict": "FAIL",
+        "flag": "F169",
+        "screenshot": "FL-061.png"
+      }
     },
     {
       "id": "FL-062",
@@ -1837,11 +1859,23 @@
       "id": "FL-084",
       "section": "6. Context window, history and compaction",
       "era": "founding",
-      "label": "Constitution: Plan-mode compaction: the summarizer asks the user one to four questions before compacting (parked). (seed SD-040)",
-      "status": "not built",
-      "walk": "Cross the fill line in plan mode; the summarizer asks one to four questions before compacting.",
+      "label": "Plan-mode compaction: the summarizer asks the user one to four questions before compacting. (seed SD-040)",
+      "status": "built",
+      "walk": "Enable /compact plan on, cross the configured fill line, and answer the one to four model questions. No history is dropped before the answer; the ensuing compaction record retains questions and answer, including across restart.",
       "owner": "constitution",
-      "surfaces": []
+      "surfaces": [
+        "harness/src/harness/agent.py",
+        "harness/src/harness/agent_runtime.py",
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/transcript.py"
+      ],
+      "last_walk": {
+        "packet": "M6CP",
+        "date": "2026-11-09",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-084.png"
+      }
     },
     {
       "id": "FL-085",
@@ -3627,6 +3661,7 @@
     },
     {
       "id": "FL-164",
+      "owner_performed": true,
       "section": "12. Onboarding, lifecycle and palace operations",
       "era": "Aug 2",
       "label": "Local mode with no internet, cloud mode, and a way to mirror our cloud setup into your own provider.",
@@ -4133,6 +4168,7 @@
     },
     {
       "id": "FL-188",
+      "owner_performed": true,
       "section": "15. Platform and integrations",
       "era": "founding",
       "label": "Running a local model on the machine's own hardware.",
@@ -4564,6 +4600,28 @@
         "screenshot": "FL-205.png"
       },
       "protected_reason": "walk PASS 2026-10-13"
+    },
+    {
+      "id": "FL-206",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Nov 9",
+      "label": "Strategies and models: the strategies rail beside the model list, each strategy with its one-sentence meaning and the model it picks now; one plain summary of the model in use; the strategy named wherever the model is.",
+      "status": "built",
+      "walk": "Open the Model Device from the conversation's model chip: the strategies (Pinned, Max, Elbow, Floor, Budget once the ledger has a burn, Local when offline) stand beside the ranked model list, each with what it means and the model it picks now, the one in force marked; the model in use has one paragraph naming its price in and out (the price the chip quotes), context, rank, thinking level, which strategy chose it and why, and since when. Click Elbow; a new thread's header chip, thread-list row, conversation configuration legend and spend-module model row all read 'Elbow · <model>'. Pick Floor and Budget from the rail the same way.",
+      "owner": "owner 2026-11-09 (SD-090): \"could work on the model summary and model selection strategies … in the actual like text window where you can select what you want to do, like this, as opposed to just there being model lists there. There could be like a strategy in the same place as the model lists. So like strategies and models, that might look good.\"",
+      "surfaces": [
+        "harness/web/src/ModelDevice.tsx",
+        "harness/web/src/modelBrowser.ts",
+        "harness/web/src/AgentPolicies.tsx",
+        "harness/web/src/VitalsModule.tsx",
+        "harness/web/src/App.tsx",
+        "harness/web/src/store.ts",
+        "harness/web/src/protocol.ts",
+        "harness/src/harness/run_loop.py",
+        "harness/src/harness/transcript.py",
+        "harness/src/harness/daemon.py",
+        "spine/src/spine/model_policy.py"
+      ]
     }
   ]
 }
