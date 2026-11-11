@@ -1,0 +1,26 @@
+{
+ "ok": true,
+ "result": {
+  "at": "2026-11-11T16:25:58.419Z",
+  "authenticEligible": 0,
+  "result": {
+   "verdict": "preview_only",
+   "verification_included": false,
+   "fit": {
+    "status": "insufficient_data",
+    "incumbent_version": "m2k-01M75NREHKF91NG4N9YXFT5R5N",
+    "proposal_version": null,
+    "eligible_dispositions": 0,
+    "training_dispositions": 0,
+    "holdout_dispositions": 0,
+    "training_pairs": 0,
+    "incumbent": null,
+    "challenger": null,
+    "reason": "Not enough authentic signals yet: 0 / 25 available."
+   },
+   "scores": {},
+   "joint_fit": null,
+   "id": null
+  }
+ }
+}

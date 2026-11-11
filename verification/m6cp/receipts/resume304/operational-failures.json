@@ -1,0 +1,42 @@
+[
+  {
+    "operation": "Initial browser sweep",
+    "result": "Sandbox denied ps; elevated rerun passed; no browser stopped."
+  },
+  {
+    "operation": "Initial Git remote read",
+    "result": "Sandbox could not access GitHub credential helper; elevated read and claim push passed."
+  },
+  {
+    "operation": "Initial Memory suite",
+    "result": "Sandbox Docker access denied; elevated run then found Colima Ryuk socket mismatch. DOCKER_HOST and TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE rerun passed 350 tests."
+  },
+  {
+    "operation": "Initial Harness suites",
+    "result": "Sandbox denied local execution capabilities; elevated run passed 1959 tests but three live contract fixtures errored before contacting a Palace because SPINE_EXPECTED_EMBEDDING_MODEL / SPINE_URL were not set. Explicitly excluding that file passed 1959 with 4 skipped. No cloud contract request ran."
+  },
+  {
+    "operation": "Initial driver invocation",
+    "result": "python was absent; no trial started. Reissued with python3."
+  },
+  {
+    "operation": "Usage check after fixture",
+    "result": "Read-only OpenRouter key usage endpoint timed out after 30 seconds. A later read succeeded; both surrounding usage checkpoints are retained."
+  },
+  {
+    "operation": "Background queue extraction",
+    "result": "Two logged EmbeddingTransportError traceback renderings from httpx.ReadTimeout while old scratch transcripts were re-extracted. Fresh compaction fixture steps completed; raw service log retained at handoff."
+  },
+  {
+    "operation": "Router gate local-copy fallback",
+    "result": "The inherited gate helper stopped this gate and opened a fresh gate. No new provider ReadTimeout appeared in the service log at this fallback. Failed gate remains and is excluded from Palace gate count."
+  },
+  {
+    "operation": "Waiting-state screenshot",
+    "result": "The reused inspect helper wrote current-trial-state.png twice. setup-2-waiting.json retains its original text observation; its image path now contains the later setup-3 waiting capture. This reused image is not relied on for a trial verdict."
+  },
+  {
+    "operation": "In-progress receipt query",
+    "result": "during-first-fit.json queried purpose LIKE compaction, while these receipts use purpose extraction and origin_agent compaction-learner. Its zero groups is not evidence of zero provider calls; incumbent availability remains the valid observation."
+  }
+]

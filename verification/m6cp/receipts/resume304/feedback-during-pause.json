@@ -1,0 +1,300 @@
+{
+  "queries": {
+    "compaction_outcomes": "SELECT m.id::text, m.label, m.status, array_agg(DISTINCT c.outcome) AS outcomes FROM memory_unit m JOIN creation_outcome c ON c.memory_id=m.id WHERE m.id IN (SELECT memory_id FROM creation_outcome WHERE source='compaction') GROUP BY m.id,m.label,m.status ORDER BY m.label",
+    "failure_gate": "SELECT m.label, e.outcome, e.shown_as, e.score FROM injection_event e JOIN memory_unit m ON m.id=e.memory_id WHERE e.thread_id='d14d255a-06d5-4690-afd5-2279382b3e6e' ORDER BY e.ts"
+  },
+  "results": {
+    "compaction_outcomes": [
+      {
+        "id": "992ec63c-9025-46cc-8cc8-452e1d7c4109",
+        "label": "A kettle is boiling as a temporary detail",
+        "status": "tombstoned",
+        "outcomes": [
+          "created",
+          "rejected"
+        ]
+      },
+      {
+        "id": "df968a84-4678-406c-963d-f249579146d5",
+        "label": "A kettle is boiling temporarily",
+        "status": "tombstoned",
+        "outcomes": [
+          "created",
+          "rejected"
+        ]
+      },
+      {
+        "id": "f3ee16a7-a779-49ed-8088-df47f655bfc2",
+        "label": "Anika owns Vega",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created"
+        ]
+      },
+      {
+        "id": "02b3f504-fffd-4bac-945a-6620978bce03",
+        "label": "Discard boiling kettle detail",
+        "status": "tombstoned",
+        "outcomes": [
+          "created",
+          "rejected"
+        ]
+      },
+      {
+        "id": "f20bd93f-c0d2-48f8-a81b-f91891ce39ce",
+        "label": "Discard boiling kettle detail",
+        "status": "tombstoned",
+        "outcomes": [
+          "created",
+          "rejected"
+        ]
+      },
+      {
+        "id": "dd115d0e-0be8-4dd6-b1f8-845514c7a9af",
+        "label": "Graphite notebook is part of the release",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created",
+          "zero_injection"
+        ]
+      },
+      {
+        "id": "caa06abd-01ee-4505-b0cd-f11bcdfe467d",
+        "label": "Kettle boiling temporarily",
+        "status": "tombstoned",
+        "outcomes": [
+          "created",
+          "rejected"
+        ]
+      },
+      {
+        "id": "d80eb959-51a5-40e9-bf0b-d73f9d60f727",
+        "label": "Kettle detail discarded per user instruction",
+        "status": "tombstoned",
+        "outcomes": [
+          "created",
+          "rejected"
+        ]
+      },
+      {
+        "id": "99bcaa3c-16c8-4d3b-be7a-edb42ac2364e",
+        "label": "Launch checklist remains open",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created",
+          "zero_injection"
+        ]
+      },
+      {
+        "id": "c72e2568-744c-4e0f-8c0a-251ed53c5d95",
+        "label": "Luis is release owner for Selene",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created",
+          "zero_injection"
+        ]
+      },
+      {
+        "id": "914906c1-5dd9-4646-ae1a-bd64109af4de",
+        "label": "Luis owns Selene",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created",
+          "zero_injection"
+        ]
+      },
+      {
+        "id": "f4a73039-08b9-4387-a19b-c12d92e47335",
+        "label": "Mira is release owner for Orion project",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created",
+          "zero_injection"
+        ]
+      },
+      {
+        "id": "1fc01c97-9f73-4fb9-9e47-1c24ea511855",
+        "label": "Mira owns the Orion project",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created",
+          "zero_injection"
+        ]
+      },
+      {
+        "id": "2232063a-484d-4c92-bb13-b94de3517274",
+        "label": "Next step is to complete launch checklist",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created"
+        ]
+      },
+      {
+        "id": "a5132340-80ad-4c0c-9cce-08f2cd831a33",
+        "label": "Next step is to complete launch checklist",
+        "status": "tombstoned",
+        "outcomes": [
+          "created"
+        ]
+      },
+      {
+        "id": "10356ceb-6f70-4e72-a576-145027bfda01",
+        "label": "Notebook color is indigo",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created"
+        ]
+      },
+      {
+        "id": "f92cfdc1-3912-4747-a22c-632287347d5f",
+        "label": "Notebook color is indigo \u00b7 final-project-3",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created"
+        ]
+      },
+      {
+        "id": "f8eef71a-6faa-4bbd-9304-4c5c5375ab1f",
+        "label": "Notebook named Graphite",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created",
+          "zero_injection"
+        ]
+      },
+      {
+        "id": "a11f0afb-6000-4cd5-8c20-6a7d8b9f2eac",
+        "label": "Orion project includes copper notebook",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created",
+          "zero_injection"
+        ]
+      },
+      {
+        "id": "4e931008-f835-4d75-9951-15b98f35ab69",
+        "label": "Orion project shipping scheduled for Friday",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created",
+          "zero_injection"
+        ]
+      },
+      {
+        "id": "22812628-09d9-4707-a06a-0549d0173cca",
+        "label": "Shipping is scheduled for Friday",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created",
+          "zero_injection"
+        ]
+      },
+      {
+        "id": "4acd4f08-5004-40c2-9b9c-4a827b3a7990",
+        "label": "Shipping is scheduled for Monday",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created"
+        ]
+      },
+      {
+        "id": "b361dd51-07af-4fb1-98ed-8838c1023241",
+        "label": "Shipping scheduled for Monday",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created"
+        ]
+      },
+      {
+        "id": "34d3f542-154b-486d-9e0a-1f33bf8fbad3",
+        "label": "Shipping scheduled for Saturday",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created",
+          "zero_injection"
+        ]
+      },
+      {
+        "id": "684a5eab-e0f6-48e6-9ea7-e527f7f78307",
+        "label": "The launch checklist is still open",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created",
+          "zero_injection"
+        ]
+      },
+      {
+        "id": "a4f8678f-6481-4435-8935-1720a198673e",
+        "label": "The notebook is copper",
+        "status": "active",
+        "outcomes": [
+          "admitted",
+          "created",
+          "zero_injection"
+        ]
+      }
+    ],
+    "failure_gate": [
+      {
+        "label": "Spray log",
+        "outcome": null,
+        "shown_as": "near_miss",
+        "score": 0.29866018891334534
+      },
+      {
+        "label": "Shed hours",
+        "outcome": null,
+        "shown_as": "near_miss",
+        "score": 0.29134997725486755
+      },
+      {
+        "label": "Weekly report",
+        "outcome": null,
+        "shown_as": "near_miss",
+        "score": 0.291139155626297
+      },
+      {
+        "label": "Ledger close",
+        "outcome": "kept",
+        "shown_as": "injected",
+        "score": 0.33898016810417175
+      },
+      {
+        "label": "Label printer",
+        "outcome": "kept",
+        "shown_as": "injected",
+        "score": 0.33256974816322327
+      },
+      {
+        "label": "Market truck",
+        "outcome": "kept",
+        "shown_as": "injected",
+        "score": 0.31711694598197937
+      },
+      {
+        "label": "Bin tags",
+        "outcome": "kept",
+        "shown_as": "injected",
+        "score": 0.3167114853858948
+      }
+    ]
+  }
+}

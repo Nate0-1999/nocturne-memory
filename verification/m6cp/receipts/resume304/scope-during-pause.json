@@ -1,0 +1,198 @@
+{
+  "queries": {
+    "tenants": "SELECT principal_id,status,count(*) FROM memory_unit GROUP BY 1,2",
+    "scope": "SELECT m.id::text,m.principal_id,m.label,m.project_key,m.origin_thread_id,m.run_id,m.origin_agent FROM memory_unit m WHERE m.id IN (SELECT memory_id FROM creation_outcome WHERE source='compaction') AND m.status='active' ORDER BY m.label"
+  },
+  "results": {
+    "tenants": [
+      {
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "status": "tombstoned",
+        "count": 11
+      },
+      {
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "status": "active",
+        "count": 51
+      },
+      {
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "status": "candidate",
+        "count": 62
+      }
+    ],
+    "scope": [
+      {
+        "id": "f3ee16a7-a779-49ed-8088-df47f655bfc2",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Anika owns Vega",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+        "origin_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "dd115d0e-0be8-4dd6-b1f8-845514c7a9af",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Graphite notebook is part of the release",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+        "origin_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "99bcaa3c-16c8-4d3b-be7a-edb42ac2364e",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Launch checklist remains open",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+        "origin_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "c72e2568-744c-4e0f-8c0a-251ed53c5d95",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Luis is release owner for Selene",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+        "origin_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "914906c1-5dd9-4646-ae1a-bd64109af4de",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Luis owns Selene",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+        "origin_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "f4a73039-08b9-4387-a19b-c12d92e47335",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Mira is release owner for Orion project",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+        "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "1fc01c97-9f73-4fb9-9e47-1c24ea511855",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Mira owns the Orion project",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+        "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "2232063a-484d-4c92-bb13-b94de3517274",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Next step is to complete launch checklist",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+        "origin_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "10356ceb-6f70-4e72-a576-145027bfda01",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Notebook color is indigo",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+        "origin_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "f92cfdc1-3912-4747-a22c-632287347d5f",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Notebook color is indigo \u00b7 final-project-3",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+        "origin_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "f8eef71a-6faa-4bbd-9304-4c5c5375ab1f",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Notebook named Graphite",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+        "origin_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "a11f0afb-6000-4cd5-8c20-6a7d8b9f2eac",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Orion project includes copper notebook",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+        "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "4e931008-f835-4d75-9951-15b98f35ab69",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Orion project shipping scheduled for Friday",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+        "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "22812628-09d9-4707-a06a-0549d0173cca",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Shipping is scheduled for Friday",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+        "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "4acd4f08-5004-40c2-9b9c-4a827b3a7990",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Shipping is scheduled for Monday",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+        "origin_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "b361dd51-07af-4fb1-98ed-8838c1023241",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Shipping scheduled for Monday",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+        "origin_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "34d3f542-154b-486d-9e0a-1f33bf8fbad3",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "Shipping scheduled for Saturday",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+        "origin_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "684a5eab-e0f6-48e6-9ea7-e527f7f78307",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "The launch checklist is still open",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+        "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+        "run_id": null,
+        "origin_agent": null
+      },
+      {
+        "id": "a4f8678f-6481-4435-8935-1720a198673e",
+        "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+        "label": "The notebook is copper",
+        "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+        "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+        "run_id": null,
+        "origin_agent": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+ "ok": true,
+ "result": {
+  "at": "2026-11-11T16:05:52.671Z",
+  "thread": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+  "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 80.0% of the model window; the last 0% of the conversation kept word for word. Plan mode on.",
+  "screenshot": "/Users/nateoswalt/relay/m6cp/walk-resume304/captures/current-trial-state.png"
+ }
+}

@@ -1,0 +1,739 @@
+{
+ "ok": true,
+ "result": [
+  {
+   "prompt": "Plan this week's harvest: how many crates go to cold storage and when does the ledger close?",
+   "thread": "bf594496-c7bf-4d6c-bccb-1a94792e9892",
+   "median": 0.345,
+   "cards": [
+    {
+     "label": "Ledger close",
+     "tone": "injected",
+     "sem": 0.758,
+     "kw": 0.133,
+     "action": "kept"
+    },
+    {
+     "label": "Weekly report",
+     "tone": "injected",
+     "sem": 0.52,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Crate count",
+     "tone": "injected",
+     "sem": 0.498,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Shed hours",
+     "tone": "injected",
+     "sem": 0.483,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Invoice terms",
+     "tone": "injected",
+     "sem": 0.459,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Cold room",
+     "tone": "injected",
+     "sem": 0.423,
+     "kw": 0.067,
+     "action": "kept"
+    },
+    {
+     "label": "Market truck",
+     "tone": "injected",
+     "sem": 0.416,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Cider press",
+     "tone": "injected",
+     "sem": 0.369,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Label printer",
+     "tone": "injected",
+     "sem": 0.355,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Spray log",
+     "tone": "injected",
+     "sem": 0.345,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Sorting line",
+     "tone": "injected",
+     "sem": 0.315,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Bruise rule",
+     "tone": "injected",
+     "sem": 0.311,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Frost alarm",
+     "tone": "injected",
+     "sem": 0.307,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Picker shifts",
+     "tone": "injected",
+     "sem": 0.283,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Water schedule",
+     "tone": "injected",
+     "sem": 0.266,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Bin tags",
+     "tone": "near-miss",
+     "sem": 0.256,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Storage sensor",
+     "tone": "near-miss",
+     "sem": 0.218,
+     "kw": 0.067,
+     "action": "left"
+    },
+    {
+     "label": "Pruning",
+     "tone": "near-miss",
+     "sem": 0.236,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\n\nThis week's harvest plan:\n\nThe orchard packs Honeycrisp apples in crates of forty pounds each.\nThe crates will be sent to cold storage room B, which h"
+  },
+  {
+   "prompt": "Which apples should go to cider instead of the market, and when does the press run?",
+   "thread": "ad96ba9f-1d33-4e6d-a9b7-5ed144551c51",
+   "median": 0.315,
+   "cards": [
+    {
+     "label": "Cider press",
+     "tone": "injected",
+     "sem": 0.656,
+     "kw": 0.182,
+     "action": "kept"
+    },
+    {
+     "label": "Bruise rule",
+     "tone": "injected",
+     "sem": 0.667,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Crate count",
+     "tone": "injected",
+     "sem": 0.555,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Cold room",
+     "tone": "injected",
+     "sem": 0.392,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Sorting line",
+     "tone": "injected",
+     "sem": 0.397,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Ledger close",
+     "tone": "injected",
+     "sem": 0.385,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Spray log",
+     "tone": "injected",
+     "sem": 0.341,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Weekly report",
+     "tone": "injected",
+     "sem": 0.329,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Frost alarm",
+     "tone": "injected",
+     "sem": 0.315,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Row twelve",
+     "tone": "injected",
+     "sem": 0.307,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Market truck",
+     "tone": "injected",
+     "sem": 0.267,
+     "kw": 0.091,
+     "action": "removed"
+    },
+    {
+     "label": "Picker shifts",
+     "tone": "injected",
+     "sem": 0.301,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Shed hours",
+     "tone": "injected",
+     "sem": 0.298,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Invoice terms",
+     "tone": "injected",
+     "sem": 0.266,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Label printer",
+     "tone": "near-miss",
+     "sem": 0.224,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Water schedule",
+     "tone": "near-miss",
+     "sem": 0.214,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Pruning",
+     "tone": "near-miss",
+     "sem": 0.212,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\n\nApples with bruises larger than a coin should be routed to cider instead of going to the fresh market. The cider press runs on Saturdays and takes fru"
+  },
+  {
+   "prompt": "Write a short note for the pickers about shift times and the tags on field bins.",
+   "thread": "caa919fa-bd25-4c98-ace7-93968caefb5b",
+   "median": 0.358,
+   "cards": [
+    {
+     "label": "Bin tags",
+     "tone": "injected",
+     "sem": 0.563,
+     "kw": 0.1,
+     "action": "kept"
+    },
+    {
+     "label": "Picker shifts",
+     "tone": "injected",
+     "sem": 0.533,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Weekly report",
+     "tone": "injected",
+     "sem": 0.457,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Shed hours",
+     "tone": "injected",
+     "sem": 0.448,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Sorting line",
+     "tone": "injected",
+     "sem": 0.403,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Market truck",
+     "tone": "injected",
+     "sem": 0.394,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Label printer",
+     "tone": "injected",
+     "sem": 0.39,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Ledger close",
+     "tone": "injected",
+     "sem": 0.383,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Cider press",
+     "tone": "injected",
+     "sem": 0.358,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Invoice terms",
+     "tone": "injected",
+     "sem": 0.339,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Spray log",
+     "tone": "injected",
+     "sem": 0.333,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Crate count",
+     "tone": "injected",
+     "sem": 0.302,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Grove sensors",
+     "tone": "injected",
+     "sem": 0.283,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Frost alarm",
+     "tone": "injected",
+     "sem": 0.263,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Cold room",
+     "tone": "near-miss",
+     "sem": 0.239,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Water schedule",
+     "tone": "near-miss",
+     "sem": 0.253,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Batch upload",
+     "tone": "near-miss",
+     "sem": 0.234,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\n\nHere's a short note for the pickers:\n\nPicker Shift Info and Bin Tags\n\nPickers work two shifts in September. The morning shift starts at 6 AM.\n\nRemembe"
+  },
+  {
+   "prompt": "What protects the trees on a frost night, and who gets woken up?",
+   "thread": "e67e9540-49cc-4ace-8766-0ad1d0873b26",
+   "median": 0.253,
+   "cards": [
+    {
+     "label": "Frost alarm",
+     "tone": "injected",
+     "sem": 0.56,
+     "kw": 0.111,
+     "action": "kept"
+    },
+    {
+     "label": "Pruning",
+     "tone": "injected",
+     "sem": 0.402,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Water schedule",
+     "tone": "injected",
+     "sem": 0.39,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Row twelve",
+     "tone": "injected",
+     "sem": 0.337,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Crate count",
+     "tone": "injected",
+     "sem": 0.253,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Cold room",
+     "tone": "near-miss",
+     "sem": 0.227,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Picker shifts",
+     "tone": "near-miss",
+     "sem": 0.226,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Spray log",
+     "tone": "near-miss",
+     "sem": 0.233,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\n\nOn a frost night, the orchard uses a frost alarm system that monitors the grove sensor's temperature. If the temperature drops below zero, indicating "
+  },
+  {
+   "prompt": "Summarize how fruit moves from the field through the shed to the market truck.",
+   "thread": "0642f669-c003-4519-8fa3-1f88a5b01477",
+   "median": 0.346,
+   "cards": [
+    {
+     "label": "Market truck",
+     "tone": "injected",
+     "sem": 0.554,
+     "kw": 0.222,
+     "action": "kept"
+    },
+    {
+     "label": "Shed hours",
+     "tone": "injected",
+     "sem": 0.443,
+     "kw": 0.111,
+     "action": "kept"
+    },
+    {
+     "label": "Weekly report",
+     "tone": "injected",
+     "sem": 0.468,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Sorting line",
+     "tone": "injected",
+     "sem": 0.452,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Crate count",
+     "tone": "injected",
+     "sem": 0.43,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Cider press",
+     "tone": "injected",
+     "sem": 0.415,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Bruise rule",
+     "tone": "injected",
+     "sem": 0.401,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Ledger close",
+     "tone": "injected",
+     "sem": 0.399,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Invoice terms",
+     "tone": "injected",
+     "sem": 0.346,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Spray log",
+     "tone": "injected",
+     "sem": 0.321,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Picker shifts",
+     "tone": "injected",
+     "sem": 0.29,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Label printer",
+     "tone": "injected",
+     "sem": 0.299,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Cold room",
+     "tone": "injected",
+     "sem": 0.253,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Bin tags",
+     "tone": "injected",
+     "sem": 0.244,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Batch upload",
+     "tone": "near-miss",
+     "sem": 0.228,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Route table",
+     "tone": "near-miss",
+     "sem": 0.221,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Grove sensors",
+     "tone": "near-miss",
+     "sem": 0.237,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\n\nFruit movement from the orchard field to the market truck follows this process:\n\nThe fruit is picked from the orchard rows.\nIt is brought into the pac"
+  },
+  {
+   "prompt": "Draft an outline for the weekly report of crates picked per grove row.",
+   "thread": "497d3359-4001-4e36-9f1f-37ee6398d579",
+   "median": 0.349,
+   "cards": [
+    {
+     "label": "Weekly report",
+     "tone": "injected",
+     "sem": 0.828,
+     "kw": 0.222,
+     "action": "kept"
+    },
+    {
+     "label": "Ledger close",
+     "tone": "injected",
+     "sem": 0.52,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Spray log",
+     "tone": "injected",
+     "sem": 0.456,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Crate count",
+     "tone": "injected",
+     "sem": 0.419,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Grove sensors",
+     "tone": "injected",
+     "sem": 0.378,
+     "kw": 0.111,
+     "action": "kept"
+    },
+    {
+     "label": "Invoice terms",
+     "tone": "injected",
+     "sem": 0.392,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Cider press",
+     "tone": "injected",
+     "sem": 0.379,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Market truck",
+     "tone": "injected",
+     "sem": 0.377,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Bruise rule",
+     "tone": "injected",
+     "sem": 0.34,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Bin tags",
+     "tone": "injected",
+     "sem": 0.339,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Sorting line",
+     "tone": "injected",
+     "sem": 0.353,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Label printer",
+     "tone": "injected",
+     "sem": 0.35,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Shed hours",
+     "tone": "injected",
+     "sem": 0.349,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Route table",
+     "tone": "injected",
+     "sem": 0.313,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Frost alarm",
+     "tone": "injected",
+     "sem": 0.32,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Row twelve",
+     "tone": "injected",
+     "sem": 0.274,
+     "kw": 0.111,
+     "action": "removed"
+    },
+    {
+     "label": "Picker shifts",
+     "tone": "injected",
+     "sem": 0.293,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Water schedule",
+     "tone": "injected",
+     "sem": 0.303,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Pruning",
+     "tone": "near-miss",
+     "sem": 0.233,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Batch upload",
+     "tone": "near-miss",
+     "sem": 0.208,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Cold room",
+     "tone": "near-miss",
+     "sem": 0.206,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\n\nHere's a draft outline for the weekly report of crates picked per grove row:\n\nTitle\n\nWeekly Crate Pick Report by Grove Row\nDate Range of Report (e.g.,"
+  }
+ ]
+}

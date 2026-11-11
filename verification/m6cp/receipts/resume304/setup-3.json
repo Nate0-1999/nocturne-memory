@@ -1,0 +1,683 @@
+{
+ "ok": true,
+ "result": {
+  "index": 3,
+  "thread": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+  "failed": false,
+  "log": [
+   {
+    "prompt": "/compact keep 0",
+    "started": "2026-11-11T16:04:40.966Z",
+    "completed": "2026-11-11T16:05:11.228Z",
+    "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 80.0% of the model window; the last 0% of the conversation kept word for word. Plan mode off.",
+    "failed": false
+   },
+   {
+    "prompt": "/compact instructions Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+    "started": "2026-11-11T16:05:11.228Z",
+    "completed": "2026-11-11T16:05:12.272Z",
+    "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 80.0% of the model window; the last 0% of the conversation kept word for word. Plan mode off.",
+    "failed": false
+   },
+   {
+    "prompt": "/compact",
+    "started": "2026-11-11T16:05:12.272Z",
+    "completed": "2026-11-11T16:05:23.583Z",
+    "answer": "NOCTURNE\nCONVERSATION COMPACTED · FULL HISTORY KEPT IN THE JOURNAL\n\nContext compacted with memories-then-drop.\n\nTOOLS · 0 CALLS",
+    "failed": false
+   },
+   {
+    "prompt": "/compact plan on",
+    "started": "2026-11-11T16:05:23.583Z",
+    "completed": "2026-11-11T16:05:24.635Z",
+    "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 80.0% of the model window; the last 0% of the conversation kept word for word. Plan mode on.",
+    "failed": false
+   },
+   {
+    "prompt": "/compact policy performance 0.0001",
+    "started": "2026-11-11T16:05:24.635Z",
+    "completed": "2026-11-11T16:05:25.690Z",
+    "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 0.0% of the model window; the last 0% of the conversation kept word for word. Plan mode on.",
+    "failed": false
+   },
+   {
+    "prompt": "We need to preserve the release decisions while the conversation fills. What is the next step?",
+    "started": "2026-11-11T16:05:25.690Z",
+    "completed": "2026-11-11T16:05:27.766Z",
+    "answer": "NOCTURNE\n\nBefore I compact this plan:\n\nWhich release decisions should be explicitly preserved in the plan?\nIs the launch checklist expected to be completed before shipping on Monday, or does it remain open?\nAre there any particular details about the boiling kettle that need to be kept or clarified?\nShould the next steps focus on completing the launch checklist or preparing for shipping?\nTOOLS · 0 CALLS",
+    "failed": false
+   },
+   {
+    "prompt": "Keep Anika as release owner for Vega, the indigo notebook and Monday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools.",
+    "started": "2026-11-11T16:05:27.767Z",
+    "completed": "2026-11-11T16:05:45.722Z",
+    "answer": "NOCTURNE\nCONVERSATION COMPACTED · FULL HISTORY KEPT IN THE JOURNAL\n\nNext step: Prioritize completing the remaining items on the launch checklist to ensure readiness for the Monday shipping deadline.\n\nTOOLS · 0 CALLS",
+    "failed": false
+   },
+   {
+    "prompt": "/compact policy performance 0.8",
+    "started": "2026-11-11T16:05:45.722Z",
+    "completed": "2026-11-11T16:05:47.283Z",
+    "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 80.0% of the model window; the last 0% of the conversation kept word for word. Plan mode on.",
+    "failed": false
+   }
+  ],
+  "compactions": {
+   "compactions": [
+    {
+     "captured_at": "2026-11-11T16:05:23.206218+00:00",
+     "event_uid": "01M75NPNM5XHJWMBAXSNAQ1C5X",
+     "facts": [
+      {
+       "body": "Anika owns Vega in the fictional release plan.",
+       "label": "Anika owns Vega",
+       "source_message_ids": [
+        "m0"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The notebook color is indigo in the fictional release plan.",
+       "label": "Notebook color is indigo",
+       "source_message_ids": [
+        "m0"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "Shipping is scheduled for Monday in the fictional release plan.",
+       "label": "Shipping is scheduled for Monday",
+       "source_message_ids": [
+        "m0"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The launch checklist remains open in the fictional release plan.",
+       "label": "Launch checklist remains open",
+       "source_message_ids": [
+        "m0"
+       ],
+       "verdict": "already_known"
+      },
+      {
+       "body": "A kettle is boiling right now, but that detail is temporary.",
+       "label": "A kettle is boiling temporarily",
+       "source_message_ids": [
+        "m0"
+       ],
+       "verdict": "new"
+      }
+     ],
+     "plan_clarification": null,
+     "policy": {
+      "id": "manual-03eb045e2d68574b",
+      "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+      "memory_size": 128,
+      "parent": "manual-03eb045e2d68574b"
+     },
+     "record_type": "compaction_record",
+     "run_id": "01M75NPAZ3TZHFGFMBVGQA0AZA",
+     "span": [
+      {
+       "id": "m0",
+       "kept": false,
+       "text": "User: This is a fictional release plan. Anika owns Vega, the notebook is indigo, and shipping is Monday. The launch checklist remains open. A kettle is boiling right now; that detail is temporary. Summarize in two sentences. Do not use tools."
+      },
+      {
+       "id": "m1",
+       "kept": true,
+       "text": "Assistant: Anika owns Vega, the notebook color is indigo, and shipping is scheduled for Monday. The launch checklist is still open, and a kettle is currently boiling, but that is a temporary detail.\n\n<nocturne-proposed-response>\n{\"primary\":\"Anika owns Vega, the notebook is indigo, and shipping is set for Monday. The launch checklist remains open, and a kettle is boiling right now, though that detail is temporary.\",\"alternatives\":[]} \n</nocturne-proposed-response>"
+      }
+     ],
+     "strategy": "memories-then-drop",
+     "thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+     "version": 1,
+     "working_summary": "The user provided a fictional release plan where Anika owns Vega, the notebook is indigo, shipping is scheduled for Monday, the launch checklist is open, and a kettle is boiling temporarily."
+    },
+    {
+     "captured_at": "2026-11-11T16:05:43.769093+00:00",
+     "event_uid": "01M75NQ9PRX02K0FKZRX2MA772",
+     "facts": [
+      {
+       "body": "Anika is the release owner for the Vega project.",
+       "label": "Anika is release owner for Vega",
+       "source_message_ids": [
+        "m0",
+        "m1",
+        "m4"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The notebook associated with the release plan is indigo in color.",
+       "label": "Notebook color is indigo",
+       "source_message_ids": [
+        "m0",
+        "m1",
+        "m4"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "Shipping for the release is scheduled for Monday.",
+       "label": "Shipping scheduled for Monday",
+       "source_message_ids": [
+        "m0",
+        "m1",
+        "m4"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The launch checklist is still open and requires completion before shipping.",
+       "label": "Launch checklist remains open",
+       "source_message_ids": [
+        "m0",
+        "m1",
+        "m4"
+       ],
+       "verdict": "already_known"
+      },
+      {
+       "body": "The detail about the boiling kettle is discarded and not preserved in the release plan.",
+       "label": "Discard boiling kettle detail",
+       "source_message_ids": [
+        "m0",
+        "m1",
+        "m4"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The next step in the release plan is to complete the launch checklist before shipping.",
+       "label": "Next step is to complete launch checklist",
+       "source_message_ids": [
+        "m4"
+       ],
+       "verdict": "merge"
+      }
+     ],
+     "plan_clarification": {
+      "answer": "Keep Anika as release owner for Vega, the indigo notebook and Monday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools.",
+      "captured_at": "2026-11-11T16:05:28.420579+00:00",
+      "questions": [
+       "Which release decisions should be explicitly preserved in the plan?",
+       "Is the launch checklist expected to be completed before shipping on Monday, or does it remain open?",
+       "Are there any particular details about the boiling kettle that need to be kept or clarified?",
+       "Should the next steps focus on completing the launch checklist or preparing for shipping?"
+      ],
+      "record_type": "plan_compaction",
+      "status": "answered",
+      "thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "version": 1
+     },
+     "policy": {
+      "id": "manual-03eb045e2d68574b",
+      "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+      "memory_size": 128,
+      "parent": "manual-03eb045e2d68574b"
+     },
+     "record_type": "compaction_record",
+     "run_id": "01M75NPT3DYBATNAGECWGHH1W2",
+     "span": [
+      {
+       "id": "m0",
+       "kept": false,
+       "text": "System: Summary of previous conversation:\n\nThe user provided a fictional release plan where Anika owns Vega, the notebook is indigo, shipping is scheduled for Monday, the launch checklist is open, and a kettle is boiling temporarily.\n\nThe launch checklist remains open and may require further updates or completion.\nUser: [History before this point (1 messages, ~678 tokens) was summarized by openai. The summary above is secondhand; re-verify critical facts against primary sources.]"
+      },
+      {
+       "id": "m1",
+       "kept": false,
+       "text": "Assistant: Anika owns Vega, the notebook color is indigo, and shipping is scheduled for Monday. The launch checklist is still open, and a kettle is currently boiling, but that is a temporary detail.\n\n"
+      },
+      {
+       "id": "m2",
+       "kept": false,
+       "text": "User: We need to preserve the release decisions while the conversation fills. What is the next step?"
+      },
+      {
+       "id": "m3",
+       "kept": false,
+       "text": "Assistant: Before I compact this plan:\n1. Which release decisions should be explicitly preserved in the plan?\n2. Is the launch checklist expected to be completed before shipping on Monday, or does it remain open?\n3. Are there any particular details about the boiling kettle that need to be kept or clarified?\n4. Should the next steps focus on completing the launch checklist or preparing for shipping?"
+      },
+      {
+       "id": "m4",
+       "kept": true,
+       "text": "User: Keep Anika as release owner for Vega, the indigo notebook and Monday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools."
+      }
+     ],
+     "strategy": "memories-then-drop",
+     "thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+     "version": 1,
+     "working_summary": "The release plan includes Anika as the release owner for Vega, the notebook color is indigo, and shipping is scheduled for Monday. The launch checklist remains open and requires further work. The boiling kettle detail is discarded."
+    }
+   ]
+  },
+  "queue": {
+   "cards": [
+    {
+     "item_uid": "01M75NPMA42BRQHR5KSM70XHAD",
+     "candidate": {
+      "memory_id": "f3ee16a7-a779-49ed-8088-df47f655bfc2",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Anika owns Vega",
+      "body": "Anika owns Vega in the fictional release plan.",
+      "kind": "fact",
+      "keywords": [
+       "anika",
+       "vega",
+       "ownership",
+       "release plan"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "thread_origin": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:05:21.451091Z",
+      "updated_at": "2026-11-11T16:05:21.451091Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:05:21.953085Z"
+    },
+    {
+     "item_uid": "01M75NPMQ4RQHP9T403KEV6HM0",
+     "candidate": {
+      "memory_id": "10356ceb-6f70-4e72-a576-145027bfda01",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Notebook color is indigo",
+      "body": "The notebook color is indigo in the fictional release plan.",
+      "kind": "fact",
+      "keywords": [
+       "notebook",
+       "color",
+       "indigo",
+       "release plan"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "thread_origin": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:05:21.964386Z",
+      "updated_at": "2026-11-11T16:05:21.964386Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:05:22.369883Z"
+    },
+    {
+     "item_uid": "01M75NPN4C6P1JFMQVZNK9MM7Z",
+     "candidate": {
+      "memory_id": "4acd4f08-5004-40c2-9b9c-4a827b3a7990",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Shipping is scheduled for Monday",
+      "body": "Shipping is scheduled for Monday in the fictional release plan.",
+      "kind": "fact",
+      "keywords": [
+       "shipping",
+       "schedule",
+       "monday",
+       "release plan"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "thread_origin": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:05:22.374986Z",
+      "updated_at": "2026-11-11T16:05:22.374986Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:05:22.798813Z"
+    },
+    {
+     "item_uid": "01M75NPNKJJBTZF74034BAYVPY",
+     "candidate": {
+      "memory_id": "df968a84-4678-406c-963d-f249579146d5",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "A kettle is boiling temporarily",
+      "body": "A kettle is boiling right now, but that detail is temporary.",
+      "kind": "fact",
+      "keywords": [
+       "kettle",
+       "boiling",
+       "temporary",
+       "detail"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "thread_origin": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:05:22.814181Z",
+      "updated_at": "2026-11-11T16:05:22.814181Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:05:23.286511Z"
+    },
+    {
+     "item_uid": "01M75NQ6GJH6TFD4SGEPKX5Y55",
+     "candidate": {
+      "memory_id": "f92cfdc1-3912-4747-a22c-632287347d5f",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Notebook color is indigo",
+      "body": "The notebook associated with the release plan is indigo in color.",
+      "kind": "fact",
+      "keywords": [
+       "notebook",
+       "color",
+       "indigo"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "thread_origin": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:05:40.120216Z",
+      "updated_at": "2026-11-11T16:05:40.120216Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:05:40.501908Z"
+    },
+    {
+     "item_uid": "01M75NQ6Y2KNZ5TRW2QHN63SJV",
+     "candidate": {
+      "memory_id": "b361dd51-07af-4fb1-98ed-8838c1023241",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Shipping scheduled for Monday",
+      "body": "Shipping for the release is scheduled for Monday.",
+      "kind": "fact",
+      "keywords": [
+       "shipping",
+       "schedule",
+       "monday"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "thread_origin": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:05:40.511570Z",
+      "updated_at": "2026-11-11T16:05:40.511570Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:05:40.934056Z"
+    },
+    {
+     "item_uid": "01M75NQ7AHF6R4Y8JKAVA7P9E8",
+     "candidate": {
+      "memory_id": "02b3f504-fffd-4bac-945a-6620978bce03",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Discard boiling kettle detail",
+      "body": "The detail about the boiling kettle is discarded and not preserved in the release plan.",
+      "kind": "fact",
+      "keywords": [
+       "boiling kettle",
+       "discarded",
+       "temporary detail"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "thread_origin": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:05:40.944233Z",
+      "updated_at": "2026-11-11T16:05:40.944233Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:05:41.336729Z"
+    },
+    {
+     "item_uid": "01M75NQ9NT7F3E42FZDV7EHDAB",
+     "candidate": {
+      "memory_id": "2232063a-484d-4c92-bb13-b94de3517274",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Next step is to complete launch checklist",
+      "body": "The next step in the release plan is to complete the launch checklist before shipping.",
+      "kind": "procedure",
+      "keywords": [
+       "next step",
+       "launch checklist",
+       "complete",
+       "shipping"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "thread_origin": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-3",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:05:43.256396Z",
+      "updated_at": "2026-11-11T16:05:43.256396Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:05:43.754136Z"
+    }
+   ]
+  }
+ }
+}

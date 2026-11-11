@@ -1,0 +1,21 @@
+{
+  "browser_explicitly_closed": true,
+  "stopped_owned_pids": [
+    68952,
+    69001,
+    69111
+  ],
+  "owned_compose_project": "m6cp-local",
+  "compose_down_volumes_exit": 0,
+  "remaining_owned_containers_volumes_networks": 0,
+  "listening_on_packet_ports": [],
+  "packet_ports_checked": [
+    8013,
+    8873,
+    9657,
+    55453
+  ],
+  "failed_boot_testcontainer_remains": false,
+  "owner_home_or_main_palace_used": false,
+  "scope": "Only packet-owned processes/resources; no peer process touched."
+}

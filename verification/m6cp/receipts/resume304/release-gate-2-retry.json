@@ -1,0 +1,62 @@
+{
+ "ok": true,
+ "result": [
+  {
+   "prompt": "Using the remembered release plan, who owns Selene, which notebook belongs to the release, and which shipping day is scheduled? Identify the open checklist. Cite the supplied memories.",
+   "thread": "880456d1-f238-46a7-a5bd-b9357bd68b55",
+   "median": 0.264,
+   "cards": [
+    {
+     "label": "Ledger close",
+     "tone": "injected",
+     "sem": 0.336,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Label printer",
+     "tone": "injected",
+     "sem": 0.32,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Market truck",
+     "tone": "injected",
+     "sem": 0.265,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Bin tags",
+     "tone": "injected",
+     "sem": 0.264,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Spray log",
+     "tone": "near-miss",
+     "sem": 0.24,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Shed hours",
+     "tone": "near-miss",
+     "sem": 0.241,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Weekly report",
+     "tone": "near-miss",
+     "sem": 0.241,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\n\nI have searched the memories but did not find a specific remembered release plan mentioning who owns Selene, which notebook belongs to the release, th"
+  }
+ ]
+}
