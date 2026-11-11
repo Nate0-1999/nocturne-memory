@@ -41,6 +41,7 @@ def project_learning_evidence(
     configs: Mapping[str, RuntimeScorerConfig],
     *,
     passive_discount: Decimal,
+    include_verification: bool = False,
 ) -> LearningEvidence:
     """Apply A-031 grading and whole-gate hygiene exactly once for all consumers."""
 
@@ -66,6 +67,8 @@ def project_learning_evidence(
         for row in rows
         if row.injection_id in excluded
     )
+    if include_verification:
+        excluded = set()  # Read-only back-test callers roll back every proposed scorer write.
     examples: list[LearningExample] = []
     for row in rows:
         if row.injection_id in excluded:
@@ -183,6 +186,10 @@ def _share_boundaries(
         selected_pins = [row for row in members if row.shown_as == "pinned"]
         regular_tokens = sum(cl100k_token_count(_frozen_body(row)) for row in selected_regular)
         pinned_tokens = sum(cl100k_token_count(_frozen_body(row)) for row in selected_pins)
+        regular_basis = tuple((row.memory_id, cl100k_token_count(_frozen_body(row)))
+                              for row in selected_regular)
+        pin_basis = tuple((row.memory_id, cl100k_token_count(_frozen_body(row)))
+                          for row in selected_pins)
 
         seen_cuts: set[UUID] = set()
         for row in sorted(members, key=lambda item: (item.rank, item.event_uid)):
@@ -202,6 +209,10 @@ def _share_boundaries(
                     target_at_least=True,
                     actor_weight=explicit_positive_weights[row.memory_id],
                     kind="valuable_budget_cut",
+                    token_basis=regular_basis + (
+                        (row.memory_id, cl100k_token_count(_frozen_body(row))),
+                    ),
+                    context_tokens=context_tokens,
                 )
             )
 
@@ -216,6 +227,8 @@ def _share_boundaries(
                         target_at_least=False,
                         actor_weight=Decimal(1),
                         kind="marginal_removed",
+                        token_basis=regular_basis,
+                        context_tokens=context_tokens,
                     )
                 )
             elif marginal.outcome == "kept":
@@ -227,6 +240,8 @@ def _share_boundaries(
                         target_at_least=False,
                         actor_weight=passive_discount,
                         kind="marginal_uncited",
+                        token_basis=regular_basis,
+                        context_tokens=context_tokens,
                     )
                 )
 
@@ -249,6 +264,8 @@ def _share_boundaries(
                         target_at_least=True,
                         actor_weight=Decimal(1),
                         kind="pin_overflow",
+                        token_basis=regular_basis + pin_basis,
+                        context_tokens=context_tokens,
                     )
                 )
     return tuple(result)

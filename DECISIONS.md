@@ -1482,6 +1482,26 @@ and sums today's (UTC) llm receipts into two new columns (0030); the owner can r
 demand. Rate lanes reach back a day so the strip can draw today. Cache rows split by model,
 and the model listing keeps OpenRouter's cache-read price, so the Harness can price a saving.
 
+## M6CP — Replay compaction instructions against later outcomes [P1.2, P2.5]
+
+PRECEDENT: FL-061/084; D.2 144/177; A-067/A-083; M4IN, M5LN.
+Source spans and generation records use the existing append-only optimization ledger.
+Older spans construct the candidate; newer spans replay both prompts without outcome
+labels. Existing embedding bands match facts, duplicate matches count once, novel facts
+are neutral, and equal scores prefer fewer/smaller outputs. The optimizer lock and
+verification exclusions remain. The shared scorer fit replays matched fact lengths into
+the frozen token budgets, fits tau/share with size after the existing 100-signal floor,
+and carries improved instructions and size in the same scorer proposal and activation.
+Read-only previews roll back proposed scorer writes and retain a receipt. M6LP handed
+off before this integration. API label 0.1.91 composes its schema; package pair 0.1.89
+follows its 0.1.88 pair. Every positive size within the existing 128-token cap is valid.
+
+## M6LP — Project floors and observable fits [P1.2, P2.5]
+
+A-081 uses the existing learner minimum per project's training split; holdout signals
+cannot unlock a fit. Progress samples the actual global objective every 100 iterations
+and records later phases through a separate transaction, so polling never waits for the fit.
+History retains all authentic generations; effective weights use the serving projection.
 ## M6CR — Budget joins the policy type; every pick carries its reason [P4]
 
 PRECEDENT: PLAN M6CR; FL-152 153; A-021, A-082.

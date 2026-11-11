@@ -2,7 +2,12 @@
 
 from fastapi import APIRouter, HTTPException, Request, Response
 
-from spine.learner.contracts import CompactionTrigger, RetrainJobView, RetrainResponse
+from spine.learner.contracts import (
+    CompactionBacktest,
+    CompactionTrigger,
+    RetrainJobView,
+    RetrainResponse,
+)
 from spine.learner.service import LearnerService, OptimizationTrigger
 from spine.problems import problem_openapi
 
@@ -50,10 +55,28 @@ async def compaction(
 ) -> Response:
     """Queue a main-thread entropy event without awaiting the optimizer."""
     _require_owner(request, principal_id)
+    if body.record:
+        await request.app.state.compaction_learner.record(body, principal_id)
     request.app.state.learner_worker.notify(
         OptimizationTrigger(event_uid=body.event_uid, thread_id=body.thread_id)
     )
     return Response(status_code=202)
+
+
+@router.get("/v1/compaction-policy")
+async def compaction_policy(request: Request, principal_id: str | None = None) -> dict:
+    _require_owner(request, principal_id)
+    return await request.app.state.compaction_learner.snapshot()
+
+
+@router.post("/v1/compaction-backtest")
+async def compaction_backtest(
+    request: Request, body: CompactionBacktest, principal_id: str | None = None
+) -> dict:
+    _require_owner(request, principal_id)
+    return await _service(request).preview_compaction(
+        memory_size=body.memory_size, include_verification=body.preview
+    )
 
 
 def _require_owner(request: Request, principal_id: str | None) -> None:

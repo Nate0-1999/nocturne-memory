@@ -95,7 +95,7 @@ def test_project_offsets_pool_toward_globals_and_unseen_projects_stay_zero():
             biases={},
             thread_weight=0,
             where_weight=0,
-            settings=FitSettings(pair_margin=0.8, bias_l2=penalty),
+            settings=FitSettings(pair_margin=0.8, bias_l2=penalty, project_min_dispositions=2),
         )
 
     weak, strong = fit(1), fit(100)

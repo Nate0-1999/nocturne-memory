@@ -1,0 +1,670 @@
+{
+ "ok": true,
+ "result": {
+  "index": 2,
+  "thread": "cc1502db-c507-4345-9c27-92833904d544",
+  "failed": false,
+  "log": [
+   {
+    "prompt": "/compact keep 0",
+    "started": "2026-11-11T16:02:31.687Z",
+    "completed": "2026-11-11T16:02:34.258Z",
+    "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 80.0% of the model window; the last 0% of the conversation kept word for word. Plan mode off.",
+    "failed": false
+   },
+   {
+    "prompt": "/compact instructions Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+    "started": "2026-11-11T16:02:34.258Z",
+    "completed": "2026-11-11T16:02:35.308Z",
+    "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 80.0% of the model window; the last 0% of the conversation kept word for word. Plan mode off.",
+    "failed": false
+   },
+   {
+    "prompt": "/compact",
+    "started": "2026-11-11T16:02:35.308Z",
+    "completed": "2026-11-11T16:02:48.611Z",
+    "answer": "NOCTURNE\nCONVERSATION COMPACTED · FULL HISTORY KEPT IN THE JOURNAL\n\nContext compacted with memories-then-drop.\n\nTOOLS · 0 CALLS",
+    "failed": false
+   },
+   {
+    "prompt": "/compact plan on",
+    "started": "2026-11-11T16:02:48.611Z",
+    "completed": "2026-11-11T16:02:49.662Z",
+    "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 80.0% of the model window; the last 0% of the conversation kept word for word. Plan mode on.",
+    "failed": false
+   },
+   {
+    "prompt": "/compact policy performance 0.0001",
+    "started": "2026-11-11T16:02:49.662Z",
+    "completed": "2026-11-11T16:02:50.706Z",
+    "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 0.0% of the model window; the last 0% of the conversation kept word for word. Plan mode on.",
+    "failed": false
+   },
+   {
+    "prompt": "We need to preserve the release decisions while the conversation fills. What is the next step?",
+    "started": "2026-11-11T16:02:50.706Z",
+    "completed": "2026-11-11T16:02:52.787Z",
+    "answer": "NOCTURNE\n\nBefore I compact this plan:\n\nWhich specific release decisions must be preserved?\nWhat details from the launch checklist should be included or left open?\nIs the shipping scheduled for Saturday confirmed or tentative?\nShould the temporary detail about the boiling kettle be retained or omitted?\nTOOLS · 0 CALLS",
+    "failed": false
+   },
+   {
+    "prompt": "Keep Luis as release owner for Selene, the graphite notebook and Saturday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools.",
+    "started": "2026-11-11T16:02:52.787Z",
+    "completed": "2026-11-11T16:03:10.704Z",
+    "answer": "NOCTURNE\nCONVERSATION COMPACTED · FULL HISTORY KEPT IN THE JOURNAL\n\nLuis remains the release owner for Selene, with the Graphite notebook included in the release scheduled for shipping on Saturday. The launch checklist is still open. The kettle detail is discarded.\n\nNext step: Review and update the launch checklist to identify any outstanding tasks or blockers that must be resolved before Saturday's shipping.\n\nTOOLS · 0 CALLS",
+    "failed": false
+   },
+   {
+    "prompt": "/compact policy performance 0.8",
+    "started": "2026-11-11T16:03:10.704Z",
+    "completed": "2026-11-11T16:03:11.762Z",
+    "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 80.0% of the model window; the last 0% of the conversation kept word for word. Plan mode on.",
+    "failed": false
+   }
+  ],
+  "compactions": {
+   "compactions": [
+    {
+     "captured_at": "2026-11-11T16:02:48.307026+00:00",
+     "event_uid": "01M75NHYBJQYNT3FYEB6NTWQ0T",
+     "facts": [
+      {
+       "body": "Luis is the owner of Selene in the fictional release plan.",
+       "label": "Luis owns Selene",
+       "source_message_ids": [
+        "m0"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The notebook involved in the release plan is named Graphite.",
+       "label": "Notebook named Graphite",
+       "source_message_ids": [
+        "m0"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "Shipping is scheduled for Saturday in the release plan.",
+       "label": "Shipping scheduled for Saturday",
+       "source_message_ids": [
+        "m0"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The launch checklist is still open in the release plan.",
+       "label": "Launch checklist remains open",
+       "source_message_ids": [
+        "m0"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "A kettle is boiling right now, which is a temporary detail.",
+       "label": "Kettle boiling temporarily",
+       "source_message_ids": [
+        "m0"
+       ],
+       "verdict": "new"
+      }
+     ],
+     "plan_clarification": null,
+     "policy": {
+      "id": "manual-03eb045e2d68574b",
+      "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+      "memory_size": 128,
+      "parent": "manual-03eb045e2d68574b"
+     },
+     "record_type": "compaction_record",
+     "run_id": "01M75NHHNP7KRP835A5N1S1YZ8",
+     "span": [
+      {
+       "id": "m0",
+       "kept": false,
+       "text": "User: This is a fictional release plan. Luis owns Selene, the notebook is graphite, and shipping is Saturday. The launch checklist remains open. A kettle is boiling right now; that detail is temporary. Summarize in two sentences. Do not use tools."
+      },
+      {
+       "id": "m1",
+       "kept": true,
+       "text": "Assistant: Luis is responsible for Selene, the notebook named Graphite is part of the release, and the shipping is scheduled for Saturday. Although the launch checklist is still open, a kettle is currently boiling, which is a temporary detail. \n\n<nocturne-proposed-response>\n{\"primary\":\"Luis owns Selene, the Graphite notebook is part of the release, and shipping is set for Saturday. The launch checklist is still open, and currently, a kettle is boiling temporarily.\",\"alternatives\":[]}\n</nocturne-proposed-response>"
+      }
+     ],
+     "strategy": "memories-then-drop",
+     "thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+     "version": 1,
+     "working_summary": "Luis owns Selene, the notebook named Graphite is part of the release plan, and shipping is scheduled for Saturday. The launch checklist remains open, and a kettle is boiling temporarily."
+    },
+    {
+     "captured_at": "2026-11-11T16:03:08.072570+00:00",
+     "event_uid": "01M75NJHN7DWA3EF8RPQR1ZAAS",
+     "facts": [
+      {
+       "body": "Luis is the release owner responsible for Selene.",
+       "label": "Luis is release owner for Selene",
+       "source_message_ids": [
+        "m0",
+        "m1",
+        "m4"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The notebook named Graphite is included in the release plan.",
+       "label": "Graphite notebook is part of the release",
+       "source_message_ids": [
+        "m0",
+        "m1",
+        "m4"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "Shipping for the release is scheduled for Saturday.",
+       "label": "Shipping is scheduled for Saturday",
+       "source_message_ids": [
+        "m0",
+        "m1",
+        "m4"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The launch checklist for the release is still open and unresolved.",
+       "label": "Launch checklist remains open",
+       "source_message_ids": [
+        "m0",
+        "m1",
+        "m4"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The temporary detail about the boiling kettle is discarded and not retained.",
+       "label": "Discard boiling kettle detail",
+       "source_message_ids": [
+        "m0",
+        "m1",
+        "m4"
+       ],
+       "verdict": "new"
+      }
+     ],
+     "plan_clarification": {
+      "answer": "Keep Luis as release owner for Selene, the graphite notebook and Saturday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools.",
+      "captured_at": "2026-11-11T16:02:53.347960+00:00",
+      "questions": [
+       "Which specific release decisions must be preserved?",
+       "What details from the launch checklist should be included or left open?",
+       "Is the shipping scheduled for Saturday confirmed or tentative?",
+       "Should the temporary detail about the boiling kettle be retained or omitted?"
+      ],
+      "record_type": "plan_compaction",
+      "status": "answered",
+      "thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+      "version": 1
+     },
+     "policy": {
+      "id": "manual-03eb045e2d68574b",
+      "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+      "memory_size": 128,
+      "parent": "manual-03eb045e2d68574b"
+     },
+     "record_type": "compaction_record",
+     "run_id": "01M75NJ2RCDMCRNMPFC9NP8Y7Z",
+     "span": [
+      {
+       "id": "m0",
+       "kept": false,
+       "text": "System: Summary of previous conversation:\n\nLuis owns Selene, the notebook named Graphite is part of the release plan, and shipping is scheduled for Saturday. The launch checklist remains open, and a kettle is boiling temporarily.\n\nThe launch checklist remains open.\nUser: [History before this point (1 messages, ~677 tokens) was summarized by openai. The summary above is secondhand; re-verify critical facts against primary sources.]"
+      },
+      {
+       "id": "m1",
+       "kept": false,
+       "text": "Assistant: Luis is responsible for Selene, the notebook named Graphite is part of the release, and the shipping is scheduled for Saturday. Although the launch checklist is still open, a kettle is currently boiling, which is a temporary detail. \n\n"
+      },
+      {
+       "id": "m2",
+       "kept": false,
+       "text": "User: We need to preserve the release decisions while the conversation fills. What is the next step?"
+      },
+      {
+       "id": "m3",
+       "kept": false,
+       "text": "Assistant: Before I compact this plan:\n1. Which specific release decisions must be preserved?\n2. What details from the launch checklist should be included or left open?\n3. Is the shipping scheduled for Saturday confirmed or tentative?\n4. Should the temporary detail about the boiling kettle be retained or omitted?"
+      },
+      {
+       "id": "m4",
+       "kept": true,
+       "text": "User: Keep Luis as release owner for Selene, the graphite notebook and Saturday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools."
+      }
+     ],
+     "strategy": "memories-then-drop",
+     "thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+     "version": 1,
+     "working_summary": "Luis is the release owner for Selene. The notebook named Graphite is part of the release. Shipping is scheduled for Saturday. The launch checklist remains open. The temporary detail about the boiling kettle is discarded."
+    }
+   ]
+  },
+  "queue": {
+   "cards": [
+    {
+     "item_uid": "01M75NHWCEVS1TKXADXF79HAJ2",
+     "candidate": {
+      "memory_id": "914906c1-5dd9-4646-ae1a-bd64109af4de",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Luis owns Selene",
+      "body": "Luis is the owner of Selene in the fictional release plan.",
+      "kind": "fact",
+      "keywords": [
+       "luis",
+       "selene",
+       "ownership"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "thread_origin": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:02:45.707289Z",
+      "updated_at": "2026-11-11T16:02:45.707289Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:02:46.294115Z"
+    },
+    {
+     "item_uid": "01M75NHWWCJES7F7XQ2Z8XB0GX",
+     "candidate": {
+      "memory_id": "f8eef71a-6faa-4bbd-9304-4c5c5375ab1f",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Notebook named Graphite",
+      "body": "The notebook involved in the release plan is named Graphite.",
+      "kind": "fact",
+      "keywords": [
+       "notebook",
+       "graphite",
+       "release"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "thread_origin": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:02:46.310329Z",
+      "updated_at": "2026-11-11T16:02:46.310329Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:02:46.803586Z"
+    },
+    {
+     "item_uid": "01M75NHXCDY4HD2CGXJNP60Z0D",
+     "candidate": {
+      "memory_id": "34d3f542-154b-486d-9e0a-1f33bf8fbad3",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Shipping scheduled for Saturday",
+      "body": "Shipping is scheduled for Saturday in the release plan.",
+      "kind": "fact",
+      "keywords": [
+       "shipping",
+       "saturday",
+       "schedule"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "thread_origin": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:02:46.811362Z",
+      "updated_at": "2026-11-11T16:02:46.811362Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:02:47.315700Z"
+    },
+    {
+     "item_uid": "01M75NHXX13WZ6THFNCQEJ6TSQ",
+     "candidate": {
+      "memory_id": "99bcaa3c-16c8-4d3b-be7a-edb42ac2364e",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Launch checklist remains open",
+      "body": "The launch checklist is still open in the release plan.",
+      "kind": "fact",
+      "keywords": [
+       "launch checklist",
+       "open",
+       "release"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "thread_origin": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:02:47.323379Z",
+      "updated_at": "2026-11-11T16:02:47.323379Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:02:47.849480Z"
+    },
+    {
+     "item_uid": "01M75NHYB2VZTSWWHGCZBS42SH",
+     "candidate": {
+      "memory_id": "caa06abd-01ee-4505-b0cd-f11bcdfe467d",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Kettle boiling temporarily",
+      "body": "A kettle is boiling right now, which is a temporary detail.",
+      "kind": "fact",
+      "keywords": [
+       "kettle",
+       "boiling",
+       "temporary"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "thread_origin": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:02:47.859570Z",
+      "updated_at": "2026-11-11T16:02:47.859570Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:02:48.296819Z"
+    },
+    {
+     "item_uid": "01M75NJES8CDPED59RPMBTPTK7",
+     "candidate": {
+      "memory_id": "c72e2568-744c-4e0f-8c0a-251ed53c5d95",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Luis is release owner for Selene",
+      "body": "Luis is the release owner responsible for Selene.",
+      "kind": "fact",
+      "keywords": [
+       "luis",
+       "release owner",
+       "selene"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "thread_origin": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:03:04.821985Z",
+      "updated_at": "2026-11-11T16:03:04.821985Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:03:05.240412Z"
+    },
+    {
+     "item_uid": "01M75NJF9V2NGDYS3G02WBAAVH",
+     "candidate": {
+      "memory_id": "dd115d0e-0be8-4dd6-b1f8-845514c7a9af",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Graphite notebook is part of the release",
+      "body": "The notebook named Graphite is included in the release plan.",
+      "kind": "fact",
+      "keywords": [
+       "graphite",
+       "notebook",
+       "release"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "thread_origin": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:03:05.247888Z",
+      "updated_at": "2026-11-11T16:03:05.247888Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:03:05.774593Z"
+    },
+    {
+     "item_uid": "01M75NJHMRDSBBT1X5YR4SDK71",
+     "candidate": {
+      "memory_id": "f20bd93f-c0d2-48f8-a81b-f91891ce39ce",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Discard boiling kettle detail",
+      "body": "The temporary detail about the boiling kettle is discarded and not retained.",
+      "kind": "fact",
+      "keywords": [
+       "boiling kettle",
+       "temporary detail",
+       "discarded"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "thread_origin": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-2",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:03:06.730050Z",
+      "updated_at": "2026-11-11T16:03:06.730050Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:03:08.180144Z"
+    }
+   ]
+  }
+ }
+}

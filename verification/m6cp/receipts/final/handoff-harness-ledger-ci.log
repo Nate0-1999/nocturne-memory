@@ -1,0 +1,252 @@
+Impact bell: M6CP -> /Users/nateoswalt/relay/m6cp/harness/verification/m6cp/impacted.json
+  FL-002: Memory units have a length cap; a memory over the cap is shortened to fit as one memory, and it is split only when it holds more than one distinct fact, with the split logged. [PROTECTED: flagged corner only]
+  FL-004: Update history is one of the memory's indexes. [PROTECTED: flagged corner only]
+  FL-008: Complete logs of every conversation are kept for good, until it becomes too expensive, and every session sits in one table with a session id so anything can be audited. [PROTECTED: flagged corner only]
+  FL-014: Every memory records the folder the agent stood in when it was made. [PROTECTED: flagged corner only]
+  FL-016: All conversation history is kept the way Codex and Claude Code keep it; a conversation without history is not supported. [PROTECTED: flagged corner only]
+  FL-023: One view of every axis feeding the injection algorithm for an active memory. [PROTECTED: flagged corner only]
+  FL-027: Every scoring axis (such as time since creation and directory distance from where the memory was made) is turned into a number and normalized into the memory score, and there is a thread similarity axis. [PROTECTED: flagged corner only]
+  FL-028: A memory share of the context window, shown and editable, with unused allotment returned to chat history. [PROTECTED: flagged corner only]
+  FL-030: Force controls for the line, the share and pins, all in the same module as the hyperparameters, each with the algorithm resuming afterward. [PROTECTED: flagged corner only]
+  FL-038: A cheap 80/20 duplicate check at memory creation, keeping the agent's memory work under 10% of build run time. [PROTECTED: flagged corner only]
+  FL-039: Agents make no memories until compaction; the explicit /remember command is the other way. [PROTECTED: flagged corner only]
+  FL-042: Constitution: 'Already known — reinforced' on re-saves; rejected candidates remembered and never re-proposed without material change (gate-day). [PROTECTED: flagged corner only]
+  FL-044: At compaction the summarizing agent turns anything important but not needed for the next few build steps into a memory through the normal memory creation path, and compaction waits for those memories to land before dropping the rest. [PROTECTED: flagged corner only]
+  FL-051: A performance score for the memory system, back-tested on the history of manual adds and removes plus successful injections; a new set of weights is accepted only if it scores better than the previous generation. [PROTECTED: flagged corner only]
+  FL-052: The scoreboard counts right and wrong injection decisions, injected or not, with no arbitrary scoring. [PROTECTED: flagged corner only]
+  FL-053: Every feature's weight labeled and shown normalized to a decimal. [PROTECTED: flagged corner only]
+  FL-062: Constitution: The audition: a proposed scorer runs as a visible shadow beside the incumbent before acceptance (gate-day). [PROTECTED: flagged corner only]
+  FL-067: Agents move through the file structure of the machine they live in, and the interface shows where every agent is. [PROTECTED: flagged corner only]
+  FL-069: The core tools every modern harness has: files, terminal, Chrome, skills, changing models, compaction (our own take), and interactions with common apps, taken from the most modular standard source. [PROTECTED: flagged corner only]
+  FL-070: Image input: paste an image and the agent reviews it. [PROTECTED: flagged corner only]
+  FL-071: The location fence: an agent can edit only files in the exact directory it stands in, and its shell is kept to that subtree, enforced deterministically. [PROTECTED: flagged corner only]
+  FL-072: The progressive prompting protocol is dynamic to the agent's moves: a move re-prompts the agent for its new location. [PROTECTED: flagged corner only]
+  FL-074: A new thread starts in a project folder with the location rule in effect; how a thread's project is specified was his open question (maybe configuration). [PROTECTED: flagged corner only]
+  FL-076: Commit every turn; one-click rewind of chat and code together to any earlier turn. [PROTECTED: flagged corner only]
+  FL-079: Full conversation history kept, the way Codex and Claude Code do. [PROTECTED: flagged corner only]
+  FL-081: A suite of compaction strategies: truncation; summarization; make the compaction memories first, wait for them to land, then drop everything else; keep only the human's messages and each agent turn's final answer. [PROTECTED: flagged corner only]
+  FL-104: A draft response to the final synthesis that you tweak and fire, after which the stack switches to the agent that has waited longest for your attention. [PROTECTED: flagged corner only]
+  FL-105: An Ableton-like rack: the shipped layout is only version one of the default opinion, and people can easily roll and add their own plugins and visualizers to the views from the ground up. [PROTECTED: flagged corner only]
+  FL-107: A plugin to change common model parameters such as top p and temperature, as an Ableton-style visualizer and input block. [PROTECTED: flagged corner only]
+  FL-109: Memory candidates appear under the agent's post on the Deck after a compaction or a thread close; scrolling past without denying approves them; corpus-born proposals live in Memory Ingest. [PROTECTED: flagged corner only]
+  FL-110: Global or current on every module; current modules switch together with the work. [PROTECTED: flagged corner only]
+  FL-111: One standard module template that can be dragged and grown or shrunk as much as you want, with a dialogue box for its internal settings, on a very large canvas you can pan and zoom while modules stay the same size. [PROTECTED: flagged corner only]
+  FL-112: Tabs as layers of the same stage; Injection and Graph as ordinary modules; a gear beside the title for rarely changed options. [PROTECTED: flagged corner only]
+  FL-113: A finer, near-continuous background grid, more descriptive well-formatted hover tips, an easy way to create tabs, a much smaller archive button, a model device that is obviously clickable. [PROTECTED: flagged corner only]
+  FL-114: Memory Ingest as its own module: put in current AGENTS.md or CLAUDE.md files to jump-start the Palace. [PROTECTED: flagged corner only]
+  FL-115: Attunement to a specific stack beyond global and current. [PROTECTED: flagged corner only]
+  FL-116: A module not set to global attunes by proximity, measured across tabs (a tab counting one unit) and grid position, ties picked at random, and it shows which thread or stack it is attuned to. [PROTECTED: flagged corner only]
+  FL-117: A proposed reply prefilled and editable; queued prompts advance on Enter with a scrollable queue. [PROTECTED: flagged corner only]
+  FL-119: A Palace State module holding the general state stats. [PROTECTED: flagged corner only]
+  FL-124: Threads removable or archivable; a back-to-the-stage control on every view. [PROTECTED: flagged corner only]
+  FL-130: A tree-search view reached by rotating the farm. [PROTECTED: flagged corner only]
+  FL-132: A time-order control that highlights new roots and moves the panels to the longest-waiting response. [PROTECTED: flagged corner only]
+  FL-197: Spend and Palace state reads use the calling principal; only the configured owner can request the whole Palace. [PROTECTED: flagged corner only]
+  FL-165: Blue-water mode: work offline on a local copy of the Palace, then on reconnect push the working directory and the agent's memory to the cloud and reconcile the two. [PROTECTED: flagged corner only]
+  FL-171: A startup and settings option: "Back up conversation transcripts to cloud?" [PROTECTED: flagged corner only]
+  FL-173: Constitution: a warming retry when the Palace is asleep, a "busy, retrying" banner on rate limits, and the banner clears on recovery (gate-day). [PROTECTED: flagged corner only]
+  FL-175: Constitution: a sandbox whose boundary crossings are surfaced as cards on the Deck (Invariant 14). [PROTECTED: flagged corner only]
+  FL-178: Constitution: a verification identity with its own account and home for tests and scouts (gate verification-identity work). [PROTECTED: flagged corner only]
+  FL-179: Constitution: a plain ownership refusal when one identity tries to decide another identity's approval queue item (gate verification-identity work). [PROTECTED: flagged corner only]
+  FL-184: A distinct module for scheduled jobs that makes them easy to monitor; the best visualization is still to be worked out. [PROTECTED: flagged corner only]
+  FL-187: Two repos, the spine (memory) and the Harness, not a mono repo. [PROTECTED: flagged corner only]
+  FL-190: The Harness can use skills and has the best and most common tools available, compiled from a list. [PROTECTED: flagged corner only]
+  FL-191: The tools and skills Claude Code and Codex use on this machine, pinned to versioned open-source sources. [PROTECTED: flagged corner only]
+  FL-194: The Pydantic toolset and skills as the tool layer. [PROTECTED: flagged corner only]
+  FL-195: The feature ledger generates coverage reports and requires evidence for the rows affected by a build. [PROTECTED: flagged corner only]
+  FL-196: The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents. [PROTECTED: flagged corner only]
+  FL-198: Context overwhelm protections: a query or a sub-agent return may take up at most n% of the compaction limit, the share chosen by the sending agent within bounds that are system parameters; a security module shows it. [PROTECTED: flagged corner only]
+  FL-199: Icons on buttons for the common things people would understand: a button whose meaning has a known icon (send, stop, add, remove, delete, refresh, open, settings, play, pause) carries it; primary actions show icon and word, row actions the icon alone with a tip; unusual actions keep their word; one icon set across every module and theme. [PROTECTED: flagged corner only]
+  FL-201: One scale across modules: an icon reused anywhere is one size, text of one role is one size and one font, and a box belongs only to an icon that is a button. [PROTECTED: flagged corner only]
+  FL-001: The Palace is a transactional database in the cloud on GCP that agents on many machines reach, behaving the same for every agent and sub-agent wherever it runs.
+  FL-006: Every memory carries a location column and a project column.
+  FL-007: Every memory links to the full conversation it came from, so an agent can reach more than just the memory when needed.
+  FL-009: Record files (history, transcripts) live apart from code so code can be deleted and re-downloaded without losing history.
+  FL-010: Every thread has a thread id, and every memory records the thread it was born in.
+  FL-012: No memory exists without a score.
+  FL-021: The memory visualizer shows the hyperparameters and lets the user go in and tweak memories.
+  FL-029: Pinned memories go into the context window even beyond the memory share.
+  FL-032: The Injection Console: see the weights, simulate a change to them and test the result, and force a new set of values.
+  FL-054: Simulate: change weights and back-test the result before forcing them.
+  FL-061: Compaction instructions tuned by back-test; memory size as a tunable beside the threshold and allotments.
+  FL-068: Injected memories refreshed on every move.
+  FL-073: The location rule written into Nocturne's own system prompt.
+  FL-080: Compaction triggered by fill percentage against the model's best working range and max, which vary by model.
+  FL-082: A compaction policy that decides when to compact by optimal performance or by cost management.
+  FL-084: Plan-mode compaction: the summarizer asks the user one to four questions before compacting. (seed SD-040)
+  FL-101: A Chromium browser-based interface, with a mobile front end wanted long term.
+  FL-108: Resizable modules and a plugin-contributor skill shipped with the repo.
+  FL-118: Out Loud mode: responses are read aloud and listen-triggered dictation is a primary way in, equal to typing, not an add-on.
+  FL-123: Each main cube view as its own module with its own 3D asset.
+  FL-137: A line graph of the injection system's historical performance; a 3D terrain of the score surface across parameters; the optimization shown while it runs (the landscape module is this terrain, placed beside the curators).
+  FL-168: A restore popup that asks whether to roll back these memories and lists them.
+  FL-170: A fresh reinstall that reconnects to existing files and auto-finds the cloud palace.
+  FL-181: Constitution: scheduled runs and background long-running shells in the agent's tool set (gate-day).
+  FL-183: Agent workflows can be set up on cron jobs.
+  FL-186: Build on Pydantic AI in a way that lets us modify and extend without waiting on them, passing features back and forth with their library.
+  FL-192: Swappable seams: router, model policy with an off-switch, toolset as a unit, memory system.
+  FL-193: The common core of terminal-agent tools (skills, progressive prompting, model switching, compaction, app interactions) in one piece that pulls upstream updates.
+  Unmapped: harness/CHANGELOG.md (add a row or declare no feature impact)
+  Unmapped: harness/DECISIONS.md (add a row or declare no feature impact)
+  Unmapped: harness/src/harness/__init__.py (add a row or declare no feature impact)
+  Unmapped: harness/tests/test_compaction.py (add a row or declare no feature impact)
+  Unmapped: harness/tests/test_spine_client.py (add a row or declare no feature impact)
+  Unmapped: harness/tests/test_spine_transport.py (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-002.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-006.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-007.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-008.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-009.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-010.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-014.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-016.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-038.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-039.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-042.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-044.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-051.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-052.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-061.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-067.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-068.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-069.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-070.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-071.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-072.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-073.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-074.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-076.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-079.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-080.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-081.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-082.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-084.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-104.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-109.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-114.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-117.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-119.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-137.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-165.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-170.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-173.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-175.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-178.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-179.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-181.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-183.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-186.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-187.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-190.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-191.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-192.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-193.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-194.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-195.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-196.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-197.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-198.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/FL-201.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/SHA256SUMS (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6cp/ledger-report.json (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-004.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-009.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-012.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-016.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-017.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-018.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-021.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-023.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-027.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-028.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-029.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-030.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-032.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-039.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-044.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-051.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-052.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-053.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-054.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-062.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-067.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-069.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-074.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-075.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-076.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-079.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-098.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-100.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-102.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-104.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-105.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-107.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-108.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-109.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-110.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-111.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-112.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-113.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-114.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-115.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-116.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-117.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-118.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-119.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-120.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-123.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-124.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-130.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-132.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-137.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-143.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-145.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-146.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-147.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-148.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-157.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-162.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-164.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-165.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-166.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-167.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-168.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-169.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-170.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-171.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-173.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-174.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-178.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-179.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-183.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-184.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-186.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-187.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-190.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-191.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-192.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-193.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-194.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-195.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-196.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-197.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-199.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-200.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-201.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-203.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/FL-205.png (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/SHA256SUMS (add a row or declare no feature impact)
+  Unmapped: harness/verification/m6lp/ledger-report.json (add a row or declare no feature impact)
+  Unmapped: harness/web/dist/assets/index-BIw-siL4.css (add a row or declare no feature impact)
+  Unmapped: harness/web/dist/assets/index-CK822Sp9.js (add a row or declare no feature impact)
+  Unmapped: harness/web/dist/assets/index-C_5-MpeD.js (add a row or declare no feature impact)
+  Unmapped: harness/web/dist/assets/index-CcIzWcuF.js (add a row or declare no feature impact)
+  Unmapped: harness/web/dist/assets/index-Cu043_9p.js (add a row or declare no feature impact)
+  Unmapped: harness/web/dist/assets/index-D79iToDj.js (add a row or declare no feature impact)
+  Unmapped: harness/web/dist/assets/index-D81AQNoC.js (add a row or declare no feature impact)
+  Unmapped: harness/web/dist/assets/index-DMIySIXA.js (add a row or declare no feature impact)
+  Unmapped: harness/web/dist/assets/index-DMhrFaL0.js (add a row or declare no feature impact)
+  Unmapped: harness/web/dist/assets/index-DS-e4ZYY.js (add a row or declare no feature impact)
+  Unmapped: harness/web/dist/assets/index-N9zpZrca.css (add a row or declare no feature impact)
+  Unmapped: harness/web/dist/index.html (add a row or declare no feature impact)
+Ledger coverage PASS: 85 required rows

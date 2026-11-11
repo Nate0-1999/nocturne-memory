@@ -8,6 +8,7 @@ import math
 from collections import defaultdict
 from collections.abc import Mapping
 from copy import deepcopy
+from dataclasses import asdict
 from datetime import datetime
 from decimal import Decimal
 from typing import Any
@@ -410,6 +411,11 @@ class M2KService:
                             for project, offsets in view.project_offsets.items()
                             if project in visible_projects
                         },
+                        "project_weights": {
+                            project: weights
+                            for project, weights in view.project_weights.items()
+                            if project in visible_projects
+                        },
                     }
                 )
                 for view in config_views
@@ -559,7 +565,12 @@ class M2KService:
                 if base is None or not base.active:
                     raise M2KStateError("stale_base")
                 receipt = await self._deep_receipt(
-                    session, base, body.values, principal_id=principal_id, include_terrain=True
+                    session,
+                    base,
+                    body.values,
+                    principal_id=principal_id,
+                    include_terrain=True,
+                    terrain_parameters=body.terrain_parameters,
                 )
                 instant = await _instant(
                     session,
@@ -614,6 +625,7 @@ class M2KService:
         *,
         principal_id: str | None,
         include_terrain: bool = False,
+        terrain_parameters: tuple[str, str] = ("scorer.tau", "scorer.memory_context_share"),
     ) -> ScorerSimulationResponse:
         configs = (await session.execute(select(ScorerConfigRow))).scalars().all()
         config_map = {row.version: _runtime(row) for row in configs}
@@ -735,31 +747,38 @@ class M2KService:
         ).hexdigest()
         terrain = []
         if include_terrain and holdout:
-            for tau_step in range(9):
-                for share_step in range(9):
-                    tau, share = tau_step / 8, 0.01 + share_step * 0.49 / 8
+            x_parameter, y_parameter = terrain_parameters
+            for x in _slice_values(values, x_parameter):
+                for y in _slice_values(values, y_parameter):
+                    grid_values = _with_parameter(
+                        _with_parameter(values, x_parameter, x), y_parameter, y
+                    )
+                    grid_examples = _rescale_examples(holdout, rows, config_map, grid_values)
                     result = challenger_score(
-                        holdout,
-                        weights=_weight_tuple(values),
+                        grid_examples,
+                        weights=_weight_tuple(grid_values),
                         bias_offsets=base_runtime.bias_offsets,
                         project_offsets=base_runtime.project_offsets,
                         axes=base_runtime.axes,
                         thread_weight=base_runtime.params.thread_weight,
                         where_weight=base_runtime.params.where_weight,
-                        tau=tau,
+                        tau=grid_values.tau,
                         share_boundaries=holdout_boundaries,
-                        memory_context_share=share,
+                        memory_context_share=grid_values.memory_context_share,
                     )
                     terrain.append(
                         {
-                            "tau": tau,
-                            "share": share,
+                            "tau": grid_values.tau,
+                            "share": grid_values.memory_context_share,
+                            "x": float(_flat_values(grid_values)[x_parameter]),
+                            "y": float(_flat_values(grid_values)[y_parameter]),
                             "agreement": 100
                             * (1 - result.disagreements / (len(holdout) + len(holdout_boundaries))),
                         }
                     )
         return ScorerSimulationResponse(
             terrain=terrain,
+            terrain_parameters=terrain_parameters,
             simulation_digest=digest,
             base_version=base.version,
             values=values,
@@ -963,6 +982,10 @@ def _config_view(row: ScorerConfigRow) -> ScorerConfigurationView:
         replay=dict(replay) if isinstance(replay, Mapping) else None,
         axes=row.params.get("axes", {}),
         project_offsets=row.params.get("project_offsets", {}),
+        project_weights={
+            project: asdict(_runtime(row).weights_for_project(project))
+            for project in row.params.get("project_offsets", {})
+        },
     )
 
 
@@ -1089,8 +1112,11 @@ def _learning_view(
         else _decimal_string(Decimal(100) * weighted_right / weighted_total)
     )
     live_points: list[LiveAgreementPoint] = []
-    for index, (_, row) in enumerate(active_examples):
-        window = active_examples[max(0, index + 1 - retrain_signal_stride) : index + 1]
+    historical_examples = [
+        (example, by_event_uid[example.event_uid]) for example in evidence_examples
+    ]
+    for index, (_, row) in enumerate(historical_examples):
+        window = historical_examples[max(0, index + 1 - retrain_signal_stride) : index + 1]
         point_right, point_wrong, point_weighted_right, point_weighted_wrong = _agreement_totals(
             window
         )

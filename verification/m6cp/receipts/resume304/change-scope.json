@@ -1,0 +1,23 @@
+{
+  "garden": {
+    "head_before_evidence_commit": "521ecf2b014a7393c0cf7d8286d7f224acc2bcd2",
+    "changed_path_count": 133,
+    "all_paths_in_authorized_scope": true,
+    "deleted_paths": 0,
+    "product_source_changed": null
+  },
+  "harness": {
+    "head_before_evidence_commit": "a4a03b2ec8c09508e7348c8486ce8e0ea962bda2",
+    "changed_path_count": 129,
+    "all_paths_in_authorized_scope": true,
+    "deleted_paths": 0,
+    "product_source_changed": false
+  },
+  "spine": {
+    "head_before_evidence_commit": "56ad14f6a89bf7a26c7bb0eb7d13a2aadb3b928c",
+    "changed_path_count": 129,
+    "all_paths_in_authorized_scope": true,
+    "deleted_paths": 0,
+    "product_source_changed": false
+  }
+}

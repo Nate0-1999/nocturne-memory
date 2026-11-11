@@ -1,0 +1,30 @@
+{
+  "version": "0.1.89",
+  "api_contract": "0.1.91",
+  "source_heads": {
+    "harness": "a756229d23d06b478c6632bad05611f7fa04605f",
+    "spine": "d1a2d35d05ed40a43766ae7308f1c8b6b2834ae8"
+  },
+  "artifacts": [
+    {
+      "repository": "harness",
+      "file": "artifacts/harness/nocturne_harness-0.1.89-py3-none-any.whl",
+      "sha256": "f2efa0e1ece585141c2bd6a72e6a10de286db54e6437d781c02ace0b4823c1e9"
+    },
+    {
+      "repository": "harness",
+      "file": "artifacts/harness/nocturne_harness-0.1.89.tar.gz",
+      "sha256": "349e9d7eaed8b20c8b9b57f6054edbd1c9f3d0c85ed824d00851eb586579c4e0"
+    },
+    {
+      "repository": "spine",
+      "file": "artifacts/spine/nocturne_memory-0.1.89-py3-none-any.whl",
+      "sha256": "3e7dba576ee1e8afe6458b190bb2278edc6e9800b0b27c78a18d9c1757d8d706"
+    },
+    {
+      "repository": "spine",
+      "file": "artifacts/spine/nocturne_memory-0.1.89.tar.gz",
+      "sha256": "9d9d78710a0c14a401a95f5f268d8f10b72ea9ff1f5e827ae0ea16cc2a357e6f"
+    }
+  ]
+}

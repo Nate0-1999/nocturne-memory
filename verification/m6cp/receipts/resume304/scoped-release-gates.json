@@ -1,0 +1,337 @@
+{
+ "ok": true,
+ "result": [
+  {
+   "prompt": "Using the remembered release plan, who owns Orion, which notebook belongs to the release, and which shipping day is scheduled? Identify the open checklist. Cite the supplied memories.",
+   "thread": "266f6a30-abe5-435d-a718-9d72210b78f3",
+   "median": 0.318,
+   "cards": [
+    {
+     "label": "The launch checklist is still open",
+     "tone": "injected",
+     "sem": 0.507,
+     "kw": 0.158,
+     "action": "kept"
+    },
+    {
+     "label": "Orion project shipping scheduled for Friday",
+     "tone": "injected",
+     "sem": 0.496,
+     "kw": 0.158,
+     "action": "kept"
+    },
+    {
+     "label": "Shipping is scheduled for Friday",
+     "tone": "injected",
+     "sem": 0.494,
+     "kw": 0.158,
+     "action": "kept"
+    },
+    {
+     "label": "Mira is release owner for Orion project",
+     "tone": "injected",
+     "sem": 0.495,
+     "kw": 0.105,
+     "action": "kept"
+    },
+    {
+     "label": "The notebook is copper",
+     "tone": "injected",
+     "sem": 0.461,
+     "kw": 0.105,
+     "action": "kept"
+    },
+    {
+     "label": "Orion project includes copper notebook",
+     "tone": "injected",
+     "sem": 0.453,
+     "kw": 0.105,
+     "action": "kept"
+    },
+    {
+     "label": "Mira owns the Orion project",
+     "tone": "injected",
+     "sem": 0.38,
+     "kw": 0.105,
+     "action": "kept"
+    },
+    {
+     "label": "Ledger close",
+     "tone": "injected",
+     "sem": 0.333,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Label printer",
+     "tone": "injected",
+     "sem": 0.318,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Bin tags",
+     "tone": "injected",
+     "sem": 0.277,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Market truck",
+     "tone": "injected",
+     "sem": 0.269,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Spray log",
+     "tone": "injected",
+     "sem": 0.299,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Weekly report",
+     "tone": "injected",
+     "sem": 0.266,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Shed hours",
+     "tone": "near-miss",
+     "sem": 0.243,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Crate count",
+     "tone": "near-miss",
+     "sem": 0.212,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Invoice terms",
+     "tone": "near-miss",
+     "sem": 0.202,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\n\nAccording to the remembered release plan:\n\nOwnership of Orion:\n\nMira is responsible for the Orion project. This is supported by the memories \"Mira own"
+  },
+  {
+   "prompt": "Using the remembered release plan, who owns Selene, which notebook belongs to the release, and which shipping day is scheduled? Identify the open checklist. Cite the supplied memories.",
+   "thread": "f35d8711-cd98-444d-94a7-82840b9a6d1b",
+   "median": 0.336,
+   "cards": [
+    {
+     "label": "Launch checklist remains open",
+     "tone": "injected",
+     "sem": 0.541,
+     "kw": 0.158,
+     "action": "kept"
+    },
+    {
+     "label": "Notebook named Graphite",
+     "tone": "injected",
+     "sem": 0.51,
+     "kw": 0.105,
+     "action": "kept"
+    },
+    {
+     "label": "Luis is release owner for Selene",
+     "tone": "injected",
+     "sem": 0.493,
+     "kw": 0.105,
+     "action": "kept"
+    },
+    {
+     "label": "Shipping scheduled for Saturday",
+     "tone": "injected",
+     "sem": 0.47,
+     "kw": 0.105,
+     "action": "kept"
+    },
+    {
+     "label": "Graphite notebook is part of the release",
+     "tone": "injected",
+     "sem": 0.438,
+     "kw": 0.105,
+     "action": "kept"
+    },
+    {
+     "label": "Luis owns Selene",
+     "tone": "injected",
+     "sem": 0.438,
+     "kw": 0.105,
+     "action": "kept"
+    },
+    {
+     "label": "Ledger close",
+     "tone": "injected",
+     "sem": 0.336,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Label printer",
+     "tone": "injected",
+     "sem": 0.32,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Market truck",
+     "tone": "injected",
+     "sem": 0.265,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Bin tags",
+     "tone": "injected",
+     "sem": 0.264,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Spray log",
+     "tone": "near-miss",
+     "sem": 0.24,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Shed hours",
+     "tone": "near-miss",
+     "sem": 0.241,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Weekly report",
+     "tone": "near-miss",
+     "sem": 0.241,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\n\nAccording to the supplied memories:\n\nLuis is the owner of Selene. (Memory labels: \"Luis is release owner for Selene,\" \"Luis owns Selene\")\nThe notebook"
+  },
+  {
+   "prompt": "Using the remembered release plan, who owns Vega, which notebook belongs to the release, and which shipping day is scheduled? Identify the open checklist. Cite the supplied memories.",
+   "thread": "6cd69abc-1458-4eb0-91fd-36892128da52",
+   "median": 0.317,
+   "cards": [
+    {
+     "label": "Next step is to complete launch checklist",
+     "tone": "injected",
+     "sem": 0.542,
+     "kw": 0.105,
+     "action": "kept"
+    },
+    {
+     "label": "Shipping is scheduled for Monday",
+     "tone": "injected",
+     "sem": 0.453,
+     "kw": 0.211,
+     "action": "kept"
+    },
+    {
+     "label": "Anika owns Vega",
+     "tone": "injected",
+     "sem": 0.451,
+     "kw": 0.211,
+     "action": "kept"
+    },
+    {
+     "label": "Notebook color is indigo · final-project-3",
+     "tone": "injected",
+     "sem": 0.486,
+     "kw": 0.053,
+     "action": "kept"
+    },
+    {
+     "label": "Shipping scheduled for Monday",
+     "tone": "injected",
+     "sem": 0.428,
+     "kw": 0.105,
+     "action": "kept"
+    },
+    {
+     "label": "Notebook color is indigo",
+     "tone": "injected",
+     "sem": 0.377,
+     "kw": 0.158,
+     "action": "kept"
+    },
+    {
+     "label": "Ledger close",
+     "tone": "injected",
+     "sem": 0.33,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Label printer",
+     "tone": "injected",
+     "sem": 0.317,
+     "kw": 0,
+     "action": "kept"
+    },
+    {
+     "label": "Market truck",
+     "tone": "injected",
+     "sem": 0.286,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Bin tags",
+     "tone": "injected",
+     "sem": 0.253,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Spray log",
+     "tone": "injected",
+     "sem": 0.262,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Weekly report",
+     "tone": "injected",
+     "sem": 0.275,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Shed hours",
+     "tone": "near-miss",
+     "sem": 0.237,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Invoice terms",
+     "tone": "near-miss",
+     "sem": 0.21,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Cider press",
+     "tone": "near-miss",
+     "sem": 0.185,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\n\nAccording to the remembered release plan:\n\nAnika owns Vega. (Memory: \"Anika owns Vega\")\nThe notebook associated with the release is indigo in color. ("
+  }
+ ]
+}

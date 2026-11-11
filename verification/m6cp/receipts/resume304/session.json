@@ -1,0 +1,33 @@
+{
+  "packet": "M6CP",
+  "resumer": "codex / 2026-11-11 / cp304",
+  "started_from_reports": [
+    301,
+    302
+  ],
+  "rung": "F214 disposable local Palace",
+  "model": "openrouter:openai/gpt-4.1-mini",
+  "embedding_model": "text-embedding-3-small",
+  "budget": {
+    "cap_usd": 3,
+    "original_shared_key_baseline": 82.769384839,
+    "prior_observed_growth": 1.165505514,
+    "resume_shared_growth_start": 1.21559782
+  },
+  "retry_rule": "After a provider timeout, retry only that trial once after at least 300 seconds; stop if it recurs.",
+  "scope": "Evidence and FL-061 verdict only; no product sync, frozen-law export, merge, tag or release.",
+  "worktrees": {
+    "garden": {
+      "head": "521ecf2b014a7393c0cf7d8286d7f224acc2bcd2",
+      "branch": "codex/m6cp-resume-304"
+    },
+    "harness": {
+      "head": "a4a03b2ec8c09508e7348c8486ce8e0ea962bda2",
+      "branch": "codex/m6cp-cp01a1bf04"
+    },
+    "spine": {
+      "head": "56ad14f6a89bf7a26c7bb0eb7d13a2aadb3b928c",
+      "branch": "codex/m6cp-cp01a1bf04"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "failed_trial": {
+    "phase": "release-plan gate 2 / Selene",
+    "thread": "d14d255a-06d5-4690-afd5-2279382b3e6e",
+    "prompt": "Using the remembered release plan, who owns Selene, which notebook belongs to the release, and which shipping day is scheduled? Identify the open checklist. Cite the supplied memories.",
+    "answer": "NOCTURNE\nRun error \u00b7 The model stopped answering. \u00b7 partial kept\n\nopenai/gpt-4.1-mini stopped answering: nothing arrived for 1 min (1 min 1 s since the request began), so this turn stopped. Send \"continue\" to try again.\n\nTOOLS \u00b7 0 CALLS"
+  },
+  "pause_started": "2026-11-11T16:17:40Z",
+  "retry_not_before": "2026-11-11T16:22:40Z",
+  "retry_limit": 1,
+  "stop_if_timeout_recurs": true,
+  "retry_started": "2026-11-11T16:22:57.114123+00:00",
+  "pause_elapsed_seconds": 317.114123,
+  "retry_result": "completed",
+  "retry_allowance_used": true,
+  "on_further_provider_timeout": "Record and stop; no second retry allowance.",
+  "terminal_result": "Stopped after first joint fit hit httpx.ReadTimeout during replay; 0/3 accepted; no further trial/retry."
+}

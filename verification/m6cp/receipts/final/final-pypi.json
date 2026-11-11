@@ -1,0 +1,14 @@
+[
+  {
+    "package": "nocturne-memory",
+    "latest": "0.1.82",
+    "candidate": "0.1.89",
+    "candidate_exists": false
+  },
+  {
+    "package": "nocturne-harness",
+    "latest": "0.1.80",
+    "candidate": "0.1.89",
+    "candidate_exists": false
+  }
+]

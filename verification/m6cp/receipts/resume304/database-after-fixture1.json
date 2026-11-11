@@ -1,0 +1,1473 @@
+{
+  "scorers": [
+    {
+      "version": "m3f-location-v1",
+      "active": false,
+      "params": "{\"tau\": 0.55, \"top_k\": 8, \"budget_pct\": 0.05, \"near_miss_k\": 3, \"budget_tokens\": 3000, \"candidate_pool\": 50, \"_m3f_activation\": {\"migration\": \"0014\", \"requirement\": \"R16\", \"previous_version\": \"v0\"}, \"location_weight\": 0.08, \"never_bias_step\": -0.15, \"quarantine_kills\": 3, \"half_life_hist_days\": 7, \"half_life_time_days\": 14, \"half_life_location_hops\": 2.0}"
+    },
+    {
+      "version": "m3ms-share-v1",
+      "active": false,
+      "params": "{\"tau\": 0.55, \"top_k\": 8, \"near_miss_k\": 3, \"thread_weight\": 0.08, \"candidate_pool\": 50, \"_m3f_activation\": {\"migration\": \"0014\", \"requirement\": \"R16\", \"previous_version\": \"v0\"}, \"location_weight\": 0.08, \"never_bias_step\": -0.15, \"_m3ms_activation\": {\"amendment\": \"A-061\", \"migration\": \"0017\", \"previous_version\": \"m3ti-thread-v1\"}, \"_m3ti_activation\": {\"amendment\": \"A-060\", \"migration\": \"0016\", \"previous_version\": \"m3f-location-v1\"}, \"quarantine_kills\": 3, \"half_life_hist_days\": 7, \"half_life_time_days\": 14, \"memory_context_share\": 0.1, \"half_life_location_hops\": 2.0}"
+    },
+    {
+      "version": "m3ti-thread-v1",
+      "active": false,
+      "params": "{\"tau\": 0.55, \"top_k\": 8, \"budget_pct\": 0.05, \"near_miss_k\": 3, \"budget_tokens\": 3000, \"thread_weight\": 0.08, \"candidate_pool\": 50, \"_m3f_activation\": {\"migration\": \"0014\", \"requirement\": \"R16\", \"previous_version\": \"v0\"}, \"location_weight\": 0.08, \"never_bias_step\": -0.15, \"_m3ti_activation\": {\"amendment\": \"A-060\", \"migration\": \"0016\", \"previous_version\": \"m3f-location-v1\"}, \"quarantine_kills\": 3, \"half_life_hist_days\": 7, \"half_life_time_days\": 14, \"half_life_location_hops\": 2.0}"
+    },
+    {
+      "version": "m3tl-where-v1",
+      "active": true,
+      "params": "{\"tau\": 0.55, \"top_k\": 8, \"near_miss_k\": 3, \"where_weight\": 0.04, \"thread_weight\": 0.08, \"candidate_pool\": 50, \"_m3f_activation\": {\"migration\": \"0014\", \"requirement\": \"R16\", \"previous_version\": \"v0\"}, \"location_weight\": 0.08, \"never_bias_step\": -0.15, \"_m3ms_activation\": {\"amendment\": \"A-061\", \"migration\": \"0017\", \"previous_version\": \"m3ti-thread-v1\"}, \"_m3ti_activation\": {\"amendment\": \"A-060\", \"migration\": \"0016\", \"previous_version\": \"m3f-location-v1\"}, \"_m3tl_activation\": {\"amendment\": \"A-063\", \"migration\": \"0021\", \"previous_version\": \"m3ms-share-v1\"}, \"quarantine_kills\": 3, \"half_life_hist_days\": 7, \"half_life_time_days\": 14, \"memory_context_share\": 0.1, \"half_life_location_hops\": 2.0}"
+    },
+    {
+      "version": "v0",
+      "active": false,
+      "params": "{\"tau\": 0.55, \"top_k\": 8, \"budget_pct\": 0.05, \"near_miss_k\": 3, \"budget_tokens\": 3000, \"candidate_pool\": 50, \"never_bias_step\": -0.15, \"quarantine_kills\": 3, \"half_life_hist_days\": 7, \"half_life_time_days\": 14}"
+    }
+  ],
+  "creation_counts": [
+    {
+      "source": "compaction",
+      "outcome": "created",
+      "count": 9
+    },
+    {
+      "source": "extraction",
+      "outcome": "created",
+      "count": 46
+    },
+    {
+      "source": "unknown",
+      "outcome": "created",
+      "count": 32
+    },
+    {
+      "source": "unknown",
+      "outcome": "zero_injection",
+      "count": 32
+    }
+  ],
+  "feedback_counts": [
+    {
+      "outcome": null,
+      "count": 27
+    }
+  ],
+  "generations": [
+    {
+      "run_uid": "01M75ND7Z862N1SKQMS559E0FF",
+      "loop": "compaction_source",
+      "verdict": "recorded",
+      "challenger_version": null,
+      "challenger_params": null,
+      "backtest_scores": "{}",
+      "corpus_size": 0,
+      "corpus_stratification": "{\"principal_id\": \"nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531\"}"
+    },
+    {
+      "run_uid": "01M75ND82165THF86J70075R95",
+      "loop": "injection_scoring",
+      "verdict": "insufficient_data",
+      "challenger_version": null,
+      "challenger_params": null,
+      "backtest_scores": "{\"train\": {\"reason\": \"Not enough authentic signals yet: 0 / 25 available.\", \"status\": \"not_scored\"}, \"holdout\": {\"reason\": \"Not enough authentic signals yet: 0 / 25 available.\", \"status\": \"not_scored\"}}",
+      "corpus_size": 0,
+      "corpus_stratification": "{\"unit\": \"eligible_disposition\", \"threads\": [], \"max_size\": 1000, \"selected\": 0, \"strategy\": \"thread_round_robin_newest_oldest_v1\", \"available\": 0}"
+    },
+    {
+      "run_uid": "01M75NDS1DWBH2R3WNBDD69GB1",
+      "loop": "compaction_source",
+      "verdict": "recorded",
+      "challenger_version": null,
+      "challenger_params": null,
+      "backtest_scores": "{}",
+      "corpus_size": 0,
+      "corpus_stratification": "{\"principal_id\": \"nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531\"}"
+    },
+    {
+      "run_uid": "01M75NDS37NMF5S9GP4G329J8K",
+      "loop": "injection_scoring",
+      "verdict": "insufficient_data",
+      "challenger_version": null,
+      "challenger_params": null,
+      "backtest_scores": "{\"train\": {\"reason\": \"Not enough authentic signals yet: 0 / 25 available.\", \"status\": \"not_scored\"}, \"holdout\": {\"reason\": \"Not enough authentic signals yet: 0 / 25 available.\", \"status\": \"not_scored\"}}",
+      "corpus_size": 0,
+      "corpus_stratification": "{\"unit\": \"eligible_disposition\", \"threads\": [], \"max_size\": 1000, \"selected\": 0, \"strategy\": \"thread_round_robin_newest_oldest_v1\", \"available\": 0}"
+    }
+  ],
+  "spend": [
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412684-ySbe2xlQNGn39Neatv1M",
+      "usd": "5.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412685-zqOFIx8yNt2gMSSZ4UZB",
+      "usd": "4.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412686-SONF5pJNnZaogcyAAxRa",
+      "usd": "5.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412687-9ubmbdP41yXm3FPAwxXd",
+      "usd": "4.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412687-DwtWrY1ko9GnOu5KxM2O",
+      "usd": "5.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412688-srIBIyegdt2xhjlIQ5ct",
+      "usd": "5.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412691-CFvZbXAYWVCau6XJDGG4",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412692-eifoLaxeQN0OCHlOqhHR",
+      "usd": "2.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412693-ptQ7DRnT5Z3SHW1564k9",
+      "usd": "2.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412694-UIE2gZvHIgYlkeRnXBlL",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412696-KxXzjStyNG2twcMpfioh",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412696-n3UCWoIo8sQe9xzuSuRI",
+      "usd": "2.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412696-XS4xFzosVZZbHO8Re7nn",
+      "usd": "2.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412697-1pIjJ0PHvT7NWtQzXlPe",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412701-hJNh7208OmIFtDf3XSVc",
+      "usd": "3.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412702-Hjm4fqkj9vlDQ4SO5XCo",
+      "usd": "7.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412703-TFKXXEoX0c7wJ6SOsO6D",
+      "usd": "5.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412704-XsmhgUSBGsmORcOAq2it",
+      "usd": "3.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412705-GPZrMVgR9F93x7Cfyw2b",
+      "usd": "7.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412705-SU1YNWFQiCmmQbeCj4Pd",
+      "usd": "5.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412708-8Wonjx9c2SZJri3SDMCy",
+      "usd": "0.000001080000"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412708-qWmWLYJShWs5YO4XCNBi",
+      "usd": "4.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412708-yAxVD7XlSrV4eJrsUqwU",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412709-I3yFA9lIwWUkU98g7SGs",
+      "usd": "3.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412709-sGukN8H2TcoQWWQ268EQ",
+      "usd": "3.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412709-WXsVEdbdlZDQ9boHE1hL",
+      "usd": "3.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412710-acMYKqfT4KzKxOfpWHM3",
+      "usd": "3.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412710-k0Nu99HtyxwpSuFYH48q",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412710-mc2kALheb98I1RjarftC",
+      "usd": "3.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412710-t6hDoMgOpaNDwnh0Oh5n",
+      "usd": "3.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412711-6o62ijXd8llMIDJf3a0O",
+      "usd": "2.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412711-dbGOKfM8tCnKU5B4366S",
+      "usd": "4.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412711-dEi6LVPkMsDI7BNIzEAi",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412712-2QYBZFo0vB4kXCvS1V0C",
+      "usd": "2.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412712-jqOxtbsTs3BCeoed5vWx",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412712-P3Agle0glBqv6jqf7q0Y",
+      "usd": "0.000001080000"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412712-YLpDNgKsi9zs5p6OnNZL",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412713-gwEbunMjnxuOn3zeCd5S",
+      "usd": "4.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412713-jvcPdRq3vtUCTsizCAke",
+      "usd": "3.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412713-Q8kTSZRbpV6xVOMQelU2",
+      "usd": "2.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412713-SPytNoAhnOYbthFCYl5Z",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412713-yJmndWpSKHvOYbaiVvHJ",
+      "usd": "3.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412714-CcnOUIodDTECFXEqW8XP",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412714-feRbfz6mqaY4B3z82xIq",
+      "usd": "2.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412715-hgu2BoOLFZjCzL6GfOuB",
+      "usd": "3.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412715-uc2KugWmE17zlzfMKhta",
+      "usd": "3.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412715-WQuZducRbi411Ov6Iz3t",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412716-5VPHDtj5YcTKcAZKS4VY",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412716-bkfK7TnNrgJaKB4z6ZlI",
+      "usd": "2.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412717-eJSj7Uiyeb0scxXdkI7U",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412718-AMUzPwULsPrMci8JR8Ts",
+      "usd": "2.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412718-cv8jYtU2nT2YnvnJHbJR",
+      "usd": "3.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412718-ZyeiUbwfv9EZCzez7KaD",
+      "usd": "6.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412719-7YsIubmZ4E9d9orMUz7c",
+      "usd": "3.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412719-AxbG4pGHoEIi8QTygCME",
+      "usd": "2.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412719-vchnUXrxvT2B8b34LaKf",
+      "usd": "2.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412719-YjHT5p3ggT2TcAh07eHM",
+      "usd": "2.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412720-8oPZOmxQatBZyxOBwKwH",
+      "usd": "4.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412720-AKpFxUrW9usabBnPFcw0",
+      "usd": "1.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412720-hhtQ4CEDJU2sIJi7THiq",
+      "usd": "2.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412720-i1wKCt4eiLvFDLhwDa0D",
+      "usd": "3.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412721-FbM9U0TWm1NI2AQU4BYq",
+      "usd": "2.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412721-VAhIzfuXfFdGbFVZOJ0q",
+      "usd": "3.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412722-s6ca32ZA4mjU0G1udtbb",
+      "usd": "5.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412724-B3bhPlTeDEVBVqscKy6a",
+      "usd": "6.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412724-xR5rZ2q7MgqroLR8rMzD",
+      "usd": "5.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412724-yiwSYkCIsETVtMG3BT6d",
+      "usd": "6.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412738-41YvUSsO0X2Nj4tszPMF",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412739-B2lUWHF36i4ppBZ4sA2z",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412740-aUw5yk5i24UMNydCfa2e",
+      "usd": "1.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412742-InfhN9HWIzDYkZugjJ96",
+      "usd": "1.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412743-2nIsonEBrWH14XOlNCFe",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412744-MseOqyuvxJVrUThn5cuo",
+      "usd": "5.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412745-4SKJuuY5ZCQHPrmgpzew",
+      "usd": "5.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412746-rChICevpsPtNtpHFNnST",
+      "usd": "4.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412747-tx6ChVhJBqrcoEXdOpRc",
+      "usd": "7.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412748-bvHgMfSqpMvUBS6PsMKA",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412748-WdFVyLHkNieMMMI8JS79",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412749-93XuxgQ74gO0Xvw3cZml",
+      "usd": "1.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412749-iG67tzez2O4XE4QhKbzS",
+      "usd": "1.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412750-At7hijKlMzphYd2Takw1",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412750-PVhnXV9il5SfVtyWRha5",
+      "usd": "5.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412750-U679zQLKS0Xw7GixY5fl",
+      "usd": "5.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412751-7MrcAQ1Qp6oHLJN75o5v",
+      "usd": "4.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412751-HhNvmVzVgeXjhVgPKz06",
+      "usd": "7.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412753-cpIil1Gr62krpgPr6o15",
+      "usd": "1.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412757-cZ8VU9wzqDOnNQIKzOTB",
+      "usd": "5.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412758-1iXSErS3FuQADeXBTrDh",
+      "usd": "6.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412758-q9t77CPVrEcNnu8iAAfq",
+      "usd": "0.000001040000"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412758-z56UCCqbzJBrSrBMW08J",
+      "usd": "0.000001040000"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412759-EWAJbK7L75y74xAOctvz",
+      "usd": "4.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412760-tbN9vkQjpVviBJ085MeG",
+      "usd": "0.000001040000"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412761-ZTDqSSrjkrvsUFIF6ZAX",
+      "usd": "3.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412762-Dn4dXJLiT4JxfRsklBsi",
+      "usd": "4.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412764-jRMlIGZNqF1zi8vGBqtS",
+      "usd": "4.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412765-imWwKHEF6oTS6UGUbX5d",
+      "usd": "7.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412766-dHjvbpbQxLRcw9h03vVp",
+      "usd": "4.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412767-2O5wqxvsjtAV5zwvR8tG",
+      "usd": "7.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412767-ddsw8YsJzR3grAYD6uqs",
+      "usd": "4.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412770-yKJAaKnFcCvTd8oShVg8",
+      "usd": "8.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412772-DeZgWVtp6swjoanKXyS2",
+      "usd": "8.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412773-H0sLeVFRLYMKYz72syzN",
+      "usd": "6.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412774-9hnbnPQVDckEsePVwQtp",
+      "usd": "0.000001040000"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412798-TjhvGhNBorn3Kdin8bAY",
+      "usd": "1.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412799-Ba69vI1g9JOOGe9DqsZR",
+      "usd": "1.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412799-yDeq000bXFyRXAl2hy8b",
+      "usd": "4.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412800-N6kcMm4rA8tYPxNL19Fu",
+      "usd": "4.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412800-pZjFhw6D4SPL7im6DlKr",
+      "usd": "4.0000E-8"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412803-dw8Orgj8HWKJfFxMQkMf",
+      "usd": "1.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412805-lo6pxfq9M7c0My3iksH3",
+      "usd": "2.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412806-574z3NlrU3j3EKA5y8lv",
+      "usd": "2.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412806-dwxObDrIc3zi05yqMmTL",
+      "usd": "8.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412806-wAfOQiyZGm6BhOCK2C6e",
+      "usd": "8.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412806-xYdntRce5DoL1cIHAysu",
+      "usd": "8.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412807-WzpB0jqhFXVcRrfYBzg7",
+      "usd": "6.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412808-aYuCuBPZvsG5rNQ921Jt",
+      "usd": "2.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412810-f6wazskUhrGrF10gwSZb",
+      "usd": "3.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412811-4LU3V7VpAt0srqcLDUir",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412811-ObgJf7Xg0iVct5IYGSay",
+      "usd": "3.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412812-4w1kE72A5mFkonxiKiVU",
+      "usd": "2.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412812-lveTYl5sR4xYjhFgyQJ3",
+      "usd": "1.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412813-BqT5BkLzgnB5T9s5yYR8",
+      "usd": "2.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412813-lHthCFMuu4BLTocSaShW",
+      "usd": "2.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412814-gQedrZl3Px82yh0FnSOR",
+      "usd": "3.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412814-o1BwKZrHuKwQR32DAah1",
+      "usd": "8.0000E-8"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412814-uz53fogm3weJjIjGvv7n",
+      "usd": "4.0000E-8"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412815-n1oksB0I1uwcOPOxLAxo",
+      "usd": "8.0000E-8"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412816-6oXRt9NswwxkB4aLUnRa",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412816-kZfBaUi6PBIj9s1rCx4q",
+      "usd": "1.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412816-XOHhxy8IPgqeczZ7Ibaw",
+      "usd": "1.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412817-DhkKQ8V2vk5YOAlDkl8G",
+      "usd": "3.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412818-7GTlpsVCs75jLxslRC0K",
+      "usd": "3.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412818-i7KaGkJe9lGmjhL4aQIf",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412819-1PisasFKZfUdPm5mRRS1",
+      "usd": "8.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412819-bn4MDxaQif2mCtzvOXOV",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412820-9WewxyNSPFiK21aaDY08",
+      "usd": "2.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412822-rfxUpDpYRrYU0ckkyNXW",
+      "usd": "3.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412823-bQLAMlxc98oAKmeMzRTR",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412823-G7PTwlqsSTAyYyULY2hw",
+      "usd": "5.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412824-1Aq7n2Uj0NHCgFgqQ7To",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412824-duiTJcanXTB7Nl8bPIAH",
+      "usd": "1.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412824-xmuFNjD49t5nPfD6il68",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412825-RQaTshOfwkNvPPmcwNBG",
+      "usd": "2.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412825-sHtOeMeBfG61qrnkoaH9",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412825-UbgBIiQtXME9XNzCR6dc",
+      "usd": "2.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412826-m7vM76UATYfZi3xv6N2Q",
+      "usd": "3.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412826-XW8zRIHjC19onfAs2Ymr",
+      "usd": "5.80000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412827-74vQpIJQ3Sq5C9NeAhoZ",
+      "usd": "2.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412828-LnlOYFfdSZs6gCnlh5Yj",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412829-7mMCqY1HgRdsNLNdqhm4",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412830-CKmf4nEflBE79cSv0n3A",
+      "usd": "2.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412830-kUpUkTf5SDgvtubl5AfC",
+      "usd": "3.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412830-sYhsKfPLHRZYncm74ueA",
+      "usd": "1.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412831-2uywSrncXdtM5PrliVfh",
+      "usd": "2.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412831-gr9ixK6mGrViyCIV97LC",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412831-z2HYhHEt1gucU2zsvJ8r",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412832-PItnowKttpuld6fP1BTZ",
+      "usd": "2.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412834-9KlLbqIH7khJCSHD6DbI",
+      "usd": "3.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412834-irRZZsLsXziX0svVC7yk",
+      "usd": "1.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412834-luU9pcsghPyh4ui5jUTg",
+      "usd": "1.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412834-ubrbDaqw3rRgfmlemlD7",
+      "usd": "8.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412835-EXcPQpmjcUET7FkOhnGM",
+      "usd": "4.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412836-5QQ2Zr5c34YXh0BLSUNx",
+      "usd": "3.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412836-BLf3cv5vIXUu7IbdcN2m",
+      "usd": "2.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412837-4FrWaIBLN2xgZJpHNZZz",
+      "usd": "2.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412837-L0Kf8W2Lli7ltaba8yky",
+      "usd": "3.00000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412837-lv7j8WNN3hjTEuRu2RoB",
+      "usd": "4.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412841-pdUuZTeJrQ7FiYwmiRTb",
+      "usd": "5.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412843-RC2WNbjaoVgKrW64bCUj",
+      "usd": "4.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412844-BKwrPyiWcSwwO9UiAZxa",
+      "usd": "6.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412846-9L8WGqF0mBjBAQ6bvXj4",
+      "usd": "4.60000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412849-pC3ART5Yk6IZmrMLcMFZ",
+      "usd": "4.40000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412851-eaZLQ93yWig1zrraXD7h",
+      "usd": "5.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412852-bRMrGWjLbMrqAeYBU2H2",
+      "usd": "6.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412853-H9gVwtW3IU5fgQ28IbGe",
+      "usd": "5.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412854-OOtV14DZLw806pMlcEsm",
+      "usd": "5.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412854-Yy8TaVubq4gLXh8BfQLF",
+      "usd": "6.20000E-7"
+    },
+    {
+      "product_type": "llm.embedding",
+      "purpose": "embedding",
+      "ref": "gen-emb-1794412857-Kd7YENuefftVgXMIu2Vv",
+      "usd": "5.00000E-7"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "building",
+      "ref": "gen-1794412758-UJWcBzTt96I1iXv5CwvM",
+      "usd": "0.000962000000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "building",
+      "ref": "gen-1794412831-3nscfS79Bk8GAXKcFAG9",
+      "usd": "0.000996800000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:0",
+      "usd": "0.000602800000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:1",
+      "usd": "0.000578800000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:10",
+      "usd": "0.000512000000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:11",
+      "usd": "0.000499600000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:12",
+      "usd": "0.000499600000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:13",
+      "usd": "0.000469600000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:14",
+      "usd": "0.000471600000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:15",
+      "usd": "0.000493600000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:16",
+      "usd": "0.000484400000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:17",
+      "usd": "0.000499200000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:18",
+      "usd": "0.000460400000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:19",
+      "usd": "0.000478000000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:2",
+      "usd": "0.000600800000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:20",
+      "usd": "0.000526000000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:21",
+      "usd": "0.000476800000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:22",
+      "usd": "0.000491600000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:23",
+      "usd": "0.000476400000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:24",
+      "usd": "0.000509200000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:25",
+      "usd": "0.000490400000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:26",
+      "usd": "0.000484000000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:27",
+      "usd": "0.000503200000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:28",
+      "usd": "0.000492000000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:29",
+      "usd": "0.000497600000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:3",
+      "usd": "0.000615600000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:30",
+      "usd": "0.000495200000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:31",
+      "usd": "0.000508400000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:32",
+      "usd": "0.000491200000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:4",
+      "usd": "0.000609200000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:5",
+      "usd": "0.000601200000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:6",
+      "usd": "0.000490400000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:7",
+      "usd": "0.000497600000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:8",
+      "usd": "0.000486400000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "curation",
+      "ref": "curator:01M75NABANAW9Y6WY9G8964F4Y:9",
+      "usd": "0.000498800000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "extraction",
+      "ref": "gen-1794412801-canoNNFgjg3Kh5QGTbCP",
+      "usd": "0.000832400000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "extraction",
+      "ref": "gen-1794412804-Dl3UpJobnAlh1ROCdHKc",
+      "usd": "0.000280800000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "extraction",
+      "ref": "gen-1794412806-XxJ3hjev89IRptez3Ivi",
+      "usd": "0.000278800000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "extraction",
+      "ref": "gen-1794412807-Z2ZXdU7PVhZEaW6anKK0",
+      "usd": "0.000283600000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "extraction",
+      "ref": "gen-1794412810-Nz8BmZ15rUzJuW0IIwsX",
+      "usd": "0.000280000000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "extraction",
+      "ref": "gen-1794412811-rlK6Iexn30oSCBALk6sq",
+      "usd": "0.000283600000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "extraction",
+      "ref": "gen-1794412817-gOjBUm9d7ibSlRPoqcnw",
+      "usd": "0.000217200000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "extraction",
+      "ref": "gen-1794412819-HiiQhW2OTySsAdmjW35o",
+      "usd": "0.001160800000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "extraction",
+      "ref": "gen-1794412823-oHozLTULaU0t8KlwlbS3",
+      "usd": "0.000284800000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "extraction",
+      "ref": "gen-1794412824-hcqt8E5djHZaSOpltdDZ",
+      "usd": "0.000283600000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "extraction",
+      "ref": "gen-1794412826-GlQZLyqDGC8s7jz4ou2k",
+      "usd": "0.000287600000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "extraction",
+      "ref": "gen-1794412827-CapxDZMPaWht6PvUjMvC",
+      "usd": "0.000285600000"
+    },
+    {
+      "product_type": "llm.request",
+      "purpose": "extraction",
+      "ref": "gen-1794412828-pYZDPEGfgST5qaS2Q75t",
+      "usd": "0.000284400000"
+    }
+  ],
+  "model_spend": [
+    {
+      "model": "openai/gpt-4.1-mini",
+      "product_type": "llm.request",
+      "lines": 63,
+      "usd": "0.023893600000",
+      "unpriced": 0
+    },
+    {
+      "model": "text-embedding-3-small",
+      "product_type": "llm.embedding",
+      "lines": 178,
+      "usd": "0.000070280000",
+      "unpriced": 0
+    }
+  ]
+}
