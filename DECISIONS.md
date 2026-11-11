@@ -1531,3 +1531,10 @@ PRECEDENT: PLAN M7WB; SD-092; A-069, A-084; ADR-015.
 (digest, tools, key names, written by the Harness at save). Both live in the A-069 definition
 instead of new columns, so the per-run definition copy keeps the digest a run used and no
 migration is needed. API contract 0.1.92.
+
+## M7TG — Paired packaging only [P4]
+
+PRECEDENT: PLAN M7TG; ADR-019 lockstep packaging; M7LF.
+Memory moves to package 0.1.93 beside Harness. Targets, SSH transport and release
+records belong to each Harness host; no Memory API, schema or contract fingerprint
+changes. API contract 0.1.92 remains separate from the package version.

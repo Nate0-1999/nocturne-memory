@@ -4060,10 +4060,10 @@
       "section": "14. Scheduling, automation and managed agents",
       "era": "founding",
       "label": "Managed agents: the harness in the cloud accessed from clients, or local, or both; an agent's file system moving between cloud and local easily.",
-      "status": "horizon",
-      "walk": "Pull an agent's file system from the cloud down to a local machine; the agent continues its work there with the same files.",
+      "status": "built",
+      "walk": "Build a workflow bundle locally with a skill, sealed tool, vault key name and cron. Push it to an SSH stage host with its own local Palace, then promote its proven digest to production. Both hosts run the same product version and prove the existing exit check before enabling; a failed candidate keeps the prior release. Inspect local, stage and production in Jobs. This is bundle delivery between hosts, not migration of an active conversation.",
       "owner": "owner — \"The idea of \"managed agents\" are you familiar. Does it make sense for the entire harness to live in the cloud and we just access it from client machines or do you think that the local harness pattern makes sense. I would image that we might want both if local models become stronger.\" (first thread turn 13; first thread turn 14) — HORIZON per B.4 (M4 fleet expansion / M5 blue-water), gate 2026-09-16",
-      "surfaces": []
+      "surfaces": ["harness/src/harness/targets.py", "harness/web/src/JobsModule.tsx"]
     },
     {
       "id": "FL-181",
@@ -4786,6 +4786,46 @@
         "flag": "",
         "screenshot": "FL-210.png"
       }
+    },
+    {
+      "id": "FL-211",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "Nov 11",
+      "label": "SSH targets run the same product version, each with its own local Palace; initialization starts the localhost service and runs doctor.",
+      "status": "built",
+      "walk": "Add stage and prod by SSH address. Initialize both hosts at the sender's version, inspect healthy doctor and verification identities, and inspect nocturne targets and the Jobs tier view. A version mismatch names the older side and never downgrades.",
+      "owner": "owner 2026-11-10, SD-092; PLAN M7TG (1)(4).",
+      "surfaces": ["harness/src/harness/targets.py", "harness/src/harness/onboarding.py", "harness/src/harness/cli.py", "harness/docs/ssh-targets.md", "harness/tests/test_lifecycle_matrix.py"]
+    },
+    {
+      "id": "FL-212",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "Nov 11",
+      "label": "Push proves a disabled candidate before enabling its trigger; failure keeps the previous proven digest enabled and key values never enter the bundle or transcript.",
+      "status": "built",
+      "walk": "Push a bundle with skill, sealed tool, vault key name and cron to stage. Its proof run carries the same definition.bundle.digest and passes before its trigger enables. Push a broken change: record FAIL while the prior digest remains enabled. Scan bundles, transcripts, logs, captures and the Palace database on all three machines for the fixture key value; only the vault holds it.",
+      "owner": "owner 2026-11-10, SD-092; PLAN M7TG (2).",
+      "surfaces": ["harness/src/harness/targets.py", "harness/src/harness/jobs.py", "harness/web/src/JobsModule.tsx"]
+    },
+    {
+      "id": "FL-213",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "Nov 11",
+      "label": "Promote sends only stage's enabled digest whose last proof for that digest passed; production proves the same bytes before enabling.",
+      "status": "built",
+      "walk": "After a stage PASS, edit the local bundle and promote: production proves the unchanged stage digest. Try promoting a workflow with an unproven local digest: refuse without a production release. Inspect production's saved run digest and the Jobs tiers.",
+      "owner": "owner 2026-11-10, SD-092; PLAN M7TG (3).",
+      "surfaces": ["harness/src/harness/targets.py", "harness/web/src/JobsModule.tsx", "harness/web/src/rack.tsx"]
+    },
+    {
+      "id": "FL-214",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "Nov 11",
+      "label": "Rollback re-enables the previous proven digest; the host retains an append-only release log naming digest, verdict, time and source.",
+      "status": "built",
+      "walk": "Prove and enable two releases on production, then rollback. Verify the first proven digest is enabled without another model run and the log preserves both proofs, both activations and rollback with their digest, verdict, time and source. Inspect nocturne targets and Jobs.",
+      "owner": "owner 2026-11-10, SD-092; PLAN M7TG (3)(4).",
+      "surfaces": ["harness/src/harness/targets.py", "harness/tests/test_lifecycle_matrix.py"]
     }
   ]
 }
