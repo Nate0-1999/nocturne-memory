@@ -1370,9 +1370,9 @@
       ],
       "last_walk": {
         "packet": "M6CP",
-        "date": "2026-11-09",
-        "verdict": "FAIL",
-        "flag": "F169",
+        "date": "2026-11-11",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-061.png"
       }
     },
@@ -1424,7 +1424,7 @@
       "section": "4. Learning and training loops",
       "era": "gate-day",
       "label": "Constitution: Per-project weight offsets starting at zero, after global weights (founding ADR-005 / SD-041).",
-      "status": "partial",
+      "status": "built",
       "walk": "Train on two projects; each project's effective weights differ from the global ones by its own offset.",
       "owner": "constitution",
       "surfaces": [
@@ -1433,10 +1433,10 @@
         "spine/src/spine/inject/scorer.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F152",
+        "packet": "M6LP",
+        "date": "2026-11-09",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-064.png"
       }
     },
@@ -3079,7 +3079,7 @@
       "section": "9. Visualization",
       "era": "Aug 3",
       "label": "A line graph of the injection system's historical performance; a 3D terrain of the score surface across parameters; the optimization shown while it runs (the landscape module is this terrain, placed beside the curators).",
-      "status": "partial",
+      "status": "built",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Open the module during a retrain; a line graph of the score's history, a 3D terrain of the score across parameters, and the running optimization are all shown.",
       "owner": "owner — \"I like this I'm imagine a module with the historical performance of the visulizer as a line graph every manual adjust ment should lower the score then whenever the retrain happens the score goes back up.\" (chat 2026-08-03 20:32:37)",
       "surfaces": [
@@ -3088,10 +3088,10 @@
         "spine/src/spine/learner/service.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F152",
+        "packet": "M6LP",
+        "date": "2026-11-09",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-137.png"
       }
     },
@@ -3409,7 +3409,14 @@
         "harness/web/src/AgentPolicies.tsx",
         "harness/web/src/ModelDevice.tsx",
         "harness/web/src/modelBrowser.ts"
-      ]
+      ],
+      "last_walk": {
+        "packet": "M6MS",
+        "date": "2026-11-09",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-152.png"
+      }
     },
     {
       "id": "FL-153",
@@ -3425,7 +3432,14 @@
         "harness/web/src/AgentPolicies.tsx",
         "harness/web/src/ModelDevice.tsx",
         "harness/web/src/modelBrowser.ts"
-      ]
+      ],
+      "last_walk": {
+        "packet": "M6MS",
+        "date": "2026-11-09",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-153.png"
+      }
     },
     {
       "id": "FL-154",
@@ -3480,10 +3494,23 @@
       "section": "11. Spend, money and model routing",
       "era": "Jul 28",
       "label": "Constitution: daily reconciliation of the spend ledger against the cloud invoice with drift alerts, and a memory id on the ledger for cost-versus-earned (cost-attribution packet).",
-      "status": "not built",
+      "status": "built",
       "walk": "Open the spend module's reconciliation row after a day's run; it shows the ledger total beside the invoice total and the drift between them.",
       "owner": "constitution",
-      "surfaces": []
+      "surfaces": [
+        "spine/src/spine/spend/reconciliation.py",
+        "spine/src/spine/vitals/service.py",
+        "harness/web/src/SpendHistory.tsx",
+        "harness/web/src/SpendStrip.tsx",
+        "harness/web/src/vitals.ts"
+      ],
+      "last_walk": {
+        "packet": "M6SP",
+        "date": "2026-10-29",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-156.png"
+      }
     },
     {
       "id": "FL-157",
@@ -3599,20 +3626,43 @@
       "section": "11. Spend, money and model routing",
       "era": "Jul 28",
       "label": "Ableton-style line graphs at the bottom showing spend per unit of time for agents, sub-agents, model, memory curation and total.",
-      "status": "not built",
+      "status": "built",
       "walk": "Open the bottom strip; line graphs show spend per unit of time with one line each for agents, sub-agents, model, memory curation and total.",
       "owner": "owner — \"I'm thinking at the bottom, remember looking like and functioning a bit like ableton we should have a coupel of line graphs that show spend per unit of time for agents, sub agents, model, memory curation, total etc. It would be a cool dashboard and usable!\" (chat 2026-07-28 00:14:39)",
-      "surfaces": []
+      "surfaces": [
+        "spine/src/spine/spend/service.py",
+        "harness/web/src/SpendHistory.tsx",
+        "harness/web/src/spendTable.ts"
+      ],
+      "last_walk": {
+        "packet": "M6SP",
+        "date": "2026-10-29",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-160.png"
+      }
     },
     {
       "id": "FL-161",
       "section": "11. Spend, money and model routing",
       "era": "gate-day",
       "label": "Constitution: a cache-efficiency view showing that cache-sticky routing pays off (gate-day).",
-      "status": "not built",
+      "status": "built",
       "walk": "Open the cache-efficiency view for a thread; it shows cached tokens against fresh tokens across the thread's messages.",
       "owner": "constitution",
-      "surfaces": []
+      "surfaces": [
+        "spine/src/spine/spend/service.py",
+        "harness/web/src/SpendHistory.tsx",
+        "harness/web/src/spendTable.ts",
+        "harness/web/src/VitalsModule.tsx"
+      ],
+      "last_walk": {
+        "packet": "M6SP",
+        "date": "2026-10-29",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-161.png"
+      }
     },
     {
       "id": "FL-162",
@@ -4536,8 +4586,8 @@
       ],
       "protected": true,
       "last_walk": {
-        "packet": "M4W1B",
-        "date": "2026-10-14",
+        "packet": "M6MS",
+        "date": "2026-11-09",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-202.png"
@@ -4599,8 +4649,8 @@
       ],
       "protected": true,
       "last_walk": {
-        "packet": "M4W1B",
-        "date": "2026-10-14",
+        "packet": "M6MS",
+        "date": "2026-11-09",
         "verdict": "FAIL",
         "flag": "F203",
         "screenshot": "FL-205.png"
@@ -4627,7 +4677,14 @@
         "harness/src/harness/transcript.py",
         "harness/src/harness/daemon.py",
         "spine/src/spine/model_policy.py"
-      ]
+      ],
+      "last_walk": {
+        "packet": "M6MS",
+        "date": "2026-11-09",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-206.png"
+      }
     },
     {
       "id": "FL-207",

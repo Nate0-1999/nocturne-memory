@@ -1495,6 +1495,10 @@ and carries improved instructions and size in the same scorer proposal and activ
 Read-only previews roll back proposed scorer writes and retain a receipt. M6LP handed
 off before this integration. API label 0.1.91 composes its schema; package pair 0.1.89
 follows its 0.1.88 pair. Every positive size within the existing 128-token cap is valid.
+F169: a fit is many provider calls in a row, and one stalled request failed all of it.
+A back-test request (model or embedding) that times out or answers 429/5xx now goes back
+once (v2.133's convention), never twice. The failed attempt returned no cost and gets no
+receipt; the model retry's receipt names it (`went_back_after`).
 
 ## M6LP — Project floors and observable fits [P1.2, P2.5]
 
