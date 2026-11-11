@@ -1370,9 +1370,9 @@
       ],
       "last_walk": {
         "packet": "M6CP",
-        "date": "2026-11-09",
-        "verdict": "FAIL",
-        "flag": "F169",
+        "date": "2026-11-11",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-061.png"
       }
     },
@@ -1424,7 +1424,7 @@
       "section": "4. Learning and training loops",
       "era": "gate-day",
       "label": "Constitution: Per-project weight offsets starting at zero, after global weights (founding ADR-005 / SD-041).",
-      "status": "partial",
+      "status": "built",
       "walk": "Train on two projects; each project's effective weights differ from the global ones by its own offset.",
       "owner": "constitution",
       "surfaces": [
@@ -1433,10 +1433,10 @@
         "spine/src/spine/inject/scorer.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F152",
+        "packet": "M6LP",
+        "date": "2026-11-09",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-064.png"
       }
     },
@@ -3079,7 +3079,7 @@
       "section": "9. Visualization",
       "era": "Aug 3",
       "label": "A line graph of the injection system's historical performance; a 3D terrain of the score surface across parameters; the optimization shown while it runs (the landscape module is this terrain, placed beside the curators).",
-      "status": "partial",
+      "status": "built",
       "walk": "M3WF fixture (harness/verification/m3wf/README.md): Open the module during a retrain; a line graph of the score's history, a 3D terrain of the score across parameters, and the running optimization are all shown.",
       "owner": "owner — \"I like this I'm imagine a module with the historical performance of the visulizer as a line graph every manual adjust ment should lower the score then whenever the retrain happens the score goes back up.\" (chat 2026-08-03 20:32:37)",
       "surfaces": [
@@ -3088,10 +3088,10 @@
         "spine/src/spine/learner/service.py"
       ],
       "last_walk": {
-        "packet": "M3W5A+M3W5B",
-        "date": "2026-09-30",
-        "verdict": "FAIL",
-        "flag": "F152",
+        "packet": "M6LP",
+        "date": "2026-11-09",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-137.png"
       }
     },
@@ -3409,7 +3409,14 @@
         "harness/web/src/AgentPolicies.tsx",
         "harness/web/src/ModelDevice.tsx",
         "harness/web/src/modelBrowser.ts"
-      ]
+      ],
+      "last_walk": {
+        "packet": "M6MS",
+        "date": "2026-11-09",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-152.png"
+      }
     },
     {
       "id": "FL-153",
@@ -3425,7 +3432,14 @@
         "harness/web/src/AgentPolicies.tsx",
         "harness/web/src/ModelDevice.tsx",
         "harness/web/src/modelBrowser.ts"
-      ]
+      ],
+      "last_walk": {
+        "packet": "M6MS",
+        "date": "2026-11-09",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-153.png"
+      }
     },
     {
       "id": "FL-154",
@@ -3480,10 +3494,23 @@
       "section": "11. Spend, money and model routing",
       "era": "Jul 28",
       "label": "Constitution: daily reconciliation of the spend ledger against the cloud invoice with drift alerts, and a memory id on the ledger for cost-versus-earned (cost-attribution packet).",
-      "status": "not built",
+      "status": "built",
       "walk": "Open the spend module's reconciliation row after a day's run; it shows the ledger total beside the invoice total and the drift between them.",
       "owner": "constitution",
-      "surfaces": []
+      "surfaces": [
+        "spine/src/spine/spend/reconciliation.py",
+        "spine/src/spine/vitals/service.py",
+        "harness/web/src/SpendHistory.tsx",
+        "harness/web/src/SpendStrip.tsx",
+        "harness/web/src/vitals.ts"
+      ],
+      "last_walk": {
+        "packet": "M6SP",
+        "date": "2026-10-29",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-156.png"
+      }
     },
     {
       "id": "FL-157",
@@ -3599,20 +3626,43 @@
       "section": "11. Spend, money and model routing",
       "era": "Jul 28",
       "label": "Ableton-style line graphs at the bottom showing spend per unit of time for agents, sub-agents, model, memory curation and total.",
-      "status": "not built",
+      "status": "built",
       "walk": "Open the bottom strip; line graphs show spend per unit of time with one line each for agents, sub-agents, model, memory curation and total.",
       "owner": "owner — \"I'm thinking at the bottom, remember looking like and functioning a bit like ableton we should have a coupel of line graphs that show spend per unit of time for agents, sub agents, model, memory curation, total etc. It would be a cool dashboard and usable!\" (chat 2026-07-28 00:14:39)",
-      "surfaces": []
+      "surfaces": [
+        "spine/src/spine/spend/service.py",
+        "harness/web/src/SpendHistory.tsx",
+        "harness/web/src/spendTable.ts"
+      ],
+      "last_walk": {
+        "packet": "M6SP",
+        "date": "2026-10-29",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-160.png"
+      }
     },
     {
       "id": "FL-161",
       "section": "11. Spend, money and model routing",
       "era": "gate-day",
       "label": "Constitution: a cache-efficiency view showing that cache-sticky routing pays off (gate-day).",
-      "status": "not built",
+      "status": "built",
       "walk": "Open the cache-efficiency view for a thread; it shows cached tokens against fresh tokens across the thread's messages.",
       "owner": "constitution",
-      "surfaces": []
+      "surfaces": [
+        "spine/src/spine/spend/service.py",
+        "harness/web/src/SpendHistory.tsx",
+        "harness/web/src/spendTable.ts",
+        "harness/web/src/VitalsModule.tsx"
+      ],
+      "last_walk": {
+        "packet": "M6SP",
+        "date": "2026-10-29",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-161.png"
+      }
     },
     {
       "id": "FL-162",
@@ -4116,10 +4166,16 @@
       "section": "14. Scheduling, automation and managed agents",
       "era": "Sep 9",
       "label": "Managed agents, local or in the cloud, with the best way to do this still to be thought through.",
-      "status": "horizon",
-      "walk": "No walk until a packet gives it a shape.",
+      "status": "partial",
+      "walk": "The local half has its shape, the workflow bundle (M7WB): save a bundle folder that carries a skill, a tool and a cron line; the local daemon runs it on its schedule with nobody steering, its tool running with its vault key, and the Jobs module shows the bundle's digest and each run's outcome. The cloud half — the same bundle pushed to a stage and a prod host — is FL-180 (M7TG).",
       "owner": "owner — \"Think managed agents local or in the cloud etc. What the best way to do this is.\" (chat 2026-09-10 00:49:18)",
-      "surfaces": []
+      "surfaces": [
+        "harness/src/harness/bundle.py",
+        "harness/src/harness/jobs.py",
+        "harness/src/harness/jobs_cli.py",
+        "harness/web/src/JobsModule.tsx",
+        "spine/src/spine/jobs.py"
+      ]
     },
     {
       "id": "FL-186",
@@ -4530,8 +4586,8 @@
       ],
       "protected": true,
       "last_walk": {
-        "packet": "M4W1B",
-        "date": "2026-10-14",
+        "packet": "M6MS",
+        "date": "2026-11-09",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-202.png"
@@ -4593,8 +4649,8 @@
       ],
       "protected": true,
       "last_walk": {
-        "packet": "M4W1B",
-        "date": "2026-10-14",
+        "packet": "M6MS",
+        "date": "2026-11-09",
         "verdict": "FAIL",
         "flag": "F203",
         "screenshot": "FL-205.png"
@@ -4621,6 +4677,63 @@
         "harness/src/harness/transcript.py",
         "harness/src/harness/daemon.py",
         "spine/src/spine/model_policy.py"
+      ],
+      "last_walk": {
+        "packet": "M6MS",
+        "date": "2026-11-09",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-206.png"
+      }
+    },
+    {
+      "id": "FL-207",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "Nov 11",
+      "label": "A workflow is a folder — the bundle: its recipe, its skills, its tools and the names of its keys — that checks, packs to one archive with a digest, and saves as a job carrying that digest.",
+      "status": "built",
+      "walk": "`nocturne workflow new <folder>` makes the folder. Add a SKILL.md folder under .agents/skills, an executable under tools, a key name in keys.example and a cron line in workflow.json. `nocturne workflow check <folder>` refuses until the vault holds the named key, then lists the tool with its --help line, the key name and the digest. `nocturne workflow pack <folder>` from two different folders writes the same .tar bytes, whose sha256 is the digest. `nocturne jobs save <folder>` records the digest on the job; the Jobs module's row reads 'bundle <digest head>' and its detail shows the digest, the tools and the key names (names only). The run's tool inventory lists the bundle's skill.",
+      "owner": "owner 2026-11-10 (SD-092): \"if i create a collection of skills, keys (in a vault .env file), tools (code that i don't want the agent building at run time because I think its to hard), and a chron or reaction based trigger i should be able to just build workflows that to do tasks … less build the thing focus but run the thing focused.\"",
+      "surfaces": [
+        "harness/src/harness/bundle.py",
+        "harness/src/harness/jobs_cli.py",
+        "harness/src/harness/cli.py",
+        "harness/src/harness/jobs.py",
+        "harness/web/src/JobsModule.tsx",
+        "spine/src/spine/jobs.py"
+      ]
+    },
+    {
+      "id": "FL-208",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "Nov 11",
+      "label": "The vault: one owner-only env file per workflow holds the keys its tools need; a value is never printed, logged, journaled or packed, and no agent can read it.",
+      "status": "built",
+      "walk": "Pipe a value into `nocturne vault set <workflow> <NAME>`: it lands in vault/<workflow>.env (mode 600 in a 700 folder) and the command prints the name and the path only. Run the saved bundle, then search every transcript, journal, log, the packed archive, the Palace database and the captures for the value: none. Save a job that tells its agent to read the vault file with the read tool and with cat: both are refused and no card offers to open it.",
+      "owner": "owner 2026-11-10 (SD-092): \"keys (in a vault .env file)\"",
+      "surfaces": [
+        "harness/src/harness/bundle.py",
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/jobs_cli.py",
+        "harness/src/harness/cli.py"
+      ]
+    },
+    {
+      "id": "FL-209",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "Nov 11",
+      "label": "A tool runs with its keys and the agent never sees them: `nocturne tool run <name>` executes the bundle's own code with the vault's variables; in a saved job that is not a boundary crossing, and the walls a recipe declares are crossed unattended once the owner confirmed them at save.",
+      "status": "built",
+      "walk": "In the bundle folder, `nocturne tool run <name> [args]` runs the tool with its key. Run the saved job: its thread carries one line per tool (the name and the --help first line), the agent runs the tool as one plain command, the service it calls accepts the key, and the thread shows the tool's output only. Save a recipe whose prompt needs curl and declares nothing: the run parks as waiting at its boundary card. Save the same recipe with allow [\"remote\"]: `nocturne jobs save` shows the wall and asks once (a no saves nothing); confirmed, the run completes with no card, and the Jobs module names what it crosses unattended.",
+      "owner": "owner 2026-11-08 (SD-087): \"tools are defined as like code that we don't want the agent to write at runtime because it's probably too complex for them to figure out as good as we can during a build cycle.\"",
+      "surfaces": [
+        "harness/src/harness/bundle.py",
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/toolset.py",
+        "harness/src/harness/jobs.py",
+        "harness/src/harness/pydantic_ai_adapter.py",
+        "harness/src/harness/jobs_cli.py",
+        "harness/web/src/JobsModule.tsx"
       ]
     }
   ]
