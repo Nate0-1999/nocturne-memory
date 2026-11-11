@@ -4175,7 +4175,14 @@
         "harness/src/harness/jobs_cli.py",
         "harness/web/src/JobsModule.tsx",
         "spine/src/spine/jobs.py"
-      ]
+      ],
+      "last_walk": {
+        "packet": "M7WB",
+        "date": "2026-11-11",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-185.png"
+      }
     },
     {
       "id": "FL-186",
@@ -4701,7 +4708,14 @@
         "harness/src/harness/jobs.py",
         "harness/web/src/JobsModule.tsx",
         "spine/src/spine/jobs.py"
-      ]
+      ],
+      "last_walk": {
+        "packet": "M7WB",
+        "date": "2026-11-11",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-207.png"
+      }
     },
     {
       "id": "FL-208",
@@ -4716,7 +4730,14 @@
         "harness/src/harness/pydantic_harness_adapter.py",
         "harness/src/harness/jobs_cli.py",
         "harness/src/harness/cli.py"
-      ]
+      ],
+      "last_walk": {
+        "packet": "M7WB",
+        "date": "2026-11-11",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-208.png"
+      }
     },
     {
       "id": "FL-209",
@@ -4734,7 +4755,14 @@
         "harness/src/harness/pydantic_ai_adapter.py",
         "harness/src/harness/jobs_cli.py",
         "harness/web/src/JobsModule.tsx"
-      ]
+      ],
+      "last_walk": {
+        "packet": "M7WB",
+        "date": "2026-11-11",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-209.png"
+      }
     }
   ]
 }
