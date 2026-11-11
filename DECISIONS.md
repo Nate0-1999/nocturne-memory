@@ -1514,3 +1514,12 @@ hourly cost at a caller-supplied token burn fits, failing open without one. The 
 the burn as an optional reader, so the curator (no reader) fails open on a budget. Each
 resolution keeps the policy's own sentence for its pick (`explain_choice`); the elbow's
 computation moved, unchanged, into `elbow_offsets` with its steps in the docstring.
+
+## M6MS — The readout is the reason alone [P4]
+
+PRECEDENT: PLAN M6MS; FL-152 153 206; A-021; F173.
+`ModelPolicyResolver.explain` appended the benchmark table's score and prices to a policy's
+reason, while the Harness chip quoted the listing's routed price — one screen, two prices
+(F173). The readout now carries the pick and why only; the Harness's model summary states the
+listing price beside it. Which price the strategies weigh is unchanged (A-021) and stays the
+owner's call.
