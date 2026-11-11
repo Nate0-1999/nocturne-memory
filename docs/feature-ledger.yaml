@@ -4116,10 +4116,16 @@
       "section": "14. Scheduling, automation and managed agents",
       "era": "Sep 9",
       "label": "Managed agents, local or in the cloud, with the best way to do this still to be thought through.",
-      "status": "horizon",
-      "walk": "No walk until a packet gives it a shape.",
+      "status": "partial",
+      "walk": "The local half has its shape, the workflow bundle (M7WB): save a bundle folder that carries a skill, a tool and a cron line; the local daemon runs it on its schedule with nobody steering, its tool running with its vault key, and the Jobs module shows the bundle's digest and each run's outcome. The cloud half — the same bundle pushed to a stage and a prod host — is FL-180 (M7TG).",
       "owner": "owner — \"Think managed agents local or in the cloud etc. What the best way to do this is.\" (chat 2026-09-10 00:49:18)",
-      "surfaces": []
+      "surfaces": [
+        "harness/src/harness/bundle.py",
+        "harness/src/harness/jobs.py",
+        "harness/src/harness/jobs_cli.py",
+        "harness/web/src/JobsModule.tsx",
+        "spine/src/spine/jobs.py"
+      ]
     },
     {
       "id": "FL-186",
@@ -4621,6 +4627,56 @@
         "harness/src/harness/transcript.py",
         "harness/src/harness/daemon.py",
         "spine/src/spine/model_policy.py"
+      ]
+    },
+    {
+      "id": "FL-207",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "Nov 11",
+      "label": "A workflow is a folder — the bundle: its recipe, its skills, its tools and the names of its keys — that checks, packs to one archive with a digest, and saves as a job carrying that digest.",
+      "status": "built",
+      "walk": "`nocturne workflow new <folder>` makes the folder. Add a SKILL.md folder under .agents/skills, an executable under tools, a key name in keys.example and a cron line in workflow.json. `nocturne workflow check <folder>` refuses until the vault holds the named key, then lists the tool with its --help line, the key name and the digest. `nocturne workflow pack <folder>` from two different folders writes the same .tar bytes, whose sha256 is the digest. `nocturne jobs save <folder>` records the digest on the job; the Jobs module's row reads 'bundle <digest head>' and its detail shows the digest, the tools and the key names (names only). The run's tool inventory lists the bundle's skill.",
+      "owner": "owner 2026-11-10 (SD-092): \"if i create a collection of skills, keys (in a vault .env file), tools (code that i don't want the agent building at run time because I think its to hard), and a chron or reaction based trigger i should be able to just build workflows that to do tasks … less build the thing focus but run the thing focused.\"",
+      "surfaces": [
+        "harness/src/harness/bundle.py",
+        "harness/src/harness/jobs_cli.py",
+        "harness/src/harness/cli.py",
+        "harness/src/harness/jobs.py",
+        "harness/web/src/JobsModule.tsx",
+        "spine/src/spine/jobs.py"
+      ]
+    },
+    {
+      "id": "FL-208",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "Nov 11",
+      "label": "The vault: one owner-only env file per workflow holds the keys its tools need; a value is never printed, logged, journaled or packed, and no agent can read it.",
+      "status": "built",
+      "walk": "Pipe a value into `nocturne vault set <workflow> <NAME>`: it lands in vault/<workflow>.env (mode 600 in a 700 folder) and the command prints the name and the path only. Run the saved bundle, then search every transcript, journal, log, the packed archive, the Palace database and the captures for the value: none. Save a job that tells its agent to read the vault file with the read tool and with cat: both are refused and no card offers to open it.",
+      "owner": "owner 2026-11-10 (SD-092): \"keys (in a vault .env file)\"",
+      "surfaces": [
+        "harness/src/harness/bundle.py",
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/jobs_cli.py",
+        "harness/src/harness/cli.py"
+      ]
+    },
+    {
+      "id": "FL-209",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "Nov 11",
+      "label": "A tool runs with its keys and the agent never sees them: `nocturne tool run <name>` executes the bundle's own code with the vault's variables; in a saved job that is not a boundary crossing, and the walls a recipe declares are crossed unattended once the owner confirmed them at save.",
+      "status": "built",
+      "walk": "In the bundle folder, `nocturne tool run <name> [args]` runs the tool with its key. Run the saved job: its thread carries one line per tool (the name and the --help first line), the agent runs the tool as one plain command, the service it calls accepts the key, and the thread shows the tool's output only. Save a recipe whose prompt needs curl and declares nothing: the run parks as waiting at its boundary card. Save the same recipe with allow [\"remote\"]: `nocturne jobs save` shows the wall and asks once (a no saves nothing); confirmed, the run completes with no card, and the Jobs module names what it crosses unattended.",
+      "owner": "owner 2026-11-08 (SD-087): \"tools are defined as like code that we don't want the agent to write at runtime because it's probably too complex for them to figure out as good as we can during a build cycle.\"",
+      "surfaces": [
+        "harness/src/harness/bundle.py",
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/toolset.py",
+        "harness/src/harness/jobs.py",
+        "harness/src/harness/pydantic_ai_adapter.py",
+        "harness/src/harness/jobs_cli.py",
+        "harness/web/src/JobsModule.tsx"
       ]
     }
   ]
