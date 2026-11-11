@@ -4177,7 +4177,7 @@
         "spine/src/spine/jobs.py"
       ],
       "last_walk": {
-        "packet": "M7WB",
+        "packet": "M7LF",
         "date": "2026-11-11",
         "verdict": "PASS",
         "flag": "",
@@ -4757,11 +4757,34 @@
         "harness/web/src/JobsModule.tsx"
       ],
       "last_walk": {
-        "packet": "M7WB",
+        "packet": "M7LF",
         "date": "2026-11-11",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-209.png"
+      }
+    },
+    {
+      "id": "FL-210",
+      "section": "14. Scheduling, automation and managed agents",
+      "era": "Nov 11",
+      "label": "The agent's shell works on Linux behind the same location and network walls: bubblewrap fences ordinary bash and job exit checks; the vault stays denied and saved bundle tools run outside the fence.",
+      "status": "built",
+      "walk": "On a disposable Linux host, save and run a forecast bundle from the Jobs module. Its agent uses bash inside its location, an outside write and a vault read fail, the declared sealed tool calls its service with the saved key, and the fenced exit check passes. Let its cron fire unattended. Doctor names a missing or unusable bubblewrap fence with its remedy. Run the same location, symlink, scratch, network, grant, vault and credential rule table on macOS and Linux.",
+      "owner": "owner 2026-11-11: claim M7LF end to end; PLAN M7LF, F217, ADR-015 and A-084 (3)(4).",
+      "surfaces": [
+        "harness/src/harness/pydantic_harness_adapter.py",
+        "harness/src/harness/shell_fence.py",
+        "harness/src/harness/onboarding.py",
+        "harness/tests/test_shell_fence.py",
+        "harness/tests/test_job_runtime.py"
+      ],
+      "last_walk": {
+        "packet": "M7LF",
+        "date": "2026-11-11",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-210.png"
       }
     }
   ]
