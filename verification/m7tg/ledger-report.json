@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "ab30c27c579389f0157e72553a87175beaea0dd3",
-      "head": "abb5692b1bcb82131e07b8d1915c79d2c83ee4d6"
+      "head": "a1f1dcd8588fc566d7f42622c478281e5bf3d1f6"
     }
   ],
   "unmapped": {
@@ -15,11 +15,11 @@
     "spine/openapi.json": "Lockstep package 0.1.93 and generated package metadata; Memory API and its 0.1.92 fingerprint are unchanged.",
     "spine/src/spine/__init__.py": "Lockstep package 0.1.93 and generated package metadata; Memory API and its 0.1.92 fingerprint are unchanged.",
     "spine/tests/test_packaging.py": "Lockstep package 0.1.93 and generated package metadata; Memory API and its 0.1.92 fingerprint are unchanged.",
-    "spine/verification/m7tg/impacted.json": "This packet's own evidence, coverage or prepared handoff; no feature behavior.",
-    "spine/verification/m7tg/FL-196.png": "This packet's own evidence, coverage or prepared handoff; no feature behavior.",
-    "spine/verification/m7tg/ledger-report.json": "This packet's own evidence, coverage or prepared handoff; no feature behavior.",
     "spine/verification/m7tg/FL-195.png": "This packet's own evidence, coverage or prepared handoff; no feature behavior.",
-    "spine/verification/m7tg/SHA256SUMS": "This packet's own evidence, coverage or prepared handoff; no feature behavior."
+    "spine/verification/m7tg/FL-196.png": "This packet's own evidence, coverage or prepared handoff; no feature behavior.",
+    "spine/verification/m7tg/SHA256SUMS": "This packet's own evidence, coverage or prepared handoff; no feature behavior.",
+    "spine/verification/m7tg/ledger-report.json": "This packet's own evidence, coverage or prepared handoff; no feature behavior.",
+    "spine/verification/m7tg/impacted.json": "This packet's own evidence, coverage or prepared handoff; no feature behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
