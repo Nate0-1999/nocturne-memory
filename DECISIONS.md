@@ -1502,3 +1502,11 @@ A-081 uses the existing learner minimum per project's training split; holdout si
 cannot unlock a fit. Progress samples the actual global objective every 100 iterations
 and records later phases through a separate transaction, so polling never waits for the fit.
 History retains all authentic generations; effective weights use the serving projection.
+## M6CR — Budget joins the policy type; every pick carries its reason [P4]
+
+PRECEDENT: PLAN M6CR; FL-152 153; A-021, A-082.
+`budget:<dollars per hour>` is the sixth policy form (A-082): the most intelligent row whose
+hourly cost at a caller-supplied token burn fits, failing open without one. The resolver takes
+the burn as an optional reader, so the curator (no reader) fails open on a budget. Each
+resolution keeps the policy's own sentence for its pick (`explain_choice`); the elbow's
+computation moved, unchanged, into `elbow_offsets` with its steps in the docstring.
