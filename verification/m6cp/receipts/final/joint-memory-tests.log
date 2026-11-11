@@ -1,0 +1,31 @@
+........................................................................ [ 20%]
+........................................................................ [ 40%]
+........................................................................ [ 61%]
+...............F........................................................ [ 81%]
+........................................................ss......         [100%]
+=================================== FAILURES ===================================
+____ test_training_calls_have_only_the_worker_and_manual_router_entrypoints ____
+
+    def test_training_calls_have_only_the_worker_and_manual_router_entrypoints() -> None:
+        """SPEC D.2 144 / rules-ledger r4-9: a new caller cannot create a second training trigger."""
+        root = Path(__file__).parents[1] / "src/spine"
+        callers = set()
+        for path in root.rglob("*.py"):
+            for node in ast.walk(ast.parse(path.read_text())):
+                if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute):
+                    if node.func.attr in {"retrain", "retrain_if_due", "compact"}:
+                        callers.add(path.relative_to(root).as_posix())
+        # Creation shares the scorer's manual/compaction entrypoints and advisory lock.
+>       assert callers == {"learner/worker.py", "learner/router.py", "learner/service.py"}
+E       AssertionError: assert {'learner/rou...er/worker.py'} == {'learner/rou...er/worker.py'}
+E         
+E         Extra items in the right set:
+E         'learner/service.py'
+E         Use -v to get more diff
+
+tests/test_learner_worker.py:48: AssertionError
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_unbuilt_rules.py:6: r11-2: shared Palaces and revocable principal grants are horizon work
+SKIPPED [1] tests/test_unbuilt_rules.py:12: r9-9: worker/local cost stores have not converged into the spend ledger
+FAILED tests/test_learner_worker.py::test_training_calls_have_only_the_worker_and_manual_router_entrypoints
+1 failed, 349 passed, 2 skipped in 34.30s

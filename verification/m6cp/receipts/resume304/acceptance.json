@@ -1,0 +1,29 @@
+{
+  "requested_fresh_accepted_joint_fits": 3,
+  "accepted": 0,
+  "joint_fit_trials": 1,
+  "further_trials": "not run after recurring timeout and used single retry allowance",
+  "fit_trial_1": {
+    "started": "2026-11-11T16:26:28.838Z",
+    "completed": "2026-11-11T16:27:51.037Z",
+    "http_status": 200,
+    "joint_fit": null,
+    "generation_id": null,
+    "diagnostic_only_scorer_proposal": "m2f-8e083bfd8f661e2c",
+    "failure": "httpx.ReadTimeout in compaction replay _call; see spine.log",
+    "optimization_failure_ids": [
+      "01M75PZDGXFK9459497VJR9VVW"
+    ]
+  },
+  "active_scorer": "m2k-01M75NREHKF91NG4N9YXFT5R5N",
+  "all_scorer_configs_unchanged": true,
+  "persisted_scorer_proposals": 0,
+  "role_models": [
+    "openai/gpt-4.1-mini",
+    "text-embedding-3-small"
+  ],
+  "returned_database_receipt_cost_usd": "0.332862680000",
+  "unpriced_returned_receipt_lines": 0,
+  "feature_verdict": "FL-061 FAIL/unproven, F169",
+  "board_verdict": "BLOCKED"
+}

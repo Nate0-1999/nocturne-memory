@@ -40,6 +40,7 @@ from spine.inject.router import router as inject_router
 from spine.inject.service import PrepareService
 from spine.jobs import JobService
 from spine.jobs import router as jobs_router
+from spine.learner.compaction import CompactionLearner
 from spine.learner.router import router as learner_router
 from spine.learner.service import LearnerService, LearnerSettings
 from spine.learner.worker import LearnerWorker
@@ -204,6 +205,14 @@ def create_app(
         retrain_signal_stride=resolved.retrain_signal_stride,
         corpus_max_dispositions=resolved.optimization_corpus_max_dispositions,
     )
+    compaction_learner = CompactionLearner(
+        session_factory,
+        principal=resolved.owner_principal_id,
+        settings=resolved,
+        embeddings=embedding_provider,
+        spend=spend_service,
+    )
+    learner_service.compaction_learner = compaction_learner
     m2k_service = M2KService(
         session_factory,
         graph_edge_sim=resolved.graph_edge_sim,
@@ -266,6 +275,7 @@ def create_app(
     app.state.reconciliation_scheduler = reconciliation_scheduler
     app.state.vitals_service = vitals_service
     app.state.learner_service = learner_service
+    app.state.compaction_learner = compaction_learner
     app.state.m2k_service = m2k_service
     app.state.learner_worker = learner_worker
     app.state.transcript_service = transcript_service

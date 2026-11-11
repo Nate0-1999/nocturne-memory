@@ -1,0 +1,662 @@
+{
+ "ok": true,
+ "result": [
+  {
+   "prompt": "Why would the router drop a packet with a bad checksum, and what does the device do next?",
+   "thread": "5c55fe3b-9975-4d34-9db2-efada96f7cf1",
+   "median": 0.343,
+   "cards": [
+    {
+     "label": "Checksum",
+     "tone": "injected",
+     "sem": 0.717,
+     "kw": 0.083,
+     "action": "kept"
+    },
+    {
+     "label": "Clock drift",
+     "tone": "injected",
+     "sem": 0.519,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Queue limit",
+     "tone": "injected",
+     "sem": 0.51,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Retry window",
+     "tone": "injected",
+     "sem": 0.486,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Dead device",
+     "tone": "injected",
+     "sem": 0.427,
+     "kw": 0.083,
+     "action": "kept"
+    },
+    {
+     "label": "Packet header",
+     "tone": "injected",
+     "sem": 0.39,
+     "kw": 0.083,
+     "action": "kept"
+    },
+    {
+     "label": "Antenna fix",
+     "tone": "injected",
+     "sem": 0.392,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Batch upload",
+     "tone": "injected",
+     "sem": 0.383,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Storage sensor",
+     "tone": "injected",
+     "sem": 0.343,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Route table",
+     "tone": "injected",
+     "sem": 0.329,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Payload size",
+     "tone": "injected",
+     "sem": 0.304,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Firmware 3.2",
+     "tone": "injected",
+     "sem": 0.275,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Grove sensors",
+     "tone": "injected",
+     "sem": 0.265,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Weekly report",
+     "tone": "near-miss",
+     "sem": 0.218,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Label printer",
+     "tone": "near-miss",
+     "sem": 0.187,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Water schedule",
+     "tone": "near-miss",
+     "sem": 0.185,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\n\nThe router drops a packet with a bad checksum because the checksum is used to verify the integrity of the packet's data. If the CRC-16 checksum does n"
+  },
+  {
+   "prompt": "Explain the route table and what happens to a dead device.",
+   "thread": "bb16a1e7-4682-470d-bcdf-14ad6eeb852a",
+   "median": 0.344,
+   "cards": [
+    {
+     "label": "Dead device",
+     "tone": "injected",
+     "sem": 0.639,
+     "kw": 0.286,
+     "action": "kept"
+    },
+    {
+     "label": "Route table",
+     "tone": "injected",
+     "sem": 0.566,
+     "kw": 0.286,
+     "action": "kept"
+    },
+    {
+     "label": "Queue limit",
+     "tone": "injected",
+     "sem": 0.399,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Checksum",
+     "tone": "injected",
+     "sem": 0.36,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Clock drift",
+     "tone": "injected",
+     "sem": 0.346,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Retry window",
+     "tone": "injected",
+     "sem": 0.344,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Batch upload",
+     "tone": "injected",
+     "sem": 0.295,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Packet header",
+     "tone": "injected",
+     "sem": 0.27,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Antenna fix",
+     "tone": "near-miss",
+     "sem": 0.258,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Gateway power",
+     "tone": "near-miss",
+     "sem": 0.224,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Bruise rule",
+     "tone": "near-miss",
+     "sem": 0.19,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\n\nThe route table is a data structure that maps each device ID to the gateway nearest its grove row. This allows the system to efficiently route signals"
+  },
+  {
+   "prompt": "How big can a packet payload be on the slow radio, and what is in the packet header?",
+   "thread": "25e1694d-272e-4f8b-ab95-59946b40cb41",
+   "median": 0.359,
+   "cards": [
+    {
+     "label": "Payload size",
+     "tone": "injected",
+     "sem": 0.797,
+     "kw": 0.111,
+     "action": "kept"
+    },
+    {
+     "label": "Packet header",
+     "tone": "injected",
+     "sem": 0.432,
+     "kw": 0.222,
+     "action": "kept"
+    },
+    {
+     "label": "Batch upload",
+     "tone": "injected",
+     "sem": 0.448,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Checksum",
+     "tone": "injected",
+     "sem": 0.405,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Firmware 3.2",
+     "tone": "injected",
+     "sem": 0.381,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Queue limit",
+     "tone": "injected",
+     "sem": 0.378,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Retry window",
+     "tone": "injected",
+     "sem": 0.359,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Clock drift",
+     "tone": "injected",
+     "sem": 0.341,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Antenna fix",
+     "tone": "injected",
+     "sem": 0.334,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Grove sensors",
+     "tone": "injected",
+     "sem": 0.318,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Storage sensor",
+     "tone": "near-miss",
+     "sem": 0.257,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Dead device",
+     "tone": "near-miss",
+     "sem": 0.246,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Weekly report",
+     "tone": "near-miss",
+     "sem": 0.245,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\n\nOn the slow radio setting, a packet payload is limited to fifty-one bytes. Each sensor packet starts with a two-byte header that names the device and "
+  },
+  {
+   "prompt": "Gateways upload in batches; how does that interact with the queue limit?",
+   "thread": "422be079-c649-4791-9fea-485937955f9c",
+   "median": 0.317,
+   "cards": [
+    {
+     "label": "Batch upload",
+     "tone": "injected",
+     "sem": 0.65,
+     "kw": 0.125,
+     "action": "kept"
+    },
+    {
+     "label": "Queue limit",
+     "tone": "injected",
+     "sem": 0.51,
+     "kw": 0.25,
+     "action": "kept"
+    },
+    {
+     "label": "Route table",
+     "tone": "injected",
+     "sem": 0.336,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Payload size",
+     "tone": "injected",
+     "sem": 0.335,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Gateway power",
+     "tone": "injected",
+     "sem": 0.339,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Antenna fix",
+     "tone": "injected",
+     "sem": 0.327,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Clock drift",
+     "tone": "injected",
+     "sem": 0.317,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Weekly report",
+     "tone": "injected",
+     "sem": 0.278,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Retry window",
+     "tone": "injected",
+     "sem": 0.277,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Sorting line",
+     "tone": "injected",
+     "sem": 0.266,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Ledger close",
+     "tone": "near-miss",
+     "sem": 0.253,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Invoice terms",
+     "tone": "near-miss",
+     "sem": 0.249,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Checksum",
+     "tone": "near-miss",
+     "sem": 0.244,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\nStreaming\n\nWorking…\n\nTOOLS · 0 CALLS"
+  },
+  {
+   "prompt": "Row twelve keeps losing packets; what fixed the radio signal there?",
+   "thread": "07bb41f1-80ba-4c7c-8a63-4328d6eb4115",
+   "median": 0.338,
+   "cards": [
+    {
+     "label": "Antenna fix",
+     "tone": "injected",
+     "sem": 0.696,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Row twelve",
+     "tone": "injected",
+     "sem": 0.553,
+     "kw": 0.2,
+     "action": "kept"
+    },
+    {
+     "label": "Payload size",
+     "tone": "injected",
+     "sem": 0.456,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Batch upload",
+     "tone": "injected",
+     "sem": 0.471,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Retry window",
+     "tone": "injected",
+     "sem": 0.393,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Checksum",
+     "tone": "injected",
+     "sem": 0.375,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Queue limit",
+     "tone": "injected",
+     "sem": 0.369,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Clock drift",
+     "tone": "injected",
+     "sem": 0.364,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Dead device",
+     "tone": "injected",
+     "sem": 0.338,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Packet header",
+     "tone": "injected",
+     "sem": 0.279,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Storage sensor",
+     "tone": "injected",
+     "sem": 0.294,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Firmware 3.2",
+     "tone": "injected",
+     "sem": 0.289,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Grove sensors",
+     "tone": "injected",
+     "sem": 0.282,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Route table",
+     "tone": "near-miss",
+     "sem": 0.236,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Weekly report",
+     "tone": "near-miss",
+     "sem": 0.251,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Gateway power",
+     "tone": "near-miss",
+     "sem": 0.238,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\n\nThe radio signal in row twelve was weak because it has the oldest trees, which likely obstruct the signal. To fix the radio signal loss there, it's co"
+  },
+  {
+   "prompt": "How does the router stamp time on packets when device clocks drift?",
+   "thread": "201b4e9a-869c-44c7-a836-63a9d630d7e2",
+   "median": 0.326,
+   "cards": [
+    {
+     "label": "Clock drift",
+     "tone": "injected",
+     "sem": 0.842,
+     "kw": 0.1,
+     "action": "kept"
+    },
+    {
+     "label": "Checksum",
+     "tone": "injected",
+     "sem": 0.511,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Queue limit",
+     "tone": "injected",
+     "sem": 0.465,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Retry window",
+     "tone": "injected",
+     "sem": 0.435,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Batch upload",
+     "tone": "injected",
+     "sem": 0.427,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Dead device",
+     "tone": "injected",
+     "sem": 0.369,
+     "kw": 0.1,
+     "action": "kept"
+    },
+    {
+     "label": "Packet header",
+     "tone": "injected",
+     "sem": 0.38,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Route table",
+     "tone": "injected",
+     "sem": 0.345,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Payload size",
+     "tone": "injected",
+     "sem": 0.326,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Firmware 3.2",
+     "tone": "injected",
+     "sem": 0.337,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Antenna fix",
+     "tone": "injected",
+     "sem": 0.322,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Grove sensors",
+     "tone": "injected",
+     "sem": 0.319,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Storage sensor",
+     "tone": "injected",
+     "sem": 0.3,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Label printer",
+     "tone": "injected",
+     "sem": 0.3,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Water schedule",
+     "tone": "injected",
+     "sem": 0.262,
+     "kw": 0,
+     "action": "removed"
+    },
+    {
+     "label": "Weekly report",
+     "tone": "near-miss",
+     "sem": 0.245,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Frost alarm",
+     "tone": "near-miss",
+     "sem": 0.217,
+     "kw": 0,
+     "action": "left"
+    },
+    {
+     "label": "Spray log",
+     "tone": "near-miss",
+     "sem": 0.227,
+     "kw": 0,
+     "action": "left"
+    }
+   ],
+   "answer": "NOCTURNE\nStreaming\n\nWorking…\n\nTOOLS · 0 CALLS"
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+{
+ "ok": true,
+ "result": {
+  "active": "m2k-01M6ZQ6FDWVYYYJRZ4D4T6XA8R",
+  "generation": "01M6ZRQG27CCBXYMG8SSXEQNWY · preview only\n\nParent manual-03eb045e2d68574b · 2026-11-09T09:02:49.415899+00:00 · 96 tokens\n\nCurrent 2 · candidate 3\n\nINSTRUCTIONS\nExtract and preserve all durable user-stated facts related to release ownership, notebook names, shipping dates, and the status of the launch checklist. Exclude any temporary or transient details such as the boiling kettle. Format extracted facts as separate entries. {messages}"
+ }
+}

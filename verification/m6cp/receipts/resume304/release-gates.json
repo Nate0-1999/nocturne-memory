@@ -1,0 +1,83 @@
+{
+ "ok": true,
+ "result": {
+  "failed": true,
+  "index": 1,
+  "thread": "d14d255a-06d5-4690-afd5-2279382b3e6e",
+  "prompt": "Using the remembered release plan, who owns Selene, which notebook belongs to the release, and which shipping day is scheduled? Identify the open checklist. Cite the supplied memories.",
+  "answer": "NOCTURNE\nRun error · The model stopped answering. · partial kept\n\nopenai/gpt-4.1-mini stopped answering: nothing arrived for 1 min (1 min 1 s since the request began), so this turn stopped. Send \"continue\" to try again.\n\nTOOLS · 0 CALLS",
+  "log": [
+   {
+    "prompt": "Using the remembered release plan, who owns Orion, which notebook belongs to the release, and which shipping day is scheduled? Identify the open checklist. Cite the supplied memories.",
+    "thread": "cd7e90e8-15b6-4510-b3c9-7483f3d93a21",
+    "median": 0.269,
+    "cards": [
+     {
+      "label": "Ledger close",
+      "tone": "injected",
+      "sem": 0.333,
+      "kw": 0,
+      "action": "kept"
+     },
+     {
+      "label": "Label printer",
+      "tone": "injected",
+      "sem": 0.318,
+      "kw": 0,
+      "action": "kept"
+     },
+     {
+      "label": "Spray log",
+      "tone": "injected",
+      "sem": 0.299,
+      "kw": 0,
+      "action": "kept"
+     },
+     {
+      "label": "Bin tags",
+      "tone": "injected",
+      "sem": 0.277,
+      "kw": 0,
+      "action": "kept"
+     },
+     {
+      "label": "Market truck",
+      "tone": "injected",
+      "sem": 0.269,
+      "kw": 0,
+      "action": "kept"
+     },
+     {
+      "label": "Weekly report",
+      "tone": "injected",
+      "sem": 0.265,
+      "kw": 0,
+      "action": "removed"
+     },
+     {
+      "label": "Shed hours",
+      "tone": "near-miss",
+      "sem": 0.243,
+      "kw": 0,
+      "action": "left"
+     },
+     {
+      "label": "Crate count",
+      "tone": "near-miss",
+      "sem": 0.212,
+      "kw": 0,
+      "action": "left"
+     },
+     {
+      "label": "Invoice terms",
+      "tone": "near-miss",
+      "sem": 0.202,
+      "kw": 0,
+      "action": "left"
+     }
+    ],
+    "answer": "NOCTURNE\n\nI found some related facts from the harvested memories but not specifically from a release plan document. Based on the recalled facts:\n\nOwnership of \""
+   }
+  ]
+ }
+}

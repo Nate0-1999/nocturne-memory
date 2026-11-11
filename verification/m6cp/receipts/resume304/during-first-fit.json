@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-11T16:27:48.171849+00:00",
+  "queries": {
+    "active": "SELECT version,params FROM scorer_config WHERE active",
+    "fit_provider_receipts": "SELECT model,purpose,ref,count(*) AS lines,sum(cost_usd) AS cost FROM spend_event WHERE purpose LIKE 'compaction%' GROUP BY 1,2,3 ORDER BY 2,3"
+  },
+  "results": {
+    "active": [
+      {
+        "version": "m2k-01M75NREHKF91NG4N9YXFT5R5N",
+        "params": "{\"tau\": 0.3, \"top_k\": 8, \"_control\": {\"event_uid\": \"01M75NREHKF91NG4N9YXFT5R5N\", \"machine_id\": \"nocturne-5951e620-8838-4ac5-8192-3ccab03c0970\", \"actor_class\": \"human\", \"parent_version\": \"m3tl-where-v1\", \"changed_parameter_ids\": [\"scorer.tau\"]}, \"near_miss_k\": 3, \"where_weight\": 0.04, \"thread_weight\": 0.08, \"candidate_pool\": 50, \"_m3f_activation\": {\"migration\": \"0014\", \"requirement\": \"R16\", \"previous_version\": \"v0\"}, \"location_weight\": 0.08, \"never_bias_step\": -0.15, \"_m3ms_activation\": {\"amendment\": \"A-061\", \"migration\": \"0017\", \"previous_version\": \"m3ti-thread-v1\"}, \"_m3ti_activation\": {\"amendment\": \"A-060\", \"migration\": \"0016\", \"previous_version\": \"m3f-location-v1\"}, \"_m3tl_activation\": {\"amendment\": \"A-063\", \"migration\": \"0021\", \"previous_version\": \"m3ms-share-v1\"}, \"quarantine_kills\": 3, \"half_life_hist_days\": 7.0, \"half_life_time_days\": 14.0, \"memory_context_share\": 0.1, \"half_life_location_hops\": 2.0}"
+      }
+    ],
+    "fit_provider_receipts": []
+  }
+}

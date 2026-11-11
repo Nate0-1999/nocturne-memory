@@ -1,0 +1,27 @@
+{
+  "thread": "d14d255a-06d5-4690-afd5-2279382b3e6e",
+  "journal_rows": 13,
+  "run_done": [
+    {
+      "captured_at": "2026-11-11T16:17:18.567165+00:00",
+      "event": {
+        "agent_id": "nocturne",
+        "id": "01M75PCG77FFV369JWV46NB48R",
+        "machine_id": "nocturne-5951e620-8838-4ac5-8192-3ccab03c0970",
+        "payload": {
+          "error_message": "The model stopped answering.",
+          "partial": true,
+          "run_id": "01M75PAE9DW3TPRTB95FMDEB1Q",
+          "stop_reason": "error"
+        },
+        "thread_id": "d14d255a-06d5-4690-afd5-2279382b3e6e",
+        "ts": "2026-11-11T16:17:18.567101Z",
+        "type": "run.done",
+        "v": 1
+      },
+      "record_type": "event",
+      "thread_id": "d14d255a-06d5-4690-afd5-2279382b3e6e",
+      "version": 1
+    }
+  ]
+}

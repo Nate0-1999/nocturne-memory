@@ -1,0 +1,12 @@
+{
+ "ok": true,
+ "result": {
+  "thread": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+  "prompt": "This is a fictional release plan. Mira owns Orion, the notebook is copper, and shipping is Friday. The launch checklist remains open. A kettle is boiling right now; that detail is temporary. Summarize in two sentences. Do not use tools.",
+  "started": "2026-11-11T15:59:17.686Z",
+  "completed": "2026-11-11T15:59:33.869Z",
+  "answer": "NOCTURNE\n\nMira is responsible for the Orion project, with the copper notebook and a shipping date set for Friday. The launch checklist is still open, while a kettle is currently boiling as a temporary detail.\n\nTOOLS · 0 CALLS",
+  "failed": false,
+  "screenshot": "/Users/nateoswalt/relay/m6cp/walk-resume304/captures/setup-first-complete.png"
+ }
+}

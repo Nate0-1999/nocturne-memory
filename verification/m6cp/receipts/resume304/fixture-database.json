@@ -1,0 +1,115 @@
+{
+  "queries": {
+    "sources": "SELECT run_uid, trigger_thread_id, verdict, incumbent_params->'policy' AS policy, completed_at FROM optimization_run WHERE loop='compaction_source' ORDER BY run_uid",
+    "proposals": "SELECT version, active, params->'_compaction' AS compaction FROM scorer_config ORDER BY version",
+    "models": "SELECT model, product_type, purpose, count(*) AS lines, sum(cost_usd) AS cost_usd FROM spend_event GROUP BY 1,2,3 ORDER BY 1,2,3"
+  },
+  "results": {
+    "sources": [
+      {
+        "run_uid": "01M75ND7Z862N1SKQMS559E0FF",
+        "trigger_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+        "verdict": "recorded",
+        "policy": "{\"id\": \"manual-03eb045e2d68574b\", \"parent\": \"baseline\", \"memory_size\": 128, \"instructions\": \"Extract the user-stated facts, including temporary details, as separate facts. {messages}\"}",
+        "completed_at": "2026-11-11 16:00:14.323226+00:00"
+      },
+      {
+        "run_uid": "01M75NDS1DWBH2R3WNBDD69GB1",
+        "trigger_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+        "verdict": "recorded",
+        "policy": "{\"id\": \"manual-03eb045e2d68574b\", \"parent\": \"manual-03eb045e2d68574b\", \"memory_size\": 128, \"instructions\": \"Extract the user-stated facts, including temporary details, as separate facts. {messages}\"}",
+        "completed_at": "2026-11-11 16:00:31.805469+00:00"
+      },
+      {
+        "run_uid": "01M75NHYBJQYNT3FYEB6NTWQ0T",
+        "trigger_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+        "verdict": "recorded",
+        "policy": "{\"id\": \"manual-03eb045e2d68574b\", \"parent\": \"manual-03eb045e2d68574b\", \"memory_size\": 128, \"instructions\": \"Extract the user-stated facts, including temporary details, as separate facts. {messages}\"}",
+        "completed_at": "2026-11-11 16:02:48.313317+00:00"
+      },
+      {
+        "run_uid": "01M75NJHN7DWA3EF8RPQR1ZAAS",
+        "trigger_thread_id": "cc1502db-c507-4345-9c27-92833904d544",
+        "verdict": "recorded",
+        "policy": "{\"id\": \"manual-03eb045e2d68574b\", \"parent\": \"manual-03eb045e2d68574b\", \"memory_size\": 128, \"instructions\": \"Extract the user-stated facts, including temporary details, as separate facts. {messages}\"}",
+        "completed_at": "2026-11-11 16:03:08.083450+00:00"
+      },
+      {
+        "run_uid": "01M75NPNM5XHJWMBAXSNAQ1C5X",
+        "trigger_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+        "verdict": "recorded",
+        "policy": "{\"id\": \"manual-03eb045e2d68574b\", \"parent\": \"manual-03eb045e2d68574b\", \"memory_size\": 128, \"instructions\": \"Extract the user-stated facts, including temporary details, as separate facts. {messages}\"}",
+        "completed_at": "2026-11-11 16:05:23.218715+00:00"
+      },
+      {
+        "run_uid": "01M75NQ9PRX02K0FKZRX2MA772",
+        "trigger_thread_id": "aa1ebe3e-0770-41a2-936c-0ee8c5469f13",
+        "verdict": "recorded",
+        "policy": "{\"id\": \"manual-03eb045e2d68574b\", \"parent\": \"manual-03eb045e2d68574b\", \"memory_size\": 128, \"instructions\": \"Extract the user-stated facts, including temporary details, as separate facts. {messages}\"}",
+        "completed_at": "2026-11-11 16:05:43.777068+00:00"
+      }
+    ],
+    "proposals": [
+      {
+        "version": "m2k-01M75NREHKF91NG4N9YXFT5R5N",
+        "active": true,
+        "compaction": null
+      },
+      {
+        "version": "m3f-location-v1",
+        "active": false,
+        "compaction": null
+      },
+      {
+        "version": "m3ms-share-v1",
+        "active": false,
+        "compaction": null
+      },
+      {
+        "version": "m3ti-thread-v1",
+        "active": false,
+        "compaction": null
+      },
+      {
+        "version": "m3tl-where-v1",
+        "active": false,
+        "compaction": null
+      },
+      {
+        "version": "v0",
+        "active": false,
+        "compaction": null
+      }
+    ],
+    "models": [
+      {
+        "model": "openai/gpt-4.1-mini",
+        "product_type": "llm.request",
+        "purpose": "building",
+        "lines": 30,
+        "cost_usd": "0.011189200000"
+      },
+      {
+        "model": "openai/gpt-4.1-mini",
+        "product_type": "llm.request",
+        "purpose": "curation",
+        "lines": 196,
+        "cost_usd": "0.105950000000"
+      },
+      {
+        "model": "openai/gpt-4.1-mini",
+        "product_type": "llm.request",
+        "purpose": "extraction",
+        "lines": 80,
+        "cost_usd": "0.015539600000"
+      },
+      {
+        "model": "text-embedding-3-small",
+        "product_type": "llm.embedding",
+        "purpose": "embedding",
+        "lines": 321,
+        "cost_usd": "0.000116960000"
+      }
+    ]
+  }
+}

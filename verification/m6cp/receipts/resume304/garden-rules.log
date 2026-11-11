@@ -1,0 +1,8 @@
+freeze: FAIL
+  harness/docs/frozen-law.json: master fingerprint is stale
+  harness/docs/feature-ledger.yaml: frozen ledger differs from master
+  spine/docs/frozen-law.json: master fingerprint is stale
+  spine/docs/feature-ledger.yaml: frozen ledger differs from master
+adrs: PASS
+seeds: PASS
+precedents: PASS

@@ -1482,6 +1482,24 @@ and sums today's (UTC) llm receipts into two new columns (0030); the owner can r
 demand. Rate lanes reach back a day so the strip can draw today. Cache rows split by model,
 and the model listing keeps OpenRouter's cache-read price, so the Harness can price a saving.
 
+## M6CP — Replay compaction instructions against later outcomes [P1.2, P2.5]
+
+PRECEDENT: FL-061/084; D.2 144/177; A-067/A-083; M4IN, M5LN.
+Source spans and generation records use the existing append-only optimization ledger.
+Older spans construct the candidate; newer spans replay both prompts without outcome
+labels. Existing embedding bands match facts, duplicate matches count once, novel facts
+are neutral, and equal scores prefer fewer/smaller outputs. The optimizer lock and
+verification exclusions remain. The shared scorer fit replays matched fact lengths into
+the frozen token budgets, fits tau/share with size after the existing 100-signal floor,
+and carries improved instructions and size in the same scorer proposal and activation.
+Read-only previews roll back proposed scorer writes and retain a receipt. M6LP handed
+off before this integration. API label 0.1.91 composes its schema; package pair 0.1.89
+follows its 0.1.88 pair. Every positive size within the existing 128-token cap is valid.
+F169: a fit is many provider calls in a row, and one stalled request failed all of it.
+A back-test request (model or embedding) that times out or answers 429/5xx now goes back
+once (v2.133's convention), never twice. The failed attempt returned no cost and gets no
+receipt; the model retry's receipt names it (`went_back_after`).
+
 ## M6LP — Project floors and observable fits [P1.2, P2.5]
 
 A-081 uses the existing learner minimum per project's training split; holdout signals

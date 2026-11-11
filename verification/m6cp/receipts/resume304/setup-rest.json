@@ -1,0 +1,728 @@
+{
+ "ok": true,
+ "result": {
+  "index": 1,
+  "thread": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+  "failed": false,
+  "log": [
+   {
+    "prompt": "/compact keep 0",
+    "started": "2026-11-11T15:59:58.389Z",
+    "completed": "2026-11-11T15:59:59.424Z",
+    "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 80.0% of the model window; the last 0% of the conversation kept word for word. Plan mode off.",
+    "failed": false
+   },
+   {
+    "prompt": "/compact instructions Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+    "started": "2026-11-11T15:59:59.424Z",
+    "completed": "2026-11-11T16:00:00.455Z",
+    "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 80.0% of the model window; the last 0% of the conversation kept word for word. Plan mode off.",
+    "failed": false
+   },
+   {
+    "prompt": "/compact",
+    "started": "2026-11-11T16:00:00.455Z",
+    "completed": "2026-11-11T16:00:14.722Z",
+    "answer": "NOCTURNE\nCONVERSATION COMPACTED · FULL HISTORY KEPT IN THE JOURNAL\n\nContext compacted with memories-then-drop.\n\nTOOLS · 0 CALLS",
+    "failed": false
+   },
+   {
+    "prompt": "/compact plan on",
+    "started": "2026-11-11T16:00:14.722Z",
+    "completed": "2026-11-11T16:00:15.760Z",
+    "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 80.0% of the model window; the last 0% of the conversation kept word for word. Plan mode on.",
+    "failed": false
+   },
+   {
+    "prompt": "/compact policy performance 0.0001",
+    "started": "2026-11-11T16:00:15.760Z",
+    "completed": "2026-11-11T16:00:16.790Z",
+    "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 0.0% of the model window; the last 0% of the conversation kept word for word. Plan mode on.",
+    "failed": false
+   },
+   {
+    "prompt": "We need to preserve the release decisions while the conversation fills. What is the next step?",
+    "started": "2026-11-11T16:00:16.790Z",
+    "completed": "2026-11-11T16:00:18.856Z",
+    "answer": "NOCTURNE\n\nBefore I compact this plan:\n\nWhich specific release decisions should be preserved in the plan?\nHas the launch checklist been finalized or are there open items that need addressing?\nIs the shipping schedule for Friday confirmed and fixed?\nAre there any additional details or components of the Orion project to include or clarify?\nTOOLS · 0 CALLS",
+    "failed": false
+   },
+   {
+    "prompt": "Keep Mira as release owner for Orion, the copper notebook and Friday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools.",
+    "started": "2026-11-11T16:00:18.856Z",
+    "completed": "2026-11-11T16:00:34.190Z",
+    "answer": "NOCTURNE\nCONVERSATION COMPACTED · FULL HISTORY KEPT IN THE JOURNAL\n\nThe next concise step is to focus on completing the open launch checklist for the Orion project. Mira should review the remaining checklist items, assign any outstanding tasks if needed, and verify that all critical components (including the copper notebook and preparations for Friday's shipping) are on track to ensure a smooth release.\n\nTOOLS · 0 CALLS",
+    "failed": false
+   },
+   {
+    "prompt": "/compact policy performance 0.8",
+    "started": "2026-11-11T16:00:34.190Z",
+    "completed": "2026-11-11T16:00:35.231Z",
+    "answer": "NOCTURNE\n\nCompaction: memories-then-drop; performance policy at 80.0% of the model window; the last 0% of the conversation kept word for word. Plan mode on.",
+    "failed": false
+   }
+  ],
+  "compactions": {
+   "compactions": [
+    {
+     "captured_at": "2026-11-11T16:00:14.314986+00:00",
+     "event_uid": "01M75ND7Z862N1SKQMS559E0FF",
+     "facts": [
+      {
+       "body": "Mira is responsible for the Orion project.",
+       "label": "Mira owns the Orion project",
+       "source_message_ids": [
+        "m0"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The notebook associated with the Orion project is copper.",
+       "label": "The notebook is copper",
+       "source_message_ids": [
+        "m0"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The shipping date for the Orion project is set for Friday.",
+       "label": "Shipping is scheduled for Friday",
+       "source_message_ids": [
+        "m0"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The launch checklist for the Orion project remains open and incomplete.",
+       "label": "The launch checklist is still open",
+       "source_message_ids": [
+        "m0"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "A kettle is currently boiling, noted as a temporary detail unrelated to the project.",
+       "label": "A kettle is boiling as a temporary detail",
+       "source_message_ids": [
+        "m0"
+       ],
+       "verdict": "new"
+      }
+     ],
+     "plan_clarification": null,
+     "policy": {
+      "id": "manual-03eb045e2d68574b",
+      "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+      "memory_size": 128,
+      "parent": "baseline"
+     },
+     "record_type": "compaction_record",
+     "run_id": "01M75NCTEH58VHCMWDRNB29PA6",
+     "span": [
+      {
+       "id": "m0",
+       "kept": false,
+       "text": "User: This is a fictional release plan. Mira owns Orion, the notebook is copper, and shipping is Friday. The launch checklist remains open. A kettle is boiling right now; that detail is temporary. Summarize in two sentences. Do not use tools."
+      },
+      {
+       "id": "m1",
+       "kept": true,
+       "text": "Assistant: Mira is responsible for the Orion project, with the copper notebook and a shipping date set for Friday. The launch checklist is still open, while a kettle is currently boiling as a temporary detail. \n\n<nocturne-proposed-response>\n{\"primary\":\"Mira owns the Orion project, with the copper notebook and shipping planned for Friday. The launch checklist is still open, and a kettle is boiling right now as a temporary detail.\",\"alternatives\":[\"The Orion project, led by Mira, has the copper notebook and aims to ship on Friday. The launch checklist remains open, and a kettle is currently boiling as a transient note.\",\"Mira is managing Orion, with the copper notebook and shipping scheduled for Friday. The checklist for launch is not yet complete, and a kettle is boiling temporarily.\",\"The release plan includes Mira owning Orion, using the copper notebook, and shipping on Friday. The launch checklist is open, and a kettle is boiling at the moment.\"]}\n</nocturne-proposed-response>"
+      }
+     ],
+     "strategy": "memories-then-drop",
+     "thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+     "version": 1,
+     "working_summary": "Mira owns the Orion project, which involves a copper notebook and shipping scheduled for Friday. The launch checklist is still open, and a kettle is boiling currently as a temporary detail."
+    },
+    {
+     "captured_at": "2026-11-11T16:00:31.790594+00:00",
+     "event_uid": "01M75NDS1DWBH2R3WNBDD69GB1",
+     "facts": [
+      {
+       "body": "Mira is the release owner for the Orion project.",
+       "label": "Mira is release owner for Orion project",
+       "source_message_ids": [
+        "m0",
+        "m1",
+        "m4"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The Orion project includes the copper notebook.",
+       "label": "Orion project includes copper notebook",
+       "source_message_ids": [
+        "m0",
+        "m1",
+        "m4"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "Shipping for the Orion project is scheduled for Friday.",
+       "label": "Orion project shipping scheduled for Friday",
+       "source_message_ids": [
+        "m0",
+        "m1",
+        "m4"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The launch checklist for the Orion project is still open and incomplete.",
+       "label": "Launch checklist for Orion project is still open",
+       "source_message_ids": [
+        "m0",
+        "m1",
+        "m4"
+       ],
+       "verdict": "new"
+      },
+      {
+       "body": "The kettle boiling detail is discarded and not considered relevant.",
+       "label": "Kettle detail discarded per user instruction",
+       "source_message_ids": [
+        "m0",
+        "m4"
+       ],
+       "verdict": "new"
+      }
+     ],
+     "plan_clarification": {
+      "answer": "Keep Mira as release owner for Orion, the copper notebook and Friday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools.",
+      "captured_at": "2026-11-11T16:00:19.389948+00:00",
+      "questions": [
+       "Which specific release decisions should be preserved in the plan?",
+       "Has the launch checklist been finalized or are there open items that need addressing?",
+       "Is the shipping schedule for Friday confirmed and fixed?",
+       "Are there any additional details or components of the Orion project to include or clarify?"
+      ],
+      "record_type": "plan_compaction",
+      "status": "answered",
+      "thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "version": 1
+     },
+     "policy": {
+      "id": "manual-03eb045e2d68574b",
+      "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+      "memory_size": 128,
+      "parent": "manual-03eb045e2d68574b"
+     },
+     "record_type": "compaction_record",
+     "run_id": "01M75NDCDXDC8869ZH384F8193",
+     "span": [
+      {
+       "id": "m0",
+       "kept": false,
+       "text": "System: Summary of previous conversation:\n\nMira owns the Orion project, which involves a copper notebook and shipping scheduled for Friday. The launch checklist is still open, and a kettle is boiling currently as a temporary detail.\n\nThe launch checklist remains open and incomplete.\nUser: [History before this point (1 messages, ~677 tokens) was summarized by openai. The summary above is secondhand; re-verify critical facts against primary sources.]"
+      },
+      {
+       "id": "m1",
+       "kept": false,
+       "text": "Assistant: Mira is responsible for the Orion project, with the copper notebook and a shipping date set for Friday. The launch checklist is still open, while a kettle is currently boiling as a temporary detail. \n\n"
+      },
+      {
+       "id": "m2",
+       "kept": false,
+       "text": "User: We need to preserve the release decisions while the conversation fills. What is the next step?"
+      },
+      {
+       "id": "m3",
+       "kept": false,
+       "text": "Assistant: Before I compact this plan:\n1. Which specific release decisions should be preserved in the plan?\n2. Has the launch checklist been finalized or are there open items that need addressing?\n3. Is the shipping schedule for Friday confirmed and fixed?\n4. Are there any additional details or components of the Orion project to include or clarify?"
+      },
+      {
+       "id": "m4",
+       "kept": true,
+       "text": "User: Keep Mira as release owner for Orion, the copper notebook and Friday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools."
+      }
+     ],
+     "strategy": "memories-then-drop",
+     "thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+     "version": 1,
+     "working_summary": "Mira is the release owner for the Orion project, which includes the copper notebook and shipping scheduled for Friday. The launch checklist remains open and incomplete. The kettle detail is discarded as per user instruction."
+    }
+   ]
+  },
+  "queue": {
+   "cards": [
+    {
+     "item_uid": "01M75ND6FCEW1D0QSKEF6P9D5V",
+     "candidate": {
+      "memory_id": "1fc01c97-9f73-4fb9-9e47-1c24ea511855",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Mira owns the Orion project",
+      "body": "Mira is responsible for the Orion project.",
+      "kind": "fact",
+      "keywords": [
+       "mira",
+       "orion",
+       "ownership",
+       "project"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "thread_origin": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:00:12.447324Z",
+      "updated_at": "2026-11-11T16:00:12.447324Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:00:12.837925Z"
+    },
+    {
+     "item_uid": "01M75ND6TRMH0XWFC6D7P0T9FW",
+     "candidate": {
+      "memory_id": "a4f8678f-6481-4435-8935-1720a198673e",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "The notebook is copper",
+      "body": "The notebook associated with the Orion project is copper.",
+      "kind": "fact",
+      "keywords": [
+       "notebook",
+       "copper",
+       "orion",
+       "project"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "thread_origin": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:00:12.852187Z",
+      "updated_at": "2026-11-11T16:00:12.852187Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:00:13.205632Z"
+    },
+    {
+     "item_uid": "01M75ND78K3CE505153CNFH7GQ",
+     "candidate": {
+      "memory_id": "22812628-09d9-4707-a06a-0549d0173cca",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Shipping is scheduled for Friday",
+      "body": "The shipping date for the Orion project is set for Friday.",
+      "kind": "fact",
+      "keywords": [
+       "shipping",
+       "friday",
+       "orion",
+       "schedule"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "thread_origin": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:00:13.215467Z",
+      "updated_at": "2026-11-11T16:00:13.215467Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:00:13.652893Z"
+    },
+    {
+     "item_uid": "01M75ND7MG8R9S57N5BAEKSK1C",
+     "candidate": {
+      "memory_id": "684a5eab-e0f6-48e6-9ea7-e527f7f78307",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "The launch checklist is still open",
+      "body": "The launch checklist for the Orion project remains open and incomplete.",
+      "kind": "fact",
+      "keywords": [
+       "launch checklist",
+       "open",
+       "incomplete",
+       "orion"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "thread_origin": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:00:13.662163Z",
+      "updated_at": "2026-11-11T16:00:13.662163Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:00:14.038186Z"
+    },
+    {
+     "item_uid": "01M75ND7YQE0J74GM6Y779EAMS",
+     "candidate": {
+      "memory_id": "992ec63c-9025-46cc-8cc8-452e1d7c4109",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "A kettle is boiling as a temporary detail",
+      "body": "A kettle is currently boiling, noted as a temporary detail unrelated to the project.",
+      "kind": "fact",
+      "keywords": [
+       "kettle",
+       "boiling",
+       "temporary",
+       "detail"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "thread_origin": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:00:14.048046Z",
+      "updated_at": "2026-11-11T16:00:14.048046Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:00:14.367378Z"
+    },
+    {
+     "item_uid": "01M75NDQBZ0VVKJ69Z1HEP82V4",
+     "candidate": {
+      "memory_id": "f4a73039-08b9-4387-a19b-c12d92e47335",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Mira is release owner for Orion project",
+      "body": "Mira is the release owner for the Orion project.",
+      "kind": "fact",
+      "keywords": [
+       "mira",
+       "release owner",
+       "orion",
+       "project"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "thread_origin": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:00:29.739101Z",
+      "updated_at": "2026-11-11T16:00:29.739101Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:00:30.100535Z"
+    },
+    {
+     "item_uid": "01M75NDQVE4VP652CPD72NYJ8Y",
+     "candidate": {
+      "memory_id": "a11f0afb-6000-4cd5-8c20-6a7d8b9f2eac",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Orion project includes copper notebook",
+      "body": "The Orion project includes the copper notebook.",
+      "kind": "fact",
+      "keywords": [
+       "orion",
+       "project",
+       "copper notebook"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "thread_origin": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:00:30.113346Z",
+      "updated_at": "2026-11-11T16:00:30.113346Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:00:30.603648Z"
+    },
+    {
+     "item_uid": "01M75NDR928BPKWSRAM68N5329",
+     "candidate": {
+      "memory_id": "4e931008-f835-4d75-9951-15b98f35ab69",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Orion project shipping scheduled for Friday",
+      "body": "Shipping for the Orion project is scheduled for Friday.",
+      "kind": "fact",
+      "keywords": [
+       "orion",
+       "project",
+       "shipping",
+       "friday"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "thread_origin": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:00:30.616469Z",
+      "updated_at": "2026-11-11T16:00:30.616469Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:00:31.047729Z"
+    },
+    {
+     "item_uid": "01M75NDS0VTVJ2TX12VER66PTN",
+     "candidate": {
+      "memory_id": "d80eb959-51a5-40e9-bf0b-d73f9d60f727",
+      "principal_id": "nocturne-verification-600fa927-c5c2-445e-8295-b9bbdc781531",
+      "label": "Kettle detail discarded per user instruction",
+      "body": "The kettle boiling detail is discarded and not considered relevant.",
+      "kind": "fact",
+      "keywords": [
+       "kettle",
+       "discarded",
+       "irrelevant"
+      ],
+      "project_key": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "thread_origin": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+      "origin_path": null,
+      "origin_location": "/Users/nateoswalt/relay/m6cp/work/final-project-1",
+      "origin_locations": [],
+      "pin": false,
+      "status": "candidate",
+      "revision": 1,
+      "stats": {
+       "removals": 0,
+       "citations": 0,
+       "injections": 0,
+       "never_kills": 0,
+       "last_injected_at": null
+      },
+      "bias": 0,
+      "embedding_model": "openai/text-embedding-3-small",
+      "created_at": "2026-11-11T16:00:31.400905Z",
+      "updated_at": "2026-11-11T16:00:31.400905Z"
+     },
+     "birthplace": "thread",
+     "birthplace_thread_id": "3a66413a-ad22-4f0f-8240-20bba801ccb2",
+     "batch_uid": null,
+     "source_name": null,
+     "source_sha256": null,
+     "birthplace_run_id": null,
+     "birthplace_origin_agent": null,
+     "judged_context": null,
+     "candidate_revision": null,
+     "curator_run_uid": null,
+     "curator_finding_uid": null,
+     "proposal_payload": null,
+     "verdict": "new",
+     "neighbors": [],
+     "target_ids": [],
+     "state": "pending",
+     "created_at": "2026-11-11T16:00:31.817803Z"
+    }
+   ]
+  }
+ }
+}

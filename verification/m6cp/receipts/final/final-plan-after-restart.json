@@ -1,0 +1,544 @@
+{
+ "ok": true,
+ "result": {
+  "compactions": [
+   {
+    "compactions": [
+     {
+      "captured_at": "2026-11-09T08:38:11.417798+00:00",
+      "event_uid": "01M6ZQACPPZFN98EVEYVMQ0T15",
+      "facts": [
+       {
+        "body": "Mira is the owner of Orion in the fictional release plan.",
+        "label": "Mira owns Orion",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The notebook involved in the release plan is named Copper.",
+        "label": "Notebook named Copper",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "Shipping for the release plan is scheduled for Friday.",
+        "label": "Shipping scheduled for Friday",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The launch checklist for the release plan remains open and unresolved.",
+        "label": "Launch checklist remains open",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "A kettle is currently boiling, but this is a temporary detail in the context of the release plan.",
+        "label": "Kettle boiling is a temporary detail",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       }
+      ],
+      "plan_clarification": null,
+      "policy": {
+       "id": "manual-03eb045e2d68574b",
+       "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+       "memory_size": 128,
+       "parent": "baseline"
+      },
+      "record_type": "compaction_record",
+      "run_id": "01M6ZQ9YQGYYARSGR82CZEJGT0",
+      "span": [
+       {
+        "id": "m0",
+        "kept": false,
+        "text": "User: This is a fictional release plan. Mira owns Orion, the notebook is copper, and shipping is Friday. The launch checklist remains open. A kettle is boiling right now; that detail is temporary. Summarize in two sentences. Do not use tools."
+       },
+       {
+        "id": "m1",
+        "kept": true,
+        "text": "Assistant: Mira is responsible for Orion, and the notebook named Copper is involved in the release, with shipping scheduled for Friday. The launch checklist is still open, and a kettle is currently boiling, though that detail is temporary. \n\n<nocturne-proposed-response>\n{\"primary\":\"Mira owns Orion, with the Copper notebook included, and shipping is set for Friday. The launch checklist remains open, and a kettle is boiling right now, but that is a temporary detail.\",\"alternatives\":[\"The release involves Mira's Orion and the Copper notebook, with shipping planned for Friday. The launch checklist is still open, and there's a temporary detail of a kettle boiling.\",\"Mira is in charge of Orion, and the Copper notebook is part of the plan, with shipping on Friday. The launch checklist remains open, and a kettle is boiling at the moment, which is temporary.\",\"The plan includes Mira as the owner of Orion and the Copper notebook, with shipping on Friday. The launch checklist is open, and a kettle boiling is a current but temporary detail.\"]}\n</nocturne-proposed-response>"
+       }
+      ],
+      "strategy": "memories-then-drop",
+      "thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "version": 1,
+      "working_summary": "The user described a fictional release plan where Mira owns Orion, the notebook is named Copper, and shipping is scheduled for Friday. The launch checklist is still open, and a kettle is boiling currently, noted as a temporary detail."
+     },
+     {
+      "captured_at": "2026-11-09T08:38:31.376735+00:00",
+      "event_uid": "01M6ZQB06GQ3ZY1KJ66H6EXKTK",
+      "facts": [
+       {
+        "body": "Mira is designated as the release owner for the Orion project.",
+        "label": "Mira is release owner for Orion",
+        "source_message_ids": [
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The notebook involved in the release is named Copper.",
+        "label": "Notebook named Copper involved in release",
+        "source_message_ids": [
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The shipping date for the release is scheduled for Friday.",
+        "label": "Shipping scheduled for Friday",
+        "source_message_ids": [
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The launch checklist for the release remains open and unresolved.",
+        "label": "Launch checklist is still open",
+        "source_message_ids": [
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The temporary detail about the boiling kettle is to be discarded and not preserved.",
+        "label": "Discard boiling kettle detail",
+        "source_message_ids": [
+         "m4"
+        ],
+        "verdict": "new"
+       }
+      ],
+      "plan_clarification": {
+       "answer": "Keep Mira as release owner for Orion, the copper notebook and Friday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools.",
+       "captured_at": "2026-11-09T08:38:17.061541+00:00",
+       "questions": [
+        "Which specific release decisions should be preserved?",
+        "What details about the launch checklist need to be maintained?",
+        "Is the shipping date of Friday confirmed or subject to change?",
+        "Should temporary details like the boiling kettle be included or excluded?"
+       ],
+       "record_type": "plan_compaction",
+       "status": "answered",
+       "thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+       "version": 1
+      },
+      "policy": {
+       "id": "manual-03eb045e2d68574b",
+       "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+       "memory_size": 128,
+       "parent": "manual-03eb045e2d68574b"
+      },
+      "record_type": "compaction_record",
+      "run_id": "01M6ZQAHPF6DVHJVXA88TQG839",
+      "span": [
+       {
+        "id": "m0",
+        "kept": false,
+        "text": "System: Summary of previous conversation:\n\nThe user described a fictional release plan where Mira owns Orion, the notebook is named Copper, and shipping is scheduled for Friday. The launch checklist is still open, and a kettle is boiling currently, noted as a temporary detail.\n\nThe launch checklist remains open and unresolved.\nUser: [History before this point (1 messages, ~2316 tokens) was summarized by openai. The summary above is secondhand; re-verify critical facts against primary sources.]"
+       },
+       {
+        "id": "m1",
+        "kept": false,
+        "text": "Assistant: Mira is responsible for Orion, and the notebook named Copper is involved in the release, with shipping scheduled for Friday. The launch checklist is still open, and a kettle is currently boiling, though that detail is temporary. \n\n"
+       },
+       {
+        "id": "m2",
+        "kept": false,
+        "text": "User: We need to preserve the release decisions while the conversation fills. What is the next step?"
+       },
+       {
+        "id": "m3",
+        "kept": false,
+        "text": "Assistant: Before I compact this plan:\n1. Which specific release decisions should be preserved?\n2. What details about the launch checklist need to be maintained?\n3. Is the shipping date of Friday confirmed or subject to change?\n4. Should temporary details like the boiling kettle be included or excluded?"
+       },
+       {
+        "id": "m4",
+        "kept": true,
+        "text": "User: Keep Mira as release owner for Orion, the copper notebook and Friday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools."
+       }
+      ],
+      "strategy": "memories-then-drop",
+      "thread_id": "10947999-7daf-4f25-8cff-dbb74d340b29",
+      "version": 1,
+      "working_summary": "The user confirmed that Mira is the release owner for Orion, the notebook is named Copper, and shipping is scheduled for Friday. The launch checklist remains open. The temporary detail about the boiling kettle is to be discarded. The user requested one concise next step without using tools."
+     }
+    ]
+   },
+   {
+    "compactions": [
+     {
+      "captured_at": "2026-11-09T08:39:07.682528+00:00",
+      "event_uid": "01M6ZQC3N2N75HZQB3ECMVWP8H",
+      "facts": [
+       {
+        "body": "Luis is the owner of the Selene project.",
+        "label": "Luis owns Selene project",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The notebook is named graphite.",
+        "label": "Notebook is graphite",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "Shipping is scheduled for Saturday.",
+        "label": "Shipping scheduled for Saturday",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The launch checklist is still open.",
+        "label": "Launch checklist is open",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "A kettle is boiling right now, which is a temporary detail.",
+        "label": "Kettle boiling is temporary detail",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       }
+      ],
+      "plan_clarification": null,
+      "policy": {
+       "id": "manual-03eb045e2d68574b",
+       "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+       "memory_size": 128,
+       "parent": "manual-03eb045e2d68574b"
+      },
+      "record_type": "compaction_record",
+      "run_id": "01M6ZQBR3F8DKKV7H7SJHAQ6NN",
+      "span": [
+       {
+        "id": "m0",
+        "kept": false,
+        "text": "User: This is a fictional release plan. Luis owns Selene, the notebook is graphite, and shipping is Saturday. The launch checklist remains open. A kettle is boiling right now; that detail is temporary. Summarize in two sentences. Do not use tools."
+       },
+       {
+        "id": "m1",
+        "kept": true,
+        "text": "Assistant: Luis is the owner of the Selene project, with the notebook named graphite, and the planned shipping day is Saturday. The launch checklist is still open, and a kettle is currently boiling, which is a temporary detail. \n\n<nocturne-proposed-response>\n{\"primary\":\"Luis owns Selene, the notebook is graphite, and shipping is scheduled for Saturday. The launch checklist is still open, and a kettle is boiling right now as a temporary detail.\",\"alternatives\":[]} \n</nocturne-proposed-response>"
+       }
+      ],
+      "strategy": "memories-then-drop",
+      "thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "version": 1,
+      "working_summary": "The user provided a fictional release plan where Luis owns Selene, the notebook is graphite, shipping is scheduled for Saturday, the launch checklist is still open, and a kettle is boiling as a temporary detail."
+     },
+     {
+      "captured_at": "2026-11-09T08:39:26.522142+00:00",
+      "event_uid": "01M6ZQCP1SNA135CGQH30T7F2F",
+      "facts": [
+       {
+        "body": "Luis is the release owner for the Selene project.",
+        "label": "Luis is release owner for Selene",
+        "source_message_ids": [
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The notebook associated with the release is named graphite.",
+        "label": "Notebook named graphite",
+        "source_message_ids": [
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The shipping date for the release is scheduled for Saturday.",
+        "label": "Shipping scheduled for Saturday",
+        "source_message_ids": [
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The launch checklist for the release is still open and unresolved.",
+        "label": "Launch checklist is still open",
+        "source_message_ids": [
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The temporary detail about the kettle boiling should be discarded and not preserved.",
+        "label": "Discard kettle boiling detail",
+        "source_message_ids": [
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       }
+      ],
+      "plan_clarification": {
+       "answer": "Keep Luis as release owner for Selene, the graphite notebook and Saturday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools.",
+       "captured_at": "2026-11-09T08:39:14.065627+00:00",
+       "questions": [
+        "Which release decisions should be preserved exactly as they are?",
+        "Is the ownership of Selene and the notebook name graphite confirmed and final?",
+        "Should the shipping date on Saturday remain unchanged?",
+        "What is the status of the launch checklist and who is responsible for it?"
+       ],
+       "record_type": "plan_compaction",
+       "status": "answered",
+       "thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+       "version": 1
+      },
+      "policy": {
+       "id": "manual-03eb045e2d68574b",
+       "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+       "memory_size": 128,
+       "parent": "manual-03eb045e2d68574b"
+      },
+      "record_type": "compaction_record",
+      "run_id": "01M6ZQC92VY2K098Q4MBHTVBB0",
+      "span": [
+       {
+        "id": "m0",
+        "kept": false,
+        "text": "System: Summary of previous conversation:\n\nThe user provided a fictional release plan where Luis owns Selene, the notebook is graphite, shipping is scheduled for Saturday, the launch checklist is still open, and a kettle is boiling as a temporary detail.\n\nThe launch checklist remains open.\nUser: [History before this point (1 messages, ~2316 tokens) was summarized by openai. The summary above is secondhand; re-verify critical facts against primary sources.]"
+       },
+       {
+        "id": "m1",
+        "kept": false,
+        "text": "Assistant: Luis is the owner of the Selene project, with the notebook named graphite, and the planned shipping day is Saturday. The launch checklist is still open, and a kettle is currently boiling, which is a temporary detail. \n\n"
+       },
+       {
+        "id": "m2",
+        "kept": false,
+        "text": "User: We need to preserve the release decisions while the conversation fills. What is the next step?"
+       },
+       {
+        "id": "m3",
+        "kept": false,
+        "text": "Assistant: Before I compact this plan:\n1. Which release decisions should be preserved exactly as they are?\n2. Is the ownership of Selene and the notebook name graphite confirmed and final?\n3. Should the shipping date on Saturday remain unchanged?\n4. What is the status of the launch checklist and who is responsible for it?"
+       },
+       {
+        "id": "m4",
+        "kept": true,
+        "text": "User: Keep Luis as release owner for Selene, the graphite notebook and Saturday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools."
+       }
+      ],
+      "strategy": "memories-then-drop",
+      "thread_id": "16969755-d432-4f99-b9da-b366eb3667f6",
+      "version": 1,
+      "working_summary": "The user confirmed that Luis is the release owner for Selene, the notebook is named graphite, and shipping is scheduled for Saturday. The launch checklist remains open. The temporary detail about the kettle boiling should be discarded. The user requested one concise next step without using tools."
+     }
+    ]
+   },
+   {
+    "compactions": [
+     {
+      "captured_at": "2026-11-09T08:40:00.679297+00:00",
+      "event_uid": "01M6ZQDQD6FWBSTYTFMC2E4VFW",
+      "facts": [
+       {
+        "body": "Anika is responsible for the Vega project.",
+        "label": "Anika owns the Vega project",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The notebook involved in the release plan is Indigo.",
+        "label": "The notebook is Indigo",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "Shipping for the release plan is scheduled for Monday.",
+        "label": "Shipping is scheduled for Monday",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The launch checklist for the release plan is still open and unresolved.",
+        "label": "The launch checklist remains open",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "A kettle is currently boiling, which is a temporary detail unrelated to the release plan.",
+        "label": "A kettle is boiling now as a temporary detail",
+        "source_message_ids": [
+         "m0"
+        ],
+        "verdict": "new"
+       }
+      ],
+      "plan_clarification": null,
+      "policy": {
+       "id": "manual-03eb045e2d68574b",
+       "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+       "memory_size": 128,
+       "parent": "manual-03eb045e2d68574b"
+      },
+      "record_type": "compaction_record",
+      "run_id": "01M6ZQDCJMPXCKEGSQJBGS1PBY",
+      "span": [
+       {
+        "id": "m0",
+        "kept": false,
+        "text": "User: This is a fictional release plan. Anika owns Vega, the notebook is indigo, and shipping is Monday. The launch checklist remains open. A kettle is boiling right now; that detail is temporary. Summarize in two sentences. Do not use tools."
+       },
+       {
+        "id": "m1",
+        "kept": true,
+        "text": "Assistant: Anika is responsible for the Vega project, with the Indigo notebook involved, and the shipping scheduled for Monday. The launch checklist is still open, and a kettle is currently boiling, which is a temporary detail. \n\n<nocturne-proposed-response>\n{\"primary\":\"Anika owns the Vega project with the Indigo notebook involved, and shipping is planned for Monday. The launch checklist remains open, and a kettle is boiling now, which is a temporary detail.\",\"alternatives\":[]} \n</nocturne-proposed-response>"
+       }
+      ],
+      "strategy": "memories-then-drop",
+      "thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+      "version": 1,
+      "working_summary": "The user provided a fictional release plan where Anika owns the Vega project, the notebook is Indigo, shipping is scheduled for Monday, and the launch checklist is still open. Additionally, a kettle is boiling right now, noted as a temporary detail."
+     },
+     {
+      "captured_at": "2026-11-09T08:40:17.974535+00:00",
+      "event_uid": "01M6ZQE89P9WXPXCZESAHCCE3N",
+      "facts": [
+       {
+        "body": "Anika is designated as the release owner for the Vega project.",
+        "label": "Anika is release owner for Vega project",
+        "source_message_ids": [
+         "m0",
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The Indigo notebook is associated with the Vega project release.",
+        "label": "Indigo is the notebook for the Vega project",
+        "source_message_ids": [
+         "m0",
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The shipping date for the Vega project release is scheduled for Monday.",
+        "label": "Shipping scheduled for Monday",
+        "source_message_ids": [
+         "m0",
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The launch checklist for the Vega project release is still open and unresolved.",
+        "label": "Launch checklist remains open",
+        "source_message_ids": [
+         "m0",
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       },
+       {
+        "body": "The temporary detail about the boiling kettle is discarded and not retained in the release plan.",
+        "label": "Discard boiling kettle detail",
+        "source_message_ids": [
+         "m0",
+         "m1",
+         "m4"
+        ],
+        "verdict": "new"
+       }
+      ],
+      "plan_clarification": {
+       "answer": "Keep Anika as release owner for Vega, the indigo notebook and Monday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools.",
+       "captured_at": "2026-11-09T08:40:05.856731+00:00",
+       "questions": [
+        "Which specific release decisions do you want to preserve?",
+        "Is the shipping date on Monday confirmed or tentative?",
+        "What aspects of the launch checklist remain open?",
+        "Should temporary details like the boiling kettle be retained or discarded?"
+       ],
+       "record_type": "plan_compaction",
+       "status": "answered",
+       "thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+       "version": 1
+      },
+      "policy": {
+       "id": "manual-03eb045e2d68574b",
+       "instructions": "Extract the user-stated facts, including temporary details, as separate facts. {messages}",
+       "memory_size": 128,
+       "parent": "manual-03eb045e2d68574b"
+      },
+      "record_type": "compaction_record",
+      "run_id": "01M6ZQDVZVJQYRK61X694PWE7W",
+      "span": [
+       {
+        "id": "m0",
+        "kept": false,
+        "text": "System: Summary of previous conversation:\n\nThe user provided a fictional release plan where Anika owns the Vega project, the notebook is Indigo, shipping is scheduled for Monday, and the launch checklist is still open. Additionally, a kettle is boiling right now, noted as a temporary detail.\n\nThe launch checklist remains open and unresolved.\nUser: [History before this point (1 messages, ~2297 tokens) was summarized by openai. The summary above is secondhand; re-verify critical facts against primary sources.]"
+       },
+       {
+        "id": "m1",
+        "kept": false,
+        "text": "Assistant: Anika is responsible for the Vega project, with the Indigo notebook involved, and the shipping scheduled for Monday. The launch checklist is still open, and a kettle is currently boiling, which is a temporary detail. \n\n"
+       },
+       {
+        "id": "m2",
+        "kept": false,
+        "text": "User: We need to preserve the release decisions while the conversation fills. What is the next step?"
+       },
+       {
+        "id": "m3",
+        "kept": false,
+        "text": "Assistant: Before I compact this plan:\n1. Which specific release decisions do you want to preserve?\n2. Is the shipping date on Monday confirmed or tentative?\n3. What aspects of the launch checklist remain open?\n4. Should temporary details like the boiling kettle be retained or discarded?"
+       },
+       {
+        "id": "m4",
+        "kept": true,
+        "text": "User: Keep Anika as release owner for Vega, the indigo notebook and Monday shipping. The launch checklist is still open. Discard the kettle detail. Give one concise next step. Do not use tools."
+       }
+      ],
+      "strategy": "memories-then-drop",
+      "thread_id": "abaccbca-6019-4930-8aa0-3462b82e6241",
+      "version": 1,
+      "working_summary": "The user confirmed to keep Anika as the release owner for the Vega project, retain the Indigo notebook and Monday shipping date, and keep the launch checklist open. The boiling kettle detail is discarded. The user requested one concise next step without using tools."
+     }
+    ]
+   }
+  ]
+ }
+}

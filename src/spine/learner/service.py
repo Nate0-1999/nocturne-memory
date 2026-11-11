@@ -4,7 +4,7 @@ Loop 1, injection_scoring: six global weights, thread/WHERE coefficients,
 per-memory bias and per-project offsets; tau and memory share wait for 100
 authentic dispositions. Location/decay and corpus size are configured; session
 affinity is replay-only. Loop 2, creation: append-only outcomes and survival
-scoreboard, with compaction instructions and memory size not yet learned and
+scoreboard, with compaction instructions and size in the shared scorer fit, and
 dedup bands and curator_review_sim configured. Loop 3, scorer_structure:
 curator-nominated transparent scalar axes, replay-tested and proposed for an
 owner's activation. Loop 4, beyond: optimizer/model training is gated; role
@@ -20,10 +20,11 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import json
+import logging
 from collections import defaultdict, deque
 from collections.abc import Mapping, Sequence
 from copy import deepcopy
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from datetime import datetime
 from decimal import Decimal
 from typing import Any, Literal
@@ -64,8 +65,9 @@ from spine.learner.model import (
     split_gates,
 )
 
-_ALGORITHM_ID = "m6lp-project-floor-v5"
+_ALGORITHM_ID = "m6cp-joint-compaction-v6"
 _SHARE_TUNING_MINIMUM = 100
+logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)
@@ -104,6 +106,7 @@ class _OptimizationOutcome:
     challenger_params: dict[str, object] | None
     backtest_scores: dict[str, object]
     tie_break_applied: dict[str, object]
+    compaction: dict | None = None
 
 
 class LearnerService:
@@ -132,8 +135,8 @@ class LearnerService:
             ("half_life_location_hops", "injection_scoring", None, "configured"),
             ("corpus_max_dispositions", "injection_scoring", None, "configured"),
             ("f_sess", "injection_scoring", None, "replay_only"),
-            ("compaction_instructions", "creation", None, "signals_only"),
-            ("memory_size_cap", "creation", None, "unbuilt"),
+            ("compaction_instructions", "creation", minimum, "backtested"),
+            ("memory_size_cap", "injection_scoring", 100, "trained"),
             ("dedup_bands", "creation", None, "configured"),
             ("curator_review_sim", "creation", None, "configured"),
             ("axes", "scorer_structure", minimum, "proposed_then_owner_activation"),
@@ -184,6 +187,7 @@ class LearnerService:
         self._owner_principal_id = owner_principal_id
         self._retrain_signal_stride = retrain_signal_stride
         self._corpus_max_dispositions = corpus_max_dispositions
+        self.compaction_learner = None
 
     async def submit_job(self) -> RetrainJobView:
         job_id = mint_ulid()
@@ -275,6 +279,57 @@ class LearnerService:
             optimization_trigger=trigger,
         )
 
+    async def preview_compaction(self, *, memory_size=None, include_verification=False) -> dict:
+        """Replay the production fit; retain its receipt, never its proposed scorer."""
+        async with session_advisory_lock(
+            self._session_factory, key=LEARNER_ADVISORY_LOCK_KEY, name="chrysopoeia"
+        ) as connection:
+            async with self._session_factory(bind=connection) as session:
+                try:
+                    await session.execute(text("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ"))
+                    configs = list(await session.scalars(select(ScorerConfigRow)))
+                    active = [row for row in configs if row.active]
+                    if len(active) != 1:
+                        raise LearnerDataError("expected exactly one active scorer_config row")
+                    runtime = {row.version: _runtime_config(row) for row in configs}
+                    rows = list(await session.scalars(
+                        select(InjectionEvent).where(
+                            InjectionEvent.principal_id == self._owner_principal_id
+                        ).order_by(
+                            InjectionEvent.ts, InjectionEvent.injection_id, InjectionEvent.event_uid
+                        )
+                    ))
+                    annotations = list(await session.scalars(select(InjectionEventAnnotation)))
+                    evidence = project_learning_evidence(
+                        rows, annotations, runtime,
+                        passive_discount=Decimal(str(self._settings.passive_discount)),
+                        include_verification=include_verification,
+                    )
+                    outcome = await self._fit(
+                        session, configs=configs, active_row=active[0],
+                        incumbent=runtime[active[0].version],
+                        eligible_dispositions=len(evidence.examples),
+                        corpus=_balanced_corpus(evidence.examples, evidence.share_boundaries,
+                                                max_dispositions=self._corpus_max_dispositions),
+                        compaction_size=memory_size, verification_preview=include_verification,
+                    )
+                finally:
+                    # WALL consent / PLAN M6CP: a back-test cannot activate or leave a proposal.
+                    await session.rollback()
+                prepared = outcome.compaction
+                if prepared is not None:
+                    async with session.begin():
+                        await self.compaction_learner.record_fit(
+                            session, prepared, verdict="preview_only",
+                            fit=prepared.get("joint_fit"))
+                return {
+                    "verdict": "preview_only", "verification_included": include_verification,
+                    "fit": outcome.response.model_dump(mode="json"),
+                    "scores": prepared["scores"] if prepared else {},
+                    "joint_fit": prepared.get("joint_fit") if prepared else None,
+                    "id": prepared["id"] if prepared else None,
+                }
+
     async def _retrain(
         self,
         *,
@@ -364,6 +419,13 @@ class LearnerService:
         # The mappings intentionally expose no ORM relationship. Persist a
         # winning proposal before its same-transaction receipt satisfies the FK.
         await session.flush()
+        if outcome.compaction is not None:
+            proposed = (
+                outcome.response.proposal_version if outcome.compaction.get("eligible") else None
+            )
+            await self.compaction_learner.record_fit(
+                session, outcome.compaction, verdict="proposed" if proposed else "not_better",
+                proposal_version=proposed, fit=outcome.compaction.get("joint_fit"))
         source_boundary = max(
             (example.event_uid for example in evidence.examples),
             default=None,
@@ -444,6 +506,8 @@ class LearnerService:
         eligible_dispositions: int,
         corpus: _BalancedCorpus,
         job_id: str | None = None,
+        compaction_size: int | None = None,
+        verification_preview: bool = False,
     ) -> _OptimizationOutcome:
         examples = corpus.examples
         share_boundaries = corpus.share_boundaries
@@ -479,6 +543,39 @@ class LearnerService:
             boundary for boundary in share_boundaries if boundary.injection_id in holdout_ids
         )
         tune_share_and_tau = len(examples) >= _SHARE_TUNING_MINIMUM
+        original_training, original_holdout = training, holdout
+        original_training_boundaries = training_boundaries
+        original_holdout_boundaries = holdout_boundaries
+        creation = None
+        if self.compaction_learner is not None:
+            try:
+                creation = await self.compaction_learner.prepare(
+                    session, mint_ulid(), memory_size=compaction_size, preview=verification_preview)
+            except Exception:
+                logger.exception("Compaction backtest failed; scorer fit keeps incumbent size")
+        if creation is not None:
+            creation["eligible"] = creation["better"] and (
+                tune_share_and_tau
+                or creation["candidate"]["memory_size"] == creation["current"]["memory_size"]
+            )
+            if creation["eligible"]:
+                sizes = creation["token_sizes"]
+                training = tuple(
+                    replace(row, body_tokens=sizes.get(str(row.memory_id), row.body_tokens))
+                    for row in training
+                )
+                holdout = tuple(
+                    replace(row, body_tokens=sizes.get(str(row.memory_id), row.body_tokens))
+                    for row in holdout
+                )
+                def resized(boundary):
+                    if not boundary.token_basis or not boundary.context_tokens:
+                        return boundary
+                    return replace(boundary, required_share=sum(
+                        sizes.get(str(mid), count) for mid, count in boundary.token_basis
+                    ) / boundary.context_tokens)
+                training_boundaries = tuple(resized(row) for row in training_boundaries)
+                holdout_boundaries = tuple(resized(row) for row in holdout_boundaries)
         loop = asyncio.get_running_loop()
 
         def progress(point: dict) -> None:
@@ -511,8 +608,8 @@ class LearnerService:
                 reason=str(error),
             )
         incumbent_training_score = recorded_score(
-            training,
-            share_boundaries=training_boundaries,
+            original_training,
+            share_boundaries=original_training_boundaries,
             memory_context_share=incumbent.params.memory_context_share,
         )
         axes = await asyncio.to_thread(
@@ -536,8 +633,8 @@ class LearnerService:
             memory_context_share=fit.memory_context_share,
         )
         incumbent_score = recorded_score(
-            holdout,
-            share_boundaries=holdout_boundaries,
+            original_holdout,
+            share_boundaries=original_holdout_boundaries,
             memory_context_share=incumbent.params.memory_context_share,
         )
         fitted_score = challenger_score(
@@ -565,10 +662,46 @@ class LearnerService:
             for name, axis in axes.items()
         )
         wins = wins or (retires_term and fitted_score == incumbent_score)
+        if creation is not None and creation["eligible"]:
+            # Both kinds of feedback govern one proposal: never sacrifice injection accuracy
+            # to accept prettier extraction. A creation improvement may break an injection tie.
+            wins = (
+                fitted_score.weighted_disagreements <= incumbent_score.weighted_disagreements
+                and fitted_score.weighted_share_disagreements
+                <= incumbent_score.weighted_share_disagreements
+            )
+        if creation is not None:
+            creation["joint_fit"] = {
+                "tau": fit.tau, "memory_context_share": fit.memory_context_share,
+                "memory_size": creation[
+                    "candidate" if creation["eligible"] else "current"
+                ]["memory_size"],
+                "candidate_memory_size": creation["candidate"]["memory_size"],
+                "creation_improved": creation["better"], "proposal_eligible": creation["eligible"],
+                "size_tuning_active": tune_share_and_tau,
+                "resized_memories": len(creation["token_sizes"]) if creation["eligible"] else 0,
+                "resized_dispositions": sum(
+                    old.body_tokens != new.body_tokens
+                    for old, new in zip(
+                        (*original_training, *original_holdout), (*training, *holdout), strict=True
+                    )
+                ),
+                "resized_boundaries": sum(
+                    old.required_share != new.required_share
+                    for old, new in zip(
+                        (*original_training_boundaries, *original_holdout_boundaries),
+                        (*training_boundaries, *holdout_boundaries), strict=True
+                    )
+                ),
+                "incumbent": _score_manifest(incumbent_score),
+                "candidate": _score_manifest(fitted_score),
+            }
         proposal_weights = dict(zip(FEATURE_NAMES, fit.weights, strict=True))
         evaluated_params = deepcopy(active_row.params)
         evaluated_params.pop("_control", None)
         evaluated_params.pop("_learner", None)
+        if wins and creation is not None and creation["eligible"]:
+            evaluated_params["_compaction"] = creation["candidate"]
         if fit.project_offsets or "project_offsets" in evaluated_params:
             evaluated_params["project_offsets"] = dict(fit.project_offsets)
         if axes or "axes" in evaluated_params:
@@ -596,6 +729,10 @@ class LearnerService:
                 "challenger": _score_manifest(fitted_score),
             },
         }
+        if creation is not None:
+            backtest_scores["compaction"] = {
+                **creation["scores"], "joint_fit": creation.get("joint_fit")
+            }
         tie_break_applied = _tie_break_manifest(
             incumbent_score,
             fitted_score,
@@ -630,6 +767,7 @@ class LearnerService:
                 },
                 backtest_scores=backtest_scores,
                 tie_break_applied=tie_break_applied,
+                compaction=creation,
             )
         settings_manifest = {
             **self._settings.manifest(),
@@ -639,7 +777,7 @@ class LearnerService:
             ),
         }
         proposal_params = deepcopy(active_row.params)
-        for key in ("project_offsets", "axes"):
+        for key in ("project_offsets", "axes", "_compaction"):
             if key in evaluated_params:
                 proposal_params[key] = evaluated_params[key]
         inherited_control = "_control" in proposal_params
@@ -652,6 +790,8 @@ class LearnerService:
             "corpus_fingerprint": corpus.fingerprint,
             "corpus_strategy": corpus.stratification["strategy"],
         }
+        if wins and creation is not None and creation["eligible"]:
+            digest_manifest["compaction"] = creation["candidate"]
         if inherited_control:
             # Pre-fix control-basin proposals inherited _control at the same digest.
             # Version the corrected encoding without erasing incumbent provenance.
@@ -753,6 +893,7 @@ class LearnerService:
             },
             backtest_scores=backtest_scores,
             tie_break_applied=tie_break_applied,
+            compaction=creation,
         )
 
     def _evidence(

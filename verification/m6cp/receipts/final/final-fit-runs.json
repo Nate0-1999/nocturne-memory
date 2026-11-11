@@ -1,0 +1,4 @@
+{
+ "ok": false,
+ "error": "locator.scrollIntoViewIfNeeded: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"rack-plugin-frame-injection_console\"]').contentFrame().getByRole('region', { name: 'Memory creation outcomes' }).getByRole('heading', { name: /01M6ZQZSDWY6EZV8PHA5NCDDGW/ })\u001b[22m\n\n    at eval (<anonymous>:26:66)\n    at async Server.<anonymous> (/Users/nateoswalt/relay/m6cp/work/driver.mjs:143:15)"
+}

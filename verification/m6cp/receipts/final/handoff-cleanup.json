@@ -1,0 +1,15 @@
+{
+  "secret_scan": "PASS",
+  "files_scanned": 790,
+  "credential_files_removed": [
+    "scratch/local/env",
+    "scratch/bootstrap/env"
+  ],
+  "ports": {
+    "8013": "free",
+    "8873": "free",
+    "9657": "free",
+    "55453": "free"
+  },
+  "compose_containers": []
+}
