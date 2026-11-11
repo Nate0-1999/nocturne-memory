@@ -6,7 +6,7 @@ import hashlib
 import json
 import math
 from collections import defaultdict
-from collections.abc import Iterable, Mapping, Sequence
+from collections.abc import Callable, Iterable, Mapping, Sequence
 from dataclasses import dataclass, field
 from datetime import datetime
 from decimal import Decimal
@@ -67,6 +67,7 @@ class ShareBoundary:
 class FitSettings:
     pair_margin: float
     bias_l2: float
+    project_min_dispositions: int = 25
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)
@@ -164,6 +165,7 @@ def fit_pairwise(
     share_boundaries: Sequence[ShareBoundary] = (),
     tune_share_and_tau: bool = False,
     settings: FitSettings,
+    progress: Callable[[dict], None] | None = None,
 ) -> FitResult:
     """Solve the full convex squared-hinge objective by projected gradient."""
 
@@ -229,8 +231,12 @@ def fit_pairwise(
         weights = next_weights
         biases = next_biases
         objective = next_objective
+        if progress is not None and (iteration == 1 or iteration % 100 == 0):
+            progress({"phase": "global", "iteration": iteration, "objective": objective})
         if change <= 1e-11 or (0.0 <= improvement <= 1e-13):
             break
+    if progress is not None and iterations != 1 and iterations % 100 != 0:
+        progress({"phase": "global", "iteration": iterations, "objective": objective})
     normalized_biases = {
         memory_id: value for memory_id, value in biases.items() if abs(value) > 1e-12
     }
@@ -258,6 +264,8 @@ def fit_pairwise(
         where_weight=where_weight,
         settings=settings,
     )
+    if progress is not None:
+        progress({"phase": "projects", "iteration": iterations, "projects": len(project_offsets)})
     tau = incumbent_tau
     memory_context_share = incumbent_memory_context_share
     boundary_iterations = 0
@@ -275,6 +283,10 @@ def fit_pairwise(
             incumbent=incumbent_memory_context_share,
         )
         boundary_iterations = tau_iterations + share_iterations
+    if progress is not None:
+        progress(
+            {"phase": "replay", "iteration": iterations, "tau": tau, "share": memory_context_share}
+        )
     return FitResult(
         weights=weights,
         thread_weight=thread_weight,
@@ -302,7 +314,11 @@ def fit_project_offsets(
     """Fit project residuals AFTER globals, from zero, with L2 shrinkage to globals."""
     result = {}
     for project in sorted({row.project_key for row in examples if row.project_key is not None}):
-        pairs = _pairs([row for row in examples if row.project_key == project])
+        project_examples = [row for row in examples if row.project_key == project]
+        result[project] = dict.fromkeys(FEATURE_NAMES, 0.0)
+        if len(project_examples) < settings.project_min_dispositions:
+            continue
+        pairs = _pairs(project_examples)
         if not pairs:
             continue
         deltas = []

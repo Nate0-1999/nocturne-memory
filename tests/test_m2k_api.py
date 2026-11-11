@@ -260,6 +260,7 @@ async def test_console_contributions_sum_exactly_and_control_inserts_a_version(
         *,
         principal_id: str | None,
         include_terrain: bool = False,
+        terrain_parameters: tuple[str, str] = ("scorer.tau", "scorer.memory_context_share"),
     ) -> ScorerSimulationResponse:
         isolation = await session.scalar(text("SHOW transaction_isolation"))
         assert isinstance(isolation, str)
@@ -271,6 +272,7 @@ async def test_console_contributions_sum_exactly_and_control_inserts_a_version(
             values,
             principal_id=principal_id,
             include_terrain=include_terrain,
+            terrain_parameters=terrain_parameters,
         )
 
     monkeypatch.setattr(M2KService, "_deep_receipt", observe_deep_receipt)

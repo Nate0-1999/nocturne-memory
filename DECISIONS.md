@@ -1482,6 +1482,12 @@ and sums today's (UTC) llm receipts into two new columns (0030); the owner can r
 demand. Rate lanes reach back a day so the strip can draw today. Cache rows split by model,
 and the model listing keeps OpenRouter's cache-read price, so the Harness can price a saving.
 
+## M6LP — Project floors and observable fits [P1.2, P2.5]
+
+A-081 uses the existing learner minimum per project's training split; holdout signals
+cannot unlock a fit. Progress samples the actual global objective every 100 iterations
+and records later phases through a separate transaction, so polling never waits for the fit.
+History retains all authentic generations; effective weights use the serving projection.
 ## M6CR — Budget joins the policy type; every pick carries its reason [P4]
 
 PRECEDENT: PLAN M6CR; FL-152 153; A-021, A-082.
