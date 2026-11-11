@@ -220,6 +220,59 @@
         "title": "BatchDecisionResponse",
         "type": "object"
       },
+      "BundleRecord": {
+        "additionalProperties": false,
+        "description": "A-084: what save read from a bundle folder; recorded on the job, never authored.",
+        "properties": {
+          "digest": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "title": "Digest",
+            "type": "string"
+          },
+          "keys": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Keys",
+            "type": "array"
+          },
+          "tools": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/BundleTool"
+            },
+            "title": "Tools",
+            "type": "array"
+          }
+        },
+        "required": [
+          "digest"
+        ],
+        "title": "BundleRecord",
+        "type": "object"
+      },
+      "BundleTool": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "summary": {
+            "minLength": 1,
+            "title": "Summary",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "summary"
+        ],
+        "title": "BundleTool",
+        "type": "object"
+      },
       "CandidateScoreHistory": {
         "additionalProperties": false,
         "properties": {
@@ -7064,6 +7117,14 @@
       "WorkflowDefinition": {
         "additionalProperties": false,
         "properties": {
+          "allow": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Allow",
+            "type": "array"
+          },
           "budget_usd": {
             "anyOf": [
               {
@@ -7076,6 +7137,16 @@
               }
             ],
             "title": "Budget Usd"
+          },
+          "bundle": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/BundleRecord"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "cron": {
             "anyOf": [
@@ -7180,7 +7251,7 @@
   },
   "info": {
     "title": "N8 Spine",
-    "version": "0.1.90"
+    "version": "0.1.91"
   },
   "openapi": "3.1.0",
   "paths": {

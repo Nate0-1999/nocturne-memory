@@ -1523,3 +1523,11 @@ reason, while the Harness chip quoted the listing's routed price — one screen,
 (F173). The readout now carries the pick and why only; the Harness's model summary states the
 listing price beside it. Which price the strategies weigh is unchanged (A-021) and stays the
 owner's call.
+
+## M7WB — The recipe names its walls and carries its bundle record [P4, P4.2]
+
+PRECEDENT: PLAN M7WB; SD-092; A-069, A-084; ADR-015.
+`WorkflowDefinition` gains `allow` (the ADR-015 walls a run may cross unattended) and `bundle`
+(digest, tools, key names, written by the Harness at save). Both live in the A-069 definition
+instead of new columns, so the per-run definition copy keeps the digest a run used and no
+migration is needed. API contract 0.1.92.

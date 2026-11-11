@@ -1,4 +1,7 @@
-"""M3SJ / A-069: named recipes and durable execution cursors; one spend ledger."""
+"""M3SJ / A-069: named recipes and durable execution cursors; one spend ledger.
+
+A-084: a recipe may declare the walls it crosses unattended and carry its bundle record.
+"""
 
 from datetime import UTC, datetime
 from decimal import Decimal
@@ -11,6 +14,23 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 from sqlalchemy import text
 
 from spine.contracts import ULID
+
+
+class BundleTool(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    name: str = Field(min_length=1)
+    summary: str = Field(min_length=1)
+
+
+class BundleRecord(BaseModel):
+    """A-084: what save read from a bundle folder; recorded on the job, never authored."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    digest: str = Field(pattern=r"^sha256:[0-9a-f]{64}$")
+    tools: list[BundleTool] = []
+    keys: list[str] = []
 
 
 class WorkflowDefinition(BaseModel):
@@ -27,6 +47,18 @@ class WorkflowDefinition(BaseModel):
     cron: str | None = None
     trigger: Literal["file", "queue", "palace"] | None = None
     trigger_path: str | None = None
+    allow: list[str] = []
+    bundle: BundleRecord | None = None
+
+    @field_validator("allow")
+    @classmethod
+    def boundary_classes(cls, value: list[str]) -> list[str]:
+        for wall in value:
+            if wall not in {"remote", "credentials"} and not wall.startswith("workspace:/"):
+                raise ValueError(
+                    'allow names "remote", "credentials" or "workspace:<absolute folder>".'
+                )
+        return value
 
     @field_validator("name", "prompt", "folder", "model_policy", "exit_condition")
     @classmethod
