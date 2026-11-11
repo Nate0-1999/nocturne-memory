@@ -7,20 +7,21 @@
     {
       "repo": "spine",
       "base": "374d53f29a8e8494b16dfcc535753c0ef7861a29",
-      "head": "3f66e98723bbbb0a0eb80799d4459a777de2d4bf"
+      "head": "8f33e43f174f7b7a12cfc49e8f6f8db6c5d03aa5"
     }
   ],
   "unmapped": {
     "spine/openapi.json": "Package pair 0.1.92 and generated package metadata only; Memory API contract remains 0.1.92.",
     "spine/src/spine/__init__.py": "Package pair 0.1.92 and generated package metadata only; Memory API contract remains 0.1.92.",
     "spine/tests/test_packaging.py": "Package pair 0.1.92 and generated package metadata only; Memory API contract remains 0.1.92.",
+    "spine/verification/m7lf/FL-195.png": "M7LF's own evidence, coverage, handoff or coordination record; no feature behavior.",
+    "spine/verification/m7lf/FL-196.png": "M7LF's own evidence, coverage, handoff or coordination record; no feature behavior.",
+    "spine/verification/m7lf/SHA256SUMS": "M7LF's own evidence, coverage, handoff or coordination record; no feature behavior.",
+    "spine/verification/m7lf/ledger-report.json": "M7LF's own evidence, coverage, handoff or coordination record; no feature behavior.",
     "spine/verification/m7lf/receipts/ruff-spine.log": "M7LF's own evidence, coverage, handoff or coordination record; no feature behavior.",
     "spine/verification/m7lf/receipts/suite-spine-final.log": "M7LF's own evidence, coverage, handoff or coordination record; no feature behavior.",
     "spine/verification/m7lf/receipts/test-motivations-spine.log": "M7LF's own evidence, coverage, handoff or coordination record; no feature behavior.",
-    "spine/verification/m7lf/FL-196.png": "M7LF's own evidence, coverage, handoff or coordination record; no feature behavior.",
-    "spine/verification/m7lf/ledger-report.json": "M7LF's own evidence, coverage, handoff or coordination record; no feature behavior.",
-    "spine/verification/m7lf/FL-195.png": "M7LF's own evidence, coverage, handoff or coordination record; no feature behavior.",
-    "spine/verification/m7lf/SHA256SUMS": "M7LF's own evidence, coverage, handoff or coordination record; no feature behavior."
+    "spine/verification/m7lf/impacted.json": "M7LF's own evidence, coverage, handoff or coordination record; no feature behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
