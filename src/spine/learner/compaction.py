@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import logging
 from collections import defaultdict, deque
 from datetime import UTC, datetime
 from decimal import Decimal
@@ -10,11 +11,28 @@ import httpx
 from sqlalchemy import select, text
 
 from spine.db.models import OptimizationRun, ScorerConfig
-from spine.embeddings import EmbeddingReceiptContext
+from spine.embeddings import EmbeddingAPIError, EmbeddingReceiptContext, EmbeddingTransportError
 from spine.ids import mint_ulid
 from spine.learner.model import identity_is_excluded
 from spine.spend.contracts import SpendEventInput
 from spine.tokens import cl100k_token_count
+
+logger = logging.getLogger(__name__)
+
+
+def _goes_back(error, call):
+    """Name a provider stall (a timeout, a 429 or a 5xx) that earns its one retry.
+
+    A fit is many provider calls in a row; before this, one silent request failed the
+    whole fit and wasted the spend already made (F169, M6CP). Anything else is raised.
+    """
+    cause = error.__cause__ if isinstance(error, EmbeddingTransportError) else error
+    status = getattr(getattr(error, "response", error), "status_code", 0)
+    if not (isinstance(cause, httpx.TimeoutException) or status == 429 or status >= 500):
+        raise error
+    failure = f"HTTP {status}" if status else type(cause).__name__
+    logger.warning("Compaction back-test %s call failed (%s); it goes back once", call, failure)
+    return failure
 
 
 async def history(session, principal):
@@ -290,7 +308,7 @@ class CompactionLearner:
                     for body in bodies
                 ):
                     raise ValueError("Invalid compaction replay facts")
-                vectors = await self.embeddings.embed_with_receipt(
+                embed = (
                     [fact["body"] for fact in span["facts"]] + bodies,
                     EmbeddingReceiptContext(
                         principal_id=self.principal,
@@ -298,6 +316,11 @@ class CompactionLearner:
                         origin_agent="compaction-learner",
                     ),
                 )
+                try:
+                    vectors = await self.embeddings.embed_with_receipt(*embed)
+                except (EmbeddingTransportError, EmbeddingAPIError) as error:
+                    _goes_back(error, "embedding")
+                    vectors = await self.embeddings.embed_with_receipt(*embed)
                 reference = vectors[: len(span["facts"])]
                 produced = vectors[len(reference) :]
                 matched = set()
@@ -344,6 +367,16 @@ class CompactionLearner:
                            costs=prepared["costs"], proposal_version=proposal_version)
 
     async def _call(self, prompt, uid, costs, *, kind="candidate"):
+        # The curator's convention (v2.133): a stalled request goes back once, never a loop.
+        # The failed attempt returned no cost, so it gets no receipt of its own; the
+        # retry's receipt names it.
+        try:
+            return await self._call_once(prompt, uid, costs, kind=kind)
+        except (httpx.TimeoutException, httpx.HTTPStatusError) as error:
+            failure = _goes_back(error, kind)
+        return await self._call_once(prompt, uid, costs, kind=kind, went_back_after=failure)
+
+    async def _call_once(self, prompt, uid, costs, *, kind, went_back_after=None):
         key = self.settings.openai_api_key
         if key is None:
             raise ValueError("Compaction instruction learning needs a model credential")
@@ -415,7 +448,8 @@ class CompactionLearner:
                     model=data.get("model", model),
                     provider="openrouter",
                     ref=data.get("id", receipt),
-                    meta={"usage": usage},
+                    meta={"usage": usage}
+                    | ({"went_back_after": went_back_after} if went_back_after else {}),
                 )
             ]
         )
