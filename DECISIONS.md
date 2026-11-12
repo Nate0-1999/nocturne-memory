@@ -1545,3 +1545,5 @@ PRECEDENT: F225, F224; ADR-022. The curator queue checks both link directions be
 proposing a contradiction; approving an old card preserves the existing edge and records
 the decision. Failed compaction requests log the provider's reason with credentials
 redacted. Package pair 0.1.94; no API or schema change, contract stays 0.1.92.
+Gate return: learner candidate/replay calls share the curator provider's principal-aware
+model resolver and run cache. The unlisted fresh-install default is flagged, not changed.

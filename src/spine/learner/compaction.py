@@ -92,9 +92,10 @@ async def compaction_snapshot(session, principal):
 
 
 class CompactionLearner:
-    def __init__(self, sessions, *, principal, settings, embeddings, spend):
+    def __init__(self, sessions, *, principal, settings, embeddings, spend, curator):
         self.sessions, self.principal, self.settings = sessions, principal, settings
         self.embeddings, self.spend = embeddings, spend
+        self.curator = curator
 
     async def snapshot(self):
         async with self.sessions() as session:
@@ -383,9 +384,7 @@ class CompactionLearner:
         if key is None:
             raise ValueError("Compaction instruction learning needs a model credential")
         # Same configured cheap background model as this Palace's curator; no upgrade fallback.
-        model = self.settings.chat_model.removeprefix("openrouter:").replace(
-            "openai:", "openai/", 1
-        )
+        model = await self.curator.resolve_model(self.principal, uid)
         properties = (
             {"facts": {"type": "array", "items": {"type": "string"}}}
             if kind == "replay"
