@@ -2283,8 +2283,8 @@
       "last_walk": {
         "date": "2026-11-11",
         "packet": "M6W1A",
-        "verdict": "FAIL",
-        "flag": "F236",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "verification/m6w1a/FL-102.png"
       },
       "protected": true,
@@ -3089,10 +3089,10 @@
       ],
       "last_walk": {
         "date": "2026-11-11",
-        "packet": "M6W1A",
-        "verdict": "NOT WALKED",
+        "packet": "M8SP",
+        "verdict": "PASS",
         "flag": "",
-        "screenshot": ""
+        "screenshot": "FL-137.png"
       }
     },
     {
@@ -3110,10 +3110,10 @@
       ],
       "last_walk": {
         "date": "2026-11-11",
-        "packet": "M6W1A",
-        "verdict": "FAIL",
-        "flag": "F223",
-        "screenshot": "verification/m6w1a/FL-138.png"
+        "packet": "M8SP",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-138.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-14"
@@ -3481,10 +3481,10 @@
       ],
       "last_walk": {
         "date": "2026-11-11",
-        "packet": "M6W1A",
-        "verdict": "FAIL",
-        "flag": "F222",
-        "screenshot": "verification/m6w1a/FL-155.png"
+        "packet": "M8SP",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-155.png"
       },
       "protected": true,
       "protected_reason": "owner-iterated in manual sessions"
@@ -4697,10 +4697,10 @@
       ],
       "last_walk": {
         "date": "2026-11-11",
-        "packet": "M6W1A",
-        "verdict": "FAIL",
-        "flag": "F218",
-        "screenshot": "verification/m6w1a/FL-206.png"
+        "packet": "M8SP",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-206.png"
       }
     },
     {
