@@ -1,0 +1,634 @@
+{
+  "active_version": "m2k-01M76YHCTQWR1HS85E5FV7KB43",
+  "compaction": {
+    "active": {
+      "id": "baseline",
+      "parent": null,
+      "memory_size": 128,
+      "instructions": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>"
+    },
+    "generations": [
+      {
+        "id": "baseline",
+        "parent": null,
+        "memory_size": 128,
+        "instructions": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>",
+        "date": "2026-11-12T04:01:45.926873+00:00",
+        "scores": null,
+        "adopted": true
+      },
+      {
+        "id": "01M76YWPRR6WWX0HDJEZFDPYSR",
+        "parent": "baseline",
+        "memory_size": 96,
+        "instructions": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>",
+        "date": "2026-11-12T04:05:12.600388+00:00",
+        "scores": {
+          "candidate": {
+            "facts": 2,
+            "score": 1,
+            "tokens": 25
+          },
+          "incumbent": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "joint_fit": {
+            "tau": 0.32,
+            "candidate": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "incumbent": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "memory_size": 128,
+            "resized_memories": 0,
+            "creation_improved": false,
+            "proposal_eligible": false,
+            "resized_boundaries": 0,
+            "size_tuning_active": true,
+            "memory_context_share": 0.01,
+            "resized_dispositions": 0,
+            "candidate_memory_size": 96
+          }
+        },
+        "adopted": false,
+        "verdict": "preview_only"
+      },
+      {
+        "id": "01M76Z3C0FF3GA6EVV6NE7KK4J",
+        "parent": "baseline",
+        "memory_size": 96,
+        "instructions": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>",
+        "date": "2026-11-12T04:08:50.959511+00:00",
+        "scores": {
+          "candidate": {
+            "facts": 2,
+            "score": 1,
+            "tokens": 23
+          },
+          "incumbent": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "joint_fit": {
+            "tau": 0.32,
+            "candidate": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "incumbent": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "memory_size": 128,
+            "resized_memories": 0,
+            "creation_improved": false,
+            "proposal_eligible": false,
+            "resized_boundaries": 0,
+            "size_tuning_active": true,
+            "memory_context_share": 0.01,
+            "resized_dispositions": 0,
+            "candidate_memory_size": 96
+          }
+        },
+        "adopted": false,
+        "verdict": "preview_only"
+      },
+      {
+        "id": "01M76Z4JA11TKZHGRRCDZ3F3CQ",
+        "parent": "baseline",
+        "memory_size": 96,
+        "instructions": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>",
+        "date": "2026-11-12T04:09:30.177491+00:00",
+        "scores": {
+          "candidate": {
+            "facts": 2,
+            "score": 1,
+            "tokens": 23
+          },
+          "incumbent": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "joint_fit": {
+            "tau": 0.32,
+            "candidate": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "incumbent": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "memory_size": 128,
+            "resized_memories": 0,
+            "creation_improved": false,
+            "proposal_eligible": false,
+            "resized_boundaries": 0,
+            "size_tuning_active": true,
+            "memory_context_share": 0.01,
+            "resized_dispositions": 0,
+            "candidate_memory_size": 96
+          }
+        },
+        "adopted": false,
+        "verdict": "preview_only"
+      },
+      {
+        "id": "01M76Z6GA35BZFNQVP07NK2GAM",
+        "parent": "baseline",
+        "memory_size": 64,
+        "instructions": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>",
+        "date": "2026-11-12T04:10:33.667702+00:00",
+        "scores": {
+          "candidate": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "incumbent": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "joint_fit": {
+            "tau": 0.32,
+            "candidate": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "incumbent": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "memory_size": 128,
+            "resized_memories": 0,
+            "creation_improved": false,
+            "proposal_eligible": false,
+            "resized_boundaries": 0,
+            "size_tuning_active": true,
+            "memory_context_share": 0.01,
+            "resized_dispositions": 0,
+            "candidate_memory_size": 64
+          }
+        },
+        "adopted": false,
+        "verdict": "preview_only"
+      },
+      {
+        "id": "01M76Z93NBREM4E16VYFMC4QD2",
+        "parent": "baseline",
+        "memory_size": 64,
+        "instructions": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>",
+        "date": "2026-11-12T04:11:59.019959+00:00",
+        "scores": {
+          "candidate": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "incumbent": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "joint_fit": {
+            "tau": 0.32,
+            "candidate": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "incumbent": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "memory_size": 128,
+            "resized_memories": 0,
+            "creation_improved": false,
+            "proposal_eligible": false,
+            "resized_boundaries": 0,
+            "size_tuning_active": true,
+            "memory_context_share": 0.01,
+            "resized_dispositions": 0,
+            "candidate_memory_size": 64
+          }
+        },
+        "adopted": false,
+        "verdict": "preview_only"
+      },
+      {
+        "id": "01M76ZMHTV62JZTJDKAK7QJP3K",
+        "parent": "baseline",
+        "memory_size": 96,
+        "instructions": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>",
+        "date": "2026-11-12T04:18:13.979447+00:00",
+        "scores": {
+          "candidate": {
+            "facts": 2,
+            "score": 1,
+            "tokens": 23
+          },
+          "incumbent": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "joint_fit": {
+            "tau": 0.32,
+            "candidate": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "incumbent": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "memory_size": 128,
+            "resized_memories": 0,
+            "creation_improved": false,
+            "proposal_eligible": false,
+            "resized_boundaries": 0,
+            "size_tuning_active": true,
+            "memory_context_share": 0.01,
+            "resized_dispositions": 0,
+            "candidate_memory_size": 96
+          }
+        },
+        "adopted": false,
+        "verdict": "preview_only"
+      },
+      {
+        "id": "01M76ZNCND0BC238RZ1VNQEPRB",
+        "parent": "baseline",
+        "memory_size": 96,
+        "instructions": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>",
+        "date": "2026-11-12T04:18:41.453498+00:00",
+        "scores": {
+          "candidate": {
+            "facts": 2,
+            "score": 1,
+            "tokens": 25
+          },
+          "incumbent": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "joint_fit": {
+            "tau": 0.32,
+            "candidate": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "incumbent": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "memory_size": 128,
+            "resized_memories": 0,
+            "creation_improved": false,
+            "proposal_eligible": false,
+            "resized_boundaries": 0,
+            "size_tuning_active": true,
+            "memory_context_share": 0.01,
+            "resized_dispositions": 0,
+            "candidate_memory_size": 96
+          }
+        },
+        "adopted": false,
+        "verdict": "preview_only"
+      },
+      {
+        "id": "01M76ZV2S889WK8KAHVQR691C6",
+        "parent": "baseline",
+        "memory_size": 64,
+        "instructions": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>",
+        "date": "2026-11-12T04:21:47.944972+00:00",
+        "scores": {
+          "candidate": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "incumbent": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "joint_fit": {
+            "tau": 0.32,
+            "candidate": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "incumbent": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "memory_size": 128,
+            "resized_memories": 0,
+            "creation_improved": false,
+            "proposal_eligible": false,
+            "resized_boundaries": 0,
+            "size_tuning_active": true,
+            "memory_context_share": 0.01,
+            "resized_dispositions": 0,
+            "candidate_memory_size": 64
+          }
+        },
+        "adopted": false,
+        "verdict": "preview_only"
+      },
+      {
+        "id": "01M770163YMBG7Z0MT035F5NMK",
+        "parent": "baseline",
+        "memory_size": 112,
+        "instructions": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>",
+        "date": "2026-11-12T04:25:07.966860+00:00",
+        "scores": {
+          "candidate": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "incumbent": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "joint_fit": {
+            "tau": 0.32,
+            "candidate": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "incumbent": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "memory_size": 128,
+            "resized_memories": 0,
+            "creation_improved": false,
+            "proposal_eligible": false,
+            "resized_boundaries": 0,
+            "size_tuning_active": true,
+            "memory_context_share": 0.01,
+            "resized_dispositions": 0,
+            "candidate_memory_size": 112
+          }
+        },
+        "adopted": false,
+        "verdict": "preview_only"
+      },
+      {
+        "id": "01M77068PGAETC9SD8H9QNW779",
+        "parent": "baseline",
+        "memory_size": 64,
+        "instructions": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>",
+        "date": "2026-11-12T04:27:54.448793+00:00",
+        "scores": {
+          "candidate": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "incumbent": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "joint_fit": {
+            "tau": 0.32,
+            "candidate": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "incumbent": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "memory_size": 128,
+            "resized_memories": 0,
+            "creation_improved": false,
+            "proposal_eligible": false,
+            "resized_boundaries": 0,
+            "size_tuning_active": true,
+            "memory_context_share": 0.01,
+            "resized_dispositions": 0,
+            "candidate_memory_size": 64
+          }
+        },
+        "adopted": false,
+        "verdict": "preview_only"
+      },
+      {
+        "id": "01M77095VZJW3CAGW8PKXM5WGF",
+        "parent": "baseline",
+        "memory_size": 64,
+        "instructions": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>",
+        "date": "2026-11-12T04:29:29.855371+00:00",
+        "scores": {
+          "candidate": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "incumbent": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "joint_fit": {
+            "tau": 0.32,
+            "candidate": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "incumbent": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "memory_size": 128,
+            "resized_memories": 0,
+            "creation_improved": false,
+            "proposal_eligible": false,
+            "resized_boundaries": 0,
+            "size_tuning_active": true,
+            "memory_context_share": 0.01,
+            "resized_dispositions": 0,
+            "candidate_memory_size": 64
+          }
+        },
+        "adopted": false,
+        "verdict": "preview_only"
+      },
+      {
+        "id": "01M770APR08JQZ4MZV35JBXCVE",
+        "parent": "baseline",
+        "memory_size": 112,
+        "instructions": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>",
+        "date": "2026-11-12T04:30:19.904832+00:00",
+        "scores": {
+          "candidate": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "incumbent": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "joint_fit": {
+            "tau": 0.32,
+            "candidate": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "incumbent": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "memory_size": 128,
+            "resized_memories": 0,
+            "creation_improved": false,
+            "proposal_eligible": false,
+            "resized_boundaries": 0,
+            "size_tuning_active": true,
+            "memory_context_share": 0.01,
+            "resized_dispositions": 0,
+            "candidate_memory_size": 112
+          }
+        },
+        "adopted": false,
+        "verdict": "preview_only"
+      },
+      {
+        "id": "01M770BE9HVAAEE7ZG38WQV61M",
+        "parent": "baseline",
+        "memory_size": 112,
+        "instructions": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>",
+        "date": "2026-11-12T04:30:44.017950+00:00",
+        "scores": {
+          "candidate": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "incumbent": {
+            "facts": 1,
+            "score": 1,
+            "tokens": 10
+          },
+          "joint_fit": {
+            "tau": 0.32,
+            "candidate": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "incumbent": {
+              "disagreements": 80,
+              "injected_tokens": 1420,
+              "share_disagreements": 4,
+              "weighted_disagreements": "80",
+              "weighted_share_disagreements": "4"
+            },
+            "memory_size": 128,
+            "resized_memories": 0,
+            "creation_improved": false,
+            "proposal_eligible": false,
+            "resized_boundaries": 0,
+            "size_tuning_active": true,
+            "memory_context_share": 0.01,
+            "resized_dispositions": 0,
+            "candidate_memory_size": 112
+          }
+        },
+        "adopted": false,
+        "verdict": "preview_only"
+      }
+    ],
+    "last_backtest": "preview_only"
+  }
+}

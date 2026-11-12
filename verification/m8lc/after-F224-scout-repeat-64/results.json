@@ -1,0 +1,155 @@
+[
+  {
+    "active_before": "m2k-01M76YHCTQWR1HS85E5FV7KB43"
+  },
+  {
+    "size": 64,
+    "include_verification": false,
+    "status": 200,
+    "result": {
+      "verdict": "preview_only",
+      "verification_included": false,
+      "fit": {
+        "status": "not_better",
+        "incumbent_version": "m2k-01M76YHCTQWR1HS85E5FV7KB43",
+        "proposal_version": null,
+        "eligible_dispositions": 454,
+        "training_dispositions": 354,
+        "holdout_dispositions": 100,
+        "training_pairs": 339,
+        "incumbent": {
+          "disagreements": 80,
+          "weighted_disagreements": "80",
+          "injected_tokens": 1420,
+          "share_disagreements": 4,
+          "weighted_share_disagreements": "4"
+        },
+        "challenger": {
+          "disagreements": 80,
+          "weighted_disagreements": "80",
+          "injected_tokens": 1420,
+          "share_disagreements": 4,
+          "weighted_share_disagreements": "4"
+        },
+        "reason": "Current values kept: the candidate did not improve the back-test enough."
+      },
+      "scores": {
+        "incumbent": {
+          "score": 1,
+          "facts": 1,
+          "tokens": 10
+        },
+        "candidate": {
+          "score": 1,
+          "facts": 1,
+          "tokens": 10
+        }
+      },
+      "joint_fit": {
+        "tau": 0.32,
+        "memory_context_share": 0.01,
+        "memory_size": 128,
+        "candidate_memory_size": 64,
+        "creation_improved": false,
+        "proposal_eligible": false,
+        "size_tuning_active": true,
+        "resized_memories": 0,
+        "resized_dispositions": 0,
+        "resized_boundaries": 0,
+        "incumbent": {
+          "disagreements": 80,
+          "weighted_disagreements": "80",
+          "injected_tokens": 1420,
+          "share_disagreements": 4,
+          "weighted_share_disagreements": "4"
+        },
+        "candidate": {
+          "disagreements": 80,
+          "weighted_disagreements": "80",
+          "injected_tokens": 1420,
+          "share_disagreements": 4,
+          "weighted_share_disagreements": "4"
+        }
+      },
+      "id": "01M77068PGAETC9SD8H9QNW779"
+    }
+  },
+  {
+    "size": 64,
+    "include_verification": true,
+    "status": 200,
+    "result": {
+      "verdict": "preview_only",
+      "verification_included": true,
+      "fit": {
+        "status": "not_better",
+        "incumbent_version": "m2k-01M76YHCTQWR1HS85E5FV7KB43",
+        "proposal_version": null,
+        "eligible_dispositions": 454,
+        "training_dispositions": 354,
+        "holdout_dispositions": 100,
+        "training_pairs": 339,
+        "incumbent": {
+          "disagreements": 80,
+          "weighted_disagreements": "80",
+          "injected_tokens": 1420,
+          "share_disagreements": 4,
+          "weighted_share_disagreements": "4"
+        },
+        "challenger": {
+          "disagreements": 80,
+          "weighted_disagreements": "80",
+          "injected_tokens": 1420,
+          "share_disagreements": 4,
+          "weighted_share_disagreements": "4"
+        },
+        "reason": "Current values kept: the candidate did not improve the back-test enough."
+      },
+      "scores": {
+        "incumbent": {
+          "score": 1,
+          "facts": 1,
+          "tokens": 10
+        },
+        "candidate": {
+          "score": 1,
+          "facts": 1,
+          "tokens": 10
+        }
+      },
+      "joint_fit": {
+        "tau": 0.32,
+        "memory_context_share": 0.01,
+        "memory_size": 128,
+        "candidate_memory_size": 64,
+        "creation_improved": false,
+        "proposal_eligible": false,
+        "size_tuning_active": true,
+        "resized_memories": 0,
+        "resized_dispositions": 0,
+        "resized_boundaries": 0,
+        "incumbent": {
+          "disagreements": 80,
+          "weighted_disagreements": "80",
+          "injected_tokens": 1420,
+          "share_disagreements": 4,
+          "weighted_share_disagreements": "4"
+        },
+        "candidate": {
+          "disagreements": 80,
+          "weighted_disagreements": "80",
+          "injected_tokens": 1420,
+          "share_disagreements": 4,
+          "weighted_share_disagreements": "4"
+        }
+      },
+      "id": "01M77095VZJW3CAGW8PKXM5WGF"
+    }
+  },
+  {
+    "generation": "01M77095VZJW3CAGW8PKXM5WGF \u00b7 preview only\n\nParent baseline \u00b7 2026-11-12T04:29:29.855371+00:00 \u00b7 64 tokens\n\nCurrent 1 \u00b7 candidate 1\n\nINSTRUCTIONS\nYou are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>"
+  },
+  {
+    "active_after": "m2k-01M76YHCTQWR1HS85E5FV7KB43"
+  }
+]

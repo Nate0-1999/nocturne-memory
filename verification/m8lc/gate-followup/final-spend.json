@@ -1,0 +1,4861 @@
+{
+  "principal": "palace-agent-2f95c0a5-bb45-4537-a2cc-721ddd428680",
+  "curator_policy": "pinned:openrouter:openai/gpt-4.1-mini",
+  "summary": [
+    {
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "origin_agent": "nocturne",
+      "lines": 95,
+      "dollars": "0.028574800000",
+      "unpriced": 0
+    },
+    {
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "origin_agent": "compaction-learner",
+      "lines": 88,
+      "dollars": "0.019455600000",
+      "unpriced": 0
+    },
+    {
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "origin_agent": "maintenance",
+      "lines": 86,
+      "dollars": "0.043952000000",
+      "unpriced": 0
+    },
+    {
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "origin_agent": "compaction-learner",
+      "lines": 86,
+      "dollars": "0.000090720000",
+      "unpriced": 0
+    },
+    {
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "origin_agent": "maintenance",
+      "lines": 3,
+      "dollars": "0.000000620000",
+      "unpriced": 0
+    },
+    {
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "origin_agent": "nocturne",
+      "lines": 89,
+      "dollars": "0.000035760000",
+      "unpriced": 0
+    },
+    {
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "origin_agent": null,
+      "lines": 32,
+      "dollars": "0.000009220000",
+      "unpriced": 0
+    }
+  ],
+  "counts": {
+    "injection_event_rows": 454,
+    "creation_outcomes": 377,
+    "compaction_sources": 3,
+    "gate_annotations": 0
+  },
+  "other_chat_models": [],
+  "receipts": [
+    {
+      "event_uid": "01M76YG0FJ9RE6SV3ACDJZZSCC",
+      "ts": "2026-11-12 03:58:16.562496+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000139765753",
+      "run_id": "01M76YFZ1T6A6X59K6QYYBFW79"
+    },
+    {
+      "event_uid": "01M76YG0FJRXEPD5JFYG3HRKGE",
+      "ts": "2026-11-12 03:58:16.562496+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000019034247",
+      "run_id": "01M76YFZ1T6A6X59K6QYYBFW79"
+    },
+    {
+      "event_uid": "01M76YG0ZFTV0FTNS07F1SMP0E",
+      "ts": "2026-11-12 03:58:17.071314+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YG1DT2CF8WSHW9VNA0KG6",
+      "ts": "2026-11-12 03:58:17.530276+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YG30CD8EA47P4Z2KE4FAT",
+      "ts": "2026-11-12 03:58:19.148359+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000019017065",
+      "run_id": "01M76YG1Z0E1YFC556RQ5E1NSC"
+    },
+    {
+      "event_uid": "01M76YG30CEF2NVZK674PHV88A",
+      "ts": "2026-11-12 03:58:19.148359+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000140182935",
+      "run_id": "01M76YG1Z0E1YFC556RQ5E1NSC"
+    },
+    {
+      "event_uid": "01M76YG3CAW9BJEY93Z2C097DE",
+      "ts": "2026-11-12 03:58:19.530072+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YG3W5F0FH33ZNN6ZTYBSA",
+      "ts": "2026-11-12 03:58:20.037260+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.20000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YG4WK3E6BH7QMH7QMDAWM",
+      "ts": "2026-11-12 03:58:21.075325+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000136948096",
+      "run_id": "01M76YG42Q7KXM5Y35T7FADHXJ"
+    },
+    {
+      "event_uid": "01M76YG4WKA569VYEFV67GSRV6",
+      "ts": "2026-11-12 03:58:21.075325+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000017051904",
+      "run_id": "01M76YG42Q7KXM5Y35T7FADHXJ"
+    },
+    {
+      "event_uid": "01M76YG597C5S9T50DEQVYSSJS",
+      "ts": "2026-11-12 03:58:21.479756+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.60000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YG5P95W6S54KC1PHMSVE3",
+      "ts": "2026-11-12 03:58:21.897610+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YG6Z2216J21KKQ99D904A",
+      "ts": "2026-11-12 03:58:23.202419+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000132687323",
+      "run_id": "01M76YG666WKXKHJ8AJ296YV8M"
+    },
+    {
+      "event_uid": "01M76YG6Z2BA4NRN51X9GF1C3Z",
+      "ts": "2026-11-12 03:58:23.202419+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000014512677",
+      "run_id": "01M76YG666WKXKHJ8AJ296YV8M"
+    },
+    {
+      "event_uid": "01M76YG7954G47PJ8C4A0PPNXZ",
+      "ts": "2026-11-12 03:58:23.525497+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YG7NJTT6WT8E1A9H5QYH2",
+      "ts": "2026-11-12 03:58:23.922491+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YG8N1TTX2KGPNEP4ZK89H",
+      "ts": "2026-11-12 03:58:24.929305+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000017660069",
+      "run_id": "01M76YG7XBHY8M95SNPBD2X4RQ"
+    },
+    {
+      "event_uid": "01M76YG8N1YZ2XH63SFFDQRN5F",
+      "ts": "2026-11-12 03:58:24.929305+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000139139931",
+      "run_id": "01M76YG7XBHY8M95SNPBD2X4RQ"
+    },
+    {
+      "event_uid": "01M76YG92YJDD4BRQE6J2Z2N7V",
+      "ts": "2026-11-12 03:58:25.374125+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YG9K981ACD9QQ3A3H9JF1",
+      "ts": "2026-11-12 03:58:25.897802+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGAZK1PEEE6BQ59CF7W0F",
+      "ts": "2026-11-12 03:58:27.315308+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000017051904",
+      "run_id": "01M76YGA1AQHT5P9CTBS18BCAY"
+    },
+    {
+      "event_uid": "01M76YGAZK76J0FHW5FBYS7DAP",
+      "ts": "2026-11-12 03:58:27.315308+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000136948096",
+      "run_id": "01M76YGA1AQHT5P9CTBS18BCAY"
+    },
+    {
+      "event_uid": "01M76YGBASYSQR4K93BE3WZRMM",
+      "ts": "2026-11-12 03:58:27.673320+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGBVB0QCPJ95TW6XW5G8G",
+      "ts": "2026-11-12 03:58:28.203251+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGCXVH1DKRKNX7CFRSQYW",
+      "ts": "2026-11-12 03:58:29.307346+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000137777319",
+      "run_id": "01M76YGC5D108KZ16P5DE5R1RW"
+    },
+    {
+      "event_uid": "01M76YGCXVKVVGTWFR336TBDJY",
+      "ts": "2026-11-12 03:58:29.307346+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000017022681",
+      "run_id": "01M76YGC5D108KZ16P5DE5R1RW"
+    },
+    {
+      "event_uid": "01M76YGD8ZJ7ZM402CAA6JMS8G",
+      "ts": "2026-11-12 03:58:29.663964+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.20000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGDRZG33Y42W6KN7WZSFK",
+      "ts": "2026-11-12 03:58:30.175119+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.60000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGF3ACXZR5SGAZ8PFRQ27",
+      "ts": "2026-11-12 03:58:31.530990+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000137777319",
+      "run_id": "01M76YGE8FNCYTJBTV2A3A19ZW"
+    },
+    {
+      "event_uid": "01M76YGF3AE8B0Q21THY56N782",
+      "ts": "2026-11-12 03:58:31.530990+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000017022681",
+      "run_id": "01M76YGE8FNCYTJBTV2A3A19ZW"
+    },
+    {
+      "event_uid": "01M76YGFE3XJPR54K5X1W7PJ7K",
+      "ts": "2026-11-12 03:58:31.876012+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGFXGN4W5HJP4B3KB7480",
+      "ts": "2026-11-12 03:58:32.368633+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGH7M1GBA0DQN715NFC9W",
+      "ts": "2026-11-12 03:58:33.716737+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000017051904",
+      "run_id": "01M76YGGBPBB0JFCXTA01RKEW7"
+    },
+    {
+      "event_uid": "01M76YGH7M9X842AF1S61006SP",
+      "ts": "2026-11-12 03:58:33.716737+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000136948096",
+      "run_id": "01M76YGGBPBB0JFCXTA01RKEW7"
+    },
+    {
+      "event_uid": "01M76YGKFMFWGGCM2AB1NJ0B6P",
+      "ts": "2026-11-12 03:58:36.020834+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGKXRKDDB2TCC0VXCMXSB",
+      "ts": "2026-11-12 03:58:36.472658+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.20000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGN74BY39X1TSJYH08H7D",
+      "ts": "2026-11-12 03:58:37.796715+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000132970212",
+      "run_id": "01M76YGMEPZE9TMWT7QEZA3YJV"
+    },
+    {
+      "event_uid": "01M76YGN74S6JDXKHRXZBJ5W0F",
+      "ts": "2026-11-12 03:58:37.796715+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000015829788",
+      "run_id": "01M76YGMEPZE9TMWT7QEZA3YJV"
+    },
+    {
+      "event_uid": "01M76YGNJQRV40P1X5797X60X0",
+      "ts": "2026-11-12 03:58:38.167121+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "1.60000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGP0623V5XXQBYYZP3HKT",
+      "ts": "2026-11-12 03:58:38.598410+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "1.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGQCB6H2QM17TH0SRW355",
+      "ts": "2026-11-12 03:58:40.011101+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000138832989",
+      "run_id": "01M76YGPJC0NTR2VBY7E5EJKB8"
+    },
+    {
+      "event_uid": "01M76YGQCBMK523J5HB4SKCMQP",
+      "ts": "2026-11-12 03:58:40.011101+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000018367011",
+      "run_id": "01M76YGPJC0NTR2VBY7E5EJKB8"
+    },
+    {
+      "event_uid": "01M76YGQQFZXN51BVRKR211W5H",
+      "ts": "2026-11-12 03:58:40.367889+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.60000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGR4PS3G585CK6DFFS4Y2",
+      "ts": "2026-11-12 03:58:40.790815+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGSF900JJ72XT828699NS",
+      "ts": "2026-11-12 03:58:42.153844+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000142868686",
+      "run_id": "01M76YGRNW7BM1VRE1CMDECXF9"
+    },
+    {
+      "event_uid": "01M76YGSF9GNJKXP7WTKT9VY7E",
+      "ts": "2026-11-12 03:58:42.153844+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000020331314",
+      "run_id": "01M76YGRNW7BM1VRE1CMDECXF9"
+    },
+    {
+      "event_uid": "01M76YGSWA24N2FGW4QA158ENA",
+      "ts": "2026-11-12 03:58:42.570625+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.20000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGTA7VFF5KF55JMHACTQ2",
+      "ts": "2026-11-12 03:58:43.015445+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGVWCKDQ8F2VWCR35YERR",
+      "ts": "2026-11-12 03:58:44.620620+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000016993857",
+      "run_id": "01M76YGTTBPZMW97AFTNGJBHKT"
+    },
+    {
+      "event_uid": "01M76YGVWCP703MRBX0MKH0X8K",
+      "ts": "2026-11-12 03:58:44.620620+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000138606143",
+      "run_id": "01M76YGTTBPZMW97AFTNGJBHKT"
+    },
+    {
+      "event_uid": "01M76YGW6EBCCGYRHCSREKGN09",
+      "ts": "2026-11-12 03:58:44.942755+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.60000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGWM5MS1YD6XH6CAHVQ19",
+      "ts": "2026-11-12 03:58:45.381464+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGXW2GQSN7R9S29JGA0J2",
+      "ts": "2026-11-12 03:58:46.658823+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000137893793",
+      "run_id": "01M76YGWYBDKNC4KXSCSH5TYJP"
+    },
+    {
+      "event_uid": "01M76YGXW2S9FW7EKJCRRPNPF8",
+      "ts": "2026-11-12 03:58:46.658823+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000017706207",
+      "run_id": "01M76YGWYBDKNC4KXSCSH5TYJP"
+    },
+    {
+      "event_uid": "01M76YGY75HH21AC110F5WNJCS",
+      "ts": "2026-11-12 03:58:47.013474+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.60000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGYQ4Z4P5W8W58MB277QP",
+      "ts": "2026-11-12 03:58:47.524340+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YGZZY7F29EZF4PFNAPKBP",
+      "ts": "2026-11-12 03:58:48.830966+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000015737025",
+      "run_id": "01M76YGZ21B4GCBC38DY7EKMDM"
+    },
+    {
+      "event_uid": "01M76YGZZYFZER4RK2ZTDXABY5",
+      "ts": "2026-11-12 03:58:48.830966+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000135862975",
+      "run_id": "01M76YGZ21B4GCBC38DY7EKMDM"
+    },
+    {
+      "event_uid": "01M76YH0DVWNZPKVDET6MAN0KQ",
+      "ts": "2026-11-12 03:58:49.275384+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YH0WWT7R1BZR6GM7Y7S8P",
+      "ts": "2026-11-12 03:58:49.756983+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YH1YH4FR0EA0ZGFRY6XC4",
+      "ts": "2026-11-12 03:58:50.833836+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000140600000",
+      "run_id": "01M76YH15EMJFQXDV2B99Z28KH"
+    },
+    {
+      "event_uid": "01M76YH1YHJZAS1NZC2KJYY3KA",
+      "ts": "2026-11-12 03:58:50.833836+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000019000000",
+      "run_id": "01M76YH15EMJFQXDV2B99Z28KH"
+    },
+    {
+      "event_uid": "01M76YH2D6G3NSTAYGVKRW8YQ5",
+      "ts": "2026-11-12 03:58:51.302326+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.20000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YH2YD3M999EK2ANYRB3KA",
+      "ts": "2026-11-12 03:58:51.853181+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.60000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YH43S84T6B3E3D7XK2KJP",
+      "ts": "2026-11-12 03:58:53.049232+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000013256339",
+      "run_id": "01M76YH38E62QDW6X39SYBV85P"
+    },
+    {
+      "event_uid": "01M76YH43SF07SCDN71SGD49MX",
+      "ts": "2026-11-12 03:58:53.049232+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000131543661",
+      "run_id": "01M76YH38E62QDW6X39SYBV85P"
+    },
+    {
+      "event_uid": "01M76YH4PFZ49988M69ATRXY51",
+      "ts": "2026-11-12 03:58:53.647479+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YH58DEY39V2VPW0JJR343",
+      "ts": "2026-11-12 03:58:54.221466+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.20000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YH68K4789GR0NVD5XNZFF",
+      "ts": "2026-11-12 03:58:55.251845+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000017066667",
+      "run_id": "01M76YH5C4HHKH9V6NVQ7A8MV6"
+    },
+    {
+      "event_uid": "01M76YH68K6S90S6VQWXYHD8Q6",
+      "ts": "2026-11-12 03:58:55.251845+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000136533333",
+      "run_id": "01M76YH5C4HHKH9V6NVQ7A8MV6"
+    },
+    {
+      "event_uid": "01M76YH6KS2MKGNMASMY70T4KC",
+      "ts": "2026-11-12 03:58:55.609174+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YH6ZYQVZVSD0Y5HY0E9QB",
+      "ts": "2026-11-12 03:58:55.998691+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YH87RCYR4NGW04B10NEN2",
+      "ts": "2026-11-12 03:58:57.272084+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000016418119",
+      "run_id": "01M76YH7FWT3A9DDP90X864SYM"
+    },
+    {
+      "event_uid": "01M76YH87RZ48C3W75243TWT1V",
+      "ts": "2026-11-12 03:58:57.272084+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000135581881",
+      "run_id": "01M76YH7FWT3A9DDP90X864SYM"
+    },
+    {
+      "event_uid": "01M76YH8K0Z62H9EH1V8RYAH8E",
+      "ts": "2026-11-12 03:58:57.632393+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.60000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YH909SWBM06YF7NKMNFC6",
+      "ts": "2026-11-12 03:58:58.057046+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YHAAQ61298TB7FYGXX5D0",
+      "ts": "2026-11-12 03:58:59.415999+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000015789474",
+      "run_id": "01M76YH9K05D29YVNWDNZD5BEC"
+    },
+    {
+      "event_uid": "01M76YHAAQVJDDQF4S54JAMEV4",
+      "ts": "2026-11-12 03:58:59.415999+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000134210526",
+      "run_id": "01M76YH9K05D29YVNWDNZD5BEC"
+    },
+    {
+      "event_uid": "01M76YHARX89X3E4H6GMYQ4QM7",
+      "ts": "2026-11-12 03:58:59.869424+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.20000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YHB5ZHA79Q5ZM0ZRKSWVX",
+      "ts": "2026-11-12 03:59:00.287234+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.60000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YHFCZHBH1B5Y7W8RD3HYH",
+      "ts": "2026-11-12 03:59:04.607820+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YHG5KG1HJYRCSXPP0230K",
+      "ts": "2026-11-12 03:59:05.395502+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "8.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YHJ549EY3E5C1CQP7YYSY",
+      "ts": "2026-11-12 03:59:07.428955+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "maintenance",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YHJG4F9ETK8QV7PZ7RJE9",
+      "ts": "2026-11-12 03:59:07.780288+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "maintenance",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YHJG5FZ6SNHMP10KKX8JC",
+      "ts": "2026-11-12 03:59:07.781944+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000234290617",
+      "run_id": "01M76YHFRYSE36XRWXSFGQFPY2"
+    },
+    {
+      "event_uid": "01M76YHJG5JVGKGEQ6QXBDFFTD",
+      "ts": "2026-11-12 03:59:07.781944+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.001124109383",
+      "run_id": "01M76YHFRYSE36XRWXSFGQFPY2"
+    },
+    {
+      "event_uid": "01M76YHK5D97JTEJBVXAXVDK31",
+      "ts": "2026-11-12 03:59:08.461035+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "maintenance",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "1.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YHNHM7HMPAHMF26K6P9VW",
+      "ts": "2026-11-12 03:59:10.900608+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "8.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YHPFN096G81Z3AKGE0DZJ",
+      "ts": "2026-11-12 03:59:11.861319+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YHQKN4FEJ01Y2ZB1TP6YT",
+      "ts": "2026-11-12 03:59:13.013853+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "8.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YHTDX3KP7FBXAMNMV0MVB",
+      "ts": "2026-11-12 03:59:15.901023+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000207509034",
+      "run_id": "01M76YHPX2E2JQXFREB33YP8WD"
+    },
+    {
+      "event_uid": "01M76YHTDXDW9DSFHFADW4TAD7",
+      "ts": "2026-11-12 03:59:15.901023+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.001094890966",
+      "run_id": "01M76YHPX2E2JQXFREB33YP8WD"
+    },
+    {
+      "event_uid": "01M76YHXFPSJPB4ET99NHDY0BA",
+      "ts": "2026-11-12 03:59:19.030744+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "8.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YHXXVVYGWF7B4ZPAKPS1C",
+      "ts": "2026-11-12 03:59:19.483416+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YHYFNFB43WH2ZP8R1DZY6",
+      "ts": "2026-11-12 03:59:20.053840+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "8.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YHYGMW0ZATPAJFAFDEWT6",
+      "ts": "2026-11-12 03:59:20.084245+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000633200000",
+      "run_id": "01M76YHHQMSKR3ZWS1QRZBPZR6"
+    },
+    {
+      "event_uid": "01M76YHZYMQD80VFC9HS8SRNYB",
+      "ts": "2026-11-12 03:59:21.556365+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000648400000",
+      "run_id": "01M76YHHQMSKR3ZWS1QRZBPZR6"
+    },
+    {
+      "event_uid": "01M76YJ131FNA8BDQ3TNJMR5YF",
+      "ts": "2026-11-12 03:59:22.721496+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000645600000",
+      "run_id": "01M76YHHQMSKR3ZWS1QRZBPZR6"
+    },
+    {
+      "event_uid": "01M76YJ1DC84M1T8C1XV59K1SR",
+      "ts": "2026-11-12 03:59:23.052477+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000107144024",
+      "run_id": "01M76YHY1K4174WXVTY0S35NTW"
+    },
+    {
+      "event_uid": "01M76YJ1DCZA4TMPPJCZ2KSN10",
+      "ts": "2026-11-12 03:59:23.052477+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000963255976",
+      "run_id": "01M76YHY1K4174WXVTY0S35NTW"
+    },
+    {
+      "event_uid": "01M76YJ25ZBN6WSG87QGCCXRYK",
+      "ts": "2026-11-12 03:59:23.839026+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000631600000",
+      "run_id": "01M76YHHQMSKR3ZWS1QRZBPZR6"
+    },
+    {
+      "event_uid": "01M76YJ39DK4NVEBM20RWFFDMQ",
+      "ts": "2026-11-12 03:59:24.973255+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000626800000",
+      "run_id": "01M76YHHQMSKR3ZWS1QRZBPZR6"
+    },
+    {
+      "event_uid": "01M76YJ42RXJX00RB95FRFSEY6",
+      "ts": "2026-11-12 03:59:25.784951+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "8.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YJ4K1YRG3CQ1J6JE1GCWC",
+      "ts": "2026-11-12 03:59:26.305210+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "8.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YJ535QS96QX36AT43Q6Q7",
+      "ts": "2026-11-12 03:59:26.821029+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YJ5N160KZA91HAR7SRF0H",
+      "ts": "2026-11-12 03:59:27.393786+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "6.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YJ9W70YHP23EF4ARYBBGY",
+      "ts": "2026-11-12 03:59:31.719086+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000638000000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YJAQB19HQ0SGTXKXZ4VWS",
+      "ts": "2026-11-12 03:59:32.587505+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000024701786",
+      "run_id": "01M76YJ527XN7CCBFTB8K4V5FF"
+    },
+    {
+      "event_uid": "01M76YJAQBHZB8JDGJ8Y0NGRRM",
+      "ts": "2026-11-12 03:59:32.587505+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.001120098214",
+      "run_id": "01M76YJ527XN7CCBFTB8K4V5FF"
+    },
+    {
+      "event_uid": "01M76YJBCCZY53D4377QS7VVBM",
+      "ts": "2026-11-12 03:59:33.260100+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000635600000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YJCKAG1HYD2BTE0XHJ1E4",
+      "ts": "2026-11-12 03:59:34.506489+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000638400000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YJCR8CQXA0TBPMPPVM8CW",
+      "ts": "2026-11-12 03:59:34.664867+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "6.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YJDTT2FARHG6RZ8VCVH20",
+      "ts": "2026-11-12 03:59:35.770580+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000628800000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YJDY3M3WDCFY12G12R21B",
+      "ts": "2026-11-12 03:59:35.875695+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YJF0CBKYZYH4BBMNARMJ5",
+      "ts": "2026-11-12 03:59:36.972043+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.001084312336",
+      "run_id": "01M76YJCSHKT8FHRCSXE7PA7SG"
+    },
+    {
+      "event_uid": "01M76YJF0CRKX3PRB6KJ84XEJQ",
+      "ts": "2026-11-12 03:59:36.972043+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000005687664",
+      "run_id": "01M76YJCSHKT8FHRCSXE7PA7SG"
+    },
+    {
+      "event_uid": "01M76YJF0TB7R5DJ23ZWF9YJYN",
+      "ts": "2026-11-12 03:59:36.986118+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000445200000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YJFQX7M4Q2A09RAE5JAFE",
+      "ts": "2026-11-12 03:59:37.725627+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YJG5VKCGG1PMWA9E7BQZH",
+      "ts": "2026-11-12 03:59:38.171075+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000445600000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YJGH0GP8JFJPS2EWJ4V9C",
+      "ts": "2026-11-12 03:59:38.528157+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.0000E-8",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YJH6ZR2GYV4ADKM56NF1F",
+      "ts": "2026-11-12 03:59:39.231220+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000444800000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YJJD0K7DQD3QT1FQA5E9S",
+      "ts": "2026-11-12 03:59:40.448541+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000440800000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YJMVQ7TZ0RMQJWSJFAAM0",
+      "ts": "2026-11-12 03:59:42.967737+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000447600000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YJNWEVZ5Q9JW4YBSJ341D",
+      "ts": "2026-11-12 03:59:44.014886+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000438400000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YJT7QABXW88G2R07AVXNK",
+      "ts": "2026-11-12 03:59:48.472001+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000460000000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YJVHY1Q4TRTQ4YCH9CCX8",
+      "ts": "2026-11-12 03:59:49.822844+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000439600000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YJX11XC7B8YFM1PKNT3Q4",
+      "ts": "2026-11-12 03:59:51.329119+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000461600000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YJY4PK0B5VVJGKZBRHZRG",
+      "ts": "2026-11-12 03:59:52.470342+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000446800000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YJZ9EQEPHJJW7D5SA02ZY",
+      "ts": "2026-11-12 03:59:53.646985+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000434000000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YK0G8FT8ED79VNWK7ZJGJ",
+      "ts": "2026-11-12 03:59:54.888601+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000465200000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YK1VENYJJVC5V913V173N",
+      "ts": "2026-11-12 03:59:56.270187+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000443200000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YK32R9SBNGWTZDSFQRF9N",
+      "ts": "2026-11-12 03:59:57.528418+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000496400000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YK46PV6ZMMDWPPKNDZZWB",
+      "ts": "2026-11-12 03:59:58.678532+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000436400000",
+      "run_id": "01M76YJ88GBRW84XERCPZDV3D7"
+    },
+    {
+      "event_uid": "01M76YK55S12YZT89DRP17G2A4",
+      "ts": "2026-11-12 03:59:59.673441+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.0000E-8",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YMYMWE1WFV1C61ZG22ZMG",
+      "ts": "2026-11-12 04:00:58.524805+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.0000E-8",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YP95HNQ9WC00QXRGCGYPB",
+      "ts": "2026-11-12 04:01:42.065201+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000504031128",
+      "run_id": "01M76YJG3KFE42C594Y2GVSCPM"
+    },
+    {
+      "event_uid": "01M76YP95HPSSB2RF727WM08J4",
+      "ts": "2026-11-12 04:01:42.065201+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000084768872",
+      "run_id": "01M76YJG3KFE42C594Y2GVSCPM"
+    },
+    {
+      "event_uid": "01M76YP9ZJDKG8M91WTR60KPPN",
+      "ts": "2026-11-12 04:01:42.898813+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YPAXB78ZVTCBS7YK07R1X",
+      "ts": "2026-11-12 04:01:43.851861+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000004609222",
+      "run_id": "01M76YJG3KFE42C594Y2GVSCPM"
+    },
+    {
+      "event_uid": "01M76YPAXBWB30SH3GYK8EX2B8",
+      "ts": "2026-11-12 04:01:43.851861+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000286190778",
+      "run_id": "01M76YJG3KFE42C594Y2GVSCPM"
+    },
+    {
+      "event_uid": "01M76YPB8S2RRSN8KFFDF3NEK2",
+      "ts": "2026-11-12 04:01:44.217589+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YPC0Y09EFJEYQ3MDB5G1C",
+      "ts": "2026-11-12 04:01:44.990319+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000283788953",
+      "run_id": "01M76YJG3KFE42C594Y2GVSCPM"
+    },
+    {
+      "event_uid": "01M76YPC0YKJKRKC5J2MVXBJ5D",
+      "ts": "2026-11-12 04:01:44.990319+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000004611047",
+      "run_id": "01M76YJG3KFE42C594Y2GVSCPM"
+    },
+    {
+      "event_uid": "01M76YPCFP172GE6K2WVE7A2N4",
+      "ts": "2026-11-12 04:01:45.462708+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YPCX2H7J0K9SP73MXFW92",
+      "ts": "2026-11-12 04:01:45.890392+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YPDK3P203AW0CFFYCHEXV",
+      "ts": "2026-11-12 04:01:46.602637+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.0000E-8",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YPM78ZPMT6W54H7MPFS5R",
+      "ts": "2026-11-12 04:01:53.391927+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.0000E-8",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YPPK6BNQCNEM2MNDGD599",
+      "ts": "2026-11-12 04:01:55.814516+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YPPTTQ62C2GJXY2JX1CDP",
+      "ts": "2026-11-12 04:01:56.058564+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YPRAV829NA9TZTFCR7JJ8",
+      "ts": "2026-11-12 04:01:57.595463+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000063168201",
+      "run_id": "01M76YPNXYNSJP2PBCKKVFMD2R"
+    },
+    {
+      "event_uid": "01M76YPRAVBQ5TSTA0QVWDTH2T",
+      "ts": "2026-11-12 04:01:57.595463+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.001249631799",
+      "run_id": "01M76YPNXYNSJP2PBCKKVFMD2R"
+    },
+    {
+      "event_uid": "01M76YPRR7QXGRWQN4G6XWC93V",
+      "ts": "2026-11-12 04:01:58.023239+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000636000000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YPSMN5ZMBZ3WZ4681VBMM",
+      "ts": "2026-11-12 04:01:58.933706+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YPSYVKECGYCRN6FNG1EKA",
+      "ts": "2026-11-12 04:01:59.259144+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000631200000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YPTQ7YGJMTJR3ZJR84JCP",
+      "ts": "2026-11-12 04:02:00.039554+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YPV4SQJWY4K9XEEEM6HXB",
+      "ts": "2026-11-12 04:02:00.473636+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000668000000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YPVG7EYZMG27GGSNYW0VC",
+      "ts": "2026-11-12 04:02:00.839776+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "6.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YPWAVRYJ7T4CZTQYW4B8D",
+      "ts": "2026-11-12 04:02:01.691359+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000639600000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YPX2SM78ZVD620EGRP8C1",
+      "ts": "2026-11-12 04:02:02.457683+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000043258029",
+      "run_id": "01M76YPTXVK3RZHRD0P0FMTETC"
+    },
+    {
+      "event_uid": "01M76YPX2SV5QYBZ3S2NA7F6TT",
+      "ts": "2026-11-12 04:02:02.457683+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.001210341971",
+      "run_id": "01M76YPTXVK3RZHRD0P0FMTETC"
+    },
+    {
+      "event_uid": "01M76YPXZ5E89SQ0SRDY54V607",
+      "ts": "2026-11-12 04:02:03.365349+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000624400000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YPY8YAAM2AX5BPDV9612M",
+      "ts": "2026-11-12 04:02:03.678372+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "6.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YPZ665Q7RP4XK8KP5BG6C",
+      "ts": "2026-11-12 04:02:04.614053+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000468400000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YPZ67KX8QSQK0QM8PFZXJ",
+      "ts": "2026-11-12 04:02:04.615048+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YQ22GEPM29NWB371NVWTV",
+      "ts": "2026-11-12 04:02:07.568938+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000457600000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YQ36MAHXPDG80P9KBJBC6",
+      "ts": "2026-11-12 04:02:08.724560+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000450800000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YQ3GPMMKP48MXTF73M7D8",
+      "ts": "2026-11-12 04:02:09.046236+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000034685315",
+      "run_id": "01M76YPYMNYJ0D4J8B4P6J8Q1C"
+    },
+    {
+      "event_uid": "01M76YQ3GPZSFHBAS274RNHZVF",
+      "ts": "2026-11-12 04:02:09.046236+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.001205314685",
+      "run_id": "01M76YPYMNYJ0D4J8B4P6J8Q1C"
+    },
+    {
+      "event_uid": "01M76YQ3ZKBQJMV4Y3H6KN640W",
+      "ts": "2026-11-12 04:02:09.523188+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YQ46ZB6P0EG5X8P4EPR33",
+      "ts": "2026-11-12 04:02:09.759765+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000430400000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YQ4RAXBSKQA20KDJBHDRB",
+      "ts": "2026-11-12 04:02:10.314923+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.0000E-8",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YQ58B9WKWCV0WRCRQ2ZVK",
+      "ts": "2026-11-12 04:02:10.827429+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000453600000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YQ6FM06RMBM9XVW09ZS7S",
+      "ts": "2026-11-12 04:02:12.084586+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000476800000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YQAM8PBC8GVYPDA5WAHZ7",
+      "ts": "2026-11-12 04:02:16.328235+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000596076923",
+      "run_id": "01M76YQ4C49YHPQSHJB9H7HAXP"
+    },
+    {
+      "event_uid": "01M76YQAM8X1THBMCXNSPRVFZR",
+      "ts": "2026-11-12 04:02:16.328235+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000141923077",
+      "run_id": "01M76YQ4C49YHPQSHJB9H7HAXP"
+    },
+    {
+      "event_uid": "01M76YQB3RHYAPW060Y88H7D37",
+      "ts": "2026-11-12 04:02:16.824312+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000434800000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YQBAJHRF45X6C5D1XY3Q1",
+      "ts": "2026-11-12 04:02:17.042123+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.60000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YQC4F3F36PRJMG0KTB5H2",
+      "ts": "2026-11-12 04:02:17.871380+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000004609222",
+      "run_id": "01M76YQ4C49YHPQSHJB9H7HAXP"
+    },
+    {
+      "event_uid": "01M76YQC4FVN47FAC6PWMP88PE",
+      "ts": "2026-11-12 04:02:17.871380+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000286190778",
+      "run_id": "01M76YQ4C49YHPQSHJB9H7HAXP"
+    },
+    {
+      "event_uid": "01M76YQC4KF6FHY1FNSRX5M19S",
+      "ts": "2026-11-12 04:02:17.875014+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000430000000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YQCN7SDJSPCVBD4GYAV1Q",
+      "ts": "2026-11-12 04:02:18.407958+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YQD38FBP6Y01RJF31BB3S",
+      "ts": "2026-11-12 04:02:18.856235+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000436800000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YQDRXX1C5DAEHKPX16EGW",
+      "ts": "2026-11-12 04:02:19.549828+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000313302377",
+      "run_id": "01M76YQ4C49YHPQSHJB9H7HAXP"
+    },
+    {
+      "event_uid": "01M76YQDRXZC11Y1402XF7WTTX",
+      "ts": "2026-11-12 04:02:19.549828+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000017097623",
+      "run_id": "01M76YQ4C49YHPQSHJB9H7HAXP"
+    },
+    {
+      "event_uid": "01M76YQE6G537VY1TX7WPEXQF5",
+      "ts": "2026-11-12 04:02:19.984995+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000445600000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YQE7VEGKHKQT29Q0QHJ2Z",
+      "ts": "2026-11-12 04:02:20.027863+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.20000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YQEYD437QFZKKECKS5HV1",
+      "ts": "2026-11-12 04:02:20.749971+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000004609827",
+      "run_id": "01M76YQ4C49YHPQSHJB9H7HAXP"
+    },
+    {
+      "event_uid": "01M76YQEYDCCQN9ETBYDNKKSBD",
+      "ts": "2026-11-12 04:02:20.749971+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000285390173",
+      "run_id": "01M76YQ4C49YHPQSHJB9H7HAXP"
+    },
+    {
+      "event_uid": "01M76YQF695HF9C0NTP1NMK6K8",
+      "ts": "2026-11-12 04:02:21.001259+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000442400000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YQFJSFNXND0NKQRB3W5R6",
+      "ts": "2026-11-12 04:02:21.401984+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.60000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YQFZK3KMPSH4D0BNR4F74",
+      "ts": "2026-11-12 04:02:21.811517+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.20000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YQGD8EEHVDWHBRCXBBKAH",
+      "ts": "2026-11-12 04:02:22.255999+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000478000000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YQH9ZMEDYBAYXD7HV2NEY",
+      "ts": "2026-11-12 04:02:23.174905+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.0000E-8",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YQJEFRM7SN0W682A9ARH2",
+      "ts": "2026-11-12 04:02:24.342864+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000440000000",
+      "run_id": "01M76YPPJC460E32PC7GPTRYCP"
+    },
+    {
+      "event_uid": "01M76YQS5S2Z49XH2BKE0ZK03X",
+      "ts": "2026-11-12 04:02:31.225533+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.0000E-8",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YQV5EHZM2N9WKTWPNSMSN",
+      "ts": "2026-11-12 04:02:33.262414+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YQW376AXBW6CRGPKZVNP7",
+      "ts": "2026-11-12 04:02:34.215914+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.20000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YQY0RQ6PFVHR06DC67334",
+      "ts": "2026-11-12 04:02:36.184069+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.001250798230",
+      "run_id": "01M76YQVH154QR9X3VD4AYDMDH"
+    },
+    {
+      "event_uid": "01M76YQY0RYPG884F1JAKWVTZN",
+      "ts": "2026-11-12 04:02:36.184069+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000043601770",
+      "run_id": "01M76YQVH154QR9X3VD4AYDMDH"
+    },
+    {
+      "event_uid": "01M76YQZ5Y44CXRKD6GQ7N3XAN",
+      "ts": "2026-11-12 04:02:37.374723+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.20000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YR06R43QJHT81P6H9XCN7",
+      "ts": "2026-11-12 04:02:38.424232+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YR0ZMY8HQXJZ9YFDQX4BJ",
+      "ts": "2026-11-12 04:02:39.220560+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YR2E1TH7GH043W72XY12Y",
+      "ts": "2026-11-12 04:02:40.705806+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.001250643478",
+      "run_id": "01M76YR0HSJQK43ESE6DW4G9WR"
+    },
+    {
+      "event_uid": "01M76YR2E1V8655YEBE2GH5NBD",
+      "ts": "2026-11-12 04:02:40.705806+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000042156522",
+      "run_id": "01M76YR0HSJQK43ESE6DW4G9WR"
+    },
+    {
+      "event_uid": "01M76YR3V9C5A6HB3WAH27TQWS",
+      "ts": "2026-11-12 04:02:42.153534+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.40000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YR4QDQ1AK0ZGCZW6RBWTF",
+      "ts": "2026-11-12 04:02:43.053733+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YR5VHJZSVKN2HZHM2127Y",
+      "ts": "2026-11-12 04:02:44.209698+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.001234465289",
+      "run_id": "01M76YR49JNNTT98XAKF76VE1Y"
+    },
+    {
+      "event_uid": "01M76YR5VHQNW12YBQYSA1RR1B",
+      "ts": "2026-11-12 04:02:44.209698+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000029534711",
+      "run_id": "01M76YR49JNNTT98XAKF76VE1Y"
+    },
+    {
+      "event_uid": "01M76YR6VPV8NAZMR5108PMY77",
+      "ts": "2026-11-12 04:02:45.238164+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YR7NX2GNY0TR7X900WP66",
+      "ts": "2026-11-12 04:02:46.077585+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.0000E-8",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YR9E2GGB3163RRRH23VTP",
+      "ts": "2026-11-12 04:02:47.874183+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000516691011",
+      "run_id": "01M76YR77V17TWMZ9ZMNTFKZAF"
+    },
+    {
+      "event_uid": "01M76YR9E2TBPWBFPR45XCZXZG",
+      "ts": "2026-11-12 04:02:47.874183+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000077308989",
+      "run_id": "01M76YR77V17TWMZ9ZMNTFKZAF"
+    },
+    {
+      "event_uid": "01M76YR9RBE5SYVCJQPKFZ4NK2",
+      "ts": "2026-11-12 04:02:48.203106+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YRACH0QDCCYSH21FQGGNT",
+      "ts": "2026-11-12 04:02:48.849764+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000004614476",
+      "run_id": "01M76YR77V17TWMZ9ZMNTFKZAF"
+    },
+    {
+      "event_uid": "01M76YRACH8CNH2SS4GWQ1BACG",
+      "ts": "2026-11-12 04:02:48.849764+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000279385524",
+      "run_id": "01M76YR77V17TWMZ9ZMNTFKZAF"
+    },
+    {
+      "event_uid": "01M76YRAPV1J6V1F6H8F78X0CH",
+      "ts": "2026-11-12 04:02:49.179259+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YRBM69FT1GNZFR4PJNREA",
+      "ts": "2026-11-12 04:02:50.118255+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000017084841",
+      "run_id": "01M76YR77V17TWMZ9ZMNTFKZAF"
+    },
+    {
+      "event_uid": "01M76YRBM6RZ2F6PKAPB1E8TNF",
+      "ts": "2026-11-12 04:02:50.118255+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000314915159",
+      "run_id": "01M76YR77V17TWMZ9ZMNTFKZAF"
+    },
+    {
+      "event_uid": "01M76YRC2ERKDPK64ZXET6VD7P",
+      "ts": "2026-11-12 04:02:50.574237+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": null,
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.00000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YRCZAEA67RM7NXY7XCDWP",
+      "ts": "2026-11-12 04:02:51.498242+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.0000E-8",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YRFFJ6E62T5RKTPPX28MM",
+      "ts": "2026-11-12 04:02:54.066239+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.0000E-8",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YRHFY022Q2S2JC058VXM3",
+      "ts": "2026-11-12 04:02:56.126044+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YRJ79A41NXD6FSPNJ5093",
+      "ts": "2026-11-12 04:02:56.873710+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YRMTHA49QS867KVQVSM1F",
+      "ts": "2026-11-12 04:02:59.537398+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000010993281",
+      "run_id": "01M76YRHS4JW2XDF0FMBGQH1DR"
+    },
+    {
+      "event_uid": "01M76YRMTHG2R81REB22D86J5H",
+      "ts": "2026-11-12 04:02:59.537398+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000022137154",
+      "run_id": "01M76YRHS4JW2XDF0FMBGQH1DR"
+    },
+    {
+      "event_uid": "01M76YRMTHH3SBP3W4RZEJM47E",
+      "ts": "2026-11-12 04:02:59.537398+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000424069565",
+      "run_id": "01M76YRHS4JW2XDF0FMBGQH1DR"
+    },
+    {
+      "event_uid": "01M76YRNGF9CR25FG3V0ZFBY4S",
+      "ts": "2026-11-12 04:03:00.239405+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "3.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YRPDQ4CW7A0B8SNMNY2CJ",
+      "ts": "2026-11-12 04:03:01.175225+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YRQAZ7K1N1K9HRRB5V23H",
+      "ts": "2026-11-12 04:03:02.111665+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YRR98V6DXE32FEXR4C9HR",
+      "ts": "2026-11-12 04:03:03.080924+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000599600000",
+      "run_id": "01M76YRC72QGHC5GTGZ65N87SC"
+    },
+    {
+      "event_uid": "01M76YRSYPCQ5D4X6MW9YRX4Y2",
+      "ts": "2026-11-12 04:03:04.790770+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.001114223508",
+      "run_id": "01M76YRPTTFWP4EDNKA5A73J3H"
+    },
+    {
+      "event_uid": "01M76YRSYPWWWGD65J8VF7YCYX",
+      "ts": "2026-11-12 04:03:04.790770+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000207776492",
+      "run_id": "01M76YRPTTFWP4EDNKA5A73J3H"
+    },
+    {
+      "event_uid": "01M76YRXJVCFY4M7Q3N41EE6XP",
+      "ts": "2026-11-12 04:03:08.507582+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YRYFX752HWHAASG7ZNH4S",
+      "ts": "2026-11-12 04:03:09.437946+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YRZ8HMJTPQNN339A9PTMA",
+      "ts": "2026-11-12 04:03:10.225077+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YS8MDB2PXNBTD2XWM8K8V",
+      "ts": "2026-11-12 04:03:19.821237+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YSBFQD4ZN16J1MTZFNS1P",
+      "ts": "2026-11-12 04:03:22.743552+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000655200000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YSCNZQP2VM4J0RGABDTEP",
+      "ts": "2026-11-12 04:03:23.967843+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000623200000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YSDTVNXZ3V9NR3RCTQ3MR",
+      "ts": "2026-11-12 04:03:25.147161+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000652800000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YSF9JB21FSNRT64FHHAFB",
+      "ts": "2026-11-12 04:03:26.642118+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000641200000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YSFYAAREX6KJZ594ATTNF",
+      "ts": "2026-11-12 04:03:27.306697+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.001307367333",
+      "run_id": "01M76YRYV8DBQ2AFX5SM4HQPS7"
+    },
+    {
+      "event_uid": "01M76YSFYAQK2Z7D5DFFF6WXS7",
+      "ts": "2026-11-12 04:03:27.306697+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000417832667",
+      "run_id": "01M76YRYV8DBQ2AFX5SM4HQPS7"
+    },
+    {
+      "event_uid": "01M76YSGS9XWY266H9A49HRPJZ",
+      "ts": "2026-11-12 04:03:28.169677+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000634400000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YSGYHGY7VY6PE6HNRHCGQ",
+      "ts": "2026-11-12 04:03:28.337455+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YSHFGCAT6JW2SXDPKEVR0",
+      "ts": "2026-11-12 04:03:28.880545+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YSHVNMCBGW2YPKQ67Y4F3",
+      "ts": "2026-11-12 04:03:29.269398+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000626000000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YSJBYPV04RZA80WWR6N4F",
+      "ts": "2026-11-12 04:03:29.790931+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YSK0NFWZ6770WD8QD7KGY",
+      "ts": "2026-11-12 04:03:30.453161+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000470000000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YSMM3A29AC84M5P322MQH",
+      "ts": "2026-11-12 04:03:32.100009+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000466000000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YSMWG10Q407W7PY2CAY7V",
+      "ts": "2026-11-12 04:03:32.368088+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.001225050503",
+      "run_id": "01M76YSHZRA564TB7SWC9B7P94"
+    },
+    {
+      "event_uid": "01M76YSMWGP288SY107S7P6E97",
+      "ts": "2026-11-12 04:03:32.368088+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000317749497",
+      "run_id": "01M76YSHZRA564TB7SWC9B7P94"
+    },
+    {
+      "event_uid": "01M76YSPFYG4XN2STYB7CYC0JJ",
+      "ts": "2026-11-12 04:03:34.014873+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000459200000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YSQRQ8KBYXWM9DV3QKPW5",
+      "ts": "2026-11-12 04:03:35.319975+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000451600000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YSRTKBCTN040PYNFAVCYR",
+      "ts": "2026-11-12 04:03:36.403236+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YSS46TW57EVW4VVV53YH4",
+      "ts": "2026-11-12 04:03:36.710974+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000464000000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YSTA7P8J123EXRKWK3QXB",
+      "ts": "2026-11-12 04:03:37.927362+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YSTAY828A4CXSM4QF7MRY",
+      "ts": "2026-11-12 04:03:37.950626+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000476800000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YSVGRX0QQ8YNY98W9Q61G",
+      "ts": "2026-11-12 04:03:39.160814+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000460800000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YSW332FD4D50WSB51E6GS",
+      "ts": "2026-11-12 04:03:39.747857+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "2.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YSWM496FR4EAR2NFYFDM7",
+      "ts": "2026-11-12 04:03:40.292211+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000454000000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YSWY8QMBV21WBZP7CQVNT",
+      "ts": "2026-11-12 04:03:40.616620+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.001100486636",
+      "run_id": "01M76YSSGJ1PT4EMK1600J5YQP"
+    },
+    {
+      "event_uid": "01M76YSWY8S31W93YN1WA5FMYV",
+      "ts": "2026-11-12 04:03:40.616620+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000195913364",
+      "run_id": "01M76YSSGJ1PT4EMK1600J5YQP"
+    },
+    {
+      "event_uid": "01M76YSXSDJZ7E2T1M0807ZXG5",
+      "ts": "2026-11-12 04:03:41.485554+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000473600000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YSZ1BM4HKZ4DCZM5NX1YF",
+      "ts": "2026-11-12 04:03:42.763798+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000467200000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YT258SV27AD2VNN83KQJ9",
+      "ts": "2026-11-12 04:03:45.960777+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000446400000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YT2B1QPR415AGYANT58EM",
+      "ts": "2026-11-12 04:03:46.145038+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YT3CHDPQQWJYTDXJS5GKJ",
+      "ts": "2026-11-12 04:03:47.217269+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000478400000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YT4NRAB7QSWB4VQ8CC2DQ",
+      "ts": "2026-11-12 04:03:48.536558+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000445200000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YT5PMRP65D1TKZXHXG2H4",
+      "ts": "2026-11-12 04:03:49.588341+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000457600000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YT6RWXV41DQSZAMKNMTH2",
+      "ts": "2026-11-12 04:03:50.684580+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000450400000",
+      "run_id": "01M76YS9N238A4M1NJX5KR7N22"
+    },
+    {
+      "event_uid": "01M76YTFJ1Y14PPRV9ZT34MJWP",
+      "ts": "2026-11-12 04:03:59.681338+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000642400000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YTGQTFCAMEDPAERPH4G9B",
+      "ts": "2026-11-12 04:04:00.890182+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000638000000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YTHW8B7BNPX2V641DB2EJ",
+      "ts": "2026-11-12 04:04:02.056970+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000653200000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YTKKBEQ954M5AE76A84CC",
+      "ts": "2026-11-12 04:04:03.819376+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000637600000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YTMQWW9JQ71GYH9RZPFNY",
+      "ts": "2026-11-12 04:04:04.988468+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000635600000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YTP4B4T0G58W3XCN5FDCP",
+      "ts": "2026-11-12 04:04:06.411507+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000621600000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YTQ2KN0296W0KGC9FYTY1",
+      "ts": "2026-11-12 04:04:07.379044+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000444400000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YTR6ZAMXW81CRCS8S6F48",
+      "ts": "2026-11-12 04:04:08.543923+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000453600000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YTS693N2ESMC66GQ3914Z",
+      "ts": "2026-11-12 04:04:09.545920+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000449600000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YTTAK9T3SDNSQW3K7RC99",
+      "ts": "2026-11-12 04:04:10.707540+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000480800000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YTVCFTW0SZHWTZVGKD35E",
+      "ts": "2026-11-12 04:04:11.791275+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000464400000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YTWFNXMHKY4DDV91XETYY",
+      "ts": "2026-11-12 04:04:12.917559+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000452800000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YTXJDMYQBYF33PA6KEP3H",
+      "ts": "2026-11-12 04:04:14.029838+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000466800000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YTYRN4C8PWA0C54XBHJDH",
+      "ts": "2026-11-12 04:04:15.253546+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000463600000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YTYSZJ2A88Z6HK8R1PM1V",
+      "ts": "2026-11-12 04:04:15.295782+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YTZEVVV0RWF3YAN5Y0CSZ",
+      "ts": "2026-11-12 04:04:15.963877+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YTZW0XM6FR82ZAGCPA9KA",
+      "ts": "2026-11-12 04:04:16.384714+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000477200000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YV0WCC80095FARVD9PQW3",
+      "ts": "2026-11-12 04:04:17.420354+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.000292736959",
+      "run_id": "01M76YT1VFER78BAXDXT419PNR"
+    },
+    {
+      "event_uid": "01M76YV0WCKNPXD1KXER47G9NW",
+      "ts": "2026-11-12 04:04:17.420354+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "nocturne",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "OpenAI",
+      "cost_usd": "0.001202063041",
+      "run_id": "01M76YT1VFER78BAXDXT419PNR"
+    },
+    {
+      "event_uid": "01M76YV1Q6AZR6P4GEYEF77DFB",
+      "ts": "2026-11-12 04:04:18.278798+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000459600000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YV25W7XQGJWQ98HGF04A4",
+      "ts": "2026-11-12 04:04:18.748242+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YV2WJXRNREGAX4KAXAYBT",
+      "ts": "2026-11-12 04:04:19.474061+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000470400000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YV496XM3R9EP3XTE96M0H",
+      "ts": "2026-11-12 04:04:20.902385+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000462000000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YV5DW5WESTRN79M2C46HG",
+      "ts": "2026-11-12 04:04:22.076569+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000459600000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YV72E5NCJCF4V72YD0EZB",
+      "ts": "2026-11-12 04:04:23.758453+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000464400000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YV899FYJWEBQ3606JAN0M",
+      "ts": "2026-11-12 04:04:25.001133+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000466400000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YV9JZYGKED6XQHQSVEVT8",
+      "ts": "2026-11-12 04:04:26.335499+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000460800000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YVARWAFAHH8C13A9XF1FC",
+      "ts": "2026-11-12 04:04:27.548505+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "maintenance",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000456800000",
+      "run_id": "01M76YTBTV6ZW24TZ4JJWF7KGX"
+    },
+    {
+      "event_uid": "01M76YVMQM8HT4H9PBZBWDEQH5",
+      "ts": "2026-11-12 04:04:37.748828+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76YWR54PVAWRP6W5H4XDHST",
+      "ts": "2026-11-12 04:05:14.020507+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M76YWPRR6WWX0HDJEZFDPYSR"
+    },
+    {
+      "event_uid": "01M76YWRN23Q4028KPA1ANS2BD",
+      "ts": "2026-11-12 04:05:14.530195+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M76YWPRR6WWX0HDJEZFDPYSR"
+    },
+    {
+      "event_uid": "01M76YWSMQJ3E6CZJVB7R2C38N",
+      "ts": "2026-11-12 04:05:15.543624+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000227600000",
+      "run_id": "01M76YWPRR6WWX0HDJEZFDPYSR"
+    },
+    {
+      "event_uid": "01M76YWT5F0FQY3Q5H6DN15PFC",
+      "ts": "2026-11-12 04:05:16.079311+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001100000",
+      "run_id": "01M76YWPRR6WWX0HDJEZFDPYSR"
+    },
+    {
+      "event_uid": "01M76YWV1HMJ0DC5WSVASQHKM1",
+      "ts": "2026-11-12 04:05:16.977261+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M76YWPRR6WWX0HDJEZFDPYSR"
+    },
+    {
+      "event_uid": "01M76YWWJ4EA9PQZEE7EJJQXHJ",
+      "ts": "2026-11-12 04:05:18.532326+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M76YWPRR6WWX0HDJEZFDPYSR"
+    },
+    {
+      "event_uid": "01M76YWXEV1CW749W809B42Q4V",
+      "ts": "2026-11-12 04:05:19.451954+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M76YWPRR6WWX0HDJEZFDPYSR"
+    },
+    {
+      "event_uid": "01M76YWXZX0C1JXBQ83M2H7JCY",
+      "ts": "2026-11-12 04:05:19.997219+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M76YWPRR6WWX0HDJEZFDPYSR"
+    },
+    {
+      "event_uid": "01M76YWZ14MH8W6XBY37N8DNYW",
+      "ts": "2026-11-12 04:05:21.060078+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M76YWPRR6WWX0HDJEZFDPYSR"
+    },
+    {
+      "event_uid": "01M76YX0ABYM3T509W1D143Z0J",
+      "ts": "2026-11-12 04:05:22.379438+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M76YWPRR6WWX0HDJEZFDPYSR"
+    },
+    {
+      "event_uid": "01M76YX1DX8GSMD2FA94DZJMP5",
+      "ts": "2026-11-12 04:05:23.517216+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000219600000",
+      "run_id": "01M76YWPRR6WWX0HDJEZFDPYSR"
+    },
+    {
+      "event_uid": "01M76YX1ZJ4Y2P7T5KGJ8SZM38",
+      "ts": "2026-11-12 04:05:24.082371+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "7.00000E-7",
+      "run_id": "01M76YWPRR6WWX0HDJEZFDPYSR"
+    },
+    {
+      "event_uid": "01M76YXJS81ET726168FDQQ1PM",
+      "ts": "2026-11-12 04:05:41.288021+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000180800000",
+      "run_id": "01M76YXH1QBCTZ7RQ61B3SSG6V"
+    },
+    {
+      "event_uid": "01M76YXKF36V7STAK8WZH8B4AE",
+      "ts": "2026-11-12 04:05:41.987545+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001040000",
+      "run_id": "01M76YXH1QBCTZ7RQ61B3SSG6V"
+    },
+    {
+      "event_uid": "01M76YXMXYG9WN968YESAXRMDD",
+      "ts": "2026-11-12 04:05:43.486668+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M76YXH1QBCTZ7RQ61B3SSG6V"
+    },
+    {
+      "event_uid": "01M76YXNG8XNT4HFVQKB4MP53R",
+      "ts": "2026-11-12 04:05:44.072414+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M76YXH1QBCTZ7RQ61B3SSG6V"
+    },
+    {
+      "event_uid": "01M76YXPAZ0GN86HQ05Z993KGE",
+      "ts": "2026-11-12 04:05:44.927308+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M76YXH1QBCTZ7RQ61B3SSG6V"
+    },
+    {
+      "event_uid": "01M76YXQSVNXA7D7FMQ0A4QEG4",
+      "ts": "2026-11-12 04:05:46.427371+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M76YXH1QBCTZ7RQ61B3SSG6V"
+    },
+    {
+      "event_uid": "01M76YXRJT12TQ7APGMA00JCVJ",
+      "ts": "2026-11-12 04:05:47.226451+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M76YXH1QBCTZ7RQ61B3SSG6V"
+    },
+    {
+      "event_uid": "01M76YXS2MR61PTG758GD2EDN0",
+      "ts": "2026-11-12 04:05:47.732829+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M76YXH1QBCTZ7RQ61B3SSG6V"
+    },
+    {
+      "event_uid": "01M76Z3BSDC5Y4ES30TBHX8J99",
+      "ts": "2026-11-12 04:08:50.733176+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76Z3Q1K3B00FAFZ9608SMA0",
+      "ts": "2026-11-12 04:09:02.259767+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M76Z3C0FF3GA6EVV6NE7KK4J"
+    },
+    {
+      "event_uid": "01M76Z3RFY6EA5YV90DDAFCA3X",
+      "ts": "2026-11-12 04:09:03.742366+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M76Z3C0FF3GA6EVV6NE7KK4J"
+    },
+    {
+      "event_uid": "01M76Z3TFG3XBDHAVXN6Q8ZRQ0",
+      "ts": "2026-11-12 04:09:05.777003+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M76Z3C0FF3GA6EVV6NE7KK4J"
+    },
+    {
+      "event_uid": "01M76Z3TZHTEJA7Y14AM6J9F5W",
+      "ts": "2026-11-12 04:09:06.290000+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M76Z3C0FF3GA6EVV6NE7KK4J"
+    },
+    {
+      "event_uid": "01M76Z3W3EHHVXJ9EZ83E19EQ2",
+      "ts": "2026-11-12 04:09:07.438589+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M76Z3C0FF3GA6EVV6NE7KK4J"
+    },
+    {
+      "event_uid": "01M76Z3XNB0VC7F7BM2E9GAAPX",
+      "ts": "2026-11-12 04:09:09.035428+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M76Z3C0FF3GA6EVV6NE7KK4J"
+    },
+    {
+      "event_uid": "01M76Z3YPMRR3A771B3RMQ0QK4",
+      "ts": "2026-11-12 04:09:10.100372+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M76Z3C0FF3GA6EVV6NE7KK4J"
+    },
+    {
+      "event_uid": "01M76Z3Z5S0CT0NAJ0HBGGX1PK",
+      "ts": "2026-11-12 04:09:10.585960+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M76Z3C0FF3GA6EVV6NE7KK4J"
+    },
+    {
+      "event_uid": "01M76Z41JKZYWJH9HHFHSS19QS",
+      "ts": "2026-11-12 04:09:13.043885+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000230800000",
+      "run_id": "01M76Z3C0FF3GA6EVV6NE7KK4J"
+    },
+    {
+      "event_uid": "01M76Z420XRZ7Z0WFE9GGYC966",
+      "ts": "2026-11-12 04:09:13.501232+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001140000",
+      "run_id": "01M76Z3C0FF3GA6EVV6NE7KK4J"
+    },
+    {
+      "event_uid": "01M76Z42WKFCCADADK38Y4EE4D",
+      "ts": "2026-11-12 04:09:14.387075+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000216400000",
+      "run_id": "01M76Z3C0FF3GA6EVV6NE7KK4J"
+    },
+    {
+      "event_uid": "01M76Z43970SCAGY47NW17XY2F",
+      "ts": "2026-11-12 04:09:14.791281+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "6.60000E-7",
+      "run_id": "01M76Z3C0FF3GA6EVV6NE7KK4J"
+    },
+    {
+      "event_uid": "01M76Z4KX3P0GRGT78PHDNVX4B",
+      "ts": "2026-11-12 04:09:31.811630+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M76Z4JA11TKZHGRRCDZ3F3CQ"
+    },
+    {
+      "event_uid": "01M76Z4MC3KN3KFV030XT9XG0W",
+      "ts": "2026-11-12 04:09:32.291588+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M76Z4JA11TKZHGRRCDZ3F3CQ"
+    },
+    {
+      "event_uid": "01M76Z4NQK0EPB9TA8XXJ581TC",
+      "ts": "2026-11-12 04:09:33.683670+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M76Z4JA11TKZHGRRCDZ3F3CQ"
+    },
+    {
+      "event_uid": "01M76Z4P8D7KXC5HMG85DGC27E",
+      "ts": "2026-11-12 04:09:34.221720+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M76Z4JA11TKZHGRRCDZ3F3CQ"
+    },
+    {
+      "event_uid": "01M76Z4PYBCFNP4RMAKW3A9Z0Z",
+      "ts": "2026-11-12 04:09:34.923267+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M76Z4JA11TKZHGRRCDZ3F3CQ"
+    },
+    {
+      "event_uid": "01M76Z4QB963AA1MD5FV4HRM7N",
+      "ts": "2026-11-12 04:09:35.337129+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M76Z4JA11TKZHGRRCDZ3F3CQ"
+    },
+    {
+      "event_uid": "01M76Z4QZH37BGAT9BFB4C67DR",
+      "ts": "2026-11-12 04:09:35.985602+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000180800000",
+      "run_id": "01M76Z4JA11TKZHGRRCDZ3F3CQ"
+    },
+    {
+      "event_uid": "01M76Z4RFVCCR1YZ89C8XP8XAE",
+      "ts": "2026-11-12 04:09:36.507659+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001040000",
+      "run_id": "01M76Z4JA11TKZHGRRCDZ3F3CQ"
+    },
+    {
+      "event_uid": "01M76Z4SQ0EB8Z13FB4ZEH447K",
+      "ts": "2026-11-12 04:09:37.760798+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M76Z4JA11TKZHGRRCDZ3F3CQ"
+    },
+    {
+      "event_uid": "01M76Z4T9H1M4NKC52PCCMDGXK",
+      "ts": "2026-11-12 04:09:38.353206+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M76Z4JA11TKZHGRRCDZ3F3CQ"
+    },
+    {
+      "event_uid": "01M76Z4VV7811VM9XRSX14WGQQ",
+      "ts": "2026-11-12 04:09:39.943681+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000216400000",
+      "run_id": "01M76Z4JA11TKZHGRRCDZ3F3CQ"
+    },
+    {
+      "event_uid": "01M76Z4W9SYVZDGEEJ59KA8H0A",
+      "ts": "2026-11-12 04:09:40.409479+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "6.60000E-7",
+      "run_id": "01M76Z4JA11TKZHGRRCDZ3F3CQ"
+    },
+    {
+      "event_uid": "01M76Z6EBFQ2GEABP477KXQ67X",
+      "ts": "2026-11-12 04:10:31.663302+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76Z6HS5F6MZDMNQB3WDSAC1",
+      "ts": "2026-11-12 04:10:35.173915+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000180800000",
+      "run_id": "01M76Z6GA35BZFNQVP07NK2GAM"
+    },
+    {
+      "event_uid": "01M76Z6JCP2416S52NZ3AC907X",
+      "ts": "2026-11-12 04:10:35.798158+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001040000",
+      "run_id": "01M76Z6GA35BZFNQVP07NK2GAM"
+    },
+    {
+      "event_uid": "01M76Z6KJQ3WGMFM2AGWGFMHBX",
+      "ts": "2026-11-12 04:10:37.015372+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M76Z6GA35BZFNQVP07NK2GAM"
+    },
+    {
+      "event_uid": "01M76Z6MEKK43P9FQNKTWM0AEV",
+      "ts": "2026-11-12 04:10:37.907897+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M76Z6GA35BZFNQVP07NK2GAM"
+    },
+    {
+      "event_uid": "01M76Z6N7YSEVWYDB3RYZ531MD",
+      "ts": "2026-11-12 04:10:38.718797+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M76Z6GA35BZFNQVP07NK2GAM"
+    },
+    {
+      "event_uid": "01M76Z6NPS783K9KV0NA5WN6TS",
+      "ts": "2026-11-12 04:10:39.193934+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M76Z6GA35BZFNQVP07NK2GAM"
+    },
+    {
+      "event_uid": "01M76Z6PHJE4FY1PNX76ZAPYZA",
+      "ts": "2026-11-12 04:10:40.050109+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000180800000",
+      "run_id": "01M76Z6GA35BZFNQVP07NK2GAM"
+    },
+    {
+      "event_uid": "01M76Z6QD9C7EPPXWPSA4G2DVN",
+      "ts": "2026-11-12 04:10:40.937394+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001040000",
+      "run_id": "01M76Z6GA35BZFNQVP07NK2GAM"
+    },
+    {
+      "event_uid": "01M76Z6R5BR02N4JH811QVBW35",
+      "ts": "2026-11-12 04:10:41.707931+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000230800000",
+      "run_id": "01M76Z6GA35BZFNQVP07NK2GAM"
+    },
+    {
+      "event_uid": "01M76Z6RT3MPWQ6AR66HV81W76",
+      "ts": "2026-11-12 04:10:42.371138+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001140000",
+      "run_id": "01M76Z6GA35BZFNQVP07NK2GAM"
+    },
+    {
+      "event_uid": "01M76Z8M2K4CB82HAGVFB5PRTD",
+      "ts": "2026-11-12 04:11:43.059225+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M76Z6GA35BZFNQVP07NK2GAM"
+    },
+    {
+      "event_uid": "01M76Z8MKJ3SR041C7319E4JVQ",
+      "ts": "2026-11-12 04:11:43.602735+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M76Z6GA35BZFNQVP07NK2GAM"
+    },
+    {
+      "event_uid": "01M76ZB038S5K81EEN0PG16QSZ",
+      "ts": "2026-11-12 04:13:00.904827+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000180800000",
+      "run_id": "01M76Z93NBREM4E16VYFMC4QD2"
+    },
+    {
+      "event_uid": "01M76ZB0PAS7GDKBKTK9FP42DR",
+      "ts": "2026-11-12 04:13:01.514655+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001040000",
+      "run_id": "01M76Z93NBREM4E16VYFMC4QD2"
+    },
+    {
+      "event_uid": "01M76ZB20ZK57SZH1RQMHF199P",
+      "ts": "2026-11-12 04:13:02.879841+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M76Z93NBREM4E16VYFMC4QD2"
+    },
+    {
+      "event_uid": "01M76ZB2H32W5P7X7XSGBNXNTX",
+      "ts": "2026-11-12 04:13:03.395264+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M76Z93NBREM4E16VYFMC4QD2"
+    },
+    {
+      "event_uid": "01M76ZCWTJJY74M5XNS0DHQN0Y",
+      "ts": "2026-11-12 04:14:03.090286+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M76Z93NBREM4E16VYFMC4QD2"
+    },
+    {
+      "event_uid": "01M76ZCXHNX5EE041HHDSKG9JX",
+      "ts": "2026-11-12 04:14:03.829172+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M76Z93NBREM4E16VYFMC4QD2"
+    },
+    {
+      "event_uid": "01M76ZCYTBKWMTT05ED9D9EFBB",
+      "ts": "2026-11-12 04:14:05.131559+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000180800000",
+      "run_id": "01M76Z93NBREM4E16VYFMC4QD2"
+    },
+    {
+      "event_uid": "01M76ZCZ74X5JW9C5MHMCRPKTK",
+      "ts": "2026-11-12 04:14:05.540291+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001040000",
+      "run_id": "01M76Z93NBREM4E16VYFMC4QD2"
+    },
+    {
+      "event_uid": "01M76ZD1W7PP1YDT6SPNGDZ5A7",
+      "ts": "2026-11-12 04:14:08.263414+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000230800000",
+      "run_id": "01M76Z93NBREM4E16VYFMC4QD2"
+    },
+    {
+      "event_uid": "01M76ZDZWZ26XWJXP11DZTPKGG",
+      "ts": "2026-11-12 04:14:39.007440+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001140000",
+      "run_id": "01M76Z93NBREM4E16VYFMC4QD2"
+    },
+    {
+      "event_uid": "01M76ZGB7M2SDJV2JVCD08EHG5",
+      "ts": "2026-11-12 04:15:56.148813+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M76Z93NBREM4E16VYFMC4QD2"
+    },
+    {
+      "event_uid": "01M76ZGBQCXDRKH395K9QZCV95",
+      "ts": "2026-11-12 04:15:56.652709+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M76Z93NBREM4E16VYFMC4QD2"
+    },
+    {
+      "event_uid": "01M76ZMFVG0SV6WF8RQSP34VVB",
+      "ts": "2026-11-12 04:18:11.952791+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76ZMKXPHES3H6D7JPG3FN4S",
+      "ts": "2026-11-12 04:18:16.118820+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000180800000",
+      "run_id": "01M76ZMHTV62JZTJDKAK7QJP3K"
+    },
+    {
+      "event_uid": "01M76ZMPAHF3E5S4N8P0Z4QT7E",
+      "ts": "2026-11-12 04:18:18.577072+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001040000",
+      "run_id": "01M76ZMHTV62JZTJDKAK7QJP3K"
+    },
+    {
+      "event_uid": "01M76ZMQMKHM0Q70TQW6KB8AQ9",
+      "ts": "2026-11-12 04:18:19.923726+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M76ZMHTV62JZTJDKAK7QJP3K"
+    },
+    {
+      "event_uid": "01M76ZMR4HGYBQM3H3A8KJARQ1",
+      "ts": "2026-11-12 04:18:20.433335+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M76ZMHTV62JZTJDKAK7QJP3K"
+    },
+    {
+      "event_uid": "01M76ZMRWPY72CKN3A0DQMCHNJ",
+      "ts": "2026-11-12 04:18:21.206829+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M76ZMHTV62JZTJDKAK7QJP3K"
+    },
+    {
+      "event_uid": "01M76ZMS7SNHN91AMAB9YPEYAN",
+      "ts": "2026-11-12 04:18:21.561830+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M76ZMHTV62JZTJDKAK7QJP3K"
+    },
+    {
+      "event_uid": "01M76ZMT2MWYAAA4AH0WP1AM5F",
+      "ts": "2026-11-12 04:18:22.420866+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M76ZMHTV62JZTJDKAK7QJP3K"
+    },
+    {
+      "event_uid": "01M76ZMV1Q05DC84CK27AY4RH3",
+      "ts": "2026-11-12 04:18:23.415611+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M76ZMHTV62JZTJDKAK7QJP3K"
+    },
+    {
+      "event_uid": "01M76ZMW5HYP28SM00NJKD5SM8",
+      "ts": "2026-11-12 04:18:24.561837+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M76ZMHTV62JZTJDKAK7QJP3K"
+    },
+    {
+      "event_uid": "01M76ZMWMGWDFYMQ77B2J46J22",
+      "ts": "2026-11-12 04:18:25.040848+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M76ZMHTV62JZTJDKAK7QJP3K"
+    },
+    {
+      "event_uid": "01M76ZMXBG9EXM1P1GVDJ1YWDW",
+      "ts": "2026-11-12 04:18:25.776575+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000216400000",
+      "run_id": "01M76ZMHTV62JZTJDKAK7QJP3K"
+    },
+    {
+      "event_uid": "01M76ZMXPK3KVPYKVJM936DVTE",
+      "ts": "2026-11-12 04:18:26.131803+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "6.60000E-7",
+      "run_id": "01M76ZMHTV62JZTJDKAK7QJP3K"
+    },
+    {
+      "event_uid": "01M76ZNEDGAV57BVE1PJZ0NB6V",
+      "ts": "2026-11-12 04:18:43.249023+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M76ZNCND0BC238RZ1VNQEPRB"
+    },
+    {
+      "event_uid": "01M76ZNFCQ7ZD3ES67V64QNPZS",
+      "ts": "2026-11-12 04:18:44.247446+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M76ZNCND0BC238RZ1VNQEPRB"
+    },
+    {
+      "event_uid": "01M76ZNHTJABWQ3DWVGACK8KH9",
+      "ts": "2026-11-12 04:18:46.738031+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000230800000",
+      "run_id": "01M76ZNCND0BC238RZ1VNQEPRB"
+    },
+    {
+      "event_uid": "01M76ZNJ7PWPQJ2DYXN4QASGYQ",
+      "ts": "2026-11-12 04:18:47.158882+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001140000",
+      "run_id": "01M76ZNCND0BC238RZ1VNQEPRB"
+    },
+    {
+      "event_uid": "01M76ZNJY1X22FVE021ZSMATH1",
+      "ts": "2026-11-12 04:18:47.873738+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M76ZNCND0BC238RZ1VNQEPRB"
+    },
+    {
+      "event_uid": "01M76ZNKDJ6M3YBRSY0JJXY6WV",
+      "ts": "2026-11-12 04:18:48.370938+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M76ZNCND0BC238RZ1VNQEPRB"
+    },
+    {
+      "event_uid": "01M76ZQEV08M7W1BTS23A79CFF",
+      "ts": "2026-11-12 04:19:49.216678+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M76ZNCND0BC238RZ1VNQEPRB"
+    },
+    {
+      "event_uid": "01M76ZQFDMX9V4RE5H45MWHRDZ",
+      "ts": "2026-11-12 04:19:49.812665+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M76ZNCND0BC238RZ1VNQEPRB"
+    },
+    {
+      "event_uid": "01M76ZQGGHBBXA89DVVMQZF87F",
+      "ts": "2026-11-12 04:19:50.929186+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M76ZNCND0BC238RZ1VNQEPRB"
+    },
+    {
+      "event_uid": "01M76ZQGYZHSP79YFBS32A1A8X",
+      "ts": "2026-11-12 04:19:51.391203+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M76ZNCND0BC238RZ1VNQEPRB"
+    },
+    {
+      "event_uid": "01M76ZSD9EYXD1X5TQ7J0JJ1J0",
+      "ts": "2026-11-12 04:20:53.166328+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000219600000",
+      "run_id": "01M76ZNCND0BC238RZ1VNQEPRB"
+    },
+    {
+      "event_uid": "01M76ZSDSJ8Y9YS41MDNMZQZDJ",
+      "ts": "2026-11-12 04:20:53.682386+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "7.00000E-7",
+      "run_id": "01M76ZNCND0BC238RZ1VNQEPRB"
+    },
+    {
+      "event_uid": "01M76ZV18MFEXRE98MPR7DJ8MG",
+      "ts": "2026-11-12 04:21:46.388165+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M76ZV5PFFNAXG2HY345RS4Y3",
+      "ts": "2026-11-12 04:21:50.927985+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M76ZV2S889WK8KAHVQR691C6"
+    },
+    {
+      "event_uid": "01M76ZV63GV5W2GSZZQ6FP81WH",
+      "ts": "2026-11-12 04:21:51.344111+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M76ZV2S889WK8KAHVQR691C6"
+    },
+    {
+      "event_uid": "01M76ZV913XN5KFFRDZT6AE26B",
+      "ts": "2026-11-12 04:21:54.339500+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000272400000",
+      "run_id": "01M76ZV2S889WK8KAHVQR691C6"
+    },
+    {
+      "event_uid": "01M76ZV9J3ZPXFCGKYN5KWMS6J",
+      "ts": "2026-11-12 04:21:54.883389+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001660000",
+      "run_id": "01M76ZV2S889WK8KAHVQR691C6"
+    },
+    {
+      "event_uid": "01M76ZVAQWJTBVTDRNDMT2W6HG",
+      "ts": "2026-11-12 04:21:56.092859+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M76ZV2S889WK8KAHVQR691C6"
+    },
+    {
+      "event_uid": "01M76ZVB7JTARTVB2A3A7RR9NN",
+      "ts": "2026-11-12 04:21:56.594493+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M76ZV2S889WK8KAHVQR691C6"
+    },
+    {
+      "event_uid": "01M76ZVC7K0Y4YFFVDPB43E7P7",
+      "ts": "2026-11-12 04:21:57.619668+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000180800000",
+      "run_id": "01M76ZV2S889WK8KAHVQR691C6"
+    },
+    {
+      "event_uid": "01M76ZVCMAEE2VY3BJ3DFK1YRB",
+      "ts": "2026-11-12 04:21:58.026288+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001040000",
+      "run_id": "01M76ZV2S889WK8KAHVQR691C6"
+    },
+    {
+      "event_uid": "01M76ZVDECVZZ087WSEE1PA35V",
+      "ts": "2026-11-12 04:21:58.861016+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000230800000",
+      "run_id": "01M76ZV2S889WK8KAHVQR691C6"
+    },
+    {
+      "event_uid": "01M76ZVDWY9TSZMVTTHNSXHCT4",
+      "ts": "2026-11-12 04:21:59.326682+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001140000",
+      "run_id": "01M76ZV2S889WK8KAHVQR691C6"
+    },
+    {
+      "event_uid": "01M76ZVEJTCBMJTRCWG99X0Z0N",
+      "ts": "2026-11-12 04:22:00.026990+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M76ZV2S889WK8KAHVQR691C6"
+    },
+    {
+      "event_uid": "01M76ZVF2ZWAAT1HAWQMY663A0",
+      "ts": "2026-11-12 04:22:00.543336+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M76ZV2S889WK8KAHVQR691C6"
+    },
+    {
+      "event_uid": "01M76ZW8HPNHR015TVFG6GCVXS",
+      "ts": "2026-11-12 04:22:26.614730+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M76ZVXN3JYBEVXT7TVV40VVJ"
+    },
+    {
+      "event_uid": "01M76ZW9T8GMF308P6MYV2A48Y",
+      "ts": "2026-11-12 04:22:27.912989+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M76ZVXN3JYBEVXT7TVV40VVJ"
+    },
+    {
+      "event_uid": "01M76ZWB8EZVSD6D3YZFVY3479",
+      "ts": "2026-11-12 04:22:29.390101+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M76ZVXN3JYBEVXT7TVV40VVJ"
+    },
+    {
+      "event_uid": "01M76ZWC9WA8SPZZBW7QQSDNCQ",
+      "ts": "2026-11-12 04:22:30.460771+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M76ZVXN3JYBEVXT7TVV40VVJ"
+    },
+    {
+      "event_uid": "01M76ZWCYR84A2HPTFY7TE3PDX",
+      "ts": "2026-11-12 04:22:31.128992+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M76ZVXN3JYBEVXT7TVV40VVJ"
+    },
+    {
+      "event_uid": "01M76ZWDC308PAG26W4P7GMVD3",
+      "ts": "2026-11-12 04:22:31.555588+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M76ZVXN3JYBEVXT7TVV40VVJ"
+    },
+    {
+      "event_uid": "01M76ZWECDS65Z0MJJ4WR18S5D",
+      "ts": "2026-11-12 04:22:32.589508+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000188800000",
+      "run_id": "01M76ZVXN3JYBEVXT7TVV40VVJ"
+    },
+    {
+      "event_uid": "01M76ZWEVXW62B61EYK3A8PPQM",
+      "ts": "2026-11-12 04:22:33.085423+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001140000",
+      "run_id": "01M76ZVXN3JYBEVXT7TVV40VVJ"
+    },
+    {
+      "event_uid": "01M77014GCVQ9VSX3ZNDNGAPSN",
+      "ts": "2026-11-12 04:25:06.316697+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M77018DJ68ZE3SE5BE53TVK8",
+      "ts": "2026-11-12 04:25:10.322425+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M770163YMBG7Z0MT035F5NMK"
+    },
+    {
+      "event_uid": "01M77019AQ6XAPFP0VTH3VG70X",
+      "ts": "2026-11-12 04:25:11.255930+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M770163YMBG7Z0MT035F5NMK"
+    },
+    {
+      "event_uid": "01M7701ASG7VAFFEDE9XEANK97",
+      "ts": "2026-11-12 04:25:12.752493+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M770163YMBG7Z0MT035F5NMK"
+    },
+    {
+      "event_uid": "01M7701BBQ53QRGPXRM5BDEFFY",
+      "ts": "2026-11-12 04:25:13.335378+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M770163YMBG7Z0MT035F5NMK"
+    },
+    {
+      "event_uid": "01M7701C7R9R2H0CEV4FGHPFMF",
+      "ts": "2026-11-12 04:25:14.232995+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M770163YMBG7Z0MT035F5NMK"
+    },
+    {
+      "event_uid": "01M7701CNH33NQ73CQXZ1CKVK4",
+      "ts": "2026-11-12 04:25:14.673194+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M770163YMBG7Z0MT035F5NMK"
+    },
+    {
+      "event_uid": "01M7701ETPFC3HC3N8JNVTHKHN",
+      "ts": "2026-11-12 04:25:16.886967+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000251200000",
+      "run_id": "01M770163YMBG7Z0MT035F5NMK"
+    },
+    {
+      "event_uid": "01M7701FAYC838KT193XTESVWX",
+      "ts": "2026-11-12 04:25:17.406688+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001920000",
+      "run_id": "01M770163YMBG7Z0MT035F5NMK"
+    },
+    {
+      "event_uid": "01M7701GAPVZ2N0HFWANHYPNP5",
+      "ts": "2026-11-12 04:25:18.422681+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M770163YMBG7Z0MT035F5NMK"
+    },
+    {
+      "event_uid": "01M7701GY5NQXTXSR6JRR0Z26K",
+      "ts": "2026-11-12 04:25:19.045316+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M770163YMBG7Z0MT035F5NMK"
+    },
+    {
+      "event_uid": "01M7701HNECMJ43XCT3A749299",
+      "ts": "2026-11-12 04:25:19.791013+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M770163YMBG7Z0MT035F5NMK"
+    },
+    {
+      "event_uid": "01M7701J3268MQBWHX16R5QA4V",
+      "ts": "2026-11-12 04:25:20.226233+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M770163YMBG7Z0MT035F5NMK"
+    },
+    {
+      "event_uid": "01M77021VWG1362X0Z2EY6P1W1",
+      "ts": "2026-11-12 04:25:36.380667+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000180800000",
+      "run_id": "01M77020P0EKVRT04VWQ63YH76"
+    },
+    {
+      "event_uid": "01M77066VPE7ZZ1RC3YVWD86NQ",
+      "ts": "2026-11-12 04:27:52.566623+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M7706KYW3186QD7JFCZ0MCFG",
+      "ts": "2026-11-12 04:28:05.980528+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M77068PGAETC9SD8H9QNW779"
+    },
+    {
+      "event_uid": "01M7706MF54KJA8PECGM2024NX",
+      "ts": "2026-11-12 04:28:06.501676+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M77068PGAETC9SD8H9QNW779"
+    },
+    {
+      "event_uid": "01M7706NFJ1T8AZVVD443MRX7P",
+      "ts": "2026-11-12 04:28:07.538869+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M77068PGAETC9SD8H9QNW779"
+    },
+    {
+      "event_uid": "01M7706P2D59VX3S5M7EFH8DYG",
+      "ts": "2026-11-12 04:28:08.141843+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M77068PGAETC9SD8H9QNW779"
+    },
+    {
+      "event_uid": "01M7706PTDV7WNENJQJPW5GY4W",
+      "ts": "2026-11-12 04:28:08.909463+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M77068PGAETC9SD8H9QNW779"
+    },
+    {
+      "event_uid": "01M7706Q86MMC70KVZ0A8GQW86",
+      "ts": "2026-11-12 04:28:09.350286+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M77068PGAETC9SD8H9QNW779"
+    },
+    {
+      "event_uid": "01M7708JZT17W341PP0ZWAFY86",
+      "ts": "2026-11-12 04:29:10.522811+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000180800000",
+      "run_id": "01M77068PGAETC9SD8H9QNW779"
+    },
+    {
+      "event_uid": "01M7708KFB4PJDS5326VYRDJSR",
+      "ts": "2026-11-12 04:29:11.019806+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001040000",
+      "run_id": "01M77068PGAETC9SD8H9QNW779"
+    },
+    {
+      "event_uid": "01M7708MD9N2YC2Z4CWTA7EJ43",
+      "ts": "2026-11-12 04:29:11.977872+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M77068PGAETC9SD8H9QNW779"
+    },
+    {
+      "event_uid": "01M7708N0EZFZ01E5VM0NA3GVF",
+      "ts": "2026-11-12 04:29:12.590052+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M77068PGAETC9SD8H9QNW779"
+    },
+    {
+      "event_uid": "01M7708P1KYNH3111D5BDHABZK",
+      "ts": "2026-11-12 04:29:13.651603+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M77068PGAETC9SD8H9QNW779"
+    },
+    {
+      "event_uid": "01M7708PDGG6C2AHAMXT1WH5MX",
+      "ts": "2026-11-12 04:29:14.032848+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M77068PGAETC9SD8H9QNW779"
+    },
+    {
+      "event_uid": "01M77097AZ091VDAY8V9EMFEVK",
+      "ts": "2026-11-12 04:29:31.359156+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M77095VZJW3CAGW8PKXM5WGF"
+    },
+    {
+      "event_uid": "01M77097QYFDRP6M0B3MB3X933",
+      "ts": "2026-11-12 04:29:31.774868+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M77095VZJW3CAGW8PKXM5WGF"
+    },
+    {
+      "event_uid": "01M77098J79WCB294S80WQY9XK",
+      "ts": "2026-11-12 04:29:32.615897+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000227600000",
+      "run_id": "01M77095VZJW3CAGW8PKXM5WGF"
+    },
+    {
+      "event_uid": "01M770992SWC8MY4TPM3XNH6WZ",
+      "ts": "2026-11-12 04:29:33.145289+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001100000",
+      "run_id": "01M77095VZJW3CAGW8PKXM5WGF"
+    },
+    {
+      "event_uid": "01M77099YB9YZWKG8W9Y9M322D",
+      "ts": "2026-11-12 04:29:34.027670+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M77095VZJW3CAGW8PKXM5WGF"
+    },
+    {
+      "event_uid": "01M7709AEPF4NG3HT0EDD4BPST",
+      "ts": "2026-11-12 04:29:34.551039+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M77095VZJW3CAGW8PKXM5WGF"
+    },
+    {
+      "event_uid": "01M7709B8J36BJ0CRM0A18C4X8",
+      "ts": "2026-11-12 04:29:35.378387+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000188800000",
+      "run_id": "01M77095VZJW3CAGW8PKXM5WGF"
+    },
+    {
+      "event_uid": "01M7709BP32EE6PAHMNFYBX367",
+      "ts": "2026-11-12 04:29:35.811302+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001140000",
+      "run_id": "01M77095VZJW3CAGW8PKXM5WGF"
+    },
+    {
+      "event_uid": "01M7709CQCJG98X8B1ZRZZKXG6",
+      "ts": "2026-11-12 04:29:36.876255+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000274000000",
+      "run_id": "01M77095VZJW3CAGW8PKXM5WGF"
+    },
+    {
+      "event_uid": "01M7709D5VZZNX8VKXR24EAH0B",
+      "ts": "2026-11-12 04:29:37.339532+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001680000",
+      "run_id": "01M77095VZJW3CAGW8PKXM5WGF"
+    },
+    {
+      "event_uid": "01M7709EYJ3MAH6RJDJ5WN472W",
+      "ts": "2026-11-12 04:29:39.154338+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M77095VZJW3CAGW8PKXM5WGF"
+    },
+    {
+      "event_uid": "01M7709FGN2Y7AVATBPPRC7APZ",
+      "ts": "2026-11-12 04:29:39.733171+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M77095VZJW3CAGW8PKXM5WGF"
+    },
+    {
+      "event_uid": "01M770AMTAZRTR3YFMGTKSEWJP",
+      "ts": "2026-11-12 04:30:17.930252+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "nocturne",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "5.80000E-7",
+      "run_id": null
+    },
+    {
+      "event_uid": "01M770ARECC97CTYVGZ5CV0K6M",
+      "ts": "2026-11-12 04:30:21.644342+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000180800000",
+      "run_id": "01M770APR08JQZ4MZV35JBXCVE"
+    },
+    {
+      "event_uid": "01M770ARXTAE91F1K2KEJD50E1",
+      "ts": "2026-11-12 04:30:22.139003+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001040000",
+      "run_id": "01M770APR08JQZ4MZV35JBXCVE"
+    },
+    {
+      "event_uid": "01M770AT2EPSB2QT6Z88NB4ETS",
+      "ts": "2026-11-12 04:30:23.310119+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M770APR08JQZ4MZV35JBXCVE"
+    },
+    {
+      "event_uid": "01M770ATHCVKSB5QBRNMR0H3MV",
+      "ts": "2026-11-12 04:30:23.788245+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M770APR08JQZ4MZV35JBXCVE"
+    },
+    {
+      "event_uid": "01M770AVABJGRMT0QSYKH6BMG7",
+      "ts": "2026-11-12 04:30:24.587733+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M770APR08JQZ4MZV35JBXCVE"
+    },
+    {
+      "event_uid": "01M770AVQTCMCPMSEDQS0N6FZV",
+      "ts": "2026-11-12 04:30:25.018234+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M770APR08JQZ4MZV35JBXCVE"
+    },
+    {
+      "event_uid": "01M770AWJZ01W9SNTPEQK3SWNG",
+      "ts": "2026-11-12 04:30:25.887815+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M770APR08JQZ4MZV35JBXCVE"
+    },
+    {
+      "event_uid": "01M770AWZGZAAFRNYXVQ7SPD0G",
+      "ts": "2026-11-12 04:30:26.288496+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M770APR08JQZ4MZV35JBXCVE"
+    },
+    {
+      "event_uid": "01M770AY4NA584VT21NXY08D72",
+      "ts": "2026-11-12 04:30:27.477910+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M770APR08JQZ4MZV35JBXCVE"
+    },
+    {
+      "event_uid": "01M770AYPM9S34BCFC1Y6ESQDH",
+      "ts": "2026-11-12 04:30:28.052818+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M770APR08JQZ4MZV35JBXCVE"
+    },
+    {
+      "event_uid": "01M770AZE4NN8KVVVM3N7DFM1A",
+      "ts": "2026-11-12 04:30:28.804533+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M770APR08JQZ4MZV35JBXCVE"
+    },
+    {
+      "event_uid": "01M770AZY8K3DBGNSY14GFJDTA",
+      "ts": "2026-11-12 04:30:29.320853+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M770APR08JQZ4MZV35JBXCVE"
+    },
+    {
+      "event_uid": "01M770BFQ230EXC8N7YE3P4N51",
+      "ts": "2026-11-12 04:30:45.474112+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000180800000",
+      "run_id": "01M770BE9HVAAEE7ZG38WQV61M"
+    },
+    {
+      "event_uid": "01M770CDZ8QFR3J5Z554ZTTKJF",
+      "ts": "2026-11-12 04:31:16.456084+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001040000",
+      "run_id": "01M770BE9HVAAEE7ZG38WQV61M"
+    },
+    {
+      "event_uid": "01M770CFMVAMATTC46J76WWBEN",
+      "ts": "2026-11-12 04:31:18.171882+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000282000000",
+      "run_id": "01M770BE9HVAAEE7ZG38WQV61M"
+    },
+    {
+      "event_uid": "01M770CG6Z44NTGSW246D0YHM1",
+      "ts": "2026-11-12 04:31:18.751298+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001780000",
+      "run_id": "01M770BE9HVAAEE7ZG38WQV61M"
+    },
+    {
+      "event_uid": "01M770CH98ANWNTNQZRBY50KMY",
+      "ts": "2026-11-12 04:31:19.848447+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M770BE9HVAAEE7ZG38WQV61M"
+    },
+    {
+      "event_uid": "01M770CHQDEF34RG7DE19HDXT7",
+      "ts": "2026-11-12 04:31:20.301949+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M770BE9HVAAEE7ZG38WQV61M"
+    },
+    {
+      "event_uid": "01M770CJJKYH3146JK9BCWHZMB",
+      "ts": "2026-11-12 04:31:21.171172+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000192000000",
+      "run_id": "01M770BE9HVAAEE7ZG38WQV61M"
+    },
+    {
+      "event_uid": "01M770CK25GN3S225H8ZQ683BQ",
+      "ts": "2026-11-12 04:31:21.669891+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001180000",
+      "run_id": "01M770BE9HVAAEE7ZG38WQV61M"
+    },
+    {
+      "event_uid": "01M770CMDHCWSWJYVGAB2TW1W5",
+      "ts": "2026-11-12 04:31:23.057965+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000275600000",
+      "run_id": "01M770BE9HVAAEE7ZG38WQV61M"
+    },
+    {
+      "event_uid": "01M770CMV88HWPVCJAYT3N4NQG",
+      "ts": "2026-11-12 04:31:23.496573+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "0.000001700000",
+      "run_id": "01M770BE9HVAAEE7ZG38WQV61M"
+    },
+    {
+      "event_uid": "01M770CNPVY11HBYRJGB6XJZRK",
+      "ts": "2026-11-12 04:31:24.379834+00:00",
+      "product_type": "llm.request",
+      "origin_agent": "compaction-learner",
+      "model": "openai/gpt-4.1-mini",
+      "provider": "openrouter",
+      "cost_usd": "0.000195600000",
+      "run_id": "01M770BE9HVAAEE7ZG38WQV61M"
+    },
+    {
+      "event_uid": "01M770CP4YZGY798NAD9KA1HAF",
+      "ts": "2026-11-12 04:31:24.830259+00:00",
+      "product_type": "llm.embedding",
+      "origin_agent": "compaction-learner",
+      "model": "text-embedding-3-small",
+      "provider": "OpenAI",
+      "cost_usd": "4.00000E-7",
+      "run_id": "01M770BE9HVAAEE7ZG38WQV61M"
+    }
+  ]
+}
