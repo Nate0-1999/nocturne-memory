@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "3eced79c81e9dc3b95ae5b85dfff2e7f82a8930a",
-      "head": "33d9e05b2fd9da0a3b543a155cd1b7146b1946ee"
+      "head": "f1fb5e973eb1f32a7de7d899565656b05936c56d"
     }
   ],
   "unmapped": {
@@ -15,7 +15,35 @@
     "spine/openapi.json": "Only info.version follows package 0.1.94; API contract and its client-facing fingerprint remain 0.1.92.",
     "spine/src/spine/__init__.py": "Package 0.1.94 metadata or required decision journal for the charged fixes; no separate feature change.",
     "spine/tests/test_compaction_learning.py": "Packaging expectation or existing network-retry test credential-redaction assertion; no feature beyond the charged corner.",
-    "spine/tests/test_packaging.py": "Packaging expectation or existing network-retry test credential-redaction assertion; no feature beyond the charged corner."
+    "spine/tests/test_packaging.py": "Packaging expectation or existing network-retry test credential-redaction assertion; no feature beyond the charged corner.",
+    "spine/verification/m8lc/FL-036.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-038.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-042.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-049.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-050.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-051.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-052.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-055.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-056.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-058.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-059.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-060.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-061.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-063.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-109.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-114.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-163.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-178.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-179.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-195.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-196.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/SHA256SUMS": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/cleanup.json": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/credential-scan.json": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/diagnostic-boundary.json": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/key-finish.json": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/key-start.json": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/ledger-report.json": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
