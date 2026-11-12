@@ -71,7 +71,8 @@ async def test_stalled_backtest_request_goes_back_once(
         httpx, "AsyncClient", lambda **kw: client(transport=httpx.MockTransport(provider), **kw)
     )
     settings = Settings(
-        database_url="postgresql+asyncpg://unused", token="unused", openai_api_key="unused"
+        database_url="postgresql+asyncpg://unused", token="unused", openai_api_key="unused",
+        chat_model="anthropic:claude-sonnet-4-6",
     )
     policy = CuratorPolicy(memory_session_factory, settings.chat_model)
     await policy.save("owner", "pinned:openrouter:openai/gpt-4.1-mini")
