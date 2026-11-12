@@ -2,12 +2,12 @@
   "packet": "M8SP",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "ef43e8318ddaf2a251ad10ef17d94cc131aa39c93f20c3f3bc8df19c25daf0a4",
+  "ledger_sha256": "8895d8dabcfba2ca5b902ace5ad25d1c9fba30bd31307c507e2ebdf4113c462b",
   "diffs": [
     {
       "repo": "spine",
-      "base": "3eced79c81e9dc3b95ae5b85dfff2e7f82a8930a",
-      "head": "e056f0d57ce9d89bb83ec05c347b25fa8dae42c1"
+      "base": "c4a7f769f7d56fa00bbd93af7cc424a3d740145b",
+      "head": "6e2585cfea70e539daac55bef99e712d5458f018"
     }
   ],
   "unmapped": {
@@ -16,8 +16,8 @@
     "spine/src/spine/__init__.py": "paired release version 0.1.95; no feature behavior.",
     "spine/tests/test_packaging.py": "the packaging test's expected version 0.1.95; no feature behavior.",
     "spine/verification/m8sp/SHA256SUMS": "M8SP evidence (report, captures, readings, scripts, checksums); no feature behavior.",
-    "spine/verification/m8sp/impacted.json": "M8SP evidence (report, captures, readings, scripts, checksums); no feature behavior.",
-    "spine/verification/m8sp/ledger-report.json": "M8SP evidence (report, captures, readings, scripts, checksums); no feature behavior."
+    "spine/verification/m8sp/ledger-report.json": "M8SP evidence (report, captures, readings, scripts, checksums); no feature behavior.",
+    "spine/verification/m8sp/impacted.json": "M8SP evidence (report, captures, readings, scripts, checksums); no feature behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {},
