@@ -1551,6 +1551,6 @@ model resolver and run cache. The unlisted fresh-install default is flagged, not
 ## M8SP — Paired packaging only [P4]
 
 PRECEDENT: PLAN M8SP; ADR-019 lockstep packaging; M7TG.
-Memory moves to package 0.1.95 beside Harness. F218 and F226 are fixed in the Harness web
-only; no Memory API, schema or contract fingerprint changes. API contract 0.1.92 remains
+Memory moves to package 0.1.95 beside Harness. F218, F223 and F226 are fixed in the Harness
+web only; no Memory API, schema or contract fingerprint changes. API contract 0.1.92 remains
 separate from the package version.
