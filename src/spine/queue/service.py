@@ -530,7 +530,12 @@ class QueueService:
     ) -> QueueDecisionResponse:
         if request.approval_mode != "explicit" or request.actor_class != "human":
             raise QueueValidationError("curator verdicts require an explicit human decision")
-        if candidate["revision"] != row["candidate_revision"]:
+        already_linked = row["verdict"] == "contradict" and row["target_ids"] and all([
+            await self._contradiction_exists(session, candidate["id"], UUID(target))
+            for target in row["target_ids"]
+        ])
+        # Clearing a satisfied proposal writes only its decision, never a memory head.
+        if candidate["revision"] != row["candidate_revision"] and not already_linked:
             raise QueueConflictError("curator target changed after diagnosis; run curators again")
 
         action = row["verdict"]
