@@ -1,0 +1,6 @@
+{
+  "attempted_provider_call": false,
+  "action": "Replay the scout learner default model setting once to obtain its provider error reason",
+  "automatic_review": "Rejected because the default setting is not the user-mandated gpt-4.1-mini on every role. No bypass attempted.",
+  "remaining": "Original F224 400 reason is unproven. All executed chat, learner, judge, subagent and curator calls used gpt-4.1-mini."
+}
