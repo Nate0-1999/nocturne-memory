@@ -83,11 +83,12 @@ class OpenRouterCuratorProvider:
         self._policy = policy
         self._static_model = model
         self._catalog = OpenRouterCatalogClient(api_key, base_url=base_url)
-        self._run_models: dict[str, tuple[str, str]] = {}
+        self._run_models: dict[tuple[str, str], str] = {}
 
     async def resolve_model(self, principal_id: str, run_uid: str) -> str:
-        cached = self._run_models.get(principal_id)
-        if cached is None or cached[0] != run_uid:
+        key = (principal_id, run_uid)
+        cached = self._run_models.get(key)
+        if cached is None:
             selected = self._static_model
             if self._policy is not None:
                 resolver = ModelPolicyResolver(
@@ -97,12 +98,9 @@ class OpenRouterCuratorProvider:
                     catalog=self._catalog,
                 )
                 selected = (await resolver.resolve(run_uid)).model
-            cached = (
-                run_uid,
-                _openrouter_model(selected) if self._provider == "openrouter" else selected,
-            )
-            self._run_models[principal_id] = cached
-        return cached[1]
+            cached = _openrouter_model(selected) if self._provider == "openrouter" else selected
+            self._run_models[key] = cached
+        return cached
 
     async def verdict(
         self,
