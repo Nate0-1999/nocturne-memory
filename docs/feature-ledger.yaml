@@ -818,10 +818,10 @@
         "spine/src/spine/queue/service.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
+        "packet": "M8LC",
         "date": "2026-11-11",
-        "verdict": "FAIL",
-        "flag": "F225",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-036.png"
       },
       "protected": true,
@@ -986,7 +986,7 @@
         "harness/src/harness/memory_capability.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
+        "packet": "M8LC",
         "date": "2026-11-11",
         "verdict": "PASS",
         "flag": "",
@@ -1369,10 +1369,10 @@
         "harness/src/harness/spine_client.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
+        "packet": "M8LC",
         "date": "2026-11-11",
-        "verdict": "FAIL",
-        "flag": "F224",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-061.png"
       }
     },
