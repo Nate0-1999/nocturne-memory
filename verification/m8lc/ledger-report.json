@@ -75,7 +75,8 @@
     "spine/verification/m8lc/FL-037.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
     "spine/verification/m8lc/FL-041.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
     "spine/verification/m8lc/FL-197.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
-    "spine/verification/m8lc/FL-183.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior."
+    "spine/verification/m8lc/FL-183.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
+    "spine/verification/m8lc/impacted.json": "Generated impact-bell output briefly committed and then removed from tracking; it remains ignored because every push regenerates it. No product behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
