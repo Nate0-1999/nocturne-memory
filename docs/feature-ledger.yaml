@@ -40,11 +40,11 @@
         "spine/src/spine/tokens.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-002.png"
+        "packet": "M6W1A",
+        "verdict": "FAIL",
+        "flag": "F219",
+        "screenshot": "verification/m6w1a/FL-002.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-05"
@@ -337,11 +337,11 @@
         "harness/web/src/MemoryGraph.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-015.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-01"
@@ -407,11 +407,11 @@
         "harness/web/src/frontDoor.ts"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-018.png"
+        "screenshot": "verification/m6w1a/FL-018.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -590,11 +590,11 @@
         "spine/src/spine/memory/service.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-026.png"
+        "screenshot": "verification/m6w1a/FL-026.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-05"
@@ -683,11 +683,11 @@
         "harness/web/src/MemoryPanel.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-030.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-01"
@@ -751,11 +751,11 @@
         "spine/src/spine/inject/decisions.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-033.png"
+        "screenshot": "verification/m6w1a/FL-033.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -773,11 +773,11 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "FAIL",
-        "flag": "F206",
-        "screenshot": "FL-034.png"
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
+        "flag": "",
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -795,11 +795,11 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-035.png"
+        "screenshot": "verification/m6w1a/FL-035.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -818,10 +818,10 @@
         "spine/src/spine/queue/service.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "FAIL",
-        "flag": "F225",
+        "packet": "M8LC",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-036.png"
       },
       "protected": true,
@@ -840,11 +840,11 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-037.png"
+        "packet": "M6W1A",
+        "verdict": "FAIL",
+        "flag": "F233",
+        "screenshot": "verification/m6w1a/FL-037.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -863,11 +863,11 @@
         "harness/src/harness/agent.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-038.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -886,11 +886,11 @@
         "harness/src/harness/memory_capability.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-039.png"
+        "packet": "M6W1A",
+        "verdict": "FAIL",
+        "flag": "F219",
+        "screenshot": "verification/m6w1a/FL-039.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -941,11 +941,11 @@
         "harness/src/harness/agent.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-042.png"
+        "screenshot": "verification/m6w1a/FL-042.png"
       },
       "protected": true,
       "protected_reason": "owner-iterated in manual sessions"
@@ -963,11 +963,11 @@
         "harness/src/harness/memory_panel.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-043.png"
+        "screenshot": "verification/m6w1a/FL-043.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-01"
@@ -986,10 +986,10 @@
         "harness/src/harness/memory_capability.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M8LC",
         "verdict": "PASS",
-        "flag": "",
+        "flag": "F221",
         "screenshot": "FL-044.png"
       },
       "protected": true,
@@ -1009,11 +1009,11 @@
         "spine/src/spine/memory/router.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-045.png"
+        "screenshot": "verification/m6w1a/FL-045.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -1074,11 +1074,11 @@
         "spine/src/spine/learner/evidence.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-048.png"
+        "screenshot": "verification/m6w1a/FL-048.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -1137,11 +1137,11 @@
         "harness/web/src/learning.ts"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-051.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-01"
@@ -1225,11 +1225,11 @@
         "spine/src/spine/learner/"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-055.png"
+        "screenshot": "verification/m6w1a/FL-055.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-07"
@@ -1271,11 +1271,11 @@
         "spine/src/spine/db/migrations/versions/0023_creation_decisions.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "FAIL",
-        "flag": "F086",
-        "screenshot": "FL-057.png"
+        "packet": "M6W1A",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "verification/m6w1a/FL-057.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-14"
@@ -1293,11 +1293,11 @@
         "garden/notes/trainable-parameters.md"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-058.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-01"
@@ -1369,11 +1369,11 @@
         "harness/src/harness/spine_client.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "FAIL",
-        "flag": "F224",
-        "screenshot": "FL-061.png"
+        "packet": "M8LC",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "after-F224-scout-repeat-112/FL-061-112-True.png"
       }
     },
     {
@@ -1389,11 +1389,11 @@
         "spine/src/spine/learner/service.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-062.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-01"
@@ -1433,11 +1433,11 @@
         "spine/src/spine/inject/scorer.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-064.png"
+        "screenshot": ""
       }
     },
     {
@@ -1489,11 +1489,11 @@
         "harness/web/src/projectPath.ts"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-067.png"
+        "screenshot": "verification/m6w1a/FL-067.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -1538,11 +1538,11 @@
         "harness/src/harness/browser_runtime.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-069.png"
+        "packet": "M6W1A",
+        "verdict": "BLOCKED",
+        "flag": "F220",
+        "screenshot": "verification/m6w1a/FL-069.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-03"
@@ -1562,11 +1562,11 @@
         "harness/src/harness/transcript.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-070.png"
+        "screenshot": "verification/m6w1a/FL-070.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -1608,11 +1608,11 @@
         "harness/src/harness/progressive_prompt.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-072.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-03"
@@ -1678,11 +1678,11 @@
         "harness/src/harness/run_loop.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-075.png"
+        "screenshot": "verification/m6w1a/FL-075.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-03"
@@ -1702,11 +1702,11 @@
         "harness/web/src/RewindControl.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-076.png"
+        "screenshot": "verification/m6w1a/FL-076.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-03"
@@ -1736,11 +1736,11 @@
         "harness/tests/test_browser_consent.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-078.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-05"
@@ -1803,11 +1803,11 @@
         "harness/src/harness/agent_runtime.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-081.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-13"
@@ -1870,11 +1870,11 @@
         "harness/src/harness/transcript.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-084.png"
+        "screenshot": "verification/m6w1a/FL-084.png"
       }
     },
     {
@@ -1895,11 +1895,11 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-085.png"
+        "packet": "M6W1A",
+        "verdict": "BLOCKED",
+        "flag": "F220",
+        "screenshot": "verification/m6w1a/FL-085.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-03"
@@ -1921,11 +1921,11 @@
         "harness/src/harness/symphony_experience.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-086.png"
+        "packet": "M6W1A",
+        "verdict": "BLOCKED",
+        "flag": "F220",
+        "screenshot": "verification/m6w1a/FL-086.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-03"
@@ -2032,11 +2032,11 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-091.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "owner-iterated in manual sessions"
@@ -2077,11 +2077,11 @@
         "harness/web/src/RecipeModule.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-093.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-03"
@@ -2100,11 +2100,11 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-094.png"
+        "packet": "M6W1A",
+        "verdict": "BLOCKED",
+        "flag": "F220",
+        "screenshot": "verification/m6w1a/FL-094.png"
       },
       "protected": true,
       "protected_reason": "owner-iterated in manual sessions"
@@ -2125,11 +2125,11 @@
         "harness/src/harness/supervisor.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-095.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-03"
@@ -2167,11 +2167,11 @@
         "harness/src/harness/WORKER_BRIEF.md"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-097.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-03"
@@ -2190,11 +2190,11 @@
         "harness/web/src/SymphonyDeck.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-098.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -2213,11 +2213,11 @@
         "harness/src/harness/rounds.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-099.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-03"
@@ -2281,11 +2281,11 @@
         "harness/web/src/store.ts"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-102.png"
+        "screenshot": "verification/m6w1a/FL-102.png"
       },
       "protected": true,
       "protected_reason": "owner-iterated in manual sessions"
@@ -2378,11 +2378,11 @@
         "harness/src/harness/commands.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-106.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -2401,11 +2401,11 @@
         "harness/src/harness/parameter_registry.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-107.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-02"
@@ -2546,11 +2546,11 @@
         "harness/web/src/ModelDevice.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-113.png"
+        "screenshot": "verification/m6w1a/FL-113.png"
       },
       "protected": true,
       "protected_reason": "owner-iterated in manual sessions"
@@ -2743,11 +2743,11 @@
         "harness/web/src/MemoryPanel.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-121.png"
+        "screenshot": "verification/m6w1a/FL-121.png"
       }
     },
     {
@@ -2764,11 +2764,11 @@
         "harness/src/harness/recipe_graph.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-122.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -2815,11 +2815,11 @@
         "harness/web/src/assets/rack.css"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-124.png"
+        "screenshot": "verification/m6w1a/FL-124.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-30"
@@ -2946,11 +2946,11 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-130.png"
+        "screenshot": "verification/m6w1a/FL-130.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-05"
@@ -2994,11 +2994,11 @@
         "harness/src/harness/visualization.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "FAIL",
-        "flag": "F228",
-        "screenshot": "FL-132.png"
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
+        "flag": "",
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-05"
@@ -3023,11 +3023,11 @@
       ],
       "plate": "verification/m3vz/plates/palace.png",
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "FAIL",
-        "flag": "F155",
-        "screenshot": "FL-133.png"
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
+        "flag": "",
+        "screenshot": ""
       }
     },
     {
@@ -3045,11 +3045,11 @@
         "harness/src/harness/visualization.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-134.png"
+        "screenshot": "verification/m6w1a/FL-134.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-05"
@@ -3088,10 +3088,10 @@
         "spine/src/spine/learner/service.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "FAIL",
-        "flag": "F226",
+        "packet": "M8SP",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "FL-137.png"
       }
     },
@@ -3109,8 +3109,8 @@
         "harness/web/src/MemoryGraph.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M8SP",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-138.png"
@@ -3230,11 +3230,11 @@
         "harness/README.md"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "FAIL",
-        "flag": "F158",
-        "screenshot": "FL-144.png"
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
+        "flag": "",
+        "screenshot": ""
       }
     },
     {
@@ -3298,11 +3298,11 @@
         "harness/web/scripts/build_grimoire_motifs.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-147.png"
+        "packet": "M6W1A",
+        "verdict": "FAIL",
+        "flag": "F237",
+        "screenshot": "verification/m6w1a/FL-147.png"
       }
     },
     {
@@ -3411,11 +3411,11 @@
         "harness/web/src/modelBrowser.ts"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "FAIL",
-        "flag": "F229",
-        "screenshot": "FL-152.png"
+        "flag": "F218",
+        "screenshot": "verification/m6w1a/FL-152.png"
       }
     },
     {
@@ -3434,11 +3434,11 @@
         "harness/web/src/modelBrowser.ts"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-153.png"
+        "packet": "M6W1A",
+        "verdict": "FAIL",
+        "flag": "F218",
+        "screenshot": "verification/m6w1a/FL-153.png"
       }
     },
     {
@@ -3457,11 +3457,11 @@
         "spine/src/spine/model_policy.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-154.png"
+        "screenshot": "verification/m6w1a/FL-154.png"
       },
       "protected": true,
       "protected_reason": "owner-iterated in manual sessions"
@@ -3480,8 +3480,8 @@
         "spine/src/spine/spend/"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M8SP",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-155.png"
@@ -3505,11 +3505,11 @@
         "harness/web/src/vitals.ts"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-156.png"
+        "screenshot": "verification/m6w1a/FL-156.png"
       }
     },
     {
@@ -3552,11 +3552,11 @@
         "harness/src/harness/commands.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-158.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -3577,11 +3577,11 @@
         "spine/src/spine/spend/views.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-159.png"
+        "screenshot": "verification/m6w1a/FL-159.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -3635,11 +3635,11 @@
         "harness/web/src/spendTable.ts"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-160.png"
+        "screenshot": "verification/m6w1a/FL-160.png"
       }
     },
     {
@@ -3657,11 +3657,11 @@
         "harness/web/src/VitalsModule.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-161.png"
+        "screenshot": "verification/m6w1a/FL-161.png"
       }
     },
     {
@@ -3726,11 +3726,11 @@
         "spine/src/spine/api_contract.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "OWNER-PENDING",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-164.png"
+        "screenshot": ""
       }
     },
     {
@@ -3747,11 +3747,11 @@
         "harness/src/harness/receipt_queue.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "FAIL",
-        "flag": "F214",
-        "screenshot": "FL-165.png"
+        "packet": "M6W1A",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "verification/m6w1a/FL-165.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-14"
@@ -3770,11 +3770,11 @@
         "harness/src/harness/cli.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-166.png"
+        "packet": "M6W1A",
+        "verdict": "BLOCKED",
+        "flag": "F220",
+        "screenshot": "verification/m6w1a/FL-166.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-02"
@@ -3816,11 +3816,11 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-168.png"
+        "screenshot": "verification/m6w1a/FL-168.png"
       }
     },
     {
@@ -3884,11 +3884,11 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-171.png"
+        "screenshot": "verification/m6w1a/FL-171.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -3906,11 +3906,11 @@
         "spine/src/spine/portability.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "FAIL",
+        "packet": "M6W1A",
+        "verdict": "BLOCKED",
         "flag": "F214",
-        "screenshot": "FL-172.png"
+        "screenshot": "verification/m6w1a/FL-172.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-14"
@@ -3929,11 +3929,11 @@
         "harness/web/src/rack.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "FAIL",
+        "packet": "M6W1A",
+        "verdict": "BLOCKED",
         "flag": "F214",
-        "screenshot": "FL-173.png"
+        "screenshot": "verification/m6w1a/FL-173.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -4063,8 +4063,17 @@
       "status": "built",
       "walk": "Build a workflow bundle locally with a skill, sealed tool, vault key name and cron. Push it to an SSH stage host with its own local Palace, then promote its proven digest to production. Both hosts run the same product version and prove the existing exit check before enabling; a failed candidate keeps the prior release. Inspect local, stage and production in Jobs. This is bundle delivery between hosts, not migration of an active conversation.",
       "owner": "owner — \"The idea of \"managed agents\" are you familiar. Does it make sense for the entire harness to live in the cloud and we just access it from client machines or do you think that the local harness pattern makes sense. I would image that we might want both if local models become stronger.\" (first thread turn 13; first thread turn 14) — HORIZON per B.4 (M4 fleet expansion / M5 blue-water), gate 2026-09-16",
-      "surfaces": ["harness/src/harness/targets.py", "harness/web/src/JobsModule.tsx"],
-      "last_walk": {"packet": "M7TG", "date": "2026-11-11", "verdict": "PASS", "flag": "", "screenshot": "FL-180.png"}
+      "surfaces": [
+        "harness/src/harness/targets.py",
+        "harness/web/src/JobsModule.tsx"
+      ],
+      "last_walk": {
+        "packet": "M7TG",
+        "date": "2026-11-11",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-180.png"
+      }
     },
     {
       "id": "FL-181",
@@ -4106,11 +4115,11 @@
         "spine/src/spine/db/migrations/versions/0025_jobs.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-182.png"
+        "packet": "M6W1A",
+        "verdict": "BLOCKED",
+        "flag": "F220",
+        "screenshot": "verification/m6w1a/FL-182.png"
       }
     },
     {
@@ -4129,11 +4138,11 @@
         "spine/src/spine/main.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-183.png"
+        "screenshot": "verification/m6w1a/FL-183.png"
       }
     },
     {
@@ -4153,11 +4162,11 @@
         "harness/src/harness/jobs.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-184.png"
+        "screenshot": "verification/m6w1a/FL-184.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-30"
@@ -4178,11 +4187,11 @@
         "spine/src/spine/jobs.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-185.png"
+        "packet": "M6W1A",
+        "verdict": "BLOCKED",
+        "flag": "F220",
+        "screenshot": "verification/m6w1a/FL-185.png"
       }
     },
     {
@@ -4246,11 +4255,11 @@
         "harness/src/harness/config.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "OWNER-PENDING",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-188.png"
+        "screenshot": ""
       }
     },
     {
@@ -4279,11 +4288,11 @@
         "harness/uv.lock"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-190.png"
+        "screenshot": "verification/m6w1a/FL-190.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-03"
@@ -4480,11 +4489,11 @@
         "harness/web/src/assets/security.css"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-198.png"
+        "screenshot": ""
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-02"
@@ -4523,11 +4532,11 @@
         "harness/web/src/WorkerContext.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-199.png"
+        "screenshot": "verification/m6w1a/FL-199.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-03"
@@ -4569,11 +4578,11 @@
       ],
       "protected": true,
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-201.png"
+        "packet": "M6W1A",
+        "verdict": "FAIL",
+        "flag": "F235",
+        "screenshot": "verification/m6w1a/FL-201.png"
       },
       "protected_reason": "walk PASS 2026-10-03"
     },
@@ -4594,11 +4603,11 @@
       ],
       "protected": true,
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-202.png"
+        "packet": "M6W1A",
+        "verdict": "FAIL",
+        "flag": "F218",
+        "screenshot": "verification/m6w1a/FL-202.png"
       },
       "protected_reason": "walk PASS 2026-10-02"
     },
@@ -4617,11 +4626,11 @@
       ],
       "protected": false,
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "FAIL",
         "flag": "F227",
-        "screenshot": "FL-203.png"
+        "screenshot": "verification/m6w1a/FL-203.png"
       }
     },
     {
@@ -4657,11 +4666,11 @@
       ],
       "protected": true,
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "FAIL",
-        "flag": "F203",
-        "screenshot": "FL-205.png"
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
+        "flag": "",
+        "screenshot": ""
       },
       "protected_reason": "walk PASS 2026-10-13"
     },
@@ -4687,8 +4696,8 @@
         "spine/src/spine/model_policy.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M8SP",
         "verdict": "PASS",
         "flag": "",
         "screenshot": "FL-206.png"
@@ -4711,11 +4720,11 @@
         "spine/src/spine/jobs.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
+        "packet": "M6W1A",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-207.png"
+        "screenshot": "verification/m6w1a/FL-207.png"
       }
     },
     {
@@ -4733,11 +4742,11 @@
         "harness/src/harness/cli.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-208.png"
+        "packet": "M6W1A",
+        "verdict": "BLOCKED",
+        "flag": "F220",
+        "screenshot": "verification/m6w1a/FL-208.png"
       }
     },
     {
@@ -4758,11 +4767,11 @@
         "harness/web/src/JobsModule.tsx"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
-        "flag": "",
-        "screenshot": "FL-209.png"
+        "packet": "M6W1A",
+        "verdict": "BLOCKED",
+        "flag": "F220",
+        "screenshot": "verification/m6w1a/FL-209.png"
       }
     },
     {
@@ -4781,11 +4790,11 @@
         "harness/tests/test_job_runtime.py"
       ],
       "last_walk": {
-        "packet": "M6W1B",
         "date": "2026-11-11",
-        "verdict": "PASS",
+        "packet": "M6W1A",
+        "verdict": "NOT WALKED",
         "flag": "",
-        "screenshot": "FL-210.png"
+        "screenshot": ""
       }
     },
     {
@@ -4796,8 +4805,20 @@
       "status": "built",
       "walk": "Add stage and prod by SSH address. Initialize both hosts at the sender's version, inspect healthy doctor and verification identities, and inspect nocturne targets and the Jobs tier view. A version mismatch names the older side and never downgrades.",
       "owner": "owner 2026-11-10, SD-092; PLAN M7TG (1)(4).",
-      "surfaces": ["harness/src/harness/targets.py", "harness/src/harness/onboarding.py", "harness/src/harness/cli.py", "harness/docs/ssh-targets.md", "harness/tests/test_lifecycle_matrix.py"],
-      "last_walk": {"packet": "M7TG", "date": "2026-11-11", "verdict": "PASS", "flag": "", "screenshot": "FL-211.png"}
+      "surfaces": [
+        "harness/src/harness/targets.py",
+        "harness/src/harness/onboarding.py",
+        "harness/src/harness/cli.py",
+        "harness/docs/ssh-targets.md",
+        "harness/tests/test_lifecycle_matrix.py"
+      ],
+      "last_walk": {
+        "packet": "M7TG",
+        "date": "2026-11-11",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-211.png"
+      }
     },
     {
       "id": "FL-212",
@@ -4807,8 +4828,18 @@
       "status": "built",
       "walk": "Push a bundle with skill, sealed tool, vault key name and cron to stage. Its proof run carries the same definition.bundle.digest and passes before its trigger enables. Push a broken change: record FAIL while the prior digest remains enabled. Scan bundles, transcripts, logs, captures and the Palace database on all three machines for the fixture key value; only the vault holds it.",
       "owner": "owner 2026-11-10, SD-092; PLAN M7TG (2).",
-      "surfaces": ["harness/src/harness/targets.py", "harness/src/harness/jobs.py", "harness/web/src/JobsModule.tsx"],
-      "last_walk": {"packet": "M7TG", "date": "2026-11-11", "verdict": "PASS", "flag": "", "screenshot": "FL-212.png"}
+      "surfaces": [
+        "harness/src/harness/targets.py",
+        "harness/src/harness/jobs.py",
+        "harness/web/src/JobsModule.tsx"
+      ],
+      "last_walk": {
+        "packet": "M7TG",
+        "date": "2026-11-11",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-212.png"
+      }
     },
     {
       "id": "FL-213",
@@ -4818,8 +4849,18 @@
       "status": "built",
       "walk": "After a stage PASS, edit the local bundle and promote: production proves the unchanged stage digest. Try promoting a workflow with an unproven local digest: refuse without a production release. Inspect production's saved run digest and the Jobs tiers.",
       "owner": "owner 2026-11-10, SD-092; PLAN M7TG (3).",
-      "surfaces": ["harness/src/harness/targets.py", "harness/web/src/JobsModule.tsx", "harness/web/src/rack.tsx"],
-      "last_walk": {"packet": "M7TG", "date": "2026-11-11", "verdict": "PASS", "flag": "", "screenshot": "FL-213.png"}
+      "surfaces": [
+        "harness/src/harness/targets.py",
+        "harness/web/src/JobsModule.tsx",
+        "harness/web/src/rack.tsx"
+      ],
+      "last_walk": {
+        "packet": "M7TG",
+        "date": "2026-11-11",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-213.png"
+      }
     },
     {
       "id": "FL-214",
@@ -4829,8 +4870,17 @@
       "status": "built",
       "walk": "Prove and enable two releases on production, then rollback. Verify the first proven digest is enabled without another model run and the log preserves both proofs, both activations and rollback with their digest, verdict, time and source. Inspect nocturne targets and Jobs.",
       "owner": "owner 2026-11-10, SD-092; PLAN M7TG (3)(4).",
-      "surfaces": ["harness/src/harness/targets.py", "harness/tests/test_lifecycle_matrix.py"],
-      "last_walk": {"packet": "M7TG", "date": "2026-11-11", "verdict": "PASS", "flag": "", "screenshot": "FL-214.png"}
+      "surfaces": [
+        "harness/src/harness/targets.py",
+        "harness/tests/test_lifecycle_matrix.py"
+      ],
+      "last_walk": {
+        "packet": "M7TG",
+        "date": "2026-11-11",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "FL-214.png"
+      }
     }
   ]
 }

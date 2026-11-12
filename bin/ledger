@@ -385,6 +385,13 @@ def verify(data, directory, check_diffs=()):
     for key in expected["rows"]:
         item = actual.get(key, {})
         problems = []
+        # M6W1A/B ruling (2026-11-11): a scout reports a deadline gap as NOT WALKED,
+        # and cloud staging refused under F214 as BLOCKED, never a feature FAIL.
+        # A builder cannot skip a row its own change touches.
+        if mode == "scout" and item.get("verdict") == "NOT WALKED":
+            if not isinstance(item.get("observed"), str) or not item["observed"].strip():
+                errors.append(f"{key}: NOT WALKED needs the reason in 'observed'")
+            continue
         if item.get("verdict") == "OWNER-PENDING":
             # F125: a row the owner performs by hand (owner_performed in the ledger)
             # may be handed off pending, with the prepared steps and no screenshot.
@@ -418,13 +425,13 @@ def verify(data, directory, check_diffs=()):
             if problems:
                 errors.append(f"{key}: " + "; ".join(problems))
             continue
-        if item.get("verdict") not in {"PASS", "FAIL"}:
-            problems.append("needs PASS, FAIL, UNCHANGED or OWNER-PENDING")
-        if item.get("verdict") == "FAIL" and not (
+        if item.get("verdict") not in {"PASS", "FAIL", "BLOCKED"}:
+            problems.append("needs PASS, FAIL, BLOCKED, UNCHANGED or OWNER-PENDING")
+        if item.get("verdict") in {"FAIL", "BLOCKED"} and not (
             re.fullmatch(r"F\d{3,}", item.get("flag", ""))
             and re.search(r"\b" + re.escape(item["flag"]) + r"\b", flags)
         ):
-            problems.append("FAIL needs an existing flag")
+            problems.append("FAIL or BLOCKED needs an existing flag")
         filename = item.get("screenshot", f"{key}.png")
         path = directory / filename
         if (

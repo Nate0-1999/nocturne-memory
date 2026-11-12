@@ -1538,3 +1538,12 @@ PRECEDENT: PLAN M7TG; ADR-019 lockstep packaging; M7LF.
 Memory moves to package 0.1.93 beside Harness. Targets, SSH transport and release
 records belong to each Harness host; no Memory API, schema or contract fingerprint
 changes. API contract 0.1.92 remains separate from the package version.
+
+## M8LC — Keep existing contradiction links and explain failed replays [P1.4, P2.5]
+
+PRECEDENT: F225, F224; ADR-022. The curator queue checks both link directions before
+proposing a contradiction; approving an old card preserves the existing edge and records
+the decision. Failed compaction requests log the provider's reason with credentials
+redacted. Package pair 0.1.94; no API or schema change, contract stays 0.1.92.
+Gate return: learner candidate/replay calls share the curator provider's principal-aware
+model resolver and run cache. The unlisted fresh-install default is flagged, not changed.

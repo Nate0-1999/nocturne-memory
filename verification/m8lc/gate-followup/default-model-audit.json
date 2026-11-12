@@ -1,0 +1,30 @@
+{
+  "basis": "Code and free public catalog only; no provider completion request",
+  "settings_default": "anthropic:claude-sonnet-4-6",
+  "normal_onboarding": "SPINE_CHAT_MODEL only set when local_model is selected; no curator policy is seeded by init/up",
+  "curator_default_policy": "pinned:openrouter:anthropic/claude-sonnet-4-6",
+  "curator_request_model": "anthropic/claude-sonnet-4-6",
+  "old_learner_request_model": "anthropic:claude-sonnet-4-6",
+  "candidate_learner_request_model": "anthropic/claude-sonnet-4-6",
+  "listed_by_openrouter": false,
+  "listed_alternative": "anthropic/claude-sonnet-4.6",
+  "sources": [
+    "spine/src/spine/config.py:43",
+    "spine/src/spine/curation/policy.py:22",
+    "spine/src/spine/curation/provider.py:88",
+    "spine/src/spine/main.py:131",
+    "harness/src/harness/onboarding.py:151",
+    "spine/src/spine/learner/compaction.py:387"
+  ],
+  "source_heads": {
+    "harness": "e72eab8db0245de13c78a5a3ef8d5b4299caedb2",
+    "spine": "3eced79c81e9dc3b95ae5b85dfff2e7f82a8930a"
+  },
+  "candidate_memory_commit": "34612a2f4e874a7f8d3e62ac67a81c5569ef5ae7",
+  "gate_points_verified": {
+    "learner_old_conversion": true,
+    "curator_policy_resolution": true,
+    "normal_onboarding_leaves_SPINE_CHAT_MODEL_unset": true,
+    "public_model_id_membership": true
+  }
+}

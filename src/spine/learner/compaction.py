@@ -3,9 +3,11 @@
 import hashlib
 import json
 import logging
+import re
 from collections import defaultdict, deque
 from datetime import UTC, datetime
 from decimal import Decimal
+from urllib.parse import unquote, urlsplit
 
 import httpx
 from sqlalchemy import select, text
@@ -90,9 +92,10 @@ async def compaction_snapshot(session, principal):
 
 
 class CompactionLearner:
-    def __init__(self, sessions, *, principal, settings, embeddings, spend):
+    def __init__(self, sessions, *, principal, settings, embeddings, spend, curator):
         self.sessions, self.principal, self.settings = sessions, principal, settings
         self.embeddings, self.spend = embeddings, spend
+        self.curator = curator
 
     async def snapshot(self):
         async with self.sessions() as session:
@@ -381,9 +384,7 @@ class CompactionLearner:
         if key is None:
             raise ValueError("Compaction instruction learning needs a model credential")
         # Same configured cheap background model as this Palace's curator; no upgrade fallback.
-        model = self.settings.chat_model.removeprefix("openrouter:").replace(
-            "openai:", "openai/", 1
-        )
+        model = await self.curator.resolve_model(self.principal, uid)
         properties = (
             {"facts": {"type": "array", "items": {"type": "string"}}}
             if kind == "replay"
@@ -424,6 +425,26 @@ class CompactionLearner:
                         {"role": "user", "content": prompt},
                     ],
                 },
+            )
+        if response.is_error:
+            try:
+                error = response.json().get("error", {})
+                reason = str(error.get("message", response.reason_phrase))
+                raw = error.get("metadata", {}).get("raw")
+                if raw:
+                    reason += " · " + str(raw)
+            except (ValueError, AttributeError, TypeError):
+                reason = response.reason_phrase
+            for value in (
+                key.get_secret_value(),
+                self.settings.token.get_secret_value(),
+                unquote(urlsplit(self.settings.database_url).password or ""),
+            ):
+                if value:
+                    reason = reason.replace(value, "[REDACTED]")
+            reason = re.sub(r"(?i)\b(?:sk-[\w-]+|bearer\s+[\w.~-]+)", "[REDACTED]", reason)
+            logger.warning(
+                "Compaction back-test %s failed (HTTP %s): %s", kind, response.status_code, reason
             )
         response.raise_for_status()
         data = response.json()

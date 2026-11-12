@@ -23,6 +23,8 @@ from spine.spend.service import SpendService
 
 
 class CuratorVerdictProvider(Protocol):
+    async def resolve_model(self, principal_id: str, run_uid: str) -> str: ...
+
     async def verdict(
         self,
         finding: HealthFinding,
@@ -39,6 +41,9 @@ class CuratorProviderError(RuntimeError):
 
 class UnavailableCuratorProvider:
     """Fail plainly when a Palace has no configured curator model credential."""
+
+    async def resolve_model(self, principal_id: str, run_uid: str) -> str:
+        raise CuratorProviderError("curator model is not configured")
 
     async def verdict(
         self,
@@ -78,7 +83,24 @@ class OpenRouterCuratorProvider:
         self._policy = policy
         self._static_model = model
         self._catalog = OpenRouterCatalogClient(api_key, base_url=base_url)
-        self._run_models: dict[str, tuple[str, str]] = {}
+        self._run_models: dict[tuple[str, str], str] = {}
+
+    async def resolve_model(self, principal_id: str, run_uid: str) -> str:
+        key = (principal_id, run_uid)
+        cached = self._run_models.get(key)
+        if cached is None:
+            selected = self._static_model
+            if self._policy is not None:
+                resolver = ModelPolicyResolver(
+                    policy=await self._policy.read(principal_id),
+                    static_model=self._static_model,
+                    static_context_tokens=1_000_000,
+                    catalog=self._catalog,
+                )
+                selected = (await resolver.resolve(run_uid)).model
+            cached = _openrouter_model(selected) if self._provider == "openrouter" else selected
+            self._run_models[key] = cached
+        return cached
 
     async def verdict(
         self,
@@ -89,23 +111,7 @@ class OpenRouterCuratorProvider:
         machine_id: str,
     ) -> CuratorVerdictDraft:
         prompt = _verdict_prompt(finding, report)
-        cached = self._run_models.get(report.principal_id)
-        if cached is None or cached[0] != run_uid:
-            selected = self._static_model
-            if self._policy is not None:
-                resolver = ModelPolicyResolver(
-                    policy=await self._policy.read(report.principal_id),
-                    static_model=self._static_model,
-                    static_context_tokens=1_000_000,
-                    catalog=self._catalog,
-                )
-                selected = (await resolver.resolve(run_uid)).model
-            cached = (
-                run_uid,
-                _openrouter_model(selected) if self._provider == "openrouter" else selected,
-            )
-            self._run_models[report.principal_id] = cached
-        model = cached[1]
+        model = await self.resolve_model(report.principal_id, run_uid)
         messages = [
             {
                 "role": "system",

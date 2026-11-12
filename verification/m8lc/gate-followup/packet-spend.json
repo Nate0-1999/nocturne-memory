@@ -1,0 +1,12 @@
+{
+  "original_shared_key_start": "87.587563591",
+  "final_shared_key_usage": "89.284509531",
+  "observed_shared_key_increase": "1.696945940",
+  "initial_own_sql_plus_direct": "0.31936984",
+  "gate_return_own_sql": "0.092118720000",
+  "packet_own_receipted_total": "0.411488560000",
+  "unattributed_shared_key_difference": "1.285457380000",
+  "cap_usd": "3",
+  "other_chat_models": [],
+  "unpriced_sql_lines": 0
+}

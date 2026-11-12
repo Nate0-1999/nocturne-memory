@@ -1,0 +1,14 @@
+[
+  {
+    "kind": "app",
+    "pid": 81753,
+    "ownership_verified": true,
+    "stopped": true
+  },
+  {
+    "kind": "spine",
+    "pid": 87533,
+    "ownership_verified": true,
+    "stopped": true
+  }
+]
