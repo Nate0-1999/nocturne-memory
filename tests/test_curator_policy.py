@@ -45,7 +45,10 @@ async def test_curator_policy_selects_real_request_model_and_stays_fixed_for_a_p
     memory_session_factory,
     monkeypatch,
 ):
-    """FL-154 / A-021 / r9-6: pinned and strongest policies govern future passes."""
+    """FL-154 / A-021 / r9-6: pinned and strongest policies govern future passes.
+
+    F224: an interleaved learner fit cannot evict a curator pass's retained model.
+    """
     calls = []
     receipts = []
     malformed = False
@@ -100,6 +103,7 @@ async def test_curator_policy_selects_real_request_model_and_stays_fixed_for_a_p
         await policy.save("local", "pinned:openrouter:openai/gpt-4.1")
         await provider.verdict(finding, report, run_uid=first, machine_id="local-machine")
         await provider.verdict(finding, report, run_uid=second, machine_id="local-machine")
+        assert await provider.resolve_model("local", first) == "openai/gpt-4.1-mini"
 
         async def catalog():
             return ModelCatalog(

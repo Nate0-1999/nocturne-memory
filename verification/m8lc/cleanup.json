@@ -1,0 +1,16 @@
+{
+  "projects": [
+    {
+      "project": "nocturne-625ddeb0",
+      "containers_remaining": 0,
+      "database_removed": true
+    },
+    {
+      "project": "nocturne-d9278363",
+      "containers_remaining": 0,
+      "database_removed": true
+    }
+  ],
+  "credential_homes_removed": true,
+  "owned_browser_processes_remaining": []
+}

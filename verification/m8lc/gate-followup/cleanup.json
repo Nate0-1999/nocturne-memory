@@ -1,0 +1,12 @@
+{
+  "compose_project": "nocturne-625ddeb0",
+  "containers_remaining": 0,
+  "database_removed": true,
+  "credential_home_removed": true,
+  "owned_service_ports_free": [
+    8261,
+    8961,
+    55661
+  ],
+  "global_sweep_run": false
+}

@@ -1,0 +1,7 @@
+{
+  "palace_pid": 87533,
+  "SPINE_CHAT_MODEL_in_running_process": false,
+  "principal": "palace-agent-2f95c0a5-bb45-4537-a2cc-721ddd428680",
+  "curator_policy": "pinned:openrouter:openai/gpt-4.1-mini",
+  "memory_commit": "34612a2f4e874a7f8d3e62ac67a81c5569ef5ae7"
+}

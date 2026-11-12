@@ -211,6 +211,7 @@ def create_app(
         settings=resolved,
         embeddings=embedding_provider,
         spend=spend_service,
+        curator=curator_verdict_provider,
     )
     learner_service.compaction_learner = compaction_learner
     m2k_service = M2KService(

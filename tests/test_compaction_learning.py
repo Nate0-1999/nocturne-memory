@@ -1,5 +1,6 @@
 """FL-061: model drift must never replace a better compaction generation."""
 
+import json
 from uuid import UUID
 
 import httpx
@@ -7,6 +8,8 @@ import pytest
 from sqlalchemy import text
 
 from spine.config import Settings
+from spine.curation.policy import CuratorPolicy
+from spine.curation.provider import OpenRouterCuratorProvider
 from spine.embeddings import EmbeddingTransportError
 from spine.ids import mint_ulid
 from spine.learner.compaction import CompactionLearner
@@ -24,22 +27,35 @@ from spine.learner.contracts import CompactionTrigger
     ],
 )
 async def test_stalled_backtest_request_goes_back_once(
-    monkeypatch, answers, attempts, went_back_after
+    memory_session_factory, monkeypatch, caplog, answers, attempts, went_back_after
 ):
     """F169 / PLAN M6CP: one provider stall must not fail a fit of many paid calls.
 
     A timeout, 429 or 5xx goes back once (v2.133's convention), never twice; any other
     answer is not retried. Only the request that returned a cost is receipted.
+    F224: the learner must use this principal's resolved curator model, even when
+    the Palace's default names a different model, or real provider calls fail/cost more.
     """
     seen, receipts, costs = [], [], []
 
     def provider(request):
+        if request.method == "GET":
+            return httpx.Response(200, json={"data": []})
         answer = answers[len(seen)]
         seen.append(request)
         if isinstance(answer, Exception):
             raise answer
         if answer != 200:
-            return httpx.Response(answer, request=request)
+            return httpx.Response(
+                answer,
+                request=request,
+                json={
+                    "error": {
+                        "message": "Invalid model identifier; credential unused",
+                        "metadata": {"raw": "Bearer sk-upstream-secret"},
+                    },
+                },
+            )
         return httpx.Response(200, request=request, json={
             "id": "gen-1",
             "usage": {"cost": 0.002},
@@ -54,26 +70,44 @@ async def test_stalled_backtest_request_goes_back_once(
     monkeypatch.setattr(
         httpx, "AsyncClient", lambda **kw: client(transport=httpx.MockTransport(provider), **kw)
     )
+    settings = Settings(
+        database_url="postgresql+asyncpg://unused", token="unused", openai_api_key="unused",
+        chat_model="anthropic:claude-sonnet-4-6",
+    )
+    policy = CuratorPolicy(memory_session_factory, settings.chat_model)
+    await policy.save("owner", "pinned:openrouter:openai/gpt-4.1-mini")
+    curator = OpenRouterCuratorProvider(
+        api_key="unused", model=settings.chat_model, spend_service=Spend(), policy=policy
+    )
     learner = CompactionLearner(
-        None,
+        memory_session_factory,
         principal="owner",
-        settings=Settings(
-            database_url="postgresql+asyncpg://unused", token="unused", openai_api_key="unused"
-        ),
+        settings=settings,
         embeddings=None,
         spend=Spend(),
+        curator=curator,
     )
+    uid = mint_ulid()
     if went_back_after:
-        reply = await learner._call("Replay this span.", mint_ulid(), costs, kind="replay")
+        reply = await learner._call("Replay this span.", uid, costs, kind="replay")
         assert reply == {"facts": ["Keep the copper notebook."]}
         assert [str(receipt.cost_usd) for receipt in receipts] == ["0.002"]
         assert receipts[0].meta["went_back_after"] == went_back_after
         assert costs == [receipts[0].event_uid]
     else:
         with pytest.raises((httpx.ReadTimeout, httpx.HTTPStatusError)):
-            await learner._call("Replay this span.", mint_ulid(), costs, kind="replay")
+            await learner._call("Replay this span.", uid, costs, kind="replay")
         assert receipts == [] and costs == []
     assert len(seen) == attempts
+    resolved = await curator.resolve_model("owner", uid)
+    assert resolved == "openai/gpt-4.1-mini"
+    assert all(json.loads(request.content)["model"] == resolved for request in seen)
+    await curator.aclose()
+    if answers[0] == 400:
+        # F224 / Invariant 14: preserve the provider's diagnosis without leaking credentials.
+        assert "Invalid model identifier" in caplog.text
+        assert "unused" not in caplog.text
+        assert "sk-upstream-secret" not in caplog.text
 
 
 @pytest.mark.parametrize("preview,size", [(False, 128), (False, 64), (True, 64)])
@@ -103,6 +137,7 @@ async def test_losing_or_verification_replay_never_changes_instructions(
         settings=Settings(database_url="postgresql+asyncpg://unused", token="unused"),
         embeddings=Embeddings(),
         spend=None,
+        curator=None,
     )
     policy = {
         "id": "baseline",
