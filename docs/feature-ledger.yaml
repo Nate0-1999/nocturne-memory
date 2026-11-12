@@ -2283,8 +2283,8 @@
       "last_walk": {
         "date": "2026-11-11",
         "packet": "M6W1A",
-        "verdict": "FAIL",
-        "flag": "F236",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "verification/m6w1a/FL-102.png"
       },
       "protected": true,

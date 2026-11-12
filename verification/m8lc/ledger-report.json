@@ -2,12 +2,12 @@
   "packet": "M8LC",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "aadc4f2ed5bc6b8127c32ef1cf653a96e379b43f580d5dbd6cd0553fe822bd2e",
+  "ledger_sha256": "8895d8dabcfba2ca5b902ace5ad25d1c9fba30bd31307c507e2ebdf4113c462b",
   "diffs": [
     {
       "repo": "spine",
       "base": "3eced79c81e9dc3b95ae5b85dfff2e7f82a8930a",
-      "head": "d6a812b8a5814c1cd3416072765fc4c084876c5b"
+      "head": "57b6299f7a99c13f8efc450372dbd27bfb8d79ae"
     }
   ],
   "unmapped": {
@@ -17,8 +17,12 @@
     "spine/tests/test_compaction_learning.py": "Packaging expectation or existing network-retry test credential-redaction assertion; no feature beyond the charged corner.",
     "spine/tests/test_curator_policy.py": "Existing external-provider policy test retains a pass model when learner work interleaves; no new policy or fallback.",
     "spine/tests/test_packaging.py": "Packaging expectation or existing network-retry test credential-redaction assertion; no feature beyond the charged corner.",
+    "spine/verification/m8lc/FL-034.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
+    "spine/verification/m8lc/FL-035.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
     "spine/verification/m8lc/FL-036.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-037.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
     "spine/verification/m8lc/FL-038.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-041.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
     "spine/verification/m8lc/FL-042.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
     "spine/verification/m8lc/FL-049.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
     "spine/verification/m8lc/FL-050.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
@@ -36,8 +40,10 @@
     "spine/verification/m8lc/FL-163.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
     "spine/verification/m8lc/FL-178.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
     "spine/verification/m8lc/FL-179.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-183.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
     "spine/verification/m8lc/FL-195.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
     "spine/verification/m8lc/FL-196.png": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
+    "spine/verification/m8lc/FL-197.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
     "spine/verification/m8lc/SHA256SUMS": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
     "spine/verification/m8lc/after-F224-scout-96/FL-061-96-False.png": "Packet evidence, model receipts, free-catalog/default audit, spend and cleanup only; no separate product behavior. Scoped PASS and explicitly unproven context rows remain distinct.",
     "spine/verification/m8lc/after-F224-scout-96/FL-061-96-True.png": "Packet evidence, model receipts, free-catalog/default audit, spend and cleanup only; no separate product behavior. Scoped PASS and explicitly unproven context rows remain distinct.",
@@ -70,12 +76,6 @@
     "spine/verification/m8lc/key-finish.json": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
     "spine/verification/m8lc/key-start.json": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
     "spine/verification/m8lc/ledger-report.json": "Packet evidence, hashes, cleanup, receipts or generated metadata only; no independent product feature change. Reviewer should assess the declared charged corner and explicit context-only verdicts.",
-    "spine/verification/m8lc/FL-034.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
-    "spine/verification/m8lc/FL-035.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
-    "spine/verification/m8lc/FL-037.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
-    "spine/verification/m8lc/FL-041.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
-    "spine/verification/m8lc/FL-197.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
-    "spine/verification/m8lc/FL-183.png": "Packet row capture only; the observation states its scoped PASS or explicitly unproven context. No independent product behavior.",
     "spine/verification/m8lc/impacted.json": "Generated impact-bell output briefly committed and then removed from tracking; it remains ignored because every push regenerates it. No product behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
