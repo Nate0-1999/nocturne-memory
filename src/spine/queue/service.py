@@ -6,7 +6,8 @@ from pathlib import PurePath
 from typing import Any
 from uuid import UUID
 
-from sqlalchemy import func, insert, select, update
+from sqlalchemy import func, insert, select, tuple_, update
+from sqlalchemy.dialects.postgresql import insert as postgresql_insert
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from spine.contracts import SimilarityMemoryCard
@@ -272,6 +273,17 @@ class QueueService:
         }
         async with self._session_factory() as session:
             async with session.begin():
+                if (
+                    action == "contradict"
+                    and target_ids
+                    and all(
+                        [
+                            await self._contradiction_exists(session, candidate_row["id"], target)
+                            for target in target_ids
+                        ]
+                    )
+                ):
+                    return None
                 row = (
                     (
                         await session.execute(
@@ -965,6 +977,10 @@ class QueueService:
                 raise QueueConflictError(
                     "verdict target is no longer an active same-principal unit"
                 )
+            if edge_type == "contradicts" and await self._contradiction_exists(
+                session, candidate["id"], target["id"]
+            ):
+                continue
             if row["verdict"] in {"merge", "supersede"}:
                 reason = row["verdict"]
                 if row["birthplace"] == "curator":
@@ -981,14 +997,34 @@ class QueueService:
                         changes=MemoryUnitChanges(status="tombstoned"),
                     ),
                 )
-            await session.execute(
-                insert(MemoryEdge.__table__).values(
-                    edge_uid=mint_ulid(),
-                    from_memory_id=candidate["id"],
-                    to_memory_id=target["id"],
-                    edge_type=edge_type,
-                )
+            statement = postgresql_insert(MemoryEdge.__table__).values(
+                edge_uid=mint_ulid(),
+                from_memory_id=candidate["id"],
+                to_memory_id=target["id"],
+                edge_type=edge_type,
             )
+            if edge_type == "contradicts":
+                statement = statement.on_conflict_do_nothing(
+                    index_elements=["from_memory_id", "to_memory_id", "edge_type"]
+                )
+            await session.execute(statement)
+
+    @staticmethod
+    async def _contradiction_exists(session: AsyncSession, left: UUID, right: UUID) -> bool:
+        edge = MemoryEdge.__table__
+        return (
+            await session.scalar(
+                select(edge.c.edge_uid)
+                .where(
+                    edge.c.edge_type == "contradicts",
+                    tuple_(edge.c.from_memory_id, edge.c.to_memory_id).in_(
+                        [(left, right), (right, left)]
+                    ),
+                )
+                .limit(1)
+            )
+            is not None
+        )
 
 
 def _proposal_text(proposal: dict[str, Any], key: str) -> str:
