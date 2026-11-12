@@ -1538,3 +1538,10 @@ PRECEDENT: PLAN M7TG; ADR-019 lockstep packaging; M7LF.
 Memory moves to package 0.1.93 beside Harness. Targets, SSH transport and release
 records belong to each Harness host; no Memory API, schema or contract fingerprint
 changes. API contract 0.1.92 remains separate from the package version.
+
+## M8SP — Paired packaging only [P4]
+
+PRECEDENT: PLAN M8SP; ADR-019 lockstep packaging; M7TG.
+Memory moves to package 0.1.95 beside Harness. F218 and F226 are fixed in the Harness web
+only; no Memory API, schema or contract fingerprint changes. API contract 0.1.92 remains
+separate from the package version.
