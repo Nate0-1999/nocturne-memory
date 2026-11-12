@@ -24,7 +24,7 @@ from spine.learner.contracts import CompactionTrigger
     ],
 )
 async def test_stalled_backtest_request_goes_back_once(
-    monkeypatch, answers, attempts, went_back_after
+    monkeypatch, caplog, answers, attempts, went_back_after
 ):
     """F169 / PLAN M6CP: one provider stall must not fail a fit of many paid calls.
 
@@ -39,7 +39,16 @@ async def test_stalled_backtest_request_goes_back_once(
         if isinstance(answer, Exception):
             raise answer
         if answer != 200:
-            return httpx.Response(answer, request=request)
+            return httpx.Response(
+                answer,
+                request=request,
+                json={
+                    "error": {
+                        "message": "Invalid model identifier; credential unused",
+                        "metadata": {"raw": "Bearer sk-upstream-secret"},
+                    },
+                },
+            )
         return httpx.Response(200, request=request, json={
             "id": "gen-1",
             "usage": {"cost": 0.002},
@@ -74,6 +83,11 @@ async def test_stalled_backtest_request_goes_back_once(
             await learner._call("Replay this span.", mint_ulid(), costs, kind="replay")
         assert receipts == [] and costs == []
     assert len(seen) == attempts
+    if answers[0] == 400:
+        # F224 / Invariant 14: preserve the provider's diagnosis without leaking credentials.
+        assert "Invalid model identifier" in caplog.text
+        assert "unused" not in caplog.text
+        assert "sk-upstream-secret" not in caplog.text
 
 
 @pytest.mark.parametrize("preview,size", [(False, 128), (False, 64), (True, 64)])
