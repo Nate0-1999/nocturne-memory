@@ -1,0 +1,73 @@
+{
+  "http": 200,
+  "result": {
+    "verdict": "preview_only",
+    "verification_included": false,
+    "fit": {
+      "status": "not_better",
+      "incumbent_version": "m2k-01M7C8WFMV4WXXZ4NFYESGE9FY",
+      "proposal_version": null,
+      "eligible_dispositions": 100,
+      "training_dispositions": 80,
+      "holdout_dispositions": 20,
+      "training_pairs": 6,
+      "incumbent": {
+        "disagreements": 16,
+        "weighted_disagreements": "16",
+        "injected_tokens": 292,
+        "share_disagreements": 4,
+        "weighted_share_disagreements": "4"
+      },
+      "challenger": {
+        "disagreements": 16,
+        "weighted_disagreements": "16",
+        "injected_tokens": 292,
+        "share_disagreements": 4,
+        "weighted_share_disagreements": "4"
+      },
+      "reason": "Current values kept: the candidate did not improve the back-test enough."
+    },
+    "scores": {
+      "incumbent": {
+        "score": 1,
+        "facts": 2,
+        "tokens": 25
+      },
+      "candidate": {
+        "score": 1,
+        "facts": 4,
+        "tokens": 53
+      }
+    },
+    "joint_fit": {
+      "tau": 0.16,
+      "memory_context_share": 0.01,
+      "memory_size": 128,
+      "candidate_memory_size": 96,
+      "creation_improved": false,
+      "proposal_eligible": false,
+      "size_tuning_active": true,
+      "resized_memories": 0,
+      "resized_dispositions": 0,
+      "resized_boundaries": 0,
+      "incumbent": {
+        "disagreements": 16,
+        "weighted_disagreements": "16",
+        "injected_tokens": 292,
+        "share_disagreements": 4,
+        "weighted_share_disagreements": "4"
+      },
+      "candidate": {
+        "disagreements": 16,
+        "weighted_disagreements": "16",
+        "injected_tokens": 292,
+        "share_disagreements": 4,
+        "weighted_share_disagreements": "4"
+      }
+    },
+    "id": "01M7C94STGQ11HS8A7463YC30Z"
+  },
+  "elapsed_seconds": 77.07105062482879,
+  "active_before": "m2k-01M7C8WFMV4WXXZ4NFYESGE9FY",
+  "active_after": "m2k-01M7C8WFMV4WXXZ4NFYESGE9FY"
+}

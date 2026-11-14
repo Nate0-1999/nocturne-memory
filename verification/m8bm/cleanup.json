@@ -1,0 +1,40 @@
+{
+  "mini-1": {
+    "project": "nocturne-79476d41",
+    "containers": [],
+    "volumes": [],
+    "credential_file_exists": false
+  },
+  "flash-1": {
+    "project": "nocturne-751477f5",
+    "containers": [],
+    "volumes": [],
+    "credential_file_exists": false
+  },
+  "mini-2": {
+    "project": "nocturne-e39aef30",
+    "containers": [],
+    "volumes": [],
+    "credential_file_exists": false
+  },
+  "flash-2": {
+    "project": "nocturne-76cc7fb0",
+    "containers": [],
+    "volumes": [],
+    "credential_file_exists": false
+  },
+  "mini-3": {
+    "project": "nocturne-fd28e378",
+    "containers": [],
+    "volumes": [],
+    "credential_file_exists": false
+  },
+  "flash-3": {
+    "project": "nocturne-97d3f3c8",
+    "containers": [],
+    "volumes": [],
+    "credential_file_exists": false
+  },
+  "owned_port_listeners": [],
+  "cloud_resources_created": false
+}

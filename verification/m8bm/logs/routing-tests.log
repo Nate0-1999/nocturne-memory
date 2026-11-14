@@ -1,0 +1,1214 @@
+EE..EEEEEEEE                                                             [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_curator_policy_is_owned_validated_persistent_and_append_only _
+
+self = <docker.api.client.APIClient object at 0x1123e7620>
+response = <Response [500]>
+
+    def _raise_for_status(self, response):
+        """Raises stored :class:`APIError`, if one occurred."""
+        try:
+>           response.raise_for_status()
+
+.venv/lib/python3.12/site-packages/docker/api/client.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Response [500]>
+
+    def raise_for_status(self) -> None:
+        """Raises :class:`HTTPError`, if one occurred."""
+    
+        http_error_msg = ""
+        if isinstance(self.reason, bytes):
+            # We attempt to decode utf-8 first because some servers
+            # choose to localize their reason strings. If the string
+            # isn't utf-8, we fall back to iso-8859-1 for all other
+            # encodings. (See PR #3538)
+            try:
+                reason = self.reason.decode("utf-8")
+            except UnicodeDecodeError:
+                reason = self.reason.decode("iso-8859-1")
+        else:
+            reason = self.reason
+    
+        if 400 <= self.status_code < 500:
+            http_error_msg = (
+                f"{self.status_code} Client Error: {reason} for url: {self.url}"
+            )
+    
+        elif 500 <= self.status_code < 600:
+            http_error_msg = (
+                f"{self.status_code} Server Error: {reason} for url: {self.url}"
+            )
+    
+        if http_error_msg:
+>           raise HTTPError(http_error_msg, response=self)
+E           requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start
+
+.venv/lib/python3.12/site-packages/requests/models.py:1167: HTTPError
+
+The above exception was the direct cause of the following exception:
+
+    @pytest.fixture(scope="session")
+    def migrated_database_url() -> Iterator[str]:
+        """Start pgvector Postgres and apply the production Alembic migration."""
+    
+>       with PostgresContainer(
+            "pgvector/pgvector:pg16",
+            username="spine",
+            password="spine",
+            dbname="spine",
+        ) as postgres:
+
+tests/conftest.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:217: in __enter__
+    return self.start()
+           ^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/generic.py:77: in start
+    super().start()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:177: in start
+    Reaper.get_instance()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:321: in get_instance
+    Reaper._instance = Reaper._create_instance()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:350: in _create_instance
+    .start()
+     ^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:193: in start
+    self._container = docker_client.run(
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:47: in wrapper
+    return function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:103: in run
+    container = self.client.containers.run(
+.venv/lib/python3.12/site-packages/docker/models/containers.py:884: in run
+    container.start()
+.venv/lib/python3.12/site-packages/docker/models/containers.py:421: in start
+    return self.client.api.start(self.id, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/utils/decorators.py:19: in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/api/container.py:1136: in start
+    self._raise_for_status(res)
+.venv/lib/python3.12/site-packages/docker/api/client.py:277: in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+e = HTTPError('500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start')
+
+    def create_api_error_from_http_exception(e):
+        """
+        Create a suitable APIError from requests.exceptions.HTTPError.
+        """
+        response = e.response
+        try:
+            explanation = response.json()['message']
+        except ValueError:
+            explanation = (response.text or '').strip()
+        cls = APIError
+        if response.status_code == 404:
+            explanation_msg = (explanation or '').lower()
+            if any(fragment in explanation_msg
+                   for fragment in _image_not_found_explanation_fragments):
+                cls = ImageNotFound
+            else:
+                cls = NotFound
+>       raise cls(e, response=response, explanation=explanation) from e
+E       docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start: Internal Server Error ("error while creating mount source path '/Users/nateoswalt/.colima/default/docker.sock': mkdir /Users/nateoswalt/.colima/default/docker.sock: operation not supported")
+
+.venv/lib/python3.12/site-packages/docker/errors.py:39: APIError
+_ ERROR at setup of test_curator_policy_selects_real_request_model_and_stays_fixed_for_a_pass _
+
+self = <docker.api.client.APIClient object at 0x1123e7620>
+response = <Response [500]>
+
+    def _raise_for_status(self, response):
+        """Raises stored :class:`APIError`, if one occurred."""
+        try:
+>           response.raise_for_status()
+
+.venv/lib/python3.12/site-packages/docker/api/client.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Response [500]>
+
+    def raise_for_status(self) -> None:
+        """Raises :class:`HTTPError`, if one occurred."""
+    
+        http_error_msg = ""
+        if isinstance(self.reason, bytes):
+            # We attempt to decode utf-8 first because some servers
+            # choose to localize their reason strings. If the string
+            # isn't utf-8, we fall back to iso-8859-1 for all other
+            # encodings. (See PR #3538)
+            try:
+                reason = self.reason.decode("utf-8")
+            except UnicodeDecodeError:
+                reason = self.reason.decode("iso-8859-1")
+        else:
+            reason = self.reason
+    
+        if 400 <= self.status_code < 500:
+            http_error_msg = (
+                f"{self.status_code} Client Error: {reason} for url: {self.url}"
+            )
+    
+        elif 500 <= self.status_code < 600:
+            http_error_msg = (
+                f"{self.status_code} Server Error: {reason} for url: {self.url}"
+            )
+    
+        if http_error_msg:
+>           raise HTTPError(http_error_msg, response=self)
+E           requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start
+
+.venv/lib/python3.12/site-packages/requests/models.py:1167: HTTPError
+
+The above exception was the direct cause of the following exception:
+
+    @pytest.fixture(scope="session")
+    def migrated_database_url() -> Iterator[str]:
+        """Start pgvector Postgres and apply the production Alembic migration."""
+    
+>       with PostgresContainer(
+            "pgvector/pgvector:pg16",
+            username="spine",
+            password="spine",
+            dbname="spine",
+        ) as postgres:
+
+tests/conftest.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:217: in __enter__
+    return self.start()
+           ^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/generic.py:77: in start
+    super().start()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:177: in start
+    Reaper.get_instance()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:321: in get_instance
+    Reaper._instance = Reaper._create_instance()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:350: in _create_instance
+    .start()
+     ^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:193: in start
+    self._container = docker_client.run(
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:47: in wrapper
+    return function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:103: in run
+    container = self.client.containers.run(
+.venv/lib/python3.12/site-packages/docker/models/containers.py:884: in run
+    container.start()
+.venv/lib/python3.12/site-packages/docker/models/containers.py:421: in start
+    return self.client.api.start(self.id, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/utils/decorators.py:19: in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/api/container.py:1136: in start
+    self._raise_for_status(res)
+.venv/lib/python3.12/site-packages/docker/api/client.py:277: in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+e = HTTPError('500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start')
+
+    def create_api_error_from_http_exception(e):
+        """
+        Create a suitable APIError from requests.exceptions.HTTPError.
+        """
+        response = e.response
+        try:
+            explanation = response.json()['message']
+        except ValueError:
+            explanation = (response.text or '').strip()
+        cls = APIError
+        if response.status_code == 404:
+            explanation_msg = (explanation or '').lower()
+            if any(fragment in explanation_msg
+                   for fragment in _image_not_found_explanation_fragments):
+                cls = ImageNotFound
+            else:
+                cls = NotFound
+>       raise cls(e, response=response, explanation=explanation) from e
+E       docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start: Internal Server Error ("error while creating mount source path '/Users/nateoswalt/.colima/default/docker.sock': mkdir /Users/nateoswalt/.colima/default/docker.sock: operation not supported")
+
+.venv/lib/python3.12/site-packages/docker/errors.py:39: APIError
+_ ERROR at setup of test_stalled_backtest_request_goes_back_once[answers0-2-ReadTimeout] _
+
+self = <docker.api.client.APIClient object at 0x1123e7620>
+response = <Response [500]>
+
+    def _raise_for_status(self, response):
+        """Raises stored :class:`APIError`, if one occurred."""
+        try:
+>           response.raise_for_status()
+
+.venv/lib/python3.12/site-packages/docker/api/client.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Response [500]>
+
+    def raise_for_status(self) -> None:
+        """Raises :class:`HTTPError`, if one occurred."""
+    
+        http_error_msg = ""
+        if isinstance(self.reason, bytes):
+            # We attempt to decode utf-8 first because some servers
+            # choose to localize their reason strings. If the string
+            # isn't utf-8, we fall back to iso-8859-1 for all other
+            # encodings. (See PR #3538)
+            try:
+                reason = self.reason.decode("utf-8")
+            except UnicodeDecodeError:
+                reason = self.reason.decode("iso-8859-1")
+        else:
+            reason = self.reason
+    
+        if 400 <= self.status_code < 500:
+            http_error_msg = (
+                f"{self.status_code} Client Error: {reason} for url: {self.url}"
+            )
+    
+        elif 500 <= self.status_code < 600:
+            http_error_msg = (
+                f"{self.status_code} Server Error: {reason} for url: {self.url}"
+            )
+    
+        if http_error_msg:
+>           raise HTTPError(http_error_msg, response=self)
+E           requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start
+
+.venv/lib/python3.12/site-packages/requests/models.py:1167: HTTPError
+
+The above exception was the direct cause of the following exception:
+
+    @pytest.fixture(scope="session")
+    def migrated_database_url() -> Iterator[str]:
+        """Start pgvector Postgres and apply the production Alembic migration."""
+    
+>       with PostgresContainer(
+            "pgvector/pgvector:pg16",
+            username="spine",
+            password="spine",
+            dbname="spine",
+        ) as postgres:
+
+tests/conftest.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:217: in __enter__
+    return self.start()
+           ^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/generic.py:77: in start
+    super().start()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:177: in start
+    Reaper.get_instance()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:321: in get_instance
+    Reaper._instance = Reaper._create_instance()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:350: in _create_instance
+    .start()
+     ^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:193: in start
+    self._container = docker_client.run(
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:47: in wrapper
+    return function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:103: in run
+    container = self.client.containers.run(
+.venv/lib/python3.12/site-packages/docker/models/containers.py:884: in run
+    container.start()
+.venv/lib/python3.12/site-packages/docker/models/containers.py:421: in start
+    return self.client.api.start(self.id, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/utils/decorators.py:19: in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/api/container.py:1136: in start
+    self._raise_for_status(res)
+.venv/lib/python3.12/site-packages/docker/api/client.py:277: in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+e = HTTPError('500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start')
+
+    def create_api_error_from_http_exception(e):
+        """
+        Create a suitable APIError from requests.exceptions.HTTPError.
+        """
+        response = e.response
+        try:
+            explanation = response.json()['message']
+        except ValueError:
+            explanation = (response.text or '').strip()
+        cls = APIError
+        if response.status_code == 404:
+            explanation_msg = (explanation or '').lower()
+            if any(fragment in explanation_msg
+                   for fragment in _image_not_found_explanation_fragments):
+                cls = ImageNotFound
+            else:
+                cls = NotFound
+>       raise cls(e, response=response, explanation=explanation) from e
+E       docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start: Internal Server Error ("error while creating mount source path '/Users/nateoswalt/.colima/default/docker.sock': mkdir /Users/nateoswalt/.colima/default/docker.sock: operation not supported")
+
+.venv/lib/python3.12/site-packages/docker/errors.py:39: APIError
+_ ERROR at setup of test_stalled_backtest_request_goes_back_once[answers1-2-HTTP 503] _
+
+self = <docker.api.client.APIClient object at 0x1123e7620>
+response = <Response [500]>
+
+    def _raise_for_status(self, response):
+        """Raises stored :class:`APIError`, if one occurred."""
+        try:
+>           response.raise_for_status()
+
+.venv/lib/python3.12/site-packages/docker/api/client.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Response [500]>
+
+    def raise_for_status(self) -> None:
+        """Raises :class:`HTTPError`, if one occurred."""
+    
+        http_error_msg = ""
+        if isinstance(self.reason, bytes):
+            # We attempt to decode utf-8 first because some servers
+            # choose to localize their reason strings. If the string
+            # isn't utf-8, we fall back to iso-8859-1 for all other
+            # encodings. (See PR #3538)
+            try:
+                reason = self.reason.decode("utf-8")
+            except UnicodeDecodeError:
+                reason = self.reason.decode("iso-8859-1")
+        else:
+            reason = self.reason
+    
+        if 400 <= self.status_code < 500:
+            http_error_msg = (
+                f"{self.status_code} Client Error: {reason} for url: {self.url}"
+            )
+    
+        elif 500 <= self.status_code < 600:
+            http_error_msg = (
+                f"{self.status_code} Server Error: {reason} for url: {self.url}"
+            )
+    
+        if http_error_msg:
+>           raise HTTPError(http_error_msg, response=self)
+E           requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start
+
+.venv/lib/python3.12/site-packages/requests/models.py:1167: HTTPError
+
+The above exception was the direct cause of the following exception:
+
+    @pytest.fixture(scope="session")
+    def migrated_database_url() -> Iterator[str]:
+        """Start pgvector Postgres and apply the production Alembic migration."""
+    
+>       with PostgresContainer(
+            "pgvector/pgvector:pg16",
+            username="spine",
+            password="spine",
+            dbname="spine",
+        ) as postgres:
+
+tests/conftest.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:217: in __enter__
+    return self.start()
+           ^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/generic.py:77: in start
+    super().start()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:177: in start
+    Reaper.get_instance()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:321: in get_instance
+    Reaper._instance = Reaper._create_instance()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:350: in _create_instance
+    .start()
+     ^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:193: in start
+    self._container = docker_client.run(
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:47: in wrapper
+    return function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:103: in run
+    container = self.client.containers.run(
+.venv/lib/python3.12/site-packages/docker/models/containers.py:884: in run
+    container.start()
+.venv/lib/python3.12/site-packages/docker/models/containers.py:421: in start
+    return self.client.api.start(self.id, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/utils/decorators.py:19: in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/api/container.py:1136: in start
+    self._raise_for_status(res)
+.venv/lib/python3.12/site-packages/docker/api/client.py:277: in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+e = HTTPError('500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start')
+
+    def create_api_error_from_http_exception(e):
+        """
+        Create a suitable APIError from requests.exceptions.HTTPError.
+        """
+        response = e.response
+        try:
+            explanation = response.json()['message']
+        except ValueError:
+            explanation = (response.text or '').strip()
+        cls = APIError
+        if response.status_code == 404:
+            explanation_msg = (explanation or '').lower()
+            if any(fragment in explanation_msg
+                   for fragment in _image_not_found_explanation_fragments):
+                cls = ImageNotFound
+            else:
+                cls = NotFound
+>       raise cls(e, response=response, explanation=explanation) from e
+E       docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start: Internal Server Error ("error while creating mount source path '/Users/nateoswalt/.colima/default/docker.sock': mkdir /Users/nateoswalt/.colima/default/docker.sock: operation not supported")
+
+.venv/lib/python3.12/site-packages/docker/errors.py:39: APIError
+_ ERROR at setup of test_stalled_backtest_request_goes_back_once[answers2-2-HTTP 429] _
+
+self = <docker.api.client.APIClient object at 0x1123e7620>
+response = <Response [500]>
+
+    def _raise_for_status(self, response):
+        """Raises stored :class:`APIError`, if one occurred."""
+        try:
+>           response.raise_for_status()
+
+.venv/lib/python3.12/site-packages/docker/api/client.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Response [500]>
+
+    def raise_for_status(self) -> None:
+        """Raises :class:`HTTPError`, if one occurred."""
+    
+        http_error_msg = ""
+        if isinstance(self.reason, bytes):
+            # We attempt to decode utf-8 first because some servers
+            # choose to localize their reason strings. If the string
+            # isn't utf-8, we fall back to iso-8859-1 for all other
+            # encodings. (See PR #3538)
+            try:
+                reason = self.reason.decode("utf-8")
+            except UnicodeDecodeError:
+                reason = self.reason.decode("iso-8859-1")
+        else:
+            reason = self.reason
+    
+        if 400 <= self.status_code < 500:
+            http_error_msg = (
+                f"{self.status_code} Client Error: {reason} for url: {self.url}"
+            )
+    
+        elif 500 <= self.status_code < 600:
+            http_error_msg = (
+                f"{self.status_code} Server Error: {reason} for url: {self.url}"
+            )
+    
+        if http_error_msg:
+>           raise HTTPError(http_error_msg, response=self)
+E           requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start
+
+.venv/lib/python3.12/site-packages/requests/models.py:1167: HTTPError
+
+The above exception was the direct cause of the following exception:
+
+    @pytest.fixture(scope="session")
+    def migrated_database_url() -> Iterator[str]:
+        """Start pgvector Postgres and apply the production Alembic migration."""
+    
+>       with PostgresContainer(
+            "pgvector/pgvector:pg16",
+            username="spine",
+            password="spine",
+            dbname="spine",
+        ) as postgres:
+
+tests/conftest.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:217: in __enter__
+    return self.start()
+           ^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/generic.py:77: in start
+    super().start()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:177: in start
+    Reaper.get_instance()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:321: in get_instance
+    Reaper._instance = Reaper._create_instance()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:350: in _create_instance
+    .start()
+     ^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:193: in start
+    self._container = docker_client.run(
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:47: in wrapper
+    return function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:103: in run
+    container = self.client.containers.run(
+.venv/lib/python3.12/site-packages/docker/models/containers.py:884: in run
+    container.start()
+.venv/lib/python3.12/site-packages/docker/models/containers.py:421: in start
+    return self.client.api.start(self.id, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/utils/decorators.py:19: in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/api/container.py:1136: in start
+    self._raise_for_status(res)
+.venv/lib/python3.12/site-packages/docker/api/client.py:277: in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+e = HTTPError('500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start')
+
+    def create_api_error_from_http_exception(e):
+        """
+        Create a suitable APIError from requests.exceptions.HTTPError.
+        """
+        response = e.response
+        try:
+            explanation = response.json()['message']
+        except ValueError:
+            explanation = (response.text or '').strip()
+        cls = APIError
+        if response.status_code == 404:
+            explanation_msg = (explanation or '').lower()
+            if any(fragment in explanation_msg
+                   for fragment in _image_not_found_explanation_fragments):
+                cls = ImageNotFound
+            else:
+                cls = NotFound
+>       raise cls(e, response=response, explanation=explanation) from e
+E       docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start: Internal Server Error ("error while creating mount source path '/Users/nateoswalt/.colima/default/docker.sock': mkdir /Users/nateoswalt/.colima/default/docker.sock: operation not supported")
+
+.venv/lib/python3.12/site-packages/docker/errors.py:39: APIError
+_ ERROR at setup of test_stalled_backtest_request_goes_back_once[answers3-2-None] _
+
+self = <docker.api.client.APIClient object at 0x1123e7620>
+response = <Response [500]>
+
+    def _raise_for_status(self, response):
+        """Raises stored :class:`APIError`, if one occurred."""
+        try:
+>           response.raise_for_status()
+
+.venv/lib/python3.12/site-packages/docker/api/client.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Response [500]>
+
+    def raise_for_status(self) -> None:
+        """Raises :class:`HTTPError`, if one occurred."""
+    
+        http_error_msg = ""
+        if isinstance(self.reason, bytes):
+            # We attempt to decode utf-8 first because some servers
+            # choose to localize their reason strings. If the string
+            # isn't utf-8, we fall back to iso-8859-1 for all other
+            # encodings. (See PR #3538)
+            try:
+                reason = self.reason.decode("utf-8")
+            except UnicodeDecodeError:
+                reason = self.reason.decode("iso-8859-1")
+        else:
+            reason = self.reason
+    
+        if 400 <= self.status_code < 500:
+            http_error_msg = (
+                f"{self.status_code} Client Error: {reason} for url: {self.url}"
+            )
+    
+        elif 500 <= self.status_code < 600:
+            http_error_msg = (
+                f"{self.status_code} Server Error: {reason} for url: {self.url}"
+            )
+    
+        if http_error_msg:
+>           raise HTTPError(http_error_msg, response=self)
+E           requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start
+
+.venv/lib/python3.12/site-packages/requests/models.py:1167: HTTPError
+
+The above exception was the direct cause of the following exception:
+
+    @pytest.fixture(scope="session")
+    def migrated_database_url() -> Iterator[str]:
+        """Start pgvector Postgres and apply the production Alembic migration."""
+    
+>       with PostgresContainer(
+            "pgvector/pgvector:pg16",
+            username="spine",
+            password="spine",
+            dbname="spine",
+        ) as postgres:
+
+tests/conftest.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:217: in __enter__
+    return self.start()
+           ^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/generic.py:77: in start
+    super().start()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:177: in start
+    Reaper.get_instance()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:321: in get_instance
+    Reaper._instance = Reaper._create_instance()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:350: in _create_instance
+    .start()
+     ^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:193: in start
+    self._container = docker_client.run(
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:47: in wrapper
+    return function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:103: in run
+    container = self.client.containers.run(
+.venv/lib/python3.12/site-packages/docker/models/containers.py:884: in run
+    container.start()
+.venv/lib/python3.12/site-packages/docker/models/containers.py:421: in start
+    return self.client.api.start(self.id, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/utils/decorators.py:19: in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/api/container.py:1136: in start
+    self._raise_for_status(res)
+.venv/lib/python3.12/site-packages/docker/api/client.py:277: in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+e = HTTPError('500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start')
+
+    def create_api_error_from_http_exception(e):
+        """
+        Create a suitable APIError from requests.exceptions.HTTPError.
+        """
+        response = e.response
+        try:
+            explanation = response.json()['message']
+        except ValueError:
+            explanation = (response.text or '').strip()
+        cls = APIError
+        if response.status_code == 404:
+            explanation_msg = (explanation or '').lower()
+            if any(fragment in explanation_msg
+                   for fragment in _image_not_found_explanation_fragments):
+                cls = ImageNotFound
+            else:
+                cls = NotFound
+>       raise cls(e, response=response, explanation=explanation) from e
+E       docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start: Internal Server Error ("error while creating mount source path '/Users/nateoswalt/.colima/default/docker.sock': mkdir /Users/nateoswalt/.colima/default/docker.sock: operation not supported")
+
+.venv/lib/python3.12/site-packages/docker/errors.py:39: APIError
+_ ERROR at setup of test_stalled_backtest_request_goes_back_once[answers4-1-None] _
+
+self = <docker.api.client.APIClient object at 0x1123e7620>
+response = <Response [500]>
+
+    def _raise_for_status(self, response):
+        """Raises stored :class:`APIError`, if one occurred."""
+        try:
+>           response.raise_for_status()
+
+.venv/lib/python3.12/site-packages/docker/api/client.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Response [500]>
+
+    def raise_for_status(self) -> None:
+        """Raises :class:`HTTPError`, if one occurred."""
+    
+        http_error_msg = ""
+        if isinstance(self.reason, bytes):
+            # We attempt to decode utf-8 first because some servers
+            # choose to localize their reason strings. If the string
+            # isn't utf-8, we fall back to iso-8859-1 for all other
+            # encodings. (See PR #3538)
+            try:
+                reason = self.reason.decode("utf-8")
+            except UnicodeDecodeError:
+                reason = self.reason.decode("iso-8859-1")
+        else:
+            reason = self.reason
+    
+        if 400 <= self.status_code < 500:
+            http_error_msg = (
+                f"{self.status_code} Client Error: {reason} for url: {self.url}"
+            )
+    
+        elif 500 <= self.status_code < 600:
+            http_error_msg = (
+                f"{self.status_code} Server Error: {reason} for url: {self.url}"
+            )
+    
+        if http_error_msg:
+>           raise HTTPError(http_error_msg, response=self)
+E           requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start
+
+.venv/lib/python3.12/site-packages/requests/models.py:1167: HTTPError
+
+The above exception was the direct cause of the following exception:
+
+    @pytest.fixture(scope="session")
+    def migrated_database_url() -> Iterator[str]:
+        """Start pgvector Postgres and apply the production Alembic migration."""
+    
+>       with PostgresContainer(
+            "pgvector/pgvector:pg16",
+            username="spine",
+            password="spine",
+            dbname="spine",
+        ) as postgres:
+
+tests/conftest.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:217: in __enter__
+    return self.start()
+           ^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/generic.py:77: in start
+    super().start()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:177: in start
+    Reaper.get_instance()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:321: in get_instance
+    Reaper._instance = Reaper._create_instance()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:350: in _create_instance
+    .start()
+     ^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:193: in start
+    self._container = docker_client.run(
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:47: in wrapper
+    return function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:103: in run
+    container = self.client.containers.run(
+.venv/lib/python3.12/site-packages/docker/models/containers.py:884: in run
+    container.start()
+.venv/lib/python3.12/site-packages/docker/models/containers.py:421: in start
+    return self.client.api.start(self.id, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/utils/decorators.py:19: in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/api/container.py:1136: in start
+    self._raise_for_status(res)
+.venv/lib/python3.12/site-packages/docker/api/client.py:277: in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+e = HTTPError('500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start')
+
+    def create_api_error_from_http_exception(e):
+        """
+        Create a suitable APIError from requests.exceptions.HTTPError.
+        """
+        response = e.response
+        try:
+            explanation = response.json()['message']
+        except ValueError:
+            explanation = (response.text or '').strip()
+        cls = APIError
+        if response.status_code == 404:
+            explanation_msg = (explanation or '').lower()
+            if any(fragment in explanation_msg
+                   for fragment in _image_not_found_explanation_fragments):
+                cls = ImageNotFound
+            else:
+                cls = NotFound
+>       raise cls(e, response=response, explanation=explanation) from e
+E       docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start: Internal Server Error ("error while creating mount source path '/Users/nateoswalt/.colima/default/docker.sock': mkdir /Users/nateoswalt/.colima/default/docker.sock: operation not supported")
+
+.venv/lib/python3.12/site-packages/docker/errors.py:39: APIError
+_ ERROR at setup of test_losing_or_verification_replay_never_changes_instructions[False-128] _
+
+self = <docker.api.client.APIClient object at 0x1123e7620>
+response = <Response [500]>
+
+    def _raise_for_status(self, response):
+        """Raises stored :class:`APIError`, if one occurred."""
+        try:
+>           response.raise_for_status()
+
+.venv/lib/python3.12/site-packages/docker/api/client.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Response [500]>
+
+    def raise_for_status(self) -> None:
+        """Raises :class:`HTTPError`, if one occurred."""
+    
+        http_error_msg = ""
+        if isinstance(self.reason, bytes):
+            # We attempt to decode utf-8 first because some servers
+            # choose to localize their reason strings. If the string
+            # isn't utf-8, we fall back to iso-8859-1 for all other
+            # encodings. (See PR #3538)
+            try:
+                reason = self.reason.decode("utf-8")
+            except UnicodeDecodeError:
+                reason = self.reason.decode("iso-8859-1")
+        else:
+            reason = self.reason
+    
+        if 400 <= self.status_code < 500:
+            http_error_msg = (
+                f"{self.status_code} Client Error: {reason} for url: {self.url}"
+            )
+    
+        elif 500 <= self.status_code < 600:
+            http_error_msg = (
+                f"{self.status_code} Server Error: {reason} for url: {self.url}"
+            )
+    
+        if http_error_msg:
+>           raise HTTPError(http_error_msg, response=self)
+E           requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start
+
+.venv/lib/python3.12/site-packages/requests/models.py:1167: HTTPError
+
+The above exception was the direct cause of the following exception:
+
+    @pytest.fixture(scope="session")
+    def migrated_database_url() -> Iterator[str]:
+        """Start pgvector Postgres and apply the production Alembic migration."""
+    
+>       with PostgresContainer(
+            "pgvector/pgvector:pg16",
+            username="spine",
+            password="spine",
+            dbname="spine",
+        ) as postgres:
+
+tests/conftest.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:217: in __enter__
+    return self.start()
+           ^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/generic.py:77: in start
+    super().start()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:177: in start
+    Reaper.get_instance()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:321: in get_instance
+    Reaper._instance = Reaper._create_instance()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:350: in _create_instance
+    .start()
+     ^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:193: in start
+    self._container = docker_client.run(
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:47: in wrapper
+    return function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:103: in run
+    container = self.client.containers.run(
+.venv/lib/python3.12/site-packages/docker/models/containers.py:884: in run
+    container.start()
+.venv/lib/python3.12/site-packages/docker/models/containers.py:421: in start
+    return self.client.api.start(self.id, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/utils/decorators.py:19: in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/api/container.py:1136: in start
+    self._raise_for_status(res)
+.venv/lib/python3.12/site-packages/docker/api/client.py:277: in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+e = HTTPError('500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start')
+
+    def create_api_error_from_http_exception(e):
+        """
+        Create a suitable APIError from requests.exceptions.HTTPError.
+        """
+        response = e.response
+        try:
+            explanation = response.json()['message']
+        except ValueError:
+            explanation = (response.text or '').strip()
+        cls = APIError
+        if response.status_code == 404:
+            explanation_msg = (explanation or '').lower()
+            if any(fragment in explanation_msg
+                   for fragment in _image_not_found_explanation_fragments):
+                cls = ImageNotFound
+            else:
+                cls = NotFound
+>       raise cls(e, response=response, explanation=explanation) from e
+E       docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start: Internal Server Error ("error while creating mount source path '/Users/nateoswalt/.colima/default/docker.sock': mkdir /Users/nateoswalt/.colima/default/docker.sock: operation not supported")
+
+.venv/lib/python3.12/site-packages/docker/errors.py:39: APIError
+_ ERROR at setup of test_losing_or_verification_replay_never_changes_instructions[False-64] _
+
+self = <docker.api.client.APIClient object at 0x1123e7620>
+response = <Response [500]>
+
+    def _raise_for_status(self, response):
+        """Raises stored :class:`APIError`, if one occurred."""
+        try:
+>           response.raise_for_status()
+
+.venv/lib/python3.12/site-packages/docker/api/client.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Response [500]>
+
+    def raise_for_status(self) -> None:
+        """Raises :class:`HTTPError`, if one occurred."""
+    
+        http_error_msg = ""
+        if isinstance(self.reason, bytes):
+            # We attempt to decode utf-8 first because some servers
+            # choose to localize their reason strings. If the string
+            # isn't utf-8, we fall back to iso-8859-1 for all other
+            # encodings. (See PR #3538)
+            try:
+                reason = self.reason.decode("utf-8")
+            except UnicodeDecodeError:
+                reason = self.reason.decode("iso-8859-1")
+        else:
+            reason = self.reason
+    
+        if 400 <= self.status_code < 500:
+            http_error_msg = (
+                f"{self.status_code} Client Error: {reason} for url: {self.url}"
+            )
+    
+        elif 500 <= self.status_code < 600:
+            http_error_msg = (
+                f"{self.status_code} Server Error: {reason} for url: {self.url}"
+            )
+    
+        if http_error_msg:
+>           raise HTTPError(http_error_msg, response=self)
+E           requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start
+
+.venv/lib/python3.12/site-packages/requests/models.py:1167: HTTPError
+
+The above exception was the direct cause of the following exception:
+
+    @pytest.fixture(scope="session")
+    def migrated_database_url() -> Iterator[str]:
+        """Start pgvector Postgres and apply the production Alembic migration."""
+    
+>       with PostgresContainer(
+            "pgvector/pgvector:pg16",
+            username="spine",
+            password="spine",
+            dbname="spine",
+        ) as postgres:
+
+tests/conftest.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:217: in __enter__
+    return self.start()
+           ^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/generic.py:77: in start
+    super().start()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:177: in start
+    Reaper.get_instance()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:321: in get_instance
+    Reaper._instance = Reaper._create_instance()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:350: in _create_instance
+    .start()
+     ^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:193: in start
+    self._container = docker_client.run(
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:47: in wrapper
+    return function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:103: in run
+    container = self.client.containers.run(
+.venv/lib/python3.12/site-packages/docker/models/containers.py:884: in run
+    container.start()
+.venv/lib/python3.12/site-packages/docker/models/containers.py:421: in start
+    return self.client.api.start(self.id, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/utils/decorators.py:19: in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/api/container.py:1136: in start
+    self._raise_for_status(res)
+.venv/lib/python3.12/site-packages/docker/api/client.py:277: in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+e = HTTPError('500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start')
+
+    def create_api_error_from_http_exception(e):
+        """
+        Create a suitable APIError from requests.exceptions.HTTPError.
+        """
+        response = e.response
+        try:
+            explanation = response.json()['message']
+        except ValueError:
+            explanation = (response.text or '').strip()
+        cls = APIError
+        if response.status_code == 404:
+            explanation_msg = (explanation or '').lower()
+            if any(fragment in explanation_msg
+                   for fragment in _image_not_found_explanation_fragments):
+                cls = ImageNotFound
+            else:
+                cls = NotFound
+>       raise cls(e, response=response, explanation=explanation) from e
+E       docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start: Internal Server Error ("error while creating mount source path '/Users/nateoswalt/.colima/default/docker.sock': mkdir /Users/nateoswalt/.colima/default/docker.sock: operation not supported")
+
+.venv/lib/python3.12/site-packages/docker/errors.py:39: APIError
+_ ERROR at setup of test_losing_or_verification_replay_never_changes_instructions[True-64] _
+
+self = <docker.api.client.APIClient object at 0x1123e7620>
+response = <Response [500]>
+
+    def _raise_for_status(self, response):
+        """Raises stored :class:`APIError`, if one occurred."""
+        try:
+>           response.raise_for_status()
+
+.venv/lib/python3.12/site-packages/docker/api/client.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Response [500]>
+
+    def raise_for_status(self) -> None:
+        """Raises :class:`HTTPError`, if one occurred."""
+    
+        http_error_msg = ""
+        if isinstance(self.reason, bytes):
+            # We attempt to decode utf-8 first because some servers
+            # choose to localize their reason strings. If the string
+            # isn't utf-8, we fall back to iso-8859-1 for all other
+            # encodings. (See PR #3538)
+            try:
+                reason = self.reason.decode("utf-8")
+            except UnicodeDecodeError:
+                reason = self.reason.decode("iso-8859-1")
+        else:
+            reason = self.reason
+    
+        if 400 <= self.status_code < 500:
+            http_error_msg = (
+                f"{self.status_code} Client Error: {reason} for url: {self.url}"
+            )
+    
+        elif 500 <= self.status_code < 600:
+            http_error_msg = (
+                f"{self.status_code} Server Error: {reason} for url: {self.url}"
+            )
+    
+        if http_error_msg:
+>           raise HTTPError(http_error_msg, response=self)
+E           requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start
+
+.venv/lib/python3.12/site-packages/requests/models.py:1167: HTTPError
+
+The above exception was the direct cause of the following exception:
+
+    @pytest.fixture(scope="session")
+    def migrated_database_url() -> Iterator[str]:
+        """Start pgvector Postgres and apply the production Alembic migration."""
+    
+>       with PostgresContainer(
+            "pgvector/pgvector:pg16",
+            username="spine",
+            password="spine",
+            dbname="spine",
+        ) as postgres:
+
+tests/conftest.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:217: in __enter__
+    return self.start()
+           ^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/generic.py:77: in start
+    super().start()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:177: in start
+    Reaper.get_instance()
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:321: in get_instance
+    Reaper._instance = Reaper._create_instance()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:350: in _create_instance
+    .start()
+     ^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/container.py:193: in start
+    self._container = docker_client.run(
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:47: in wrapper
+    return function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/testcontainers/core/docker_client.py:103: in run
+    container = self.client.containers.run(
+.venv/lib/python3.12/site-packages/docker/models/containers.py:884: in run
+    container.start()
+.venv/lib/python3.12/site-packages/docker/models/containers.py:421: in start
+    return self.client.api.start(self.id, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/utils/decorators.py:19: in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/docker/api/container.py:1136: in start
+    self._raise_for_status(res)
+.venv/lib/python3.12/site-packages/docker/api/client.py:277: in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+e = HTTPError('500 Server Error: Internal Server Error for url: http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start')
+
+    def create_api_error_from_http_exception(e):
+        """
+        Create a suitable APIError from requests.exceptions.HTTPError.
+        """
+        response = e.response
+        try:
+            explanation = response.json()['message']
+        except ValueError:
+            explanation = (response.text or '').strip()
+        cls = APIError
+        if response.status_code == 404:
+            explanation_msg = (explanation or '').lower()
+            if any(fragment in explanation_msg
+                   for fragment in _image_not_found_explanation_fragments):
+                cls = ImageNotFound
+            else:
+                cls = NotFound
+>       raise cls(e, response=response, explanation=explanation) from e
+E       docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.54/containers/9d3a533308cdf9b0e591e158c2ff7713884bb07040f510afb799f14279acf8d6/start: Internal Server Error ("error while creating mount source path '/Users/nateoswalt/.colima/default/docker.sock': mkdir /Users/nateoswalt/.colima/default/docker.sock: operation not supported")
+
+.venv/lib/python3.12/site-packages/docker/errors.py:39: APIError
+=========================== short test summary info ============================
+ERROR tests/test_curator_policy.py::test_curator_policy_is_owned_validated_persistent_and_append_only
+ERROR tests/test_curator_policy.py::test_curator_policy_selects_real_request_model_and_stays_fixed_for_a_pass
+ERROR tests/test_compaction_learning.py::test_stalled_backtest_request_goes_back_once[answers0-2-ReadTimeout]
+ERROR tests/test_compaction_learning.py::test_stalled_backtest_request_goes_back_once[answers1-2-HTTP 503]
+ERROR tests/test_compaction_learning.py::test_stalled_backtest_request_goes_back_once[answers2-2-HTTP 429]
+ERROR tests/test_compaction_learning.py::test_stalled_backtest_request_goes_back_once[answers3-2-None]
+ERROR tests/test_compaction_learning.py::test_stalled_backtest_request_goes_back_once[answers4-1-None]
+ERROR tests/test_compaction_learning.py::test_losing_or_verification_replay_never_changes_instructions[False-128]
+ERROR tests/test_compaction_learning.py::test_losing_or_verification_replay_never_changes_instructions[False-64]
+ERROR tests/test_compaction_learning.py::test_losing_or_verification_replay_never_changes_instructions[True-64]
+2 passed, 10 errors in 0.39s

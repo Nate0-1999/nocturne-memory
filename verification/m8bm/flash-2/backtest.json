@@ -1,0 +1,73 @@
+{
+  "http": 200,
+  "result": {
+    "verdict": "preview_only",
+    "verification_included": false,
+    "fit": {
+      "status": "proposed",
+      "incumbent_version": "m2k-01M7C8GA8WHYCRHEX1ES4P3V5N",
+      "proposal_version": "m2f-3e6a1e0e2674ef25",
+      "eligible_dispositions": 96,
+      "training_dispositions": 76,
+      "holdout_dispositions": 20,
+      "training_pairs": 4,
+      "incumbent": {
+        "disagreements": 20,
+        "weighted_disagreements": "20",
+        "injected_tokens": 388,
+        "share_disagreements": 4,
+        "weighted_share_disagreements": "4"
+      },
+      "challenger": {
+        "disagreements": 8,
+        "weighted_disagreements": "8",
+        "injected_tokens": 0,
+        "share_disagreements": 4,
+        "weighted_share_disagreements": "4"
+      },
+      "reason": "Proposal m2f-3e6a1e0e2674ef25 is ready to audition. It won the back-test; current values keep serving until activation."
+    },
+    "scores": {
+      "incumbent": {
+        "score": 1,
+        "facts": 1,
+        "tokens": 10
+      },
+      "candidate": {
+        "score": 2,
+        "facts": 4,
+        "tokens": 103
+      }
+    },
+    "joint_fit": {
+      "tau": 0.3,
+      "memory_context_share": 0.1,
+      "memory_size": 128,
+      "candidate_memory_size": 96,
+      "creation_improved": true,
+      "proposal_eligible": false,
+      "size_tuning_active": false,
+      "resized_memories": 0,
+      "resized_dispositions": 0,
+      "resized_boundaries": 0,
+      "incumbent": {
+        "disagreements": 20,
+        "weighted_disagreements": "20",
+        "injected_tokens": 388,
+        "share_disagreements": 4,
+        "weighted_share_disagreements": "4"
+      },
+      "candidate": {
+        "disagreements": 8,
+        "weighted_disagreements": "8",
+        "injected_tokens": 0,
+        "share_disagreements": 4,
+        "weighted_share_disagreements": "4"
+      }
+    },
+    "id": "01M7C8RPCHCKS4XQF523BKGKPD"
+  },
+  "elapsed_seconds": 20.574873083038256,
+  "active_before": "m2k-01M7C8GA8WHYCRHEX1ES4P3V5N",
+  "active_after": "m2k-01M7C8GA8WHYCRHEX1ES4P3V5N"
+}

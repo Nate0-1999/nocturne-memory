@@ -1,0 +1,615 @@
+{
+  "elapsed_seconds": 55.840708874864504,
+  "activity": {
+    "principal_id": "palace-agent-c6fb1076-98d2-4cb0-81a5-38a6de6cc1fc",
+    "admitted_writes": 25,
+    "last_run_writes": 25,
+    "pressure_events": 0,
+    "last_run_pressure": 0,
+    "trigger_every": 25,
+    "pressure_trigger_every": 3,
+    "writes_until_run": 25,
+    "pressure_until_run": 3,
+    "latest_run": {
+      "run_uid": "01M7C7RE7AGZT58XR38E83GGX7",
+      "principal_id": "palace-agent-c6fb1076-98d2-4cb0-81a5-38a6de6cc1fc",
+      "trigger": "writes",
+      "status": "completed",
+      "admitted_writes_snapshot": 25,
+      "pressure_snapshot": 0,
+      "verdict_count": 6,
+      "queued_count": 1,
+      "executed_count": 0,
+      "report": {
+        "format": "nocturne.palace-health",
+        "version": "1",
+        "principal_id": "palace-agent-c6fb1076-98d2-4cb0-81a5-38a6de6cc1fc",
+        "as_of": "2026-11-14T05:16:22.154807Z",
+        "corpus_revision": "7263ad271bb34784d3b9356c333b6c7e39251c428a92d27ad0f939487452ca35",
+        "active_units": 25,
+        "clusters": [
+          [
+            "237a89b7-a02f-4498-877e-74c87d9d1a84",
+            "68b17ca0-0652-4ac9-85b9-ebba8894a7c3"
+          ],
+          [
+            "34016b28-0128-41f5-9f70-d1a266b86a33",
+            "3745dc96-25d9-4bf2-8cb4-035e4c30da40",
+            "f53bca8a-15bd-4532-be75-04c884c63899"
+          ],
+          [
+            "396ac0cf-dafe-4898-8a8a-efa7ea899b7a",
+            "971d4fc0-8eef-442d-81f4-881225e9b479"
+          ],
+          [
+            "42de06b8-0be3-4eb9-b1fc-b39da8dee748",
+            "79108d0a-4558-46ca-b88d-00c8f61e01b5"
+          ],
+          [
+            "531d7700-0314-41e8-b829-8c23c4671aa6",
+            "b3cb9a5f-8303-4170-899a-e2c43b27b0d2"
+          ]
+        ],
+        "findings": [
+          {
+            "ordinal": 0,
+            "kind": "duplicate",
+            "memory_ids": [
+              "237a89b7-a02f-4498-877e-74c87d9d1a84",
+              "68b17ca0-0652-4ac9-85b9-ebba8894a7c3"
+            ],
+            "evidence": {
+              "cosine": "0.132447935",
+              "signals": {
+                "embedding": false,
+                "relevance": true
+              },
+              "memories": [
+                {
+                  "pin": false,
+                  "body": "Our backups to the Corrin server run at 2 am every night.",
+                  "kind": "fact",
+                  "label": "Walk fact 15",
+                  "stats": {
+                    "removals": 0,
+                    "citations": 0,
+                    "injections": 0,
+                    "never_kills": 0,
+                    "last_injected_at": null
+                  },
+                  "keywords": [
+                    "our",
+                    "backups",
+                    "to"
+                  ],
+                  "revision": 1,
+                  "memory_id": "237a89b7-a02f-4498-877e-74c87d9d1a84",
+                  "created_at": "2026-11-14T05:16:16.343763+00:00",
+                  "updated_at": "2026-11-14T05:16:16.343763+00:00"
+                },
+                {
+                  "pin": false,
+                  "body": "The garage door remote uses a CR2032 battery.",
+                  "kind": "fact",
+                  "label": "Walk fact 20",
+                  "stats": {
+                    "removals": 0,
+                    "citations": 0,
+                    "injections": 0,
+                    "never_kills": 0,
+                    "last_injected_at": null
+                  },
+                  "keywords": [
+                    "the",
+                    "garage",
+                    "door"
+                  ],
+                  "revision": 1,
+                  "memory_id": "68b17ca0-0652-4ac9-85b9-ebba8894a7c3",
+                  "created_at": "2026-11-14T05:16:18.253965+00:00",
+                  "updated_at": "2026-11-14T05:16:18.253965+00:00"
+                }
+              ],
+              "relevance": {
+                "left": [
+                  0.1899997442960739,
+                  0.24518728256225586,
+                  0.2171565443277359,
+                  0.2587142884731293
+                ],
+                "right": [
+                  0.18999986350536346,
+                  0.24047333002090454,
+                  0.22262565791606903,
+                  0.2514636218547821
+                ],
+                "prompts": [
+                  "",
+                  "What should I remember about how this project works?",
+                  "How should I build, test, and release this project?",
+                  "Which tools and services does this project use?"
+                ],
+                "max_delta": 0.007250666618347168,
+                "threshold": 0.025,
+                "snapshot_ts": "2026-11-14T05:16:20.345109+00:00",
+                "probe_version": "curator-relevance-v3",
+                "mutual_nearest": true,
+                "scorer_version": "m3tl-where-v1"
+              }
+            },
+            "fingerprint": "23bff09f8ac3c1094b149d983026dd19abb29c44cabc608d627d3a409f7e78ca"
+          },
+          {
+            "ordinal": 1,
+            "kind": "duplicate",
+            "memory_ids": [
+              "34016b28-0128-41f5-9f70-d1a266b86a33",
+              "3745dc96-25d9-4bf2-8cb4-035e4c30da40"
+            ],
+            "evidence": {
+              "cosine": "0.382536906",
+              "signals": {
+                "embedding": false,
+                "relevance": true
+              },
+              "memories": [
+                {
+                  "pin": false,
+                  "body": "At the Dunmore Lane tool library, borrowing the tile cutter costs 4 pounds per weekend.",
+                  "kind": "fact",
+                  "label": "Walk fact 24",
+                  "stats": {
+                    "removals": 0,
+                    "citations": 0,
+                    "injections": 0,
+                    "never_kills": 0,
+                    "last_injected_at": null
+                  },
+                  "keywords": [
+                    "at",
+                    "the",
+                    "dunmore"
+                  ],
+                  "revision": 1,
+                  "memory_id": "34016b28-0128-41f5-9f70-d1a266b86a33",
+                  "created_at": "2026-11-14T05:16:19.838500+00:00",
+                  "updated_at": "2026-11-14T05:16:19.838500+00:00"
+                },
+                {
+                  "pin": false,
+                  "body": "The Sorrel Street library has a 3D printer for members.",
+                  "kind": "fact",
+                  "label": "Walk fact 22",
+                  "stats": {
+                    "removals": 0,
+                    "citations": 0,
+                    "injections": 0,
+                    "never_kills": 0,
+                    "last_injected_at": null
+                  },
+                  "keywords": [
+                    "the",
+                    "sorrel",
+                    "street"
+                  ],
+                  "revision": 1,
+                  "memory_id": "3745dc96-25d9-4bf2-8cb4-035e4c30da40",
+                  "created_at": "2026-11-14T05:16:19.094768+00:00",
+                  "updated_at": "2026-11-14T05:16:19.094768+00:00"
+                }
+              ],
+              "relevance": {
+                "left": [
+                  0.18999996781349182,
+                  0.2519143521785736,
+                  0.23097772896289825,
+                  0.2818042039871216
+                ],
+                "right": [
+                  0.18999992311000824,
+                  0.2514268159866333,
+                  0.24163180589675903,
+                  0.27100875973701477
+                ],
+                "prompts": [
+                  "",
+                  "What should I remember about how this project works?",
+                  "How should I build, test, and release this project?",
+                  "Which tools and services does this project use?"
+                ],
+                "max_delta": 0.010795444250106812,
+                "threshold": 0.025,
+                "snapshot_ts": "2026-11-14T05:16:20.345109+00:00",
+                "probe_version": "curator-relevance-v3",
+                "mutual_nearest": true,
+                "scorer_version": "m3tl-where-v1"
+              }
+            },
+            "fingerprint": "817d235d9428a2963e27edfd41f3502a9fbad3cccf989878ddbb2b62d4815eff"
+          },
+          {
+            "ordinal": 2,
+            "kind": "duplicate",
+            "memory_ids": [
+              "34016b28-0128-41f5-9f70-d1a266b86a33",
+              "f53bca8a-15bd-4532-be75-04c884c63899"
+            ],
+            "evidence": {
+              "cosine": "0.887690140",
+              "signals": {
+                "embedding": true,
+                "relevance": false
+              },
+              "memories": [
+                {
+                  "pin": false,
+                  "body": "At the Dunmore Lane tool library, borrowing the tile cutter costs 4 pounds per weekend.",
+                  "kind": "fact",
+                  "label": "Walk fact 24",
+                  "stats": {
+                    "removals": 0,
+                    "citations": 0,
+                    "injections": 0,
+                    "never_kills": 0,
+                    "last_injected_at": null
+                  },
+                  "keywords": [
+                    "at",
+                    "the",
+                    "dunmore"
+                  ],
+                  "revision": 1,
+                  "memory_id": "34016b28-0128-41f5-9f70-d1a266b86a33",
+                  "created_at": "2026-11-14T05:16:19.838500+00:00",
+                  "updated_at": "2026-11-14T05:16:19.838500+00:00"
+                },
+                {
+                  "pin": false,
+                  "body": "Anyone taking the tile cutter home from the tool library on Dunmore Lane pays four pounds for the weekend.",
+                  "kind": "fact",
+                  "label": "Walk fact 25",
+                  "stats": {
+                    "removals": 0,
+                    "citations": 0,
+                    "injections": 0,
+                    "never_kills": 0,
+                    "last_injected_at": null
+                  },
+                  "keywords": [
+                    "anyone",
+                    "taking",
+                    "the"
+                  ],
+                  "revision": 1,
+                  "memory_id": "f53bca8a-15bd-4532-be75-04c884c63899",
+                  "created_at": "2026-11-14T05:16:20.345109+00:00",
+                  "updated_at": "2026-11-14T05:16:20.345109+00:00"
+                }
+              ],
+              "relevance": {
+                "left": [
+                  0.18999996781349182,
+                  0.2519143521785736,
+                  0.23097772896289825,
+                  0.2818042039871216
+                ],
+                "right": [
+                  0.1899999976158142,
+                  0.2575494945049286,
+                  0.223277285695076,
+                  0.2584837079048157
+                ],
+                "prompts": [
+                  "",
+                  "What should I remember about how this project works?",
+                  "How should I build, test, and release this project?",
+                  "Which tools and services does this project use?"
+                ],
+                "max_delta": 0.023320496082305908,
+                "threshold": 0.025,
+                "snapshot_ts": "2026-11-14T05:16:20.345109+00:00",
+                "probe_version": "curator-relevance-v3",
+                "mutual_nearest": false,
+                "scorer_version": "m3tl-where-v1"
+              }
+            },
+            "fingerprint": "829d96d0582bf7d2a21daebcff6225302037f8690273ac3e32f4abc03a85babd"
+          },
+          {
+            "ordinal": 3,
+            "kind": "duplicate",
+            "memory_ids": [
+              "396ac0cf-dafe-4898-8a8a-efa7ea899b7a",
+              "971d4fc0-8eef-442d-81f4-881225e9b479"
+            ],
+            "evidence": {
+              "cosine": "0.174281851",
+              "signals": {
+                "embedding": false,
+                "relevance": true
+              },
+              "memories": [
+                {
+                  "pin": false,
+                  "body": "The neighbour at number 12 looks after the cat when we travel.",
+                  "kind": "fact",
+                  "label": "Walk fact 17",
+                  "stats": {
+                    "removals": 0,
+                    "citations": 0,
+                    "injections": 0,
+                    "never_kills": 0,
+                    "last_injected_at": null
+                  },
+                  "keywords": [
+                    "the",
+                    "neighbour",
+                    "at"
+                  ],
+                  "revision": 1,
+                  "memory_id": "396ac0cf-dafe-4898-8a8a-efa7ea899b7a",
+                  "created_at": "2026-11-14T05:16:17.082749+00:00",
+                  "updated_at": "2026-11-14T05:16:17.082749+00:00"
+                },
+                {
+                  "pin": false,
+                  "body": "Dr. Anvik at the Lumen clinic only takes appointments by phone.",
+                  "kind": "fact",
+                  "label": "Walk fact 8",
+                  "stats": {
+                    "removals": 0,
+                    "citations": 0,
+                    "injections": 0,
+                    "never_kills": 0,
+                    "last_injected_at": null
+                  },
+                  "keywords": [
+                    "dr.",
+                    "anvik",
+                    "at"
+                  ],
+                  "revision": 1,
+                  "memory_id": "971d4fc0-8eef-442d-81f4-881225e9b479",
+                  "created_at": "2026-11-14T05:16:08.916878+00:00",
+                  "updated_at": "2026-11-14T05:16:08.916878+00:00"
+                }
+              ],
+              "relevance": {
+                "left": [
+                  0.1899997889995575,
+                  0.20863978564739227,
+                  0.1899997889995575,
+                  0.2200561761856079
+                ],
+                "right": [
+                  0.1899992823600769,
+                  0.2060755044221878,
+                  0.1899992823600769,
+                  0.2185870260000229
+                ],
+                "prompts": [
+                  "",
+                  "What should I remember about how this project works?",
+                  "How should I build, test, and release this project?",
+                  "Which tools and services does this project use?"
+                ],
+                "max_delta": 0.0025642812252044678,
+                "threshold": 0.025,
+                "snapshot_ts": "2026-11-14T05:16:20.345109+00:00",
+                "probe_version": "curator-relevance-v3",
+                "mutual_nearest": true,
+                "scorer_version": "m3tl-where-v1"
+              }
+            },
+            "fingerprint": "22f41f6e580b2de5d583f2883b6e4c80697f3be39b6ff952cb0d9c3000e4cc0b"
+          },
+          {
+            "ordinal": 4,
+            "kind": "duplicate",
+            "memory_ids": [
+              "42de06b8-0be3-4eb9-b1fc-b39da8dee748",
+              "79108d0a-4558-46ca-b88d-00c8f61e01b5"
+            ],
+            "evidence": {
+              "cosine": "0.305751779",
+              "signals": {
+                "embedding": false,
+                "relevance": true
+              },
+              "memories": [
+                {
+                  "pin": false,
+                  "body": "The Harrowgate bakery sells rye loaves only on Thursdays.",
+                  "kind": "fact",
+                  "label": "Walk fact 1",
+                  "stats": {
+                    "removals": 0,
+                    "citations": 0,
+                    "injections": 0,
+                    "never_kills": 0,
+                    "last_injected_at": null
+                  },
+                  "keywords": [
+                    "the",
+                    "harrowgate",
+                    "bakery"
+                  ],
+                  "revision": 1,
+                  "memory_id": "42de06b8-0be3-4eb9-b1fc-b39da8dee748",
+                  "created_at": "2026-11-14T05:16:04.861190+00:00",
+                  "updated_at": "2026-11-14T05:16:04.861190+00:00"
+                },
+                {
+                  "pin": false,
+                  "body": "The Indigo Room restaurant needs bookings at least a week ahead.",
+                  "kind": "fact",
+                  "label": "Walk fact 19",
+                  "stats": {
+                    "removals": 0,
+                    "citations": 0,
+                    "injections": 0,
+                    "never_kills": 0,
+                    "last_injected_at": null
+                  },
+                  "keywords": [
+                    "the",
+                    "indigo",
+                    "room"
+                  ],
+                  "revision": 1,
+                  "memory_id": "79108d0a-4558-46ca-b88d-00c8f61e01b5",
+                  "created_at": "2026-11-14T05:16:17.914255+00:00",
+                  "updated_at": "2026-11-14T05:16:17.914255+00:00"
+                }
+              ],
+              "relevance": {
+                "left": [
+                  0.1899990290403366,
+                  0.22087189555168152,
+                  0.2096734195947647,
+                  0.22090739011764526
+                ],
+                "right": [
+                  0.18999984860420227,
+                  0.21601155400276184,
+                  0.20737768709659576,
+                  0.218385249376297
+                ],
+                "prompts": [
+                  "",
+                  "What should I remember about how this project works?",
+                  "How should I build, test, and release this project?",
+                  "Which tools and services does this project use?"
+                ],
+                "max_delta": 0.004860341548919678,
+                "threshold": 0.025,
+                "snapshot_ts": "2026-11-14T05:16:20.345109+00:00",
+                "probe_version": "curator-relevance-v3",
+                "mutual_nearest": true,
+                "scorer_version": "m3tl-where-v1"
+              }
+            },
+            "fingerprint": "ecd3b30e13ea13006bfbb2c5e45c4f065e238a9b71b83a589f89a2c1532acca6"
+          },
+          {
+            "ordinal": 5,
+            "kind": "duplicate",
+            "memory_ids": [
+              "531d7700-0314-41e8-b829-8c23c4671aa6",
+              "b3cb9a5f-8303-4170-899a-e2c43b27b0d2"
+            ],
+            "evidence": {
+              "cosine": "0.170466728",
+              "signals": {
+                "embedding": false,
+                "relevance": true
+              },
+              "memories": [
+                {
+                  "pin": false,
+                  "body": "Basil seedlings on the balcony need water every evening in July.",
+                  "kind": "fact",
+                  "label": "Walk fact 6",
+                  "stats": {
+                    "removals": 0,
+                    "citations": 0,
+                    "injections": 0,
+                    "never_kills": 0,
+                    "last_injected_at": null
+                  },
+                  "keywords": [
+                    "basil",
+                    "seedlings",
+                    "on"
+                  ],
+                  "revision": 1,
+                  "memory_id": "531d7700-0314-41e8-b829-8c23c4671aa6",
+                  "created_at": "2026-11-14T05:16:07.749547+00:00",
+                  "updated_at": "2026-11-14T05:16:07.749547+00:00"
+                },
+                {
+                  "pin": false,
+                  "body": "The Velloran choir rehearses in the old school hall on Tuesdays.",
+                  "kind": "fact",
+                  "label": "Walk fact 16",
+                  "stats": {
+                    "removals": 0,
+                    "citations": 0,
+                    "injections": 0,
+                    "never_kills": 0,
+                    "last_injected_at": null
+                  },
+                  "keywords": [
+                    "the",
+                    "velloran",
+                    "choir"
+                  ],
+                  "revision": 1,
+                  "memory_id": "b3cb9a5f-8303-4170-899a-e2c43b27b0d2",
+                  "created_at": "2026-11-14T05:16:16.688949+00:00",
+                  "updated_at": "2026-11-14T05:16:16.688949+00:00"
+                }
+              ],
+              "relevance": {
+                "left": [
+                  0.18999920785427094,
+                  0.23774555325508118,
+                  0.2282090187072754,
+                  0.22638516128063202
+                ],
+                "right": [
+                  0.1899997740983963,
+                  0.2370760440826416,
+                  0.22997243702411652,
+                  0.22182141244411469
+                ],
+                "prompts": [
+                  "",
+                  "What should I remember about how this project works?",
+                  "How should I build, test, and release this project?",
+                  "Which tools and services does this project use?"
+                ],
+                "max_delta": 0.004563748836517334,
+                "threshold": 0.025,
+                "snapshot_ts": "2026-11-14T05:16:20.345109+00:00",
+                "probe_version": "curator-relevance-v3",
+                "mutual_nearest": true,
+                "scorer_version": "m3tl-where-v1"
+              }
+            },
+            "fingerprint": "14fc926e3082a8529a736aa5624dd705d213b8e67040d4ad29da51bfb04e3741"
+          }
+        ],
+        "keyword_coverage_percent": "100.000",
+        "stats_delta": {
+          "merges": 0,
+          "revisions": 25,
+          "retirements": 0,
+          "reinforcements": 0
+        },
+        "review_summary": {
+          "model": "z-ai/glm-5.3-flash",
+          "pair_limit": 25,
+          "skipped_limit": 0,
+          "reviewed_pairs": 6,
+          "skipped_unchanged": 0
+        }
+      },
+      "error": null,
+      "completed_at": "2026-11-14T05:17:15.537643Z"
+    },
+    "pending_cards": 1,
+    "growth": [
+      {
+        "at": "2026-11-14T05:16:22.154807Z",
+        "active_units": 25,
+        "curator_removals": 0
+      },
+      {
+        "at": "2026-11-14T05:17:15.727215Z",
+        "active_units": 25,
+        "curator_removals": 0
+      }
+    ]
+  }
+}

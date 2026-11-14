@@ -1,0 +1,8 @@
+Resolved 1 package in 158ms
+   Building nocturne-memory @ file:///Users/nateoswalt/relay/m8bm/spine
+      Built nocturne-memory @ file:///Users/nateoswalt/relay/m8bm/spine
+Prepared 1 package in 88ms
+Uninstalled 1 package in 1ms
+Installed 1 package in 1ms
+ - nocturne-memory==0.1.95 (from file:///Users/nateoswalt/relay/m8bm/spine)
+ + nocturne-memory==0.1.96 (from file:///Users/nateoswalt/relay/m8bm/spine)

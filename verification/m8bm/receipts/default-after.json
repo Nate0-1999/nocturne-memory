@@ -1,0 +1,8 @@
+{
+  "background_default": "openrouter:z-ai/glm-5.3-flash",
+  "request_model": "z-ai/glm-5.3-flash",
+  "listed": true,
+  "gate_passed": true,
+  "paid_request": false,
+  "other_spine_model_setting_uses": "../spine/src/spine/main.py:132:        session_factory, resolved.chat_model, base_url=resolved.chat_base_url\n../spine/src/spine/main.py:138:                model=resolved.chat_model,\n"
+}
