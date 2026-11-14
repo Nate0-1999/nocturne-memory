@@ -179,6 +179,7 @@ class OpenRouterCuratorProvider:
                     "temperature": 0,
                     "messages": messages,
                     "response_format": {"type": "json_object"},
+                    **background_provider_routing(self._endpoint),
                 },
                 timeout=self._timeout,
             )
@@ -298,6 +299,18 @@ def _verdict_prompt(finding: HealthFinding, report: PalaceHealthReport) -> str:
         sort_keys=True,
         separators=(",", ":"),
     )
+
+
+def background_provider_routing(endpoint: str) -> dict[str, object]:
+    """A-086: require the reply format and exclude known 4-bit hosts, retaining unknown."""
+    if not endpoint.startswith("https://openrouter.ai/api/v1/"):
+        return {}
+    return {
+        "provider": {
+            "require_parameters": True,
+            "quantizations": ["int8", "fp6", "fp8", "mxfp8", "fp16", "bf16", "fp32", "unknown"],
+        }
+    }
 
 
 def _openrouter_model(model: str) -> str:
