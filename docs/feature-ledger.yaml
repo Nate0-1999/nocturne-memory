@@ -773,11 +773,11 @@
         "harness/web/src/PalaceStateModule.tsx"
       ],
       "last_walk": {
-        "date": "2026-11-11",
-        "packet": "M6W1A",
-        "verdict": "NOT WALKED",
+        "date": "2026-11-13",
+        "packet": "M8BM",
+        "verdict": "PASS",
         "flag": "",
-        "screenshot": ""
+        "screenshot": "verification/m8bm/FL-034.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -1369,11 +1369,11 @@
         "harness/src/harness/spine_client.py"
       ],
       "last_walk": {
-        "date": "2026-11-11",
-        "packet": "M8LC",
+        "date": "2026-11-13",
+        "packet": "M8BM",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "after-F224-scout-repeat-112/FL-061-112-True.png"
+        "screenshot": "verification/m8bm/FL-061.png"
       }
     },
     {
