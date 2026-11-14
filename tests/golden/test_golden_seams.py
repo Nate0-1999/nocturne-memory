@@ -49,7 +49,7 @@ def _settings(**overrides: object) -> Settings:
 def test_runtime_config_resolution_keeps_the_current_provider_and_scorer_defaults(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """SPEC C.5 and A-031 pin exact Spine config resolution before the seam moves."""
+    """SPEC C.5 / A-031 pin config resolution; SD-094 / A-086 authorize the new default."""
 
     for field in Settings.model_fields:
         monkeypatch.delenv(f"SPINE_{field.upper()}", raising=False)
@@ -109,7 +109,7 @@ def test_runtime_config_resolution_keeps_the_current_provider_and_scorer_default
         "embed_dim": 1536,
         "memory_max_tokens": 128,
         "label_max": 64,
-        "chat_model": "anthropic:claude-sonnet-4-6",
+        "chat_model": "openrouter:z-ai/glm-5.3-flash",
         "spend_view_refresh_seconds": 60,
         "reconciliation_hours": 24,
         "reconciliation_tolerance_usd": str(Decimal("0.000001")),

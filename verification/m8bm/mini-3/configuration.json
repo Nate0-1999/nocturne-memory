@@ -1,0 +1,12 @@
+{
+  "home": "/Users/nateoswalt/relay/m8bm/walk/mini-3",
+  "principal": "palace-agent-bfdada8c-513d-44e9-8969-bb8063e3ab8a",
+  "project": "nocturne-fd28e378",
+  "ports": [
+    8271,
+    8971,
+    55761
+  ],
+  "other_roles": "openrouter:openai/gpt-4.1-mini",
+  "service_default_overridden": false
+}

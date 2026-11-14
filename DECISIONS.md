@@ -1547,3 +1547,21 @@ the decision. Failed compaction requests log the provider's reason with credenti
 redacted. Package pair 0.1.94; no API or schema change, contract stays 0.1.92.
 Gate return: learner candidate/replay calls share the curator provider's principal-aware
 model resolver and run cache. The unlisted fresh-install default is flagged, not changed.
+
+## M8SP — Paired packaging only [P4]
+
+PRECEDENT: PLAN M8SP; ADR-019 lockstep packaging; M7TG.
+Memory moves to package 0.1.95 beside Harness. F218, F223 and F226 are fixed in the Harness
+web only; no Memory API, schema or contract fingerprint changes. API contract 0.1.92 remains
+separate from the package version.
+
+## M8BM — Proof-gated background default [P1.2, P4]
+
+PRECEDENT: SD-094; PLAN M8BM; F234; A-086; SPEC C.5 / A-020 (c) / A-021 (c-revised); M8LC report 309.
+Three fresh automatic passes and browser back-tests per model passed before changing the
+unset curator/learner default to `openrouter:z-ai/glm-5.3-flash`: Flash 19/19 and 16/16,
+mini 19/19 and 18/18, zero malformed or finally dropped verdicts. The shared request policy
+requires the asked-for format and excludes known 4-bit hosts while retaining unknown precision;
+principal policies, direct providers and the existing one-retry rule retain their behavior.
+The golden default changes under this separately authorized behavior change and its live
+evidence, as tests/golden/README.md requires. Package 0.1.96; API contract remains 0.1.92.

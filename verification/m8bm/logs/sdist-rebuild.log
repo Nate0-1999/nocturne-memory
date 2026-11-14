@@ -1,0 +1,13 @@
+Processing ./spine-dist/nocturne_memory-0.1.96.tar.gz
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: nocturne-memory
+  Building wheel for nocturne-memory (pyproject.toml): started
+  Building wheel for nocturne-memory (pyproject.toml): finished with status 'done'
+  Created wheel for nocturne-memory: filename=nocturne_memory-0.1.96-py3-none-any.whl size=264607 sha256=3da942a220973b74ad75ba6f8f66ea13cc0f93d5a22665239384163da8d7a8b5
+  Stored in directory: /Users/nateoswalt/Library/Caches/pip/wheels/fc/b1/f1/caa1c480272730eb66b71460a9b56f835c471ac0fb92dbcd97
+Successfully built nocturne-memory

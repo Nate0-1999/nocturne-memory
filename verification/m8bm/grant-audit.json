@@ -1,0 +1,18 @@
+{
+  "flash_sql_origins": {
+    "maintenance": 25,
+    "compaction-learner": 16
+  },
+  "other_chat_sql_models": [
+    "openai/gpt-4.1-mini",
+    "z-ai/glm-5.3-flash"
+  ],
+  "flash_routing_violations": [],
+  "http_402_observed": false,
+  "stop_marker": false,
+  "source_commits": {
+    "garden": "c1182fd4979a04f0465673d6e5f752a5f26d9b2d",
+    "harness": "637c7e02965b182b622b7015cc2650a3475bb0f4",
+    "spine": "83fbb7d16fa7c8a0168e2b23099198dbd0379049"
+  }
+}

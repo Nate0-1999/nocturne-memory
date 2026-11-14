@@ -55,7 +55,14 @@ async def test_curator_policy_selects_real_request_model_and_stays_fixed_for_a_p
     first, second = mint_ulid(), mint_ulid()
 
     def respond(request):
-        calls.append(json.loads(request.content)["model"])
+        payload = json.loads(request.content)
+        calls.append(payload["model"])
+        # M8BM / A-086: the broker must honor JSON and retain unknown-precision hosts.
+        assert payload["provider"]["require_parameters"] is True
+        assert "unknown" in payload["provider"]["quantizations"]
+        assert not {"int4", "fp4", "mxfp4", "nvfp4"} & set(
+            payload["provider"]["quantizations"]
+        )
         return httpx.Response(
             200,
             json={

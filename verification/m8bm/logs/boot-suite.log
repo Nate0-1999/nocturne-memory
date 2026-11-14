@@ -1,0 +1,662 @@
+.............F.......................................................... [ 20%]
+.................................FFFFFFFF........................F...... [ 40%]
+........................................................................ [ 60%]
+........................................................................ [ 80%]
+..........F....F.............................................ss......    [100%]
+=================================== FAILURES ===================================
+______________________ test_committed_openapi_is_current _______________________
+
+app = <fastapi.applications.FastAPI object at 0x10d426030>
+
+    def test_committed_openapi_is_current(app: FastAPI) -> None:
+        """A-044 keeps the committed public Vitals schema literal and current."""
+        committed = json.loads((ROOT / "openapi.json").read_text(encoding="utf-8"))
+>       assert committed == app.openapi()
+E       AssertionError: assert {'components'..., ...}}, ...}} == {'components'..., ...}}, ...}}
+E         
+E         Omitting 3 identical items, use -vv to show
+E         Differing items:
+E         {'info': {'title': 'N8 Spine', 'version': '0.1.95'}} != {'info': {'title': 'N8 Spine', 'version': '0.1.91'}}
+E         Use -v to get more diff
+
+tests/test_api.py:287: AssertionError
+_____ test_stalled_backtest_request_goes_back_once[answers0-2-ReadTimeout] _____
+
+memory_session_factory = async_sessionmaker(class_='AsyncSession', bind=<sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x10cc02850>, autoflush=True, expire_on_commit=False)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10d2cb470>
+caplog = <_pytest.logging.LogCaptureFixture object at 0x10d692180>
+answers = [ReadTimeout('silent'), 200], attempts = 2
+went_back_after = 'ReadTimeout'
+
+    @pytest.mark.parametrize(
+        "answers,attempts,went_back_after",
+        [
+            ([httpx.ReadTimeout("silent"), 200], 2, "ReadTimeout"),
+            ([503, 200], 2, "HTTP 503"),
+            ([429, 200], 2, "HTTP 429"),
+            ([httpx.ReadTimeout("silent"), httpx.ReadTimeout("silent"), 200], 2, None),
+            ([400, 200], 1, None),
+        ],
+    )
+    async def test_stalled_backtest_request_goes_back_once(
+        memory_session_factory, monkeypatch, caplog, answers, attempts, went_back_after
+    ):
+        """F169 / PLAN M6CP: one provider stall must not fail a fit of many paid calls.
+    
+        A timeout, 429 or 5xx goes back once (v2.133's convention), never twice; any other
+        answer is not retried. Only the request that returned a cost is receipted.
+        F224: the learner must use this principal's resolved curator model, even when
+        the Palace's default names a different model, or real provider calls fail/cost more.
+        """
+        seen, receipts, costs = [], [], []
+    
+        def provider(request):
+            if request.method == "GET":
+                return httpx.Response(200, json={"data": []})
+            answer = answers[len(seen)]
+            seen.append(request)
+            if isinstance(answer, Exception):
+                raise answer
+            if answer != 200:
+                return httpx.Response(
+                    answer,
+                    request=request,
+                    json={
+                        "error": {
+                            "message": "Invalid model identifier; credential unused",
+                            "metadata": {"raw": "Bearer sk-upstream-secret"},
+                        },
+                    },
+                )
+            return httpx.Response(200, request=request, json={
+                "id": "gen-1",
+                "usage": {"cost": 0.002},
+                "choices": [{"message": {"content": '{"facts": ["Keep the copper notebook."]}'}}],
+            })
+    
+        class Spend:
+            async def append(self, events):
+                receipts.extend(events)
+    
+        client = httpx.AsyncClient
+        monkeypatch.setattr(
+            httpx, "AsyncClient", lambda **kw: client(transport=httpx.MockTransport(provider), **kw)
+        )
+        settings = Settings(
+            database_url="postgresql+asyncpg://unused", token="unused", openai_api_key="unused",
+            chat_model="anthropic:claude-sonnet-4-6",
+        )
+        policy = CuratorPolicy(memory_session_factory, settings.chat_model)
+        await policy.save("owner", "pinned:openrouter:openai/gpt-4.1-mini")
+        curator = OpenRouterCuratorProvider(
+            api_key="unused", model=settings.chat_model, spend_service=Spend(), policy=policy
+        )
+>       learner = CompactionLearner(
+            memory_session_factory,
+            principal="owner",
+            settings=settings,
+            embeddings=None,
+            spend=Spend(),
+            curator=curator,
+        )
+E       TypeError: CompactionLearner.__init__() got an unexpected keyword argument 'curator'
+
+tests/test_compaction_learning.py:82: TypeError
+______ test_stalled_backtest_request_goes_back_once[answers1-2-HTTP 503] _______
+
+memory_session_factory = async_sessionmaker(class_='AsyncSession', bind=<sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x10d0b4e90>, autoflush=True, expire_on_commit=False)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10d2cbe90>
+caplog = <_pytest.logging.LogCaptureFixture object at 0x10d54e0c0>
+answers = [503, 200], attempts = 2, went_back_after = 'HTTP 503'
+
+    @pytest.mark.parametrize(
+        "answers,attempts,went_back_after",
+        [
+            ([httpx.ReadTimeout("silent"), 200], 2, "ReadTimeout"),
+            ([503, 200], 2, "HTTP 503"),
+            ([429, 200], 2, "HTTP 429"),
+            ([httpx.ReadTimeout("silent"), httpx.ReadTimeout("silent"), 200], 2, None),
+            ([400, 200], 1, None),
+        ],
+    )
+    async def test_stalled_backtest_request_goes_back_once(
+        memory_session_factory, monkeypatch, caplog, answers, attempts, went_back_after
+    ):
+        """F169 / PLAN M6CP: one provider stall must not fail a fit of many paid calls.
+    
+        A timeout, 429 or 5xx goes back once (v2.133's convention), never twice; any other
+        answer is not retried. Only the request that returned a cost is receipted.
+        F224: the learner must use this principal's resolved curator model, even when
+        the Palace's default names a different model, or real provider calls fail/cost more.
+        """
+        seen, receipts, costs = [], [], []
+    
+        def provider(request):
+            if request.method == "GET":
+                return httpx.Response(200, json={"data": []})
+            answer = answers[len(seen)]
+            seen.append(request)
+            if isinstance(answer, Exception):
+                raise answer
+            if answer != 200:
+                return httpx.Response(
+                    answer,
+                    request=request,
+                    json={
+                        "error": {
+                            "message": "Invalid model identifier; credential unused",
+                            "metadata": {"raw": "Bearer sk-upstream-secret"},
+                        },
+                    },
+                )
+            return httpx.Response(200, request=request, json={
+                "id": "gen-1",
+                "usage": {"cost": 0.002},
+                "choices": [{"message": {"content": '{"facts": ["Keep the copper notebook."]}'}}],
+            })
+    
+        class Spend:
+            async def append(self, events):
+                receipts.extend(events)
+    
+        client = httpx.AsyncClient
+        monkeypatch.setattr(
+            httpx, "AsyncClient", lambda **kw: client(transport=httpx.MockTransport(provider), **kw)
+        )
+        settings = Settings(
+            database_url="postgresql+asyncpg://unused", token="unused", openai_api_key="unused",
+            chat_model="anthropic:claude-sonnet-4-6",
+        )
+        policy = CuratorPolicy(memory_session_factory, settings.chat_model)
+        await policy.save("owner", "pinned:openrouter:openai/gpt-4.1-mini")
+        curator = OpenRouterCuratorProvider(
+            api_key="unused", model=settings.chat_model, spend_service=Spend(), policy=policy
+        )
+>       learner = CompactionLearner(
+            memory_session_factory,
+            principal="owner",
+            settings=settings,
+            embeddings=None,
+            spend=Spend(),
+            curator=curator,
+        )
+E       TypeError: CompactionLearner.__init__() got an unexpected keyword argument 'curator'
+
+tests/test_compaction_learning.py:82: TypeError
+______ test_stalled_backtest_request_goes_back_once[answers2-2-HTTP 429] _______
+
+memory_session_factory = async_sessionmaker(class_='AsyncSession', bind=<sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x10d116bd0>, autoflush=True, expire_on_commit=False)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10d54dee0>
+caplog = <_pytest.logging.LogCaptureFixture object at 0x10cce9af0>
+answers = [429, 200], attempts = 2, went_back_after = 'HTTP 429'
+
+    @pytest.mark.parametrize(
+        "answers,attempts,went_back_after",
+        [
+            ([httpx.ReadTimeout("silent"), 200], 2, "ReadTimeout"),
+            ([503, 200], 2, "HTTP 503"),
+            ([429, 200], 2, "HTTP 429"),
+            ([httpx.ReadTimeout("silent"), httpx.ReadTimeout("silent"), 200], 2, None),
+            ([400, 200], 1, None),
+        ],
+    )
+    async def test_stalled_backtest_request_goes_back_once(
+        memory_session_factory, monkeypatch, caplog, answers, attempts, went_back_after
+    ):
+        """F169 / PLAN M6CP: one provider stall must not fail a fit of many paid calls.
+    
+        A timeout, 429 or 5xx goes back once (v2.133's convention), never twice; any other
+        answer is not retried. Only the request that returned a cost is receipted.
+        F224: the learner must use this principal's resolved curator model, even when
+        the Palace's default names a different model, or real provider calls fail/cost more.
+        """
+        seen, receipts, costs = [], [], []
+    
+        def provider(request):
+            if request.method == "GET":
+                return httpx.Response(200, json={"data": []})
+            answer = answers[len(seen)]
+            seen.append(request)
+            if isinstance(answer, Exception):
+                raise answer
+            if answer != 200:
+                return httpx.Response(
+                    answer,
+                    request=request,
+                    json={
+                        "error": {
+                            "message": "Invalid model identifier; credential unused",
+                            "metadata": {"raw": "Bearer sk-upstream-secret"},
+                        },
+                    },
+                )
+            return httpx.Response(200, request=request, json={
+                "id": "gen-1",
+                "usage": {"cost": 0.002},
+                "choices": [{"message": {"content": '{"facts": ["Keep the copper notebook."]}'}}],
+            })
+    
+        class Spend:
+            async def append(self, events):
+                receipts.extend(events)
+    
+        client = httpx.AsyncClient
+        monkeypatch.setattr(
+            httpx, "AsyncClient", lambda **kw: client(transport=httpx.MockTransport(provider), **kw)
+        )
+        settings = Settings(
+            database_url="postgresql+asyncpg://unused", token="unused", openai_api_key="unused",
+            chat_model="anthropic:claude-sonnet-4-6",
+        )
+        policy = CuratorPolicy(memory_session_factory, settings.chat_model)
+        await policy.save("owner", "pinned:openrouter:openai/gpt-4.1-mini")
+        curator = OpenRouterCuratorProvider(
+            api_key="unused", model=settings.chat_model, spend_service=Spend(), policy=policy
+        )
+>       learner = CompactionLearner(
+            memory_session_factory,
+            principal="owner",
+            settings=settings,
+            embeddings=None,
+            spend=Spend(),
+            curator=curator,
+        )
+E       TypeError: CompactionLearner.__init__() got an unexpected keyword argument 'curator'
+
+tests/test_compaction_learning.py:82: TypeError
+________ test_stalled_backtest_request_goes_back_once[answers3-2-None] _________
+
+memory_session_factory = async_sessionmaker(class_='AsyncSession', bind=<sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x10d6e1150>, autoflush=True, expire_on_commit=False)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10d5247d0>
+caplog = <_pytest.logging.LogCaptureFixture object at 0x10ccd4da0>
+answers = [ReadTimeout('silent'), ReadTimeout('silent'), 200], attempts = 2
+went_back_after = None
+
+    @pytest.mark.parametrize(
+        "answers,attempts,went_back_after",
+        [
+            ([httpx.ReadTimeout("silent"), 200], 2, "ReadTimeout"),
+            ([503, 200], 2, "HTTP 503"),
+            ([429, 200], 2, "HTTP 429"),
+            ([httpx.ReadTimeout("silent"), httpx.ReadTimeout("silent"), 200], 2, None),
+            ([400, 200], 1, None),
+        ],
+    )
+    async def test_stalled_backtest_request_goes_back_once(
+        memory_session_factory, monkeypatch, caplog, answers, attempts, went_back_after
+    ):
+        """F169 / PLAN M6CP: one provider stall must not fail a fit of many paid calls.
+    
+        A timeout, 429 or 5xx goes back once (v2.133's convention), never twice; any other
+        answer is not retried. Only the request that returned a cost is receipted.
+        F224: the learner must use this principal's resolved curator model, even when
+        the Palace's default names a different model, or real provider calls fail/cost more.
+        """
+        seen, receipts, costs = [], [], []
+    
+        def provider(request):
+            if request.method == "GET":
+                return httpx.Response(200, json={"data": []})
+            answer = answers[len(seen)]
+            seen.append(request)
+            if isinstance(answer, Exception):
+                raise answer
+            if answer != 200:
+                return httpx.Response(
+                    answer,
+                    request=request,
+                    json={
+                        "error": {
+                            "message": "Invalid model identifier; credential unused",
+                            "metadata": {"raw": "Bearer sk-upstream-secret"},
+                        },
+                    },
+                )
+            return httpx.Response(200, request=request, json={
+                "id": "gen-1",
+                "usage": {"cost": 0.002},
+                "choices": [{"message": {"content": '{"facts": ["Keep the copper notebook."]}'}}],
+            })
+    
+        class Spend:
+            async def append(self, events):
+                receipts.extend(events)
+    
+        client = httpx.AsyncClient
+        monkeypatch.setattr(
+            httpx, "AsyncClient", lambda **kw: client(transport=httpx.MockTransport(provider), **kw)
+        )
+        settings = Settings(
+            database_url="postgresql+asyncpg://unused", token="unused", openai_api_key="unused",
+            chat_model="anthropic:claude-sonnet-4-6",
+        )
+        policy = CuratorPolicy(memory_session_factory, settings.chat_model)
+        await policy.save("owner", "pinned:openrouter:openai/gpt-4.1-mini")
+        curator = OpenRouterCuratorProvider(
+            api_key="unused", model=settings.chat_model, spend_service=Spend(), policy=policy
+        )
+>       learner = CompactionLearner(
+            memory_session_factory,
+            principal="owner",
+            settings=settings,
+            embeddings=None,
+            spend=Spend(),
+            curator=curator,
+        )
+E       TypeError: CompactionLearner.__init__() got an unexpected keyword argument 'curator'
+
+tests/test_compaction_learning.py:82: TypeError
+________ test_stalled_backtest_request_goes_back_once[answers4-1-None] _________
+
+memory_session_factory = async_sessionmaker(class_='AsyncSession', bind=<sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x10d132190>, autoflush=True, expire_on_commit=False)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10d54dfd0>
+caplog = <_pytest.logging.LogCaptureFixture object at 0x10ccd7bc0>
+answers = [400, 200], attempts = 1, went_back_after = None
+
+    @pytest.mark.parametrize(
+        "answers,attempts,went_back_after",
+        [
+            ([httpx.ReadTimeout("silent"), 200], 2, "ReadTimeout"),
+            ([503, 200], 2, "HTTP 503"),
+            ([429, 200], 2, "HTTP 429"),
+            ([httpx.ReadTimeout("silent"), httpx.ReadTimeout("silent"), 200], 2, None),
+            ([400, 200], 1, None),
+        ],
+    )
+    async def test_stalled_backtest_request_goes_back_once(
+        memory_session_factory, monkeypatch, caplog, answers, attempts, went_back_after
+    ):
+        """F169 / PLAN M6CP: one provider stall must not fail a fit of many paid calls.
+    
+        A timeout, 429 or 5xx goes back once (v2.133's convention), never twice; any other
+        answer is not retried. Only the request that returned a cost is receipted.
+        F224: the learner must use this principal's resolved curator model, even when
+        the Palace's default names a different model, or real provider calls fail/cost more.
+        """
+        seen, receipts, costs = [], [], []
+    
+        def provider(request):
+            if request.method == "GET":
+                return httpx.Response(200, json={"data": []})
+            answer = answers[len(seen)]
+            seen.append(request)
+            if isinstance(answer, Exception):
+                raise answer
+            if answer != 200:
+                return httpx.Response(
+                    answer,
+                    request=request,
+                    json={
+                        "error": {
+                            "message": "Invalid model identifier; credential unused",
+                            "metadata": {"raw": "Bearer sk-upstream-secret"},
+                        },
+                    },
+                )
+            return httpx.Response(200, request=request, json={
+                "id": "gen-1",
+                "usage": {"cost": 0.002},
+                "choices": [{"message": {"content": '{"facts": ["Keep the copper notebook."]}'}}],
+            })
+    
+        class Spend:
+            async def append(self, events):
+                receipts.extend(events)
+    
+        client = httpx.AsyncClient
+        monkeypatch.setattr(
+            httpx, "AsyncClient", lambda **kw: client(transport=httpx.MockTransport(provider), **kw)
+        )
+        settings = Settings(
+            database_url="postgresql+asyncpg://unused", token="unused", openai_api_key="unused",
+            chat_model="anthropic:claude-sonnet-4-6",
+        )
+        policy = CuratorPolicy(memory_session_factory, settings.chat_model)
+        await policy.save("owner", "pinned:openrouter:openai/gpt-4.1-mini")
+        curator = OpenRouterCuratorProvider(
+            api_key="unused", model=settings.chat_model, spend_service=Spend(), policy=policy
+        )
+>       learner = CompactionLearner(
+            memory_session_factory,
+            principal="owner",
+            settings=settings,
+            embeddings=None,
+            spend=Spend(),
+            curator=curator,
+        )
+E       TypeError: CompactionLearner.__init__() got an unexpected keyword argument 'curator'
+
+tests/test_compaction_learning.py:82: TypeError
+___ test_losing_or_verification_replay_never_changes_instructions[False-128] ___
+
+memory_session_factory = async_sessionmaker(class_='AsyncSession', bind=<sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x10d6ec8d0>, autoflush=True, expire_on_commit=False)
+preview = False, size = 128
+
+    @pytest.mark.parametrize("preview,size", [(False, 128), (False, 64), (True, 64)])
+    async def test_losing_or_verification_replay_never_changes_instructions(
+        memory_session_factory, preview, size
+    ):
+        """SPEC D.2 144 / PLAN M6CP: a model miss cannot cause an unsafe instruction write.
+    
+        F169: the first embedding request stalls and goes back once; the fit still completes.
+        """
+    
+        class Embeddings:
+            stalled = False
+    
+            async def embed_with_receipt(self, texts, context):
+                if not self.stalled:
+                    self.stalled = True
+                    raise EmbeddingTransportError("stalled") from httpx.ReadTimeout("stalled")
+                return [
+                    [1.0, 0.0] if value == "Keep the copper notebook." else [0.0, 1.0]
+                    for value in texts
+                ]
+    
+>       learner = CompactionLearner(
+            memory_session_factory,
+            principal="owner",
+            settings=Settings(database_url="postgresql+asyncpg://unused", token="unused"),
+            embeddings=Embeddings(),
+            spend=None,
+            curator=None,
+        )
+E       TypeError: CompactionLearner.__init__() got an unexpected keyword argument 'curator'
+
+tests/test_compaction_learning.py:134: TypeError
+___ test_losing_or_verification_replay_never_changes_instructions[False-64] ____
+
+memory_session_factory = async_sessionmaker(class_='AsyncSession', bind=<sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x10ce0bb90>, autoflush=True, expire_on_commit=False)
+preview = False, size = 64
+
+    @pytest.mark.parametrize("preview,size", [(False, 128), (False, 64), (True, 64)])
+    async def test_losing_or_verification_replay_never_changes_instructions(
+        memory_session_factory, preview, size
+    ):
+        """SPEC D.2 144 / PLAN M6CP: a model miss cannot cause an unsafe instruction write.
+    
+        F169: the first embedding request stalls and goes back once; the fit still completes.
+        """
+    
+        class Embeddings:
+            stalled = False
+    
+            async def embed_with_receipt(self, texts, context):
+                if not self.stalled:
+                    self.stalled = True
+                    raise EmbeddingTransportError("stalled") from httpx.ReadTimeout("stalled")
+                return [
+                    [1.0, 0.0] if value == "Keep the copper notebook." else [0.0, 1.0]
+                    for value in texts
+                ]
+    
+>       learner = CompactionLearner(
+            memory_session_factory,
+            principal="owner",
+            settings=Settings(database_url="postgresql+asyncpg://unused", token="unused"),
+            embeddings=Embeddings(),
+            spend=None,
+            curator=None,
+        )
+E       TypeError: CompactionLearner.__init__() got an unexpected keyword argument 'curator'
+
+tests/test_compaction_learning.py:134: TypeError
+____ test_losing_or_verification_replay_never_changes_instructions[True-64] ____
+
+memory_session_factory = async_sessionmaker(class_='AsyncSession', bind=<sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x10d1a3810>, autoflush=True, expire_on_commit=False)
+preview = True, size = 64
+
+    @pytest.mark.parametrize("preview,size", [(False, 128), (False, 64), (True, 64)])
+    async def test_losing_or_verification_replay_never_changes_instructions(
+        memory_session_factory, preview, size
+    ):
+        """SPEC D.2 144 / PLAN M6CP: a model miss cannot cause an unsafe instruction write.
+    
+        F169: the first embedding request stalls and goes back once; the fit still completes.
+        """
+    
+        class Embeddings:
+            stalled = False
+    
+            async def embed_with_receipt(self, texts, context):
+                if not self.stalled:
+                    self.stalled = True
+                    raise EmbeddingTransportError("stalled") from httpx.ReadTimeout("stalled")
+                return [
+                    [1.0, 0.0] if value == "Keep the copper notebook." else [0.0, 1.0]
+                    for value in texts
+                ]
+    
+>       learner = CompactionLearner(
+            memory_session_factory,
+            principal="owner",
+            settings=Settings(database_url="postgresql+asyncpg://unused", token="unused"),
+            embeddings=Embeddings(),
+            spend=None,
+            curator=None,
+        )
+E       TypeError: CompactionLearner.__init__() got an unexpected keyword argument 'curator'
+
+tests/test_compaction_learning.py:134: TypeError
+__ test_curator_policy_selects_real_request_model_and_stays_fixed_for_a_pass ___
+
+memory_session_factory = async_sessionmaker(class_='AsyncSession', bind=<sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x10d1cad50>, autoflush=True, expire_on_commit=False)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10da945c0>
+
+    async def test_curator_policy_selects_real_request_model_and_stays_fixed_for_a_pass(
+        memory_session_factory,
+        monkeypatch,
+    ):
+        """FL-154 / A-021 / r9-6: pinned and strongest policies govern future passes.
+    
+        F224: an interleaved learner fit cannot evict a curator pass's retained model.
+        """
+        calls = []
+        receipts = []
+        malformed = False
+        first, second = mint_ulid(), mint_ulid()
+    
+        def respond(request):
+            calls.append(json.loads(request.content)["model"])
+            return httpx.Response(
+                200,
+                json={
+                    "choices": [
+                        {
+                            "message": {
+                                "content": "{}"
+                                if malformed
+                                else json.dumps({"action": "keep", "rationale": "No change is needed."})
+                            }
+                        }
+                    ],
+                    "usage": {"cost": "0.001"},
+                },
+            )
+    
+        class Spend:
+            async def append(self, events):
+                receipts.extend(events)
+    
+        policy = CuratorPolicy(memory_session_factory, "anthropic:claude-sonnet-4-6")
+        await policy.save("local", "pinned:openrouter:openai/gpt-4.1-mini")
+        finding = HealthFinding(
+            ordinal=0, kind="keyword", memory_ids=[uuid4()], evidence={}, fingerprint="a" * 64
+        )
+        report = PalaceHealthReport(
+            principal_id="local",
+            as_of=datetime.now(UTC),
+            corpus_revision="one",
+            active_units=1,
+            clusters=[],
+            findings=[finding],
+            keyword_coverage_percent="100",
+            stats_delta={},
+        )
+        async with httpx.AsyncClient(transport=httpx.MockTransport(respond)) as client:
+            provider = OpenRouterCuratorProvider(
+                api_key="test",
+                model="anthropic:claude-sonnet-4-6",
+                spend_service=Spend(),
+                client=client,
+                policy=policy,
+            )
+            await provider.verdict(finding, report, run_uid=first, machine_id="local-machine")
+            await policy.save("local", "pinned:openrouter:openai/gpt-4.1")
+            await provider.verdict(finding, report, run_uid=first, machine_id="local-machine")
+            await provider.verdict(finding, report, run_uid=second, machine_id="local-machine")
+>           assert await provider.resolve_model("local", first) == "openai/gpt-4.1-mini"
+                         ^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'OpenRouterCuratorProvider' object has no attribute 'resolve_model'
+
+tests/test_curator_policy.py:106: AttributeError
+_____________ test_distribution_metadata_uses_the_package_version ______________
+
+    def test_distribution_metadata_uses_the_package_version() -> None:
+        """P4 is defended by verifying that distribution metadata uses the package version; this
+        prevents drift in the reproducible and least-surprise packaging boundary.
+        """
+>       assert version("nocturne-memory") == __version__ == "0.1.95"
+E       AssertionError: assert '0.1.40' == '0.1.91'
+E         
+E         - 0.1.91
+E         + 0.1.40
+
+tests/test_packaging.py:51: AssertionError
+_________ test_editable_checkout_materializes_the_same_deploy_context __________
+
+tmp_path = PosixPath('/private/var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/pytest-of-nateoswalt/pytest-1346/test_editable_checkout_materia0')
+
+    def test_editable_checkout_materializes_the_same_deploy_context(tmp_path: Path) -> None:
+        """SPEC D.2 097 keeps M2T's owner deploy command usable from the canonical editable
+        workspace after the wheel-only resource failure that motivated this regression.
+        """
+    
+        destination = deploy_resources.materialize_app_source(tmp_path / "checkout-source")
+    
+        assert (destination / "Dockerfile").read_bytes() == (ROOT / "Dockerfile").read_bytes()
+>       assert (destination / "src" / "spine" / "main.py").read_bytes() == (
+            ROOT / "src" / "spine" / "main.py"
+        ).read_bytes()
+E       assert b'"""FastAPI ... return app\n' == b'"""FastAPI ... return app\n'
+E         
+E         At index 8316 diff: b')' != b' '
+E         Use -v to get more diff
+
+tests/test_packaging.py:125: AssertionError
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_unbuilt_rules.py:6: r11-2: shared Palaces and revocable principal grants are horizon work
+SKIPPED [1] tests/test_unbuilt_rules.py:12: r9-9: worker/local cost stores have not converged into the spend ledger
+FAILED tests/test_api.py::test_committed_openapi_is_current - AssertionError:...
+FAILED tests/test_compaction_learning.py::test_stalled_backtest_request_goes_back_once[answers0-2-ReadTimeout]
+FAILED tests/test_compaction_learning.py::test_stalled_backtest_request_goes_back_once[answers1-2-HTTP 503]
+FAILED tests/test_compaction_learning.py::test_stalled_backtest_request_goes_back_once[answers2-2-HTTP 429]
+FAILED tests/test_compaction_learning.py::test_stalled_backtest_request_goes_back_once[answers3-2-None]
+FAILED tests/test_compaction_learning.py::test_stalled_backtest_request_goes_back_once[answers4-1-None]
+FAILED tests/test_compaction_learning.py::test_losing_or_verification_replay_never_changes_instructions[False-128]
+FAILED tests/test_compaction_learning.py::test_losing_or_verification_replay_never_changes_instructions[False-64]
+FAILED tests/test_compaction_learning.py::test_losing_or_verification_replay_never_changes_instructions[True-64]
+FAILED tests/test_curator_policy.py::test_curator_policy_selects_real_request_model_and_stays_fixed_for_a_pass
+FAILED tests/test_packaging.py::test_distribution_metadata_uses_the_package_version
+FAILED tests/test_packaging.py::test_editable_checkout_materializes_the_same_deploy_context
+12 failed, 343 passed, 2 skipped in 49.58s
