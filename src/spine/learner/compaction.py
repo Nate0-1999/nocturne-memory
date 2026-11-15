@@ -12,6 +12,7 @@ from urllib.parse import unquote, urlsplit
 import httpx
 from sqlalchemy import select, text
 
+from spine.curation.provider import background_provider_routing
 from spine.db.models import OptimizationRun, ScorerConfig
 from spine.embeddings import EmbeddingAPIError, EmbeddingReceiptContext, EmbeddingTransportError
 from spine.ids import mint_ulid
@@ -401,6 +402,7 @@ class CompactionLearner:
                     "model": model,
                     "temperature": 0,
                     "usage": {"include": True},
+                    **background_provider_routing(self.settings.chat_base_url.rstrip("/") + "/"),
                     "response_format": {
                         "type": "json_schema",
                         "json_schema": {

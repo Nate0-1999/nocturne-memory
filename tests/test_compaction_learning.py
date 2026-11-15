@@ -102,6 +102,13 @@ async def test_stalled_backtest_request_goes_back_once(
     resolved = await curator.resolve_model("owner", uid)
     assert resolved == "openai/gpt-4.1-mini"
     assert all(json.loads(request.content)["model"] == resolved for request in seen)
+    # A-086: a principal's model policy still wins; routing cannot discard JSON or
+    # silently admit 4-bit hosts, nor exclude every host of an unspecified precision.
+    for request in seen:
+        routing = json.loads(request.content)["provider"]
+        assert routing["require_parameters"] is True
+        assert "unknown" in routing["quantizations"]
+        assert not {"int4", "fp4", "mxfp4", "nvfp4"} & set(routing["quantizations"])
     await curator.aclose()
     if answers[0] == 400:
         # F224 / Invariant 14: preserve the provider's diagnosis without leaking credentials.

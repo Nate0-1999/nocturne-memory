@@ -1,0 +1,110 @@
+F....................................................................... [ 20%]
+........................................................................ [ 40%]
+........................................................................ [ 60%]
+........................................................................ [ 80%]
+.............................................................ss......    [100%]
+=================================== FAILURES ===================================
+_ test_runtime_config_resolution_keeps_the_current_provider_and_scorer_defaults _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10e641490>
+
+    def test_runtime_config_resolution_keeps_the_current_provider_and_scorer_defaults(
+        monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        """SPEC C.5 and A-031 pin exact Spine config resolution before the seam moves."""
+    
+        for field in Settings.model_fields:
+            monkeypatch.delenv(f"SPINE_{field.upper()}", raising=False)
+    
+        defaults = _settings()
+        monkeypatch.setenv("SPINE_EMBED_BASE_URL", "https://api.openai.com/v1")
+        monkeypatch.setenv("SPINE_EMBED_MODEL", "text-embedding-3-small")
+        direct = _settings()
+    
+        def projection(settings: Settings) -> dict[str, object]:
+            return {
+                "tau": settings.tau,
+                "top_k": settings.top_k,
+                "near_miss_k": settings.near_miss_k,
+                "memory_context_share": settings.memory_context_share,
+                "half_life_time_days": settings.half_life_time_days,
+                "half_life_hist_days": settings.half_life_hist_days,
+                "dedup_dup": settings.dedup_dup,
+                "dedup_sim": settings.dedup_sim,
+                "never_bias_step": settings.never_bias_step,
+                "quarantine_kills": settings.quarantine_kills,
+                "candidate_pool": settings.candidate_pool,
+                "embed_base_url": settings.embed_base_url,
+                "embed_model": settings.embed_model,
+                "embed_dim": settings.embed_dim,
+                "memory_max_tokens": settings.memory_max_tokens,
+                "label_max": settings.label_max,
+                "chat_model": settings.chat_model,
+                "spend_view_refresh_seconds": settings.spend_view_refresh_seconds,
+                "reconciliation_hours": settings.reconciliation_hours,
+                "reconciliation_tolerance_usd": str(settings.reconciliation_tolerance_usd),
+                "learner_min_dispositions": settings.learner_min_dispositions,
+                "learner_holdout_fraction": settings.learner_holdout_fraction,
+                "learner_passive_discount": settings.learner_passive_discount,
+                "learner_pair_margin": settings.learner_pair_margin,
+                "learner_bias_l2": settings.learner_bias_l2,
+                "learner_win_margin": settings.learner_win_margin,
+                "retrain_signal_stride": settings.retrain_signal_stride,
+                "optimization_corpus_max_dispositions": (settings.optimization_corpus_max_dispositions),
+                "graph_edge_sim": settings.graph_edge_sim,
+            }
+    
+        expected_defaults = {
+            "tau": 0.55,
+            "top_k": 8,
+            "near_miss_k": 3,
+            "memory_context_share": 0.10,
+            "half_life_time_days": 14,
+            "half_life_hist_days": 7,
+            "dedup_dup": 0.92,
+            "dedup_sim": 0.80,
+            "never_bias_step": -0.15,
+            "quarantine_kills": 3,
+            "candidate_pool": 50,
+            "embed_base_url": "https://openrouter.ai/api/v1",
+            "embed_model": "openai/text-embedding-3-small",
+            "embed_dim": 1536,
+            "memory_max_tokens": 128,
+            "label_max": 64,
+            "chat_model": "anthropic:claude-sonnet-4-6",
+            "spend_view_refresh_seconds": 60,
+            "reconciliation_hours": 24,
+            "reconciliation_tolerance_usd": str(Decimal("0.000001")),
+            "learner_min_dispositions": 25,
+            "learner_holdout_fraction": 0.20,
+            "learner_passive_discount": 0.25,
+            "learner_pair_margin": 0.05,
+            "learner_bias_l2": 1.0,
+            "learner_win_margin": 1.0,
+            "retrain_signal_stride": 25,
+            "optimization_corpus_max_dispositions": 1000,
+            "graph_edge_sim": 0.75,
+        }
+        expected_direct = {
+            **expected_defaults,
+            "embed_base_url": "https://api.openai.com/v1",
+            "embed_model": "text-embedding-3-small",
+        }
+    
+>       assert {"defaults": projection(defaults), "direct": projection(direct)} == {
+            "defaults": expected_defaults,
+            "direct": expected_direct,
+        }
+E       AssertionError: assert {'defaults': ...m': 0.8, ...}} == {'defaults': ...m': 0.8, ...}}
+E         
+E         Differing items:
+E         {'defaults': {'candidate_pool': 50, 'chat_model': 'openrouter:z-ai/glm-5.3-flash', 'dedup_dup': 0.92, 'dedup_sim': 0.8, ...}} != {'defaults': {'candidate_pool': 50, 'chat_model': 'anthropic:claude-sonnet-4-6', 'dedup_dup': 0.92, 'dedup_sim': 0.8, ...}}
+E         {'direct': {'candidate_pool': 50, 'chat_model': 'openrouter:z-ai/glm-5.3-flash', 'dedup_dup': 0.92, 'dedup_sim': 0.8, ...}} != {'direct': {'candidate_pool': 50, 'chat_model': 'anthropic:claude-sonnet-4-6', 'dedup_dup': 0.92, 'dedup_sim': 0.8, ...}}
+E         Use -v to get more diff
+
+tests/golden/test_golden_seams.py:132: AssertionError
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_unbuilt_rules.py:6: r11-2: shared Palaces and revocable principal grants are horizon work
+SKIPPED [1] tests/test_unbuilt_rules.py:12: r9-9: worker/local cost stores have not converged into the spend ledger
+FAILED tests/golden/test_golden_seams.py::test_runtime_config_resolution_keeps_the_current_provider_and_scorer_defaults
+1 failed, 354 passed, 2 skipped in 34.19s

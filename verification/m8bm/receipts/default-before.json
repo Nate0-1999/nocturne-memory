@@ -1,0 +1,23 @@
+{
+  "source_commit": "cdaf5a5b7f392b99ba00fcce4d25720bcd7c4ddc",
+  "background_default": "anthropic:claude-sonnet-4-6",
+  "request_model": "anthropic/claude-sonnet-4-6",
+  "listed": false,
+  "routing": {
+    "provider": {
+      "require_parameters": true,
+      "quantizations": [
+        "int8",
+        "fp6",
+        "fp8",
+        "mxfp8",
+        "fp16",
+        "bf16",
+        "fp32",
+        "unknown"
+      ]
+    }
+  },
+  "direct_provider_routing": {},
+  "paid_request": false
+}

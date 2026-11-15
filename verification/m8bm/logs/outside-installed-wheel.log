@@ -1,0 +1,14 @@
+Processing /var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/nocturne-memory-wheel-c4sivcmf/app-source
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: nocturne-memory
+  Building wheel for nocturne-memory (pyproject.toml): started
+  Building wheel for nocturne-memory (pyproject.toml): finished with status 'done'
+  Created wheel for nocturne-memory: filename=nocturne_memory-0.1.96-py3-none-any.whl size=264607 sha256=3da942a220973b74ad75ba6f8f66ea13cc0f93d5a22665239384163da8d7a8b5
+  Stored in directory: /private/var/folders/97/fytz87ls4yngjvpghz634zlc0000gn/T/pip-ephem-wheel-cache-ebf4o3le/wheels/b6/40/ae/46c5efc55633cd247d16ab497034544e312104c1efbc85eee0
+Successfully built nocturne-memory
+nocturne-memory installed-wheel smoke passed

@@ -1,0 +1,73 @@
+{
+  "http": 200,
+  "result": {
+    "verdict": "preview_only",
+    "verification_included": false,
+    "fit": {
+      "status": "proposed",
+      "incumbent_version": "m2k-01M7C9A78R22N5C3BN254YT3VE",
+      "proposal_version": "m2f-17b6aca856153762",
+      "eligible_dispositions": 94,
+      "training_dispositions": 78,
+      "holdout_dispositions": 16,
+      "training_pairs": 3,
+      "incumbent": {
+        "disagreements": 16,
+        "weighted_disagreements": "16",
+        "injected_tokens": 236,
+        "share_disagreements": 4,
+        "weighted_share_disagreements": "4"
+      },
+      "challenger": {
+        "disagreements": 8,
+        "weighted_disagreements": "8",
+        "injected_tokens": 0,
+        "share_disagreements": 4,
+        "weighted_share_disagreements": "4"
+      },
+      "reason": "Proposal m2f-17b6aca856153762 is ready to audition. It won the back-test; current values keep serving until activation."
+    },
+    "scores": {
+      "incumbent": {
+        "score": 1,
+        "facts": 1,
+        "tokens": 10
+      },
+      "candidate": {
+        "score": 1,
+        "facts": 1,
+        "tokens": 10
+      }
+    },
+    "joint_fit": {
+      "tau": 0.3,
+      "memory_context_share": 0.1,
+      "memory_size": 128,
+      "candidate_memory_size": 96,
+      "creation_improved": false,
+      "proposal_eligible": false,
+      "size_tuning_active": false,
+      "resized_memories": 0,
+      "resized_dispositions": 0,
+      "resized_boundaries": 0,
+      "incumbent": {
+        "disagreements": 16,
+        "weighted_disagreements": "16",
+        "injected_tokens": 236,
+        "share_disagreements": 4,
+        "weighted_share_disagreements": "4"
+      },
+      "candidate": {
+        "disagreements": 8,
+        "weighted_disagreements": "8",
+        "injected_tokens": 0,
+        "share_disagreements": 4,
+        "weighted_share_disagreements": "4"
+      }
+    },
+    "id": "01M7C9GT9HS7F13DF4R26AC8KK"
+  },
+  "elapsed_seconds": 27.179983041947708,
+  "active_before": "m2k-01M7C9A78R22N5C3BN254YT3VE",
+  "active_after": "m2k-01M7C9A78R22N5C3BN254YT3VE"
+}

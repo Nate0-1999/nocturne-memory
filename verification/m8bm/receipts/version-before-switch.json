@@ -1,0 +1,47 @@
+{
+  "harness": {
+    "main": "e72eab8db0245de13c78a5a3ef8d5b4299caedb2",
+    "m8sp": "ff980e1cc3b5a766c0759269f596d4c9946045ec",
+    "branch": "codex/m8bm",
+    "pypi_latest": "0.1.93",
+    "0.1.96_used": false,
+    "tags_0.1.96": "",
+    "open_prs": [
+      {
+        "baseRefName": "main",
+        "headRefName": "claude/m8sp",
+        "number": 114,
+        "title": "M8SP: the strategy readout, the history graph and the Palace scene \u2014 0.1.95"
+      },
+      {
+        "baseRefName": "main",
+        "headRefName": "codex/m8lc",
+        "number": 113,
+        "title": "M8LC: known repeated notes reinforce plainly \u2014 0.1.94"
+      }
+    ],
+    "releases": "nocturne-harness 0.1.93\tLatest\tv0.1.93\t2026-11-11T23:12:48Z\nnocturne-harness 0.1.92\t\tv0.1.92\t2026-11-11T18:56:12Z\nnocturne-harness 0.1.91\t\tv0.1.91\t2026-11-11T17:59:49Z\nnocturne-harness 0.1.90\t\tv0.1.90\t2026-11-11T17:46:14Z\nnocturne-harness 0.1.89\t\tv0.1.89\t2026-11-11T17:39:13Z\n"
+  },
+  "spine": {
+    "main": "c4a7f769f7d56fa00bbd93af7cc424a3d740145b",
+    "m8sp": "f46b0c24a4c82416eeaf06ec7382fe4594f2f279",
+    "branch": "codex/m8bm",
+    "pypi_latest": "0.1.94",
+    "0.1.96_used": false,
+    "tags_0.1.96": "",
+    "open_prs": [
+      {
+        "baseRefName": "main",
+        "headRefName": "claude/m8sp",
+        "number": 110,
+        "title": "M8SP: Memory beside Harness, package version only \u2014 0.1.95"
+      }
+    ],
+    "releases": "nocturne-memory 0.1.94\tLatest\tv0.1.94\t2026-11-12T05:08:02Z\nnocturne-memory 0.1.93\t\tv0.1.93\t2026-11-11T22:58:15Z\nnocturne-memory 0.1.92\t\tv0.1.92\t2026-11-11T18:48:09Z\nnocturne-memory 0.1.91\t\tv0.1.91\t2026-11-11T17:52:59Z\nnocturne-memory 0.1.90\t\tv0.1.90\t2026-11-11T17:39:59Z\n"
+  },
+  "board": [
+    "| M8LC| Back-test completes, no repeat card, a known note is not an error (Codex) | none | DONE | codex / 2026-11-11 / lc11 | reports/309-M8LC.md; pair 0.1.94 drafts Memory 109 / Harness 113; F219/F225 gate accepted; F224 uses curator resolution, three final scout-configuration runs and six mini previews proven; ledger coverage PASS (47 rows); observed shared-key delta $1.69694594; cleaned; fresh no-policy default remains F234, owner's call; gate landing pending |",
+    "| M8SP| Strategy readout, receipts list, Palace in Efficient, history graph (Claude) | none | DONE | claude / 2026-11-11 / sp11 | reports/311-M8SP.md; ledger coverage PASS (39 rows); F218 F223 F226 fixed and walked 3/3 (FL-206 137 138), F222 not a product fault (the scout's browser; FL-155 3/3, no change); pair 0.1.95 prepared: Harness draft PR 114, Memory draft PR 110; lands after M8LC's 0.1.94; the gate merges |",
+    "| M8BM| New Palace background model: open GLM-5.3 Flash, proven against mini (Codex) | none | IN_PROGRESS | codex / 2026-11-13 / bm13 | SD-094; F234; proof before default switch; pair 0.1.96 reserved if proof passes; draft PRs, the gate merges |"
+  ]
+}

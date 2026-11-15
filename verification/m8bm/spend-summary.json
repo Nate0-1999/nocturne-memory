@@ -1,0 +1,11 @@
+{
+  "key_start": 89.522049451,
+  "key_final": 89.791934241,
+  "observed_key_delta_usd": 0.2698847900000061,
+  "sql_lines_usd": 0.262424492,
+  "sql_allocated_usd": 0.1321156,
+  "sql_measured_usd": 0.130308892,
+  "unattributed_key_minus_sql_usd": 0.0074602980000060826,
+  "unpriced_sql_lines": 0,
+  "note": "Key delta is the observed shared-key debit. SQL includes allocated Harness lines; it is not asserted to be the bill. The difference is unattributed; no cause is inferred. All failed, seeding and incidental background attempts remain within this interval."
+}

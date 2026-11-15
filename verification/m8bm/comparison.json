@@ -1,0 +1,281 @@
+{
+  "complete": true,
+  "gate_passed": true,
+  "table": [
+    {
+      "run": "mini-1",
+      "row": "FL-034",
+      "phase": "curator",
+      "model": "openai/gpt-4.1-mini",
+      "run_uid": "01M7C7FCMAE8XWVWYW9FKBCK8G",
+      "status": "completed",
+      "asked": 6,
+      "returned": 6,
+      "malformed_replies": 0,
+      "dropped": 0,
+      "first_reply_seconds": 1.3992280960083008,
+      "wall_seconds": 14.026602499885485,
+      "receipt_cost_usd": 0.0037384000000000002,
+      "receipt_count": 6,
+      "chat_request_receipts": 6,
+      "recovered_chat_attempts": [],
+      "providers": [
+        "OpenAI"
+      ]
+    },
+    {
+      "run": "mini-1",
+      "row": "FL-061",
+      "phase": "backtest",
+      "model": "openai/gpt-4.1-mini",
+      "run_uid": "01M7C7M7N4E7D0D0J3G2BF0QA0",
+      "status": "preview_only",
+      "asked": 6,
+      "returned": 6,
+      "malformed_replies": 0,
+      "dropped": 0,
+      "first_reply_seconds": 1.0642366409301758,
+      "wall_seconds": 12.708847667090595,
+      "receipt_cost_usd": 0.0014591,
+      "receipt_count": 12,
+      "chat_request_receipts": 6,
+      "recovered_chat_attempts": [],
+      "providers": [
+        "OpenAI"
+      ]
+    },
+    {
+      "run": "flash-1",
+      "row": "FL-034",
+      "phase": "curator",
+      "model": "z-ai/glm-5.3-flash",
+      "run_uid": "01M7C7RE7AGZT58XR38E83GGX7",
+      "status": "completed",
+      "asked": 6,
+      "returned": 6,
+      "malformed_replies": 0,
+      "dropped": 0,
+      "first_reply_seconds": 5.220375061035156,
+      "wall_seconds": 55.840708874864504,
+      "receipt_cost_usd": 0.00202255,
+      "receipt_count": 6,
+      "chat_request_receipts": 6,
+      "recovered_chat_attempts": [],
+      "providers": [
+        "BaseTen",
+        "DigitalOcean",
+        "Reka",
+        "Together",
+        "Venice"
+      ]
+    },
+    {
+      "run": "flash-1",
+      "row": "FL-061",
+      "phase": "backtest",
+      "model": "z-ai/glm-5.3-flash",
+      "run_uid": "01M7C829KEX208Q593NG299213",
+      "status": "preview_only",
+      "asked": 6,
+      "returned": 6,
+      "malformed_replies": 0,
+      "dropped": 0,
+      "first_reply_seconds": 1.6672358512878418,
+      "wall_seconds": 103.69928533304483,
+      "receipt_cost_usd": 0.0008595,
+      "receipt_count": 12,
+      "chat_request_receipts": 6,
+      "recovered_chat_attempts": [],
+      "providers": [
+        "BaseTen",
+        "Friendli",
+        "River",
+        "Together"
+      ]
+    },
+    {
+      "run": "mini-2",
+      "row": "FL-034",
+      "phase": "curator",
+      "model": "openai/gpt-4.1-mini",
+      "run_uid": "01M7C8441B5V4THG0ED3H0H740",
+      "status": "completed",
+      "asked": 6,
+      "returned": 6,
+      "malformed_replies": 0,
+      "dropped": 0,
+      "first_reply_seconds": 1.141228199005127,
+      "wall_seconds": 19.743164458079264,
+      "receipt_cost_usd": 0.0037792,
+      "receipt_count": 6,
+      "chat_request_receipts": 6,
+      "recovered_chat_attempts": [],
+      "providers": [
+        "OpenAI"
+      ]
+    },
+    {
+      "run": "mini-2",
+      "row": "FL-061",
+      "phase": "backtest",
+      "model": "openai/gpt-4.1-mini",
+      "run_uid": "01M7C8DBB69YNKVD3J7645DHSA",
+      "status": "preview_only",
+      "asked": 6,
+      "returned": 6,
+      "malformed_replies": 0,
+      "dropped": 0,
+      "first_reply_seconds": 2.6063358783721924,
+      "wall_seconds": 47.68565804208629,
+      "receipt_cost_usd": 0.0015838,
+      "receipt_count": 12,
+      "chat_request_receipts": 6,
+      "recovered_chat_attempts": [],
+      "providers": [
+        "OpenAI"
+      ]
+    },
+    {
+      "run": "flash-2",
+      "row": "FL-034",
+      "phase": "curator",
+      "model": "z-ai/glm-5.3-flash",
+      "run_uid": "01M7C8FCNJ382VFNRJGDCSMF33",
+      "status": "completed",
+      "asked": 7,
+      "returned": 7,
+      "malformed_replies": 0,
+      "dropped": 0,
+      "first_reply_seconds": 2.5086987018585205,
+      "wall_seconds": 26.180310084018856,
+      "receipt_cost_usd": 0.0019794095,
+      "receipt_count": 7,
+      "chat_request_receipts": 7,
+      "recovered_chat_attempts": [],
+      "providers": [
+        "BaseTen",
+        "DigitalOcean",
+        "Friendli",
+        "Morph",
+        "River"
+      ]
+    },
+    {
+      "run": "flash-2",
+      "row": "FL-061",
+      "phase": "backtest",
+      "model": "z-ai/glm-5.3-flash",
+      "run_uid": "01M7C8RPCHCKS4XQF523BKGKPD",
+      "status": "preview_only",
+      "asked": 4,
+      "returned": 4,
+      "malformed_replies": 0,
+      "dropped": 0,
+      "first_reply_seconds": 4.207461595535278,
+      "wall_seconds": 20.574873083038256,
+      "receipt_cost_usd": 0.001290865,
+      "receipt_count": 8,
+      "chat_request_receipts": 4,
+      "recovered_chat_attempts": [],
+      "providers": [
+        "BaseTen",
+        "DigitalOcean"
+      ]
+    },
+    {
+      "run": "mini-3",
+      "row": "FL-034",
+      "phase": "curator",
+      "model": "openai/gpt-4.1-mini",
+      "run_uid": "01M7C8VXCDSA5RPGJ8GCVRWM82",
+      "status": "completed",
+      "asked": 7,
+      "returned": 7,
+      "malformed_replies": 0,
+      "dropped": 0,
+      "first_reply_seconds": 2.032411575317383,
+      "wall_seconds": 14.866288374876603,
+      "receipt_cost_usd": 0.0043908,
+      "receipt_count": 7,
+      "chat_request_receipts": 7,
+      "recovered_chat_attempts": [],
+      "providers": [
+        "OpenAI"
+      ]
+    },
+    {
+      "run": "mini-3",
+      "row": "FL-061",
+      "phase": "backtest",
+      "model": "openai/gpt-4.1-mini",
+      "run_uid": "01M7C94STGQ11HS8A7463YC30Z",
+      "status": "preview_only",
+      "asked": 6,
+      "returned": 6,
+      "malformed_replies": 0,
+      "dropped": 0,
+      "first_reply_seconds": 0.9382610321044922,
+      "wall_seconds": 77.07105062482879,
+      "receipt_cost_usd": 0.00161632,
+      "receipt_count": 12,
+      "chat_request_receipts": 6,
+      "recovered_chat_attempts": [
+        "ReadTimeout"
+      ],
+      "providers": [
+        "OpenAI"
+      ]
+    },
+    {
+      "run": "flash-3",
+      "row": "FL-034",
+      "phase": "curator",
+      "model": "z-ai/glm-5.3-flash",
+      "run_uid": "01M7C990MHD4BN93CCETC6J6FA",
+      "status": "completed",
+      "asked": 6,
+      "returned": 6,
+      "malformed_replies": 0,
+      "dropped": 0,
+      "first_reply_seconds": 6.859256982803345,
+      "wall_seconds": 35.35067058401182,
+      "receipt_cost_usd": 0.0029400299999999997,
+      "receipt_count": 6,
+      "chat_request_receipts": 6,
+      "recovered_chat_attempts": [],
+      "providers": [
+        "Inceptron",
+        "KT",
+        "River",
+        "Together",
+        "Venice"
+      ]
+    },
+    {
+      "run": "flash-3",
+      "row": "FL-061",
+      "phase": "backtest",
+      "model": "z-ai/glm-5.3-flash",
+      "run_uid": "01M7C9GT9HS7F13DF4R26AC8KK",
+      "status": "preview_only",
+      "asked": 6,
+      "returned": 6,
+      "malformed_replies": 0,
+      "dropped": 0,
+      "first_reply_seconds": 0.7518858909606934,
+      "wall_seconds": 27.179983041947708,
+      "receipt_cost_usd": 0.000919675,
+      "receipt_count": 12,
+      "chat_request_receipts": 6,
+      "recovered_chat_attempts": [],
+      "providers": [
+        "DigitalOcean",
+        "Friendli",
+        "Inceptron",
+        "Reka"
+      ]
+    }
+  ],
+  "all_walk_receipts_usd": 0.262424492,
+  "timing": "First reply: first non-whitespace body bytes relative to the first model request. Non-stream replies, not token TTFT. Curator wall: 25th write start through completed activity read; back-test wall: button click through HTTP response and active-value re-read. Costs: all SQL receipts linked to the row's run id; all seed/background/diagnostic costs are additionally in all_walk_receipts_usd and the shared-key delta."
+}
