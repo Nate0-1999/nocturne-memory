@@ -4881,6 +4881,20 @@
         "flag": "",
         "screenshot": "FL-214.png"
       }
+    },
+    {
+      "id": "FL-215",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Nov 16",
+      "label": "A button says what it does and one symbol means one thing: one word per action and one icon per meaning in every module, held in two tables in the kit; a confirmation names the action, the thing and what is lost and answers Yes or No; what the same surface cannot bring back asks first. (Messages, empty states and instructions follow in M8MG.)",
+      "status": "partial",
+      "walk": "Open the app. Sending is Send in the composer; an X only removes a row or closes a panel; Deny wears the barred circle and Approve the check. Press the archive button on a thread, Reset in the layout settings and the bin on a memory: each asks a question that names the action and the thing, says in one line what is lost, and answers with a bare Yes and No. Answer Yes to the archive: the button reads Archiving… until it is done.",
+      "owner": "owner 2026-11-16 (SD-096): \"Today's should be find a ux skill replaying to buttons and user instructions and symbols and implant that to simplify things\"",
+      "surfaces": [
+        "harness/web/src/kit.tsx",
+        "harness/web/src/assets/kit.css",
+        "harness/.claude/skills/nocturne-look/SKILL.md"
+      ]
     }
   ]
 }
