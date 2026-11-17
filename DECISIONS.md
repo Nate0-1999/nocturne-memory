@@ -1578,3 +1578,8 @@ ledger and law copies; the API contract stays 0.1.92.
 PRECEDENT: PLAN M8MG; SD-096; ADR-019. Harness changes message presentation only.
 Memory takes 0.1.98 and the refreshed ledger copy; its behavior and API contract stay unchanged.
 
+## M8WR — Memory version twin (P4)
+
+PRECEDENT: PLAN M8WR; SD-096; ADR-019. Pair 0.1.99 accompanies Harness's presentation
+changes; Memory behavior and API contract 0.1.92 stay unchanged.
+
