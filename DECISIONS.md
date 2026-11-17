@@ -1565,3 +1565,11 @@ requires the asked-for format and excludes known 4-bit hosts while retaining unk
 principal policies, direct providers and the existing one-retry rule retain their behavior.
 The golden default changes under this separately authorized behavior change and its live
 evidence, as tests/golden/README.md requires. Package 0.1.96; API contract remains 0.1.92.
+
+## M8UX — Package twin only [P2.2]
+
+PRECEDENT: PLAN M8UX; SD-096; ADR-019 lockstep packaging.
+The packet changes Harness web controls only. Memory changes its package version to 0.1.97
+(with the OpenAPI version string and the packaging test) and carries the packet's frozen
+ledger and law copies; the API contract stays 0.1.92.
+
