@@ -1573,3 +1573,8 @@ The packet changes Harness web controls only. Memory changes its package version
 (with the OpenAPI version string and the packaging test) and carries the packet's frozen
 ledger and law copies; the API contract stays 0.1.92.
 
+## M8MG — Memory version twin (P4)
+
+PRECEDENT: PLAN M8MG; SD-096; ADR-019. Harness changes message presentation only.
+Memory takes 0.1.98 and the refreshed ledger copy; its behavior and API contract stay unchanged.
+

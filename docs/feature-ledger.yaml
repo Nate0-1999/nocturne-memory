@@ -4886,21 +4886,26 @@
       "id": "FL-215",
       "section": "8. The rack, modules, the Deck and conversation",
       "era": "Nov 16",
-      "label": "A button says what it does and one symbol means one thing: one word per action and one icon per meaning in every module, held in two tables in the kit; a confirmation names the action, the thing and what is lost and answers Yes or No; what the same surface cannot bring back asks first. (Messages, empty states and instructions follow in M8MG.)",
+      "label": "A button says what it does and one symbol means one thing: one word per action and one icon per meaning, held in two tables in the kit; a confirmation names the action, the thing and what is lost and answers Yes or No. Errors name the failure and a next step while preserving authored guidance; an empty state says what fills it; long instructions and legends open on demand.",
       "status": "partial",
-      "walk": "Open the app. Sending is Send in the composer; an X only removes a row or closes a panel; Deny wears the barred circle and Approve the check. Press the archive button on a thread, Reset in the layout settings and the bin on a memory: each asks a question that names the action and the thing, says in one line what is lost, and answers with a bare Yes and No. Answer Yes to the archive: the button reads Archiving… until it is done.",
+      "walk": "Open the app. Sending is Send; X removes or closes; Deny wears the barred circle and Approve the check. Archive a thread, Reset a layout and delete a memory: each question names what is lost and offers bare Yes/No. Archiving… stays visible while busy. Import malformed recipe/plugin JSON and interrupt a read: the message names the failure and recovery, never diagnostics. Preserve an authored refusal and a repeated /remember response. Inspect empty modules for one line saying what fills them; open Roots' Legend and the creation scoring legend. Continue, Wrong and Never remain owner-pending under F240.",
       "owner": "owner 2026-11-16 (SD-096): \"Today's should be find a ux skill replaying to buttons and user instructions and symbols and implant that to simplify things\"",
       "surfaces": [
         "harness/web/src/kit.tsx",
         "harness/web/src/assets/kit.css",
-        "harness/.claude/skills/nocturne-look/SKILL.md"
+        "harness/.claude/skills/nocturne-look/SKILL.md",
+        "harness/web/src/requestFailure.ts",
+        "harness/web/src/rack.tsx",
+        "harness/web/src/App.tsx",
+        "harness/web/src/MemoryGate.tsx",
+        "harness/web/src/WorkVisualization.tsx"
       ],
       "last_walk": {
         "date": "2026-11-16",
-        "packet": "M8UX",
+        "packet": "M8MG",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "verification/m8ux/FL-215.png"
+        "screenshot": "verification/m8mg/FL-215.png"
       }
     }
   ]

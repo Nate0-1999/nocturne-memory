@@ -1,0 +1,35 @@
+{
+  "diffs": [
+    {
+      "repo": "spine",
+      "base": "c5822f137a884e1adadbed182cfd7e6534d3d7ea",
+      "head": "58620a51e655ea66a93b8fd59b4a615c713ca2ba"
+    }
+  ],
+  "affected": {
+    "FL-195": [
+      "spine/docs/feature-ledger.yaml"
+    ],
+    "FL-196": [
+      "spine/docs/frozen-law.json"
+    ]
+  },
+  "required": [
+    "FL-195",
+    "FL-196"
+  ],
+  "protected": [
+    "FL-195",
+    "FL-196"
+  ],
+  "unmapped": [
+    "spine/DECISIONS.md",
+    "spine/openapi.json",
+    "spine/src/spine/__init__.py",
+    "spine/tests/test_packaging.py"
+  ],
+  "labels": {
+    "FL-195": "The feature ledger generates coverage reports and requires evidence for the rows affected by a build.",
+    "FL-196": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents."
+  }
+}
