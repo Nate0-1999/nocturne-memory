@@ -1583,8 +1583,14 @@ Memory takes 0.1.98 and the refreshed ledger copy; its behavior and API contract
 PRECEDENT: PLAN M8WR; SD-096; ADR-019. Pair 0.1.99 accompanies Harness's presentation
 changes; Memory behavior and API contract 0.1.92 stay unchanged.
 
+## M8TO — Memory version twin (P1.2, P4)
+
+PRECEDENT: PLAN M8TO; F230; F243; ADR-019. Pair 0.1.100 accompanies the Harness's repeat of a
+first-turn check and its notice words. The stall F230 saw is inside the Palace (F243: the
+embedding wait and the database pool wait both equal the Harness's 30 s); bounding them is left
+to the owner. Memory behavior and API contract 0.1.92 stay unchanged.
+
 ## M8UP — Memory version twin (P4)
 
 PRECEDENT: PLAN M8UP, ADR-013. Pair 0.1.101 accompanies the Harness dependency
 upgrade; Memory behavior and API contract 0.1.92 stay unchanged.
-

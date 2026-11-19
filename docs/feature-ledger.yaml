@@ -407,11 +407,11 @@
         "harness/web/src/frontDoor.ts"
       ],
       "last_walk": {
-        "date": "2026-11-11",
-        "packet": "M6W1A",
+        "date": "2026-11-18",
+        "packet": "M8TO",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "verification/m6w1a/FL-018.png"
+        "screenshot": "verification/m8to/FL-018.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -3744,14 +3744,15 @@
       "surfaces": [
         "harness/src/harness/spine_client.py",
         "harness/src/harness/memory_bridge.py",
-        "harness/src/harness/receipt_queue.py"
+        "harness/src/harness/receipt_queue.py",
+        "harness/src/harness/memory_gate.py"
       ],
       "last_walk": {
-        "date": "2026-11-11",
-        "packet": "M6W1A",
+        "date": "2026-11-18",
+        "packet": "M8TO",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "verification/m6w1a/FL-165.png"
+        "screenshot": "verification/m8to/FL-165.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-10-14"
@@ -3927,14 +3928,15 @@
       "surfaces": [
         "harness/src/harness/daemon.py",
         "harness/src/harness/onboarding.py",
-        "harness/web/src/rack.tsx"
+        "harness/web/src/rack.tsx",
+        "harness/src/harness/spine_client.py"
       ],
       "last_walk": {
-        "date": "2026-11-11",
-        "packet": "M6W1A",
+        "date": "2026-11-18",
+        "packet": "M8TO",
         "verdict": "BLOCKED",
         "flag": "F214",
-        "screenshot": "verification/m6w1a/FL-173.png"
+        "screenshot": "verification/m8to/FL-173.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -4903,11 +4905,11 @@
         "harness/web/src/WorkVisualization.tsx"
       ],
       "last_walk": {
-        "date": "2026-11-17",
-        "packet": "M8WR",
+        "date": "2026-11-18",
+        "packet": "M8TO",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "verification/m8wr/FL-215.png"
+        "screenshot": "verification/m8to/FL-215.png"
       }
     }
   ]
