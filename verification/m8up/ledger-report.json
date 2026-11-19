@@ -7,14 +7,26 @@
     {
       "repo": "spine",
       "base": "a8a4a8a8b12e08562cd1a696ef4bb8dc0d6bac82",
-      "head": "1a0e7806fe9a11b74d62ff9c7bbf3b5f9ffc09f4"
+      "head": "882757a70ccc433efc8b03b26a7fb092558c3855"
     }
   ],
   "unmapped": {
     "spine/DECISIONS.md": "Compatibility and version-twin decision journal only.",
     "spine/openapi.json": "Generated info.version only; endpoint schemas and API contract unchanged.",
     "spine/src/spine/__init__.py": "Lockstep package version metadata only.",
-    "spine/tests/test_packaging.py": "Existing verification update only; no shipped runtime behavior."
+    "spine/tests/test_packaging.py": "Existing verification update only; no shipped runtime behavior.",
+    "spine/verification/m8up/FL-186.png": "M8UP verification/evidence only; excluded from the shipped wheel and sdist.",
+    "spine/verification/m8up/FL-193.png": "M8UP verification/evidence only; excluded from the shipped wheel and sdist.",
+    "spine/verification/m8up/FL-195.png": "M8UP verification/evidence only; excluded from the shipped wheel and sdist.",
+    "spine/verification/m8up/FL-196.png": "M8UP verification/evidence only; excluded from the shipped wheel and sdist.",
+    "spine/verification/m8up/SHA256SUMS": "M8UP verification/evidence only; excluded from the shipped wheel and sdist.",
+    "spine/verification/m8up/ledger-report.json": "M8UP verification/evidence only; excluded from the shipped wheel and sdist.",
+    "spine/verification/m8up/receipts/cleanup.json": "M8UP verification/evidence only; excluded from the shipped wheel and sdist.",
+    "spine/verification/m8up/receipts/compaction-label-failure.json": "M8UP verification/evidence only; excluded from the shipped wheel and sdist.",
+    "spine/verification/m8up/receipts/fence-walk.json": "M8UP verification/evidence only; excluded from the shipped wheel and sdist.",
+    "spine/verification/m8up/receipts/linux-fence.txt": "M8UP verification/evidence only; excluded from the shipped wheel and sdist.",
+    "spine/verification/m8up/receipts/m3pv-ported.txt": "M8UP verification/evidence only; excluded from the shipped wheel and sdist.",
+    "spine/verification/m8up/receipts/spend-final.json": "M8UP verification/evidence only; excluded from the shipped wheel and sdist."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
