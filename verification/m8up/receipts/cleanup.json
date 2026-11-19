@@ -1,0 +1,15 @@
+{
+  "ports_free": {
+    "8178": true,
+    "8878": true,
+    "9678": true,
+    "55578": true
+  },
+  "compose_project": "nocturne-d2217ecc",
+  "database_dropped": true,
+  "cloud_palace_created": false,
+  "owner_palace_accessed": false,
+  "owner_nocturne_home_accessed": false,
+  "task_credential_copy_removed": true,
+  "headless_browser_closed": true
+}
