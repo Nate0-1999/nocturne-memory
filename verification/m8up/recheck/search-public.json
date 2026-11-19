@@ -1,0 +1,85 @@
+{
+  "rg": null,
+  "cases": [
+    {
+      "arguments": {
+        "pattern": "alpha",
+        "ignoreCase": true
+      },
+      "success": true,
+      "content": "a.txt:2:Alpha alpha [x]\nalias.txt:2:Alpha alpha [x]\nsub/b.txt:1:alpha\nsub/b.txt:2:ALPHA"
+    },
+    {
+      "arguments": {
+        "pattern": "(?<=Alpha )alpha"
+      },
+      "success": true,
+      "content": "a.txt:2:Alpha alpha [x]\nalias.txt:2:Alpha alpha [x]"
+    },
+    {
+      "arguments": {
+        "pattern": "(?P<x>Beta) (?P=x)"
+      },
+      "success": true,
+      "content": "a.txt:3:Beta Beta\nalias.txt:3:Beta Beta"
+    },
+    {
+      "arguments": {
+        "pattern": "[x]",
+        "literal": true
+      },
+      "success": true,
+      "content": "a.txt:2:Alpha alpha [x]\nalias.txt:2:Alpha alpha [x]"
+    },
+    {
+      "arguments": {
+        "pattern": "alpha",
+        "ignoreCase": true,
+        "glob": "**/*.txt",
+        "context": 1
+      },
+      "success": true,
+      "content": "[a.txt | 4 lines | hash:8c38346cbd4b]\n     1\tstart\n     2\tAlpha alpha [x]\n     3\tBeta Beta\n... (1 more lines. Use offset=3 to continue reading.)\n\n--\n[alias.txt | 4 lines | hash:8c38346cbd4b]\n     1\tstart\n     2\tAlpha alpha [x]\n     3\tBeta Beta\n... (1 more lines. Use offset=3 to continue reading.)\n\n--\n[sub/b.txt | 3 lines | hash:df363fccb626]\n     1\talpha\n     2\tALPHA\n     3\tBeta\n"
+    },
+    {
+      "arguments": {
+        "pattern": "Alpha",
+        "path": "a.txt",
+        "context": 1
+      },
+      "success": true,
+      "content": "[. | 4 lines | hash:8c38346cbd4b]\n     1\tstart\n     2\tAlpha alpha [x]\n     3\tBeta Beta\n... (1 more lines. Use offset=3 to continue reading.)\n"
+    },
+    {
+      "arguments": {
+        "pattern": "a",
+        "ignoreCase": true,
+        "limit": 1
+      },
+      "success": true,
+      "content": "a.txt:1:start\n[... truncated at 1 matches]"
+    },
+    {
+      "arguments": {
+        "pattern": "Beta",
+        "limit": 3
+      },
+      "success": true,
+      "content": "a.txt:3:Beta Beta\nalias.txt:3:Beta Beta\nsub/b.txt:3:Beta"
+    },
+    {
+      "arguments": {
+        "pattern": "no matches"
+      },
+      "success": true,
+      "content": "No matches found."
+    },
+    {
+      "arguments": {
+        "pattern": "["
+      },
+      "success": false,
+      "content": "Invalid regex pattern: unterminated character set at position 0"
+    }
+  ]
+}

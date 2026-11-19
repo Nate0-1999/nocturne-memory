@@ -1,0 +1,45 @@
+{
+ "ok": true,
+ "result": {
+  "thread": "b35b5a23-56dd-402a-ab46-1e3a326f52a2",
+  "steps": [
+   {
+    "step": "first-answer",
+    "answer": "NOCTURNE\n\nThe M8UP verification phrase is copper orchid 619.\n\nTOOLS · 0 CALLS"
+   },
+   {
+    "step": "file-shell",
+    "answer": "NOCTURNE\n\nThe exact content of note.txt is: \"M8UP copper orchid 619\"\n\nThe exact output of the command printf M8UP-SHELL-7 is: \"M8UP-SHELL-7\"\n\nTOOLS · 2 CALLS"
+   },
+   {
+    "step": "search",
+    "answer": "NOCTURNE\n\nThe grep results on note.txt are:\n\nFor pattern \"COPPER\" with ignoreCase true: line 1 contains \"M8UP copper orchid 619\"\nFor regex \"(?<=copper )orchid\\s+\\d+\" with literal false: line 1 contains \"M8UP copper orchid 619\"\n\nThe find result for \"*.txt\" is:\n\nnote.txt\n\nThe ls of the current folder shows:\n\nnote.txt (23 bytes)\nprobe.html (73 bytes)\nsub/ (directory)\nTwo hidden entries (not listed)\nTOOLS · 4 CALLS"
+   },
+   {
+    "step": "remember",
+    "answer": "NOCTURNE\n\nRemembered 'm8up greenhouse delivery schedule' (f74bf4f0-6f7d-4f43-af69-24934b61967e)."
+   },
+   {
+    "step": "skill",
+    "answer": "NOCTURNE\n\nThe reference marker in the m8up-check skill is: M8UP-SKILL-OK\n\nTOOLS · 2 CALLS"
+   },
+   {
+    "step": "browser",
+    "answer": "NOCTURNE\n\nThe heading (title) of probe.html is: M8UP browser proof\n\nThe page body text contains: M8UP-BROWSER-OK\n\nTOOLS · 2 CALLS"
+   },
+   {
+    "step": "model",
+    "answer": "NOCTURNE\n\nModel re-resolved to openrouter:openai/gpt-4.1-mini in a new stickiness epoch. Context window: 1047576 tokens.\n\nTOOLS · 0 CALLS"
+   },
+   {
+    "step": "compact",
+    "answer": "NOCTURNE\nCONVERSATION COMPACTED · FULL HISTORY KEPT IN THE JOURNAL\n\nContext compacted with memories-then-drop.\n\nTOOLS · 0 CALLS"
+   },
+   {
+    "step": "recover",
+    "answer": "NOCTURNE\n\nM8UP-RECOVER-7\n\nTOOLS · 1 CALL"
+   }
+  ],
+  "gate": "FIRST-TURN MEMORY CHECK\n\nREVIEW WHAT HARNESS REMEMBERS\n\nReview the memories before the model starts.\n\nStage\nreview\nInjection\ndb8458f3-89a3-4bc7-b4bc-d096f4983466\nRetrieval recipe\nm3tl-where-v1\nSnapshot\n2026-11-19T15:57:47.487155Z\nINJECTED MEMORIES\n\n1 SELECTED\n\n0.734\nm8up verification phrase\nREMOVE\nDELETE\n\nThe M8UP verification phrase is copper orchid 619.\n\nNEAR MISSES\n\n0 ADDED\n\nSave more memories to see near-miss suggestions.\n\n1 MEMORY WILL BE USED\n0 removed · 0 added\nSTOP RUN\nCONTINUE"
+ }
+}

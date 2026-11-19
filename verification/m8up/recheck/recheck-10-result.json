@@ -1,0 +1,45 @@
+{
+ "ok": true,
+ "result": {
+  "thread": "6b41fb56-d743-445d-af51-5177362683c3",
+  "steps": [
+   {
+    "step": "first-answer",
+    "answer": "NOCTURNE\n\nThe M8UP verification phrase is copper orchid 619.\n\nTOOLS · 0 CALLS"
+   },
+   {
+    "step": "file-shell",
+    "answer": "NOCTURNE\n\nThe exact content of note.txt is: \"M8UP copper orchid 619\"\n\nThe exact output from the command printf M8UP-SHELL-10 is: \"M8UP-SHELL-10\"\n\nTOOLS · 2 CALLS"
+   },
+   {
+    "step": "search",
+    "answer": "NOCTURNE\n\nThe results are as follows:\n\nGrep with pattern \"COPPER\" ignoring case on note.txt:\n\nLine 1: M8UP copper orchid 619\n\nGrep with regex \"(?<=copper )orchid\\s+\\d+\" on note.txt:\n\nLine 1: M8UP copper orchid 619\n\nFind for files matching *.txt:\n\nnote.txt\n\nListing current folder shows:\n\nnote.txt (23 bytes)\nprobe.html (73 bytes)\nsub/ (directory)\nPlus 2 hidden entries not listed\n\nLet me know if you want to see or do anything else with these files or data.\n\nTOOLS · 4 CALLS"
+   },
+   {
+    "step": "remember",
+    "answer": "NOCTURNE\n\nAlready known — reinforced 'm8up greenhouse delivery schedule'."
+   },
+   {
+    "step": "skill",
+    "answer": "NOCTURNE\n\nThe reference marker in the m8up-check skill is exactly: M8UP-SKILL-OK\n\nTOOLS · 2 CALLS"
+   },
+   {
+    "step": "browser",
+    "answer": "NOCTURNE\n\nThe heading (title) of the file probe.html is \"M8UP browser proof\".\n\nThe visible content includes the phrase: \"M8UP-BROWSER-OK\".\n\nTOOLS · 2 CALLS"
+   },
+   {
+    "step": "model",
+    "answer": "NOCTURNE\n\nModel re-resolved to openrouter:openai/gpt-4.1-mini in a new stickiness epoch. Context window: 1047576 tokens.\n\nTOOLS · 0 CALLS"
+   },
+   {
+    "step": "compact",
+    "answer": "NOCTURNE\nCONVERSATION COMPACTED · FULL HISTORY KEPT IN THE JOURNAL\n\nContext compacted with memories-then-drop.\n\nTOOLS · 0 CALLS"
+   },
+   {
+    "step": "recover",
+    "answer": "NOCTURNE\n\nM8UP-RECOVER-10\n\nTOOLS · 1 CALL"
+   }
+  ],
+  "gate": "FIRST-TURN MEMORY CHECK\n\nREVIEW WHAT HARNESS REMEMBERS\n\nReview the memories before the model starts.\n\nStage\nreview\nInjection\ndb6e34a3-9dc0-4f0e-8e04-2a5cdc8d78f4\nRetrieval recipe\nm3tl-where-v1\nSnapshot\n2026-11-19T16:07:18.379823Z\nINJECTED MEMORIES\n\n1 SELECTED\n\n0.754\nm8up verification phrase\nREMOVE\nDELETE\n\nThe M8UP verification phrase is copper orchid 619.\n\nNEAR MISSES\n\n0 ADDED\n\n0.547\nm8up greenhouse delivery schedule\nADD\nREMOVE\nDELETE\n\nThe M8UP greenhouse delivery arrives Thursday at station nine.\n\n1 MEMORY WILL BE USED\n0 removed · 0 added\nSTOP RUN\nCONTINUE"
+ }
+}

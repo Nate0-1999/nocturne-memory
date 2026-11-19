@@ -1,0 +1,7 @@
+{
+  "excluded_calls": [
+    {"batch":"pilot", "side":"candidate", "run":6, "reason":"Stopped while awaiting the model during transcript reconstruction review; no completed outcome was retained."},
+    {"batch":"recheck", "side":"candidate", "run":2, "reason":"Stopped after more than six minutes waiting with an established provider connection, after ten other candidate extractions completed. No completed outcome was retained."}
+  ],
+  "policy":"These calls have unknown draft/retry outcomes and are excluded from measured completed-trial counts. Their spend remains inside the shared-key delta. All completed trials, including the byte-identical preliminary transcript batch, are retained and counted."
+}

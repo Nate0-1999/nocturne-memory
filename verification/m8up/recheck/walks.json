@@ -1,0 +1,158 @@
+[
+  {
+    "attempt": 7,
+    "thread": "b35b5a23-56dd-402a-ab46-1e3a326f52a2",
+    "source_journal_sha256": "b07a97f5edcbde7a414a6ddababc22ac302ef516baa5c3c6d8a914e510279ab5",
+    "complete": true,
+    "grep_calls": [
+      {
+        "args": "{\"pattern\":\"COPPER\",\"path\":\"note.txt\",\"ignore_case\":true}",
+        "id": null,
+        "part_kind": "tool-call",
+        "provider_details": null,
+        "provider_name": null,
+        "tool_call_id": "call_fzVafaqQ5RyYVAsU4eu3LckQ",
+        "tool_kind": null,
+        "tool_name": "grep"
+      },
+      {
+        "args": "{\"pattern\":\"(?<=copper )orchid\\\\s+\\\\d+\",\"path\":\"note.txt\",\"ignore_case\":false,\"literal\":false}",
+        "id": null,
+        "part_kind": "tool-call",
+        "provider_details": null,
+        "provider_name": null,
+        "tool_call_id": "call_WXdlHol1ybog40HP280IrESe",
+        "tool_kind": null,
+        "tool_name": "grep"
+      }
+    ],
+    "grep_returns": [
+      {
+        "content": ".:1:M8UP copper orchid 619",
+        "metadata": null,
+        "outcome": "success",
+        "part_kind": "tool-return",
+        "retry": null,
+        "timestamp": "2026-11-19T15:58:20.374339Z",
+        "tool_call_id": "call_fzVafaqQ5RyYVAsU4eu3LckQ",
+        "tool_kind": null,
+        "tool_name": "grep"
+      },
+      {
+        "content": ".:1:M8UP copper orchid 619",
+        "metadata": null,
+        "outcome": "success",
+        "part_kind": "tool-return",
+        "retry": null,
+        "timestamp": "2026-11-19T15:58:20.374894Z",
+        "tool_call_id": "call_WXdlHol1ybog40HP280IrESe",
+        "tool_kind": null,
+        "tool_name": "grep"
+      }
+    ]
+  },
+  {
+    "attempt": 8,
+    "thread": "14591106-c272-4db6-8f93-53bad7e74b0e",
+    "source_journal_sha256": "8d6056674d21264a61c9cdc5b8bf4c74ff1d56f87a91fda86f0c0d8c7d44dec3",
+    "complete": true,
+    "grep_calls": [
+      {
+        "args": "{\"pattern\":\"COPPER\",\"path\":\"note.txt\",\"ignore_case\":true}",
+        "id": null,
+        "part_kind": "tool-call",
+        "provider_details": null,
+        "provider_name": null,
+        "tool_call_id": "call_k2F9BnUb4HaILeyxuGnUv4JL",
+        "tool_kind": null,
+        "tool_name": "grep"
+      },
+      {
+        "args": "{\"pattern\":\"(?<=copper )orchid\\\\s+\\\\d+\",\"path\":\"note.txt\",\"ignore_case\":false,\"literal\":false}",
+        "id": null,
+        "part_kind": "tool-call",
+        "provider_details": null,
+        "provider_name": null,
+        "tool_call_id": "call_g8RHJ7pt45eTcxRVumZmaiSb",
+        "tool_kind": null,
+        "tool_name": "grep"
+      }
+    ],
+    "grep_returns": [
+      {
+        "content": ".:1:M8UP copper orchid 619",
+        "metadata": null,
+        "outcome": "success",
+        "part_kind": "tool-return",
+        "retry": null,
+        "timestamp": "2026-11-19T16:00:35.467255Z",
+        "tool_call_id": "call_k2F9BnUb4HaILeyxuGnUv4JL",
+        "tool_kind": null,
+        "tool_name": "grep"
+      },
+      {
+        "content": ".:1:M8UP copper orchid 619",
+        "metadata": null,
+        "outcome": "success",
+        "part_kind": "tool-return",
+        "retry": null,
+        "timestamp": "2026-11-19T16:00:35.467775Z",
+        "tool_call_id": "call_g8RHJ7pt45eTcxRVumZmaiSb",
+        "tool_kind": null,
+        "tool_name": "grep"
+      }
+    ]
+  },
+  {
+    "attempt": 10,
+    "thread": "6b41fb56-d743-445d-af51-5177362683c3",
+    "source_journal_sha256": "5fe8acd95ba855700bbdd6fc0be0cb12f3020f4ba1c443db4b282f7113252d64",
+    "complete": true,
+    "grep_calls": [
+      {
+        "args": "{\"pattern\":\"COPPER\",\"ignore_case\":true,\"path\":\"note.txt\"}",
+        "id": null,
+        "part_kind": "tool-call",
+        "provider_details": null,
+        "provider_name": null,
+        "tool_call_id": "call_MjJXufZX4qigyREpSZxlGebK",
+        "tool_kind": null,
+        "tool_name": "grep"
+      },
+      {
+        "args": "{\"pattern\":\"(?<=copper )orchid\\\\s+\\\\d+\",\"ignore_case\":false,\"literal\":false,\"path\":\"note.txt\"}",
+        "id": null,
+        "part_kind": "tool-call",
+        "provider_details": null,
+        "provider_name": null,
+        "tool_call_id": "call_6MTSF80agrtt9ekjKCFbcFj8",
+        "tool_kind": null,
+        "tool_name": "grep"
+      }
+    ],
+    "grep_returns": [
+      {
+        "content": ".:1:M8UP copper orchid 619",
+        "metadata": null,
+        "outcome": "success",
+        "part_kind": "tool-return",
+        "retry": null,
+        "timestamp": "2026-11-19T16:07:44.637504Z",
+        "tool_call_id": "call_MjJXufZX4qigyREpSZxlGebK",
+        "tool_kind": null,
+        "tool_name": "grep"
+      },
+      {
+        "content": ".:1:M8UP copper orchid 619",
+        "metadata": null,
+        "outcome": "success",
+        "part_kind": "tool-return",
+        "retry": null,
+        "timestamp": "2026-11-19T16:07:44.637970Z",
+        "tool_call_id": "call_6MTSF80agrtt9ekjKCFbcFj8",
+        "tool_kind": null,
+        "tool_name": "grep"
+      }
+    ]
+  }
+]

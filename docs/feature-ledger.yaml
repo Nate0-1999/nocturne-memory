@@ -4214,8 +4214,8 @@
       "last_walk": {
         "packet": "M8UP",
         "date": "2026-11-19",
-        "verdict": "FAIL",
-        "flag": "F245",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "verification/m8up/FL-186.png"
       }
     },
@@ -4375,8 +4375,8 @@
       "last_walk": {
         "packet": "M8UP",
         "date": "2026-11-19",
-        "verdict": "FAIL",
-        "flag": "F245",
+        "verdict": "PASS",
+        "flag": "",
         "screenshot": "verification/m8up/FL-193.png"
       }
     },
