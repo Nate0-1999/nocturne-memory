@@ -1,0 +1,8 @@
+All six file tools stay in the app's Python process. No external program is invoked by a file tool.
+read: upstream FileSystemToolset.read_file -> LocalWorkspaceBackend filesystem read (Python).
+write: upstream FileSystemToolset.write_file -> LocalWorkspaceBackend filesystem write (Python).
+edit: upstream FileSystemToolset.edit_file -> LocalWorkspaceBackend filesystem read/write (Python), after the existing owned edit preflight.
+grep: owned adapter -> pathlib directory walk, bytes read, Python re search; context uses upstream read_file. Neither rg nor POSIX grep.
+find: upstream FileSystemToolset.find_files -> FileSystemToolset _walk -> LocalWorkspaceBackend.list_dir and Python pattern matching. No find executable.
+ls: upstream FileSystemToolset.list_directory -> FileSystemToolset _walk -> LocalWorkspaceBackend.list_dir and filesystem stat. No ls executable.
+The shell tools separately invoke their existing fenced shell; this is unchanged.

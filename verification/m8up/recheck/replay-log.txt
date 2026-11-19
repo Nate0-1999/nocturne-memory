@@ -1,0 +1,3 @@
+{"side": "public", "run": 1, "completed": true, "first_overlong": false, "retry_recovered": false, "packet_spend_after": 0.0879435199999999}
+{"side": "candidate", "run": 1, "completed": true, "first_overlong": false, "retry_recovered": false, "packet_spend_after": 0.0879435199999999}
+{"side": "public", "run": 2, "completed": true, "first_overlong": true, "retry_recovered": true, "packet_spend_after": 0.09201552000000775}

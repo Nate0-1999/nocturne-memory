@@ -1,0 +1,7 @@
+{
+  "PATH": "/Users/nateoswalt/relay/m8up/scratch/no-rg-bin",
+  "rg": null,
+  "suite_cwd": "/Users/nateoswalt/relay/m8up/harness",
+  "suite_command": ".venv/bin/pytest -m 'not contract' -q",
+  "method": "Only this symlink directory on PATH; every rg basename excluded; ChatGPT Resources directory omitted."
+}

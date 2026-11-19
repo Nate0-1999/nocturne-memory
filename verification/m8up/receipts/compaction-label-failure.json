@@ -1,0 +1,9 @@
+{
+  "attempt": 5,
+  "thread": "eb7eec95-cf59-4cb6-9446-8c12ea5aa744",
+  "run_id": "01M7T5ZKHE3X5SY0PRY4EX84GP",
+  "error": "Exceeded maximum output retries (1)",
+  "trace_excerpt": "pydantic_core._pydantic_core.ValidationError: 1 validation error for ExtractionDraft\ncandidates.4.label\n  String should have at most 64 characters [type=string_too_long, input_value=\"probe.html heading is 'M... text 'M8UP-BROWSER-OK'\", input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_too_long",
+  "flag": "F245",
+  "attempt_6_trace": "pydantic_core._pydantic_core.ValidationError: 1 validation error for ExtractionDraft\ncandidates.4.label\n  String should have at most 64 characters [type=string_too_long, input_value=\"probe.html heading is 'M... text 'M8UP-BROWSER-OK'\", input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_too_long"
+}

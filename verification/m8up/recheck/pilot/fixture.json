@@ -1,0 +1,41 @@
+{
+  "source_journal": "eb11e513ed879664d2054f16e40c1dee958ec081b4f3ce7dfe4874f70b882f95.jsonl",
+  "source_sha256": "431167c9035d080227eca75fdf8dbb192f09e89c739e4c83f790211cd69e59a4",
+  "transcript_sha256": "c846eff2e05d310cf501ee2648e302ee033eb8416a99ba04ab1b2bde3e040a34",
+  "reconstruction": "Recorded completed chat prompts, provider part_end parts and function_tool_result parts; omit /remember, /model and /compact as the runtime does. Strip proposed-response blocks before rendering the compaction transcript.",
+  "messages": 18,
+  "locations": {
+    "m0": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m1": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m2": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m3": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m4": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m5": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m6": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m7": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m8": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m9": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m10": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m11": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m12": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m13": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m14": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m15": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m16": "/Users/nateoswalt/relay/m8up/walk/project",
+    "m17": "/Users/nateoswalt/relay/m8up/walk/project"
+  },
+  "summary_prompt": "You are a context summarization assistant.  The conversation below will be replaced by your summary, so it must carry everything needed to continue the task.\n\nWrite the summary under these exact section headings, omitting a section only if it has no content:\n\n## Intent\nThe user's overall goal and any standing constraints or preferences.\n\n## Key decisions\nChoices made and the reasoning, so they are not relitigated.\n\n## Artifacts\nFiles, paths, identifiers, commands, and APIs touched -- quote exact names.\n\n## Current state\nWhat is done and what is in progress right now.\n\n## Next steps\nThe immediate actions still required to finish the task.\n\n## Open questions\nUnresolved questions or blockers.\n\nFocus on results, not a replay of completed actions.  Respond ONLY with the summary -- no preamble, no markdown fences.\n\n<messages>\n{messages}\n</messages>",
+  "extraction_instruction": "Compact the supplied conversation in ONE pass, following the supplied summary strategy. Still-live context for the current work goes in working_summary and open_loops. In candidates, keep the things an agent continuing this problem in the future would want to know: write each as a self-contained fact sentence that names its own subject and gets at the problem and its solution concisely. Shorten a single fact to at most 128 cl100k_base tokens by removing repetition, keeping its meaning and qualifiers. Split only when it contains multiple independent facts that each stand alone. Give each independent fact its own candidate, even when several would fit together under the cap. Keep what the user stated, decided or corrected unless it only mattered for the moment. Leave out step-by-step progress and common knowledge. Never write a secret, credential, token, password or key into any field, not even to say that one was shared. A fact you derived lists in source_message_ids the message or tool result that verified it; a claim nothing in the conversation verified begins with 'Unverified:'. Give each candidate a label of at most 64 characters and 2-5 distinct lowercase keywords. Every transcript message has an id (its message_id or its [mN] label); list in each candidate's source_message_ids the ids of the messages its fact was drawn from.",
+  "model_settings": {
+    "extra_body": {
+      "session_id": "eb7eec95-cf59-4cb6-9446-8c12ea5aa744:epoch:1"
+    },
+    "openrouter_usage": {
+      "include": true
+    },
+    "openrouter_cache_instructions": true,
+    "openrouter_cache_messages": true,
+    "openrouter_cache_tool_definitions": true,
+    "temperature": 0
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "transcript_sha256": "c846eff2e05d310cf501ee2648e302ee033eb8416a99ba04ab1b2bde3e040a34",
+  "transcript_check": "Both reconstruction methods render byte-identical text. All completed calls are counted; two interrupted calls have unknown outcomes and are listed separately.",
+  "sides": {
+    "public": {
+      "completed": 10,
+      "first_drafts_over_64": 5,
+      "of_those_retry_recovered": 5,
+      "versions": {
+        "nocturne-harness": "0.1.99",
+        "pydantic-ai": "2.43.0",
+        "pydantic-ai-harness": "0.31.0"
+      },
+      "trials": [
+        "public-01.json",
+        "public-02.json",
+        "public-11.json",
+        "public-12.json",
+        "pilot/public-01.json",
+        "pilot/public-02.json",
+        "pilot/public-03.json",
+        "pilot/public-04.json",
+        "pilot/public-05.json",
+        "pilot/public-06.json"
+      ]
+    },
+    "candidate": {
+      "completed": 10,
+      "first_drafts_over_64": 6,
+      "of_those_retry_recovered": 6,
+      "versions": {
+        "nocturne-harness": "0.1.101",
+        "pydantic-ai": "2.71.0",
+        "pydantic-ai-harness": "0.71.0"
+      },
+      "trials": [
+        "candidate-01.json",
+        "candidate-11.json",
+        "candidate-12.json",
+        "candidate-13.json",
+        "candidate-14.json",
+        "pilot/candidate-01.json",
+        "pilot/candidate-02.json",
+        "pilot/candidate-03.json",
+        "pilot/candidate-04.json",
+        "pilot/candidate-05.json"
+      ]
+    }
+  },
+  "finding": "All observed overlong first drafts recovered on the existing single output retry, on both versions; no observed reduction in label recovery. The finite sample does not establish equal long-run failure rates. Leave F245 and extraction behavior unchanged."
+}

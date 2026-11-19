@@ -1,0 +1,6 @@
+{"side": "public", "run": 11, "completed": true, "first_overlong": false, "retry_recovered": false, "packet_spend_after": 0.12303632000000093}
+{"side": "candidate", "run": 11, "completed": true, "first_overlong": true, "retry_recovered": true, "packet_spend_after": 0.12416238000000519}
+{"side": "public", "run": 12, "completed": true, "first_overlong": false, "retry_recovered": false, "packet_spend_after": 0.126202600000003}
+{"side": "candidate", "run": 12, "completed": true, "first_overlong": true, "retry_recovered": true, "packet_spend_after": 0.126202600000003}
+{"side": "candidate", "run": 13, "completed": true, "first_overlong": false, "retry_recovered": false, "packet_spend_after": 0.1291738000000076}
+{"side": "candidate", "run": 14, "completed": true, "first_overlong": false, "retry_recovered": false, "packet_spend_after": 0.1291738000000076}
