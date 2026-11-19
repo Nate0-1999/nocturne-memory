@@ -22,7 +22,9 @@ MINI = "openrouter:openai/gpt-4.1-mini"
 def environment() -> dict[str, str]:
     os.environ["NOCTURNE_HOME"] = str(HOME)
     config = load_config(home=HOME)
-    assert config.palace_mode == "local" and config.principal_id.startswith("nocturne-verification-")
+    assert config.palace_mode == "local" and config.principal_id.startswith(
+        "nocturne-verification-"
+    )
     env = {**os.environ, **config.process_environment()}
     env["PATH"] = str(WALK.parent / "scratch/no-rg-bin")
     env["SPINE_URL"] = f"http://127.0.0.1:{SPINE_PORT}"
@@ -48,6 +50,7 @@ def db() -> None:
 
 def spine() -> None:
     import uvicorn
+
     os.environ.update(environment())
     uvicorn.run("spine.main:create_app", factory=True, host="127.0.0.1", port=SPINE_PORT)
 
@@ -64,19 +67,34 @@ def app() -> None:
             return await original(self, method, path, **kwargs)
         except Exception as exc:
             with (WALK / "logs/client-errors.jsonl").open("a") as log:
-                log.write(json.dumps({"method": method, "path": path,
-                    "seconds": round(time.monotonic() - started, 2),
-                    "type": type(exc).__name__, "cause": str(exc.__cause__)[:200]}) + "\n")
+                log.write(
+                    json.dumps(
+                        {
+                            "method": method,
+                            "path": path,
+                            "seconds": round(time.monotonic() - started, 2),
+                            "type": type(exc).__name__,
+                            "cause": str(exc.__cause__)[:200],
+                        }
+                    )
+                    + "\n"
+                )
             raise
 
     SpineClient._request = observed
 
     env = environment()
     import shutil
+
     assert shutil.which("rg", path=env["PATH"]) is None
     (WALK / "logs/no-rg-path.json").write_text(json.dumps({"PATH": env["PATH"], "rg": None}))
     os.environ.update(env)
-    uvicorn.run("harness.packaged:create_app", factory=True, host="127.0.0.1", port=int(env["NOCTURNE_PORT"]))
+    uvicorn.run(
+        "harness.packaged:create_app",
+        factory=True,
+        host="127.0.0.1",
+        port=int(env["NOCTURNE_PORT"]),
+    )
 
 
 if __name__ == "__main__":

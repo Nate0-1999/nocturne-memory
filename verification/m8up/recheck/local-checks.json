@@ -1,0 +1,25 @@
+{
+  "repo": "spine",
+  "scope": "Hosted-check repair only; no provider calls or product behavior changes.",
+  "checks": [
+    {
+      "command": [
+        "/Users/nateoswalt/relay/m8up/spine/.venv/bin/ruff",
+        "check",
+        "."
+      ],
+      "returncode": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/nateoswalt/relay/m8up/spine/.venv/bin/python",
+        "scripts/check_test_motivations.py"
+      ],
+      "returncode": 0,
+      "stdout": "test motivation check passed: 265 tests, 0 grandfathered\n",
+      "stderr": ""
+    }
+  ]
+}
