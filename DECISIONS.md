@@ -1594,3 +1594,8 @@ to the owner. Memory behavior and API contract 0.1.92 stay unchanged.
 
 PRECEDENT: PLAN M8UP, ADR-013. Pair 0.1.101 accompanies the Harness dependency
 upgrade; Memory behavior and API contract 0.1.92 stay unchanged.
+
+## M8MF — Memory version twin (P4)
+
+PRECEDENT: PLAN M8MF, F246, ADR-013. Pair 0.1.102 accompanies the Harness tool-error
+repair; Memory behavior and API contract 0.1.92 stay unchanged.
