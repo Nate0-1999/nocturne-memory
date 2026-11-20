@@ -1,0 +1,104 @@
+{
+  "harness": [
+    {
+      "command": [
+        "/Users/nateoswalt/relay/m8mf/harness/.venv/bin/ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/nateoswalt/relay/m8mf/harness/.venv/bin/ruff",
+        "format",
+        "--check",
+        "src",
+        "tests"
+      ],
+      "exit_code": 0,
+      "stdout": "148 files already formatted\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/nateoswalt/relay/m8mf/harness/.venv/bin/python",
+        "scripts/check_rules.py"
+      ],
+      "exit_code": 0,
+      "stdout": "Product rules: PASS\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/nateoswalt/relay/m8mf/harness/.venv/bin/python",
+        "scripts/check_guard_citations.py"
+      ],
+      "exit_code": 0,
+      "stdout": "Guard citations: PASS\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/nateoswalt/relay/m8mf/harness/.venv/bin/python",
+        "scripts/check_test_motivations.py"
+      ],
+      "exit_code": 0,
+      "stdout": "test motivation check passed: 1045 tests, 0 grandfathered\n",
+      "stderr": ""
+    }
+  ],
+  "spine": [
+    {
+      "command": [
+        "/Users/nateoswalt/relay/m8mf/spine/.venv/bin/ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/nateoswalt/relay/m8mf/spine/.venv/bin/ruff",
+        "format",
+        "--check",
+        "src",
+        "tests"
+      ],
+      "exit_code": 1,
+      "stdout": "Would reformat: src/spine/curation/__init__.py\nWould reformat: src/spine/curation/diagnostics.py\nWould reformat: src/spine/curation/progress.py\nWould reformat: src/spine/curation/provider.py\nWould reformat: src/spine/curation/service.py\nWould reformat: src/spine/db/migrations/versions/0015_symphony_memory_bridge.py\nWould reformat: src/spine/db/migrations/versions/0018_curator_runs.py\nWould reformat: src/spine/db/migrations/versions/0024_curator_progress.py\nWould reformat: src/spine/learner/compaction.py\nWould reformat: src/spine/learner/evidence.py\nWould reformat: src/spine/learner/service.py\nWould reformat: src/spine/memory/service.py\nWould reformat: src/spine/queue/contracts.py\nWould reformat: src/spine/queue/router.py\nWould reformat: src/spine/queue/service.py\nWould reformat: tests/test_compaction_learning.py\nWould reformat: tests/test_config.py\nWould reformat: tests/test_curation.py\nWould reformat: tests/test_curator_policy.py\nWould reformat: tests/test_db.py\nWould reformat: tests/test_inject_scorer.py\nWould reformat: tests/test_queue_api.py\nWould reformat: tests/test_transcripts.py\n23 files would be reformatted, 131 files already formatted\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/nateoswalt/relay/m8mf/spine/.venv/bin/python",
+        "scripts/check_rules.py"
+      ],
+      "exit_code": 0,
+      "stdout": "Product rules: PASS\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/nateoswalt/relay/m8mf/spine/.venv/bin/python",
+        "scripts/check_guard_citations.py"
+      ],
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "/Users/nateoswalt/relay/m8mf/spine/.venv/bin/python: can't open file '/Users/nateoswalt/relay/m8mf/spine/scripts/check_guard_citations.py': [Errno 2] No such file or directory\n"
+    },
+    {
+      "command": [
+        "/Users/nateoswalt/relay/m8mf/spine/.venv/bin/python",
+        "scripts/check_test_motivations.py"
+      ],
+      "exit_code": 0,
+      "stdout": "test motivation check passed: 265 tests, 0 grandfathered\n",
+      "stderr": ""
+    }
+  ]
+}

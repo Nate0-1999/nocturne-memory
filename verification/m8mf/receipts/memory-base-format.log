@@ -1,0 +1,24 @@
+Would reformat: scratch/base-spine-format/src/spine/curation/__init__.py
+Would reformat: scratch/base-spine-format/src/spine/curation/diagnostics.py
+Would reformat: scratch/base-spine-format/src/spine/curation/progress.py
+Would reformat: scratch/base-spine-format/src/spine/curation/provider.py
+Would reformat: scratch/base-spine-format/src/spine/curation/service.py
+Would reformat: scratch/base-spine-format/src/spine/db/migrations/versions/0015_symphony_memory_bridge.py
+Would reformat: scratch/base-spine-format/src/spine/db/migrations/versions/0018_curator_runs.py
+Would reformat: scratch/base-spine-format/src/spine/db/migrations/versions/0024_curator_progress.py
+Would reformat: scratch/base-spine-format/src/spine/learner/compaction.py
+Would reformat: scratch/base-spine-format/src/spine/learner/evidence.py
+Would reformat: scratch/base-spine-format/src/spine/learner/service.py
+Would reformat: scratch/base-spine-format/src/spine/memory/service.py
+Would reformat: scratch/base-spine-format/src/spine/queue/contracts.py
+Would reformat: scratch/base-spine-format/src/spine/queue/router.py
+Would reformat: scratch/base-spine-format/src/spine/queue/service.py
+Would reformat: scratch/base-spine-format/tests/test_compaction_learning.py
+Would reformat: scratch/base-spine-format/tests/test_config.py
+Would reformat: scratch/base-spine-format/tests/test_curation.py
+Would reformat: scratch/base-spine-format/tests/test_curator_policy.py
+Would reformat: scratch/base-spine-format/tests/test_db.py
+Would reformat: scratch/base-spine-format/tests/test_inject_scorer.py
+Would reformat: scratch/base-spine-format/tests/test_queue_api.py
+Would reformat: scratch/base-spine-format/tests/test_transcripts.py
+23 files would be reformatted, 131 files already formatted
