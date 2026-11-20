@@ -1104,6 +1104,80 @@ async def test_autonomous_prepare_preserves_locks_and_logs_entry_keep_exit(
     assert entered_event.outcome == "mid_thread_removed"
 
 
+async def test_only_a_saved_workflow_run_with_a_memory_scope_prepares_without_a_gate(
+    memory_client: AsyncClient,
+    embedding_provider: ScriptedEmbeddingProvider,
+    memory_session_factory: async_sessionmaker[AsyncSession],
+) -> None:
+    """A-088 / F138: a run of a saved workflow gets its memories as passive entries; naming
+    the mode alone, a scope of none, or another machine's run still meets A-030's refusal.
+    """
+    memory_id = UUID(int=9388)
+    await _insert_memory(
+        memory_session_factory,
+        memory_id=memory_id,
+        label="Lamp",
+        body="The lamp is amber.",
+        embedding=basis_vector(0),
+    )
+    prompt = "What colour is the lamp?"
+    embedding_provider.set(prompt, basis_vector(0))
+    owner = {"principal_id": "owner", "machine_id": "machine-1"}
+
+    async def run_thread(memory_scope: str) -> UUID:
+        job_id, thread_id = mint_ulid(), uuid4()
+        definition = {
+            "name": f"Lamp {memory_scope}",
+            "prompt": prompt,
+            "folder": "/tmp",
+            "model_policy": "pinned:openai/gpt-4.1-mini",
+            "memory_scope": memory_scope,
+            "budget_usd": "0.1",
+            "exit_condition": "true",
+        }
+        saved = await memory_client.put(
+            f"/v1/jobs/{job_id}", json={**owner, "definition": definition, "expected_revision": 0}
+        )
+        assert saved.status_code == 200, saved.text
+        run = {"run_id": mint_ulid(), "thread_id": str(thread_id), "trigger_key": "manual"}
+        claimed = await memory_client.post(
+            f"/v1/jobs/{job_id}/runs", json={**owner, **run, "expected_revision": 1, "manual": True}
+        )
+        assert claimed.status_code == 200, claimed.text
+        return thread_id
+
+    def first(thread_id: UUID, **overrides: Any) -> dict[str, Any]:
+        return _prepare_body(thread_id=thread_id, prompt=prompt, mode="autonomous", **overrides)
+
+    scoped = await run_thread("workspace")
+    for refused in (
+        first(uuid4()),
+        first(await run_thread("none")),
+        first(scoped, machine_id="machine-2"),
+        first(scoped, principal_id="other"),
+    ):
+        _assert_problem(await memory_client.post("/v1/inject/prepare", json=refused), 409)
+    async with memory_session_factory() as session:
+        assert await session.scalar(select(func.count()).select_from(Thread)) == 0
+        assert await session.scalar(select(func.count()).select_from(InjectionEvent)) == 0
+
+    entered = _assert_json(await memory_client.post("/v1/inject/prepare", json=first(scoped)), 200)
+    assert [card["memory_id"] for card in entered["injected"]] == [str(memory_id)]
+    assert "The lamp is amber." in entered["final_block"]
+    async with memory_session_factory() as session:
+        events = (await session.scalars(select(InjectionEvent))).all()
+    assert [(event.outcome, event.actor_class) for event in events] == [("auto_entered", "passive")]
+
+    restored = (
+        await memory_client.get(f"/v1/inject/threads/{scoped}", params={"principal_id": "owner"})
+    ).json()
+    assert restored["confirmed_memory_ids"] == [] and restored["pending"] is False
+    again = first(scoped, current_memory_ids=[str(memory_id)])
+    assert (await memory_client.post("/v1/inject/prepare", json=again)).status_code == 200
+    gate = _prepare_body(thread_id=scoped, prompt=prompt)
+    _assert_problem(await memory_client.post("/v1/inject/prepare", json=gate), 409)
+
+
 async def test_unstamped_thread_requires_exact_identity_before_stamping(
     memory_client: AsyncClient,
     embedding_provider: ScriptedEmbeddingProvider,

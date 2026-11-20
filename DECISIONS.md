@@ -1594,3 +1594,14 @@ to the owner. Memory behavior and API contract 0.1.92 stay unchanged.
 
 PRECEDENT: PLAN M8UP, ADR-013. Pair 0.1.101 accompanies the Harness dependency
 upgrade; Memory behavior and API contract 0.1.92 stay unchanged.
+
+## M8JM — A workflow run's first prepare (P4.1, P1.2)
+
+PRECEDENT: PLAN M8JM; F138; A-069; A-030; A-088; ADR-022. `_stamp_thread` lets a first
+autonomous prepare create the thread only when a `workflow_run` row names that thread, its job
+has the caller's principal and machine, and the run's frozen definition has
+`memory_scope: "workspace"`. Read in SQL inside the prepare's own transaction. The run's
+state is not checked: a run whose first prepare failed can still be given memory when its
+conversation is continued. Every other thread meets A-030's refusal as before, and the
+refused call writes nothing. No route, request or response changed: API contract 0.1.92 and
+its fingerprint stand. Pair 0.1.103.
