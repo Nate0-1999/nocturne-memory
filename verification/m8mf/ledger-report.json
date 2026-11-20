@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "c8d35ef755845aada9a7fd9d8731c3cd719688de",
-      "head": "867c9eafb7111d12b10f25b9ee371f06f2680c5b"
+      "head": "42791b49e18638ec9eda476a22371d6a5f1fc8f7"
     }
   ],
   "unmapped": {
@@ -15,16 +15,18 @@
     "spine/openapi.json": "Paired version/decision/test evidence only; no additional shipped behavior.",
     "spine/src/spine/__init__.py": "Paired version/decision/test evidence only; no additional shipped behavior.",
     "spine/tests/test_packaging.py": "Paired version/decision/test evidence only; no additional shipped behavior.",
-    "spine/verification/m8mf/impacted.json": "M8MF verification only; excluded from shipped wheel and sdist.",
-    "spine/verification/m8mf/FL-071.png": "M8MF verification only; excluded from shipped wheel and sdist.",
     "spine/verification/m8mf/FL-069.png": "M8MF verification only; excluded from shipped wheel and sdist.",
-    "spine/verification/m8mf/receipts/version-check.json": "M8MF verification only; excluded from shipped wheel and sdist.",
-    "spine/verification/m8mf/receipts/memory-suite-recheck.log": "M8MF verification only; excluded from shipped wheel and sdist.",
-    "spine/verification/m8mf/receipts/repositories.json": "M8MF verification only; excluded from shipped wheel and sdist.",
+    "spine/verification/m8mf/FL-071.png": "M8MF verification only; excluded from shipped wheel and sdist.",
+    "spine/verification/m8mf/SHA256SUMS": "M8MF evidence hashes only; excluded from shipped distributions.",
+    "spine/verification/m8mf/ledger-report.json": "M8MF coverage record only; excluded from shipped distributions.",
+    "spine/verification/m8mf/receipts/credential-cleanup.json": "M8MF verification only; excluded from shipped wheel and sdist.",
     "spine/verification/m8mf/receipts/hosted-checks.json": "M8MF verification only; excluded from shipped wheel and sdist.",
     "spine/verification/m8mf/receipts/memory-base-format.log": "M8MF verification only; excluded from shipped wheel and sdist.",
-    "spine/verification/m8mf/ledger-report.json": "M8MF coverage record only; excluded from shipped distributions.",
-    "spine/verification/m8mf/SHA256SUMS": "M8MF evidence hashes only; excluded from shipped distributions."
+    "spine/verification/m8mf/receipts/memory-suite-recheck.log": "M8MF verification only; excluded from shipped wheel and sdist.",
+    "spine/verification/m8mf/receipts/repositories.json": "M8MF verification only; excluded from shipped wheel and sdist.",
+    "spine/verification/m8mf/receipts/version-check.json": "M8MF verification only; excluded from shipped wheel and sdist.",
+    "spine/verification/m8mf/impacted.json": "M8MF verification only; excluded from shipped wheel and sdist.",
+    "spine/verification/m8mf/receipts/final-verification.json": "M8MF verification only; excluded from shipped wheel and sdist."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {

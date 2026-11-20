@@ -1,0 +1,17 @@
+{
+  "garden": {
+    "exit_code": 0,
+    "stdout": "Ledger coverage PASS: 27 required rows; verdicts, screenshots and hashes verified\n",
+    "stderr": ""
+  },
+  "harness": {
+    "exit_code": 0,
+    "stdout": "Ledger coverage PASS: 27 required rows; verdicts, screenshots and hashes verified\n",
+    "stderr": ""
+  },
+  "spine": {
+    "exit_code": 0,
+    "stdout": "Ledger coverage PASS: 2 required rows; verdicts, screenshots and hashes verified\n",
+    "stderr": ""
+  }
+}
