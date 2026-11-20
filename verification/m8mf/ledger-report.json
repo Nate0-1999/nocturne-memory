@@ -7,48 +7,29 @@
     {
       "repo": "spine",
       "base": "c8d35ef755845aada9a7fd9d8731c3cd719688de",
-      "head": "42791b49e18638ec9eda476a22371d6a5f1fc8f7"
+      "head": "7e1ae0f6581e7607a7abb0d37c8abaf84ed98765"
     }
   ],
   "unmapped": {
-    "spine/DECISIONS.md": "Paired version/decision/test evidence only; no additional shipped behavior.",
-    "spine/openapi.json": "Paired version/decision/test evidence only; no additional shipped behavior.",
-    "spine/src/spine/__init__.py": "Paired version/decision/test evidence only; no additional shipped behavior.",
-    "spine/tests/test_packaging.py": "Paired version/decision/test evidence only; no additional shipped behavior.",
-    "spine/verification/m8mf/FL-069.png": "M8MF verification only; excluded from shipped wheel and sdist.",
-    "spine/verification/m8mf/FL-071.png": "M8MF verification only; excluded from shipped wheel and sdist.",
-    "spine/verification/m8mf/SHA256SUMS": "M8MF evidence hashes only; excluded from shipped distributions.",
-    "spine/verification/m8mf/ledger-report.json": "M8MF coverage record only; excluded from shipped distributions.",
-    "spine/verification/m8mf/receipts/credential-cleanup.json": "M8MF verification only; excluded from shipped wheel and sdist.",
-    "spine/verification/m8mf/receipts/hosted-checks.json": "M8MF verification only; excluded from shipped wheel and sdist.",
-    "spine/verification/m8mf/receipts/memory-base-format.log": "M8MF verification only; excluded from shipped wheel and sdist.",
-    "spine/verification/m8mf/receipts/memory-suite-recheck.log": "M8MF verification only; excluded from shipped wheel and sdist.",
-    "spine/verification/m8mf/receipts/repositories.json": "M8MF verification only; excluded from shipped wheel and sdist.",
-    "spine/verification/m8mf/receipts/version-check.json": "M8MF verification only; excluded from shipped wheel and sdist.",
-    "spine/verification/m8mf/impacted.json": "M8MF verification only; excluded from shipped wheel and sdist.",
-    "spine/verification/m8mf/receipts/final-verification.json": "M8MF verification only; excluded from shipped wheel and sdist."
+    "spine/DECISIONS.md": "Paired version metadata, packaging assertion, decision journal or verification only; Memory behavior unchanged.",
+    "spine/openapi.json": "Paired version metadata, packaging assertion, decision journal or verification only; Memory behavior unchanged.",
+    "spine/src/spine/__init__.py": "Paired version metadata, packaging assertion, decision journal or verification only; Memory behavior unchanged.",
+    "spine/tests/test_packaging.py": "Paired version metadata, packaging assertion, decision journal or verification only; Memory behavior unchanged.",
+    "spine/verification/m8mf/FL-069.png": "Version-twin verification only; excluded from shipped distributions.",
+    "spine/verification/m8mf/FL-071.png": "Version-twin verification only; excluded from shipped distributions.",
+    "spine/verification/m8mf/SHA256SUMS": "Version-twin verification only; excluded from shipped distributions.",
+    "spine/verification/m8mf/ledger-report.json": "Version-twin verification only; excluded from shipped distributions.",
+    "spine/verification/m8mf/receipts/credential-cleanup.json": "Version-twin verification only; excluded from shipped distributions.",
+    "spine/verification/m8mf/receipts/final-verification.json": "Version-twin verification only; excluded from shipped distributions.",
+    "spine/verification/m8mf/receipts/hosted-checks.json": "Version-twin verification only; excluded from shipped distributions.",
+    "spine/verification/m8mf/receipts/memory-base-format.log": "Version-twin verification only; excluded from shipped distributions.",
+    "spine/verification/m8mf/receipts/memory-suite-recheck.log": "Version-twin verification only; excluded from shipped distributions.",
+    "spine/verification/m8mf/receipts/repositories.json": "Version-twin verification only; excluded from shipped distributions.",
+    "spine/verification/m8mf/receipts/version-check.json": "Version-twin verification only; excluded from shipped distributions.",
+    "spine/verification/m8mf/impacted.json": "Version-twin verification only; excluded from shipped distributions."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
-  "rows": {
-    "FL-069": {
-      "label": "The core tools every modern harness has: files, terminal, Chrome, skills, changing models, compaction (our own take), and interactions with common apps, taken from the most modular standard source.",
-      "walk": "Ask the agent to read a file, run a terminal command, open a page in the browser and use a skill; each works.",
-      "protected": true,
-      "verdict": "PASS",
-      "screenshot": "FL-069.png",
-      "flag": "",
-      "observed": "Three fresh conversations 2/3/4: missing main and worker reads return, then normal read/write/search/shell, skill reference and browser heading succeed. See accepted-walks.json and per-step captures; run2 required a browser-only locator continuation."
-    },
-    "FL-071": {
-      "label": "The location fence: an agent can edit only files in the exact directory it stands in, and its shell is kept to that subtree, enforced deterministically.",
-      "walk": "Ask for an edit outside the agent's folder without moving; the edit is refused.",
-      "protected": true,
-      "verdict": "PASS",
-      "screenshot": "FL-071.png",
-      "flag": "",
-      "observed": "Three fresh outside-write attempts refused and denied on the Deck; outside sentinel unchanged. Three installed-wheel fenced toolsets also refuse outside read/write/symlink and OS blocks shell writes (installed-fence.json)."
-    }
-  },
+  "rows": {},
   "not_run": {
     "FL-001": "unverified",
     "FL-002": "outside diff",
@@ -118,7 +99,9 @@
     "FL-066": "outside diff",
     "FL-067": "outside diff",
     "FL-068": "outside diff",
+    "FL-069": "outside diff",
     "FL-070": "outside diff",
+    "FL-071": "outside diff",
     "FL-072": "outside diff",
     "FL-073": "outside diff",
     "FL-074": "outside diff",
