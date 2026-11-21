@@ -2,20 +2,20 @@
   "packet": "M8CI",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "b2072fd401332ed4c7eadde6b9258144cfbca0d0fb8674d9d603cd7806bf9b46",
+  "ledger_sha256": "ac9fb9bfc15dd277ff0f55c7b37808b231bf91e71514525f3a97bffbd4793dd2",
   "diffs": [
     {
       "repo": "spine",
-      "base": "f7c582341986f6202f999d2b9f7d610348c063b2",
-      "head": "e7d25fb0ec45a90c497c43288820e41dbf6a870d"
+      "base": "02a3fa8dcf0097c8f124fb25e5bdfca4565e4053",
+      "head": "6d175fa1c26e5f26a5e65bba532f262ed350ca21"
     }
   ],
   "unmapped": {
-    "spine/verification/m8ci/FL-195.png": "M8CI verification receipt or hash manifest; no shipped behavior.",
-    "spine/verification/m8ci/FL-196.png": "M8CI verification receipt or hash manifest; no shipped behavior.",
-    "spine/verification/m8ci/SHA256SUMS": "M8CI verification receipt or hash manifest; no shipped behavior.",
-    "spine/verification/m8ci/ledger-report.json": "M8CI verification receipt or hash manifest; no shipped behavior.",
-    "spine/verification/m8ci/proof-summary.json": "M8CI verification receipt or hash manifest; no shipped behavior.",
+    "spine/verification/m8ci/FL-195.png": "M8CI tool verification receipt, generated coverage or hash manifest; no shipped behavior.",
+    "spine/verification/m8ci/FL-196.png": "M8CI tool verification receipt, generated coverage or hash manifest; no shipped behavior.",
+    "spine/verification/m8ci/SHA256SUMS": "M8CI tool verification receipt, generated coverage or hash manifest; no shipped behavior.",
+    "spine/verification/m8ci/ledger-report.json": "M8CI tool verification receipt, generated coverage or hash manifest; no shipped behavior.",
+    "spine/verification/m8ci/proof-summary.json": "M8CI tool verification receipt, generated coverage or hash manifest; no shipped behavior.",
     "spine/verification/m8ci/impacted.json": "M8CI verification receipt, generated evidence or hash manifest; no shipped behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
@@ -27,7 +27,7 @@
       "verdict": "PASS",
       "screenshot": "FL-195.png",
       "flag": "",
-      "observed": "M8CI hosted positive triple passed every existing check. Deliberate unused-import lint faults, stale declared evidence, missing source, and altered frozen checker copies refused at their named steps; raw jobs/logs and observed GitHub captures retained. 34 real-Git Garden tests preserve main landing and merge-drift enforcement."
+      "observed": "Hosted positive probes ran every existing check. Deliberate source/lint/stale-evidence/frozen-copy faults refused at their named steps. Additional fresh-wheel probe confirms Memory installed from the resolved local twin. Current 34 real-Git Garden tests pass under hosted environment, including upstream, nested-feature, anonymous-edit and conflict-resolution cases; final draft checks and raw receipts accompany the handoff."
     },
     "FL-196": {
       "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
@@ -36,7 +36,7 @@
       "verdict": "PASS",
       "screenshot": "FL-196.png",
       "flag": "",
-      "observed": "M8CI hosted positive triple passed every existing check. Deliberate unused-import lint faults, stale declared evidence, missing source, and altered frozen checker copies refused at their named steps; raw jobs/logs and observed GitHub captures retained. 34 real-Git Garden tests preserve main landing and merge-drift enforcement."
+      "observed": "Hosted positive probes ran every existing check. Deliberate source/lint/stale-evidence/frozen-copy faults refused at their named steps. Additional fresh-wheel probe confirms Memory installed from the resolved local twin. Current 34 real-Git Garden tests pass under hosted environment, including upstream, nested-feature, anonymous-edit and conflict-resolution cases; final draft checks and raw receipts accompany the handoff."
     }
   },
   "not_run": {

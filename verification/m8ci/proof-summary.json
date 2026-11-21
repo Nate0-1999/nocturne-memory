@@ -15,9 +15,15 @@
   "source_injection": "Probe-only ls-remote wrapper hides tag refs; production resolver unchanged; no package version edit",
   "local_merge_proof": "34 real-Git Garden tests; clean draft/main landing pass; edited merge and missing canonical declaration proof refuse",
   "final_suites": {
-    "harness": "2007 passed, 4 skipped, 3 contract deselected",
-    "memory": "355 passed, 2 skipped",
-    "garden": "34 passed"
+    "harness": "2006 passed, 4 skipped, 4 contract deselected",
+    "memory": "356 passed, 2 skipped",
+    "garden": "34 passed under hosted draft GITHUB_REF variables"
   },
-  "memory_guard_check": "N/A: no scripts/check_guard_citations.py or hosted guard-citation step exists in Memory"
+  "memory_guard_check": "N/A: no scripts/check_guard_citations.py or hosted guard-citation step exists in Memory",
+  "fresh_wheel_probe": {
+    "run": 44866346790,
+    "result": "success",
+    "installed_memory_direct_url": "file:///home/runner/work/nocturne-harness/nocturne-harness/_d3/spine"
+  },
+  "mapping_proof": "Real Git: clean main import excludes upstream paths; generic feature merge and anonymous mapped edits remain covered; stale nested-feature proof still refused after main landing; conflicts count resolutions, not clean upstream files."
 }
