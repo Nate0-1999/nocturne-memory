@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
@@ -297,6 +298,31 @@ def same_syntax(repo, base, head, path):
         return False
 
 
+def mapped_drift(repo, head, surfaces):
+    """SD-099: a clean merge imports upstream work without reauthoring it."""
+    if not surfaces or not git(repo, "diff", "--name-only", head, "--", *surfaces).strip():
+        return ""
+    if git(repo, "diff", "--name-only", "HEAD", "--", *surfaces).strip():
+        return "uncommitted mapped changes"
+    if subprocess.run(["git", "-C", str(repo), "merge-base", "--is-ancestor", head, "HEAD"]).returncode:
+        return "report head is not an ancestor of HEAD"
+    for commit in git(repo, "rev-list", "--ancestry-path", f"{head}..HEAD").splitlines():
+        parents = git(repo, "show", "-s", "--format=%P", commit).split()
+        if len(parents) == 1:
+            changed = git(repo, "diff", "--name-only", parents[0], commit, "--", *surfaces).strip()
+        elif len(parents) == 2:
+            try:
+                automatic = git(repo, "merge-tree", "--write-tree", *parents).splitlines()[0]
+                changed = git(repo, "diff", "--name-only", automatic, commit, "--", *surfaces).strip()
+            except subprocess.CalledProcessError:
+                changed = "merge needs a fresh report after conflict resolution"
+        else:
+            changed = "merge needs a fresh report"
+        if changed:
+            return changed
+    return ""
+
+
 def verify(data, directory, check_diffs=()):
     directory = directory.resolve()
     errors = []
@@ -362,11 +388,7 @@ def verify(data, directory, check_diffs=()):
             for p in row["surfaces"]
             if p.startswith(diff["repo"] + "/")
         ]
-        drift = (
-            git(repo, "diff", "--name-only", diff["head"], "--", *surfaces).strip()
-            if surfaces
-            else ""
-        )
+        drift = mapped_drift(repo, diff["head"], surfaces)
         if drift:
             errors.append(
                 f"{diff['repo']}: mapped surfaces changed after report head: {drift}"
@@ -477,16 +499,20 @@ PACKET = re.compile(r"\b(M\d+[A-Z][A-Z0-9]*|SYM\d+|[SHDI]\d+|P0|J\d*)\b")
 
 def bell(data, diff, ci=False):
     repo = repository(diff["repo"])
+    # Drafts do not re-declare handoffs imported from main. Main and tags
+    # still inspect every newly landed declaration, including PR merge parents.
+    draft = os.environ.get("GITHUB_REF_TYPE") == "branch" and os.environ.get("GITHUB_REF_NAME") != "main"
     subjects = git(
-        repo, "log", "--format=%s", f"{diff['base']}..{diff['head']}"
+        repo, "log", *(["--first-parent"] if draft else []),
+        "--format=%s", f"{diff['base']}..{diff['head']}"
     ).splitlines()
     packets = {}
     for subject in subjects:
-        match = PACKET.search(subject)
+        match = PACKET.match(subject)
         if match:
             packet = match[0].lower()
             packets[packet] = packets.get(packet, False) or bool(
-                re.search(r"\bhandoff DONE\b", subject)
+                re.match(rf"{re.escape(match[0])}: handoff DONE\b", subject, re.IGNORECASE)
             )
     if not packets:
         packets["unassigned"] = False
@@ -496,7 +522,7 @@ def bell(data, diff, ci=False):
         if ci:
             # M3IB: an empty final DONE push still covers earlier packet commits.
             history = git(
-                repo, "log", "--reverse", "--format=%H\t%s", diff["head"]
+                repo, "log", "--no-merges", "--reverse", "--format=%H\t%s", diff["head"]
             ).splitlines()
             paths = set()
             for line in history:
@@ -535,7 +561,7 @@ def bell(data, diff, ci=False):
         for path in sorted(changed):
             if black.search(path):
                 print(f"  [BLACK: needs a word] {path}")
-        if ci:
+        if ci and handoff:
             evidence_dirs = [directory] if FROZEN else [
                 WORKSPACE / name / "verification" / packet
                 for name in ("garden", "harness", "spine")
@@ -546,11 +572,11 @@ def bell(data, diff, ci=False):
             canonical = GARDEN / "verification" / packet
             if not FROZEN and canonical in evidence_dirs:
                 evidence_dirs = [canonical]
-            if len(evidence_dirs) > 1:
-                raise ValueError(
-                    f"{packet}: multiple ledger reports; keep one authoritative evidence folder"
-                )
             try:
+                if len(evidence_dirs) > 1:
+                    raise ValueError(
+                        f"{packet}: multiple ledger reports; keep one authoritative evidence folder"
+                    )
                 errors, count = verify(
                     data, evidence_dirs[0] if evidence_dirs else directory, [checked]
                 )
@@ -564,14 +590,13 @@ def bell(data, diff, ci=False):
                 errors, count = [str(exc)], len(result["required"])
             if errors:
                 print("\n".join(errors))
-                if handoff:
-                    failures.append(
-                        f"{packet.upper()} handoff REFUSED: {count} required rows checked"
-                    )
-                else:
-                    print("Work in progress: evidence is required at the DONE handoff.")
+                failures.append(
+                    f"{packet.upper()} handoff REFUSED: {count} required rows checked"
+                )
             else:
                 print(f"Ledger coverage PASS: {count} required rows")
+        elif ci:
+            print("Work in progress: no handoff declared; evidence is required at the DONE handoff.")
     if failures:
         raise ValueError("\n".join(failures))
     return result
