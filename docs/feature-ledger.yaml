@@ -407,11 +407,11 @@
         "harness/web/src/frontDoor.ts"
       ],
       "last_walk": {
-        "date": "2026-11-18",
-        "packet": "M8TO",
+        "date": "2026-11-20",
+        "packet": "M8JM",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "verification/m8to/FL-018.png"
+        "screenshot": "verification/m8jm/FL-018.png"
       },
       "protected": true,
       "protected_reason": "walk PASS 2026-09-13"
@@ -4115,14 +4115,15 @@
         "harness/src/harness/spend_walls.py",
         "spine/src/spine/jobs.py",
         "spine/src/spine/db/models.py",
-        "spine/src/spine/db/migrations/versions/0025_jobs.py"
+        "spine/src/spine/db/migrations/versions/0025_jobs.py",
+        "spine/src/spine/inject/service.py"
       ],
       "last_walk": {
-        "date": "2026-11-11",
-        "packet": "M6W1A",
-        "verdict": "BLOCKED",
-        "flag": "F220",
-        "screenshot": "verification/m6w1a/FL-182.png"
+        "date": "2026-11-20",
+        "packet": "M8JM",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "verification/m8jm/FL-182.png"
       }
     },
     {
