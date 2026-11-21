@@ -317,8 +317,14 @@ def authored_paths(repo, commit):
     if len(parents) > 1:
         try:
             base = main_merge_base(repo, commit, parents)
-        except (subprocess.CalledProcessError, ValueError):
-            pass  # Conflicting or feature merges keep the complete first-parent diff.
+        except subprocess.CalledProcessError as exc:
+            # Git still emits the merged tree when it contains conflict markers.
+            # Comparing that tree keeps the resolutions without claiming clean imports.
+            tree = (exc.output or b"").decode().splitlines()
+            if tree and re.fullmatch(r"[0-9a-f]{40,64}", tree[0]):
+                base = tree[0]
+        except ValueError:
+            pass  # A feature merge keeps its complete first-parent diff.
     return [p for p in git(
         repo, "diff-tree", "--root", "--no-commit-id", "--name-only", "--no-renames", "-r", "-z",
         *([base] if base else []), commit,
