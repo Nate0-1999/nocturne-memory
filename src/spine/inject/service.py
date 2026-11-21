@@ -338,7 +338,7 @@ async def _stamp_thread(
         .one_or_none()
     )
     if inserted is not None:
-        if command.mode == "autonomous":
+        if command.mode == "autonomous" and not await _is_memory_run(session, command):
             raise InvalidRescoreStateError("autonomous mode requires an already prepared thread")
         return
 
@@ -368,6 +368,29 @@ async def _stamp_thread(
         raise InvalidRescoreStateError("autonomous mode requires a completed gate prepare")
     await session.execute(
         update(table).where(table.c.id == command.thread_id).values(snapshot_ts=snapshot_ts)
+    )
+
+
+async def _is_memory_run(session: AsyncSession, command: PrepareCommand) -> bool:
+    """A-088: the thread is this owner's saved workflow run, and its recipe names a memory scope.
+
+    Only a claimed run has such a row, so naming the mode alone never opens this path.
+    """
+    return bool(
+        await session.scalar(
+            text("""
+                SELECT EXISTS (
+                    SELECT 1 FROM workflow_run r JOIN workflow_job j ON j.job_id = r.job_id
+                    WHERE r.thread_id = :thread AND j.principal_id = :principal
+                      AND j.machine_id = :machine AND r.definition->>'memory_scope' = 'workspace'
+                )
+            """),
+            {
+                "thread": command.thread_id,
+                "principal": command.principal_id,
+                "machine": command.machine_id,
+            },
+        )
     )
 
 
