@@ -13,7 +13,11 @@
   "unmapped": {
     "spine/openapi.json": "M8DM governance/default example, existing test expectations or paired release metadata only; no additional feature behavior. Runtime change is config chat_model/context pair; F254 retains unresolved historical-choice behavior.",
     "spine/src/spine/__init__.py": "M8DM governance/default example, existing test expectations or paired release metadata only; no additional feature behavior. Runtime change is config chat_model/context pair; F254 retains unresolved historical-choice behavior.",
-    "spine/tests/test_packaging.py": "M8DM governance/default example, existing test expectations or paired release metadata only; no additional feature behavior. Runtime change is config chat_model/context pair; F254 retains unresolved historical-choice behavior."
+    "spine/tests/test_packaging.py": "M8DM governance/default example, existing test expectations or paired release metadata only; no additional feature behavior. Runtime change is config chat_model/context pair; F254 retains unresolved historical-choice behavior.",
+    "spine/verification/m8dm/FL-195.png": "M8DM packet evidence only: factual capture, receipt, coverage declaration or integrity manifest; no product behavior.",
+    "spine/verification/m8dm/FL-196.png": "M8DM packet evidence only: factual capture, receipt, coverage declaration or integrity manifest; no product behavior.",
+    "spine/verification/m8dm/SHA256SUMS": "M8DM packet evidence only: factual capture, receipt, coverage declaration or integrity manifest; no product behavior.",
+    "spine/verification/m8dm/ledger-report.json": "M8DM packet evidence only: factual capture, receipt, coverage declaration or integrity manifest; no product behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
