@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import math
 import argparse
 import ast
 import hashlib
