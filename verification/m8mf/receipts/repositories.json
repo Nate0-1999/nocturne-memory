@@ -1,0 +1,10 @@
+{
+  "harness": {
+    "git_directory": "/Users/nateoswalt/Developer/N8_Harness/harness/.git/worktrees/harness34",
+    "remote": "https://github.com/Nate0-1999/nocturne-harness.git"
+  },
+  "spine": {
+    "git_directory": "/Users/nateoswalt/Developer/N8_Harness/spine/.git/worktrees/spine34",
+    "remote": "https://github.com/Nate0-1999/nocturne-memory.git"
+  }
+}
