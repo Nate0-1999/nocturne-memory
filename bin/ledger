@@ -298,6 +298,33 @@ def same_syntax(repo, base, head, path):
         return False
 
 
+def main_merge_base(repo, commit, parents):
+    """Only an upstream-main import or an already-landed main merge is exempt."""
+    def on_main(revision):
+        return subprocess.run(
+            ["git", "-C", str(repo), "merge-base", "--is-ancestor", revision, "origin/main"],
+            capture_output=True,
+        ).returncode == 0
+
+    if len(parents) != 2 or not (on_main(parents[1]) or on_main(commit)):
+        raise ValueError("merge needs fresh evidence")
+    return git(repo, "merge-tree", "--write-tree", *parents).splitlines()[0]
+
+
+def authored_paths(repo, commit):
+    parents = git(repo, "show", "-s", "--format=%P", commit).split()
+    base = parents[0] if parents else None
+    if len(parents) > 1:
+        try:
+            base = main_merge_base(repo, commit, parents)
+        except (subprocess.CalledProcessError, ValueError):
+            pass  # Conflicting or feature merges keep the complete first-parent diff.
+    return [p for p in git(
+        repo, "diff-tree", "--root", "--no-commit-id", "--name-only", "--no-renames", "-r", "-z",
+        *([base] if base else []), commit,
+    ).split("\0") if p]
+
+
 def mapped_drift(repo, head, surfaces):
     """SD-099: a clean merge imports upstream work without reauthoring it."""
     if not surfaces or not git(repo, "diff", "--name-only", head, "--", *surfaces).strip():
@@ -312,9 +339,9 @@ def mapped_drift(repo, head, surfaces):
             changed = git(repo, "diff", "--name-only", parents[0], commit, "--", *surfaces).strip()
         elif len(parents) == 2:
             try:
-                automatic = git(repo, "merge-tree", "--write-tree", *parents).splitlines()[0]
+                automatic = main_merge_base(repo, commit, parents)
                 changed = git(repo, "diff", "--name-only", automatic, commit, "--", *surfaces).strip()
-            except subprocess.CalledProcessError:
+            except (subprocess.CalledProcessError, ValueError):
                 changed = "merge needs a fresh report after conflict resolution"
         else:
             changed = "merge needs a fresh report"
@@ -522,7 +549,7 @@ def bell(data, diff, ci=False):
         if ci:
             # M3IB: an empty final DONE push still covers earlier packet commits.
             history = git(
-                repo, "log", "--no-merges", "--reverse", "--format=%H\t%s", diff["head"]
+                repo, "log", "--reverse", "--format=%H\t%s", diff["head"]
             ).splitlines()
             paths = set()
             for line in history:
@@ -530,12 +557,12 @@ def bell(data, diff, ci=False):
                 if subject.upper().startswith(packet.upper() + ":"):
                     paths.update(
                         f"{diff['repo']}/{path}"
-                        for path in git(repo, "diff-tree", "--root", "-m", "--no-commit-id",
-                                        "--name-only", "--no-renames", "-r", "-z", commit).split("\0")
-                        if path
+                        for path in authored_paths(repo, commit)
                     )
             # Include every packet commit without attributing intervening packets to it.
             checked = dict(diff, packet_paths=sorted(paths))
+            if draft:
+                checked["base"] = git(repo, "merge-base", "origin/main", diff["head"]).strip()
         result = impact(data, [checked])
         result["labels"] = {
             r["id"]: r["label"]
