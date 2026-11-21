@@ -1,0 +1,35 @@
+{
+  "garden": {
+    "command": [
+      "python3",
+      "garden/bin/ledger",
+      "verify",
+      "garden/verification/m8mf"
+    ],
+    "exit_code": 0,
+    "stdout": "Ledger coverage PASS: 27 required rows; verdicts, screenshots and hashes verified\n",
+    "stderr": ""
+  },
+  "harness": {
+    "command": [
+      "python3",
+      "harness/bin/ledger",
+      "verify",
+      "harness/verification/m8mf"
+    ],
+    "exit_code": 0,
+    "stdout": "Ledger coverage PASS: 27 required rows; verdicts, screenshots and hashes verified\n",
+    "stderr": ""
+  },
+  "spine": {
+    "command": [
+      "python3",
+      "spine/bin/ledger",
+      "verify",
+      "spine/verification/m8mf"
+    ],
+    "exit_code": 0,
+    "stdout": "Ledger coverage PASS: 0 required rows; verdicts, screenshots and hashes verified\n",
+    "stderr": ""
+  }
+}

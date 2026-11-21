@@ -1,0 +1,23 @@
+{
+  "checked_utc": "2026-11-20T14:48:15.016726+00:00",
+  "pypi": {
+    "nocturne-harness": {
+      "latest": "0.1.101",
+      "0.1.102_present": false
+    },
+    "nocturne-memory": {
+      "latest": "0.1.101",
+      "0.1.102_present": false
+    }
+  },
+  "remote_v0.1.102_tags": {
+    "harness": [],
+    "memory": []
+  },
+  "open_pull_requests": {
+    "harness": [],
+    "memory": []
+  },
+  "prepared_pair": "0.1.102",
+  "release_actions": "none; drafts only"
+}
