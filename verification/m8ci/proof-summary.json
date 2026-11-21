@@ -1,0 +1,23 @@
+{
+  "positive_harness": 44863657429,
+  "positive_memory": [
+    44863654618,
+    44863654562
+  ],
+  "positive_garden": [
+    44863655718,
+    44863655702
+  ],
+  "negative_source": 44863599933,
+  "negative_harness": 44864203787,
+  "negative_memory": 44864211729,
+  "negative_garden": 44864267791,
+  "source_injection": "Probe-only ls-remote wrapper hides tag refs; production resolver unchanged; no package version edit",
+  "local_merge_proof": "34 real-Git Garden tests; clean draft/main landing pass; edited merge and missing canonical declaration proof refuse",
+  "final_suites": {
+    "harness": "2007 passed, 4 skipped, 3 contract deselected",
+    "memory": "355 passed, 2 skipped",
+    "garden": "34 passed"
+  },
+  "memory_guard_check": "N/A: no scripts/check_guard_citations.py or hosted guard-citation step exists in Memory"
+}
