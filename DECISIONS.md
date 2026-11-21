@@ -1613,5 +1613,5 @@ its fingerprint stand. Pair 0.1.103.
 
 ## M8SA — Memory version twin (P4)
 
-PRECEDENT: PLAN M8SA, F247, A-090. Pair 0.1.105 accompanies the Harness sub-agent change;
+PRECEDENT: PLAN M8SA, F247, A-090. Pair 0.1.104 accompanies the Harness sub-agent change;
 Memory behavior and API contract 0.1.92 stay unchanged.
