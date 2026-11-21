@@ -300,13 +300,10 @@ def same_syntax(repo, base, head, path):
 
 def main_merge_base(repo, commit, parents):
     """Only an upstream-main import or an already-landed main merge is exempt."""
-    def on_main(revision):
-        return subprocess.run(
-            ["git", "-C", str(repo), "merge-base", "--is-ancestor", revision, "origin/main"],
-            capture_output=True,
-        ).returncode == 0
-
-    if len(parents) != 2 or not (on_main(parents[1]) or on_main(commit)):
+    mainline = set(git(repo, "rev-list", "--first-parent", "origin/main").splitlines())
+    if len(parents) != 2 or not (
+        parents[1] in mainline or git(repo, "rev-parse", commit).strip() in mainline
+    ):
         raise ValueError("merge needs fresh evidence")
     return git(repo, "merge-tree", "--write-tree", *parents).splitlines()[0]
 
