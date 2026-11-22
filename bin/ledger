@@ -8,7 +8,6 @@ Paths in surfaces are workspace-relative files or directory prefixes ending /.
 from __future__ import annotations
 
 import argparse
-import fcntl
 import hashlib
 import json
 import os
@@ -358,6 +357,8 @@ def mapped_drift(repo, head, surfaces):
 
 def refresh(data, directory, diffs):
     """Carry existing answers forward only after validating the proposed coverage."""
+    import fcntl
+
     directory = directory.resolve()
     packet = directory.name.upper()
     path = directory / "ledger-report.json"
@@ -375,6 +376,25 @@ def refresh(data, directory, diffs):
                  d["head"], by_repo[d["repo"]]["head"]]
             ).returncode:
                 raise ValueError(f"{d['repo']}: refresh must include the original report head")
+            # A sync can import upstream changes. Additional edits to walked
+            # surfaces cannot acquire an old verdict by advancing the report head.
+            current = by_repo[d["repo"]]
+            repo = repository(d["repo"])
+            merge = subprocess.run(["git", "-C", str(repo), "merge-tree", "--write-tree",
+                                    d["head"], current["base"]], capture_output=True, text=True)
+            tree = merge.stdout.partition("\n")[0]
+            if merge.returncode not in (0, 1) or not re.fullmatch(r"[0-9a-f]{40,64}", tree):
+                raise ValueError(f"{d['repo']}: cannot reconstruct the sync")
+            edited = git(repo, "diff", "--name-only", "--no-renames", "-z", tree, current["head"]).split("\0")
+            affected = impact(data, [], [f"{d['repo']}/{p}" for p in edited if p])["affected"]
+            for name in {p for key, paths in affected.items() if key in old["rows"] for p in paths}:
+                relative = name.split("/", 1)[1]
+                if relative == "docs/frozen-law.json" and d["repo"] in ("harness", "spine"):
+                    continue  # Independently verified export metadata.
+                if name.startswith("harness/web/dist/") or relative.startswith(f"verification/{directory.name}/"):
+                    continue
+                if git(repo, "diff", "--name-only", d["head"], current["head"], "--", relative).strip():
+                    raise ValueError(f"{name}: edited beyond the sync; fresh evidence required")
         new = report(data, packet, diffs)
         for key, row in new["rows"].items():
             previous = old["rows"].get(key)
@@ -404,6 +424,12 @@ def refresh(data, directory, diffs):
         errors, count = verify(data, directory, evidence=new)
         if errors:
             raise ValueError("\n".join(errors))
+        for line in sums.read_text().splitlines():
+            checksum, filename = line.split(maxsplit=1)
+            filename = filename.removeprefix("*")
+            target = directory / filename
+            if not safe_path(filename) or target.resolve() != target or not target.is_file() or digest(target) != checksum:
+                raise ValueError(f"{filename}: evidence differs from SHA256SUMS")
         content = (json.dumps(new, indent=2, ensure_ascii=False) + "\n").encode()
         old_hash = digest(path)
         updated, n = re.subn(r"(?m)^" + old_hash + r"(?=\s+\*?(?:\./)?ledger-report\.json$)",
