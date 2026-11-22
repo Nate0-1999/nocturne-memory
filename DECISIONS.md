@@ -1610,3 +1610,8 @@ state is not checked: a run whose first prepare failed can still be given memory
 conversation is continued. Every other thread meets A-030's refusal as before, and the
 refused call writes nothing. No route, request or response changed: API contract 0.1.92 and
 its fingerprint stand. Pair 0.1.103.
+
+## M8SA — Memory version twin (P4)
+
+PRECEDENT: PLAN M8SA, F247, A-090. Pair 0.1.104 accompanies the Harness sub-agent change;
+Memory behavior and API contract 0.1.92 stay unchanged.
