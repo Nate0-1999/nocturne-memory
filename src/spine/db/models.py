@@ -1193,3 +1193,14 @@ class WorkflowRun(Base):
         DateTime(timezone=True), server_default=text("now()")
     )
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class ExtractionReceipt(Base):
+    """A-096: the original decision, even after review changes the memory."""
+
+    __tablename__ = "extraction_receipt"
+
+    principal_id: Mapped[str] = mapped_column(Text, primary_key=True)
+    candidate_id: Mapped[UUID] = mapped_column(PGUUID(as_uuid=True), primary_key=True)
+    request_hash: Mapped[str] = mapped_column(Text, nullable=False)
+    result: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)

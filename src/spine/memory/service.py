@@ -525,42 +525,56 @@ class MemoryService:
         refused as their duplicate.
         """
 
+        async with self._session_factory.begin() as session:
+            await self.lock_candidate_principal(session, command.principal_id)
+            result = await self.admit_candidate(session, command, replaces=replaces)
+            return result if isinstance(result, CandidateCreated) else None
+
+    @staticmethod
+    async def lock_candidate_principal(session: AsyncSession, principal_id: str) -> None:
+        await session.execute(
+            text("SELECT pg_advisory_xact_lock(hashtextextended(:principal_id, 0))"),
+            {"principal_id": principal_id},
+        )
+
+    async def admit_candidate(
+        self,
+        session: AsyncSession,
+        command: CreateMemoryCommand,
+        *,
+        replaces: Sequence[UUID],
+    ) -> CandidateCreated | SimilarityMemoryCard | UUID:
+        """Inside the principal lock, return the birth, matched neighbor or prior denial ID."""
         self._validate_label(command.label)
         self._validate_body(command.body)
-        async with self._session_factory() as session:
-            async with session.begin():
-                await session.execute(
-                    text("SELECT pg_advisory_xact_lock(hashtextextended(:principal_id, 0))"),
-                    {"principal_id": command.principal_id},
-                )
-                rejected = await self._rejected_body(session, command.principal_id, command.body)
-                if rejected is not None:
-                    return None
-                embedding = await embed_one(
-                    self._embedding_provider,
-                    command.body,
-                    expected_dimensions=_EMBEDDING_DIMENSIONS,
-                    receipt_context=EmbeddingReceiptContext(
-                        principal_id=command.principal_id,
-                        machine_id=command.machine_id,
-                        origin_agent=_agent_from_editor(command.editor),
-                        thread_id=_optional_uuid(command.thread_origin),
-                    ),
-                )
-                matches = await self._dedup_matches(
-                    session,
-                    principal_id=command.principal_id,
-                    embedding=embedding,
-                    statuses=("active", "candidate"),
-                )
-                top = next((item for item in matches if item.memory_id not in replaces), None)
-                if top is not None and top.score >= self._dedup_dup:
-                    return None
-                row = await self._insert_root(session, command, embedding, status="candidate")
-                return CandidateCreated(
-                    memory=contract_memory_from_row(row),
-                    neighbors=tuple(matches),
-                )
+        rejected = await self._rejected_body(session, command.principal_id, command.body)
+        if rejected is not None:
+            return rejected
+        embedding = await embed_one(
+            self._embedding_provider,
+            command.body,
+            expected_dimensions=_EMBEDDING_DIMENSIONS,
+            receipt_context=EmbeddingReceiptContext(
+                principal_id=command.principal_id,
+                machine_id=command.machine_id,
+                origin_agent=_agent_from_editor(command.editor),
+                thread_id=_optional_uuid(command.thread_origin),
+            ),
+        )
+        matches = await self._dedup_matches(
+            session,
+            principal_id=command.principal_id,
+            embedding=embedding,
+            statuses=("active", "candidate"),
+        )
+        top = next((item for item in matches if item.memory_id not in replaces), None)
+        if top is not None and top.score >= self._dedup_dup:
+            return top
+        row = await self._insert_root(session, command, embedding, status="candidate")
+        return CandidateCreated(
+            memory=contract_memory_from_row(row),
+            neighbors=tuple(matches),
+        )
 
     async def create_curator_candidate(
         self,

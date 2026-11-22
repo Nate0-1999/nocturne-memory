@@ -612,3 +612,57 @@ async def test_a_memory_from_several_folders_keeps_them_and_backfill_fills_only_
         "Docs use mkdocs.": None,
     }
     assert (await backfill("/x")).json() == {"updated": 0}
+
+
+@pytest.mark.asyncio
+async def test_cedar_duplicate_and_prior_denial_have_replayable_outcomes(
+    memory_client: AsyncClient,
+    embedding_provider: ScriptedEmbeddingProvider,
+) -> None:
+    """F221: a distinct release scored as a duplicate must keep its matched identity,
+    and a denied fact must never be reported as that same match."""
+    owner = extraction(uuid4(), "Mira owns Cedar-1")
+    kiln = extraction(uuid4(), "The ceramic kiln fires on Thursday")
+    embedding_provider.set(owner["candidates"][0]["body"], basis_vector(0))
+    embedding_provider.set(kiln["candidates"][0]["body"], basis_vector(1))
+    first = (await memory_client.post("/v1/extractions", json=owner)).json()["cards"][0]
+    denied = (await memory_client.post("/v1/extractions", json=kiln)).json()["cards"][0]
+    decision = {
+        "decision": "deny",
+        "approval_mode": "explicit",
+        "actor_class": "human",
+        "machine_id": "mac",
+    }
+    (
+        await memory_client.post(
+            f"/v1/approval-queue/{denied['item_uid']}/decisions", json=decision
+        )
+    ).raise_for_status()
+    second = extraction(uuid4(), "Mira owns Cedar-2")
+    embedding_provider.set("Mira owns Cedar-2", basis_vector(0))
+    second["candidates"] += kiln["candidates"]
+    legacy = await memory_client.post("/v1/extractions", json=second)
+    assert legacy.json() == {"cards": [], "duplicate_count": 2}
+    fresh = "The portable antenna is signed by Vega"
+    embedding_provider.set(fresh, basis_vector(2))
+    second["candidates"] += extraction(uuid4(), fresh)["candidates"]
+    long_body = extraction(uuid4(), "Oversized memory")["candidates"][0]
+    long_body["body"] = " copper" * 256
+    second["candidates"].append(long_body)
+    second["candidate_ids"] = [str(uuid4()) for _ in second["candidates"]]
+    response = await memory_client.post("/v1/extractions", json=second)
+    assert response.status_code == 200, response.text
+    outcomes = response.json()["outcomes"]
+    assert [r["candidate_id"] for r in outcomes] == second["candidate_ids"]
+    assert [r["status"] for r in outcomes] == [
+        "hard_duplicate",
+        "previously_denied",
+        "admitted",
+        "refused",
+    ]
+    assert outcomes[0]["memory_id"] == first["candidate"]["memory_id"]
+    assert outcomes[0]["label"] == "Mira owns Cedar-1"
+    assert outcomes[2]["item_uid"] == response.json()["cards"][0]["item_uid"]
+    assert "maximum" in outcomes[3]["reason"]
+    assert outcomes[0]["reason"]
+    assert (await memory_client.post("/v1/extractions", json=second)).json() == response.json()

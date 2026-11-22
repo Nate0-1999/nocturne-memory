@@ -49,6 +49,16 @@ class ExtractionRequest(ContractModel):
     candidates: list[ExtractionCandidate]
 
 
+    candidate_ids: list[UUID] | None = None
+
+    @model_validator(mode="after")
+    def validate_ids(self) -> "ExtractionRequest":
+        ids = self.candidate_ids
+        if ids is not None and (len(ids) != len(self.candidates) or len(set(ids)) != len(ids)):
+            raise ValueError("candidate_ids must uniquely identify every submitted candidate")
+        return self
+
+
 class SeedRequest(ContractModel):
     principal_id: str = Field(min_length=1)
     batch_uid: UUID
@@ -85,6 +95,19 @@ class QueueCard(ContractModel):
 class ExtractionResponse(ContractModel):
     cards: list[QueueCard]
     duplicate_count: int = Field(ge=0)
+
+
+class ExtractionOutcome(ContractModel):
+    candidate_id: UUID
+    status: Literal["admitted", "hard_duplicate", "previously_denied", "refused"]
+    memory_id: UUID | None = None
+    label: str | None = None
+    item_uid: str | None = None
+    reason: str | None = None
+
+
+class AccountedExtractionResponse(ExtractionResponse):
+    outcomes: list[ExtractionOutcome]
 
 
 class SeedResponse(ExtractionResponse):

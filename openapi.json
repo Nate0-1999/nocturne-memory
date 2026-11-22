@@ -1,6 +1,37 @@
 {
   "components": {
     "schemas": {
+      "AccountedExtractionResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "cards": {
+            "items": {
+              "$ref": "#/components/schemas/QueueCard"
+            },
+            "title": "Cards",
+            "type": "array"
+          },
+          "duplicate_count": {
+            "minimum": 0.0,
+            "title": "Duplicate Count",
+            "type": "integer"
+          },
+          "outcomes": {
+            "items": {
+              "$ref": "#/components/schemas/ExtractionOutcome"
+            },
+            "title": "Outcomes",
+            "type": "array"
+          }
+        },
+        "required": [
+          "cards",
+          "duplicate_count",
+          "outcomes"
+        ],
+        "title": "AccountedExtractionResponse",
+        "type": "object"
+      },
       "AccuracyPoint": {
         "additionalProperties": false,
         "properties": {
@@ -1380,9 +1411,95 @@
         "title": "ExtractionCandidate",
         "type": "object"
       },
+      "ExtractionOutcome": {
+        "additionalProperties": false,
+        "properties": {
+          "candidate_id": {
+            "format": "uuid",
+            "title": "Candidate Id",
+            "type": "string"
+          },
+          "item_uid": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Item Uid"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          },
+          "memory_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Memory Id"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          },
+          "status": {
+            "enum": [
+              "admitted",
+              "hard_duplicate",
+              "previously_denied",
+              "refused"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "candidate_id",
+          "status"
+        ],
+        "title": "ExtractionOutcome",
+        "type": "object"
+      },
       "ExtractionRequest": {
         "additionalProperties": false,
         "properties": {
+          "candidate_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Candidate Ids"
+          },
           "candidates": {
             "items": {
               "$ref": "#/components/schemas/ExtractionCandidate"
@@ -7251,7 +7368,7 @@
   },
   "info": {
     "title": "N8 Spine",
-    "version": "0.1.105"
+    "version": "0.1.111"
   },
   "openapi": "3.1.0",
   "paths": {
@@ -9171,7 +9288,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ExtractionResponse"
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/AccountedExtractionResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ExtractionResponse"
+                    }
+                  ],
+                  "title": "Response Extract V1 Extractions Post"
                 }
               }
             },
