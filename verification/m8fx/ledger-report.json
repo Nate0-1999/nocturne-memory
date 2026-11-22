@@ -2,21 +2,21 @@
   "packet": "M8FX",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "2022c881a58bdfcbe04734cd5bb944cd571bc3d921bb559a7dfb126b721b4d62",
+  "ledger_sha256": "ecb6cdea1916ea524ad264688eed2afae19e87f0533c0494603325334184e517",
   "diffs": [
     {
       "repo": "spine",
       "base": "d2b3e9560c2f304df0137c2e33a9f17701e7b98c",
-      "head": "268c14d6ee0562d656964ad748c4894b63a092dc"
+      "head": "04fa4c043646ae8f70b2d6951807d8e9e0825697"
     }
   ],
   "unmapped": {
     "spine/openapi.json": "Lockstep 0.1.107 metadata and version assertion only; API contract remains 0.1.92.",
     "spine/src/spine/__init__.py": "Lockstep 0.1.107 metadata and version assertion only; API contract remains 0.1.92.",
     "spine/tests/test_packaging.py": "Lockstep 0.1.107 metadata and version assertion only; API contract remains 0.1.92.",
+    "spine/verification/m8fx/FL-195.png": "M8FX verification evidence or handoff report; no product behavior.",
     "spine/verification/m8fx/FL-196.png": "M8FX verification evidence or handoff report; no product behavior.",
     "spine/verification/m8fx/SHA256SUMS": "M8FX verification evidence or handoff report; no product behavior.",
-    "spine/verification/m8fx/FL-195.png": "M8FX verification evidence or handoff report; no product behavior.",
     "spine/verification/m8fx/ledger-report.json": "M8FX verification evidence or handoff report; no product behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
