@@ -2853,10 +2853,14 @@
       "era": "founding",
       "label": "The ant farm: the whole directory tree as chambered burrows with files as cells, zoomable, floating on black with a faint grid, showing worktrees.",
       "status": "partial",
-      "walk": "Open the ant farm; the whole directory's folders appear as chambers with files as cells, floating on black with a faint grid, and worktrees are visible. LOOK (v2.119): the module is judged beside its plate (farm.png) — same material, structure and density; the side-by-side capture is required.",
+      "walk": "Open the ant farm; the whole directory's folders appear as chambers with files as cells, floating on black with a faint grid, and worktrees are visible. LOOK (v2.119): the module is judged beside its plate (farm.png) — same material, structure and density; the side-by-side capture is required. SD-102: switch to Explorer; fold nested folders, inspect files and worktree roots and colored agent positions, select the same path in both looks, reload to retain the look, then repeat by keyboard and at phone width. Burrows and F123 stay unchanged.",
       "owner": "owner — \"I imagine that the anfarm is much more ant farm looking truly scoped to the whole directory that there are agents in.... there are empty chambers (files) etc. . we can scroll in and out to get close, it's floating in space like a solidworks object almost but the background is a black with faint white line grid.\" (chat 2026-07-20 17:30:44 (+ 16:49:44))",
       "surfaces": [
         "harness/web/src/Farm.tsx",
+        "harness/web/src/FarmExplorer.tsx",
+        "harness/web/src/explorerTree.ts",
+        "harness/web/tests/farmExplorer.test.mjs",
+        "harness/web/src/assets/farm-explorer.css",
         "harness/web/src/farmLayout.ts",
         "harness/web/src/useFarmLayout.ts",
         "harness/web/src/WorkVisualization.tsx",
@@ -3457,11 +3461,11 @@
         "spine/src/spine/model_policy.py"
       ],
       "last_walk": {
-        "date": "2026-11-11",
-        "packet": "M6W1A",
+        "date": "2026-11-21",
+        "packet": "M8DM",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "verification/m6w1a/FL-154.png"
+        "screenshot": "verification/m8dm/FL-154.png"
       },
       "protected": true,
       "protected_reason": "owner-iterated in manual sessions"
@@ -4191,11 +4195,11 @@
         "spine/src/spine/jobs.py"
       ],
       "last_walk": {
-        "date": "2026-11-11",
-        "packet": "M6W1A",
-        "verdict": "BLOCKED",
-        "flag": "F220",
-        "screenshot": "verification/m6w1a/FL-185.png"
+        "date": "2026-11-21",
+        "packet": "M8SA",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "verification/m8sa/FL-185.png"
       }
     },
     {
@@ -4725,11 +4729,11 @@
         "spine/src/spine/jobs.py"
       ],
       "last_walk": {
-        "date": "2026-11-11",
-        "packet": "M6W1A",
+        "date": "2026-11-21",
+        "packet": "M8SA",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "verification/m6w1a/FL-207.png"
+        "screenshot": "verification/m8sa/FL-207.png"
       }
     },
     {
