@@ -666,3 +666,7 @@ async def test_cedar_duplicate_and_prior_denial_have_replayable_outcomes(
     assert "maximum" in outcomes[3]["reason"]
     assert outcomes[0]["reason"]
     assert (await memory_client.post("/v1/extractions", json=second)).json() == response.json()
+    second["candidates"][0]["label"] = "Changed input"
+    retried = (await memory_client.post("/v1/extractions", json=second)).json()["outcomes"]
+    assert retried[0]["status"] == "refused"
+    assert retried[1:] == outcomes[1:]

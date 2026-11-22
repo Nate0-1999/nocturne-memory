@@ -1,5 +1,6 @@
 """Transactional M2H queue birth and deterministic verdict mechanics."""
 
+import json
 from dataclasses import dataclass
 from hashlib import sha256
 from pathlib import PurePath
@@ -102,18 +103,28 @@ class QueueService:
                 key = ids[index] if ids is not None else None
                 if key is not None:
                     digest = sha256(
-                        (
-                            str(request.thread_id)
-                            + str(request.origin_location)
-                            + draft.model_dump_json()
+                        json.dumps(
+                            [
+                                str(request.thread_id),
+                                request.machine_id,
+                                request.editor,
+                                request.origin_location,
+                                draft.model_dump(mode="json"),
+                            ],
+                            sort_keys=True,
                         ).encode()
                     ).hexdigest()
                     receipt = await session.get(ExtractionReceipt, (request.principal_id, key))
                     if receipt is not None:
                         if receipt.request_hash != digest:
-                            raise QueueValidationError(
-                                "candidate ID already used for different input"
+                            outcomes.append(
+                                ExtractionOutcome(
+                                    candidate_id=key,
+                                    status="refused",
+                                    reason="Candidate ID already used for different input",
+                                )
                             )
+                            continue
                         previous = receipt.result
                         outcome = ExtractionOutcome.model_validate(previous["outcome"])
                         outcomes.append(outcome)
