@@ -3461,11 +3461,11 @@
         "spine/src/spine/model_policy.py"
       ],
       "last_walk": {
-        "date": "2026-11-11",
-        "packet": "M6W1A",
+        "date": "2026-11-21",
+        "packet": "M8DM",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "verification/m6w1a/FL-154.png"
+        "screenshot": "verification/m8dm/FL-154.png"
       },
       "protected": true,
       "protected_reason": "owner-iterated in manual sessions"

@@ -1615,3 +1615,8 @@ its fingerprint stand. Pair 0.1.103.
 
 PRECEDENT: PLAN M8SA, F247, A-090. Pair 0.1.104 accompanies the Harness sub-agent change;
 Memory behavior and API contract 0.1.92 stay unchanged.
+
+## M8MP — Memory version twin (P4)
+
+PRECEDENT: PLAN M8MP, SD-101. Pair 0.1.106 accompanies the Harness header model list;
+Memory behavior and API contract 0.1.92 stay unchanged.
