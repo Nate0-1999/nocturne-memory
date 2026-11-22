@@ -2,12 +2,12 @@
   "packet": "M8FX",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "ecb6cdea1916ea524ad264688eed2afae19e87f0533c0494603325334184e517",
+  "ledger_sha256": "eee5d9ad96468d200cf4c29f13e74c52ee57eccf8037bdb7296cc612eee049cd",
   "diffs": [
     {
       "repo": "spine",
-      "base": "d2b3e9560c2f304df0137c2e33a9f17701e7b98c",
-      "head": "04fa4c043646ae8f70b2d6951807d8e9e0825697"
+      "base": "f2e719c216c1f3b599263fa908394c907a6b6359",
+      "head": "e88852f15642949a8464d0ad30045d6dab9e7e28"
     }
   ],
   "unmapped": {
