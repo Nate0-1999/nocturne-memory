@@ -2,12 +2,12 @@
   "packet": "M8MP",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "ac9fb9bfc15dd277ff0f55c7b37808b231bf91e71514525f3a97bffbd4793dd2",
+  "ledger_sha256": "e140535c59e0dfb27c3bd88de6be01104e43d92c6526116f3979dbfe068c9ded",
   "diffs": [
     {
       "repo": "spine",
-      "base": "d2b3e9560c2f304df0137c2e33a9f17701e7b98c",
-      "head": "b4a7350537042d4dd95a8f6b19085981b49b30c3"
+      "base": "ae62956eeef8a1351df3fa7a58609a29e9422813",
+      "head": "26e0368e27d5f2d7ad05bd36fa054f835be97e05"
     }
   ],
   "unmapped": {
@@ -15,8 +15,8 @@
     "spine/openapi.json": "Lockstep package metadata and expected version 0.1.106; Memory behavior and API contract 0.1.92 unchanged.",
     "spine/src/spine/__init__.py": "Lockstep package metadata and expected version 0.1.106; Memory behavior and API contract 0.1.92 unchanged.",
     "spine/tests/test_packaging.py": "Lockstep package metadata and expected version 0.1.106; Memory behavior and API contract 0.1.92 unchanged.",
-    "spine/verification/m8mp/ledger-report.json": "M8MP evidence, report or handoff state; no product behavior.",
-    "spine/verification/m8mp/SHA256SUMS": "M8MP evidence, report or handoff state; no product behavior."
+    "spine/verification/m8mp/SHA256SUMS": "M8MP evidence, report or handoff state; no product behavior.",
+    "spine/verification/m8mp/ledger-report.json": "M8MP evidence, report or handoff state; no product behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {},
