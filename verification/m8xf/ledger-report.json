@@ -7,14 +7,14 @@
     {
       "repo": "spine",
       "base": "45cae8fa3893c76ef470dbd5885bd7ddcd7f65d5",
-      "head": "df001e404938ec1ed2818466833bd2bfd672c381"
+      "head": "c751d471976017e03f4e4b5ec7cbf838b8a1382b"
     }
   ],
   "unmapped": {
     "spine/DECISIONS.md": "Records the A-096 implementation decision.",
     "spine/api_contract_fingerprints.json": "Generated schema or schema history for the opt-in admission contract under FL-044.",
     "spine/openapi.json": "Generated schema or schema history for the opt-in admission contract under FL-044.",
-    "spine/scripts/verify_wheel.py": "Generated schema or schema history for the opt-in admission contract under FL-044.",
+    "spine/scripts/verify_wheel.py": "Asserts the new extraction receipt migration is present in the installed wheel.",
     "spine/src/spine/__init__.py": "Paired package version 0.1.111.",
     "spine/src/spine/db/migrations/versions/0032_extraction_receipt.py": "Creates the per-principal extraction receipt table needed for retry and offline accounting under FL-044.",
     "spine/tests/test_api.py": "Regression or compatibility assertions for the extraction outcome and package/schema versions.",
@@ -23,9 +23,8 @@
     "spine/tests/test_migration.py": "Regression or compatibility assertions for the extraction outcome and package/schema versions.",
     "spine/tests/test_packaging.py": "Regression or compatibility assertions for the extraction outcome and package/schema versions.",
     "spine/tests/test_queue_api.py": "Regression or compatibility assertions for the extraction outcome and package/schema versions.",
-    "spine/verification/m8xf/ledger-report.json": "Public packet evidence for the affected rows.",
-    "spine/verification/m8xf/SHA256SUMS": "Public packet evidence for the affected rows.",
     "spine/verification/m8xf/FL-002.png": "Public packet evidence for the affected rows.",
+    "spine/verification/m8xf/FL-003.png": "Public packet evidence for the affected rows.",
     "spine/verification/m8xf/FL-005.png": "Public packet evidence for the affected rows.",
     "spine/verification/m8xf/FL-015.png": "Public packet evidence for the affected rows.",
     "spine/verification/m8xf/FL-026.png": "Public packet evidence for the affected rows.",
@@ -33,19 +32,20 @@
     "spine/verification/m8xf/FL-038.png": "Public packet evidence for the affected rows.",
     "spine/verification/m8xf/FL-042.png": "Public packet evidence for the affected rows.",
     "spine/verification/m8xf/FL-045.png": "Public packet evidence for the affected rows.",
+    "spine/verification/m8xf/FL-080.png": "Public packet evidence for the affected rows.",
     "spine/verification/m8xf/FL-109.png": "Public packet evidence for the affected rows.",
     "spine/verification/m8xf/FL-114.png": "Public packet evidence for the affected rows.",
-    "spine/verification/m8xf/FL-169.png": "Public packet evidence for the affected rows.",
-    "spine/verification/m8xf/FL-178.png": "Public packet evidence for the affected rows.",
-    "spine/verification/m8xf/FL-179.png": "Public packet evidence for the affected rows.",
-    "spine/verification/m8xf/FL-196.png": "Public packet evidence for the affected rows.",
-    "spine/verification/m8xf/FL-003.png": "Public packet evidence for the affected rows.",
-    "spine/verification/m8xf/FL-080.png": "Public packet evidence for the affected rows.",
     "spine/verification/m8xf/FL-162.png": "Public packet evidence for the affected rows.",
     "spine/verification/m8xf/FL-163.png": "Public packet evidence for the affected rows.",
     "spine/verification/m8xf/FL-164.png": "Public packet evidence for the affected rows.",
     "spine/verification/m8xf/FL-167.png": "Public packet evidence for the affected rows.",
-    "spine/verification/m8xf/FL-182.png": "Public packet evidence for the affected rows."
+    "spine/verification/m8xf/FL-169.png": "Public packet evidence for the affected rows.",
+    "spine/verification/m8xf/FL-178.png": "Public packet evidence for the affected rows.",
+    "spine/verification/m8xf/FL-179.png": "Public packet evidence for the affected rows.",
+    "spine/verification/m8xf/FL-182.png": "Public packet evidence for the affected rows.",
+    "spine/verification/m8xf/FL-196.png": "Public packet evidence for the affected rows.",
+    "spine/verification/m8xf/SHA256SUMS": "Public packet evidence for the affected rows.",
+    "spine/verification/m8xf/ledger-report.json": "Public packet evidence for the affected rows."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
