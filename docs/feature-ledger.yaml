@@ -2858,6 +2858,8 @@
       "surfaces": [
         "harness/web/src/Farm.tsx",
         "harness/web/src/FarmExplorer.tsx",
+        "harness/web/src/explorerTree.ts",
+        "harness/web/tests/farmExplorer.test.mjs",
         "harness/web/src/assets/farm-explorer.css",
         "harness/web/src/farmLayout.ts",
         "harness/web/src/useFarmLayout.ts",
