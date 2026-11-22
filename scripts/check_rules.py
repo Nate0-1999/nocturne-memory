@@ -30,6 +30,7 @@ def freeze(root: Path) -> list[str]:
     for path, key in (
         ("docs/feature-ledger.yaml", "ledger_sha256"),
         ("bin/ledger", "ledger_tool_sha256"),
+        ("scripts/check_rules.py", "product_checker_sha256"),
     ):
         if hashlib.sha256((root / path).read_bytes()).hexdigest() != expected[key]:
             errors.append(f"{path}: differs from the master fingerprint")
