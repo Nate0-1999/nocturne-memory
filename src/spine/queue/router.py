@@ -28,7 +28,8 @@ ERRORS = {
 
 
 @router.post(
-    "/v1/extractions", response_model=AccountedExtractionResponse | ExtractionResponse,
+    "/v1/extractions",
+    response_model=AccountedExtractionResponse | ExtractionResponse,
     responses=ERRORS,
 )
 async def extract(

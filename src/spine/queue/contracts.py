@@ -48,7 +48,6 @@ class ExtractionRequest(ContractModel):
     # v2.133: no count cap; the curator, not the extractor, limits the Palace's growth.
     candidates: list[ExtractionCandidate]
 
-
     candidate_ids: list[UUID] | None = None
 
     @model_validator(mode="after")
