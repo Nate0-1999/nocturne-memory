@@ -6,8 +6,8 @@
   "diffs": [
     {
       "repo": "spine",
-      "base": "ae62956eeef8a1351df3fa7a58609a29e9422813",
-      "head": "6b4b60e4cb169af209768b68b28e204e924d3042"
+      "base": "f2e719c216c1f3b599263fa908394c907a6b6359",
+      "head": "32282cc06f87ee907a78a94ed4c34bfc29ebd23a"
     }
   ],
   "unmapped": {
