@@ -4705,11 +4705,11 @@
         "spine/src/spine/model_policy.py"
       ],
       "last_walk": {
-        "date": "2026-11-11",
-        "packet": "M8SP",
+        "date": "2026-11-23",
+        "packet": "M8DL",
         "verdict": "PASS",
         "flag": "",
-        "screenshot": "FL-206.png"
+        "screenshot": "verification/m8dl/after/provenance-fixed-restart-desktop.png"
       }
     },
     {
