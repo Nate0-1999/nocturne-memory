@@ -2,12 +2,12 @@
   "packet": "M8DL",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "60c908363dab7d2c7972ec3a6954e8cfc7d1a0b7d7f8851084bb0fb0a5c8ec10",
+  "ledger_sha256": "4c26d261f02e6b413ffa82f24cf0839c1085f0a0aa7c9b99436e51738d1a170a",
   "diffs": [
     {
       "repo": "spine",
       "base": "910fb1532bb765af8e6e50390d9b89de2f219c88",
-      "head": "cc540147d76be3aa823edb339ca82e539699a075"
+      "head": "b9501d0dae2daf86c865a0ca788f8280eceb0bb8"
     }
   ],
   "unmapped": {
@@ -87,10 +87,10 @@
       "label": "Strategies and models: the strategies rail beside the model list, each strategy with its one-sentence meaning and the model it picks now; one plain summary of the model in use; the strategy named wherever the model is.",
       "walk": "Open the Model Device from the conversation's model chip: the strategies (Pinned, Max, Elbow, Floor, Budget once the ledger has a burn, Local when offline) stand beside the ranked model list, each with what it means and the model it picks now, the one in force marked; the model in use has one paragraph naming its price in and out (the price the chip quotes), context, rank, thinking level, which strategy chose it and why, and since when. Click Elbow; a new thread's header chip, thread-list row, conversation configuration legend and spend-module model row all read 'Elbow · <model>'. Pick Floor and Budget from the rail the same way.",
       "protected": false,
-      "verdict": "FAIL",
+      "verdict": "PASS",
       "screenshot": "FL-206.png",
-      "flag": "F218",
-      "observed": "The header, thread list and conversation legend showed Elbow and Claude Haiku 5.5. After restart the expanded paid Spend row named the correct model and price but omitted Elbow. Floor and Budget were checked on the rail and new-thread selection. See Garden after/legend-results.json."
+      "flag": "",
+      "observed": "The header, thread list and configuration legend showed Elbow in the initial walk. The review traced the fourth surface across restart. Expanded Spend showed Elbow beside Muse Ember and its original charge on both desktop and phone, for a pre-fix receipt and a newly billed turn. The embedding row stayed unlabelled. Floor and Budget were previously checked on the rail and new-thread selection. See Garden after/provenance-fixed-restart-source.json."
     }
   },
   "not_run": {
