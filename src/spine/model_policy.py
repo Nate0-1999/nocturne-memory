@@ -4,11 +4,13 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import sqlite3
 import time
 from collections.abc import Awaitable, Callable, Mapping, Sequence
 from dataclasses import dataclass, field, replace
 from datetime import UTC, datetime
 from decimal import Decimal, DecimalException, InvalidOperation, localcontext
+from pathlib import Path
 from typing import Literal, Protocol
 
 import httpx
@@ -162,6 +164,152 @@ class ModelRequestParameters:
             type(self.max_tokens) is not int or not 1 <= self.max_tokens <= 131_072
         ):
             raise ValueError("max_tokens must be an integer between 1 and 131072")
+
+
+class HomeModelChoices:
+    """A home's exclusions and last successful catalog choice for each policy."""
+
+    def __init__(self, home: Path) -> None:
+        home.mkdir(parents=True, exist_ok=True)
+        self.path = home / "model-choices.sqlite3"
+        with sqlite3.connect(self.path) as db:
+            db.execute("BEGIN IMMEDIATE")
+            if not db.execute("SELECT 1 FROM sqlite_master WHERE name='bans'").fetchone():
+                db.execute("CREATE TABLE bans (target TEXT PRIMARY KEY, reason TEXT NOT NULL)")
+                db.execute(
+                    "INSERT INTO bans VALUES (?, ?)",
+                    (
+                        "maker:minimax",
+                        "OpenRouter reported that third parties may have read prompts.",
+                    ),
+                )
+            db.execute("""CREATE TABLE IF NOT EXISTS picks (
+                policy TEXT PRIMARY KEY, model TEXT NOT NULL, canonical TEXT NOT NULL,
+                context_tokens INTEGER NOT NULL, checked TEXT NOT NULL, changed TEXT NOT NULL
+            )""")
+            db.execute("""CREATE TABLE IF NOT EXISTS windows (
+                model TEXT PRIMARY KEY, context_tokens INTEGER NOT NULL)""")
+
+    def bans(self) -> dict[str, str]:
+        with sqlite3.connect(self.path) as db:
+            return dict(db.execute("SELECT target, reason FROM bans ORDER BY target"))
+
+    def set_ban(self, target: str, banned: bool) -> None:
+        kind, _, name = target.partition(":")
+        if (
+            kind not in {"maker", "model"}
+            or not name
+            or name != name.strip()
+            or any(c.isspace() for c in name)
+            or (kind == "maker" and "/" in name)
+        ):
+            raise ValueError("Choose a model or maker to ban.")
+        with sqlite3.connect(self.path) as db:
+            if banned:
+                db.execute("INSERT OR IGNORE INTO bans VALUES (?, 'Excluded by you.')", (target,))
+            else:
+                db.execute("DELETE FROM bans WHERE target=?", (target,))
+
+    @staticmethod
+    def ban_target(bans: Mapping[str, str], *names: str) -> str | None:
+        for name in names:
+            slug = name.removeprefix("openrouter:")
+            maker, slash, _ = slug.partition("/")
+            for target in (
+                f"model:{slug}",
+                f"model:{slug.split(':', 1)[0]}",
+                f"maker:{maker}" if slash else "",
+            ):
+                if target in bans:
+                    return target
+        return None
+
+    @classmethod
+    def excluded(cls, bans: Mapping[str, str], *names: str) -> bool:
+        return cls.ban_target(bans, *names) is not None
+
+    def eligible(self, catalog: ModelCatalog) -> ModelCatalog:
+        bans = self.bans()
+        rows = tuple(
+            row
+            for row in catalog.rows
+            if not self.excluded(
+                bans,
+                row.permaslug,
+                route.model_id
+                if (route := catalog.model_routes.get(row.permaslug))
+                else row.permaslug,
+            )
+        )
+        return replace(catalog, rows=rows)
+
+    def save(self, resolution: ThreadModelResolution, canonical: str) -> None:
+        assert resolution.catalog_fetched_at is not None
+        date = resolution.catalog_fetched_at.isoformat()
+        with sqlite3.connect(self.path) as db:
+            db.execute(
+                "INSERT OR REPLACE INTO windows VALUES (?, ?)",
+                (resolution.model, resolution.context_tokens),
+            )
+            db.execute(
+                """INSERT INTO picks VALUES (?,?,?,?,?,?)
+                ON CONFLICT(policy) DO UPDATE SET
+                changed=CASE WHEN picks.model=excluded.model
+                             THEN picks.changed ELSE excluded.changed END,
+                model=excluded.model, canonical=excluded.canonical,
+                context_tokens=excluded.context_tokens, checked=excluded.checked
+                WHERE excluded.checked >= picks.checked""",
+                (
+                    resolution.policy,
+                    resolution.model,
+                    canonical,
+                    resolution.context_tokens,
+                    date,
+                    datetime.now(UTC).isoformat(),
+                ),
+            )
+
+    def last(self, policy: str) -> dict | None:
+        with sqlite3.connect(self.path) as db:
+            db.row_factory = sqlite3.Row
+            row = db.execute("SELECT * FROM picks WHERE policy=?", (policy,)).fetchone()
+            if row and not self.excluded(self.bans(), row["model"], row["canonical"]):
+                return dict(row)
+        return None
+
+    def context_for(self, model: str) -> int | None:
+        with sqlite3.connect(self.path) as db:
+            row = db.execute(
+                "SELECT context_tokens FROM windows WHERE model=?", (model,)
+            ).fetchone()
+            return row[0] if row else None
+
+    def offline(self, policy: str) -> ThreadModelResolution:
+        pick = self.last(policy)
+        if not pick:
+            with sqlite3.connect(self.path) as db:
+                seen = db.execute("SELECT 1 FROM picks LIMIT 1").fetchone()
+            history = (
+                "This home has no eligible saved pick for this strategy."
+                if seen
+                else "This home has never saved a model from the catalog."
+            )
+            raise ModelCatalogUnavailable(
+                f"The catalog cannot supply a model now. {history} "
+                "Reconnect to start a conversation."
+            )
+        checked = datetime.fromisoformat(pick["checked"])
+        return ThreadModelResolution(
+            model=pick["model"],
+            context_tokens=pick["context_tokens"],
+            policy=policy,
+            price_sorted=not policy.startswith("pinned:"),
+            catalog_fetched_at=checked,
+            reason=(
+                f"{'Best value' if policy == 'elbow' else 'Last pick'} found on "
+                f"{checked.date()}. The catalog cannot be read now."
+            ),
+        )
 
 
 class ModelCatalogLoader(Protocol):
@@ -436,17 +584,22 @@ class ModelPolicyResolver:
         self,
         *,
         policy: str,
-        static_model: str,
-        static_context_tokens: int,
+        static_model: str | None,
+        static_context_tokens: int | None,
         catalog: ModelCatalogLoader | None,
         burn: Callable[[], Awaitable[TokenBurn | None]] | None = None,
+        choices: HomeModelChoices | None = None,
     ) -> None:
         self._policy_text = policy
         # FL-152: a budget policy prices models at the agents' measured burn (the spend ledger).
         self._burn = burn
         self._policy = parse_model_policy(policy)
-        _validate_model_name(static_model)
-        if type(static_context_tokens) is not int or static_context_tokens <= 0:
+        self._choices = choices
+        if static_model is not None:
+            _validate_model_name(static_model)
+        if static_context_tokens is not None and (
+            type(static_context_tokens) is not int or static_context_tokens <= 0
+        ):
             raise ModelPolicyConfigurationError(
                 "static model context tokens must be a positive integer"
             )
@@ -464,6 +617,16 @@ class ModelPolicyResolver:
         parsed = parse_model_policy(policy)
         self._policy_text, self._policy = policy, parsed
 
+    @property
+    def active_policy(self) -> str:
+        if (
+            self._policy.kind == "pinned"
+            and self._choices
+            and self._choices.excluded(self._choices.bans(), str(self._policy.value))
+        ):
+            return "elbow"
+        return self._policy_text
+
     def explain(self, thread_id: str, model: str, *, explicitly_selected: bool = False) -> str:
         """FL-152/153: explain the retained choice, never today's replacement policy."""
         if explicitly_selected:
@@ -471,6 +634,8 @@ class ModelPolicyResolver:
         resolution = self._resolutions.get(thread_id)
         if resolution is None or resolution.model != model:
             return "Retained conversation model; its original policy evidence is unavailable."
+        if resolution.reason and resolution.benchmark is None and self._choices:
+            return resolution.reason
         policy = parse_model_policy(resolution.policy)
         if policy.kind == "pinned":
             return "Pinned model selected for this conversation."
@@ -499,11 +664,17 @@ class ModelPolicyResolver:
             self._resolutions[thread_id] = resolved
             return resolved
 
+    async def preview(self) -> ThreadModelResolution:
+        """Read the active policy without committing a conversation to its current pick."""
+        return await self._resolve_uncached("model-settings")
+
     async def resolve_named(self, thread_id: str, model: str) -> ThreadModelResolution:
         """Resolve one explicit adapter model string without mutating thread truth."""
 
         if not isinstance(thread_id, str) or not thread_id.strip():
             raise ValueError("thread_id must not be blank")
+        if self._choices and self._choices.excluded(self._choices.bans(), model):
+            raise NamedModelResolutionError("This model is banned. Lift its ban in model settings.")
         slug = _parse_named_model(self._catalog, model)
         if self._catalog is None:
             raise ModelCatalogUnavailable("model router catalog is not configured")
@@ -544,6 +715,14 @@ class ModelPolicyResolver:
                 model,
                 str(exc),
             )
+            if self._static_context_tokens is None:
+                if self._choices:
+                    context = self._choices.context_for(model)
+                    if context:
+                        return ThreadModelResolution(model, context, "hydrated_unverified")
+                raise ModelCatalogUnavailable(
+                    "Reconnect to read this conversation's model context."
+                ) from exc
             return ThreadModelResolution(
                 model=model,
                 context_tokens=self._static_context_tokens,
@@ -602,12 +781,26 @@ class ModelPolicyResolver:
         return enriched
 
     async def _resolve_uncached(self, thread_id: str) -> ThreadModelResolution:
-        if self._policy.kind == "pinned":
-            assert isinstance(self._policy.value, str)
+        policy_text = self.active_policy
+        policy = parse_model_policy(policy_text)
+        if policy.kind == "pinned":
+            assert isinstance(policy.value, str)
+            if self._choices:
+                try:
+                    named = await self.resolve_named(thread_id, policy.value)
+                except (ModelCatalogUnavailable, NamedModelResolutionError):
+                    return self._choices.offline(policy_text)
+                resolved = replace(named, policy=policy_text)
+                self._choices.save(resolved, policy.value)
+                if named.input_modalities is not None:
+                    self._image_input[named.model] = named.input_modalities
+                return resolved
             context_tokens = self._static_context_tokens
             supported_parameters = None
             input_modalities = None
-            if self._policy.value != self._static_model and self._catalog is not None:
+            if (
+                self._policy.value != self._static_model or context_tokens is None
+            ) and self._catalog is not None:
                 # A pick other than the configured model takes its own window (M3SK); the
                 # benchmark table stays unconsulted, and an unknown route keeps the static one.
                 try:
@@ -620,7 +813,9 @@ class ModelPolicyResolver:
                     if input_modalities is not None:
                         self._image_input[self._policy.value] = input_modalities
                 except (ModelCatalogUnavailable, NamedModelResolutionError):
-                    pass
+                    pass  # The Palace's independently configured static model retains its window.
+            if context_tokens is None:
+                raise ModelCatalogUnavailable("Reconnect to read the pinned model's context.")
             resolved = ThreadModelResolution(
                 model=self._policy.value,
                 context_tokens=context_tokens,
@@ -640,16 +835,22 @@ class ModelPolicyResolver:
             if self._catalog is None:
                 raise ModelCatalogUnavailable("OpenRouter catalog is not configured")
             catalog = await self._catalog.load()
+            if self._choices:
+                catalog = self._choices.eligible(catalog)
             burn = None
-            if self._policy.kind == "budget" and self._burn is not None:
+            if policy.kind == "budget" and self._burn is not None:
                 burn = await self._burn()
-            selected = select_model(self._policy, catalog.rows, burn)
+            selected = select_model(policy, catalog.rows, burn)
             route = catalog.model_routes.get(selected.permaslug)
             if route is None:
                 raise ModelCatalogUnavailable(
                     "selected model has no unambiguous positive-context route"
                 )
         except ModelCatalogUnavailable as exc:
+            if self._choices:
+                return self._choices.offline(policy_text)
+            if self._static_model is None or self._static_context_tokens is None:
+                raise
             logger.warning(
                 "model policy failed open thread=%s policy=%s model=%s reason=%s",
                 thread_id,
@@ -668,14 +869,16 @@ class ModelPolicyResolver:
         resolved = ThreadModelResolution(
             model=_qualify_model(self._catalog, route.model_id),
             context_tokens=route.context_tokens,
-            policy=self._policy_text,
+            policy=policy_text,
             price_sorted=True,
             input_modalities=route.input_modalities,
             supported_parameters=route.supported_parameters,
             benchmark=selected,
             catalog_fetched_at=catalog.fetched_at,
-            reason=explain_choice(self._policy, catalog.rows, selected, burn),
+            reason=explain_choice(policy, catalog.rows, selected, burn),
         )
+        if self._choices:
+            self._choices.save(resolved, selected.permaslug)
         logger.info(
             "model policy resolved thread=%s policy=%s model=%s "
             "model_route=%s "
