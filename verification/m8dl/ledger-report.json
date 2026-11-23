@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "910fb1532bb765af8e6e50390d9b89de2f219c88",
-      "head": "dcebfda5c2957fefa1811382228be2f7b60cf14a"
+      "head": "cc540147d76be3aa823edb339ca82e539699a075"
     }
   ],
   "unmapped": {
@@ -16,16 +16,16 @@
     "spine/src/spine/__init__.py": "Paired package version metadata. The Palace API shape is unchanged.",
     "spine/tests/test_home_model_choices.py": "Test assertions or explicitly supplied verification model. No production routing originates here.",
     "spine/tests/test_packaging.py": "Test assertions or explicitly supplied verification model. No production routing originates here.",
-    "spine/verification/m8dl/impacted.json": "Packet evidence, verification driver or hash manifest.",
-    "spine/verification/m8dl/FL-202.png": "Packet evidence, verification driver or hash manifest.",
-    "spine/verification/m8dl/FL-206.png": "Packet evidence, verification driver or hash manifest.",
-    "spine/verification/m8dl/FL-154.png": "Packet evidence, verification driver or hash manifest.",
-    "spine/verification/m8dl/FL-196.png": "Packet evidence, verification driver or hash manifest.",
-    "spine/verification/m8dl/FL-195.png": "Packet evidence, verification driver or hash manifest.",
     "spine/verification/m8dl/FL-152.png": "Packet evidence, verification driver or hash manifest.",
     "spine/verification/m8dl/FL-153.png": "Packet evidence, verification driver or hash manifest.",
+    "spine/verification/m8dl/FL-154.png": "Packet evidence, verification driver or hash manifest.",
+    "spine/verification/m8dl/FL-195.png": "Packet evidence, verification driver or hash manifest.",
+    "spine/verification/m8dl/FL-196.png": "Packet evidence, verification driver or hash manifest.",
+    "spine/verification/m8dl/FL-202.png": "Packet evidence, verification driver or hash manifest.",
+    "spine/verification/m8dl/FL-206.png": "Packet evidence, verification driver or hash manifest.",
     "spine/verification/m8dl/SHA256SUMS": "Packet evidence, verification driver or hash manifest.",
-    "spine/verification/m8dl/ledger-report.json": "Packet evidence, verification driver or hash manifest."
+    "spine/verification/m8dl/ledger-report.json": "Packet evidence, verification driver or hash manifest.",
+    "spine/verification/m8dl/impacted.json": "Packet evidence, verification driver or hash manifest."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -60,10 +60,10 @@
       "label": "The model browser: every model the token source offers, ranked, pinnable, with price and context window; the thinking level beside it; the standard configurations one click away.",
       "walk": "Open the model chip on a conversation: the source's models are listed ranked with price and context window; pin one and it stays on top; pick another and the thread switches to it and stays on it — new conversations start on it too, until you change it, and the chip says so; set the thinking level beside it; pick a standard configuration (pinned, max, elbow, floor) and see what it selects now; switching back from a model to a policy is one click. Ban the model the strategy picked. The next new conversation starts on the next best eligible model, the first keeps its model, and the banned model cannot be pinned. Lift the ban. Check the strategy, ban reason and dated saved pick at phone and desktop width.",
       "protected": true,
-      "verdict": "BLOCKED",
+      "verdict": "PASS",
       "screenshot": "FL-202.png",
-      "flag": "F086",
-      "observed": "Verified search, pin to top, floor, budget, elbow, add/lift on desktop and phone, both pin refusals, two actual receipts and thread stickiness. The complete older gesture of changing thinking and inspecting its next request was not repeated."
+      "flag": "",
+      "observed": "Verified ranking, price, context, search, pin to top, standard strategy picks, phone and desktop add/lift, both pin refusals, two paid models and existing thread retention. Set thinking to Low, selected Muse by its catalog row, verified the pin on another new thread, then returned to Elbow in a click. See role-and-policy-controls.json and legend-results.json in Garden after/."
     },
     "FL-152": {
       "label": "Cost routing: lowest cost above an intelligence threshold, or a spend rate per hour buying the most intelligence that burn allows.",
@@ -87,10 +87,10 @@
       "label": "Strategies and models: the strategies rail beside the model list, each strategy with its one-sentence meaning and the model it picks now; one plain summary of the model in use; the strategy named wherever the model is.",
       "walk": "Open the Model Device from the conversation's model chip: the strategies (Pinned, Max, Elbow, Floor, Budget once the ledger has a burn, Local when offline) stand beside the ranked model list, each with what it means and the model it picks now, the one in force marked; the model in use has one paragraph naming its price in and out (the price the chip quotes), context, rank, thinking level, which strategy chose it and why, and since when. Click Elbow; a new thread's header chip, thread-list row, conversation configuration legend and spend-module model row all read 'Elbow · <model>'. Pick Floor and Budget from the rail the same way.",
       "protected": false,
-      "verdict": "BLOCKED",
+      "verdict": "FAIL",
       "screenshot": "FL-206.png",
-      "flag": "F086",
-      "observed": "Opened both devices and headers, expanded the price/score/context summary, and changed Floor, Budget and Elbow. The conversation and priced receipt agreed. The full four-surface legend comparison in the Spend module and thread list was not repeated."
+      "flag": "F218",
+      "observed": "The header, thread list and conversation legend showed Elbow and Claude Haiku 5.5. After restart the expanded paid Spend row named the correct model and price but omitted Elbow. Floor and Budget were checked on the rail and new-thread selection. See Garden after/legend-results.json."
     }
   },
   "not_run": {
