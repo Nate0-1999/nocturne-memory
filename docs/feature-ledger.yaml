@@ -3428,8 +3428,8 @@
       "era": "Jul 28",
       "label": "The elbow: a standard point on the cost-to-intelligence Pareto curve.",
       "status": "built",
-      "walk": "Choose the elbow policy; a new thread's policy readout names which frontier model is the elbow, how far below the frontier's price chord it sits, and what the next model up adds for its price.",
-      "owner": "owner — \"I don't think that we ever quantified how we would actually calculate the elbow: it's on the pareto frontier, its not the most expensive nor the least but where is it? just below a a dense pocket of models at derivative of pareto >.5? something like that?\" (chat 2026-07-28 16:22:57; chat 2026-07-28 00:26:44)",
+      "walk": "Choose the elbow policy; a new thread's policy readout names which frontier model is the elbow, how far below the frontier's price chord it sits, and what the next model up adds for its price. Start an unset home. Its first conversation uses the elbow. With the catalog unreachable, start on its dated eligible saved pick. Repeat in a home that has never read the catalog and verify the refusal starts no turn.",
+      "owner": "owner — \"I don't think that we ever quantified how we would actually calculate the elbow: it's on the pareto frontier, its not the most expensive nor the least but where is it? just below a a dense pocket of models at derivative of pareto >.5? something like that?\" (chat 2026-07-28 16:22:57; chat 2026-07-28 00:26:44); owner, SD-100 (2026-11-22): “The custom pin to model we should be using the algo by default.”",
       "surfaces": [
         "spine/src/spine/model_policy.py",
         "harness/src/harness/model_policy.py",
@@ -4601,8 +4601,8 @@
       "era": "Oct 1",
       "label": "The model browser: every model the token source offers, ranked, pinnable, with price and context window; the thinking level beside it; the standard configurations one click away.",
       "status": "built",
-      "walk": "Open the model chip on a conversation: the source's models are listed ranked with price and context window; pin one and it stays on top; pick another and the thread switches to it and stays on it — new conversations start on it too, until you change it, and the chip says so; set the thinking level beside it; pick a standard configuration (pinned, max, elbow, floor) and see what it selects now; switching back from a model to a policy is one click.",
-      "owner": "owner 2026-10-01: \"run whatever models open router or whatever token source they are using can feed us - a function that pulls all available and ranks them by relevance and allows pinning and shows standard configurations … Probably cost and context window as well.\" — 2026-10-04: \"make sure that switching from a policy like elbow to a specific model isn't hard for the user and is sticky\"",
+      "walk": "Open the model chip on a conversation: the source's models are listed ranked with price and context window; pin one and it stays on top; pick another and the thread switches to it and stays on it — new conversations start on it too, until you change it, and the chip says so; set the thinking level beside it; pick a standard configuration (pinned, max, elbow, floor) and see what it selects now; switching back from a model to a policy is one click. Ban the model the strategy picked. The next new conversation starts on the next best eligible model, the first keeps its model, and the banned model cannot be pinned. Lift the ban. Check the strategy, ban reason and dated saved pick at phone and desktop width.",
+      "owner": "owner 2026-10-01: \"run whatever models open router or whatever token source they are using can feed us - a function that pulls all available and ranks them by relevance and allows pinning and shows standard configurations … Probably cost and context window as well.\" — 2026-10-04: \"make sure that switching from a policy like elbow to a specific model isn't hard for the user and is sticky\"; owner, SD-100 (2026-11-22): “shouldn't our algorithm find the next best perf/dollar if we ban a single model?”",
       "surfaces": [
         "harness/web/src/ModelDevice.tsx",
         "harness/src/harness/model_policy.py",
