@@ -7,21 +7,21 @@
     {
       "repo": "spine",
       "base": "910fb1532bb765af8e6e50390d9b89de2f219c88",
-      "head": "aaf6ec82f08291d78b2155e0224556b6beb64839"
+      "head": "db15daa4c0dbfab24402a647cfe29adcff4c6aa5"
     }
   ],
   "unmapped": {
     "spine/openapi.json": "Version twin for Nocturne 0.1.110 and its published schema.",
     "spine/src/spine/__init__.py": "Version twin for Nocturne 0.1.110 and its published schema.",
     "spine/tests/test_packaging.py": "Regression coverage for package versions, install integrity, source privacy and terminal replay.",
+    "spine/verification/m8tb/FL-152.png": "Packet evidence for the gate, with no product runtime effect.",
+    "spine/verification/m8tb/FL-153.png": "Packet evidence for the gate, with no product runtime effect.",
+    "spine/verification/m8tb/FL-154.png": "Packet evidence for the gate, with no product runtime effect.",
     "spine/verification/m8tb/FL-196.png": "Packet evidence for the gate, with no product runtime effect.",
+    "spine/verification/m8tb/FL-202.png": "Packet evidence for the gate, with no product runtime effect.",
+    "spine/verification/m8tb/FL-206.png": "Packet evidence for the gate, with no product runtime effect.",
     "spine/verification/m8tb/SHA256SUMS": "Packet evidence for the gate, with no product runtime effect.",
-    "spine/verification/m8tb/ledger-report.json": "Packet evidence for the gate, with no product runtime effect.",
-    "spine/verification/m8tb/FL-202.png": "Packet-owned walk, row verdict or integrity evidence, with no product runtime effect.",
-    "spine/verification/m8tb/FL-206.png": "Packet-owned walk, row verdict or integrity evidence, with no product runtime effect.",
-    "spine/verification/m8tb/FL-154.png": "Packet-owned walk, row verdict or integrity evidence, with no product runtime effect.",
-    "spine/verification/m8tb/FL-152.png": "Packet-owned walk, row verdict or integrity evidence, with no product runtime effect.",
-    "spine/verification/m8tb/FL-153.png": "Packet-owned walk, row verdict or integrity evidence, with no product runtime effect."
+    "spine/verification/m8tb/ledger-report.json": "Packet evidence for the gate, with no product runtime effect."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -50,7 +50,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-202.png",
       "flag": "F086",
-      "observed": "The Model Device selected a subscription for one thread and retained the pinned broker default. The wider parameter, policy, price or spending gesture in this row was not exercised. Required walk: Open the model chip on a conversation: the source's models are listed ranked with price and context window; pin one and it stays on top; pick another and the thread switches to it and stays on it — new conversations start on it too, until you change it, and the chip says so; set the thinking level beside it; pick a standard configuration (pinned, max, elbow, floor) and see what it selects now; switching back from a model to a policy is one click. The attached capture is packet context only (broker/model-choice.png)."
+      "observed": "Opened both plan groups at 1440 and 390 pixels, set native thinking and confirmed broker search and three sorts kept all 24 plan choices. The scored broker configurations and global default sequence were not walked. Required walk: Open the model chip on a conversation: the source's models are listed ranked with price and context window; pin one and it stays on top; pick another and the thread switches to it and stays on it — new conversations start on it too, until you change it, and the chip says so; set the thinking level beside it; pick a standard configuration (pinned, max, elbow, floor) and see what it selects now; switching back from a model to a policy is one click. The attached capture is packet context only (settings/after/phone-available.png)."
     },
     "FL-152": {
       "label": "Cost routing: lowest cost above an intelligence threshold, or a spend rate per hour buying the most intelligence that burn allows.",
@@ -77,7 +77,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-206.png",
       "flag": "F086",
-      "observed": "The Model Device selected a subscription for one thread and retained the pinned broker default. The wider parameter, policy, price or spending gesture in this row was not exercised. Required walk: Open the Model Device from the conversation's model chip: the strategies (Pinned, Max, Elbow, Floor, Budget once the ledger has a burn, Local when offline) stand beside the ranked model list, each with what it means and the model it picks now, the one in force marked; the model in use has one paragraph naming its price in and out (the price the chip quotes), context, rank, thinking level, which strategy chose it and why, and since when. Click Elbow; a new thread's header chip, thread-list row, conversation configuration legend and spend-module model row all read 'Elbow · <model>'. Pick Floor and Budget from the rail the same way. The attached capture is packet context only (broker/model-choice.png)."
+      "observed": "Both subscription conversations named the owner's explicit choice. The broker Elbow, Floor and Budget picks, spend module and new-thread sequence were not walked. Required walk: Open the Model Device from the conversation's model chip: the strategies (Pinned, Max, Elbow, Floor, Budget once the ledger has a burn, Local when offline) stand beside the ranked model list, each with what it means and the model it picks now, the one in force marked; the model in use has one paragraph naming its price in and out (the price the chip quotes), context, rank, thinking level, which strategy chose it and why, and since when. Click Elbow; a new thread's header chip, thread-list row, conversation configuration legend and spend-module model row all read 'Elbow · <model>'. Pick Floor and Budget from the rail the same way. The attached capture is packet context only (settings/after/desktop-claudeAgent-thinking.png)."
     }
   },
   "not_run": {
