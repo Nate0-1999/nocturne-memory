@@ -1633,3 +1633,5 @@ PRECEDENT: SD-100, A-020, A-021 and draft A-098. Keep exclusions, the last route
 by each strategy and its known context size beside the home's settings. Exclude rows before
 the frontier is computed. A catalog outage can reuse an eligible pick for the same strategy.
 The shared resolver accepts this home store explicitly. The Palace curator retains its own policy.
+
+M8PA (P2, P3; A-103). Pair Memory 0.1.119 with the Harness profiler. The daemon owns live turns and workflow names. The Palace API contract and schema stay the same.
