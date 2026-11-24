@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "94a80510856f9ec10e49531722208bad73c50bd0",
-      "head": "bd61e618a1164354878dd3acd1625abf5cbe7908"
+      "head": "ab1ef2ae1171e2e77d192820bf9f1cb5a3a9d411"
     }
   ],
   "unmapped": {
@@ -19,7 +19,8 @@
     "spine/verification/m8td/FL-195.png": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
     "spine/verification/m8td/FL-196.png": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
     "spine/verification/m8td/SHA256SUMS": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
-    "spine/verification/m8td/ledger-report.json": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change."
+    "spine/verification/m8td/ledger-report.json": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
+    "spine/verification/m8td/rules-control.txt": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
