@@ -6,18 +6,20 @@
   "diffs": [
     {
       "repo": "spine",
-      "base": "125d8154e79f3555cc65bb365d3f7af2b3a7233a",
-      "head": "f611473325f7dbcfde73153bb5dfdb380d6c040e"
+      "base": "94a80510856f9ec10e49531722208bad73c50bd0",
+      "head": "bd61e618a1164354878dd3acd1625abf5cbe7908"
     }
   ],
   "unmapped": {
-    "spine/openapi.json": "Version 0.1.116 metadata and the frozen law copy; no Memory behavior change.",
-    "spine/src/spine/__init__.py": "Version 0.1.116 metadata and the frozen law copy; no Memory behavior change.",
-    "spine/tests/test_packaging.py": "Version 0.1.116 metadata and the frozen law copy; no Memory behavior change.",
-    "spine/verification/m8td/FL-195.png": "Version 0.1.116 metadata and the frozen law copy; no Memory behavior change.",
-    "spine/verification/m8td/FL-196.png": "Version 0.1.116 metadata and the frozen law copy; no Memory behavior change.",
-    "spine/verification/m8td/SHA256SUMS": "Version 0.1.116 metadata and the frozen law copy; no Memory behavior change.",
-    "spine/verification/m8td/ledger-report.json": "Version 0.1.116 metadata and the frozen law copy; no Memory behavior change."
+    "spine/openapi.json": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
+    "spine/src/spine/__init__.py": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
+    "spine/tests/test_packaging.py": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
+    "spine/verification/m8ta/SHA256SUMS": "M8TA's change, beneath this packet in the stack; covered by M8TA's own report 339.",
+    "spine/verification/m8ta/ledger-report.json": "M8TA's change, beneath this packet in the stack; covered by M8TA's own report 339.",
+    "spine/verification/m8td/FL-195.png": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
+    "spine/verification/m8td/FL-196.png": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
+    "spine/verification/m8td/SHA256SUMS": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
+    "spine/verification/m8td/ledger-report.json": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -28,16 +30,16 @@
       "verdict": "FAIL",
       "screenshot": "FL-195.png",
       "flag": "F086",
-      "observed": "Not walked by M8TD. The packet's change shares this row's file; its own walk covered the T3 module (FL-216) only. This capture shows packet context only. The row's required walk remains to be done."
+      "observed": "Not walked by M8TD. The range against main holds this packet's change and M8TA's beneath it; M8TA's rows were walked in its own report 339. M8TD's walk covered the T3 module (FL-216) only. This capture shows packet context only. The row's required walk remains to be done."
     },
     "FL-196": {
       "label": "The rules machine checks citations, frozen law, product vocabulary, seed states and packet precedents.",
       "walk": "Remove a guard citation on a disposable branch and observe CI fail; change a frozen axiom and observe the freeze step fail; restore both and observe Rules pass. The master ADR check remains red until the owner applies the citation patch.",
       "protected": true,
-      "verdict": "FAIL",
+      "verdict": "BLOCKED",
       "screenshot": "FL-196.png",
       "flag": "F086",
-      "observed": "Not walked by M8TD. The packet's change shares this row's file; its own walk covered the T3 module (FL-216) only. This capture shows packet context only. The row's required walk remains to be done."
+      "observed": "Local negative controls on throwaway copies of this packet's heads (rules-control.txt): removing one guard citation made the citation check exit 1 and restoring it exit 0; altering one frozen axiom made the freeze check exit 1 in each product and restoring it exit 0. The deliberately failing hosted pushes the row's walk names were not performed."
     }
   },
   "not_run": {
