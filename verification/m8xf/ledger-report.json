@@ -6,8 +6,8 @@
   "diffs": [
     {
       "repo": "spine",
-      "base": "45cae8fa3893c76ef470dbd5885bd7ddcd7f65d5",
-      "head": "c751d471976017e03f4e4b5ec7cbf838b8a1382b"
+      "base": "b06b95cf373181753503d0b3fe3ed7f0a3177d8b",
+      "head": "686feaff08bc730059e36a0e05a6a3e7f74e3eae"
     }
   ],
   "unmapped": {
@@ -96,7 +96,7 @@
     },
     "FL-038": {
       "label": "A cheap 80/20 duplicate check at memory creation, keeping the agent's memory work under 10% of build run time.",
-      "walk": "Save a fact already in the Palace: at cosine 0.92 or above the save comes back 'already known \u2014 reinforced' at once, between 0.80 and 0.92 it asks to confirm, without the agent reading other memories; these write-time bands are the C.4 defaults and are separate from the curator's own search band (v2.128).",
+      "walk": "Save a fact already in the Palace: at cosine 0.92 or above the save comes back 'already known — reinforced' at once, between 0.80 and 0.92 it asks to confirm, without the agent reading other memories; these write-time bands are the C.4 defaults and are separate from the curator's own search band (v2.128).",
       "protected": true,
       "verdict": "FAIL",
       "screenshot": "FL-038.png",
@@ -104,8 +104,8 @@
       "observed": "Walked the packaged compaction and reopened its record. The capture is context only. The separate gesture above was not verified in this packet."
     },
     "FL-042": {
-      "label": "Constitution: 'Already known \u2014 reinforced' on re-saves; rejected candidates remembered and never re-proposed without material change (gate-day).",
-      "walk": "Re-save a known fact; the reply says 'already known \u2014 reinforced'; reject a candidate and re-save it unchanged; it is not proposed again.",
+      "label": "Constitution: 'Already known — reinforced' on re-saves; rejected candidates remembered and never re-proposed without material change (gate-day).",
+      "walk": "Re-save a known fact; the reply says 'already known — reinforced'; reject a candidate and re-save it unchanged; it is not proposed again.",
       "protected": true,
       "verdict": "FAIL",
       "screenshot": "FL-042.png",
@@ -204,7 +204,7 @@
     },
     "FL-163": {
       "label": "Seed ingestion at startup: upload markdown files (or the machine's CLAUDE.md and AGENTS.md) and the curators break them into individual memories.",
-      "walk": "M3WF fixture: focus Memory Ingest\u2019s drop/paste control and paste a two-fact fictional Markdown document; review the individual split memories. A native file chooser is optional.",
+      "walk": "M3WF fixture: focus Memory Ingest’s drop/paste control and paste a two-fact fictional Markdown document; review the individual split memories. A native file chooser is optional.",
       "protected": false,
       "verdict": "FAIL",
       "screenshot": "FL-163.png",
