@@ -259,8 +259,9 @@
     "F253",
     "F254",
     "F256",
+    "F257",
     "F258"
   ],
   "repository": "spine",
-  "garden_commit": "41fa3c91cdf50e7b2089d9e220bbd244539908b8"
+  "garden_commit": "4aec8e5347c869325eb514b3ed69bba4b59f3205"
 }
