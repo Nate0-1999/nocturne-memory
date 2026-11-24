@@ -14,6 +14,7 @@ import os
 import re
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 GARDEN = Path(__file__).resolve().parents[1]
@@ -353,13 +354,111 @@ def mapped_drift(repo, head, surfaces):
     return ""
 
 
-def verify(data, directory, check_diffs=()):
+def refresh(data, directory, diffs):
+    """Carry existing answers forward only after validating the proposed coverage."""
+    import fcntl
+
+    directory = directory.resolve()
+    packet = directory.name.upper()
+    path = directory / "ledger-report.json"
+    sums = directory / "SHA256SUMS"
+    lock = os.open(directory, os.O_RDONLY)
+    try:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        old = read_json(path)
+        if old.get("packet") != packet or old.get("mode") != "builder" or not diffs:
+            raise ValueError("refresh needs this packet's builder report and explicit diffs")
+        by_repo = {d["repo"]: d for d in diffs}
+        for d in old["diffs"]:
+            if d["repo"] not in by_repo or subprocess.run(
+                ["git", "-C", str(repository(d["repo"])), "merge-base", "--is-ancestor",
+                 d["head"], by_repo[d["repo"]]["head"]]
+            ).returncode:
+                raise ValueError(f"{d['repo']}: refresh must include the original report head")
+            # A sync can import upstream changes. Additional edits to walked
+            # surfaces cannot acquire an old verdict by advancing the report head.
+            current = by_repo[d["repo"]]
+            repo = repository(d["repo"])
+            merge = subprocess.run(["git", "-C", str(repo), "merge-tree", "--write-tree",
+                                    d["head"], current["base"]], capture_output=True, text=True)
+            tree = merge.stdout.partition("\n")[0]
+            if merge.returncode not in (0, 1) or not re.fullmatch(r"[0-9a-f]{40,64}", tree):
+                raise ValueError(f"{d['repo']}: cannot reconstruct the sync")
+            edited = git(repo, "diff", "--name-only", "--no-renames", "-z", tree, current["head"]).split("\0")
+            affected = impact(data, [], [f"{d['repo']}/{p}" for p in edited if p])["affected"]
+            for name in {p for key, paths in affected.items() if key in old["rows"] for p in paths}:
+                relative = name.split("/", 1)[1]
+                if relative == "docs/frozen-law.json" and d["repo"] in ("harness", "spine"):
+                    continue  # Independently verified export metadata.
+                if name.startswith("harness/web/dist/") or relative.startswith(f"verification/{directory.name}/"):
+                    continue
+                if git(repo, "diff", "--name-only", d["head"], current["head"], "--", relative).strip():
+                    raise ValueError(f"{name}: edited beyond the sync; fresh evidence required")
+        new = report(data, packet, diffs)
+        for key, row in new["rows"].items():
+            previous = old["rows"].get(key)
+            if not previous or not previous.get("verdict"):
+                raise ValueError(f"{key}: new or unanswered required row")
+            if any(previous.get(field) != row[field] for field in ("walk", "protected")):
+                raise ValueError(f"{key}: walk or protection changed; review the evidence")
+            row.update({k: v for k, v in previous.items() if k not in ("label", "walk", "protected")})
+        if set(old["rows"]) - new["rows"].keys():
+            raise ValueError("refresh would discard walked rows; review the coverage")
+        for name in new["unmapped"]:
+            reason = old["unmapped"].get(name)
+            if not isinstance(reason, str) or not reason.strip():
+                if name.startswith(tuple(f"{r}/verification/{directory.name}/" for r in ("spine", "harness"))):
+                    reason = f"{packet} packet evidence only, landed with the product: its captures, their hashes and that repository's own coverage report; no feature behavior."
+                elif name.startswith("harness/web/dist/"):
+                    reason = "Generated web bundle, rebuilt from the merged source at the landing sync; a build output with no feature behavior of its own."
+                else:
+                    raise ValueError(f"{name}: new or unanswered path")
+            new["unmapped"][name] = reason
+        for name, reason in old["unmapped"].items():
+            new["unmapped"].setdefault(name, reason)
+        for key in new["not_run"].keys() & old["not_run"].keys():
+            new["not_run"][key] = old["not_run"][key]
+        for key, value in old.items():
+            new.setdefault(key, value)
+        errors, count = verify(data, directory, evidence=new)
+        if errors:
+            raise ValueError("\n".join(errors))
+        for line in sums.read_text().splitlines():
+            checksum, filename = line.split(maxsplit=1)
+            filename = filename.removeprefix("*")
+            target = directory / filename
+            if not safe_path(filename) or target.resolve() != target or not target.is_file() or digest(target) != checksum:
+                raise ValueError(f"{filename}: evidence differs from SHA256SUMS")
+        content = (json.dumps(new, indent=2, ensure_ascii=False) + "\n").encode()
+        old_hash = digest(path)
+        updated, n = re.subn(r"(?m)^" + old_hash + r"(?=\s+\*?(?:\./)?ledger-report\.json$)",
+                             hashlib.sha256(content).hexdigest(), sums.read_text())
+        if n != 1:
+            raise ValueError("expected one valid ledger-report.json checksum")
+        with tempfile.TemporaryDirectory(dir=directory) as scratch:
+            staged = Path(scratch)
+            (staged / "old").write_bytes(path.read_bytes())
+            (staged / "report").write_bytes(content)
+            (staged / "sums").write_text(updated)
+            (staged / "report").replace(path)
+            try:
+                (staged / "sums").replace(sums)
+            except OSError:
+                (staged / "old").replace(path)
+                raise
+        print(f"{packet}: refreshed {count} rows; existing evidence hashes preserved")
+    finally:
+        os.close(lock)
+
+
+def verify(data, directory, check_diffs=(), evidence=None):
     directory = directory.resolve()
     errors = []
     if directory.parent.name != "verification":
         errors.append("evidence must live in verification/<packet>/")
     try:
-        evidence = read_json(directory / "ledger-report.json")
+        if evidence is None:
+            evidence = read_json(directory / "ledger-report.json")
     except (OSError, ValueError) as exc:
         evidence = {}
         errors.append(f"missing or invalid ledger-report.json: {exc}")
@@ -642,6 +741,9 @@ def main():
     )
     make.add_argument("packet")
     make.add_argument("--diff", action="append", default=[])
+    update = sub.add_parser("refresh", help="refresh existing evidence after a sync")
+    update.add_argument("packet_dir", type=Path)
+    update.add_argument("--diff", action="append", required=True)
     changed = sub.add_parser("impacted")
     changed.add_argument("range", nargs="?")
     changed.add_argument("--paths", nargs="+")
@@ -680,6 +782,8 @@ def main():
                     indent=2,
                 )
             )
+        elif args.command == "refresh":
+            refresh(data, args.packet_dir, [resolve_diff(d) for d in args.diff])
         elif args.command == "impacted":
             if bool(args.range) == bool(args.paths):
                 raise ValueError("choose a diff range or --paths")
