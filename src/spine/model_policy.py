@@ -73,6 +73,7 @@ class ModelRoute:
     context_tokens: int
     input_modalities: frozenset[str] | None = None
     supported_parameters: frozenset[str] | None = None
+    effort_levels: tuple[str, ...] | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -120,6 +121,7 @@ class ThreadModelResolution:
     )
     # FL-152/153: the policy's own sentence for this pick, from the table it was made on.
     reason: str | None = None
+    effort_levels: tuple[str, ...] | None = None
 
     def __post_init__(self) -> None:
         _validate_model_name(self.model)
@@ -149,7 +151,7 @@ class ModelRequestParameters:
     top_p: float | None = None
     top_k: int | None = None
     max_tokens: int | None = None
-    effort: Literal["none", "minimal", "low", "medium", "high", "xhigh"] | None = None
+    effort: str | None = None
 
     def __post_init__(self) -> None:
         if self.temperature is not None and not 0 <= self.temperature <= 2:
@@ -516,6 +518,7 @@ class ModelPolicyResolver:
             policy="human_command",
             input_modalities=route.input_modalities,
             supported_parameters=route.supported_parameters,
+            effort_levels=route.effort_levels,
             catalog_fetched_at=fetched_at,
         )
         logger.info(

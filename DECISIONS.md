@@ -1619,6 +1619,9 @@ Memory behavior and API contract 0.1.92 stay unchanged.
 ## M8MP — Memory version twin (P4)
 
 PRECEDENT: PLAN M8MP, SD-101. Pair 0.1.106 accompanies the Harness header model list;
+## M8PF — Memory version twin (P4)
+
+PRECEDENT: PLAN M8PF, SD-098. Pair 0.1.108 accompanies the Harness profiler module;
 Memory behavior and API contract 0.1.92 stay unchanged.
 
 ## M8XF — Preserve each extraction decision [P1.5]
