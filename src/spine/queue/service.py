@@ -1,5 +1,6 @@
 """Transactional M2H queue birth and deterministic verdict mechanics."""
 
+import json
 from dataclasses import dataclass
 from hashlib import sha256
 from pathlib import PurePath
@@ -17,6 +18,7 @@ from spine.db.models import (
     ApprovalQueueItem,
     CuratorAction,
     CuratorVerdict,
+    ExtractionReceipt,
     MemoryEdge,
     MemoryUnit,
 )
@@ -25,12 +27,15 @@ from spine.memory.service import (
     CandidateCreated,
     CreateMemoryCommand,
     MemoryService,
+    MemoryValidationError,
     PreparedSplitChild,
     SplitMemoryChild,
     contract_memory_from_row,
 )
 from spine.queue.contracts import (
+    AccountedExtractionResponse,
     BatchDecisionResponse,
+    ExtractionOutcome,
     ExtractionRequest,
     ExtractionResponse,
     QueueCard,
@@ -74,29 +79,114 @@ class QueueService:
 
     async def extract(self, request: ExtractionRequest) -> ExtractionResponse:
         cards: list[QueueCard] = []
+        outcomes: list[ExtractionOutcome] = []
         duplicates = 0
-        for draft in request.candidates:
-            created = await self._memory_service.create_candidate(
-                CreateMemoryCommand(
-                    principal_id=request.principal_id,
-                    label=draft.label,
-                    body=draft.body,
-                    kind=draft.kind,
-                    keywords=draft.keywords,
-                    project_key=draft.project_key,
-                    thread_origin=str(request.thread_id),
-                    origin_thread_id=request.thread_id,
-                    origin_location=request.origin_location,
-                    origin_locations=draft.origin_locations,
-                    editor=request.editor,
-                    machine_id=request.machine_id,
-                ),
-                replaces=draft.target_ids if draft.verdict in {"merge", "supersede"} else (),
+        for index, draft in enumerate(request.candidates):
+            command = CreateMemoryCommand(
+                principal_id=request.principal_id,
+                label=draft.label,
+                body=draft.body,
+                kind=draft.kind,
+                keywords=draft.keywords,
+                project_key=draft.project_key,
+                thread_origin=str(request.thread_id),
+                origin_thread_id=request.thread_id,
+                origin_location=request.origin_location,
+                origin_locations=draft.origin_locations,
+                editor=request.editor,
+                machine_id=request.machine_id,
             )
-            if created is None:
-                duplicates += 1
-                continue
-            cards.append(await self._enqueue(request, draft.verdict, draft.target_ids, created))
+            replaces = draft.target_ids if draft.verdict in {"merge", "supersede"} else ()
+            async with self._session_factory.begin() as session:
+                await self._memory_service.lock_candidate_principal(session, request.principal_id)
+                ids = request.candidate_ids
+                key = ids[index] if ids is not None else None
+                if key is not None:
+                    digest = sha256(
+                        json.dumps(
+                            [
+                                str(request.thread_id),
+                                request.machine_id,
+                                request.editor,
+                                request.origin_location,
+                                draft.model_dump(mode="json"),
+                            ],
+                            sort_keys=True,
+                        ).encode()
+                    ).hexdigest()
+                    receipt = await session.get(ExtractionReceipt, (request.principal_id, key))
+                    if receipt is not None:
+                        if receipt.request_hash != digest:
+                            outcomes.append(
+                                ExtractionOutcome(
+                                    candidate_id=key,
+                                    status="refused",
+                                    reason="Candidate ID already used for different input",
+                                )
+                            )
+                            continue
+                        previous = receipt.result
+                        outcome = ExtractionOutcome.model_validate(previous["outcome"])
+                        outcomes.append(outcome)
+                        if previous["card"]:
+                            cards.append(QueueCard.model_validate(previous["card"]))
+                        duplicates += outcome.status in {"hard_duplicate", "previously_denied"}
+                        continue
+                card = None
+                details = {}
+                try:
+                    async with session.begin_nested():
+                        created = await self._memory_service.admit_candidate(
+                            session, command, replaces=replaces
+                        )
+                        if isinstance(created, CandidateCreated):
+                            card = await self._enqueue(
+                                session, request, draft.verdict, draft.target_ids, created
+                            )
+                            details = dict(
+                                status="admitted",
+                                item_uid=card.item_uid,
+                                memory_id=card.candidate.memory_id,
+                                label=card.candidate.label,
+                            )
+                        elif isinstance(created, UUID):
+                            details = dict(
+                                status="previously_denied",
+                                memory_id=created,
+                                reason="Exact body previously denied",
+                            )
+                        else:
+                            details = dict(
+                                status="hard_duplicate",
+                                memory_id=created.memory_id,
+                                label=created.label,
+                                reason="Hard-duplicate cosine similarity threshold",
+                            )
+                except (QueueValidationError, MemoryValidationError) as exc:
+                    if key is None:
+                        raise
+                    details = dict(status="refused", reason=str(exc))
+                if card is not None:
+                    cards.append(card)
+                duplicates += details["status"] in {"hard_duplicate", "previously_denied"}
+                if key is not None:
+                    outcome = ExtractionOutcome(candidate_id=key, **details)
+                    outcomes.append(outcome)
+                    session.add(
+                        ExtractionReceipt(
+                            principal_id=request.principal_id,
+                            candidate_id=key,
+                            request_hash=digest,
+                            result={
+                                "outcome": outcome.model_dump(mode="json"),
+                                "card": card.model_dump(mode="json") if card else None,
+                            },
+                        )
+                    )
+        if request.candidate_ids is not None:
+            return AccountedExtractionResponse(
+                cards=cards, duplicate_count=duplicates, outcomes=outcomes
+            )
         return ExtractionResponse(cards=cards, duplicate_count=duplicates)
 
     async def ingest_seed(self, request: SeedRequest) -> SeedResponse:
@@ -654,6 +744,7 @@ class QueueService:
 
     async def _enqueue(
         self,
+        session: AsyncSession,
         request: ExtractionRequest,
         verdict: str,
         target_ids: list[UUID],
@@ -662,37 +753,37 @@ class QueueService:
         active_neighbors = [
             neighbor
             for neighbor in created.neighbors
-            if await self._is_active(request.principal_id, neighbor.memory_id)
+            if await session.scalar(
+                select(MemoryUnit.status).where(MemoryUnit.id == neighbor.memory_id)
+            )
+            == "active"
         ]
         neighbor_ids = {neighbor.memory_id for neighbor in active_neighbors}
         if any(target not in neighbor_ids for target in target_ids):
-            await self._discard_candidate(created.memory.memory_id, request.machine_id)
             raise QueueValidationError("verdict targets must be active machine-fetched neighbors")
         item_uid = mint_ulid()
-        async with self._session_factory() as session:
-            async with session.begin():
-                row = (
-                    (
-                        await session.execute(
-                            insert(ApprovalQueueItem.__table__)
-                            .values(
-                                item_uid=item_uid,
-                                candidate_memory_id=created.memory.memory_id,
-                                principal_id=request.principal_id,
-                                birthplace="thread",
-                                birthplace_thread_id=request.thread_id,
-                                verdict=verdict,
-                                neighbor_ids=[str(item.memory_id) for item in active_neighbors],
-                                target_ids=[str(item) for item in target_ids],
-                                state="pending",
-                            )
-                            .returning(*ApprovalQueueItem.__table__.c)
-                        )
+        row = (
+            (
+                await session.execute(
+                    insert(ApprovalQueueItem.__table__)
+                    .values(
+                        item_uid=item_uid,
+                        candidate_memory_id=created.memory.memory_id,
+                        principal_id=request.principal_id,
+                        birthplace="thread",
+                        birthplace_thread_id=request.thread_id,
+                        verdict=verdict,
+                        neighbor_ids=[str(item.memory_id) for item in active_neighbors],
+                        target_ids=[str(item) for item in target_ids],
+                        state="pending",
                     )
-                    .mappings()
-                    .one()
+                    .returning(*ApprovalQueueItem.__table__.c)
                 )
-                return await self._card(session, row, neighbors=active_neighbors)
+            )
+            .mappings()
+            .one()
+        )
+        return await self._card(session, row, neighbors=active_neighbors)
 
     async def _enqueue_seed(
         self,

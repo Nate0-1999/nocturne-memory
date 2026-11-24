@@ -176,9 +176,11 @@ async def test_models_match_authoritative_c2_schema(
         "curator_progress",
         "workflow_job",
         "workflow_run",
+        "extraction_receipt",
     )
 
     expected_columns = {
+        "extraction_receipt": ("principal_id", "candidate_id", "request_hash", "result"),
         "retrain_progress": ("job_id", "points"),
         "retrain_job": ("job_id", "result", "error", "created_at"),
         "workflow_job": (
@@ -489,6 +491,7 @@ async def test_models_match_authoritative_c2_schema(
         for name, table in Base.metadata.tables.items()
     }
     assert nullable == {
+        "extraction_receipt": set(),
         "workflow_job": {"next_run_at", "trigger_cursor"},
         "workflow_run": {"verdict", "finished_at"},
         "curator_progress": {"finding_uid", "action"},
@@ -567,6 +570,7 @@ async def test_models_match_authoritative_c2_schema(
         for name, table in Base.metadata.tables.items()
     }
     assert primary_keys == {
+        "extraction_receipt": ("principal_id", "candidate_id"),
         "workflow_job": ("job_id",),
         "workflow_run": ("run_id",),
         "curator_progress": ("event_id",),
@@ -605,6 +609,10 @@ async def test_models_match_authoritative_c2_schema(
         for column in table.c
     }
     assert types == {
+        "extraction_receipt.principal_id": "TEXT",
+        "extraction_receipt.candidate_id": "UUID",
+        "extraction_receipt.request_hash": "TEXT",
+        "extraction_receipt.result": "JSONB",
         "workflow_job.job_id": "TEXT",
         "workflow_job.principal_id": "TEXT",
         "workflow_job.machine_id": "TEXT",
@@ -969,6 +977,7 @@ async def test_models_match_authoritative_c2_schema(
         for name, table in Base.metadata.tables.items()
     }
     assert checks == {
+        "extraction_receipt": {},
         "retrain_progress": {},
         "retrain_job": {},
         "curator_model_policy": {},
