@@ -141,7 +141,8 @@ class JobService:
                 LEFT JOIN LATERAL (
                   SELECT sum(cost_usd) AS cost,
                     count(*) FILTER(WHERE cost_usd IS NULL) AS unpriced
-                  FROM spend_event WHERE principal_id=j.principal_id AND thread_id=r.thread_id
+                  FROM metered_spend_event
+                  WHERE principal_id=j.principal_id AND thread_id=r.thread_id
                 ) s ON true
                 WHERE j.principal_id=:p AND j.machine_id=:m
                 ORDER BY r.started_at, r.run_id

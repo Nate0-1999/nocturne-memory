@@ -45,11 +45,13 @@ COALESCE(sum(kv_cache_tokens), 0)::numeric AS kv_cache_tokens,
 COALESCE(sum(reasoning_tokens), 0)::numeric AS reasoning_tokens,
 COALESCE(sum(output_tokens), 0)::numeric AS output_tokens,
 sum(cost_usd) AS total_usd,
-count(*)::bigint AS total_receipt_lines,
-count(*) FILTER (WHERE cost_usd IS NULL)::bigint AS total_unpriced_lines,
+count(*) FILTER (WHERE covered)::bigint AS covered_turns,
+count(*) FILTER (WHERE NOT covered)::bigint AS total_receipt_lines,
+count(*) FILTER (WHERE NOT covered AND cost_usd IS NULL)::bigint AS total_unpriced_lines,
 sum(cost_usd) FILTER (WHERE in_window) AS spend_per_hour_usd,
-count(*) FILTER (WHERE in_window)::bigint AS hourly_receipt_lines,
-count(*) FILTER (WHERE in_window AND cost_usd IS NULL)::bigint AS hourly_unpriced_lines
+count(*) FILTER (WHERE in_window AND NOT covered)::bigint AS hourly_receipt_lines,
+count(*) FILTER (WHERE in_window AND NOT covered AND cost_usd IS NULL)::bigint
+    AS hourly_unpriced_lines
 """
 
 
@@ -64,7 +66,10 @@ def _table_query(scoped: bool, principal_scoped: bool = False) -> str:
 WITH base AS (
     SELECT
         thread_id,
-        model,
+        CASE WHEN product_type = 'subscription.turn'
+            THEN concat('subscription:', provider, '/', meta->>'account', '/', model)
+            ELSE model END AS model,
+        product_type = 'subscription.turn' AS covered,
         purpose,
         cost_usd,
         ts >= :window_start AS in_window,
@@ -183,9 +188,7 @@ class SpendService:
         async with self._session_factory() as session:
             async with session.begin():
                 await session.execute(
-                    postgresql_insert(SpendEvent)
-                    .values(values)
-                    .on_conflict_do_nothing(index_elements=[SpendEvent.event_uid])
+                    postgresql_insert(SpendEvent).values(values).on_conflict_do_nothing()
                 )
                 rows = (
                     (await session.execute(select(SpendEvent).where(SpendEvent.event_uid.in_(ids))))
@@ -195,9 +198,7 @@ class SpendService:
                 by_id = {row.event_uid: row for row in rows}
                 for event in events:
                     row = by_id.get(event.event_uid)
-                    if row is None:  # pragma: no cover - insert/select transaction invariant
-                        raise RuntimeError(f"spend event {event.event_uid} was not persisted")
-                    if _row_values(row) != event_values(event):
+                    if row is None or _row_values(row) != event_values(event):
                         raise SpendEventConflictError(event.event_uid)
         return len(events)
 
@@ -299,7 +300,8 @@ async def _history(
             await session.execute(
                 text(f"""
                 SELECT event_uid, ts, thread_id, model, purpose, quantity_type,
-                       unit_of_measure, quantity::text, cost_usd::text, basis, ref
+                       unit_of_measure, quantity::text, cost_usd::text, basis, ref,
+                       CASE WHEN product_type = 'subscription.turn' THEN provider END AS covered_by
                 FROM ({base}) AS base ORDER BY event_uid
             """),
                 parameters,
@@ -315,7 +317,8 @@ async def _history(
         else "SELECT date_trunc('minute', ts) AS minute, purpose, model, "
         "sum(cost_usd) AS cost_usd, count(*) AS receipt_lines, "
         "count(*) FILTER (WHERE cost_usd IS NULL) AS unpriced_lines "
-        "FROM base WHERE ts >= :rate_start GROUP BY minute, purpose, model"
+        "FROM base WHERE ts >= :rate_start AND product_type <> 'subscription.turn' "
+        "GROUP BY minute, purpose, model"
     )
     rate_rows = (
         (
@@ -402,7 +405,9 @@ async def _history(
             sum(cost_usd) FILTER (WHERE product_type LIKE 'llm.%')::text AS model_usd,
             sum(cost_usd) FILTER (WHERE product_type LIKE 'infra.%')::text AS infrastructure_usd,
             sum(cost_usd)::text AS total_usd,
-            count(*) FILTER (WHERE cost_usd IS NULL)::int AS unpriced_lines
+            count(*) FILTER (WHERE product_type <> 'subscription.turn' AND cost_usd IS NULL)::int
+                AS unpriced_lines,
+            count(*) FILTER (WHERE product_type = 'subscription.turn')::int AS covered_turns
         FROM ({base}) AS base GROUP BY day ORDER BY day
     """),
                 parameters,
@@ -448,6 +453,7 @@ def _row_values(row: SpendEvent) -> dict[str, Any]:
 
 def _metric_values(row: Mapping[str, Any]) -> dict[str, Decimal | int | None]:
     return {
+        "covered_turns": row["covered_turns"],
         "input_tokens": row["input_tokens"],
         "kv_cache_tokens": row["kv_cache_tokens"],
         "reasoning_tokens": row["reasoning_tokens"],

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from datetime import date, datetime
 from decimal import Decimal
 from typing import Annotated, Any, Literal
@@ -33,7 +34,7 @@ def _nonblank(value: str) -> str:
 
 type ULID = Annotated[StrictStr, AfterValidator(normalize_ulid)]
 type NonBlankString = Annotated[StrictStr, AfterValidator(_nonblank)]
-type SpendProductType = Literal["llm.request", "llm.embedding"]
+type SpendProductType = Literal["llm.request", "llm.embedding", "subscription.turn"]
 type SpendBasis = Literal["measured", "allocated", "estimated"]
 type SpendBehavior = Literal["variable", "fixed", "step"]
 type SpendPurpose = Literal[
@@ -79,6 +80,34 @@ class SpendEventInput(SpendContract):
     ref: NonBlankString
     meta: dict[str, JsonValue] = Field(default_factory=dict)
 
+    @model_validator(mode="after")
+    def require_covered_turn(self):
+        if self.product_type == "subscription.turn":
+            account = self.meta.get("account")
+            if not (
+                self.quantity_type == "turn"
+                and self.unit_of_measure == "turns"
+                and self.quantity == 1
+                and self.cost_usd is None
+                and self.basis == "measured"
+                and self.behavior == "fixed"
+                and self.purpose == "building"
+                and self.thread_id
+                and self.principal_id
+                and self.run_id
+                and self.prompt_id
+                and self.provider in {"codex", "claudeAgent"}
+                and self.model
+                and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._/-]*", self.model)
+                and self.meta.keys() == {"account"}
+                and isinstance(account, str)
+                and re.fullmatch(r"[0-9a-f]{64}", account)
+            ):
+                raise ValueError(
+                    "expected one completed subscription turn with an opaque account and no price"
+                )
+        return self
+
     @field_validator("ts")
     @classmethod
     def require_aware_timestamp(cls, value: datetime) -> datetime:
@@ -123,6 +152,7 @@ class InvoiceReceipt(SpendEventInput):
 class SpendTableMetrics(SpendContract):
     """Exact token lanes plus honest known-cost state for one ledger grouping."""
 
+    covered_turns: int = Field(default=0, ge=0)
     input_tokens: Decimal = Field(ge=0, max_digits=30, decimal_places=9)
     kv_cache_tokens: Decimal = Field(ge=0, max_digits=30, decimal_places=9)
     reasoning_tokens: Decimal = Field(ge=0, max_digits=30, decimal_places=9)
@@ -192,6 +222,7 @@ class MessageCache(SpendContract):
 
 
 class DailySpend(SpendContract):
+    covered_turns: int = Field(default=0, ge=0)
     day: datetime
     model_usd: DecimalString | None
     infrastructure_usd: DecimalString | None
@@ -200,6 +231,7 @@ class DailySpend(SpendContract):
 
 
 class SpendReceipt(SpendContract):
+    covered_by: str | None = None
     event_uid: ULID
     ts: datetime
     thread_id: UUID | None

@@ -633,7 +633,7 @@ class SpendEvent(Base):
     __table_args__ = (
         CheckConstraint(
             "product_type IN ("
-            "'llm.request','llm.embedding','llm.fee','infra.db.instance',"
+            "'subscription.turn','llm.request','llm.embedding','llm.fee','infra.db.instance',"
             "'infra.db.storage','infra.run.serve','infra.run.job',"
             "'infra.observability','net.egress','fleet.lease','fleet.snapshot'"
             ") OR product_type LIKE 'ext.api._%'",
@@ -668,6 +668,13 @@ class SpendEvent(Base):
         CheckConstraint(
             "ref = btrim(ref) AND ref <> ''",
             name="spend_event_ref_nonblank_check",
+        ),
+        Index(
+            "spend_event_covered_run_idx",
+            "principal_id",
+            "run_id",
+            unique=True,
+            postgresql_where=text("product_type = 'subscription.turn'"),
         ),
         Index("spend_event_ts_idx", "ts"),
         Index("spend_event_ref_idx", "ref"),
