@@ -7,6 +7,7 @@ from fastapi import APIRouter, Query, Request
 from spine.memory.service import MemoryValidationError
 from spine.problems import ProblemJSONResponse, problem_openapi, problem_response
 from spine.queue.contracts import (
+    AccountedExtractionResponse,
     BatchDecisionResponse,
     ExtractionRequest,
     ExtractionResponse,
@@ -26,7 +27,11 @@ ERRORS = {
 }
 
 
-@router.post("/v1/extractions", response_model=ExtractionResponse, responses=ERRORS)
+@router.post(
+    "/v1/extractions",
+    response_model=AccountedExtractionResponse | ExtractionResponse,
+    responses=ERRORS,
+)
 async def extract(
     body: ExtractionRequest, request: Request
 ) -> ExtractionResponse | ProblemJSONResponse:
