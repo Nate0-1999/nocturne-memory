@@ -157,14 +157,20 @@ async def test_coverage_replay_preserves_broker_money_and_unknown_counts(
     covered = {
         **_event("01K1M2A0000000000000000006", ts=now, cost_usd=None),
         "product_type": "subscription.turn",
-        "provider": "codex",
+        "provider": "third-tool",
         "meta": {"account": "a" * 64},
         "quantity": "1",
         "unit_of_measure": "turns",
         "quantity_type": "turn",
         "behavior": "fixed",
     }
-    for bad in ({"cost_usd": "0"}, {"meta": {"account": "not-an-account-hash"}}, {"quantity": "2"}):
+    for bad in (
+        {"cost_usd": "0"},
+        {"meta": {"account": "not-an-account-hash"}},
+        {"quantity": "2"},
+        {"provider": "two words"},
+        {"provider": "tool/account"},
+    ):
         assert (
             await memory_client.post(endpoint, json={"events": [covered | bad]})
         ).status_code == 422
@@ -192,7 +198,7 @@ async def test_coverage_replay_preserves_broker_money_and_unknown_counts(
     assert after["days"] == [before["days"][0] | {"covered_turns": 1}]
     assert after["threads"][0]["covered_turns"] == 1
     assert len(after["threads"][0]["models"]) == 2
-    assert [r["covered_by"] for r in after["receipts"]].count("codex") == 1
+    assert [r["covered_by"] for r in after["receipts"]].count("third-tool") == 1
     await SpendViewRefresher(memory_session_factory).refresh_once()
     async with memory_session_factory() as session:
         for view in ("v_spend_rate", "v_thread_cost", "v_run_cost", "v_memory_cost"):

@@ -54,7 +54,7 @@ def upgrade() -> None:
             AND cost_usd IS NULL AND basis = 'measured' AND behavior = 'fixed'
             AND purpose = 'building' AND principal_id IS NOT NULL AND thread_id IS NOT NULL
             AND run_id IS NOT NULL AND prompt_id IS NOT NULL AND model IS NOT NULL
-            AND provider IS NOT NULL AND provider IN ('codex','claudeAgent')
+            AND provider IS NOT NULL AND provider ~ '^[A-Za-z0-9][A-Za-z0-9._-]*$'
             AND model ~ '^[A-Za-z0-9][A-Za-z0-9._/-]*$'
             AND meta ? 'account' AND jsonb_typeof(meta->'account') = 'string'
             AND meta->>'account' ~ '^[0-9a-f]{64}$' AND meta - 'account' = '{}'::jsonb

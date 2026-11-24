@@ -96,7 +96,8 @@ class SpendEventInput(SpendContract):
                 and self.principal_id
                 and self.run_id
                 and self.prompt_id
-                and self.provider in {"codex", "claudeAgent"}
+                and self.provider
+                and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*", self.provider)
                 and self.model
                 and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._/-]*", self.model)
                 and self.meta.keys() == {"account"}
