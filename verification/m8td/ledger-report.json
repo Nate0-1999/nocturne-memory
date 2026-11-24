@@ -7,13 +7,17 @@
     {
       "repo": "spine",
       "base": "125d8154e79f3555cc65bb365d3f7af2b3a7233a",
-      "head": "827932b267731e8d31bea18852fe4d1f0f67ede2"
+      "head": "f611473325f7dbcfde73153bb5dfdb380d6c040e"
     }
   ],
   "unmapped": {
     "spine/openapi.json": "Version 0.1.116 metadata and the frozen law copy; no Memory behavior change.",
     "spine/src/spine/__init__.py": "Version 0.1.116 metadata and the frozen law copy; no Memory behavior change.",
-    "spine/tests/test_packaging.py": "Version 0.1.116 metadata and the frozen law copy; no Memory behavior change."
+    "spine/tests/test_packaging.py": "Version 0.1.116 metadata and the frozen law copy; no Memory behavior change.",
+    "spine/verification/m8td/FL-195.png": "Version 0.1.116 metadata and the frozen law copy; no Memory behavior change.",
+    "spine/verification/m8td/FL-196.png": "Version 0.1.116 metadata and the frozen law copy; no Memory behavior change.",
+    "spine/verification/m8td/SHA256SUMS": "Version 0.1.116 metadata and the frozen law copy; no Memory behavior change.",
+    "spine/verification/m8td/ledger-report.json": "Version 0.1.116 metadata and the frozen law copy; no Memory behavior change."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
