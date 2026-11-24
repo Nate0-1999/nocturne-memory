@@ -1627,3 +1627,9 @@ Memory behavior and API contract 0.1.92 stay unchanged.
 ## M8XF — Preserve each extraction decision [P1.5]
 
 F221, SD-107, A-096. Contract 0.1.111 accepts ordered candidate IDs on extraction. Commit each decision with its card and return the saved decision on retry. Legacy callers retain the aggregate reply. The duplicate rule still uses the existing similarity cutoff.
+## M8DL — Remember a home's strategy pick (P4)
+
+PRECEDENT: SD-100, A-020, A-021 and draft A-098. Keep exclusions, the last route selected
+by each strategy and its known context size beside the home's settings. Exclude rows before
+the frontier is computed. A catalog outage can reuse an eligible pick for the same strategy.
+The shared resolver accepts this home store explicitly. The Palace curator retains its own policy.
