@@ -135,6 +135,74 @@ async def test_spend_route_is_atomic_idempotent_and_conflict_safe(
     assert count == 1
 
 
+async def test_coverage_replay_preserves_broker_money_and_unknown_counts(
+    memory_client: AsyncClient,
+    memory_session_factory: async_sessionmaker[AsyncSession],
+) -> None:
+    """A-102: a replayed or invalid subscription result must never change what the owner owes."""
+    now = datetime.now(UTC).isoformat()
+    paid = _event(ts=now)
+    unpaid = _event(_SECOND_UID, ts=now, cost_usd=None)
+    endpoint = "/v1/spend/events"
+    response = await memory_client.post(endpoint, json={"events": [paid, unpaid]})
+    assert response.status_code == 200
+    params = {"principal_id": "owner", "thread_id": _THREAD_ID}
+
+    async def snapshot():
+        response = await memory_client.get("/v1/spend/table", params=params)
+        assert response.status_code == 200
+        return response.json()
+
+    before = await snapshot()
+    covered = {
+        **_event("01K1M2A0000000000000000006", ts=now, cost_usd=None),
+        "product_type": "subscription.turn",
+        "provider": "codex",
+        "meta": {"account": "a" * 64},
+        "quantity": "1",
+        "unit_of_measure": "turns",
+        "quantity_type": "turn",
+        "behavior": "fixed",
+    }
+    for bad in ({"cost_usd": "0"}, {"meta": {"account": "not-an-account-hash"}}, {"quantity": "2"}):
+        assert (
+            await memory_client.post(endpoint, json={"events": [covered | bad]})
+        ).status_code == 422
+    for _ in range(2):
+        assert (await memory_client.post(endpoint, json={"events": [covered]})).json() == {
+            "accepted": 1
+        }
+    assert (
+        await memory_client.post(endpoint, json={"events": [covered | {"model": "changed"}]})
+    ).status_code == 409
+    different_id = covered | {"event_uid": "01K1M2A0000000000000000007"}
+    assert (await memory_client.post(endpoint, json={"events": [different_id]})).status_code == 409
+    after = await snapshot()
+    for field in (
+        "total_usd",
+        "total_receipt_lines",
+        "total_unpriced_lines",
+        "spend_per_hour_usd",
+        "hourly_receipt_lines",
+        "hourly_unpriced_lines",
+        "input_tokens",
+    ):
+        assert after["threads"][0][field] == before["threads"][0][field]
+    assert after["rates"] == before["rates"] and after["messages"] == before["messages"]
+    assert after["days"] == [before["days"][0] | {"covered_turns": 1}]
+    assert after["threads"][0]["covered_turns"] == 1
+    assert len(after["threads"][0]["models"]) == 2
+    assert [r["covered_by"] for r in after["receipts"]].count("codex") == 1
+    await SpendViewRefresher(memory_session_factory).refresh_once()
+    async with memory_session_factory() as session:
+        for view in ("v_spend_rate", "v_thread_cost", "v_run_cost", "v_memory_cost"):
+            assert (
+                await session.execute(
+                    text(f"SELECT sum(receipt_lines), sum(unpriced_lines) FROM {view}")
+                )
+            ).one() == (2, 1)
+
+
 async def test_spend_contract_rejects_zero_lines_bad_enums_and_duplicate_ids(
     memory_client: AsyncClient,
 ) -> None:

@@ -286,7 +286,7 @@ async def _spend_rows(
             "SELECT date_trunc('minute', ts) AS minute, purpose, model, provider, "
             "count(*)::bigint AS receipt_lines, sum(cost_usd) AS cost_usd, "
             "count(*) FILTER (WHERE cost_usd IS NULL)::bigint AS unpriced_lines "
-            "FROM spend_event WHERE " + " AND ".join(filters) + " "
+            "FROM metered_spend_event WHERE " + " AND ".join(filters) + " "
             "GROUP BY minute, purpose, model, provider "
             "ORDER BY minute ASC, purpose ASC, model ASC NULLS FIRST, "
             "provider ASC NULLS FIRST"

@@ -1118,7 +1118,7 @@ async def test_models_match_authoritative_c2_schema(
         },
         "spend_event": {
             "spend_event_product_type_check": (
-                "product_type IN ('llm.request','llm.embedding','llm.fee',"
+                "product_type IN ('subscription.turn','llm.request','llm.embedding','llm.fee',"
                 "'infra.db.instance','infra.db.storage','infra.run.serve',"
                 "'infra.run.job','infra.observability','net.egress','fleet.lease',"
                 "'fleet.snapshot') OR product_type LIKE 'ext.api._%'"
