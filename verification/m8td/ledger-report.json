@@ -6,21 +6,21 @@
   "diffs": [
     {
       "repo": "spine",
-      "base": "94a80510856f9ec10e49531722208bad73c50bd0",
-      "head": "ab1ef2ae1171e2e77d192820bf9f1cb5a3a9d411"
+      "base": "9917344286771efcbe5ecd49a36a50b60a575c93",
+      "head": "9892dd5e09687a664ae75bbadde03282357b1545"
     }
   ],
   "unmapped": {
     "spine/openapi.json": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
     "spine/src/spine/__init__.py": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
     "spine/tests/test_packaging.py": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
-    "spine/verification/m8ta/SHA256SUMS": "M8TA's change, beneath this packet in the stack; covered by M8TA's own report 339.",
-    "spine/verification/m8ta/ledger-report.json": "M8TA's change, beneath this packet in the stack; covered by M8TA's own report 339.",
     "spine/verification/m8td/FL-195.png": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
     "spine/verification/m8td/FL-196.png": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
     "spine/verification/m8td/SHA256SUMS": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
     "spine/verification/m8td/ledger-report.json": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
-    "spine/verification/m8td/rules-control.txt": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change."
+    "spine/verification/m8td/rules-control.txt": "Version 0.1.116 metadata, the frozen law copy or this packet's coverage evidence; no Memory behavior change.",
+    "spine/verification/m8ta/SHA256SUMS": "M8TA's change, beneath this packet in the stack; covered by M8TA's own report 339.",
+    "spine/verification/m8ta/ledger-report.json": "M8TA's change, beneath this packet in the stack; covered by M8TA's own report 339."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
