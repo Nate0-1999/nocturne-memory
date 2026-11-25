@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "125d8154e79f3555cc65bb365d3f7af2b3a7233a",
-      "head": "75ea15ddfd5368bb4b082dbbc4e75267eadbbf49"
+      "head": "898c0e70f4dbf597541f7d74e234ae97794b0f1d"
     }
   ],
   "unmapped": {
@@ -18,7 +18,12 @@
     "spine/verification/m8td/FL-196.png": "M8TD's change, beneath this packet in the stack; covered by M8TD's own report 340.",
     "spine/verification/m8td/SHA256SUMS": "M8TD's change, beneath this packet in the stack; covered by M8TD's own report 340.",
     "spine/verification/m8td/ledger-report.json": "M8TD's change, beneath this packet in the stack; covered by M8TD's own report 340.",
-    "spine/verification/m8td/rules-control.txt": "M8TD's change, beneath this packet in the stack; covered by M8TD's own report 340."
+    "spine/verification/m8td/rules-control.txt": "M8TD's change, beneath this packet in the stack; covered by M8TD's own report 340.",
+    "spine/verification/m8ts/FL-195.png": "Version 0.1.120 metadata or this packet's coverage evidence; no Memory behavior change.",
+    "spine/verification/m8ts/FL-196.png": "Version 0.1.120 metadata or this packet's coverage evidence; no Memory behavior change.",
+    "spine/verification/m8ts/SHA256SUMS": "Version 0.1.120 metadata or this packet's coverage evidence; no Memory behavior change.",
+    "spine/verification/m8ts/ledger-report.json": "Version 0.1.120 metadata or this packet's coverage evidence; no Memory behavior change.",
+    "spine/verification/m8ts/rules-control.txt": "Version 0.1.120 metadata or this packet's coverage evidence; no Memory behavior change."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
