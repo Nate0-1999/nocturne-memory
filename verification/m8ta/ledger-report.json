@@ -7,15 +7,15 @@
     {
       "repo": "spine",
       "base": "94a80510856f9ec10e49531722208bad73c50bd0",
-      "head": "d6c759c3394543d63d19495945c0f9d5cedc2a65"
+      "head": "125d8154e79f3555cc65bb365d3f7af2b3a7233a"
     }
   ],
   "unmapped": {
     "spine/openapi.json": "Paired package release metadata at 0.1.115.",
     "spine/src/spine/__init__.py": "Paired package release metadata at 0.1.115.",
     "spine/tests/test_packaging.py": "Regression proof for the paired release or the front conversation boundary.",
-    "spine/verification/m8ta/ledger-report.json": "M8TA walk evidence, checksum or generated coverage report.",
-    "spine/verification/m8ta/SHA256SUMS": "M8TA walk evidence, checksum or generated coverage report."
+    "spine/verification/m8ta/SHA256SUMS": "M8TA walk evidence, checksum or generated coverage report.",
+    "spine/verification/m8ta/ledger-report.json": "M8TA walk evidence, checksum or generated coverage report."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {},
