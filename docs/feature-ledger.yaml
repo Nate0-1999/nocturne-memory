@@ -4916,6 +4916,26 @@
         "flag": "",
         "screenshot": "verification/m8to/FL-215.png"
       }
+    },
+    {
+      "id": "FL-216",
+      "section": "8. The rack, modules, the Deck and conversation",
+      "era": "Nov 23",
+      "label": "T3 Code's own screen is a Stage module: it sits and resizes like any module, one control fits it to the window and returns it, a prompt typed in it is answered by Nocturne's agent, and a restart restores it. T3 refuses every hosting page; a pass-through on this machine admits Nocturne's own page and no other. With T3 stopped the module says so in one line with the way to start it.",
+      "status": "built",
+      "walk": "On the installed app, in Stage: open the T3 module, resize it, fit it to the window and return; type a prompt in T3 and read Nocturne's answer; restart and find it restored; stop T3 and read the one line, then Run T3. Host the pass-through from a second local page: the browser refuses it. Repeat the module, fit and prompt at phone width.",
+      "owner": "owner 2026-11-23 (SD-114): \"we have the freeform notcture page with a variable size t3 module that someone can go full screen on if they want.\"",
+      "surfaces": [
+        "harness/src/harness/t3_passthrough.py",
+        "harness/web/src/T3Module.tsx"
+      ],
+      "last_walk": {
+        "date": "2026-11-24",
+        "packet": "M8TD",
+        "verdict": "PASS",
+        "flag": "",
+        "screenshot": "verification/m8td/FL-216.png"
+      }
     }
   ]
 }
