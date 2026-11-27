@@ -10,7 +10,7 @@ import pytest
 import tiktoken
 from conftest import ScriptedEmbeddingProvider, basis_vector, vector_with_cosine
 from httpx import AsyncClient, Response
-from sqlalchemy import func, select, update
+from sqlalchemy import func, select, text, update
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
@@ -592,6 +592,98 @@ async def test_create_hard_duplicate_is_forced_but_scoped_to_principal(
         "features": None,
         "rank": None,
     }
+
+
+@pytest.mark.parametrize("split", [False, True])
+async def test_busy_save_cannot_land_after_refusal_and_retry_writes_once(
+    memory_client: AsyncClient,
+    embedding_provider: ScriptedEmbeddingProvider,
+    memory_session_factory: async_sessionmaker[AsyncSession],
+    monkeypatch: pytest.MonkeyPatch,
+    split: bool,
+) -> None:
+    """SPEC C.4 / FL-039: a refused writer must not publish a late head or half a split family."""
+    monkeypatch.setattr("spine.memory.service._SAVE_LOCK_SECONDS", 0.2, raising=False)
+    children = [
+        {"label": name, "body": name, "keywords": ["sample", name.lower()]}
+        for name in ("West shutter", "East shutter")
+    ]
+    source = "West shutter. East shutter."
+    for index, body in enumerate((source, *(child["body"] for child in children))):
+        embedding_provider.set(body, basis_vector(index))
+    path = "/v1/memory-splits" if split else "/v1/memories"
+    request = (
+        _split_body(source_body=source, children=children)
+        if split
+        else _create_body(label="Shutters", body=source)
+    )
+    async with memory_session_factory.begin() as holder:
+        await holder.execute(text("SELECT pg_advisory_xact_lock(hashtextextended('owner', 0))"))
+        async with asyncio.timeout(3):
+            refusal = await memory_client.post(path, json=request)
+        assert _assert_problem(refusal, 503, "POST " + path)["detail"]
+    async with memory_session_factory() as reader:
+        for model in (MemoryUnit, MemoryRevision, MemoryEdge):
+            assert await reader.scalar(select(func.count()).select_from(model)) == 0
+    assert (await memory_client.post(path, json=request)).status_code == 201
+    assert (await memory_client.post(path, json=request)).status_code == 409
+    async with memory_session_factory() as reader:
+        assert await reader.scalar(select(func.count()).select_from(MemoryUnit)) == (
+            3 if split else 1
+        )
+
+
+async def test_pending_extraction_embedding_allows_same_principal_save(
+    memory_client: AsyncClient,
+    embedding_provider: ScriptedEmbeddingProvider,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """SPEC C.4 and PLAN M8RM require extraction to see a save made while its embedding stalls."""
+    candidate, explicit = "The mill closes at noon.", "Noon is closing time for the mill."
+    embedding_provider.set(candidate, basis_vector(0)).set(explicit, basis_vector(0))
+    entered, release = asyncio.Event(), asyncio.Event()
+    embed = embedding_provider.embed
+
+    async def pending(texts):
+        if candidate in texts:
+            entered.set()
+            await release.wait()
+        return await embed(texts)
+
+    monkeypatch.setattr(embedding_provider, "embed", pending)
+    monkeypatch.setattr("spine.memory.service._SAVE_LOCK_SECONDS", 0.5)
+    extraction = asyncio.create_task(
+        memory_client.post(
+            "/v1/extractions",
+            json={
+                "principal_id": "owner",
+                "thread_id": str(uuid4()),
+                "machine_id": "test",
+                "editor": "extraction",
+                "candidates": [
+                    {
+                        "label": "Closing",
+                        "body": candidate,
+                        "kind": "fact",
+                        "keywords": ["mill", "noon"],
+                        "verdict": "new",
+                    }
+                ],
+            },
+        )
+    )
+    try:
+        await asyncio.wait_for(entered.wait(), timeout=5)
+        saved = await asyncio.wait_for(
+            memory_client.post("/v1/memories", json=_create_body(label="Hours", body=explicit)),
+            timeout=3,
+        )
+        assert saved.status_code == 201
+    finally:
+        release.set()
+        result = await extraction
+    assert result.status_code == 200
+    assert result.json() == {"cards": [], "duplicate_count": 1}
 
 
 async def test_concurrent_same_principal_dedup_creates_only_one_root(

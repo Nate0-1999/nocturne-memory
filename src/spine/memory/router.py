@@ -38,6 +38,7 @@ from spine.memory.service import (
     MemoryService,
     MemorySplitCreated,
     MemoryValidationError,
+    MemoryWriteBusy,
     PatchMemoryCommand,
     RevisionConflictError,
     SearchMemoriesQuery,
@@ -139,8 +140,9 @@ class SearchRequest(ContractRequest):
     "/v1/memories",
     status_code=201,
     response_model=CreatedMemoryResponse,
-    responses=EMBEDDING_RESPONSES
+    responses=ERROR_RESPONSES
     | {
+        503: problem_openapi("Embedding provider unavailable or memory write busy"),
         200: {
             "description": "Similar memories require an explicit force retry",
             "model": SimilarMemoryResponse,
@@ -183,8 +185,10 @@ async def create_memory(
         return JSONResponse(status_code=409, content=conflict.model_dump(mode="json"))
     except MemoryValidationError as error:
         return _unprocessable(request, str(error))
+    except MemoryWriteBusy as error:
+        return _service_unavailable(request, detail=str(error))
     except EmbeddingProviderError:
-        return _provider_unavailable(request)
+        return _service_unavailable(request)
 
     if isinstance(outcome, SimilarMemories):
         response = SimilarMemoryResponse(created=None, similar=list(outcome.similar))
@@ -198,8 +202,9 @@ async def create_memory(
     "/v1/memory-splits",
     status_code=201,
     response_model=MemorySplitResponse,
-    responses=EMBEDDING_RESPONSES
+    responses=ERROR_RESPONSES
     | {
+        503: problem_openapi("Embedding provider unavailable or memory write busy"),
         200: {
             "description": "The first near-similar child requires an ordinary create decision",
             "model": SimilarMemoryResponse,
@@ -245,8 +250,10 @@ async def split_memory(
         return JSONResponse(status_code=409, content=conflict.model_dump(mode="json"))
     except MemoryValidationError as error:
         return _unprocessable(request, str(error))
+    except MemoryWriteBusy as error:
+        return _service_unavailable(request, detail=str(error))
     except EmbeddingProviderError:
-        return _provider_unavailable(request)
+        return _service_unavailable(request)
 
     if isinstance(outcome, SimilarMemories):
         response = SimilarMemoryResponse(created=None, similar=list(outcome.similar))
@@ -309,7 +316,7 @@ async def patch_memory(
     except MemoryValidationError as error:
         return _unprocessable(request, str(error))
     except EmbeddingProviderError:
-        return _provider_unavailable(request)
+        return _service_unavailable(request)
 
 
 @router.get(
@@ -382,7 +389,7 @@ async def search(
     except InvalidSearchQueryError as error:  # defensive for non-HTTP callers
         return _unprocessable(request, str(error))
     except EmbeddingProviderError:
-        return _provider_unavailable(request)
+        return _service_unavailable(request)
 
 
 def _memory_service(request: Request) -> MemoryService:
@@ -396,11 +403,13 @@ def _label_conflict(error: LabelConflictError) -> JSONResponse:
     return JSONResponse(status_code=409, content=conflict.model_dump(mode="json"))
 
 
-def _provider_unavailable(request: Request) -> ProblemJSONResponse:
+def _service_unavailable(
+    request: Request, *, detail: str = "The embedding provider could not complete the request."
+) -> ProblemJSONResponse:
     return problem_response(
         status=503,
         title="Service Unavailable",
-        detail="The embedding provider could not complete the request.",
+        detail=detail,
         instance=request.url.path,
         endpoint=f"{request.method} {request.url.path}",
     )

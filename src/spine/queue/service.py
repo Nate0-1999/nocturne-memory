@@ -97,10 +97,18 @@ class QueueService:
                 machine_id=request.machine_id,
             )
             replaces = draft.target_ids if draft.verdict in {"merge", "supersede"} else ()
-            async with self._session_factory.begin() as session:
-                await self._memory_service.lock_candidate_principal(session, request.principal_id)
-                ids = request.candidate_ids
-                key = ids[index] if ids is not None else None
+            ids = request.candidate_ids
+            key = ids[index] if ids is not None else None
+            receipted = False
+            if key is not None:
+                async with self._session_factory() as reader:
+                    receipted = (
+                        await reader.get(ExtractionReceipt, (request.principal_id, key)) is not None
+                    )
+            async with self._memory_service.candidate_writer(command, receipted=receipted) as (
+                session,
+                prepared,
+            ):
                 if key is not None:
                     digest = sha256(
                         json.dumps(
@@ -137,7 +145,7 @@ class QueueService:
                 try:
                     async with session.begin_nested():
                         created = await self._memory_service.admit_candidate(
-                            session, command, replaces=replaces
+                            session, command, prepared, replaces=replaces
                         )
                         if isinstance(created, CandidateCreated):
                             card = await self._enqueue(
