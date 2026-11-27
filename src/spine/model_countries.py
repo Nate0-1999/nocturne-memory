@@ -13,24 +13,87 @@ from typing import Annotated, Literal
 from urllib.parse import quote
 
 import httpx
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-# Exact catalog author slugs. Each source identifies the maker's home country.
+# Catalog makers, including the catalog's ~maker aliases. Routing services with
+# an undisclosed or variable underlying maker have no entry.
 _META = (
     "US",
     "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
 )
 MAKERS = {
+    "aion-labs": ("PL", "https://www.aionlabs.ai/privacy/"),
+    "amazon": ("US", "https://ir.aboutamazon.com/faqs/default.aspx"),
     "anthropic": ("US", "https://www.anthropic.com/careers"),
+    "baidu": ("CN", "https://ir.baidu.com/shareholder-services/investor-faqs/"),
+    "bytedance": ("CN", "https://www.bytedance.com/about/"),
+    "bytedance-seed": ("CN", "https://seed.bytedance.com/en/privacy-policy"),
+    "cohere": ("CA", "https://cohere.com/about"),
     "deepseek": ("CN", "https://cdn.deepseek.com/policies/en-US/deepseek-terms-of-use.html"),
+    "elorian": ("US", "https://elorian.ai/privacy"),
+    "fireworks": ("US", "https://fireworks.ai/news/fireworks-ai-raises-250m-series-c"),
+    "google": ("US", "https://policies.google.com/terms?gl=us"),
+    "ibm-granite": ("US", "https://www.ibm.com/contact/global"),
+    "inclusionai": ("CN", "https://www.antgroup.com/about/our-offices"),
+    "inference-net": ("US", "https://inference.net/terms-of-service/"),
+    "kt": ("KR", "https://corp.kt.com/eng/html/intro/info/locations_01.html"),
+    "liquid": ("US", "https://www.liquid.ai/privacy-policy"),
     "meta": _META,
     "meta-llama": _META,
+    "microsoft": ("US", "https://www.microsoft.com/en-us/about/office-locations"),
     "minimax": (
         "CN",
         "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0519/2026051901411.pdf",
     ),
     "mistralai": ("FR", "https://mistral.ai/legal/"),
+    "moondream": ("US", "https://moondream.ai/about/us"),
+    "moonshotai": ("CN", "https://www.moonshot.cn/about"),
+    "morph": ("US", "https://www.ycombinator.com/companies/morph"),
+    "motif-technologies": ("KR", "https://motiftech.io/en/contact/"),
+    "nex-agi": ("CN", "https://nex.sii.edu.cn/n1/en/"),
+    "nousresearch": ("US", "https://portal.nousresearch.com/terms"),
+    "nvidia": ("US", "https://www.nvidia.com/en-us/contact/"),
     "openai": ("US", "https://openai.com/policies/us-privacy-policy/revisions/2026-02-09/"),
+    "particle-ai": ("US", "https://particle.ai/about/"),
+    "perceptron": ("US", "https://akshatsh.github.io/experience/"),
+    "perplexity": (
+        "US",
+        "https://www.sec.gov/Archives/edgar/data/1972171/000156761923005521/xslFormDX01/primary_doc.xml",
+    ),
+    "prism-ml": ("US", "https://prismml.com/news/prismml-launches-bonsai-2-27b"),
+    "qwen": (
+        "CN",
+        "https://data.alibabagroup.com/ir_filings/SEC/BABA/000119312526231755/baba-20260331.htm",
+    ),
+    "radixark": ("US", "https://jobs.accel.com/companies/radixark-2"),
+    "recursive": ("US", "https://recursive.com/legal/terms-of-use"),
+    "reflection": (
+        "US",
+        "https://www.prnewswire.com/news-releases/reflection-and-shinsegae-group-to-build-korean-sovereign-ai-factory-302715111.html",
+    ),
+    "rekaai": ("US", "https://reka.ai/contact"),
+    "relace": ("US", "https://www.ycombinator.com/companies/relace"),
+    "ricursiveai": (
+        "US",
+        "https://www.prnewswire.com/news-releases/ricursive-intelligence-launches-frontier-ai-lab-to-transform-semiconductor-design-and-accelerate-path-toward-artificial-superintelligence-302630776.html",
+    ),
+    "sakana": ("JP", "https://sakana.ai/company-info/"),
+    "stepfun": ("CN", "https://chat.stepfun.com/legal/privacy"),
+    "tencent": (
+        "CN",
+        "https://static.www.tencent.com/uploads/2026/04/09/62d786fcf3d3c8cb7e54791ee95439ac.pdf",
+    ),
+    "thinkingmachines": ("US", "https://thinkingmachines.ai/legal/privacy/"),
+    "tngtech": ("DE", "https://www.tngtech.com/en/about-us/locations/"),
+    "typesafe": ("US", "https://typesafe.ai/legal/terms"),
+    "upstage": ("KR", "https://www.upstage.ai/news/solar-pro-aws"),
+    "writer": ("US", "https://writer.com/legal/privacy/"),
+    "x-ai": ("US", "https://www.sec.gov/edgar/browse/?CIK=0002002695"),
+    "xiaomi": (
+        "CN",
+        "https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf",
+    ),
+    "z-ai": ("CN", "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0331/2026033101549.pdf"),
 }
 
 Country = Annotated[str, Field(pattern=r"^[A-Z]{2}$")]
@@ -46,6 +109,7 @@ class CountryRule(BaseModel):
     model_config = ConfigDict(extra="forbid")
     mode: Literal["allow", "exclude"] = "exclude"
     countries: tuple[Country, ...] = ()
+    keep_unknown: bool = False
 
     def accepts(self, known: Iterable[str]) -> bool:
         return not self.countries or all(
@@ -57,7 +121,19 @@ class CountryFilters(BaseModel):
     model_config = ConfigDict(extra="forbid")
     maker: CountryRule = Field(default_factory=CountryRule)
     serving: CountryRule = Field(default_factory=CountryRule)
-    keep_unknown: bool = False
+
+    @model_validator(mode="before")
+    @classmethod
+    def migrate_shared_unknown_setting(cls, value):
+        if not isinstance(value, dict) or "keep_unknown" not in value:
+            return value
+        converted = dict(value)
+        shared = converted.pop("keep_unknown")
+        for side in ("maker", "serving"):
+            rule = converted.get(side, {})
+            if isinstance(rule, dict):
+                converted[side] = {"keep_unknown": shared, **rule}
+        return converted
 
     @property
     def active(self) -> bool:
@@ -84,19 +160,21 @@ class CountryCatalog:
         if not self.filters.active or model.startswith("subscription:"):
             return None, []
         slug = model.removeprefix("openrouter:")
-        maker = MAKERS.get(slug.partition("/")[0])
+        maker = MAKERS.get(slug.partition("/")[0].removeprefix("~"))
         if maker and not self.filters.maker.accepts([maker[0]]):
             return f"Maker country {maker[0]} is excluded.", []
-        if not maker and not self.filters.keep_unknown:
+        if self.filters.maker.countries and not maker and not self.filters.maker.keep_unknown:
             return "Maker country is unknown.", []
+        if not self.filters.serving.countries:
+            return None, []
         if model.startswith(("local:", "openai:", "anthropic:")):
-            if self.filters.keep_unknown:
+            if self.filters.serving.keep_unknown:
                 return None, []
             return "Provider country is unknown.", []
         allowed = []
         for provider in self.models.get(slug, []):
             hq, centers = self.providers.get(provider, (None, []))
-            if (not hq or not centers or None in centers) and not self.filters.keep_unknown:
+            if (not hq or not centers or None in centers) and not self.filters.serving.keep_unknown:
                 continue
             if self.filters.serving.accepts(code for code in [hq, *centers] if code):
                 allowed.append(provider)
@@ -109,7 +187,7 @@ class CountryCatalog:
 
     def describe(self, model: str) -> dict:
         slug = model.removeprefix("openrouter:")
-        maker = MAKERS.get(slug.partition("/")[0])
+        maker = MAKERS.get(slug.partition("/")[0].removeprefix("~"))
         locations = [self.providers.get(p, (None, [])) for p in self.models.get(slug, [])]
         return {
             "maker_country": maker[0] if maker else None,

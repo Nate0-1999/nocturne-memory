@@ -111,3 +111,29 @@ async def test_maker_filter_excludes_an_online_and_saved_pick_and_explicit_pin(t
         await resolver.resolve_hydrated("existing", pick.model)
     with pytest.raises(ModelCatalogUnavailable, match="Maker country FR"):
         HomeModelChoices(tmp_path).offline("elbow")
+
+
+def test_country_rules_only_judge_their_own_unknowns():
+    """SPEC C.5 / SD-100: missing fleet data cannot disqualify a known maker, and retaining
+    an unknown must neither waive a known country nor relax the other rule."""
+    from spine.model_countries import CountryCatalog, CountryFilters
+
+    providers = {"partial": ("US", []), "wrong": ("FR", []), "known": ("US", ["US"])}
+    routes = {"mistralai/test": ["partial"], "unsourced/test": list(providers)}
+    maker = {"countries": ["CN"]}
+    serving = {"mode": "allow", "countries": ["US"]}
+
+    def assess(model, **rules):
+        return CountryCatalog(CountryFilters.model_validate(rules), providers, routes).assess(model)
+
+    assert assess("mistralai/test", maker=maker) == (None, [])
+    assert assess("unsourced/test", serving=serving) == (None, ["known"])
+    assert assess("unsourced/test", maker=maker, serving={**serving, "keep_unknown": True})[0]
+    assert assess("unsourced/test", maker={**maker, "keep_unknown": True}, serving=serving) == (
+        None,
+        ["known"],
+    )
+    assert assess("unsourced/test", serving={**serving, "keep_unknown": True}) == (
+        None,
+        ["partial", "known"],
+    )
