@@ -7,13 +7,17 @@
     {
       "repo": "spine",
       "base": "9917344286771efcbe5ecd49a36a50b60a575c93",
-      "head": "0cf5d87d580d9c086b403ce5c8f8b3eed8f2e730"
+      "head": "c37f7da7a4b98f156dfc4d86783642debc9b6413"
     }
   ],
   "unmapped": {
     "spine/openapi.json": "Version 0.1.125 metadata or this packet's coverage evidence; no Memory behavior change.",
     "spine/src/spine/__init__.py": "Version 0.1.125 metadata or this packet's coverage evidence; no Memory behavior change.",
     "spine/tests/test_packaging.py": "Version 0.1.125 metadata or this packet's coverage evidence; no Memory behavior change.",
+    "spine/verification/m8lr/FL-195.png": "Version 0.1.125 metadata or this packet's coverage evidence; no Memory behavior change.",
+    "spine/verification/m8lr/FL-196.png": "Version 0.1.125 metadata or this packet's coverage evidence; no Memory behavior change.",
+    "spine/verification/m8lr/SHA256SUMS": "Version 0.1.125 metadata or this packet's coverage evidence; no Memory behavior change.",
+    "spine/verification/m8lr/ledger-report.json": "Version 0.1.125 metadata or this packet's coverage evidence; no Memory behavior change.",
     "spine/verification/m8td/FL-195.png": "M8TD's or M8TS's change, beneath this packet in the stack; covered by their own reports 340 and 347.",
     "spine/verification/m8td/FL-196.png": "M8TD's or M8TS's change, beneath this packet in the stack; covered by their own reports 340 and 347.",
     "spine/verification/m8td/SHA256SUMS": "M8TD's or M8TS's change, beneath this packet in the stack; covered by their own reports 340 and 347.",
