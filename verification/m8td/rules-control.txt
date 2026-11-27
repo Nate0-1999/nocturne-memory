@@ -1,0 +1,21 @@
+harness src/harness/envelope.py (guard citation removed) | exit 1
+src/harness/envelope.py:46: guard lacks adjacent WALL/incident citation
+Guard citations: FAIL
+
+harness src/harness/envelope.py (restored) | exit 0
+Guard citations: PASS
+
+harness AGENTS.md (frozen axiom altered) | exit 1
+AGENTS.md: frozen axioms differ from the master fingerprint
+Product rules: FAIL
+
+harness AGENTS.md (restored) | exit 0
+Product rules: PASS
+
+spine AGENTS.md (frozen axiom altered) | exit 1
+AGENTS.md: frozen axioms differ from the master fingerprint
+Product rules: FAIL
+
+spine AGENTS.md (restored) | exit 0
+Product rules: PASS
+
