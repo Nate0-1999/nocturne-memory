@@ -15,6 +15,8 @@ from typing import Literal, Protocol
 
 import httpx
 
+from spine.model_countries import HomeCountries
+
 _PRICE_PER_MILLION = Decimal(1_000_000)
 _CATALOG_TTL_SECONDS = 24 * 60 * 60
 _LOG_PRECISION = 48
@@ -174,6 +176,7 @@ class HomeModelChoices:
     def __init__(self, home: Path) -> None:
         home.mkdir(parents=True, exist_ok=True)
         self.path = home / "model-choices.sqlite3"
+        self.countries = HomeCountries(self.path)
         with sqlite3.connect(self.path) as db:
             db.execute("BEGIN IMMEDIATE")
             if not db.execute("SELECT 1 FROM sqlite_master WHERE name='bans'").fetchone():
@@ -232,6 +235,7 @@ class HomeModelChoices:
 
     def eligible(self, catalog: ModelCatalog) -> ModelCatalog:
         bans = self.bans()
+        countries = self.countries.catalog()
         rows = tuple(
             row
             for row in catalog.rows
@@ -242,6 +246,11 @@ class HomeModelChoices:
                 if (route := catalog.model_routes.get(row.permaslug))
                 else row.permaslug,
             )
+            and not countries.assess(
+                route.model_id
+                if (route := catalog.model_routes.get(row.permaslug))
+                else row.permaslug
+            )[0]
         )
         return replace(catalog, rows=rows)
 
@@ -288,6 +297,8 @@ class HomeModelChoices:
 
     def offline(self, policy: str) -> ThreadModelResolution:
         pick = self.last(policy)
+        if pick and (reason := self.countries.catalog().assess(pick["model"])[0]):
+            raise ModelCatalogUnavailable(reason)
         if not pick:
             with sqlite3.connect(self.path) as db:
                 seen = db.execute("SELECT 1 FROM picks LIMIT 1").fetchone()
@@ -553,6 +564,14 @@ class OpenRouterCatalogClient:
                     return self._named_routes[model_id]
                 raise ModelCatalogUnavailable("OpenRouter model-list request failed") from exc
 
+    async def load_countries(self, countries: HomeCountries, model_ids: Sequence[str]) -> None:
+        try:
+            await countries.refresh(model_ids, self._request_client(), self._base_url)
+        except (httpx.HTTPError, ValueError, TypeError, KeyError) as exc:
+            raise ModelCatalogUnavailable(
+                "Provider locations could not be read. Refresh the model list."
+            ) from exc
+
     async def aclose(self) -> None:
         if self._owns_client and self._client is not None:
             await self._client.aclose()
@@ -682,6 +701,8 @@ class ModelPolicyResolver:
             raise ModelCatalogUnavailable("model router catalog is not configured")
 
         route, fetched_at = await self._catalog.load_named_route(slug)
+        if self._choices and (reason := self._choices.countries.catalog().assess(model)[0]):
+            raise NamedModelResolutionError(reason)
 
         resolved = ThreadModelResolution(
             model=_qualify_model(self._catalog, route.model_id),
@@ -711,6 +732,8 @@ class ModelPolicyResolver:
         try:
             return await self.resolve_named(thread_id, model)
         except (ModelCatalogUnavailable, NamedModelResolutionError) as exc:
+            if self._choices and (reason := self._choices.countries.catalog().assess(model)[0]):
+                raise ModelCatalogUnavailable(reason) from exc
             logger.warning(
                 "hydrated model catalog unavailable; retaining identity "
                 "thread=%s model=%s reason=%s",
@@ -792,6 +815,8 @@ class ModelPolicyResolver:
                 try:
                     named = await self.resolve_named(thread_id, policy.value)
                 except (ModelCatalogUnavailable, NamedModelResolutionError):
+                    if reason := self._choices.countries.catalog().assess(policy.value)[0]:
+                        raise ModelCatalogUnavailable(reason) from None
                     return self._choices.offline(policy_text)
                 resolved = replace(named, policy=policy_text)
                 self._choices.save(resolved, policy.value)
@@ -834,11 +859,20 @@ class ModelPolicyResolver:
             )
             return resolved
 
+        direct_choices = set()
         try:
             if self._catalog is None:
                 raise ModelCatalogUnavailable("OpenRouter catalog is not configured")
             catalog = await self._catalog.load()
             if self._choices:
+                if not catalog.rows:
+                    direct_choices = {
+                        model
+                        for entry in catalog.listing
+                        if (model := _qualify_model(self._catalog, entry.model_id)).startswith(
+                            "openai:"
+                        )
+                    }
                 catalog = self._choices.eligible(catalog)
             burn = None
             if policy.kind == "budget" and self._burn is not None:
@@ -851,6 +885,13 @@ class ModelPolicyResolver:
                 )
         except ModelCatalogUnavailable as exc:
             if self._choices:
+                if direct_choices:
+                    last = self._choices.last(policy_text)
+                    if not last or last["model"] not in direct_choices:
+                        raise ModelCatalogUnavailable(
+                            "This source lists models without scores. "
+                            "Pick a model in the Model Device."
+                        ) from exc
                 return self._choices.offline(policy_text)
             if self._static_model is None or self._static_context_tokens is None:
                 raise

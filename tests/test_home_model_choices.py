@@ -69,3 +69,45 @@ async def test_strategy_reprices_after_bans_and_keeps_its_own_dated_pick(tmp_pat
     assert "maker:minimax" not in HomeModelChoices(tmp_path).bans()
     with pytest.raises(ModelCatalogUnavailable, match="Reconnect"):
         await resolver(HomeModelChoices(tmp_path / "fresh"), None).resolve("cold")
+
+
+@pytest.mark.asyncio
+async def test_maker_filter_excludes_an_online_and_saved_pick_and_explicit_pin(tmp_path):
+    """SPEC C.5 / SD-100: a home must not send a filtered maker's model through a saved pick,
+    a pin, hydration or a newly computed strategy after a policy change."""
+    from spine.model_countries import CountryFilters
+
+    choices = HomeModelChoices(tmp_path)
+    slug = "mistralai/example"
+    route = ModelRoute(slug, 1024)
+    snapshot = ModelCatalog(
+        (BenchmarkModel(slug, Decimal(20), Decimal(1), Decimal(1)),),
+        {slug: route},
+        datetime.now(UTC),
+    )
+
+    class Catalog:
+        async def load(self):
+            return snapshot
+
+        async def load_named_route(self, model_id):
+            return route, snapshot.fetched_at
+
+    resolver = ModelPolicyResolver(
+        policy="elbow",
+        static_model=None,
+        static_context_tokens=None,
+        catalog=Catalog(),
+        choices=choices,
+    )
+    pick = await resolver.preview()
+    choices.countries.save(CountryFilters.model_validate({"maker": {"countries": ["FR"]}}))
+    assert not choices.eligible(snapshot).rows
+    with pytest.raises(ModelCatalogUnavailable, match="Maker country FR"):
+        await resolver.preview()
+    with pytest.raises(NamedModelResolutionError, match="Maker country FR"):
+        await resolver.resolve_named("explicit", pick.model)
+    with pytest.raises(ModelCatalogUnavailable, match="Maker country FR"):
+        await resolver.resolve_hydrated("existing", pick.model)
+    with pytest.raises(ModelCatalogUnavailable, match="Maker country FR"):
+        HomeModelChoices(tmp_path).offline("elbow")
