@@ -78,6 +78,7 @@ MAKERS = {
         "https://www.prnewswire.com/news-releases/ricursive-intelligence-launches-frontier-ai-lab-to-transform-semiconductor-design-and-accelerate-path-toward-artificial-superintelligence-302630776.html",
     ),
     "sakana": ("JP", "https://sakana.ai/company-info/"),
+    "scaledown": ("US", "https://www.linkedin.com/company/scaledown-ai"),
     "stepfun": ("CN", "https://chat.stepfun.com/legal/privacy"),
     "tencent": (
         "CN",
