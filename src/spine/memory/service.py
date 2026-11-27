@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 from collections.abc import Mapping, Sequence
 from copy import deepcopy
 from dataclasses import dataclass
@@ -48,6 +49,8 @@ from spine.tokens import cl100k_token_count
 
 _EMBEDDING_DIMENSIONS = 1536
 _ACTIVE_LABEL_CONSTRAINT = "memory_unit_active_label"
+# Leave room inside the Harness's 30-second read timeout for a known, retryable refusal.
+_SAVE_LOCK_SECONDS = 15.0
 
 
 class UnsetType:
@@ -178,6 +181,20 @@ class MemoryServiceError(RuntimeError):
     """Base class for expected memory-domain failures."""
 
 
+class MemoryWriteBusy(MemoryServiceError):
+    """Another writer prevented admission before any memory rows were written."""
+
+
+async def _lock_for_save(session: AsyncSession, principal_id: str) -> None:
+    try:
+        async with asyncio.timeout(_SAVE_LOCK_SECONDS):
+            await MemoryService.lock_candidate_principal(session, principal_id)
+    except TimeoutError as exc:
+        raise MemoryWriteBusy(
+            "The Palace is busy. Nothing was saved. Try /remember again."
+        ) from exc
+
+
 class LabelConflictError(MemoryServiceError):
     """An ACTIVE unit already owns the resulting principal/label pair."""
 
@@ -288,10 +305,7 @@ class MemoryService:
             async with session.begin():
                 # Serialize the authoritative recheck, dedup read, and root insert for
                 # one principal. Different principals remain independent.
-                await session.execute(
-                    text("SELECT pg_advisory_xact_lock(hashtextextended(:principal_id, 0))"),
-                    {"principal_id": command.principal_id},
-                )
+                await _lock_for_save(session, command.principal_id)
 
                 matches = await self._dedup_matches(
                     session,
@@ -383,10 +397,7 @@ class MemoryService:
 
         async with self._session_factory() as session:
             async with session.begin():
-                await session.execute(
-                    text("SELECT pg_advisory_xact_lock(hashtextextended(:principal_id, 0))"),
-                    {"principal_id": command.principal_id},
-                )
+                await _lock_for_save(session, command.principal_id)
 
                 # No family row exists yet: every comparison below is against the
                 # pre-existing ACTIVE corpus, never another semantic sibling.
