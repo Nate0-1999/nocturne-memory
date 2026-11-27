@@ -638,7 +638,7 @@ async def test_pending_extraction_embedding_allows_same_principal_save(
     embedding_provider: ScriptedEmbeddingProvider,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """FL-039: a stalled extraction provider cannot block a save or admit a stale duplicate."""
+    """SPEC C.4 and PLAN M8RM require extraction to see a save made while its embedding stalls."""
     candidate, explicit = "The mill closes at noon.", "Noon is closing time for the mill."
     embedding_provider.set(candidate, basis_vector(0)).set(explicit, basis_vector(0))
     entered, release = asyncio.Event(), asyncio.Event()
