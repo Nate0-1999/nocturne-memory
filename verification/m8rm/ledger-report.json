@@ -7,29 +7,35 @@
     {
       "repo": "spine",
       "base": "9917344286771efcbe5ecd49a36a50b60a575c93",
-      "head": "c623f26061b7ea806beb2239e1d1beeb1c97a8c0"
+      "head": "a5907eeb37f1273efa8bef7eaa2071a82a9cb220"
     }
   ],
   "unmapped": {
     "spine/api_contract_fingerprints.json": "Fingerprint of the updated public description of the two existing 503 save responses.",
     "spine/openapi.json": "Generated endpoint descriptions for the two save routes and the paired package version.",
     "spine/src/spine/__init__.py": "Paired release metadata.",
-    "spine/tests/test_memory_api.py": "Concurrent-write regression for single and split saves.",
+    "spine/tests/test_memory_api.py": "Real PostgreSQL regressions for explicit saves and admission during a pending extraction embedding.",
     "spine/tests/test_packaging.py": "Paired version assertion.",
     "spine/verification/m8rm/FL-002.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
+    "spine/verification/m8rm/FL-003.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
     "spine/verification/m8rm/FL-005.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
     "spine/verification/m8rm/FL-015.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
     "spine/verification/m8rm/FL-026.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
     "spine/verification/m8rm/FL-038.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
     "spine/verification/m8rm/FL-042.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
     "spine/verification/m8rm/FL-045.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
-    "spine/verification/m8rm/FL-169.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
-    "spine/verification/m8rm/FL-003.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
     "spine/verification/m8rm/FL-162.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
     "spine/verification/m8rm/FL-164.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
     "spine/verification/m8rm/FL-167.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
+    "spine/verification/m8rm/FL-169.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
+    "spine/verification/m8rm/SHA256SUMS": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
     "spine/verification/m8rm/ledger-report.json": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
-    "spine/verification/m8rm/SHA256SUMS": "Repository-specific copy of the M8RM evidence for hosted handoff verification."
+    "spine/verification/m8rm/FL-036.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
+    "spine/verification/m8rm/FL-109.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
+    "spine/verification/m8rm/FL-114.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
+    "spine/verification/m8rm/FL-178.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
+    "spine/verification/m8rm/FL-179.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification.",
+    "spine/verification/m8rm/FL-163.png": "Repository-specific copy of the M8RM evidence for hosted handoff verification."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -69,6 +75,15 @@
       "flag": "F086",
       "observed": "Provenance shows keywords, project and folder. The per-feature contribution breakdown was not established. The capture is packet context for the missing proof."
     },
+    "FL-036": {
+      "label": "The curators have the right tools and standard procedures for their work, and act as surgeons: minimally invasive, targeting the root problem and letting the system sort out the symptoms.",
+      "walk": "Run a curator pass on a Palace with one duplicate pair; the pass touches only that pair and nothing else.",
+      "protected": true,
+      "verdict": "BLOCKED",
+      "screenshot": "FL-036.png",
+      "flag": "F086",
+      "observed": "Four ordinary curator passes overlapped saves. Isolating a duplicate pair and measuring all other changes was not part of those runs. The capture is packet context for the missing proof."
+    },
     "FL-038": {
       "label": "A cheap 80/20 duplicate check at memory creation, keeping the agent's memory work under 10% of build run time.",
       "walk": "Save a fact already in the Palace: at cosine 0.92 or above the save comes back 'already known — reinforced' at once, between 0.80 and 0.92 it asks to confirm, without the agent reading other memories; these write-time bands are the C.4 defaults and are separate from the curator's own search band (v2.128).",
@@ -96,6 +111,24 @@
       "flag": "F086",
       "observed": "The rewording scored 0.815 and prompted for a decision. There was no below-band pair with a subsequent curator merge. The capture is packet context for the missing proof."
     },
+    "FL-109": {
+      "label": "Memory candidates appear under the agent's post on the Deck after a compaction or a thread close; scrolling past without denying approves them; corpus-born proposals live in Memory Ingest.",
+      "walk": "After a compaction, candidates appear under the post; scroll past; they are approved and land.",
+      "protected": true,
+      "verdict": "BLOCKED",
+      "screenshot": "FL-109.png",
+      "flag": "F086",
+      "observed": "The compaction completed. Scrolling a resulting card past the post to approve it was not exercised. The capture is packet context for the missing proof."
+    },
+    "FL-114": {
+      "label": "Memory Ingest as its own module: put in current AGENTS.md or CLAUDE.md files to jump-start the Palace.",
+      "walk": "Put an AGENTS.md into the Memory Ingest module; its contents show up as memory candidates.",
+      "protected": true,
+      "verdict": "PASS",
+      "screenshot": "FL-114.png",
+      "flag": "",
+      "observed": "Uploaded a fictional AGENTS.md in Stage Memory Ingest. Its two facts appeared as separate candidates for review."
+    },
     "FL-169": {
       "label": "Client and cloud versions stay sync-locked or backward compatible, following industry practice, so version differences feel seamless.",
       "walk": "Start a client whose version differs from the cloud Palace's; it either keeps working or refuses with a plain version message.",
@@ -104,6 +137,24 @@
       "screenshot": "FL-169.png",
       "flag": "F086",
       "observed": "The same-version local pair was exercised. The charge excludes a mismatched cloud Palace. The capture is packet context for the missing proof."
+    },
+    "FL-178": {
+      "label": "Constitution: a verification identity with its own account and home for tests and scouts (gate verification-identity work).",
+      "walk": "Start the daemon as the verification identity; its Palace shows none of the owner's memories.",
+      "protected": true,
+      "verdict": "PASS",
+      "screenshot": "FL-178.png",
+      "flag": "",
+      "observed": "Started the installed daemon with a fresh verification identity on its own local database. SQL counted zero memory heads before the first save."
+    },
+    "FL-179": {
+      "label": "Constitution: a plain ownership refusal when one identity tries to decide another identity's approval queue item (gate verification-identity work).",
+      "walk": "As the verification identity, decide a card in the owner's approval queue; a plain refusal appears.",
+      "protected": true,
+      "verdict": "BLOCKED",
+      "screenshot": "FL-179.png",
+      "flag": "F086",
+      "observed": "Only the disposable local principal reviewed its own queue. The charge excludes the owner’s Palace and queue. The capture is packet context for the missing proof."
     },
     "FL-003": {
       "label": "Constitution: Every edit is a compare-and-swap revision, deletions are tombstones, and a write conflict is a first-class event (founding ADRs).",
@@ -122,6 +173,15 @@
       "screenshot": "FL-162.png",
       "flag": "F086",
       "observed": "Both packages were installed in a clean environment. The charge requires disposable local verification and excludes signing in or onboarding a cloud credential. The capture is packet context for the missing proof."
+    },
+    "FL-163": {
+      "label": "Seed ingestion at startup: upload markdown files (or the machine's CLAUDE.md and AGENTS.md) and the curators break them into individual memories.",
+      "walk": "M3WF fixture: focus Memory Ingest’s drop/paste control and paste a two-fact fictional Markdown document; review the individual split memories. A native file chooser is optional.",
+      "protected": false,
+      "verdict": "PASS",
+      "screenshot": "FL-163.png",
+      "flag": "",
+      "observed": "Focused the Memory Ingest drop control and pasted two fictional facts. Both appeared under pasted.md as individual memories awaiting review."
     },
     "FL-164": {
       "label": "Local mode with no internet, cloud mode, and a way to mirror our cloud setup into your own provider.",
@@ -173,7 +233,6 @@
     "FL-033": "outside diff",
     "FL-034": "outside diff",
     "FL-035": "outside diff",
-    "FL-036": "outside diff",
     "FL-037": "outside diff",
     "FL-039": "outside diff",
     "FL-040": "dropped",
@@ -243,12 +302,10 @@
     "FL-106": "outside diff",
     "FL-107": "outside diff",
     "FL-108": "outside diff",
-    "FL-109": "outside diff",
     "FL-110": "outside diff",
     "FL-111": "outside diff",
     "FL-112": "outside diff",
     "FL-113": "outside diff",
-    "FL-114": "outside diff",
     "FL-115": "outside diff",
     "FL-116": "outside diff",
     "FL-117": "outside diff",
@@ -297,7 +354,6 @@
     "FL-197": "outside diff",
     "FL-160": "outside diff",
     "FL-161": "outside diff",
-    "FL-163": "outside diff",
     "FL-165": "outside diff",
     "FL-166": "outside diff",
     "FL-168": "outside diff",
@@ -309,8 +365,6 @@
     "FL-175": "outside diff",
     "FL-176": "horizon",
     "FL-177": "horizon",
-    "FL-178": "outside diff",
-    "FL-179": "outside diff",
     "FL-180": "outside diff",
     "FL-181": "outside diff",
     "FL-182": "outside diff",
