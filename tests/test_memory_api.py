@@ -633,6 +633,59 @@ async def test_busy_save_cannot_land_after_refusal_and_retry_writes_once(
         )
 
 
+async def test_pending_extraction_embedding_allows_same_principal_save(
+    memory_client: AsyncClient,
+    embedding_provider: ScriptedEmbeddingProvider,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """FL-039: a stalled extraction provider cannot block a save or admit a stale duplicate."""
+    candidate, explicit = "The mill closes at noon.", "Noon is closing time for the mill."
+    embedding_provider.set(candidate, basis_vector(0)).set(explicit, basis_vector(0))
+    entered, release = asyncio.Event(), asyncio.Event()
+    embed = embedding_provider.embed
+
+    async def pending(texts):
+        if candidate in texts:
+            entered.set()
+            await release.wait()
+        return await embed(texts)
+
+    monkeypatch.setattr(embedding_provider, "embed", pending)
+    monkeypatch.setattr("spine.memory.service._SAVE_LOCK_SECONDS", 0.5)
+    extraction = asyncio.create_task(
+        memory_client.post(
+            "/v1/extractions",
+            json={
+                "principal_id": "owner",
+                "thread_id": str(uuid4()),
+                "machine_id": "test",
+                "editor": "extraction",
+                "candidates": [
+                    {
+                        "label": "Closing",
+                        "body": candidate,
+                        "kind": "fact",
+                        "keywords": ["mill", "noon"],
+                        "verdict": "new",
+                    }
+                ],
+            },
+        )
+    )
+    try:
+        await asyncio.wait_for(entered.wait(), timeout=5)
+        saved = await asyncio.wait_for(
+            memory_client.post("/v1/memories", json=_create_body(label="Hours", body=explicit)),
+            timeout=3,
+        )
+        assert saved.status_code == 201
+    finally:
+        release.set()
+        result = await extraction
+    assert result.status_code == 200
+    assert result.json() == {"cards": [], "duplicate_count": 1}
+
+
 async def test_concurrent_same_principal_dedup_creates_only_one_root(
     memory_client: AsyncClient,
     embedding_provider: ScriptedEmbeddingProvider,
