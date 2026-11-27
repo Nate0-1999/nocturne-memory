@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "9917344286771efcbe5ecd49a36a50b60a575c93",
-      "head": "cbfb7b27f961e06d833bffe3709f96c32fe0a781"
+      "head": "32641f9e7a49519862337aef3ba4045d45013728"
     }
   ],
   "unmapped": {
@@ -15,8 +15,8 @@
     "spine/src/spine/__init__.py": "Paired 0.1.121 package metadata or exported contract.",
     "spine/tests/test_packaging.py": "Regression or packaging assertion for the model and version changes.",
     "spine/verification/m8sm/SHA256SUMS": "M8SM walk evidence, coverage declaration or checksum manifest.",
-    "spine/verification/m8sm/impacted.json": "M8SM walk evidence, coverage declaration or checksum manifest.",
-    "spine/verification/m8sm/ledger-report.json": "M8SM walk evidence, coverage declaration or checksum manifest."
+    "spine/verification/m8sm/ledger-report.json": "M8SM walk evidence, coverage declaration or checksum manifest.",
+    "spine/verification/m8sm/impacted.json": "M8SM walk evidence, coverage declaration or checksum manifest."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {},
