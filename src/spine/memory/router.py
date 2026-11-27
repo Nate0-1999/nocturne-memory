@@ -140,8 +140,9 @@ class SearchRequest(ContractRequest):
     "/v1/memories",
     status_code=201,
     response_model=CreatedMemoryResponse,
-    responses=EMBEDDING_RESPONSES
+    responses=ERROR_RESPONSES
     | {
+        503: problem_openapi("Embedding provider unavailable or memory write busy"),
         200: {
             "description": "Similar memories require an explicit force retry",
             "model": SimilarMemoryResponse,
@@ -201,8 +202,9 @@ async def create_memory(
     "/v1/memory-splits",
     status_code=201,
     response_model=MemorySplitResponse,
-    responses=EMBEDDING_RESPONSES
+    responses=ERROR_RESPONSES
     | {
+        503: problem_openapi("Embedding provider unavailable or memory write busy"),
         200: {
             "description": "The first near-similar child requires an ordinary create decision",
             "model": SimilarMemoryResponse,

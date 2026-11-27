@@ -11468,7 +11468,7 @@
                 }
               }
             },
-            "description": "Embedding provider unavailable"
+            "description": "Embedding provider unavailable or memory write busy"
           }
         },
         "security": [
@@ -12917,7 +12917,7 @@
                 }
               }
             },
-            "description": "Embedding provider unavailable"
+            "description": "Embedding provider unavailable or memory write busy"
           }
         },
         "security": [
