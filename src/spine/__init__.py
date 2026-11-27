@@ -1,3 +1,3 @@
 """Spine service package."""
 
-__version__ = "0.1.122"
+__version__ = "0.1.126"
