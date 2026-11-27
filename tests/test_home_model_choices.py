@@ -127,6 +127,12 @@ def test_country_rules_only_judge_their_own_unknowns():
         return CountryCatalog(CountryFilters.model_validate(rules), providers, routes).assess(model)
 
     assert assess("mistralai/test", maker=maker) == (None, [])
+    assert assess("~mistralai/test", maker=maker) == (None, [])
+    assert assess("~mistralai/test", maker={"countries": ["FR"]})[0]
+    legacy = CountryFilters.model_validate(
+        {"keep_unknown": True, "serving": {"keep_unknown": False}}
+    )
+    assert legacy.maker.keep_unknown and not legacy.serving.keep_unknown
     assert assess("unsourced/test", serving=serving) == (None, ["known"])
     assert assess("unsourced/test", maker=maker, serving={**serving, "keep_unknown": True})[0]
     assert assess("unsourced/test", maker={**maker, "keep_unknown": True}, serving=serving) == (
