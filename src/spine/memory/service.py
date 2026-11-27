@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 from collections.abc import Mapping, Sequence
+from contextlib import asynccontextmanager
 from copy import deepcopy
 from dataclasses import dataclass
 from hashlib import sha256
@@ -280,16 +281,8 @@ class MemoryService:
         self._label_max = label_max
         self._memory_max_tokens = memory_max_tokens
 
-    async def create(
-        self,
-        command: CreateMemoryCommand,
-    ) -> MemoryCreated | SimilarMemories:
-        """Create a root head/revision or return the exact dedup-band outcome."""
-
-        self._validate_label(command.label)
-
-        self._validate_body(command.body)
-        embedding = await embed_one(
+    async def _embed_create_body(self, command: CreateMemoryCommand) -> list[float]:
+        return await embed_one(
             self._embedding_provider,
             command.body,
             expected_dimensions=_EMBEDDING_DIMENSIONS,
@@ -301,6 +294,15 @@ class MemoryService:
             ),
         )
 
+    async def create(
+        self,
+        command: CreateMemoryCommand,
+    ) -> MemoryCreated | SimilarMemories:
+        """Create a root head/revision or return the exact dedup-band outcome."""
+
+        self._validate_label(command.label)
+        self._validate_body(command.body)
+        embedding = await self._embed_create_body(command)
         async with self._session_factory() as session:
             async with session.begin():
                 # Serialize the authoritative recheck, dedup read, and root insert for
@@ -536,9 +538,8 @@ class MemoryService:
         refused as their duplicate.
         """
 
-        async with self._session_factory.begin() as session:
-            await self.lock_candidate_principal(session, command.principal_id)
-            result = await self.admit_candidate(session, command, replaces=replaces)
+        async with self.candidate_writer(command) as (session, prepared):
+            result = await self.admit_candidate(session, command, prepared, replaces=replaces)
             return result if isinstance(result, CandidateCreated) else None
 
     @staticmethod
@@ -548,30 +549,50 @@ class MemoryService:
             {"principal_id": principal_id},
         )
 
+    @asynccontextmanager
+    async def candidate_writer(self, command: CreateMemoryCommand, *, receipted: bool = False):
+        """Prepare outside the transaction. Completed receipts and denials need no provider."""
+        prepared = None
+        if not receipted:
+            try:
+                self._validate_label(command.label)
+                self._validate_body(command.body)
+            except MemoryValidationError as error:
+                # Accounted extractions record refusals in the same transaction as the receipt.
+                prepared = error
+            else:
+                async with self._session_factory.begin() as session:
+                    if await self._rejected_body(session, command.principal_id, command.body):
+                        await self.lock_candidate_principal(session, command.principal_id)
+                        denied = await self._rejected_body(
+                            session, command.principal_id, command.body
+                        )
+                        if denied is not None:
+                            yield session, denied
+                            return
+                prepared = await self._embed_create_body(command)
+        async with self._session_factory.begin() as session:
+            await self.lock_candidate_principal(session, command.principal_id)
+            yield session, prepared
+
     async def admit_candidate(
         self,
         session: AsyncSession,
         command: CreateMemoryCommand,
+        prepared: list[float] | UUID | MemoryValidationError | None,
         *,
         replaces: Sequence[UUID],
     ) -> CandidateCreated | SimilarityMemoryCard | UUID:
-        """Inside the principal lock, return the birth, matched neighbor or prior denial ID."""
-        self._validate_label(command.label)
-        self._validate_body(command.body)
+        """Finish admission using only the locked database and the prepared provider result."""
+        if isinstance(prepared, MemoryValidationError):
+            raise prepared
+        if isinstance(prepared, UUID):
+            return prepared
+        assert prepared is not None  # A completed receipt is replayed before admission.
+        embedding = prepared
         rejected = await self._rejected_body(session, command.principal_id, command.body)
         if rejected is not None:
             return rejected
-        embedding = await embed_one(
-            self._embedding_provider,
-            command.body,
-            expected_dimensions=_EMBEDDING_DIMENSIONS,
-            receipt_context=EmbeddingReceiptContext(
-                principal_id=command.principal_id,
-                machine_id=command.machine_id,
-                origin_agent=_agent_from_editor(command.editor),
-                thread_id=_optional_uuid(command.thread_origin),
-            ),
-        )
         matches = await self._dedup_matches(
             session,
             principal_id=command.principal_id,
