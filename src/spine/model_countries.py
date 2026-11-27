@@ -173,13 +173,22 @@ class CountryCatalog:
                 return None, []
             return "Provider country is unknown.", []
         allowed = []
+        missing_location = False
         for provider in self.models.get(slug, []):
             hq, centers = self.providers.get(provider, (None, []))
-            if (not hq or not centers or None in centers) and not self.filters.serving.keep_unknown:
+            if not self.filters.serving.accepts(code for code in [hq, *centers] if code):
                 continue
-            if self.filters.serving.accepts(code for code in [hq, *centers] if code):
-                allowed.append(provider)
+            if (not hq or not centers or None in centers) and not self.filters.serving.keep_unknown:
+                missing_location = True
+                continue
+            allowed.append(provider)
         if not allowed:
+            if missing_location:
+                return (
+                    "A provider is missing location details. "
+                    "Select “Keep unknown provider countries” to allow it.",
+                    [],
+                )
             return (
                 "No allowed provider serves this model. Change the filters or pick another model.",
                 [],

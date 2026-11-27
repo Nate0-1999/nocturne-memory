@@ -143,3 +143,27 @@ def test_country_rules_only_judge_their_own_unknowns():
         None,
         ["partial", "known"],
     )
+
+
+def test_serving_refusal_names_unknown_switch_only_when_it_would_admit_a_provider():
+    """SPEC C.5 / SD-100: incomplete broker location data needs an actionable refusal without
+    suggesting an override that cannot admit any available provider."""
+    from spine.model_countries import CountryCatalog, CountryFilters
+
+    locations = {"partial": ("FR", []), "wrong": ("US", []), "mixed": ("FR", ["US"])}
+    models = {"maker/possible": ["wrong", "partial"], "maker/excluded": ["wrong", "mixed"]}
+    filters = CountryFilters.model_validate({"serving": {"mode": "allow", "countries": ["FR"]}})
+    catalog = CountryCatalog(filters, locations, models)
+    for model, reason in (
+        (
+            "maker/possible",
+            "A provider is missing location details. "
+            "Select “Keep unknown provider countries” to allow it.",
+        ),
+        (
+            "maker/excluded",
+            "No allowed provider serves this model. Change the filters or pick another model.",
+        ),
+    ):
+        assert catalog.assess(model) == (reason, [])
+        assert catalog.describe(model)["country_exclusion"] == reason
