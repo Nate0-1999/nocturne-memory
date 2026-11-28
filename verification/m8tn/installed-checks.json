@@ -1,0 +1,10 @@
+{
+  "packet": "M8TN",
+  "version": "0.1.133",
+  "comparison": ["merged source", "built wheel", "module imported by the installed Palace"],
+  "module": "spine/main.py",
+  "matching_sha256": "fffe096b757e4b6f6873bb763bb8ed9aaca436428cf9b441a8ff31f1d7ae43da",
+  "pytest": {"before": {"passed":359,"skipped":2}, "after": {"passed":359,"skipped":2}},
+  "schema_changes": 0,
+  "walk": "The installed Palace returned zero Spend receipts both before and after importing the two native proof conversations."
+}
