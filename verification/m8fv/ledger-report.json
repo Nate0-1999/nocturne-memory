@@ -6,17 +6,20 @@
   "diffs": [
     {
       "repo": "spine",
-      "base": "1b658d91222fdc987709d440c6438b9a78412846",
-      "head": "348d77cac646b6661de551d6b54ef9539d780b24"
+      "base": "94a80510856f9ec10e49531722208bad73c50bd0",
+      "head": "61320d386d53e2ceec87f1c56728abdafbd3b2be"
     }
   ],
   "unmapped": {
+    "spine/DECISIONS.md": "Inherited M8PA change included by the hosted main-to-draft comparison; M8FV did not author or change this path.",
     "spine/openapi.json": "Paired 0.1.129 version metadata or its packaging assertion.",
     "spine/src/spine/__init__.py": "Paired 0.1.129 version metadata or its packaging assertion.",
     "spine/tests/test_packaging.py": "Paired 0.1.129 version metadata or its packaging assertion.",
     "spine/verification/m8fv/SHA256SUMS": "Packet Stage screenshots, readings, or integrity metadata for the handoff.",
-    "spine/verification/m8fv/impacted.json": "Packet Stage screenshots, readings, or integrity metadata for the handoff.",
-    "spine/verification/m8fv/ledger-report.json": "Packet Stage screenshots, readings, or integrity metadata for the handoff."
+    "spine/verification/m8fv/ledger-report.json": "Packet Stage screenshots, readings, or integrity metadata for the handoff.",
+    "spine/verification/m8pa/SHA256SUMS": "Inherited M8PA change included by the hosted main-to-draft comparison; M8FV did not author or change this path.",
+    "spine/verification/m8pa/ledger-report.json": "Inherited M8PA change included by the hosted main-to-draft comparison; M8FV did not author or change this path.",
+    "spine/verification/m8fv/impacted.json": "Packet Stage screenshots, readings, or integrity metadata for the handoff."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {},
