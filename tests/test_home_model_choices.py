@@ -167,3 +167,55 @@ def test_serving_refusal_names_unknown_switch_only_when_it_would_admit_a_provide
     ):
         assert catalog.assess(model) == (reason, [])
         assert catalog.describe(model)["country_exclusion"] == reason
+
+
+@pytest.mark.parametrize("source", ["openai", "anthropic"])
+def test_direct_maker_matches_the_broker_and_local_maker_stays_unknown(source):
+    """SPEC C.5 / SD-100: changing the transport must not bypass a maker exclusion."""
+    from spine.model_countries import CountryCatalog, CountryFilters
+
+    direct = f"{source}:example"
+    broker = f"openrouter:{source}/example"
+    for countries, keep, reason in [
+        (["US"], True, "Maker country US is excluded."),
+        (["CN"], False, None),
+    ]:
+        filters = CountryFilters.model_validate(
+            {"maker": {"countries": countries, "keep_unknown": keep}}
+        )
+        catalog = CountryCatalog(filters, {}, {})
+        assert catalog.assess(direct) == catalog.assess(broker) == (reason, [])
+        assert catalog.describe(direct)["maker_country"] == "US"
+        assert catalog.describe(direct)["maker_source"] == catalog.describe(broker)["maker_source"]
+        assert catalog.describe(f"local:{source}/example")["maker_country"] is None
+
+
+@pytest.mark.asyncio
+async def test_named_choice_checks_the_route_returned_by_the_adapter(tmp_path):
+    """SPEC C.5 / SD-100: an adapter-normalized name must obey the same maker rule
+    when chosen explicitly, pinned, and restored in a conversation."""
+    from spine.model_countries import CountryFilters
+
+    class AliasedCatalog:
+        async def load_named_route(self, name):
+            assert name == "alias/example"
+            return ModelRoute("openai/example", 4096), datetime.now(UTC)
+
+    choices = HomeModelChoices(tmp_path)
+    choices.countries.save(
+        CountryFilters.model_validate({"maker": {"countries": ["US"], "keep_unknown": True}})
+    )
+    alias = "openrouter:alias/example"
+    resolver = ModelPolicyResolver(
+        policy=f"pinned:{alias}",
+        static_model=None,
+        static_context_tokens=4096,
+        catalog=AliasedCatalog(),
+        choices=choices,
+    )
+    with pytest.raises(NamedModelResolutionError, match="Maker country US"):
+        await resolver.resolve_named("new", alias)
+    with pytest.raises(ModelCatalogUnavailable, match="Maker country US"):
+        await resolver.resolve_hydrated("saved", alias)
+    with pytest.raises(ModelCatalogUnavailable, match="Maker country US"):
+        await resolver.resolve("pinned")

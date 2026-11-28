@@ -106,6 +106,18 @@ def _country(value: object) -> str | None:
     return None
 
 
+LOCATION_REFRESH_FAILED = "Provider locations could not be refreshed. Try again."
+
+
+def _maker(model: str) -> tuple[str, str] | None:
+    if model.startswith(("openai:", "openai-chat:", "openai-responses:")):
+        return MAKERS["openai"]
+    if model.startswith("anthropic:"):
+        return MAKERS["anthropic"]
+    slug = model.removeprefix("openrouter:")
+    return MAKERS.get(slug.partition("/")[0].removeprefix("~"))
+
+
 class CountryRule(BaseModel):
     model_config = ConfigDict(extra="forbid")
     mode: Literal["allow", "exclude"] = "exclude"
@@ -161,17 +173,21 @@ class CountryCatalog:
         if not self.filters.active or model.startswith("subscription:"):
             return None, []
         slug = model.removeprefix("openrouter:")
-        maker = MAKERS.get(slug.partition("/")[0].removeprefix("~"))
+        maker = _maker(model)
         if maker and not self.filters.maker.accepts([maker[0]]):
             return f"Maker country {maker[0]} is excluded.", []
         if self.filters.maker.countries and not maker and not self.filters.maker.keep_unknown:
             return "Maker country is unknown.", []
         if not self.filters.serving.countries:
             return None, []
-        if model.startswith(("local:", "openai:", "anthropic:")):
+        if model.startswith(
+            ("local:", "openai:", "openai-chat:", "openai-responses:", "anthropic:")
+        ):
             if self.filters.serving.keep_unknown:
                 return None, []
             return "Provider country is unknown.", []
+        if slug not in self.models:
+            return LOCATION_REFRESH_FAILED, []
         allowed = []
         missing_location = False
         for provider in self.models.get(slug, []):
@@ -197,7 +213,7 @@ class CountryCatalog:
 
     def describe(self, model: str) -> dict:
         slug = model.removeprefix("openrouter:")
-        maker = MAKERS.get(slug.partition("/")[0].removeprefix("~"))
+        maker = _maker(model)
         locations = [self.providers.get(p, (None, [])) for p in self.models.get(slug, [])]
         return {
             "maker_country": maker[0] if maker else None,
@@ -252,7 +268,7 @@ class HomeCountries:
     async def refresh(
         self, model_ids: Iterable[str], client: httpx.AsyncClient, base_url: str
     ) -> None:
-        ids = set(model_ids)
+        ids = {model.removeprefix("openrouter:") for model in model_ids}
         async with self._lock:
             checked, providers, models = self._read()
             missing = ids - models.keys()

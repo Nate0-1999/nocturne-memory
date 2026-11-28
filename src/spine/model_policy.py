@@ -15,7 +15,7 @@ from typing import Literal, Protocol
 
 import httpx
 
-from spine.model_countries import HomeCountries
+from spine.model_countries import LOCATION_REFRESH_FAILED, HomeCountries
 
 _PRICE_PER_MILLION = Decimal(1_000_000)
 _CATALOG_TTL_SECONDS = 24 * 60 * 60
@@ -34,6 +34,10 @@ class ModelCatalogUnavailable(RuntimeError):
 
 class NamedModelResolutionError(ValueError):
     """A human `/model` target is not a valid broker-listed OpenRouter route."""
+
+
+class _ExcludedRoute(NamedModelResolutionError):
+    """A resolved route failed the home rule, even if its alias would pass."""
 
 
 @dataclass(frozen=True, slots=True)
@@ -568,9 +572,7 @@ class OpenRouterCatalogClient:
         try:
             await countries.refresh(model_ids, self._request_client(), self._base_url)
         except (httpx.HTTPError, ValueError, TypeError, KeyError) as exc:
-            raise ModelCatalogUnavailable(
-                "Provider locations could not be read. Refresh the model list."
-            ) from exc
+            raise ModelCatalogUnavailable(LOCATION_REFRESH_FAILED) from exc
 
     async def aclose(self) -> None:
         if self._owns_client and self._client is not None:
@@ -701,11 +703,12 @@ class ModelPolicyResolver:
             raise ModelCatalogUnavailable("model router catalog is not configured")
 
         route, fetched_at = await self._catalog.load_named_route(slug)
-        if self._choices and (reason := self._choices.countries.catalog().assess(model)[0]):
-            raise NamedModelResolutionError(reason)
+        qualified = _qualify_model(self._catalog, route.model_id)
+        if self._choices and (reason := self._choices.countries.catalog().assess(qualified)[0]):
+            raise _ExcludedRoute(reason)
 
         resolved = ThreadModelResolution(
-            model=_qualify_model(self._catalog, route.model_id),
+            model=qualified,
             context_tokens=route.context_tokens,
             policy="human_command",
             input_modalities=route.input_modalities,
@@ -731,6 +734,8 @@ class ModelPolicyResolver:
 
         try:
             return await self.resolve_named(thread_id, model)
+        except _ExcludedRoute as exc:
+            raise ModelCatalogUnavailable(str(exc)) from exc
         except (ModelCatalogUnavailable, NamedModelResolutionError) as exc:
             if self._choices and (reason := self._choices.countries.catalog().assess(model)[0]):
                 raise ModelCatalogUnavailable(reason) from exc
@@ -814,6 +819,8 @@ class ModelPolicyResolver:
             if self._choices:
                 try:
                     named = await self.resolve_named(thread_id, policy.value)
+                except _ExcludedRoute as exc:
+                    raise ModelCatalogUnavailable(str(exc)) from exc
                 except (ModelCatalogUnavailable, NamedModelResolutionError):
                     if reason := self._choices.countries.catalog().assess(policy.value)[0]:
                         raise ModelCatalogUnavailable(reason) from None
@@ -870,7 +877,7 @@ class ModelPolicyResolver:
                         model
                         for entry in catalog.listing
                         if (model := _qualify_model(self._catalog, entry.model_id)).startswith(
-                            "openai:"
+                            ("openai:", "openai-chat:", "openai-responses:", "anthropic:")
                         )
                     }
                 catalog = self._choices.eligible(catalog)
