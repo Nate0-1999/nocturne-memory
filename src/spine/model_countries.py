@@ -109,11 +109,14 @@ def _country(value: object) -> str | None:
 LOCATION_REFRESH_FAILED = "Provider locations could not be refreshed. Try again."
 
 
-def _maker(model: str) -> tuple[str, str] | None:
+DIRECT_MAKERS = frozenset({"openai", "anthropic"})
+
+
+def _maker(model: str, direct_makers: frozenset[str]) -> tuple[str, str] | None:
     if model.startswith(("openai:", "openai-chat:", "openai-responses:")):
-        return MAKERS["openai"]
+        return MAKERS["openai"] if "openai" in direct_makers else None
     if model.startswith("anthropic:"):
-        return MAKERS["anthropic"]
+        return MAKERS["anthropic"] if "anthropic" in direct_makers else None
     slug = model.removeprefix("openrouter:")
     return MAKERS.get(slug.partition("/")[0].removeprefix("~"))
 
@@ -160,6 +163,7 @@ class CountryCatalog:
     providers: dict
     # exact request model -> provider slugs with a published available endpoint
     models: dict
+    direct_makers: frozenset[str] = DIRECT_MAKERS
 
     def options(self) -> list[str]:
         return sorted(
@@ -173,7 +177,7 @@ class CountryCatalog:
         if not self.filters.active or model.startswith("subscription:"):
             return None, []
         slug = model.removeprefix("openrouter:")
-        maker = _maker(model)
+        maker = _maker(model, self.direct_makers)
         if maker and not self.filters.maker.accepts([maker[0]]):
             return f"Maker country {maker[0]} is excluded.", []
         if self.filters.maker.countries and not maker and not self.filters.maker.keep_unknown:
@@ -213,7 +217,7 @@ class CountryCatalog:
 
     def describe(self, model: str) -> dict:
         slug = model.removeprefix("openrouter:")
-        maker = _maker(model)
+        maker = _maker(model, self.direct_makers)
         locations = [self.providers.get(p, (None, [])) for p in self.models.get(slug, [])]
         return {
             "maker_country": maker[0] if maker else None,
@@ -228,8 +232,9 @@ class CountryCatalog:
 
 
 class HomeCountries:
-    def __init__(self, path: Path) -> None:
+    def __init__(self, path: Path, *, direct_makers: frozenset[str] = DIRECT_MAKERS) -> None:
         self.path = path
+        self.direct_makers = direct_makers
         self._lock = asyncio.Lock()
         with sqlite3.connect(path) as db:
             db.execute(
@@ -263,7 +268,7 @@ class HomeCountries:
 
     def catalog(self) -> CountryCatalog:
         _, providers, models = self._read()
-        return CountryCatalog(self.filters(), providers, models)
+        return CountryCatalog(self.filters(), providers, models, self.direct_makers)
 
     async def refresh(
         self, model_ids: Iterable[str], client: httpx.AsyncClient, base_url: str

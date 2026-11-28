@@ -15,7 +15,7 @@ from typing import Literal, Protocol
 
 import httpx
 
-from spine.model_countries import LOCATION_REFRESH_FAILED, HomeCountries
+from spine.model_countries import DIRECT_MAKERS, LOCATION_REFRESH_FAILED, HomeCountries
 
 _PRICE_PER_MILLION = Decimal(1_000_000)
 _CATALOG_TTL_SECONDS = 24 * 60 * 60
@@ -177,10 +177,10 @@ class ModelRequestParameters:
 class HomeModelChoices:
     """A home's exclusions and last successful catalog choice for each policy."""
 
-    def __init__(self, home: Path) -> None:
+    def __init__(self, home: Path, *, direct_makers: frozenset[str] = DIRECT_MAKERS) -> None:
         home.mkdir(parents=True, exist_ok=True)
         self.path = home / "model-choices.sqlite3"
-        self.countries = HomeCountries(self.path)
+        self.countries = HomeCountries(self.path, direct_makers=direct_makers)
         with sqlite3.connect(self.path) as db:
             db.execute("BEGIN IMMEDIATE")
             if not db.execute("SELECT 1 FROM sqlite_master WHERE name='bans'").fetchone():
