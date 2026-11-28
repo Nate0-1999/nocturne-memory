@@ -681,7 +681,11 @@ class ModelPolicyResolver:
         if self._catalog is None:
             raise ModelCatalogUnavailable("model router catalog is not configured")
 
-        route, fetched_at = await self._catalog.load_named_route(slug)
+        subscription_route = getattr(self._catalog, "load_subscription_route", None)
+        if slug.startswith("subscription:") and callable(subscription_route):
+            route, fetched_at = await subscription_route(slug, thread_id)
+        else:
+            route, fetched_at = await self._catalog.load_named_route(slug)
 
         resolved = ThreadModelResolution(
             model=_qualify_model(self._catalog, route.model_id),
@@ -711,6 +715,9 @@ class ModelPolicyResolver:
         try:
             return await self.resolve_named(thread_id, model)
         except (ModelCatalogUnavailable, NamedModelResolutionError) as exc:
+            if model.startswith("subscription:"):
+                # A-112: the subscription route already checked this conversation and home.
+                raise
             logger.warning(
                 "hydrated model catalog unavailable; retaining identity "
                 "thread=%s model=%s reason=%s",
