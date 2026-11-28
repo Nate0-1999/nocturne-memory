@@ -7,18 +7,69 @@
     {
       "repo": "spine",
       "base": "9917344286771efcbe5ecd49a36a50b60a575c93",
-      "head": "937bb1c3a620ba49cb824a087c2c58149b85c8ad"
+      "head": "b7044113dd153a1be3894d5b4afb11e336a9304c"
     }
   ],
   "unmapped": {
     "spine/openapi.json": "Aligns generated schema version metadata with the paired wheel.",
     "spine/src/spine/__init__.py": "Aligns the package version with the paired wheel.",
     "spine/tests/test_packaging.py": "Asserts the paired release version.",
+    "spine/verification/m8sx/FL-152.png": "M8SX evidence or its integrity record.",
+    "spine/verification/m8sx/FL-153.png": "M8SX evidence or its integrity record.",
+    "spine/verification/m8sx/FL-154.png": "M8SX evidence or its integrity record.",
+    "spine/verification/m8sx/FL-202.png": "M8SX evidence or its integrity record.",
+    "spine/verification/m8sx/FL-206.png": "M8SX evidence or its integrity record.",
     "spine/verification/m8sx/SHA256SUMS": "M8SX verification evidence or its integrity record. Changes no runtime behavior.",
     "spine/verification/m8sx/ledger-report.json": "M8SX verification evidence or its integrity record. Changes no runtime behavior."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
-  "rows": {},
+  "rows": {
+    "FL-154": {
+      "label": "A model configuration and token cost policy per agent type: pinned, max, elbow or floor.",
+      "walk": "Open the agent-type config; each type (agent, sub-agent, curator) has its own token-cost policy set to one of pinned, max, elbow or floor.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-154.png",
+      "flag": "F086",
+      "observed": "The screenshot documents the stock subscription walk only. Full-row proof remains outstanding for the separate walk: Open the agent-type config; each type (agent, sub-agent, curator) has its own token-cost policy set to one of pinned, max, elbow or floor."
+    },
+    "FL-202": {
+      "label": "The model browser: every model the token source offers, ranked, pinnable, with price and context window; the thinking level beside it; the standard configurations one click away.",
+      "walk": "Open the model chip on a conversation: the source's models are listed ranked with price and context window; pin one and it stays on top; pick another and the thread switches to it and stays on it — new conversations start on it too, until you change it, and the chip says so; set the thinking level beside it; pick a standard configuration (pinned, max, elbow, floor) and see what it selects now; switching back from a model to a policy is one click. Ban the model the strategy picked. The next new conversation starts on the next best eligible model, the first keeps its model, and the banned model cannot be pinned. Lift the ban. Check the strategy, ban reason and dated saved pick at phone and desktop width.",
+      "protected": true,
+      "verdict": "FAIL",
+      "screenshot": "FL-202.png",
+      "flag": "F086",
+      "observed": "The subscription selection survived reload at both widths. Full-row proof remains outstanding for the separate walk: Open the model chip on a conversation: the source's models are listed ranked with price and context window; pin one and it stays on top; pick another and the thread switches to it and stays on it — new conversations start on it too, until you change it, and the chip says so; set the thinking level beside it; pick a standard configuration (pinned, max, elbow, floor) and see what it selects now; switching back from a model to a policy is one click. Ban the model the strategy picked. The next new conversation starts on the next best eligible model, the first keeps its model, and the banned model cannot be pinned. Lift the ban. Check the strategy, ban reason and dated saved pick at phone and desktop width."
+    },
+    "FL-152": {
+      "label": "Cost routing: lowest cost above an intelligence threshold, or a spend rate per hour buying the most intelligence that burn allows.",
+      "walk": "Set Floor with an intelligence threshold in the token-cost policy; a new thread's chosen model is the cheapest one at or above that threshold. Set Budget with dollars per hour; a new thread's chosen model is the most intelligent one the agents' measured hourly token burn can buy for that, and the readout says what it costs an hour and what the next smarter model would cost.",
+      "protected": false,
+      "verdict": "FAIL",
+      "screenshot": "FL-152.png",
+      "flag": "F086",
+      "observed": "The screenshot documents the stock subscription walk only. Full-row proof remains outstanding for the separate walk: Set Floor with an intelligence threshold in the token-cost policy; a new thread's chosen model is the cheapest one at or above that threshold. Set Budget with dollars per hour; a new thread's chosen model is the most intelligent one the agents' measured hourly token burn can buy for that, and the readout says what it costs an hour and what the next smarter model would cost."
+    },
+    "FL-153": {
+      "label": "The elbow: a standard point on the cost-to-intelligence Pareto curve.",
+      "walk": "Choose the elbow policy; a new thread's policy readout names which frontier model is the elbow, how far below the frontier's price chord it sits, and what the next model up adds for its price. Start an unset home. Its first conversation uses the elbow. With the catalog unreachable, start on its dated eligible saved pick. Repeat in a home that has never read the catalog and verify the refusal starts no turn.",
+      "protected": false,
+      "verdict": "FAIL",
+      "screenshot": "FL-153.png",
+      "flag": "F086",
+      "observed": "The screenshot documents the stock subscription walk only. Full-row proof remains outstanding for the separate walk: Choose the elbow policy; a new thread's policy readout names which frontier model is the elbow, how far below the frontier's price chord it sits, and what the next model up adds for its price. Start an unset home. Its first conversation uses the elbow. With the catalog unreachable, start on its dated eligible saved pick. Repeat in a home that has never read the catalog and verify the refusal starts no turn."
+    },
+    "FL-206": {
+      "label": "Strategies and models: the strategies rail beside the model list, each strategy with its one-sentence meaning and the model it picks now; one plain summary of the model in use; the strategy named wherever the model is.",
+      "walk": "Open the Model Device from the conversation's model chip: the strategies (Pinned, Max, Elbow, Floor, Budget once the ledger has a burn, Local when offline) stand beside the ranked model list, each with what it means and the model it picks now, the one in force marked; the model in use has one paragraph naming its price in and out (the price the chip quotes), context, rank, thinking level, which strategy chose it and why, and since when. Click Elbow; a new thread's header chip, thread-list row, conversation configuration legend and spend-module model row all read 'Elbow · <model>'. Pick Floor and Budget from the rail the same way.",
+      "protected": false,
+      "verdict": "FAIL",
+      "screenshot": "FL-206.png",
+      "flag": "F086",
+      "observed": "Opened the device from the conversation and selected the subscription. Full-row proof remains outstanding for the separate walk: Open the Model Device from the conversation's model chip: the strategies (Pinned, Max, Elbow, Floor, Budget once the ledger has a burn, Local when offline) stand beside the ranked model list, each with what it means and the model it picks now, the one in force marked; the model in use has one paragraph naming its price in and out (the price the chip quotes), context, rank, thinking level, which strategy chose it and why, and since when. Click Elbow; a new thread's header chip, thread-list row, conversation configuration legend and spend-module model row all read 'Elbow · <model>'. Pick Floor and Budget from the rail the same way."
+    }
+  },
   "not_run": {
     "FL-001": "unverified",
     "FL-002": "outside diff",
@@ -171,9 +222,6 @@
     "FL-149": "outside diff",
     "FL-150": "unverified",
     "FL-151": "outside diff",
-    "FL-152": "outside diff",
-    "FL-153": "outside diff",
-    "FL-154": "outside diff",
     "FL-155": "outside diff",
     "FL-156": "outside diff",
     "FL-157": "outside diff",
@@ -221,11 +269,9 @@
     "FL-199": "outside diff",
     "FL-200": "outside diff",
     "FL-201": "outside diff",
-    "FL-202": "outside diff",
     "FL-203": "outside diff",
     "FL-204": "horizon",
     "FL-205": "outside diff",
-    "FL-206": "outside diff",
     "FL-207": "outside diff",
     "FL-208": "outside diff",
     "FL-209": "outside diff",
