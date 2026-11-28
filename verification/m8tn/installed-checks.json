@@ -6,5 +6,11 @@
   "matching_sha256": "fffe096b757e4b6f6873bb763bb8ed9aaca436428cf9b441a8ff31f1d7ae43da",
   "pytest": {"before": {"passed":359,"skipped":2}, "after": {"passed":359,"skipped":2}},
   "schema_changes": 0,
-  "walk": "The installed Palace returned zero Spend receipts both before and after importing the two native proof conversations."
+  "walk": "The installed Palace returned zero Spend receipts both before and after importing the two native proof conversations.",
+  "return_1": {
+    "included_turns_per_tool_after_import_first_turn_restart_turn_and_repeat": [0, 1, 2, 2],
+    "codex_all_receipts_across_final_reopen": [21, 21],
+    "claude_all_receipts_across_final_reopen": [16, 16],
+    "total_priced_usd_before_and_after_final_reopen": "0.000038600000"
+  }
 }
