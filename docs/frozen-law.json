@@ -1,7 +1,7 @@
 {
   "axioms_sha256": "e37c518b3bb11cc8d60654030abcc92da686b1a8f47680addd0cf243b7399a6b",
   "spec_sha256": "5d2caa49da6957f9efc7adb1cccc6ab344e31130107b4e64f1062b747c9d218c",
-  "ledger_sha256": "48fd14d147a1979ec24eb345be0984be7035b48c0e18d46dd633e8d06fd14184",
+  "ledger_sha256": "4c26d261f02e6b413ffa82f24cf0839c1085f0a0aa7c9b99436e51738d1a170a",
   "ledger_tool_sha256": "ecf623575fc1f4ba030a830dfdc55f986cece48877546e4f4e21bf315f970228",
   "product_checker_sha256": "9aab39b4eb81256982cc325c59377c5ad63a133880d3ca85f9a3001046d46829",
   "flag_ids": [
@@ -261,8 +261,9 @@
     "F256",
     "F257",
     "F258",
-    "F259"
+    "F259",
+    "F261"
   ],
   "repository": "spine",
-  "garden_commit": "39e78c266db00e225e422963f3953cdf8f37554e"
+  "garden_commit": "4756845fd7e58d7a6627ca6803f2d048eee3a015"
 }
