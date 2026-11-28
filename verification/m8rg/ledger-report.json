@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "9917344286771efcbe5ecd49a36a50b60a575c93",
-      "head": "c0527787d56ec856df63f345b3ec352b5b94a2e0"
+      "head": "99152bd6fd5d7689879351cc592df66c65cf4c38"
     }
   ],
   "unmapped": {
@@ -43,7 +43,7 @@
       "verdict": "PASS",
       "screenshot": "FL-202.png",
       "flag": "",
-      "observed": "Return 3: both direct sources showed US and followed the maker rule in the installed Stage at both widths. The same paid thread reached the allowed provider on separate turns across cache expiry. Return 2: the installed Stage first showed loading, then the list, then provider locations. With only France allowed, the Mistral Small 4 row and chat named the missing provider information and the specific checkbox. Both widths were walked. Return 1: independently changed maker and serving rules on both widths and compared all displayed counts to the installed listing. Timed the matching refusal and inspected the paid provider receipt. The earlier installed walk covered the ranked model browser with price and context, pin to top, switch, fresh-thread persistence and one-click return to Elbow. Low thinking persisted on the paid thread. The model ban changed the new pick and preserved the first thread. Banned pins returned 422. Lifting the ban restored the original pick. Desktop and phone country exclusions, choices and role-and-policy-controls.json are in Garden."
+      "observed": "Return 4: the installed Model Device showed an unknown maker for compatible addresses and US for the official hosts of both direct sources. Desktop and phone counts and row exclusions agreed with the settings. Return 3: both direct sources showed US and followed the maker rule in the installed Stage at both widths. The same paid thread reached the allowed provider on separate turns across cache expiry. Return 2: the installed Stage first showed loading, then the list, then provider locations. With only France allowed, the Mistral Small 4 row and chat named the missing provider information and the specific checkbox. Both widths were walked. Return 1: independently changed maker and serving rules on both widths and compared all displayed counts to the installed listing. Timed the matching refusal and inspected the paid provider receipt. The earlier installed walk covered the ranked model browser with price and context, pin to top, switch, fresh-thread persistence and one-click return to Elbow. Low thinking persisted on the paid thread. The model ban changed the new pick and preserved the first thread. Banned pins returned 422. Lifting the ban restored the original pick. Desktop and phone country exclusions, choices and role-and-policy-controls.json are in Garden."
     },
     "FL-152": {
       "label": "Cost routing: lowest cost above an intelligence threshold, or a spend rate per hour buying the most intelligence that burn allows.",
