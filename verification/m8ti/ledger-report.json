@@ -2,12 +2,12 @@
   "packet": "M8TI",
   "mode": "builder",
   "discretion": "A screenshot proves the walk ran, not that it shows the claim. The reviewer judges the visible claim and source mapping; rendered-state assertions grow row by row in the agent tests. No-feature-impact reasons are declarations for review, not proof.",
-  "ledger_sha256": "4c26d261f02e6b413ffa82f24cf0839c1085f0a0aa7c9b99436e51738d1a170a",
+  "ledger_sha256": "48fd14d147a1979ec24eb345be0984be7035b48c0e18d46dd633e8d06fd14184",
   "diffs": [
     {
       "repo": "spine",
       "base": "9917344286771efcbe5ecd49a36a50b60a575c93",
-      "head": "2ed9710b8d234fc2fca5434c1ebc30b8d6db8a43"
+      "head": "62cf028e4e31bbda19c4a6d870b4c2f41717d512"
     }
   ],
   "unmapped": {
@@ -19,15 +19,15 @@
     "spine/verification/m8td/SHA256SUMS": "Inherited from M8TS or its ancestor. Included for the hosted merge-base comparison. M8TI did not change this path.",
     "spine/verification/m8td/ledger-report.json": "Inherited from M8TS or its ancestor. Included for the hosted merge-base comparison. M8TI did not change this path.",
     "spine/verification/m8td/rules-control.txt": "Inherited from M8TS or its ancestor. Included for the hosted merge-base comparison. M8TI did not change this path.",
+    "spine/verification/m8ti/FL-195.png": "M8TI verification artifact for the installed walk or its ledger coverage.",
+    "spine/verification/m8ti/FL-196.png": "M8TI verification artifact for the installed walk or its ledger coverage.",
+    "spine/verification/m8ti/SHA256SUMS": "M8TI verification artifact for the installed walk or its ledger coverage.",
+    "spine/verification/m8ti/ledger-report.json": "M8TI verification artifact for the installed walk or its ledger coverage.",
     "spine/verification/m8ts/FL-195.png": "Inherited from M8TS or its ancestor. Included for the hosted merge-base comparison. M8TI did not change this path.",
     "spine/verification/m8ts/FL-196.png": "Inherited from M8TS or its ancestor. Included for the hosted merge-base comparison. M8TI did not change this path.",
     "spine/verification/m8ts/SHA256SUMS": "Inherited from M8TS or its ancestor. Included for the hosted merge-base comparison. M8TI did not change this path.",
     "spine/verification/m8ts/ledger-report.json": "Inherited from M8TS or its ancestor. Included for the hosted merge-base comparison. M8TI did not change this path.",
-    "spine/verification/m8ts/rules-control.txt": "Inherited from M8TS or its ancestor. Included for the hosted merge-base comparison. M8TI did not change this path.",
-    "spine/verification/m8ti/ledger-report.json": "M8TI verification artifact for the installed walk or its ledger coverage.",
-    "spine/verification/m8ti/SHA256SUMS": "M8TI verification artifact for the installed walk or its ledger coverage.",
-    "spine/verification/m8ti/FL-196.png": "M8TI verification artifact for the installed walk or its ledger coverage.",
-    "spine/verification/m8ti/FL-195.png": "M8TI verification artifact for the installed walk or its ledger coverage."
+    "spine/verification/m8ts/rules-control.txt": "Inherited from M8TS or its ancestor. Included for the hosted merge-base comparison. M8TI did not change this path."
   },
   "unmapped_instruction": "add a row or declare no feature impact (give a reason for each path)",
   "rows": {
@@ -263,6 +263,7 @@
     "FL-212": "outside diff",
     "FL-213": "outside diff",
     "FL-214": "outside diff",
-    "FL-215": "outside diff"
+    "FL-215": "outside diff",
+    "FL-216": "outside diff"
   }
 }
