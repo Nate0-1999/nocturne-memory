@@ -7,7 +7,7 @@
     {
       "repo": "spine",
       "base": "9917344286771efcbe5ecd49a36a50b60a575c93",
-      "head": "be75096f464b8ea36150895e063b30264c304564"
+      "head": "6a51368b7675768606b597f5626c0cedb86008ff"
     }
   ],
   "unmapped": {
@@ -40,7 +40,7 @@
       "verdict": "FAIL",
       "screenshot": "FL-202.png",
       "flag": "F086",
-      "observed": "The subscription selection survived reload at both widths. Full-row proof remains outstanding for the separate walk: Open the model chip on a conversation: the source's models are listed ranked with price and context window; pin one and it stays on top; pick another and the thread switches to it and stays on it — new conversations start on it too, until you change it, and the chip says so; set the thinking level beside it; pick a standard configuration (pinned, max, elbow, floor) and see what it selects now; switching back from a model to a policy is one click. Ban the model the strategy picked. The next new conversation starts on the next best eligible model, the first keeps its model, and the banned model cannot be pinned. Lift the ban. Check the strategy, ban reason and dated saved pick at phone and desktop width."
+      "observed": "Both installed Stage sizes filled the first open with 24 models from the private inventory. Return 1 verified saved choice after reload. Full-row proof remains outstanding for the separate walk: Open the model chip on a conversation: the source's models are listed ranked with price and context window; pin one and it stays on top; pick another and the thread switches to it and stays on it — new conversations start on it too, until you change it, and the chip says so; set the thinking level beside it; pick a standard configuration (pinned, max, elbow, floor) and see what it selects now; switching back from a model to a policy is one click. Ban the model the strategy picked. The next new conversation starts on the next best eligible model, the first keeps its model, and the banned model cannot be pinned. Lift the ban. Check the strategy, ban reason and dated saved pick at phone and desktop width."
     },
     "FL-152": {
       "label": "Cost routing: lowest cost above an intelligence threshold, or a spend rate per hour buying the most intelligence that burn allows.",
