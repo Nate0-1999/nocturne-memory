@@ -1633,3 +1633,7 @@ PRECEDENT: SD-100, A-020, A-021 and draft A-098. Keep exclusions, the last route
 by each strategy and its known context size beside the home's settings. Exclude rows before
 the frontier is computed. A catalog outage can reuse an eligible pick for the same strategy.
 The shared resolver accepts this home store explicitly. The Palace curator retains its own policy.
+
+## M8RG · Country selection (P4)
+
+SD-100 and draft A-111. Store country choices with the home's bans. A provider qualifies only when its reported headquarters and every reported datacenter satisfy the rule. Keep missing fields explicit. Cache the public provider and endpoint lists for the same day-long window as the model catalog.
